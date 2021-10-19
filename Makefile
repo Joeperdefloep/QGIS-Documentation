@@ -126,9 +126,9 @@ all: springclean
 	rsync -hvrzc $(BUILDDIR)/pdf $(SITEDIR)/;
 
 # create everything for Github
-github:
-      @make html
-      @cp -a _build/html/. ../docs
+# github:
+# 	@make html
+# 	@ghp-import build/html/en -p -o -n
 
 # this will pull ALL translations (or at least from the languages we build for)
 # to your local disk, so it can be committed into github
