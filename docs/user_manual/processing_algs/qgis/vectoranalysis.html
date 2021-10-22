@@ -1,0 +1,2583 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.1.13. Vector analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="24.1.14. Vector creation" href="vectorcreation.html" />
+    <link rel="prev" title="24.1.12. Raster tools" href="rastertools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">24. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">24.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">24.1.1. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">24.1.2. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">24.1.3. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">24.1.4. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">24.1.5. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">24.1.6. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">24.1.7. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">24.1.8. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">24.1.9. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">24.1.10. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">24.1.11. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">24.1.12. Raster tools</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">24.1.13. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">24.1.14. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">24.1.15. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">24.1.16. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">24.1.17. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">24.1.18. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">24.1.19. Vector table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">24.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">24.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">24.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">24.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">24. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">24.1. </span>QGIS algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">24.1.13. </span>Vector analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/vectoranalysis.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="rastertools.html" class="btn btn-neutral float-left" title="24.1.12. Raster tools" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorcreation.html" class="btn btn-neutral float-right" title="24.1.14. Vector creation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector-analysis">
+<h1><span class="section-number">24.1.13. </span>Vector analysis<a class="headerlink" href="#vector-analysis" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#basic-statistics-for-fields" id="id55">Basic statistics for fields</a></p></li>
+<li><p><a class="reference internal" href="#climb-along-line" id="id56">Climb along line</a></p></li>
+<li><p><a class="reference internal" href="#count-points-in-polygon" id="id57">Count points in polygon</a></p></li>
+<li><p><a class="reference internal" href="#dbscan-clustering" id="id58">DBSCAN clustering</a></p></li>
+<li><p><a class="reference internal" href="#distance-matrix" id="id59">Distance matrix</a></p></li>
+<li><p><a class="reference internal" href="#distance-to-nearest-hub-line-to-hub" id="id60">Distance to nearest hub (line to hub)</a></p></li>
+<li><p><a class="reference internal" href="#distance-to-nearest-hub-points" id="id61">Distance to nearest hub (points)</a></p></li>
+<li><p><a class="reference internal" href="#join-by-lines-hub-lines" id="id62">Join by lines (hub lines)</a></p></li>
+<li><p><a class="reference internal" href="#k-means-clustering" id="id63">K-means clustering</a></p></li>
+<li><p><a class="reference internal" href="#list-unique-values" id="id64">List unique values</a></p></li>
+<li><p><a class="reference internal" href="#mean-coordinate-s" id="id65">Mean coordinate(s)</a></p></li>
+<li><p><a class="reference internal" href="#nearest-neighbour-analysis" id="id66">Nearest neighbour analysis</a></p></li>
+<li><p><a class="reference internal" href="#overlap-analysis" id="id67">Overlap analysis</a></p></li>
+<li><p><a class="reference internal" href="#st-dbscan-clustering" id="id68">ST-DBSCAN clustering</a></p></li>
+<li><p><a class="reference internal" href="#statistics-by-categories" id="id69">Statistics by categories</a></p></li>
+<li><p><a class="reference internal" href="#sum-line-lengths" id="id70">Sum line lengths</a></p></li>
+</ul>
+</div>
+<section id="basic-statistics-for-fields">
+<span id="qgisbasicstatisticsforfields"></span><h2><a class="toc-backref" href="#id55"><span class="section-number">24.1.13.1. </span>Basic statistics for fields</a><a class="headerlink" href="#basic-statistics-for-fields" title="Permalink to this headline"></a></h2>
+<p>Generates basic statistics for a field of the attribute table of a
+vector layer.</p>
+<p>Numeric, date, time and string fields are supported.</p>
+<p>The statistics returned will depend on the field type.</p>
+<p>Statistics are generated as an HTML file and are available in the
+<span class="menuselection">Processing ► Results viewer</span>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="parameters">
+<h3><span class="section-number">24.1.13.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input vector</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LAYER</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer to calculate the statistics on</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Field to calculate statistics on</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD_NAME</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Any supported table field to calculate the statistics</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Statistics</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the file for the calculated statistics. One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">24.1.13.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Statistics</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the calculated statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of unique values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of empty (null) values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of non-empty values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILLED</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum value</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum value</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_LENGTH</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_LENGTH</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mean length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MEAN_LENGTH</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Coefficient of Variation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CV</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sum</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SUM</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mean value</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MEAN</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Standard deviation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STD_DEV</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Range</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RANGE</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Median</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MEDIAN</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minority (rarest occurring value)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MINORITY</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Majority (most frequently occurring value)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAJORITY</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>First quartile</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIRSTQUARTILE</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Third quartile</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">THIRDQUARTILE</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Interquartile Range (IQR)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IQR</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">24.1.13.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:basicstatisticsforfields</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="climb-along-line">
+<span id="qgisclimbalongline"></span><h2><a class="toc-backref" href="#id56"><span class="section-number">24.1.13.2. </span>Climb along line</a><a class="headerlink" href="#climb-along-line" title="Permalink to this headline"></a></h2>
+<p>Calculates the total climb and descent along line geometries.
+The input layer must have Z values present. If Z values are not
+available, the  <a class="reference internal" href="vectorgeometry.html#qgissetzfromraster"><span class="std std-ref">Drape (set Z value from raster)</span></a> algorithm may be used to add
+Z values from a DEM layer.</p>
+<p>The output layer is a copy of the input layer with additional fields
+that contain the total climb (<code class="docutils literal notranslate"><span class="pre">climb</span></code>), total descent (<code class="docutils literal notranslate"><span class="pre">descent</span></code>),
+the minimum elevation (<code class="docutils literal notranslate"><span class="pre">minelev</span></code>) and the maximum elevation
+(<code class="docutils literal notranslate"><span class="pre">maxelev</span></code>) for each line geometry.
+If the input layer contains fields with the same names as these added
+fields, they will be renamed (field names will be altered to “name_2”,
+“name_3”, etc, finding the first non-duplicate name).</p>
+<section id="id1">
+<h3><span class="section-number">24.1.13.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Line layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Line layer to calculate the climb for. Must have Z values</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Climb layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specification of the output (line) layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">24.1.13.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Climb layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Line layer containing new attributes with the
+results from climb calculations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total climb</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOTALCLIMB</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The sum of the climb for all the line geometries
+in the input layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total descent</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOTALDESCENT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The sum of the descent for all the line geometries
+in the input layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MINELEVATION</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The minimum elevation for the geometries in the
+layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAXELEVATION</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The maximum elevation for the geometries in the
+layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">24.1.13.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:climbalongline</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="count-points-in-polygon">
+<span id="qgiscountpointsinpolygon"></span><h2><a class="toc-backref" href="#id57"><span class="section-number">24.1.13.3. </span>Count points in polygon</a><a class="headerlink" href="#count-points-in-polygon" title="Permalink to this headline"></a></h2>
+<p>Takes a point and a polygon layer and counts the number of points from
+the point layer in each of the polygons of the polygon layer.</p>
+<p>A new polygon layer is generated, with the exact same content as the
+input polygon layer, but containing an additional field with the
+points count corresponding to each polygon.</p>
+<figure class="align-center" id="id51">
+<img alt="../../../../_images/count_points_polygon.png" src="../../../../_images/count_points_polygon.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.31 </span><span class="caption-text">The labels in the polygons show the point count</span><a class="headerlink" href="#id51" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>An optional weight field can be used to assign weights to each point.
+Alternatively, a unique class field can be specified.
+If both options are used, the weight field will take precedence and
+the unique class field will be ignored.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">menu</span></code>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="id4">
+<h3><span class="section-number">24.1.13.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Polygons</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POLYGONS</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Polygon layer whose features are associated with the count of
+points they contain</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINTS</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point layer with features to count</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Weight field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>A field from the point layer.
+The count generated will be the sum of the weight field of the
+points contained by the polygon.
+If the weight field is not numeric, the count will be <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Class field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLASSFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Points are classified based on the selected attribute and if
+several points with the same attribute value are within the
+polygon, only one of them is counted.
+The final count of the points in a polygon is, therefore, the
+count of different classes that are found in it.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Count field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘NUMPOINTS’</p>
+</td>
+<td><p>The name of the field to store the count of points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specification of the output layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+<li><p>Append to Layer…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">24.1.13.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Count</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Resulting layer with the attribute table containing the
+new column with the points count</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">24.1.13.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:countpointsinpolygon</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="dbscan-clustering">
+<span id="qgisdbscanclustering"></span><h2><a class="toc-backref" href="#id58"><span class="section-number">24.1.13.4. </span>DBSCAN clustering</a><a class="headerlink" href="#dbscan-clustering" title="Permalink to this headline"></a></h2>
+<p>Clusters point features based on a 2D implementation of Density-based
+spatial clustering of applications with noise (DBSCAN) algorithm.</p>
+<p>The algorithm requires two parameters, a minimum cluster size,
+and the maximum distance allowed between clustered points.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisstdbscanclustering"><span class="std std-ref">ST-DBSCAN clustering</span></a>, <a class="reference internal" href="#qgiskmeansclustering"><span class="std std-ref">K-means clustering</span></a></p>
+</div>
+<section id="id7">
+<h3><span class="section-number">24.1.13.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="basic-parameters">
+<h4><span class="section-number">24.1.13.4.1.1. </span>Basic parameters<a class="headerlink" href="#basic-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Layer to analyze</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum cluster size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Minimum number of features to generate a cluster</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum distance between clustered points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EPS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Distance beyond which two features can not belong
+to the same cluster (eps)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the vector layer for the result of the clustering. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="advanced-parameters">
+<h4><span class="section-number">24.1.13.4.1.2. </span>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Treat border points as noise (DBSCAN*)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DBSCAN*</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If checked, points on the border of a cluster are
+themselves treated as unclustered points, and only
+points in the interior of a cluster are tagged as
+clustered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cluster field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_ID’</p>
+</td>
+<td><p>Name of the field where the associated cluster number
+shall be stored</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cluster size field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIZE_FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_SIZE’</p>
+</td>
+<td><p>Name of the field with the count of features in the same cluster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id8">
+<h3><span class="section-number">24.1.13.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Vector layer containing the original features with a
+field setting the cluster they belong to</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUM_CLUSTERS</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The number of clusters discovered</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">24.1.13.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:dbscanclustering</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="distance-matrix">
+<span id="qgisdistancematrix"></span><h2><a class="toc-backref" href="#id59"><span class="section-number">24.1.13.5. </span>Distance matrix</a><a class="headerlink" href="#distance-matrix" title="Permalink to this headline"></a></h2>
+<p>Calculates for point features distances to their nearest features in
+the same layer or in another layer.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a></p>
+</div>
+<section id="id10">
+<h3><span class="section-number">24.1.13.5.1. </span>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point layer for which the distance matrix is calculated
+(<strong>from</strong> points)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input unique ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use to uniquely identify features of the
+input layer. Used in the output attribute table.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Target point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point layer containing the nearest point(s) to search
+(<strong>to</strong> points)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Target unique ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use to uniquely identify features of the target
+layer.
+Used in the output attribute table.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output matrix type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MATRIX_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Different types of calculation are available:</p>
+<ul class="simple">
+<li><p>0 — Linear (N * <em>k</em> x 3) distance matrix: for each
+input point, reports the distance to each of the <em>k</em>
+nearest target points.
+The output matrix consists of up to <em>k</em> rows per
+input point, and each row has three columns:
+<em>InputID</em>, <em>TargetID</em> and <em>Distance</em>.</p></li>
+<li><p>1 — Standard (N x T) distance matrix</p></li>
+<li><p>2 — Summary distance matrix (mean, std. dev., min,
+max): for each input point, reports statistics on
+the distances to its target points.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use only the nearest (k) target points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NEAREST_POINTS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>You can choose to calculate the distance to all the
+points in the target layer (<em>0</em>) or limit to a number
+(<em>k</em>) of closest features.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Distance matrix</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specification of the output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">24.1.13.5.2. </span>Outputs<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Distance matrix</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point (or MultiPoint for the “Linear (N * <em>k</em> x 3)”
+case) vector layer containing the distance calculation
+for each input feature.
+Its features and attribute table depend on the selected
+output matrix type.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">24.1.13.5.3. </span>Python code<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:distancematrix</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="distance-to-nearest-hub-line-to-hub">
+<span id="qgisdistancetonearesthublinetohub"></span><h2><a class="toc-backref" href="#id60"><span class="section-number">24.1.13.6. </span>Distance to nearest hub (line to hub)</a><a class="headerlink" href="#distance-to-nearest-hub-line-to-hub" title="Permalink to this headline"></a></h2>
+<p>Creates lines that join each feature of an input vector to the nearest
+feature in a destination layer.
+Distances are calculated based on the
+<a class="reference internal" href="vectorgeometry.html#qgispointonsurface"><span class="std std-ref">center</span></a> of each feature.</p>
+<figure class="align-center" id="id52">
+<img alt="../../../../_images/distance_hub.png" src="../../../../_images/distance_hub.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.32 </span><span class="caption-text">Display the nearest hub for the red input features</span><a class="headerlink" href="#id52" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdistancetonearesthubpoints"><span class="std std-ref">Distance to nearest hub (points)</span></a>,
+<a class="reference internal" href="vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a></p>
+</div>
+<section id="id13">
+<h3><span class="section-number">24.1.13.6.1. </span>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Source points layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer for which the nearest feature is searched</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Destination hubs layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HUBS</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer containing the features to search for</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hub layer name attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use to uniquely identify features of the
+destination layer.
+Used in the output attribute table</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Measurement unit</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNIT</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Units in which to report the distance to the closest
+feature:</p>
+<ul class="simple">
+<li><p>0 — Meters</p></li>
+<li><p>1 — Feet</p></li>
+<li><p>2 — Miles</p></li>
+<li><p>3 — Kilometers</p></li>
+<li><p>4 — Layer units</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Hub distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output line vector layer connecting the matching points.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">24.1.13.6.2. </span>Outputs<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hub distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Line vector layer with the attributes of the input
+features, the identifier of their closest feature
+and the calculated distance.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">24.1.13.6.3. </span>Python code<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:distancetonearesthublinetohub</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="distance-to-nearest-hub-points">
+<span id="qgisdistancetonearesthubpoints"></span><h2><a class="toc-backref" href="#id61"><span class="section-number">24.1.13.7. </span>Distance to nearest hub (points)</a><a class="headerlink" href="#distance-to-nearest-hub-points" title="Permalink to this headline"></a></h2>
+<p>Creates a point layer representing the
+<a class="reference internal" href="vectorgeometry.html#qgispointonsurface"><span class="std std-ref">center</span></a> of the input features with the
+addition of two fields containing the identifier of the nearest
+feature (based on its center point) and the distance between the
+points.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdistancetonearesthublinetohub"><span class="std std-ref">Distance to nearest hub (line to hub)</span></a>,
+<a class="reference internal" href="vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a></p>
+</div>
+<section id="id16">
+<h3><span class="section-number">24.1.13.7.1. </span>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Source points layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer for which the nearest feature is searched</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Destination hubs layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HUBS</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer containing the features to search for</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hub layer name attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use to uniquely identify features of the
+destination layer.
+Used in the output attribute table</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Measurement unit</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNIT</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Units in which to report the distance to the closest
+feature:</p>
+<ul class="simple">
+<li><p>0 — Meters</p></li>
+<li><p>1 — Feet</p></li>
+<li><p>2 — Miles</p></li>
+<li><p>3 — Kilometers</p></li>
+<li><p>4 — Layer units</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Hub distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output point vector layer with the nearest hub.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3><span class="section-number">24.1.13.7.2. </span>Outputs<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hub distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point vector layer representing the center of the source features
+with their attributes, the identifier of their closest
+feature and the calculated distance.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3><span class="section-number">24.1.13.7.3. </span>Python code<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:distancetonearesthubpoints</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="join-by-lines-hub-lines">
+<span id="qgishublines"></span><h2><a class="toc-backref" href="#id62"><span class="section-number">24.1.13.8. </span>Join by lines (hub lines)</a><a class="headerlink" href="#join-by-lines-hub-lines" title="Permalink to this headline"></a></h2>
+<p>Creates hub and spoke diagrams by connecting lines from points on
+the Spoke layer to matching points in the Hub layer.</p>
+<p>Determination of which hub goes with each point is based on a match
+between the Hub ID field on the hub points and the Spoke ID field on
+the spoke points.</p>
+<p>If input layers are not point layers, a point on the surface of the
+geometries will be taken as the connecting location.</p>
+<p>Optionally, geodesic lines can be created, which represent the
+shortest path on the surface of an ellipsoid.
+When geodesic mode is used, it is possible to split the created lines
+at the antimeridian (±180 degrees longitude), which can improve
+rendering of the lines.
+Additionally, the distance between vertices can be specified.
+A smaller distance results in a denser, more accurate line.</p>
+<figure class="align-center" id="id53">
+<img alt="../../../../_images/join_lines.png" src="../../../../_images/join_lines.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.33 </span><span class="caption-text">Join points based on a common field / attribute</span><a class="headerlink" href="#id53" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id19">
+<h3><span class="section-number">24.1.13.8.1. </span>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<section id="id20">
+<h4><span class="section-number">24.1.13.8.1.1. </span>Basic parameters<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hub layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HUBS</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hub ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HUB_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field of the hub layer with ID to join</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Hub layer fields to copy (leave empty to copy all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HUB_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>The field(s) of the hub layer to be copied.
+If no field(s) are chosen all fields are taken.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spoke layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPOKES</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Additional spoke point layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Spoke ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPOKE_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field of the spoke layer with ID to join</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Spoke layer fields to copy (leave empty to copy all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPOKE_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Field(s) of the spoke layer to be copied.
+If no fields are chosen all fields are taken.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Create geodesic lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEODESIC</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Create geodesic lines (the shortest path on the surface of
+an ellipsoid)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hub lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output hub line vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h4><span class="section-number">24.1.13.8.1.2. </span>Advanced parameters<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Distance between vertices (geodesic lines only)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEODESIC_DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1000.0 (kilometers)</p>
+</td>
+<td><p>Distance between consecutive vertices (in kilometers).
+A smaller distance results in a denser, more accurate line</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Split lines at antimeridian (±180 degrees longitude)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ANTIMERIDIAN_SPLIT</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Split lines at ±180 degrees longitude (to improve rendering
+of the lines)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id22">
+<h3><span class="section-number">24.1.13.8.2. </span>Outputs<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hub lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The resulting line layer connecting matching points in input layers</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3><span class="section-number">24.1.13.8.3. </span>Python code<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:hublines</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="k-means-clustering">
+<span id="qgiskmeansclustering"></span><h2><a class="toc-backref" href="#id63"><span class="section-number">24.1.13.9. </span>K-means clustering</a><a class="headerlink" href="#k-means-clustering" title="Permalink to this headline"></a></h2>
+<p>Calculates the 2D distance based k-means cluster number for each input
+feature.</p>
+<p>K-means clustering aims to partition the features into k clusters in
+which each feature belongs to the cluster with the nearest mean.
+The mean point is represented by the barycenter of the clustered
+features.</p>
+<p>If input geometries are lines or polygons, the clustering is based on
+the centroid of the feature.</p>
+<figure class="align-center" id="id54">
+<img alt="../../../../_images/kmeans.png" src="../../../../_images/kmeans.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.34 </span><span class="caption-text">A five class point clusters</span><a class="headerlink" href="#id54" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdbscanclustering"><span class="std std-ref">DBSCAN clustering</span></a>, <a class="reference internal" href="#qgisstdbscanclustering"><span class="std std-ref">ST-DBSCAN clustering</span></a></p>
+</div>
+<section id="id24">
+<h3><span class="section-number">24.1.13.9.1. </span>Parameters<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to analyze</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLUSTERS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Number of clusters to create with the features</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: any]</p>
+<p>Default:<code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for generated the clusters.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<section id="id25">
+<h4><span class="section-number">24.1.13.9.1.1. </span>Advanced parameters<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Cluster field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_ID’</p>
+</td>
+<td><p>Name of the field where the associated cluster number
+shall be stored</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cluster size field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIZE_FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_SIZE’</p>
+</td>
+<td><p>Name of the field with the count of features in the same cluster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id26">
+<h3><span class="section-number">24.1.13.9.2. </span>Outputs<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer containing the original features with
+fields specifying the cluster they belong to and their number in it</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3><span class="section-number">24.1.13.9.3. </span>Python code<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:kmeansclustering</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="list-unique-values">
+<span id="qgislistuniquevalues"></span><h2><a class="toc-backref" href="#id64"><span class="section-number">24.1.13.10. </span>List unique values</a><a class="headerlink" href="#list-unique-values" title="Permalink to this headline"></a></h2>
+<p>Lists unique values of an attribute table field and counts their
+number.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="id28">
+<h3><span class="section-number">24.1.13.10.1. </span>Parameters<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to analyze</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Target field(s)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELDS</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to analyze</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unique values</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p>
+<p>Default:<code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the summary table layer with unique values. One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>HTML report</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p>
+<p>Default:<code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>HTML report of unique values in the
+<span class="menuselection">Processing ► Results viewer</span>. One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id29">
+<h3><span class="section-number">24.1.13.10.2. </span>Outputs<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Unique values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>Summary table layer with unique values</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>HTML report</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML report of unique values. Can be opened from the
+<span class="menuselection">Processing ► Results viewer</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Total unique values</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOTAL_VALUES</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The number of uniqe values in the input field</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>UNIQUE_VALUES</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Unique</span> <span class="pre">values</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>A string with the comma separated list of unique values found
+in the input field</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h3><span class="section-number">24.1.13.10.3. </span>Python code<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:listuniquevalues</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="mean-coordinate-s">
+<span id="qgismeancoordinates"></span><h2><a class="toc-backref" href="#id65"><span class="section-number">24.1.13.11. </span>Mean coordinate(s)</a><a class="headerlink" href="#mean-coordinate-s" title="Permalink to this headline"></a></h2>
+<p>Computes a point layer with the center of mass of geometries in an
+input layer.</p>
+<p>An attribute can be specified as containing weights to be applied to
+each feature when computing the center of mass.</p>
+<p>If an attribute is selected in the parameter, features will be grouped
+according to values in this field.
+Instead of a single point with the center of mass of the whole layer,
+the output layer will contain a center of mass for the features in
+each category.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="id31">
+<h3><span class="section-number">24.1.13.11.1. </span>Parameters<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weight field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Field to use if you want to perform a weighted mean</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unique ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UID</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Unique field on which the calculation of the mean will
+be made</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mean coordinates</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default:<code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the (point vector) layer for the result. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><span class="section-number">24.1.13.11.2. </span>Outputs<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Mean coordinates</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Resulting point(s) layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id33">
+<h3><span class="section-number">24.1.13.11.3. </span>Python code<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:meancoordinates</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="nearest-neighbour-analysis">
+<span id="qgisnearestneighbouranalysis"></span><h2><a class="toc-backref" href="#id66"><span class="section-number">24.1.13.12. </span>Nearest neighbour analysis</a><a class="headerlink" href="#nearest-neighbour-analysis" title="Permalink to this headline"></a></h2>
+<p>Performs nearest neighbor analysis for a point layer. The output tells you
+how your data are distributed (clustered, randomly or distributed).</p>
+<p>Output is generated as an HTML file with the computed statistical
+values:</p>
+<ul>
+<li><p>Observed mean distance</p></li>
+<li><p>Expected mean distance</p></li>
+<li><p>Nearest neighbour index</p></li>
+<li><p>Number of points</p></li>
+<li><p>Z-Score: Comparing the Z-Score with the normal distribution tells
+you how your data are distributed.
+A low Z-Score means that the data are unlikely to be the result of a
+spatially random process, while a high Z-Score means that your data
+are likely to be a result of a spatially random process.</p>
+<figure class="align-center">
+<img alt="../../../../_images/normal_distribution.png" src="../../../../_images/normal_distribution.png" />
+</figure>
+</li>
+</ul>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="vectorgeneral.html#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a></p>
+</div>
+<section id="id34">
+<h3><span class="section-number">24.1.13.12.1. </span>Parameters<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point vector layer to calculate the statistics on</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Nearest neighbour</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p>
+<p>Default:<code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the HTML file for the computed statistics.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id35">
+<h3><span class="section-number">24.1.13.12.2. </span>Outputs<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Nearest neighbour</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_HTML_FILE</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the computed statistics</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Observed mean distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OBSERVED_MD</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Observed mean distance</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Expected mean distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXPECTED_MD</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Expected mean distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Nearest neighbour index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NN_INDEX</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Nearest neighbour index</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POINT_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Number of points</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z-Score</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Z_SCORE</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Z-Score</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id36">
+<h3><span class="section-number">24.1.13.12.3. </span>Python code<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:nearestneighbouranalysis</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="overlap-analysis">
+<span id="qgiscalculatevectoroverlaps"></span><h2><a class="toc-backref" href="#id67"><span class="section-number">24.1.13.13. </span>Overlap analysis</a><a class="headerlink" href="#overlap-analysis" title="Permalink to this headline"></a></h2>
+<p>Calculates the area and percentage cover by which features from an
+input layer are overlapped by features from a selection of overlay
+layers.</p>
+<p>New attributes are added to the output layer reporting the
+total area of overlap and percentage of the input feature
+overlapped by each of the selected overlay layers.</p>
+<section id="id37">
+<h3><span class="section-number">24.1.13.13.1. </span>Parameters<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Overlap layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYERS</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>The overlay layers.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id38">
+<h3><span class="section-number">24.1.13.13.2. </span>Outputs<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output layer with additional fields reporting the
+overlap (in map units and percentage) of the input feature
+overlapped by each of the selected layers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id39">
+<h3><span class="section-number">24.1.13.13.3. </span>Python code<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:calculatevectoroverlaps</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="st-dbscan-clustering">
+<span id="qgisstdbscanclustering"></span><h2><a class="toc-backref" href="#id68"><span class="section-number">24.1.13.14. </span>ST-DBSCAN clustering</a><a class="headerlink" href="#st-dbscan-clustering" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">in</span> <span class="pre">3.22</span></code></p>
+<p>Clusters point features based on a 2D implementation of spatiotemporal
+Density-based clustering of applications with noise (ST-DBSCAN) algorithm.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdbscanclustering"><span class="std std-ref">DBSCAN clustering</span></a>, <a class="reference internal" href="#qgiskmeansclustering"><span class="std std-ref">K-means clustering</span></a></p>
+</div>
+<section id="id40">
+<h3><span class="section-number">24.1.13.14.1. </span>Parameters<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h3>
+<section id="id41">
+<h4><span class="section-number">24.1.13.14.1.1. </span>Basic parameters<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Layer to analyze</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Date/time field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATETIME_FIELD</span></code></p></td>
+<td><p>[tablefield: date]</p></td>
+<td><p>Field containing the temporal information</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minimum cluster size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MIN_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 5</p>
+</td>
+<td><p>Minimum number of features to generate a cluster</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum distance between clustered points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EPS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Distance beyond which two features can not belong
+to the same cluster (eps)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum time duration between clustered points</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EPS2</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0 (days)</p>
+</td>
+<td><p>Time duration beyond which two features can not belong
+to the same cluster (eps2).
+Available time units are milliseconds, seconds, minutes,
+hours, days and weeks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the vector layer for the result of the clustering. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id42">
+<h4><span class="section-number">24.1.13.14.1.2. </span>Advanced parameters<a class="headerlink" href="#id42" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Treat border points as noise (DBSCAN*)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DBSCAN*</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If checked, points on the border of a cluster are
+themselves treated as unclustered points, and only
+points in the interior of a cluster are tagged as
+clustered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cluster field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_ID’</p>
+</td>
+<td><p>Name of the field where the associated cluster number
+shall be stored</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Cluster size field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIZE_FIELD_NAME</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘CLUSTER_SIZE’</p>
+</td>
+<td><p>Name of the field with the count of features in the same cluster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id43">
+<h3><span class="section-number">24.1.13.14.2. </span>Outputs<a class="headerlink" href="#id43" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Vector layer containing the original features with a
+field setting the cluster they belong to</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of clusters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NUM_CLUSTERS</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>The number of clusters discovered</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id44">
+<h3><span class="section-number">24.1.13.14.3. </span>Python code<a class="headerlink" href="#id44" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:stdbscanclustering</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="statistics-by-categories">
+<span id="qgisstatisticsbycategories"></span><h2><a class="toc-backref" href="#id69"><span class="section-number">24.1.13.15. </span>Statistics by categories</a><a class="headerlink" href="#statistics-by-categories" title="Permalink to this headline"></a></h2>
+<p>Calculates statistics of a field depending on a parent class.
+The parent class is a combination of values from other fields.</p>
+<section id="id45">
+<h3><span class="section-number">24.1.13.15.1. </span>Parameters<a class="headerlink" href="#id45" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input vector layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer with unique classes and values</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Field to calculate statistics on (if empty, only count is calculated)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUES_FIELD_NAME</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>If empty only the count will be calculated</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Field(s) with categories</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CATEGORIES_FIELD_NAME</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>The fields that (combined) define the categories</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Statistics by category</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output table for the generated statistics. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id46">
+<h3><span class="section-number">24.1.13.15.2. </span>Outputs<a class="headerlink" href="#id46" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Statistics by category</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>Table containing the statistics</p></td>
+</tr>
+</tbody>
+</table>
+<p>Depending on the type of the field being analyzed,
+the following statistics are returned for each grouped value:</p>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 63%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Statistics</p></th>
+<th class="head"><p>String</p></th>
+<th class="head"><p>Numeric</p></th>
+<th class="head"><p>Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Count (<code class="docutils literal notranslate"><span class="pre">COUNT</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Unique values (<code class="docutils literal notranslate"><span class="pre">UNIQUE</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Empty (null) values (<code class="docutils literal notranslate"><span class="pre">EMPTY</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Non-empty values (<code class="docutils literal notranslate"><span class="pre">FILLED</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Minimal value (<code class="docutils literal notranslate"><span class="pre">MIN</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Maximal value (<code class="docutils literal notranslate"><span class="pre">MAX</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Range (<code class="docutils literal notranslate"><span class="pre">RANGE</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Sum (<code class="docutils literal notranslate"><span class="pre">SUM</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Mean value (<code class="docutils literal notranslate"><span class="pre">MEAN</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Median value (<code class="docutils literal notranslate"><span class="pre">MEDIAN</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Standard Deviation (<code class="docutils literal notranslate"><span class="pre">STD_DEV</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Coefficient of variation (<code class="docutils literal notranslate"><span class="pre">CV</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Minority (rarest occurring value - <code class="docutils literal notranslate"><span class="pre">MINORITY</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Majority (most frequently occurring value - <code class="docutils literal notranslate"><span class="pre">MAJORITY</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>First Quartile (<code class="docutils literal notranslate"><span class="pre">FIRSTQUARTILE</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Third Quartile (<code class="docutils literal notranslate"><span class="pre">THIRDQUARTILE</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Inter Quartile Range (<code class="docutils literal notranslate"><span class="pre">IQR</span></code>)</p></td>
+<td></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Minimum Length (<code class="docutils literal notranslate"><span class="pre">MIN_LENGTH</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Mean Length (<code class="docutils literal notranslate"><span class="pre">MEAN_LENGTH</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Maximum Length (<code class="docutils literal notranslate"><span class="pre">MAX_LENGTH</span></code>)</p></td>
+<td><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id47">
+<h3><span class="section-number">24.1.13.15.3. </span>Python code<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:statisticsbycategories</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="sum-line-lengths">
+<span id="qgissumlinelengths"></span><h2><a class="toc-backref" href="#id70"><span class="section-number">24.1.13.16. </span>Sum line lengths</a><a class="headerlink" href="#sum-line-lengths" title="Permalink to this headline"></a></h2>
+<p>Takes a polygon layer and a line layer and measures the total length
+of lines and the total number of them that cross each polygon.</p>
+<p>The resulting layer has the same features as the input polygon layer,
+but with two additional attributes containing the length and count of
+the lines across each polygon.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Analysis Tools</span></p>
+<section id="id48">
+<h3><span class="section-number">24.1.13.16.1. </span>Parameters<a class="headerlink" href="#id48" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LINES</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>Input vector line layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Polygons</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">POLYGONS</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Polygon vector layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Lines length field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LEN_FIELD</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘LENGTH’</p>
+</td>
+<td><p>Name of the field for the lines length</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Lines count field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COUNT_FIELD</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘COUNT’</p>
+</td>
+<td><p>Name of the field for the lines count</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Line length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output polygon layer with generated statistics. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id49">
+<h3><span class="section-number">24.1.13.16.2. </span>Outputs<a class="headerlink" href="#id49" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Line length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Polygon output layer with fields of lines length and
+line count</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id50">
+<h3><span class="section-number">24.1.13.16.3. </span>Python code<a class="headerlink" href="#id50" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:sumlinelengths</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rastertools.html" class="btn btn-neutral float-left" title="24.1.12. Raster tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorcreation.html" class="btn btn-neutral float-right" title="24.1.14. Vector creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/qgis/vectoranalysis.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/vectoranalysis.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

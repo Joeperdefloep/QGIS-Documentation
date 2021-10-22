@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>28.4. Appendix D: QGIS R script syntax &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/appendices/qgis_r_syntax.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="29. Literature and Web References" href="../literature_web/literature_and_web_references.html" />
+    <link rel="prev" title="28.3. Appendix C: QGIS File Formats" href="qgis_file_formats.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/appendices/qgis_r_syntax.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">28. Appendices</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="GNU_GPL.html">28.1. Appendix A: GNU General Public License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GNU_FDL.html">28.2. Appendix B: GNU Free Documentation License</a></li>
+<li class="toctree-l3"><a class="reference internal" href="qgis_file_formats.html">28.3. Appendix C: QGIS File Formats</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">28.4. Appendix D: QGIS R script syntax</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">28.4.1. Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">28.4.2. Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syntax-summary-for-qgis-r-scripts">28.4.3. Syntax Summary for QGIS R scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">28.4.4. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">28. </span>Appendices</a> &raquo;</li>
+      <li><span class="section-number">28.4. </span>Appendix D: QGIS R script syntax</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/appendices/qgis_r_syntax.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="qgis_file_formats.html" class="btn btn-neutral float-left" title="28.3. Appendix C: QGIS File Formats" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../literature_web/literature_and_web_references.html" class="btn btn-neutral float-right" title="29. Literature and Web References" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-d-qgis-r-script-syntax">
+<span id="r-syntax"></span><span id="index-0"></span><h1><span class="section-number">28.4. </span>Appendix D: QGIS R script syntax<a class="headerlink" href="#appendix-d-qgis-r-script-syntax" title="Permalink to this headline"></a></h1>
+<p>Contributed by Matteo Ghetta - funded by <a class="reference external" href="https://www.santannapisa.it/en/istituto/scienze-della-vita/istituto-di-scienze-della-vita">Scuola Superiore Sant’Anna</a></p>
+<p>Writing R scripts in Processing is a bit tricky because of the
+special syntax.</p>
+<p>A Processing R script starts with defining its <strong>Inputs</strong> and
+<strong>Outputs</strong>, each preceded with double hash characters (<code class="docutils literal notranslate"><span class="pre">##</span></code>).</p>
+<p>Before the inputs, the group to place the algoritm in can be
+specified.
+If the group already exists, the algorithm will be added to it,
+if not, the group will be created.
+In the example below, the name of the group is <em>My group</em>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">##My</span> <span class="pre">Group=group</span></code></p>
+<section id="inputs">
+<h2><span class="section-number">28.4.1. </span>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline"></a></h2>
+<p>All input data and parameters have to be specified.
+There are several types of inputs:</p>
+<ul class="simple">
+<li><p>vector: <code class="docutils literal notranslate"><span class="pre">##Layer</span> <span class="pre">=</span> <span class="pre">vector</span></code></p></li>
+<li><p>vector field: <code class="docutils literal notranslate"><span class="pre">##F</span> <span class="pre">=</span> <span class="pre">Field</span> <span class="pre">Layer</span></code> (where <cite>Layer</cite> is the name of an
+input vector layer the field belongs to)</p></li>
+<li><p>raster: <code class="docutils literal notranslate"><span class="pre">##r</span> <span class="pre">=</span> <span class="pre">raster</span></code></p></li>
+<li><p>table: <code class="docutils literal notranslate"><span class="pre">##t</span> <span class="pre">=</span> <span class="pre">table</span></code></p></li>
+<li><p>number: <code class="docutils literal notranslate"><span class="pre">##Num</span> <span class="pre">=</span> <span class="pre">number</span></code></p></li>
+<li><p>string: <code class="docutils literal notranslate"><span class="pre">##Str</span> <span class="pre">=</span> <span class="pre">string</span></code></p></li>
+<li><p>boolean: <code class="docutils literal notranslate"><span class="pre">##Bol</span> <span class="pre">=</span> <span class="pre">boolean</span></code></p></li>
+<li><p>elements in a dropdown menu.
+The items must be separated with semicolons <code class="docutils literal notranslate"><span class="pre">;</span></code>:
+<code class="docutils literal notranslate"><span class="pre">##type=selection</span> <span class="pre">point;lines;point+lines</span></code></p></li>
+</ul>
+</section>
+<section id="outputs">
+<h2><span class="section-number">28.4.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h2>
+<p>As for the inputs, each output has to be defined at the beginning of
+the script:</p>
+<ul class="simple">
+<li><p>vector: <code class="docutils literal notranslate"><span class="pre">##output=</span> <span class="pre">output</span> <span class="pre">vector</span></code></p></li>
+<li><p>raster: <code class="docutils literal notranslate"><span class="pre">##output=</span> <span class="pre">output</span> <span class="pre">raster</span></code></p></li>
+<li><p>table: <code class="docutils literal notranslate"><span class="pre">##output=</span> <span class="pre">output</span> <span class="pre">table</span></code></p></li>
+<li><p>plots: <code class="docutils literal notranslate"><span class="pre">##output_plots_to_html</span></code> (##showplots in earlier versions)</p></li>
+<li><p>To show R output in the <em>Result Viewer</em>, put <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> in
+front of the command whose output you would like to show.</p></li>
+</ul>
+</section>
+<section id="syntax-summary-for-qgis-r-scripts">
+<span id="r-syntax-table"></span><span id="index-1"></span><h2><span class="section-number">28.4.3. </span>Syntax Summary for QGIS R scripts<a class="headerlink" href="#syntax-summary-for-qgis-r-scripts" title="Permalink to this headline"></a></h2>
+<p>A number of input and output parameter types are offered.</p>
+<section id="input-parameter-types">
+<h3><span class="section-number">28.4.3.1. </span>Input parameter types<a class="headerlink" href="#input-parameter-types" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 25%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Syntax example</p></th>
+<th class="head"><p>Returning objects</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vector</p></td>
+<td><p>Layer = vector</p></td>
+<td><p>sf object (or SpatialDataFrame object, if ##load_vector_using_rgdal is specified)</p></td>
+</tr>
+<tr class="row-odd"><td><p>vector point</p></td>
+<td><p>Layer = vector point</p></td>
+<td><p>sf object (or SpatialDataFrame object, if ##load_vector_using_rgdal is specified)</p></td>
+</tr>
+<tr class="row-even"><td><p>vector line</p></td>
+<td><p>Layer = vector line</p></td>
+<td><p>sf object (or SpatialDataFrame object, if ##load_vector_using_rgdal is specified)</p></td>
+</tr>
+<tr class="row-odd"><td><p>vector polygon</p></td>
+<td><p>Layer = vector polygon</p></td>
+<td><p>sf object (or SpatialPolygonsDataFrame object, if ##load_vector_using_rgdal is used)</p></td>
+</tr>
+<tr class="row-even"><td><p>multiple vector</p></td>
+<td><p>Layer = multiple vector</p></td>
+<td><p>sf object (or SpatialDataFrame objects if ##load_vector_using_rgdal is specified)</p></td>
+</tr>
+<tr class="row-odd"><td><p>table</p></td>
+<td><p>Layer = table</p></td>
+<td><p>dataframe conversion from csv, default object of <code class="docutils literal notranslate"><span class="pre">read.csv</span></code> function</p></td>
+</tr>
+<tr class="row-even"><td><p>field</p></td>
+<td><p>Field = Field Layer</p></td>
+<td><p>name of the Field selected, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Area&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>raster</p></td>
+<td><p>Layer = raster</p></td>
+<td><p>RasterBrick object, default object of <code class="docutils literal notranslate"><span class="pre">raster</span></code> package</p></td>
+</tr>
+<tr class="row-even"><td><p>multiple raster</p></td>
+<td><p>Layer = multiple raster</p></td>
+<td><p>RasterBrick objects, default object of <code class="docutils literal notranslate"><span class="pre">raster</span></code> package</p></td>
+</tr>
+<tr class="row-odd"><td><p>number</p></td>
+<td><p>N = number</p></td>
+<td><p>integer or floating number chosen</p></td>
+</tr>
+<tr class="row-even"><td><p>string</p></td>
+<td><p>S = string</p></td>
+<td><p>string added in the box</p></td>
+</tr>
+<tr class="row-odd"><td><p>longstring</p></td>
+<td><p>LS = longstring</p></td>
+<td><p>string added in the box, could be longer then the normal string</p></td>
+</tr>
+<tr class="row-even"><td><p>selection</p></td>
+<td><p>S = selection first;second;third</p></td>
+<td><p>string of the selected item chosen in the dropdown menu</p></td>
+</tr>
+<tr class="row-odd"><td><p>crs</p></td>
+<td><p>C = crs</p></td>
+<td><p>string of the resulting CRS chosen, in the format: <code class="docutils literal notranslate"><span class="pre">&quot;EPSG:4326&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>extent</p></td>
+<td><p>E = extent</p></td>
+<td><p>Extent object of the <code class="docutils literal notranslate"><span class="pre">raster</span></code> package, you can extract values as <code class="docutils literal notranslate"><span class="pre">E&#64;xmin</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>point</p></td>
+<td><p>P = point</p></td>
+<td><p>when clicked on the map, you have the coordinates of the point</p></td>
+</tr>
+<tr class="row-even"><td><p>file</p></td>
+<td><p>F = file</p></td>
+<td><p>path of the file chosen, e.g. “/home/matteo/file.txt”</p></td>
+</tr>
+<tr class="row-odd"><td><p>folder</p></td>
+<td><p>F = folder</p></td>
+<td><p>path of the folder chosen, e.g. “/home/matteo/Downloads”</p></td>
+</tr>
+</tbody>
+</table>
+<p>A parameter can be <strong>OPTIONAL</strong>, meaning that it can be ignored.</p>
+<p>In order to set an input as optional, you add the string <code class="docutils literal notranslate"><span class="pre">optional</span></code>
+<strong>before</strong> the input, e.g:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##Layer = vector</span>
+<span class="c1">##Field1 = Field Layer</span>
+<span class="c1">##Field2 = optional Field Layer</span>
+</pre></div>
+</div>
+</section>
+<section id="output-parameter-types">
+<h3><span class="section-number">28.4.3.2. </span>Output parameter types<a class="headerlink" href="#output-parameter-types" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Syntax example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>vector</p></td>
+<td><p>Output = output vector</p></td>
+</tr>
+<tr class="row-odd"><td><p>raster</p></td>
+<td><p>Output = output raster</p></td>
+</tr>
+<tr class="row-even"><td><p>table</p></td>
+<td><p>Output = output table</p></td>
+</tr>
+<tr class="row-odd"><td><p>file</p></td>
+<td><p>Output = output file</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can save plots as <code class="docutils literal notranslate"><span class="pre">png</span></code>
+from the <em>Processing Result Viewer</em>, or you can choose to
+save the plot directly from the algorithm interface.</p>
+</div>
+</section>
+<section id="script-body">
+<h3><span class="section-number">28.4.3.3. </span>Script body<a class="headerlink" href="#script-body" title="Permalink to this headline"></a></h3>
+<p>The script body follows R syntax and the <strong>Log</strong> panel can
+help you if there is something wrong with your script.</p>
+<p><strong>Remember</strong> that you have to load all additional libraries
+in the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="examples">
+<span id="index-2"></span><h2><span class="section-number">28.4.4. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="example-with-vector-output">
+<h3><span class="section-number">28.4.4.1. </span>Example with vector output<a class="headerlink" href="#example-with-vector-output" title="Permalink to this headline"></a></h3>
+<p>Let’s take an algorithm from the online collection that creates
+random points from the extent of an input layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##Point pattern analysis=group</span>
+<span class="c1">##Layer=vector polygon</span>
+<span class="c1">##Size=number 10</span>
+<span class="c1">##Output=output vector</span>
+<span class="n">library</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+<span class="n">spatpoly</span> <span class="o">=</span> <span class="k">as</span><span class="p">(</span><span class="n">Layer</span><span class="p">,</span> <span class="s2">&quot;Spatial&quot;</span><span class="p">)</span>
+<span class="n">pts</span><span class="o">=</span><span class="n">spsample</span><span class="p">(</span><span class="n">spatpoly</span><span class="p">,</span><span class="n">Size</span><span class="p">,</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">)</span>
+<span class="n">spdf</span><span class="o">=</span><span class="n">SpatialPointsDataFrame</span><span class="p">(</span><span class="n">pts</span><span class="p">,</span> <span class="k">as</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">pts</span><span class="p">))</span>
+<span class="n">Output</span><span class="o">=</span><span class="n">st_as_sf</span><span class="p">(</span><span class="n">spdf</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Explanation (per line in the script):</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Point</span> <span class="pre">pattern</span> <span class="pre">analysis</span></code> is the group of the algorithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Layer</span></code> is the input <strong>vector</strong> layer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Size</span></code> is a <strong>numerical</strong> parameter with a default value of 10</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Output</span></code> is the <strong>vector</strong> layer that will be created by the
+algorithm</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">library(sp)</span></code> loads the <strong>sp</strong> library</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spatpoly</span> <span class="pre">=</span> <span class="pre">as(Layer,</span> <span class="pre">&quot;Spatial&quot;)</span></code> translate to an sp object</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">spsample</span></code> function of the <code class="docutils literal notranslate"><span class="pre">sp</span></code> library and run it
+using the input defined above (<code class="docutils literal notranslate"><span class="pre">Layer</span></code> and <code class="docutils literal notranslate"><span class="pre">Size</span></code>)</p></li>
+<li><p>Create a <em>SpatialPointsDataFrame</em> object using the
+<code class="docutils literal notranslate"><span class="pre">SpatialPointsDataFrame</span></code> function</p></li>
+<li><p>Create the output vector layer using the <code class="docutils literal notranslate"><span class="pre">st_as_sf</span></code>
+function</p></li>
+</ol>
+<p>That’s it! Just run the algorithm with a vector layer you have in the
+QGIS Legend, choose the number of random point.
+The resulting layer will be added to your map.</p>
+</section>
+<section id="example-with-raster-output">
+<h3><span class="section-number">28.4.4.2. </span>Example with raster output<a class="headerlink" href="#example-with-raster-output" title="Permalink to this headline"></a></h3>
+<p>The following script will perform basic ordinary kriging to
+create a raster map of interpolated values from a specified field
+of the input point vector layer by using the <code class="docutils literal notranslate"><span class="pre">autoKrige</span></code>
+function of the <code class="docutils literal notranslate"><span class="pre">automap</span></code> R package.
+It will first calculate the kriging model and then create a
+raster.
+The raster is created with the <code class="docutils literal notranslate"><span class="pre">raster</span></code> function of the raster R
+package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>##Basic statistics=group
+##Layer=vector point
+##Field=Field Layer
+##Output=output raster
+##load_vector_using_rgdal
+require(&quot;automap&quot;)
+require(&quot;sp&quot;)
+require(&quot;raster&quot;)
+table=as.data.frame(Layer)
+coordinates(table)= ~coords.x1+coords.x2
+c = Layer[[Field]]
+kriging_result = autoKrige(c~1, table)
+prediction = raster(kriging_result$krige_output)
+Output&lt;-prediction
+</pre></div>
+</div>
+<p>By using <code class="docutils literal notranslate"><span class="pre">##load_vector_using_rgdal</span></code>, the input vector layer
+will be made available as a <code class="docutils literal notranslate"><span class="pre">SpatialDataFrame</span></code> objects,
+so we avoid having to translate it from an <code class="docutils literal notranslate"><span class="pre">sf</span></code> object.</p>
+</section>
+<section id="example-with-table-output">
+<h3><span class="section-number">28.4.4.3. </span>Example with table output<a class="headerlink" href="#example-with-table-output" title="Permalink to this headline"></a></h3>
+<p>Let’s edit the <code class="docutils literal notranslate"><span class="pre">Summary</span> <span class="pre">Statistics</span></code> algorithm so that the output is
+a table file (csv).</p>
+<p>The script body is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##Basic statistics=group</span>
+<span class="c1">##Layer=vector</span>
+<span class="c1">##Field=Field Layer</span>
+<span class="c1">##Stat=Output table</span>
+<span class="n">Summary_statistics</span><span class="o">&lt;-</span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">rbind</span><span class="p">(</span>
+    <span class="nb">sum</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="n">length</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="n">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])),</span>
+    <span class="nb">min</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="nb">max</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="n">mean</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="n">median</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+    <span class="n">sd</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])),</span>
+  <span class="n">row</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">&quot;Sum:&quot;</span><span class="p">,</span><span class="s2">&quot;Count:&quot;</span><span class="p">,</span><span class="s2">&quot;Unique values:&quot;</span><span class="p">,</span><span class="s2">&quot;Minimum value:&quot;</span><span class="p">,</span><span class="s2">&quot;Maximum value:&quot;</span><span class="p">,</span><span class="s2">&quot;Range:&quot;</span><span class="p">,</span><span class="s2">&quot;Mean value:&quot;</span><span class="p">,</span><span class="s2">&quot;Median value:&quot;</span><span class="p">,</span><span class="s2">&quot;Standard deviation:&quot;</span><span class="p">))</span>
+<span class="n">colnames</span><span class="p">(</span><span class="n">Summary_statistics</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">c</span><span class="p">(</span><span class="n">Field</span><span class="p">)</span>
+<span class="n">Stat</span><span class="o">&lt;-</span><span class="n">Summary_statistics</span>
+</pre></div>
+</div>
+<p>The third line specifies the <strong>Vector Field</strong> in input and the fourth
+line tells the algorithm that the output should be a table.</p>
+<p>The last line will take the <code class="docutils literal notranslate"><span class="pre">Stat</span></code> object created in the script and
+convert it into a <code class="docutils literal notranslate"><span class="pre">csv</span></code> table.</p>
+</section>
+<section id="example-with-console-output">
+<h3><span class="section-number">28.4.4.4. </span>Example with console output<a class="headerlink" href="#example-with-console-output" title="Permalink to this headline"></a></h3>
+<p>We can use the previous example and instead of creating a table,
+print the result in the <strong>Result Viewer</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##Basic statistics=group</span>
+<span class="c1">##Layer=vector</span>
+<span class="c1">##Field=Field Layer</span>
+<span class="n">Summary_statistics</span><span class="o">&lt;-</span><span class="n">data</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">rbind</span><span class="p">(</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="n">length</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="n">length</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])),</span>
+<span class="nb">min</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])</span><span class="o">-</span><span class="nb">min</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="n">mean</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="n">median</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]]),</span>
+<span class="n">sd</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])),</span><span class="n">row</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="n">c</span><span class="p">(</span><span class="s2">&quot;Sum:&quot;</span><span class="p">,</span><span class="s2">&quot;Count:&quot;</span><span class="p">,</span><span class="s2">&quot;Unique values:&quot;</span><span class="p">,</span><span class="s2">&quot;Minimum value:&quot;</span><span class="p">,</span><span class="s2">&quot;Maximum value:&quot;</span><span class="p">,</span><span class="s2">&quot;Range:&quot;</span><span class="p">,</span><span class="s2">&quot;Mean value:&quot;</span><span class="p">,</span><span class="s2">&quot;Median value:&quot;</span><span class="p">,</span><span class="s2">&quot;Standard deviation:&quot;</span><span class="p">))</span>
+<span class="n">colnames</span><span class="p">(</span><span class="n">Summary_statistics</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">c</span><span class="p">(</span><span class="n">Field</span><span class="p">)</span>
+<span class="o">&gt;</span><span class="n">Summary_statistics</span>
+</pre></div>
+</div>
+<p>The script is exactly the same as the one above except for two edits:</p>
+<ol class="arabic simple">
+<li><p>no output specified (the fourth line has been removed)</p></li>
+<li><p>the last line begins with <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, telling Processing to make the
+object available through the result viewer</p></li>
+</ol>
+</section>
+<section id="example-with-plot">
+<h3><span class="section-number">28.4.4.5. </span>Example with plot<a class="headerlink" href="#example-with-plot" title="Permalink to this headline"></a></h3>
+<p>To create plots, you have to use the <code class="docutils literal notranslate"><span class="pre">##output_plots_to_html</span></code>
+parameter as in the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##Basic statistics=group</span>
+<span class="c1">##Layer=vector</span>
+<span class="c1">##Field=Field Layer</span>
+<span class="c1">##output_plots_to_html</span>
+<span class="c1">####output_plots_to_html</span>
+<span class="n">qqnorm</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])</span>
+<span class="n">qqline</span><span class="p">(</span><span class="n">Layer</span><span class="p">[[</span><span class="n">Field</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>The script uses a field (<code class="docutils literal notranslate"><span class="pre">Field</span></code>) of a vector layer (<code class="docutils literal notranslate"><span class="pre">Layer</span></code>) as
+input, and creates a <em>QQ Plot</em> (to test the normality of the
+distribution).</p>
+<p>The plot is automatically added to the Processing <em>Result Viewer</em>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qgis_file_formats.html" class="btn btn-neutral float-left" title="28.3. Appendix C: QGIS File Formats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../literature_web/literature_and_web_references.html" class="btn btn-neutral float-right" title="29. Literature and Web References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/appendices/qgis_r_syntax.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/appendices/qgis_r_syntax.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/appendices/qgis_r_syntax.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/appendices/qgis_r_syntax.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/appendices/qgis_r_syntax.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/appendices/qgis_r_syntax.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/appendices/qgis_r_syntax.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/appendices/qgis_r_syntax.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/appendices/qgis_r_syntax.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/appendices/qgis_r_syntax.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/appendices/qgis_r_syntax.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/appendices/qgis_r_syntax.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/appendices/qgis_r_syntax.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/appendices/qgis_r_syntax.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

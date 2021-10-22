@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.5. Lesson: Geometry Construction &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/geometry.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="17. The QGIS processing guide" href="../processing/index.html" />
+    <link rel="prev" title="16.4. Lesson: Spatial Queries" href="spatial_queries.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/geometry.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">16. Module: Spatial Database Concepts with PostGIS</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="spatial_functions.html">16.1. Lesson: PostGIS Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple_feature_model.html">16.2. Lesson: Simple Feature Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="import_export.html">16.3. Lesson: Import and Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_queries.html">16.4. Lesson: Spatial Queries</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.5. Lesson: Geometry Construction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-linestrings">16.5.1. Creating Linestrings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-moderate">16.5.2. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-polygons">16.5.3. Creating Polygons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercise-linking-cities-to-people">16.5.4. Exercise: Linking Cities to People</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#looking-at-our-schema">16.5.5. Looking at Our Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-hard">16.5.6. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-sub-objects">16.5.7. Access Sub-Objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-processing">16.5.8. Data Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clipping">16.5.9. Clipping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-geometries-from-other-geometries">16.5.10. Building Geometries from Other Geometries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometry-cleaning">16.5.11. Geometry Cleaning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#differences-between-tables">16.5.12. Differences between tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tablespaces">16.5.13. Tablespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">16.5.14. In Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">16. </span>Module: Spatial Database Concepts with PostGIS</a> &raquo;</li>
+      <li><span class="section-number">16.5. </span>Lesson: Geometry Construction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/spatial_databases/geometry.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="spatial_queries.html" class="btn btn-neutral float-left" title="16.4. Lesson: Spatial Queries" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processing/index.html" class="btn btn-neutral float-right" title="17. The QGIS processing guide" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-geometry-construction">
+<h1><span class="section-number">16.5. </span>Lesson: Geometry Construction<a class="headerlink" href="#ls-geometry-construction" title="Permalink to this headline"></a></h1>
+<p>In this section we are going to delve a little deeper into how simple
+geometries are constructed in SQL. In reality, you will probably use a GIS like
+QGIS to create complex geometries using their digitising tools; however,
+understanding how they are formulated can be handy for writing queries and
+understanding how the database is assembled.</p>
+<p><strong>The goal of this lesson:</strong> To better understand how to create spatial
+entities directly in PostgreSQL/PostGIS.</p>
+<section id="creating-linestrings">
+<h2><span class="section-number">16.5.1. </span>Creating Linestrings<a class="headerlink" href="#creating-linestrings" title="Permalink to this headline"></a></h2>
+<p>Going back to our <kbd class="kbd docutils literal notranslate">address</kbd> database, let’s get our streets table matching
+the others; i.e., having a constraint on the geometry, an index and an entry in
+the geometry_columns table.</p>
+</section>
+<section id="ty-moderate">
+<h2><span class="section-number">16.5.2. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Modify the <kbd class="kbd docutils literal notranslate">streets</kbd> table so that it has a geometry column of type
+ST_LineString.</p></li>
+<li><p>Don’t forget to do the accompanying update to the geometry columns
+table!</p></li>
+<li><p>Also add a constraint to prevent any geometries being added that are
+not LINESTRINGS or null.</p></li>
+<li><p>Create a spatial index on the new geometry column</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="n">table</span> <span class="n">streets</span> <span class="n">add</span> <span class="n">column</span> <span class="n">the_geom</span> <span class="n">geometry</span><span class="p">;</span>
+<span class="n">alter</span> <span class="n">table</span> <span class="n">streets</span> <span class="n">add</span> <span class="n">constraint</span> <span class="n">streets_geom_point_chk</span> <span class="n">check</span>
+     <span class="p">(</span><span class="n">st_geometrytype</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;ST_LineString&#39;</span><span class="p">::</span><span class="n">text</span> <span class="n">OR</span> <span class="n">the_geom</span> <span class="n">IS</span> <span class="n">NULL</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">geometry_columns</span> <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;public&#39;</span><span class="p">,</span><span class="s1">&#39;streets&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4326</span><span class="p">,</span>
+     <span class="s1">&#39;LINESTRING&#39;</span><span class="p">);</span>
+<span class="n">create</span> <span class="n">index</span> <span class="n">streets_geo_idx</span>
+  <span class="n">on</span> <span class="n">streets</span>
+  <span class="n">using</span> <span class="n">gist</span>
+  <span class="p">(</span><span class="n">the_geom</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>Now let’s insert a linestring into our streets table. In this case we will
+update an existing street record:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">update</span> <span class="n">streets</span>
+<span class="k">set</span> <span class="n">the_geom</span> <span class="o">=</span> <span class="s1">&#39;SRID=4326;LINESTRING(20 -33, 21 -34, 24 -33)&#39;</span>
+<span class="k">where</span> <span class="n">streets</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Take a look at the results in QGIS. (You may need to right-click on the streets
+layer in the ‘Layers’ panel, and choose ‘Zoom to layer extent’.)</p>
+<p>Now create some more streets entries - some in QGIS and some from the command
+line.</p>
+</section>
+<section id="creating-polygons">
+<h2><span class="section-number">16.5.3. </span>Creating Polygons<a class="headerlink" href="#creating-polygons" title="Permalink to this headline"></a></h2>
+<p>Creating polygons is just as easy. One thing to remember is that by definition,
+polygons have at least four vertices, with the last and first being co-located:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">cities</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+<span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Tokyo&#39;</span><span class="p">,</span> <span class="s1">&#39;SRID=4326;POLYGON((10 -10, 5 -32, 30 -27, 10 -10))&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A polygon requires double brackets around its coordinate list; this
+is to allow you to add complex polygons with multiple unconnected areas. For
+instance</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">cities</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+<span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Tokyo Outer Wards&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SRID=4326;POLYGON((20 10, 20 20, 35 20, 20 10),</span>
+<span class="s1">                           (-10 -30, -5 0, -15 -15, -10 -30))&#39;</span>
+        <span class="p">);</span>
+</pre></div>
+</div>
+<p>If you followed this step, you can check what it did by loading the cities
+dataset into QGIS, opening its attribute table, and selecting the new entry.
+Note how the two new polygons behave like one polygon.</p>
+</section>
+<section id="exercise-linking-cities-to-people">
+<h2><span class="section-number">16.5.4. </span>Exercise: Linking Cities to People<a class="headerlink" href="#exercise-linking-cities-to-people" title="Permalink to this headline"></a></h2>
+<p>For this exercise you should do the following:</p>
+<ul class="simple">
+<li><p>Delete all data from your people table.</p></li>
+<li><p>Add a foreign key column to people that references the primary key of
+the cities table.</p></li>
+<li><p>Use QGIS to capture some cities.</p></li>
+<li><p>Use SQL to insert some new people records, ensuring that each has
+an associated street and city.</p></li>
+</ul>
+<p>Your updated people schema should look something like this:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\d people
+
+Table &quot;public.people&quot;
+   Column   |         Type          |                      Modifiers
+ -----------+-----------------------+--------------------------------------------
+  id        | integer               | not null
+            |                       | default nextval(&#39;people_id_seq&#39;::regclass)
+  name      | character varying(50) |
+  house_no  | integer               | not null
+  street_id | integer               | not null
+  phone_no  | character varying     |
+  the_geom  | geometry              |
+  city_id   | integer               | not null
+Indexes:
+  &quot;people_pkey&quot; PRIMARY KEY, btree (id)
+  &quot;people_name_idx&quot; btree (name)
+Check constraints:
+  &quot;people_geom_point_chk&quot; CHECK (st_geometrytype(the_geom) =
+                       &#39;ST_Point&#39;::text OR the_geom IS NULL)
+Foreign-key constraints:
+  &quot;people_city_id_fkey&quot; FOREIGN KEY (city_id) REFERENCES cities(id)
+  &quot;people_street_id_fkey&quot; FOREIGN KEY (street_id) REFERENCES streets(id)
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delete</span> <span class="kn">from</span> <span class="nn">people</span><span class="p">;</span>
+<span class="n">alter</span> <span class="n">table</span> <span class="n">people</span> <span class="n">add</span> <span class="n">column</span> <span class="n">city_id</span> <span class="nb">int</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">references</span> <span class="n">cities</span><span class="p">(</span><span class="nb">id</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>(capture cities in QGIS)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">,</span> <span class="n">city_id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+   <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;Faulty Towers&#39;</span><span class="p">,</span>
+           <span class="mi">34</span><span class="p">,</span>
+           <span class="mi">3</span><span class="p">,</span>
+           <span class="s1">&#39;072 812 31 28&#39;</span><span class="p">,</span>
+           <span class="mi">1</span><span class="p">,</span>
+           <span class="s1">&#39;SRID=4326;POINT(33 33)&#39;</span><span class="p">);</span>
+
+<span class="n">insert</span> <span class="n">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">,</span> <span class="n">city_id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+   <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;IP Knightly&#39;</span><span class="p">,</span>
+           <span class="mi">32</span><span class="p">,</span>
+           <span class="mi">1</span><span class="p">,</span>
+           <span class="s1">&#39;071 812 31 28&#39;</span><span class="p">,</span>
+           <span class="mi">1</span><span class="p">,</span><span class="n">F</span>
+           <span class="s1">&#39;SRID=4326;POINT(32 -34)&#39;</span><span class="p">);</span>
+
+<span class="n">insert</span> <span class="n">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">,</span> <span class="n">city_id</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+   <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;Rusty Bedsprings&#39;</span><span class="p">,</span>
+           <span class="mi">39</span><span class="p">,</span>
+           <span class="mi">1</span><span class="p">,</span>
+           <span class="s1">&#39;071 822 31 28&#39;</span><span class="p">,</span>
+           <span class="mi">1</span><span class="p">,</span>
+           <span class="s1">&#39;SRID=4326;POINT(34 -34)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you’re getting the following error message:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ERROR</span><span class="p">:</span>  <span class="n">insert</span> <span class="ow">or</span> <span class="n">update</span> <span class="n">on</span> <span class="n">table</span> <span class="s2">&quot;people&quot;</span> <span class="n">violates</span> <span class="n">foreign</span> <span class="n">key</span> <span class="n">constraint</span>
+        <span class="s2">&quot;people_city_id_fkey&quot;</span>
+<span class="n">DETAIL</span><span class="p">:</span> <span class="n">Key</span> <span class="p">(</span><span class="n">city_id</span><span class="p">)</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">table</span> <span class="s2">&quot;cities&quot;</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>then it means that while experimenting with creating polygons for the
+cities table, you must have deleted some of them and started over. Just
+check the entries in your cities table and use any <span class="guilabel">id</span> which exists.</p>
+</div>
+</section>
+<section id="looking-at-our-schema">
+<h2><span class="section-number">16.5.5. </span>Looking at Our Schema<a class="headerlink" href="#looking-at-our-schema" title="Permalink to this headline"></a></h2>
+<p>By now our schema should be looking like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/final_schema.png" src="../../../_images/final_schema.png" />
+</figure>
+</section>
+<section id="ty-hard">
+<h2><span class="section-number">16.5.6. </span>Try Yourself <img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#ty-hard" title="Permalink to this headline"></a></h2>
+<p>Create city boundaries by computing the minimum convex hull of all addresses
+for that city and computing a buffer around that area.</p>
+</section>
+<section id="access-sub-objects">
+<h2><span class="section-number">16.5.7. </span>Access Sub-Objects<a class="headerlink" href="#access-sub-objects" title="Permalink to this headline"></a></h2>
+<p>With the SFS-Model functions, you have a wide variety of options to access
+sub-objects of SFS Geometries. When you want to select the first vertex point of
+every polygon geometry in the table myPolygonTable, you have to do this in this
+way:</p>
+<ul>
+<li><p>Transform the polygon boundary to a linestring:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_boundary</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span> <span class="k">from</span> <span class="n">myPolygonTable</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Select the first vertex point of the resultant linestring:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_startpoint</span><span class="p">(</span><span class="n">myGeometry</span><span class="p">)</span>
+<span class="k">from</span> <span class="p">(</span>
+    <span class="k">select</span> <span class="n">st_boundary</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span> <span class="k">as</span> <span class="n">myGeometry</span>
+    <span class="k">from</span> <span class="n">myPolygonTable</span><span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="data-processing">
+<h2><span class="section-number">16.5.8. </span>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline"></a></h2>
+<p>PostGIS supports all OGC SFS/MM standard conform functions. All these functions
+start with <code class="docutils literal notranslate"><span class="pre">ST_</span></code>.</p>
+</section>
+<section id="clipping">
+<h2><span class="section-number">16.5.9. </span>Clipping<a class="headerlink" href="#clipping" title="Permalink to this headline"></a></h2>
+<p>To clip a subpart of your data you can use the <code class="docutils literal notranslate"><span class="pre">ST_INTERSECT()</span></code> function.
+To avoid empty geometries, use:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">where</span> <span class="k">not</span> <span class="n">st_isempty</span><span class="p">(</span><span class="n">st_intersection</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/qgis_001.png" src="../../../_images/qgis_001.png" />
+</figure>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_intersection</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">),</span> <span class="n">b</span><span class="p">.</span><span class="o">*</span>
+<span class="k">from</span> <span class="n">clip</span> <span class="k">as</span> <span class="n">a</span><span class="p">,</span> <span class="n">road_lines</span> <span class="k">as</span> <span class="n">b</span>
+<span class="k">where</span> <span class="k">not</span> <span class="n">st_isempty</span><span class="p">(</span><span class="n">st_intersection</span><span class="p">(</span><span class="n">st_setsrid</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span><span class="mi">32734</span><span class="p">),</span>
+  <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">));</span>
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/qgis_002.png" src="../../../_images/qgis_002.png" />
+</figure>
+</section>
+<section id="building-geometries-from-other-geometries">
+<h2><span class="section-number">16.5.10. </span>Building Geometries from Other Geometries<a class="headerlink" href="#building-geometries-from-other-geometries" title="Permalink to this headline"></a></h2>
+<p>From a given point table, you want to generate a linestring. The order of the
+points is defined by their <kbd class="kbd docutils literal notranslate">id</kbd>. Another ordering method could be a
+timestamp, such as the one you get when you capture waypoints with a GPS
+receiver.</p>
+<figure class="align-center">
+<img alt="../../../_images/qgis_006.png" src="../../../_images/qgis_006.png" />
+</figure>
+<p>To create a linestring from a new point layer called ‘points’, you can run the
+following command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">ST_LineFromMultiPoint</span><span class="p">(</span><span class="n">st_collect</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)),</span> <span class="mi">1</span> <span class="k">as</span> <span class="n">id</span>
+<span class="k">from</span> <span class="p">(</span>
+  <span class="k">select</span> <span class="n">the_geom</span>
+  <span class="k">from</span> <span class="n">points</span>
+  <span class="k">order</span> <span class="k">by</span> <span class="n">id</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">foo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>To see how it works without creating a new layer, you could also run this
+command on the ‘people’ layer, although of course it would make little
+real-world sense to do this.</p>
+<figure class="align-center">
+<img alt="../../../_images/qgis_007.png" src="../../../_images/qgis_007.png" />
+</figure>
+</section>
+<section id="geometry-cleaning">
+<h2><span class="section-number">16.5.11. </span>Geometry Cleaning<a class="headerlink" href="#geometry-cleaning" title="Permalink to this headline"></a></h2>
+<p>You can get more information for this topic in <a class="reference external" href="https://gisforthought.com/projects/postgis_tutorial/validity.html">this blog entry</a>.</p>
+</section>
+<section id="differences-between-tables">
+<h2><span class="section-number">16.5.12. </span>Differences between tables<a class="headerlink" href="#differences-between-tables" title="Permalink to this headline"></a></h2>
+<p>To detect the difference between two tables with the same structure, you can
+use the PostgreSQL keyword <code class="docutils literal notranslate"><span class="pre">EXCEPT</span></code>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table_a</span>
+<span class="k">except</span>
+<span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">table_b</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>As the result, you will get all records from table_a which are not stored in
+table_b.</p>
+</section>
+<section id="tablespaces">
+<h2><span class="section-number">16.5.13. </span>Tablespaces<a class="headerlink" href="#tablespaces" title="Permalink to this headline"></a></h2>
+<p>You can define where postgres should store its data on disk by creating
+tablespaces:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="n">TABLESPACE</span> <span class="n">homespace</span> <span class="k">LOCATION</span> <span class="s1">&#39;/home/pg&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>When you create a database, you can then specify which tablespace to use e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="o">--</span><span class="n">tablespace</span><span class="o">=</span><span class="n">homespace</span> <span class="n">t4a</span>
+</pre></div>
+</div>
+</section>
+<section id="ic">
+<h2><span class="section-number">16.5.14. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You’ve learned how to create more complex geometries using PostGIS statements.
+Keep in mind that this is mostly to improve your tacit knowledge when working
+with geo-enabled databases through a GIS frontend. You usually won’t need to
+actually enter these statements manually, but having a general idea of their
+structure will help you when using a GIS, especially if you encounter errors
+that would otherwise seem cryptic.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="spatial_queries.html" class="btn btn-neutral float-left" title="16.4. Lesson: Spatial Queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../processing/index.html" class="btn btn-neutral float-right" title="17. The QGIS processing guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/geometry.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/geometry.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/geometry.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/spatial_databases/geometry.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/spatial_databases/geometry.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/spatial_databases/geometry.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/spatial_databases/geometry.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/spatial_databases/geometry.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/spatial_databases/geometry.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/spatial_databases/geometry.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/spatial_databases/geometry.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/spatial_databases/geometry.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/spatial_databases/geometry.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/spatial_databases/geometry.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

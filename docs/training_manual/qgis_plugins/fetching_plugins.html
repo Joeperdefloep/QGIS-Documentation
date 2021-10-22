@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9.1. Lesson: Installing and Managing Plugins &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_plugins/fetching_plugins.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="9.2. Lesson: Useful QGIS Plugins" href="plugin_examples.html" />
+    <link rel="prev" title="9. Module: Plugins" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_plugins/fetching_plugins.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">9. Module: Plugins</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.1. Lesson: Installing and Managing Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-managing-plugins">9.1.1.  Follow Along: Managing Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-installing-new-plugins">9.1.2.  Follow Along: Installing New Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-configuring-additional-plugin-repositories">9.1.3.  Follow Along: Configuring Additional Plugin Repositories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">9.1.4. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">9.1.5. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="plugin_examples.html">9.2. Lesson: Useful QGIS Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">9. </span>Module: Plugins</a> &raquo;</li>
+      <li><span class="section-number">9.1. </span>Lesson: Installing and Managing Plugins</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/qgis_plugins/fetching_plugins.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="9. Module: Plugins" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugin_examples.html" class="btn btn-neutral float-right" title="9.2. Lesson: Useful QGIS Plugins" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-installing-and-managing-plugins">
+<h1><span class="section-number">9.1. </span>Lesson: Installing and Managing Plugins<a class="headerlink" href="#ls-installing-and-managing-plugins" title="Permalink to this headline"></a></h1>
+<p>To begin using plugins, you need to know how to download, install and activate
+them. To do this, you will learn how to use the <span class="guilabel">Plugin Installer</span>
+and <span class="guilabel">Plugin Manager</span>.</p>
+<p><strong>The goal for this lesson:</strong> To understand and use QGIS’ plugin system.</p>
+<section id="basic-fa-managing-plugins">
+<h2><span class="section-number">9.1.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Managing Plugins<a class="headerlink" href="#basic-fa-managing-plugins" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>To open the <span class="guilabel">Plugin Manager</span>, click on the menu item
+<span class="menuselection">Plugins ► Manage and Install Plugins</span>.</p></li>
+<li><p>In the dialog that opens, find the <span class="guilabel">Processing</span> plugin:</p>
+<figure class="align-center">
+<img alt="../../../_images/select_processing_plugin.png" src="../../../_images/select_processing_plugin.png" />
+</figure>
+</li>
+<li><p>Click in the box next to this plugin and uncheck it to deactivate it.</p></li>
+<li><p>Click <span class="guilabel">Close</span>.</p></li>
+<li><p>Looking at the menu, you will notice that the <span class="guilabel">Processing</span> menu is
+is now gone. This means that many of the processing functions you have been
+using before have disappeared! For example look at the <span class="menuselection">Vector
+►</span> and <span class="menuselection">Raster ►</span> menus. This is because they are part of
+the <span class="guilabel">Processing</span> plugin, which needs to be activated to use them.</p></li>
+<li><p>Open the <span class="guilabel">Plugin Manager</span> again and reactivate the
+<span class="guilabel">Processing</span> plugin by clicking in the checkbox next to it.</p></li>
+<li><p><span class="guilabel">Close</span> the dialog.
+The <span class="guilabel">Processing</span> menu and functions should be available again.</p></li>
+</ol>
+</section>
+<section id="basic-fa-installing-new-plugins">
+<span id="plugin-installation"></span><h2><span class="section-number">9.1.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Installing New Plugins<a class="headerlink" href="#basic-fa-installing-new-plugins" title="Permalink to this headline"></a></h2>
+<p>The list of plugins that you can activate and deactivate draws from the plugins
+that you currently have installed. To install new plugins:</p>
+<ol class="arabic">
+<li><p>Select the <span class="guilabel">Not Installed</span> option in the <span class="guilabel">Plugin Manager</span>
+dialog. The plugins available for you to install will be listed here.
+This list will vary depending on your existing system setup.</p>
+<figure class="align-center">
+<img alt="../../../_images/get_more_plugins.png" src="../../../_images/get_more_plugins.png" />
+</figure>
+</li>
+<li><p>Find information about the plugin by selecting it in the list</p>
+<figure class="align-center">
+<img alt="../../../_images/plugin_details.png" src="../../../_images/plugin_details.png" />
+</figure>
+</li>
+<li><p>Install the one(s) you are interested in by clicking the <span class="guilabel">Install
+Plugin</span> button below the plugin information panel.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if the plugin has some error it will be listed in the <span class="guilabel">Invalid</span>
+tab. You can then contact the plugin owner to fix the problem.</p>
+</div>
+</section>
+<section id="basic-fa-configuring-additional-plugin-repositories">
+<h2><span class="section-number">9.1.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Configuring Additional Plugin Repositories<a class="headerlink" href="#basic-fa-configuring-additional-plugin-repositories" title="Permalink to this headline"></a></h2>
+<p>The plugins that are available to you for installation depend on which
+plugin <em>repositories</em> you are configured to use.</p>
+<p>QGIS plugins are stored online in repositories. By default, only the <a class="reference external" href="https://plugins.qgis.org">official
+repository</a> is active, meaning that you can only
+access plugins that are published there. Given the diversity of available tools,
+this repository should meet most of your needs.</p>
+<p>It is possible, however, to try out more plugins than the default ones. First,
+you want to configure additional repositories. To do this:</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Settings</span> tab in the <span class="guilabel">Plugin Manager</span> dialog</p>
+<figure class="align-center">
+<img alt="../../../_images/plugin_manager_settings.png" src="../../../_images/plugin_manager_settings.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Add</span> to find and add a new repository.</p></li>
+<li><p>Provide a Name and URL for the new repository you want to configure and make
+sure the <span class="guilabel">Enabled</span> checkbox is selected.</p>
+<figure class="align-center">
+<img alt="../../../_images/new_plugins_setting.png" src="../../../_images/new_plugins_setting.png" />
+</figure>
+</li>
+<li><p>You will now see the new plugin repo listed in the list of configured
+Plugin Repositories</p>
+<figure class="align-center">
+<img alt="../../../_images/new_plugin_added.png" src="../../../_images/new_plugin_added.png" />
+</figure>
+</li>
+<li><p>You can also select the option to display Experimental Plugins by selecting
+the <span class="guilabel">Show also experimental plugins</span> checkbox.</p></li>
+<li><p>If you now switch back to the <span class="guilabel">Not Installed</span> tab, you will see that
+additional plugins are available for installation.</p></li>
+<li><p>To install a plugin, click on it in the list and then on the
+<span class="guilabel">Install plugin</span> button.</p></li>
+</ol>
+</section>
+<section id="ic">
+<h2><span class="section-number">9.1.4. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Installing plugins in QGIS should be straightforward and effective!</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">9.1.5. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next we’ll introduce you to some useful plugins as examples.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="9. Module: Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugin_examples.html" class="btn btn-neutral float-right" title="9.2. Lesson: Useful QGIS Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/qgis_plugins/fetching_plugins.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/qgis_plugins/fetching_plugins.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_plugins/fetching_plugins.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/qgis_plugins/fetching_plugins.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/qgis_plugins/fetching_plugins.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/qgis_plugins/fetching_plugins.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/qgis_plugins/fetching_plugins.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/qgis_plugins/fetching_plugins.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/qgis_plugins/fetching_plugins.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

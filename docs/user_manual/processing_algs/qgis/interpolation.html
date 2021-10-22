@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.1.4. Interpolation &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="24.1.5. Layer tools" href="layertools.html" />
+    <link rel="prev" title="24.1.3. File tools" href="filetools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">24. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">24.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">24.1.1. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">24.1.2. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">24.1.3. File tools</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">24.1.4. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">24.1.5. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">24.1.6. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">24.1.7. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">24.1.8. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">24.1.9. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">24.1.10. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">24.1.11. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">24.1.12. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">24.1.13. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">24.1.14. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">24.1.15. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">24.1.16. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">24.1.17. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">24.1.18. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">24.1.19. Vector table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">24.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">24.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">24.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">24.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">24. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">24.1. </span>QGIS algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">24.1.4. </span>Interpolation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/interpolation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="filetools.html" class="btn btn-neutral float-left" title="24.1.3. File tools" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layertools.html" class="btn btn-neutral float-right" title="24.1.5. Layer tools" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="interpolation">
+<h1><span class="section-number">24.1.4. </span>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#heatmap-kernel-density-estimation" id="id15">Heatmap (kernel density estimation)</a></p></li>
+<li><p><a class="reference internal" href="#qgisidwinterpolation" id="id16">IDW Interpolation</a></p></li>
+<li><p><a class="reference internal" href="#line-density" id="id17">Line Density</a></p></li>
+<li><p><a class="reference internal" href="#tin-interpolation" id="id18">TIN Interpolation</a></p></li>
+</ul>
+</div>
+<section id="heatmap-kernel-density-estimation">
+<span id="qgisheatmapkerneldensityestimation"></span><h2><a class="toc-backref" href="#id15"><span class="section-number">24.1.4.1. </span>Heatmap (kernel density estimation)</a><a class="headerlink" href="#heatmap-kernel-density-estimation" title="Permalink to this headline"></a></h2>
+<p>Creates a density (heatmap) raster of an input point vector layer
+using kernel density estimation.</p>
+<p>The density is calculated based on the number of points in a location,
+with larger numbers of clustered points resulting in larger values.
+Heatmaps allow easy identification of <em>hotspots</em> and clustering of
+points.</p>
+<section id="parameters">
+<h3><span class="section-number">24.1.4.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Point layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Point vector layer to use for the heatmap</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Radius</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 100.0</p>
+</td>
+<td><p>Heatmap search radius (or kernel bandwidth) in map units.
+The radius specifies the distance around a point at which the
+influence of the point will be felt.
+Larger values result in greater smoothing, but smaller values
+may show finer details and variation in point density.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output raster size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIXEL_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.1</p>
+</td>
+<td><p>Pixel size of the output raster layer in layer units.</p>
+<p>In the GUI, the size can be specified by the number of rows
+(<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">rows</span></code>) / columns (<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">columns</span></code>) <strong>or</strong>
+the pixel size( <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code>).
+Increasing the number of rows or columns will decrease the cell
+size and increase the file size of the output raster.
+The values in <code class="docutils literal notranslate"><span class="pre">Rows</span></code>, <code class="docutils literal notranslate"><span class="pre">Columns</span></code>, <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code> will be updated simultaneously - doubling the
+number of rows will double the number of columns, and the cell
+size will be halved.
+The extent of the output raster will remain the same
+(approximately).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Radius from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Sets the search radius for each feature from an attribute
+field in the input layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Weight from field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT_FIELD</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>Allows input features to be weighted by an attribute field.
+This can be used to increase the influence certain features
+have on the resultant heatmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Kernel shape</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KERNEL</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: <em>0</em></p>
+</td>
+<td><p>Controls the rate at which the influence of a point decreases
+as the distance from the point increases.
+Different kernels decay at different rates, so a triweight
+kernel gives features greater weight for distances closer to
+the point then the Epanechnikov kernel does.
+Consequently, triweight results in “sharper” hotspots and
+Epanechnikov results in “smoother” hotspots.</p>
+<p>There are many shapes available (please see the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Kernel_(statistics)#Kernel_functions_in_common_use">Wikipedia page</a>
+for further information):</p>
+<ul class="simple">
+<li><p>0 — Quartic</p></li>
+<li><p>1 — Triangular</p></li>
+<li><p>2 — Uniform</p></li>
+<li><p>3 — Triweight</p></li>
+<li><p>4 — Epanechnikov</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Decay ratio (Triangular kernels only)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DECAY</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: <em>0.0</em></p>
+</td>
+<td><p>Can be used with Triangular kernels to further control
+how heat from a feature decreases with distance from the
+feature.</p>
+<ul class="simple">
+<li><p>A value of 0 (=minimum) indicates that the heat will
+be concentrated in the center of the given radius and
+completely extinguished at the edge.</p></li>
+<li><p>A value of 0.5 indicates that pixels at the edge of
+the radius will be given half the heat as pixels at
+the center of the search radius.</p></li>
+<li><p>A value of 1 means the heat is spread evenly over
+the whole search radius circle.
+(This is equivalent to the ‘Uniform’ kernel.)</p></li>
+<li><p>A value greater than 1 indicates that the heat is
+higher towards the edge of the search radius than at
+the center.</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output value scaling</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_VALUE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: <em>Raw</em></p>
+</td>
+<td><p>Allow to change the values of the output heatmap raster.
+One of:</p>
+<ul class="simple">
+<li><p>0 — Raw</p></li>
+<li><p>1 — Scaled</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Heatmap</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output raster layer with kernel density values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">24.1.4.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Heatmap</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Raster layer with kernel density values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-creating-a-heatmap">
+<h3><span class="section-number">24.1.4.1.3. </span>Example: Creating a Heatmap<a class="headerlink" href="#example-creating-a-heatmap" title="Permalink to this headline"></a></h3>
+<p>For the following example, we will use the <code class="docutils literal notranslate"><span class="pre">airports</span></code> vector point
+layer from the QGIS sample dataset (see <a class="reference internal" href="../../introduction/getting_started.html#label-sampledata"><span class="std std-ref">Downloading sample data</span></a>).
+Another excellent QGIS tutorial on making heatmaps can be found at
+<a class="reference external" href="http://www.qgistutorials.com/en/docs/creating_heatmaps.html">http://qgistutorials.com</a>.</p>
+<p>In <a class="reference internal" href="#figure-heatmap-data-processing"><span class="std std-numref">Fig. 24.2</span></a>, the airports of Alaska are shown.</p>
+<figure class="align-center" id="id10">
+<span id="figure-heatmap-data-processing"></span><img alt="../../../../_images/heatmap_start.png" src="../../../../_images/heatmap_start.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.2 </span><span class="caption-text">Airports of Alaska</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Open the <span class="guilabel">Heatmap (Kernel Density Estimation)</span> algorithm
+from the QGIS <span class="guilabel">Interpolation</span> group</p></li>
+<li><p>In the <span class="guilabel">Point layer</span> <a class="reference internal" href="../../../../_images/selectstring.png"><img alt="selectString" src="../../../../_images/selectstring.png" style="width: 2.5em;" /></a> field, select
+<code class="docutils literal notranslate"><span class="pre">airports</span></code> from the list of point layers loaded in the current
+project.</p></li>
+<li><p>Change the <span class="guilabel">Radius</span> to <code class="docutils literal notranslate"><span class="pre">1000000</span></code> meters.</p></li>
+<li><p>Change the <span class="guilabel">Pixel size X</span> to <code class="docutils literal notranslate"><span class="pre">1000</span></code>.
+The <span class="guilabel">Pixel size Y</span>, <span class="guilabel">Rows</span> and
+<span class="guilabel">Columns</span> will be automatically updated.</p></li>
+<li><p>Click on <span class="guilabel">Run</span> to create and load the airports heatmap
+(see <a class="reference internal" href="#figure-heatmap-created-processing"><span class="std std-numref">Fig. 24.4</span></a>).</p></li>
+</ol>
+<figure class="align-center" id="id11">
+<span id="figure-heatmap-settings-processing"></span><img alt="../../../../_images/heatmap_dialog.png" src="../../../../_images/heatmap_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.3 </span><span class="caption-text">The Heatmap Dialog</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>QGIS will generate the heatmap and add it to your map window.
+By default, the heatmap is shaded in greyscale, with lighter areas
+showing higher concentrations of airports.
+The heatmap can now be styled in QGIS to improve its appearance.</p>
+<figure class="align-center" id="id12">
+<span id="figure-heatmap-created-processing"></span><img alt="../../../../_images/heatmap_loaded_grey.png" src="../../../../_images/heatmap_loaded_grey.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.4 </span><span class="caption-text">The heatmap after loading looks like a grey surface</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Open the properties dialog of the <code class="docutils literal notranslate"><span class="pre">heatmap_airports</span></code> layer
+(select the layer <code class="docutils literal notranslate"><span class="pre">heatmap_airports</span></code>, open the context menu with
+the right mouse button and select <span class="guilabel">Properties</span>).</p></li>
+<li><p>Select the <span class="guilabel">Symbology</span> tab.</p></li>
+<li><p>Change the <span class="guilabel">Render type</span> <a class="reference internal" href="../../../../_images/selectstring.png"><img alt="selectString" src="../../../../_images/selectstring.png" style="width: 2.5em;" /></a> to
+‘Singleband pseudocolor’.</p></li>
+<li><p>Select a suitable <span class="guilabel">Color ramp</span> <a class="reference internal" href="../../../../_images/selectstring.png"><img alt="selectString" src="../../../../_images/selectstring.png" style="width: 2.5em;" /></a>, for
+instance <code class="docutils literal notranslate"><span class="pre">YlOrRd</span></code>.</p></li>
+<li><p>Click the <span class="guilabel">Classify</span> button.</p></li>
+<li><p>Press <span class="guilabel">OK</span> to update the layer.</p></li>
+</ol>
+<p>The final result is shown in <a class="reference internal" href="#figure-heatmap-styled-processing"><span class="std std-numref">Fig. 24.5</span></a>.</p>
+<figure class="align-center" id="id13">
+<span id="figure-heatmap-styled-processing"></span><img alt="../../../../_images/heatmap_loaded_colour.png" src="../../../../_images/heatmap_loaded_colour.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.5 </span><span class="caption-text">Styled heatmap of airports of Alaska</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="python-code">
+<h3><span class="section-number">24.1.4.1.4. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:heatmapkerneldensityestimation</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="qgisidwinterpolation">
+<span id="idw-interpolation"></span><h2><a class="toc-backref" href="#id16"><span class="section-number">24.1.4.2. </span>IDW Interpolation</a><a class="headerlink" href="#qgisidwinterpolation" title="Permalink to this headline"></a></h2>
+<p>Generates an Inverse Distance Weighted (IDW) interpolation of a point
+vector layer.</p>
+<p>Sample points are weighted during interpolation such that the
+influence of one point relative to another declines with distance from
+the unknown point you want to create.</p>
+<p>The IDW interpolation method also has some disadvantages: the quality
+of the interpolation result can decrease, if the distribution of
+sample data points is uneven.</p>
+<p>Furthermore, maximum and minimum values in the interpolated surface
+can only occur at sample data points.</p>
+<section id="id1">
+<h3><span class="section-number">24.1.4.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer(s)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTERPOLATION_DATA</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Vector layer(s) and field(s) to use for the interpolation,
+coded
+in a string (see the <code class="docutils literal notranslate"><span class="pre">ParameterInterpolationData</span></code> class in
+<a class="reference external" href="https://github.com/qgis/QGIS/blob/master/python/plugins/processing/algs/qgis/ui/InterpolationWidgets.py">InterpolationWidgets</a>
+for more details).</p>
+<p>The following GUI elements are provided to compose the
+interpolation data string:</p>
+<ul class="simple">
+<li><p><strong>Vector layer</strong> [vector: any]</p></li>
+<li><p><strong>Interpolation attribute</strong> [tablefield: numeric]:
+Attribute to use in the interpolation</p></li>
+<li><p><strong>Use Z-coordinate for interpolation</strong> [boolean]:
+Uses the layer’s stored Z values (Default: False)</p></li>
+</ul>
+<p>For each of the added layer-field combinations, a type can
+be chosen:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Points</span></p></li>
+<li><p><span class="guilabel">Structured lines</span></p></li>
+<li><p><span class="guilabel">Break lines</span></p></li>
+</ul>
+<p>In the string, the layer-field elements are separated by
+<code class="docutils literal notranslate"><span class="pre">'::|::'</span></code>.
+The sub-elements of the layer-field elements are separated by
+<code class="docutils literal notranslate"><span class="pre">'::~::'</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Distance coefficient P</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE_COEFFICIENT</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 2.0</p>
+</td>
+<td><p>Sets the distance coefficient for the interpolation.
+Minimum: 0.0, maximum: 100.0.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Extent (xmin, xmax, ymin, ymax)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTENT</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>Extent of the output raster layer.
+You have to declare the output extent by either choosing it
+from the map canvas, selecting it from another layer or type it
+manually.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output raster size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIXEL_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.1</p>
+</td>
+<td><p>Pixel size of the output raster layer in layer units.</p>
+<p>In the GUI, the size can be specified by the number of rows
+(<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">rows</span></code>) / columns (<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">columns</span></code>) <strong>or</strong>
+the pixel size( <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code>).
+Increasing the number of rows or columns will decrease the cell
+size and increase the file size of the output raster.
+The values in <code class="docutils literal notranslate"><span class="pre">Rows</span></code>, <code class="docutils literal notranslate"><span class="pre">Columns</span></code>, <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code> will be updated simultaneously - doubling the
+number of rows will double the number of columns, and the cell
+size will be halved.
+The extent of the output raster will remain the same
+(approximately).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Interpolated</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Raster layer of interpolated values.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">24.1.4.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Raster layer of interpolated values</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">24.1.4.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:idwinterpolation</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="line-density">
+<span id="qgislinedensity"></span><h2><a class="toc-backref" href="#id17"><span class="section-number">24.1.4.3. </span>Line Density</a><a class="headerlink" href="#line-density" title="Permalink to this headline"></a></h2>
+<p>Calculates for each raster cell, the density measure of linear
+features within a circular neighbourhood. This measure is obtained by
+summing all the line segments intersecting the circular neighbourhood
+and dividing this sum by the area of such neighbourhood.
+A weighting factor can be applied to the line segments.</p>
+<figure class="align-center" id="id14">
+<img alt="../../../../_images/linedensity.png" src="../../../../_images/linedensity.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.6 </span><span class="caption-text">Line density example. Input layer source: Roads Overijssel - The
+Netherlands (OSM).</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id4">
+<h3><span class="section-number">24.1.4.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input line layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer containing line features</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weight field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Field of the layer containing the weight factor to use during
+the calculation</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Search Radius</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RADIUS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>Radius of the circular neighbourhood. Units can be specified
+here.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pixel size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIXEL_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>Pixel size of the output raster layer in layer units.
+The raster has square pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Line density raster</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>The output as a raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">24.1.4.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Line density raster</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output line density raster layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">24.1.4.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:linedensity</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="tin-interpolation">
+<span id="qgistininterpolation"></span><h2><a class="toc-backref" href="#id18"><span class="section-number">24.1.4.4. </span>TIN Interpolation</a><a class="headerlink" href="#tin-interpolation" title="Permalink to this headline"></a></h2>
+<p>Generates a Triangulated Irregular Network (TIN) interpolation of a
+point vector layer.</p>
+<p>With the TIN method you can create a surface formed by triangles of
+nearest neighbor points.
+To do this, circumcircles around selected sample points are created
+and their intersections are connected to a network of non overlapping
+and as compact as possible triangles.
+The resulting surfaces are not smooth.</p>
+<p>The algorithm creates both the raster layer of the interpolated values
+and the vector line layer with the triangulation boundaries.</p>
+<section id="id7">
+<h3><span class="section-number">24.1.4.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer(s)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INTERPOLATION_DATA</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Vector layer(s) and field(s) to use for the interpolation,
+coded in a string (see the <code class="docutils literal notranslate"><span class="pre">ParameterInterpolationData</span></code>
+class in
+<a class="reference external" href="https://github.com/qgis/QGIS/blob/master/python/plugins/processing/algs/qgis/ui/InterpolationWidgets.py">InterpolationWidgets</a>
+for more details).</p>
+<p>The following GUI elements are provided to compose the
+interpolation data string:</p>
+<ul class="simple">
+<li><p><strong>Vector layer</strong> [vector: any]</p></li>
+<li><p><strong>Interpolation attribute</strong> [tablefield: numeric]:
+Attribute to use in the interpolation</p></li>
+<li><p><strong>Use Z-coordinate for interpolation</strong> [boolean]:
+Uses the layer’s stored Z values (Default: False)</p></li>
+</ul>
+<p>For each of the added layer-field combinations, a type can
+be chosen:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Points</span></p></li>
+<li><p><span class="guilabel">Structured lines</span></p></li>
+<li><p><span class="guilabel">Break lines</span></p></li>
+</ul>
+<p>In the string, the layer-field elements are separated by
+<code class="docutils literal notranslate"><span class="pre">'::|::'</span></code>.
+The sub-elements of the layer-field elements are separated by
+<code class="docutils literal notranslate"><span class="pre">'::~::'</span></code>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Interpolation method</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METHOD</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Set the interpolation method to be used. One of:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Linear</span></p></li>
+<li><p><span class="guilabel">Clough-Toucher (cubic)</span></p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Extent (xmin, xmax, ymin, ymax)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTENT</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>Extent of the output raster layer.
+You have to declare the output extent by either choosing it
+from the map canvas, selecting it from another layer or type it
+manually.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output raster size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIXEL_SIZE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.1</p>
+</td>
+<td><p>Pixel size of the output raster layer in layer units.</p>
+<p>In the GUI, the size can be specified by the number of rows
+(<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">rows</span></code>) / columns (<code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">columns</span></code>) <strong>or</strong>
+the pixel size( <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> / <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code>).
+Increasing the number of rows or columns will decrease the cell
+size and increase the file size of the output raster.
+The values in <code class="docutils literal notranslate"><span class="pre">Rows</span></code>, <code class="docutils literal notranslate"><span class="pre">Columns</span></code>, <code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">X</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Pixel</span> <span class="pre">Size</span> <span class="pre">Y</span></code> will be updated simultaneously - doubling the
+number of rows will double the number of columns, and the cell
+size will be halved.
+The extent of the output raster will remain the same
+(approximately).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Interpolated</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>The output TIN interpolation as a raster layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Triangulation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRIANGULATION</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>The output TIN as a vector layer. One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">24.1.4.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Interpolated</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output TIN interpolation as a raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Triangulation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRIANGULATION</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The output TIN as a vector layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">24.1.4.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:tininterpolation</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="filetools.html" class="btn btn-neutral float-left" title="24.1.3. File tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="layertools.html" class="btn btn-neutral float-right" title="24.1.5. Layer tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/interpolation.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/interpolation.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/interpolation.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/interpolation.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/interpolation.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/interpolation.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/qgis/interpolation.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/qgis/interpolation.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/interpolation.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

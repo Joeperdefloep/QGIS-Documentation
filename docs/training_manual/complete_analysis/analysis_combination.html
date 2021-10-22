@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8.2. Lesson: Combining the Analyses &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/complete_analysis/analysis_combination.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="8.3. Assignment" href="assignment.html" />
+    <link rel="prev" title="8.1. Lesson: Raster to Vector Conversion" href="raster_to_vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/complete_analysis/analysis_combination.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">8. Module: Completing the Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raster_to_vector.html">8.1. Lesson: Raster to Vector Conversion</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">8.2. Lesson: Combining the Analyses</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty">8.2.1.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-inspecting-the-results">8.2.2.  Try Yourself Inspecting the Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-refining-the-analysis">8.2.3.  Try Yourself Refining the Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">8.2.4. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">8.2.5. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="assignment.html">8.3. Assignment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="analysis_exercise.html">8.4. Lesson: Supplementary Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">8. </span>Module: Completing the Analysis</a> &raquo;</li>
+      <li><span class="section-number">8.2. </span>Lesson: Combining the Analyses</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/complete_analysis/analysis_combination.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="raster_to_vector.html" class="btn btn-neutral float-left" title="8.1. Lesson: Raster to Vector Conversion" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assignment.html" class="btn btn-neutral float-right" title="8.3. Assignment" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-combining-the-analyses">
+<h1><span class="section-number">8.2. </span>Lesson: Combining the Analyses<a class="headerlink" href="#ls-combining-the-analyses" title="Permalink to this headline"></a></h1>
+<p>Using the vectorized results of the raster analysis will allow you to select
+only those buildings on suitable terrain.</p>
+<p><strong>The goal for this lesson:</strong> To use the vectorized terrain results to select
+suitable plots.</p>
+<section id="moderate-ty">
+<h2><span class="section-number">8.2.1. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself<a class="headerlink" href="#moderate-ty" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Save your current map (<code class="file docutils literal notranslate"><span class="pre">raster_analysis.qgs</span></code>).</p></li>
+<li><p>Open the map which you created during the vector analysis earlier
+(you should have saved the file as <code class="file docutils literal notranslate"><span class="pre">analysis.qgs</span></code>).</p></li>
+<li><p>In the <span class="guilabel">Layers</span> panel, enable these layers:</p>
+<ul class="simple">
+<li><p><span class="guilabel">hillshade</span>,</p></li>
+<li><p><span class="guilabel">solution</span> (or <span class="guilabel">buildings_over_100</span>)</p></li>
+</ul>
+</li>
+<li><p>In addition to these layers, which should already be loaded in the map from
+when you worked on it before, also add the <code class="file docutils literal notranslate"><span class="pre">suitable_terrain.shp</span></code>
+dataset.</p></li>
+<li><p>If you are missing some layers, you should find them in
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/residential_development/</span></code></p></li>
+<li><p>Use the <span class="guilabel">Intersection</span> tool (<span class="menuselection">Vector ► Geoprocessing Tools</span>)
+to create a new vector layer called <code class="file docutils literal notranslate"><span class="pre">new_solution.shp</span></code> which contains
+only those buildings which intersect the <span class="guilabel">suitable_terrain</span> layer.</p></li>
+</ol>
+<p>You should now have a layer showing certain buildings as your solution, for
+example:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_solution_example.png" src="../../../_images/new_solution_example.png" />
+</figure>
+</section>
+<section id="moderate-ty-inspecting-the-results">
+<h2><span class="section-number">8.2.2. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Inspecting the Results<a class="headerlink" href="#moderate-ty-inspecting-the-results" title="Permalink to this headline"></a></h2>
+<p>Look at each of the buildings in your <span class="guilabel">new_solution</span> layer. Compare them
+with the <span class="guilabel">suitable_terrain</span> layer by changing the symbology for the
+<span class="guilabel">new_solution</span> layer so that it has outlines only. What do you notice
+about some of the buildings? Are they all suitable just because they intersect with
+the <span class="guilabel">suitable_terrain</span> layer? Why or why not? Which ones would you
+deem to be unsuitable?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>You may notice that some of the buildings in your <code class="file docutils literal notranslate"><span class="pre">new_solution</span></code> layer
+have been “sliced” by the <span class="guilabel">Intersection</span> tool. This shows that only
+part of the building - and therefore only part of the property - lies on
+suitable terrain. We can therefore sensibly eliminate those buildings from
+our dataset.</p>
+</div>
+</section>
+<section id="moderate-ty-refining-the-analysis">
+<h2><span class="section-number">8.2.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Refining the Analysis<a class="headerlink" href="#moderate-ty-refining-the-analysis" title="Permalink to this headline"></a></h2>
+<p>You can see from the results that some buildings which were included were
+not really suitable, so we can now refine the analysis.</p>
+<p>We want to ensure that our analysis returns only those buildings which fall
+entirely within the <span class="guilabel">suitable_terrain</span> layer. How would you achieve this?
+Use one or more Vector Analysis tools and remember that our buildings are all
+over 100m squared in size.</p>
+<div class="admonition-answer admonition">
+<p class="admonition-title">Answer</p>
+<p>At the moment, your analysis should look something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_solution_example.png" src="../../../_images/new_solution_example.png" />
+</figure>
+<p>Consider a circular area, continuous for 100 meters in all directions.</p>
+<figure class="align-center">
+<img alt="../../../_images/circle_100.png" src="../../../_images/circle_100.png" />
+</figure>
+<p>If it is greater than 100 meters in radius, then subtracting 100 meters from
+its size (from all directions) will result in a part of it being left in the
+middle.</p>
+<figure class="align-center">
+<img alt="../../../_images/circle_with_remainder.png" src="../../../_images/circle_with_remainder.png" />
+</figure>
+<p>Therefore, you can run an <em>interior buffer</em> of 100 meters on your existing
+<span class="guilabel">suitable_terrain</span> vector layer. In the output of the buffer
+function, whatever remains of the original layer will represent areas where
+there is suitable terrain for 100 meters beyond.</p>
+<p>To demonstrate:</p>
+<ol class="arabic">
+<li><p>Go to <span class="menuselection">Vector ► Geoprocessing Tools ► Buffer(s)</span> to open
+the Buffer(s) dialog.</p></li>
+<li><p>Set it up like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/suitable_terrain_buffer.png" src="../../../_images/suitable_terrain_buffer.png" />
+</figure>
+</li>
+<li><p>Use the <span class="guilabel">suitable_terrain</span> layer with <code class="docutils literal notranslate"><span class="pre">10</span></code> segments and a
+buffer distance of <code class="docutils literal notranslate"><span class="pre">-100</span></code>. (The distance is automatically in meters
+because your map is using a projected CRS.)</p></li>
+<li><p>Save the output in <code class="file docutils literal notranslate"><span class="pre">exercise_data/residential_development/</span></code> as
+<code class="file docutils literal notranslate"><span class="pre">suitable_terrain_continuous100m.shp</span></code>.</p></li>
+<li><p>If necessary, move the new layer above your original
+<span class="guilabel">suitable_terrain</span> layer.</p>
+<p>Your results will look like something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/suitable_buffer_results.png" src="../../../_images/suitable_buffer_results.png" />
+</figure>
+</li>
+<li><p>Now use the <span class="guilabel">Select by Location</span> tool (<span class="menuselection">Vector ►
+Research Tools ► Select by location</span>).</p></li>
+<li><p>Set up like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/select_by_location.png" src="../../../_images/select_by_location.png" />
+</figure>
+</li>
+<li><p>Select features in <span class="guilabel">new_solution</span> that intersect features in
+<span class="guilabel">suitable_terrain_continuous100m.shp</span>.</p>
+<p>This is the result:</p>
+<figure class="align-center">
+<img alt="../../../_images/buffer_select_result.png" src="../../../_images/buffer_select_result.png" />
+</figure>
+<p>The yellow buildings are selected. Although some of the buildings fall
+partly outside the new <span class="guilabel">suitable_terrain_continuous100m</span> layer,
+they lie well within the original <span class="guilabel">suitable_terrain</span> layer and
+therefore meet all of our requirements.</p>
+</li>
+<li><p>Save the selection under <code class="file docutils literal notranslate"><span class="pre">exercise_data/residential_development/</span></code> as
+<code class="file docutils literal notranslate"><span class="pre">final_answer.shp</span></code>.</p></li>
+</ol>
+</div>
+</section>
+<section id="ic">
+<h2><span class="section-number">8.2.4. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have now answered the original research question, and can offer an opinion
+(with reasons, backed by analysis) for a recommendation regarding which
+property to develop.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">8.2.5. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next you will present these results as part of your second assignment.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="raster_to_vector.html" class="btn btn-neutral float-left" title="8.1. Lesson: Raster to Vector Conversion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="assignment.html" class="btn btn-neutral float-right" title="8.3. Assignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/complete_analysis/analysis_combination.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/complete_analysis/analysis_combination.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/complete_analysis/analysis_combination.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/complete_analysis/analysis_combination.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/complete_analysis/analysis_combination.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/complete_analysis/analysis_combination.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/complete_analysis/analysis_combination.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/complete_analysis/analysis_combination.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/complete_analysis/analysis_combination.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/complete_analysis/analysis_combination.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/complete_analysis/analysis_combination.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/complete_analysis/analysis_combination.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/complete_analysis/analysis_combination.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/complete_analysis/analysis_combination.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

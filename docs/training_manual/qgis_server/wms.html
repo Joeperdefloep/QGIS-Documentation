@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11.2. Lesson: Serving WMS &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_server/wms.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="12. Module: GRASS" href="../grass/index.html" />
+    <link rel="prev" title="11.1. Lesson: Install QGIS Server" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_server/wms.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">11. Module: QGIS Server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="install.html">11.1. Lesson: Install QGIS Server</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">11.2. Lesson: Serving WMS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#logging">11.2.1. Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getmap-requests">11.2.2. GetMap requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-change-the-image-and-layers-parameters">11.2.3.  Try Yourself Change the Image and Layers parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-use-filter-opacities-and-styles-parameters">11.2.4.  Follow Along: Use Filter, Opacities and Styles parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-use-redlining">11.2.5.  Follow Along: Use Redlining</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getprint-requests">11.2.6. GetPrint requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">11.2.7. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">11.2.8. What’s Next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">11. </span>Module: QGIS Server</a> &raquo;</li>
+      <li><span class="section-number">11.2. </span>Lesson: Serving WMS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/qgis_server/wms.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="install.html" class="btn btn-neutral float-left" title="11.1. Lesson: Install QGIS Server" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../grass/index.html" class="btn btn-neutral float-right" title="12. Module: GRASS" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-serving-wms">
+<h1><span class="section-number">11.2. </span>Lesson: Serving WMS<a class="headerlink" href="#ls-serving-wms" title="Permalink to this headline"></a></h1>
+<p>The data used for this exercise are available in the <code class="file docutils literal notranslate"><span class="pre">qgis-server-tutorial-data</span></code>
+subdirectory of the <a class="reference internal" href="../foreword/intro.html#data-downloadlink"><span class="std std-ref">training data</span></a> you downloaded.
+For convenience and to avoid possible permissions problems, we will assume
+that these files are stored in <code class="file docutils literal notranslate"><span class="pre">/home/qgis/projects</span></code> directory.
+Hence, adapt the following instructions to your path.</p>
+<p>The demo data contains a QGIS project named <code class="file docutils literal notranslate"><span class="pre">world.qgs</span></code> that is already
+prepared to be served with QGIS Server.
+If you want to use your own project or you want to learn how a project
+is prepared see the <a class="reference internal" href="../../server_manual/getting_started.html#creatingwmsfromproject"><span class="std std-ref">Configure your project</span></a> section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module presents the URLs so that the audience can easily distinguish
+the parameters and parameters values. While the normal format is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...&amp;</span><span class="n">field1</span><span class="o">=</span><span class="n">value1</span><span class="o">&amp;</span><span class="n">field2</span><span class="o">=</span><span class="n">value2</span><span class="o">&amp;</span><span class="n">field3</span><span class="o">=</span><span class="n">value3</span>
+</pre></div>
+</div>
+<p>this tutorial uses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">field1</span><span class="o">=</span><span class="n">value1</span>
+<span class="o">&amp;</span><span class="n">field2</span><span class="o">=</span><span class="n">value2</span>
+<span class="o">&amp;</span><span class="n">field3</span><span class="o">=</span><span class="n">value3</span>
+</pre></div>
+</div>
+<p>Pasting them into Mozilla Firefox works properly but other web browsers
+like Chrome may add unwanted spaces between the <code class="docutils literal notranslate"><span class="pre">field:parameter</span></code> pairs.
+So, if you encounter this issue you can either use Firefox or modify
+the URLs so that they’re in one line format.</p>
+</div>
+<p>Let’s make a WMS GetCapabilities request in the web browser or with curl:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgisplatform.demo/cgi-bin/qgis_mapserv.fcgi
+?SERVICE<span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetCapabilities
+<span class="p">&amp;</span><span class="nv">map</span><span class="o">=</span>/home/qgis/projects/world.qgs
+</pre></div>
+</div>
+<p>In the Apache config from the previous lesson the <code class="docutils literal notranslate"><span class="pre">QGIS_PROJECT_FILE</span></code> variable
+sets the default project to <code class="file docutils literal notranslate"><span class="pre">/home/qgis/projects/world.qgs</span></code>. However, in
+the above request we made use of the <strong>map</strong> parameter to be explicit and to
+show it can be used to point at any project. If you delete the <strong>map</strong> parameter
+from the above request QGIS Server will output the same response.</p>
+<p>By pointing any WMS client to the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL, the client gets in
+response an XML document with metadata of the Web Map Server’s information,
+e.g. what layers does it serve, the geographical coverage, in
+what format, what version of WMS etc.</p>
+<p>As QGIS is also a <a class="reference internal" href="../../user_manual/working_with_ogc/ogc_client_support.html#ogc-wms"><span class="std std-ref">WMS/WMTS Client</span></a> you can create a new WMS server connection
+with the help of the above GetCapabilities url. See the <a class="reference internal" href="../online_resources/wms.html#wms-services"><span class="std std-ref">Lesson: Web Mapping Services</span></a>
+or the  <a class="reference internal" href="../../user_manual/working_with_ogc/ogc_client_support.html#ogc-wms-servers"><span class="std std-ref">Selecting WMS/WMTS Servers</span></a> section on how to do it.</p>
+<p>By adding the <code class="docutils literal notranslate"><span class="pre">countries</span></code> WMS layer to your QGIS project you should get an image
+like the one below:</p>
+<figure class="align-center" id="id1">
+<img alt="../../../_images/qgis_getmap_request.png" src="../../../_images/qgis_getmap_request.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.34 </span><span class="caption-text">QGIS Desktop consuming the QGIS Server countries layer WMS service</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS Server serves layers that are defined in the <code class="file docutils literal notranslate"><span class="pre">world.qgs</span></code> project.
+By opening the project with QGIS you can see there are multiple styles for
+the countries layer. QGIS Server is also aware of this and you can choose
+the style you want in your request.  The <code class="docutils literal notranslate"><span class="pre">classified_by_population</span></code> style
+was chosen in the above image.</p>
+</div>
+<section id="logging">
+<h2><span class="section-number">11.2.1. </span>Logging<a class="headerlink" href="#logging" title="Permalink to this headline"></a></h2>
+<p>When you’re setting up a server, the logs are always important as they show
+you what’s going on. We have setup in the <code class="file docutils literal notranslate"><span class="pre">*.conf</span></code> file the following logs:</p>
+<ul class="simple">
+<li><p>QGIS Server log at <code class="file docutils literal notranslate"><span class="pre">/logs/qgisserver.log</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qgisplatform.demo</span></code> Apache access log at <code class="file docutils literal notranslate"><span class="pre">qgisplatform.demo.access.log</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qgisplatform.demo</span></code> Apache error log at <code class="file docutils literal notranslate"><span class="pre">qgisplatform.demo.error.log</span></code></p></li>
+</ul>
+<p>The log files are simply text files so you can use a text editor to check them
+out. You can also use the <code class="docutils literal notranslate"><span class="pre">tail</span></code> command in a terminal:
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">/logs/qgisserver.log</span></code>.</p>
+<p>This will continuously output in the terminal what’s written in that log file.
+You can also have three terminals opened for each of the log files like so:</p>
+<figure class="align-center" id="id2">
+<img alt="../../../_images/terminal_tail_log.jpg" src="../../../_images/terminal_tail_log.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.35 </span><span class="caption-text">Using the <code class="docutils literal notranslate"><span class="pre">tail</span></code> command to visualise QGIS Server logs output</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When you use QGIS Desktop to consume the QGIS Server WMS services you will
+see all the requests QGIS sends to the Server in the access log, the errors
+of QGIS Server in the QGIS Server log etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you look at the logs in the following sections you should get a better
+understanding on what’s happening.</p></li>
+<li><p>By restarting Apache while looking in the QGIS Server log you can find
+some extra pointers on how things work.</p></li>
+</ul>
+</div>
+</section>
+<section id="getmap-requests">
+<h2><span class="section-number">11.2.2. </span>GetMap requests<a class="headerlink" href="#getmap-requests" title="Permalink to this headline"></a></h2>
+<p>In order to display the <code class="docutils literal notranslate"><span class="pre">countries</span></code> layer, QGIS Desktop, like any other WMS
+client, is using <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> requests.</p>
+<p>A simple request looks like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgisplatform.demo/cgi-bin/qgis_mapserv.fcgi
+?MAP<span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span>-432786,4372992,3358959,7513746
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:3857
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">665</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">551</span>
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>image/jpeg
+</pre></div>
+</div>
+<p>The above request should output the following image:</p>
+<p><strong>Figure: simple GetMap request to QGIS Server</strong></p>
+<figure class="align-center" id="id3">
+<img alt="../../../_images/getmap_simple_request.jpg" src="../../../_images/getmap_simple_request.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.36 </span><span class="caption-text">Qgis Server response after a simple GetMap request</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="moderate-ty-change-the-image-and-layers-parameters">
+<h2><span class="section-number">11.2.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Change the Image and Layers parameters<a class="headerlink" href="#moderate-ty-change-the-image-and-layers-parameters" title="Permalink to this headline"></a></h2>
+<p>Based on the request above, let’s replace the <code class="docutils literal notranslate"><span class="pre">countries</span></code> layer with another.</p>
+<p>In order to see what other layers are available you could open up the
+<code class="file docutils literal notranslate"><span class="pre">world.qgs</span></code> project in QGIS and look at its contents. Keep in mind
+though that the WMS clients don’t have access to the QGIS project, they just
+look at the capabilities document contents.</p>
+<p>Also, there’s a configuration option so that some of the layers existing in the
+QGIS project are ignored by QGIS when serving the WMS service.</p>
+<p>So, you could look at the layer list when you point QGIS Desktop to the
+<code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> URL or you could try yourself finding other layer names
+in the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> XML response.</p>
+<p>One of the layer names that you could find and works is <code class="docutils literal notranslate"><span class="pre">countries_shapeburst</span></code>.
+You may find others but keep in mind some may not be visible at such a small
+scale so you could get a blank image as response.</p>
+<p>You can also play around with others parameters from above, like changing the
+returned image type to <code class="docutils literal notranslate"><span class="pre">image/png</span></code>.</p>
+</section>
+<section id="moderate-fa-use-filter-opacities-and-styles-parameters">
+<h2><span class="section-number">11.2.4. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Use Filter, Opacities and Styles parameters<a class="headerlink" href="#moderate-fa-use-filter-opacities-and-styles-parameters" title="Permalink to this headline"></a></h2>
+<p>Let’s do another request that adds another layer, some of the
+<a class="reference internal" href="../../server_manual/services.html#extra-getmap-parameters"><span class="std std-ref">Extra parameters supported by all request types</span></a>, <strong>FILTER</strong> and <strong>OPACITIES</strong>, but also
+uses the standard STYLES parameter.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgisplatform.demo/cgi-bin/qgis_mapserv.fcgi
+?MAP<span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span>-432786,4372992,3358959,7513746
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:3857
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">665</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">551</span>
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>image/jpeg
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,countries_shapeburst
+<span class="p">&amp;</span><span class="nv">STYLES</span><span class="o">=</span>classified_by_name,blue
+<span class="p">&amp;</span><span class="nv">OPACITIES</span><span class="o">=</span><span class="m">255</span>,30
+<span class="p">&amp;</span><span class="nv">FILTER</span><span class="o">=</span>countries:<span class="s2">&quot;name&quot;</span> IN <span class="o">(</span> <span class="s1">&#39;Germany&#39;</span> , <span class="s1">&#39;Italy&#39;</span> <span class="o">)</span>
+</pre></div>
+</div>
+<p>The above request should output the following image:</p>
+<figure class="align-center" id="id4">
+<img alt="../../../_images/getmap_filter_opacities.jpg" src="../../../_images/getmap_filter_opacities.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.37 </span><span class="caption-text">Response to a GetMap request with FILTER and OPACITIES parameters</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>As you can see from the above image, among other things, we told QGIS Server
+to render only <strong>Germany</strong> and <strong>Italy</strong> from the countries layer.</p>
+</section>
+<section id="moderate-fa-use-redlining">
+<h2><span class="section-number">11.2.5. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Use Redlining<a class="headerlink" href="#moderate-fa-use-redlining" title="Permalink to this headline"></a></h2>
+<p>Let’s do another GetMap request that makes use of the <a class="reference internal" href="../../server_manual/services.html#qgisserver-redlining"><span class="std std-ref">REDLINING</span></a>
+feature and of the <strong>SELECTION</strong> parameter detailed in the
+<a class="reference internal" href="../../server_manual/services.html#extra-getmap-parameters"><span class="std std-ref">Extra parameters supported by all request types</span></a> section:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgisplatform.demo/cgi-bin/qgis_mapserv.fcgi
+?MAP<span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0
+<span class="p">&amp;</span><span class="nv">REQUEST</span><span class="o">=</span>GetMap
+<span class="p">&amp;</span><span class="nv">BBOX</span><span class="o">=</span>-432786,4372992,3358959,7513746
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:3857
+<span class="p">&amp;</span><span class="nv">WIDTH</span><span class="o">=</span><span class="m">665</span>
+<span class="p">&amp;</span><span class="nv">HEIGHT</span><span class="o">=</span><span class="m">551</span>
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries,countries_shapeburst
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>image/jpeg
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_GEOM</span><span class="o">=</span>POLYGON<span class="o">((</span><span class="m">590000</span> <span class="m">6900000</span>, <span class="m">590000</span> <span class="m">7363000</span>, <span class="m">2500000</span> <span class="m">7363000</span>, <span class="m">2500000</span> <span class="m">6900000</span>, <span class="m">590000</span> <span class="m">6900000</span><span class="o">))</span>
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_SYMBOL</span><span class="o">=</span>&lt;StyledLayerDescriptor&gt;&lt;UserStyle&gt;&lt;Name&gt;Highlight&lt;/Name&gt;&lt;FeatureTypeStyle&gt;&lt;Rule&gt;&lt;Name&gt;Symbol&lt;/Name&gt;&lt;LineSymbolizer&gt;&lt;Stroke&gt;&lt;SvgParameter <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke&quot;</span>&gt;%233a093a&lt;/SvgParameter&gt;&lt;SvgParameter <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-opacity&quot;</span>&gt;1&lt;/SvgParameter&gt;&lt;SvgParameter <span class="nv">name</span><span class="o">=</span><span class="s2">&quot;stroke-width&quot;</span>&gt;1.6&lt;/SvgParameter&gt;&lt;/Stroke&gt;&lt;/LineSymbolizer&gt;&lt;/Rule&gt;&lt;/FeatureTypeStyle&gt;&lt;/UserStyle&gt;&lt;/StyledLayerDescriptor&gt;
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELSTRING</span><span class="o">=</span>QGIS Tutorial
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELSIZE</span><span class="o">=</span><span class="m">30</span>
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELCOLOR</span><span class="o">=</span>%23000000
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELBUFFERCOLOR</span><span class="o">=</span>%23FFFFFF
+<span class="p">&amp;</span><span class="nv">HIGHLIGHT_LABELBUFFERSIZE</span><span class="o">=</span><span class="m">3</span>
+<span class="p">&amp;</span><span class="nv">SELECTION</span><span class="o">=</span>countries:171,65
+</pre></div>
+</div>
+<p>Pasting the above request in your web browser should output the following image:</p>
+<figure class="align-center" id="id5">
+<img alt="../../../_images/getmap_redlining_selection.jpg" src="../../../_images/getmap_redlining_selection.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.38 </span><span class="caption-text">Response to a request with the REDLINING feature and SELECTION parameter</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can see from the above image that the countries with the 171 and 65 ids were
+highlighted in yellow (Romania and France) by using the <strong>SELECTION</strong> parameter
+and we used the <strong>REDLINING</strong> feature to overlay a rectangle with the
+<strong>QGIS Tutorial</strong> label.</p>
+</section>
+<section id="getprint-requests">
+<h2><span class="section-number">11.2.6. </span>GetPrint requests<a class="headerlink" href="#getprint-requests" title="Permalink to this headline"></a></h2>
+<p>One very nice feature of QGIS Server is that it makes use of the QGIS Desktop
+print layouts. You can learn about it in the <a class="reference internal" href="../../server_manual/services.html#server-wms-getprint"><span class="std std-ref">GetPrint</span></a> section.</p>
+<p>If you open the <code class="file docutils literal notranslate"><span class="pre">world.qgs</span></code> project with QGIS Desktop you will find a
+print layout named <code class="docutils literal notranslate"><span class="pre">Population</span> <span class="pre">distribution</span></code>. A simplified <code class="docutils literal notranslate"><span class="pre">GetPrint</span></code>
+request that exemplifies this amazing feature is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>http://qgisplatform.demo/cgi-bin/qgis_mapserv.fcgi
+?map<span class="o">=</span>/home/qgis/projects/world.qgs
+<span class="p">&amp;</span><span class="nv">SERVICE</span><span class="o">=</span>WMS
+<span class="p">&amp;</span><span class="nv">VERSION</span><span class="o">=</span><span class="m">1</span>.3.0<span class="p">&amp;</span>
+<span class="nv">REQUEST</span><span class="o">=</span>GetPrint
+<span class="p">&amp;</span><span class="nv">FORMAT</span><span class="o">=</span>pdf
+<span class="p">&amp;</span><span class="nv">TRANSPARENT</span><span class="o">=</span><span class="nb">true</span>
+<span class="p">&amp;</span><span class="nv">SRS</span><span class="o">=</span>EPSG:3857
+<span class="p">&amp;</span><span class="nv">DPI</span><span class="o">=</span><span class="m">300</span>
+<span class="p">&amp;</span><span class="nv">TEMPLATE</span><span class="o">=</span>Population distribution
+<span class="p">&amp;</span>map0:extent<span class="o">=</span>-432786,4372992,3358959,7513746
+<span class="p">&amp;</span><span class="nv">LAYERS</span><span class="o">=</span>countries
+</pre></div>
+</div>
+<figure class="align-center" id="id6">
+<img alt="../../../_images/getprint.jpg" src="../../../_images/getprint.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.39 </span><span class="caption-text">Shows the pdf resulted from the above GetPrint request</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Naturally, it’s hard to write your <code class="docutils literal notranslate"><span class="pre">GetMap</span></code>, <code class="docutils literal notranslate"><span class="pre">GetPrint</span></code> etc. requests.</p>
+<p><a class="reference external" href="https://github.com/qgis/qgis-web-client">QGIS Web Client</a> or QWC is a Web
+client project that can work alongside QGIS Server so that you can publish
+your projects on the Web or help you create QGIS Server requests for a better
+understanding about the possibilities.</p>
+<p>You can install it like this:</p>
+<ul class="simple">
+<li><p>As user <code class="docutils literal notranslate"><span class="pre">qgis</span></code> go to the home directory with <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/home/qgis</span></code>.</p></li>
+<li><p>Download the QWC project from <a class="reference external" href="https://github.com/qgis/QGIS-Web-Client/archive/master.zip">here</a> and unzip it.</p></li>
+<li><p>Make a symbolic link to the <code class="docutils literal notranslate"><span class="pre">/var/www/html</span></code> directory as it’s the <code class="docutils literal notranslate"><span class="pre">DocumentRoot</span></code> that
+we’ve setup in the virtual host configuration. If you unzipped the archive under
+<code class="file docutils literal notranslate"><span class="pre">/home/qgis/Downloads/QGIS-Web-Client-master</span></code> we can do that with
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ln</span> <span class="pre">-s</span> <span class="pre">/home/qgis/Downloads/QGIS-Web-Client-master</span> <span class="pre">/var/www/html/</span></code>.</p></li>
+<li><p>Access <a class="reference external" href="http://qgisplatform.demo/QGIS-Web-Client-master/site/qgiswebclient.html?map=/home/qgis/projects/world.qgs">http://qgisplatform.demo/QGIS-Web-Client-master/site/qgiswebclient.html?map=/home/qgis/projects/world.qgs</a>
+from your Web browser.</p></li>
+</ul>
+<p>Now you should be able to see the Map as in the following figure:</p>
+<figure class="align-center" id="id7">
+<img alt="../../../_images/qwc.jpg" src="../../../_images/qwc.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 11.40 </span><span class="caption-text">QGIS Web Client consuming the world.qgs project</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you click the Print button in QWC you can interactively create <code class="docutils literal notranslate"><span class="pre">GetPrint</span></code>
+requests. You can also click the <code class="docutils literal notranslate"><span class="pre">?</span></code> icon in the QWC to access the available
+help so that you can better discover the QWC possibilities.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">11.2.7. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You learned how use QGIS Server to provide WMS Services.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">11.2.8. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next, you’ll see how to use QGIS as a frontend for the famous GRASS GIS.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="11.1. Lesson: Install QGIS Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../grass/index.html" class="btn btn-neutral float-right" title="12. Module: GRASS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/qgis_server/wms.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/qgis_server/wms.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/qgis_server/wms.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/qgis_server/wms.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/qgis_server/wms.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/qgis_server/wms.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/qgis_server/wms.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/qgis_server/wms.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/qgis_server/wms.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/qgis_server/wms.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/qgis_server/wms.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/qgis_server/wms.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/qgis_server/wms.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/qgis_server/wms.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

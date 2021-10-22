@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13.2. Creating Layers &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/create_layers.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="13.3. Exploring Data Formats and Fields" href="supported_data.html" />
+    <link rel="prev" title="13.1. Opening Data" href="opening_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/create_layers.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13. Managing Data Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="opening_data.html">13.1. Opening Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.2. Creating Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-vector-layers">13.2.1. Creating new vector layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-layers-from-an-existing-layer">13.2.2. Creating new layers from an existing layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-dxf-files">13.2.3. Creating new DXF files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-new-layers-from-the-clipboard">13.2.4. Creating new layers from the clipboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-virtual-layers">13.2.5. Creating virtual layers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="supported_data.html">13.3. Exploring Data Formats and Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">13. </span>Managing Data Source</a> &raquo;</li>
+      <li><span class="section-number">13.2. </span>Creating Layers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/managing_data_source/create_layers.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="opening_data.html" class="btn btn-neutral float-left" title="13.1. Opening Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="supported_data.html" class="btn btn-neutral float-right" title="13.3. Exploring Data Formats and Fields" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-layers">
+<span id="id1"></span><h1><span class="section-number">13.2. </span>Creating Layers<a class="headerlink" href="#creating-layers" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-new-vector-layers" id="id11">Creating new vector layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#creating-a-new-geopackage-layer" id="id12">Creating a new GeoPackage layer</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-shapefile-layer" id="id13">Creating a new Shapefile layer</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-spatialite-layer" id="id14">Creating a new SpatiaLite layer</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-mesh-layer" id="id15">Creating a new Mesh layer</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-gpx-layer" id="id16">Creating a new GPX layer</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-new-temporary-scratch-layer" id="id17">Creating a new Temporary Scratch Layer</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-new-layers-from-an-existing-layer" id="id18">Creating new layers from an existing layer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#common-parameters" id="id19">Common parameters</a></p></li>
+<li><p><a class="reference internal" href="#raster-specific-parameters" id="id20">Raster specific parameters</a></p></li>
+<li><p><a class="reference internal" href="#vector-specific-parameters" id="id21">Vector specific parameters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#creating-new-dxf-files" id="id22">Creating new DXF files</a></p></li>
+<li><p><a class="reference internal" href="#creating-new-layers-from-the-clipboard" id="id23">Creating new layers from the clipboard</a></p></li>
+<li><p><a class="reference internal" href="#creating-virtual-layers" id="id24">Creating virtual layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#embedding-layers-for-use-in-queries" id="id25">Embedding layers for use in queries</a></p></li>
+<li><p><a class="reference internal" href="#supported-query-language" id="id26">Supported query language</a></p></li>
+<li><p><a class="reference internal" href="#performance-issues" id="id27">Performance issues</a></p></li>
+<li><p><a class="reference internal" href="#special-comments" id="id28">Special comments</a></p></li>
+<li><p><a class="reference internal" href="#use-of-indexes" id="id29">Use of indexes</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Layers can be created in many ways, including:</p>
+<ul class="simple">
+<li><p>empty layers from scratch</p></li>
+<li><p>layers from existing layers</p></li>
+<li><p>layers from the clipboard</p></li>
+<li><p>layers as a result of an SQL-like query based on one or many layers
+(<a class="reference internal" href="#vector-virtual-layers"><span class="std std-ref">virtual layers</span></a>)</p></li>
+</ul>
+<p>QGIS also provides tools to import/export from/to different formats.</p>
+<span class="target" id="index-0"></span><section id="creating-new-vector-layers">
+<span id="sec-create-vector"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id11"><span class="section-number">13.2.1. </span>Creating new vector layers</a><a class="headerlink" href="#creating-new-vector-layers" title="Permalink to this headline"></a></h2>
+<p>QGIS allows you to create new layers in different formats. It provides tools
+for creating GeoPackage, Shapefile, SpatiaLite, GPX format and
+Temporary Scratch layers (aka memory layers).
+Creation of a <a class="reference internal" href="../grass_integration/grass_integration.html#creating-new-grass-vectors"><span class="std std-ref">new GRASS layer</span></a>
+is supported within the GRASS plugin.</p>
+<section id="creating-a-new-geopackage-layer">
+<span id="vector-create-geopackage"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id12"><span class="section-number">13.2.1.1. </span>Creating a new GeoPackage layer</a><a class="headerlink" href="#creating-a-new-geopackage-layer" title="Permalink to this headline"></a></h3>
+<p>To create a new GeoPackage layer, press the <a class="reference internal" href="../../../_images/mActionNewGeoPackageLayer.png"><img alt="newGeoPackageLayer" src="../../../_images/mActionNewGeoPackageLayer.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New GeoPackage Layer…</span> button in the
+<span class="menuselection">Layer ► Create Layer ►</span> menu or from the
+<span class="guilabel">Data Source Manager</span> toolbar.
+The <span class="guilabel">New GeoPackage Layer</span> dialog will be displayed as shown in
+<a class="reference internal" href="#figure-create-geopackage"><span class="std std-numref">Fig. 13.16</span></a>.</p>
+<figure class="align-center" id="id2">
+<span id="figure-create-geopackage"></span><img alt="../../../_images/editNewGeoPackage.png" src="../../../_images/editNewGeoPackage.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.16 </span><span class="caption-text">Creating a New GeoPackage layer dialog</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>The first step is to indicate the database file location. This can be done
+by pressing the <span class="guilabel">…</span> button to the right of the
+<span class="guilabel">Database</span> field and select an existing GeoPackage file
+or create a new one. QGIS will automatically add the right extension to
+the name you provide.</p></li>
+<li><p>Give the new layer / table a name (<span class="guilabel">Table name</span>)</p></li>
+<li><p>Define the <span class="guilabel">Geometry type</span>. If not a geometryless layer, you
+can specify whether it should <span class="guilabel">Include Z dimension</span> and/or
+<span class="guilabel">Include M values</span>.</p></li>
+<li><p>Specify the coordinate reference system using the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> button</p></li>
+</ol>
+<p>To add fields to the layer you are creating:</p>
+<ol class="arabic simple">
+<li><p>Enter the <span class="guilabel">Name</span> of the field</p></li>
+<li><p>Select the data <span class="guilabel">Type</span>. Supported types are <span class="guilabel">Text data</span>,
+<span class="guilabel">Whole number</span> (both integer and integer64), <span class="guilabel">Decimal
+number</span>, <span class="guilabel">Date</span> and <span class="guilabel">Date and time</span>,
+<span class="guilabel">Binary (BLOB)</span> and <span class="guilabel">Boolean</span>.</p></li>
+<li><p>Depending on the selected data format, enter the <span class="guilabel">Maximum length</span>
+of values.</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">Add to Fields List</span> button</p></li>
+<li><p>Reproduce the steps above for each field you need to add</p></li>
+<li><p>Once you are happy with the attributes, click <span class="guilabel">OK</span>.
+QGIS will add the new layer to the legend, and you can edit it
+as described in section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">Digitizing an existing layer</span></a>.</p></li>
+</ol>
+<p>By default, when creating a GeoPackage layer, QGIS generates a
+<span class="guilabel">Feature id column</span> called <code class="docutils literal notranslate"><span class="pre">fid</span></code> which acts as the
+primary key of the layer. The name can be changed.
+The geometry field, if availabe, is named <code class="docutils literal notranslate"><span class="pre">geometry</span></code>, and you can
+choose to <span class="guilabel">Create a spatial index</span> on it.
+These options can be found under the <span class="guilabel">Advanced Options</span>
+together with the <span class="guilabel">Layer identifier</span> (short human readable
+name of the layer) and the <span class="guilabel">Layer description</span>.</p>
+<p>Further management of GeoPackage layers can be done with the
+<a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager</span></a>.</p>
+</section>
+<section id="creating-a-new-shapefile-layer">
+<span id="vector-create-shapefile"></span><h3><a class="toc-backref" href="#id13"><span class="section-number">13.2.1.2. </span>Creating a new Shapefile layer</a><a class="headerlink" href="#creating-a-new-shapefile-layer" title="Permalink to this headline"></a></h3>
+<p>To create a new ESRI Shapefile format layer, press the <a class="reference internal" href="../../../_images/mActionNewVectorLayer.png"><img alt="newVectorLayer" src="../../../_images/mActionNewVectorLayer.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New Shapefile Layer…</span> button in the
+<span class="menuselection">Layer ► Create Layer ►</span> menu or from the
+<span class="guilabel">Data Source Manager</span> toolbar.
+The <span class="guilabel">New Shapefile Layer</span> dialog will be displayed as shown in
+<a class="reference internal" href="#figure-create-shapefile"><span class="std std-numref">Fig. 13.17</span></a>.</p>
+<ol class="arabic simple">
+<li><p>Provide a path and file name using the
+<span class="guilabel">…</span> button next to <span class="guilabel">File name</span>. QGIS will
+automatically add the right extension to the name you provide.</p></li>
+<li><p>Next, indicate the <span class="guilabel">File encoding</span> of the data</p></li>
+<li><p>Choose the <span class="guilabel">Geometry type</span> of the layer: No Geometry (resulting
+in a <code class="file docutils literal notranslate"><span class="pre">.DBF</span></code> format file), point, multipoint, line or polygon</p></li>
+<li><p>Specify whether the geometry should have additional dimensions:
+<span class="guilabel">None</span>, <span class="guilabel">Z (+ M values)</span> or <span class="guilabel">M values</span></p></li>
+<li><p>Specify the coordinate reference system using the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> button</p></li>
+</ol>
+<figure class="align-center" id="id3">
+<span id="figure-create-shapefile"></span><img alt="../../../_images/editNewVector.png" src="../../../_images/editNewVector.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.17 </span><span class="caption-text">Creating a new Shapefile layer dialog</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To add fields to the layer you are creating:</p>
+<ol class="arabic simple">
+<li><p>Enter the <span class="guilabel">Name</span> of the field</p></li>
+<li><p>Select the data <span class="guilabel">Type</span>. Only <span class="guilabel">Decimal number</span>,
+<span class="guilabel">Whole number</span>, <span class="guilabel">Text data</span> and <span class="guilabel">Date</span>
+attributes are supported.</p></li>
+<li><p>Depending on the selected data format, enter the <span class="guilabel">Length</span> and
+<span class="guilabel">Precision</span>.</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">Add to Fields List</span> button</p></li>
+<li><p>Reproduce the steps above for each field you need to add</p></li>
+<li><p>Once you are happy with the attributes, click <span class="guilabel">OK</span>.
+QGIS will add the new layer to the legend, and you can edit it
+as described in section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">Digitizing an existing layer</span></a>.</p></li>
+</ol>
+<p>By default, a first integer <code class="docutils literal notranslate"><span class="pre">id</span></code> column is added but can be removed.</p>
+</section>
+<section id="creating-a-new-spatialite-layer">
+<span id="vector-create-spatialite"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">13.2.1.3. </span>Creating a new SpatiaLite layer</a><a class="headerlink" href="#creating-a-new-spatialite-layer" title="Permalink to this headline"></a></h3>
+<p>To create a new SpatiaLite layer, press the <a class="reference internal" href="../../../_images/mActionNewSpatiaLiteLayer.png"><img alt="newSpatiaLiteLayer" src="../../../_images/mActionNewSpatiaLiteLayer.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New SpatiaLite Layer…</span> button in the <span class="menuselection">Layer
+► Create Layer ►</span> menu or from the <span class="guilabel">Data Source Manager</span> toolbar.
+The <span class="guilabel">New SpatiaLite Layer</span> dialog will be displayed as shown in
+<a class="reference internal" href="#figure-create-spatialite"><span class="std std-numref">Fig. 13.18</span></a>.</p>
+<figure class="align-center" id="id4">
+<span id="figure-create-spatialite"></span><img alt="../../../_images/editNewSpatialite.png" src="../../../_images/editNewSpatialite.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.18 </span><span class="caption-text">Creating a New SpatiaLite layer dialog</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>The first step is to indicate the database file location. This can be done
+by pressing the <span class="guilabel">…</span> button to the right of the
+<span class="guilabel">Database</span> field and select an existing SpatiaLite file
+or create a new one. QGIS will automatically add the right extension to
+the name you provide.</p></li>
+<li><p>Provide a name (<span class="guilabel">Layer name</span>) for the new layer</p></li>
+<li><p>Define the <span class="guilabel">Geometry type</span>. If not a geometryless layer, you
+can specify whether it should <span class="guilabel">Include Z dimension</span> and/or
+<span class="guilabel">Include M values</span>.</p></li>
+<li><p>Specify the coordinate reference system using the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> button.</p></li>
+</ol>
+<p>To add fields to the layer you are creating:</p>
+<ol class="arabic simple">
+<li><p>Enter the <span class="guilabel">Name</span> of the field</p></li>
+<li><p>Select the data <span class="guilabel">Type</span>. Supported types are <span class="guilabel">Text data</span>,
+<span class="guilabel">Whole number</span> and <span class="guilabel">Decimal number</span>.</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">Add to Fields List</span> button</p></li>
+<li><p>Reproduce the steps above for each field you need to add</p></li>
+<li><p>Once you are happy with the attributes, click <span class="guilabel">OK</span>.
+QGIS will add the new layer to the legend, and you can edit it
+as described in section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">Digitizing an existing layer</span></a>.</p></li>
+</ol>
+<p>If desired, you can select <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create an autoincrementing
+primary key</span> under the guilabel:<cite>Advanced Options</cite> section. You can also rename
+the <span class="guilabel">Geometry column</span> (<code class="docutils literal notranslate"><span class="pre">geometry</span></code> by default).</p>
+<p>Further management of SpatiaLite layers can be done with <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager</span></a>.</p>
+</section>
+<section id="creating-a-new-mesh-layer">
+<span id="vector-create-mesh"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id15"><span class="section-number">13.2.1.4. </span>Creating a new Mesh layer</a><a class="headerlink" href="#creating-a-new-mesh-layer" title="Permalink to this headline"></a></h3>
+<p>To create a new Mesh layer, press the <a class="reference internal" href="../../../_images/mActionNewMeshLayer.png"><img alt="newMeshLayer" src="../../../_images/mActionNewMeshLayer.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New Mesh Layer…</span> button in the
+<span class="menuselection">Layer ► Create Layer ►</span> menu or from the
+<span class="guilabel">Data Source Manager</span> toolbar.
+The <span class="guilabel">New Mesh Layer</span> dialog will be displayed as shown in
+<a class="reference internal" href="#figure-create-mesh"><span class="std std-numref">Fig. 13.19</span></a>.</p>
+<figure class="align-center" id="id5">
+<span id="figure-create-mesh"></span><img alt="../../../_images/editNewMesh.png" src="../../../_images/editNewMesh.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.19 </span><span class="caption-text">Creating a New Mesh layer dialog</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ol class="arabic">
+<li><p>The first step is to indicate the mesh file location. This can be done
+by pressing the <span class="guilabel">…</span> button to the right of the
+<span class="guilabel">File name</span> field and select an existing mesh file
+or create a new one.</p></li>
+<li><p>Provide a name (<span class="guilabel">Layer name</span>), i.e. the name the layer is
+displayed with in the <span class="guilabel">Layers</span> panel</p></li>
+<li><p>Select the <span class="guilabel">File format</span>: currently supported mesh file formats
+are <code class="docutils literal notranslate"><span class="pre">2DM</span> <span class="pre">Mesh</span> <span class="pre">File</span> <span class="pre">(*.2dm)</span></code>, <code class="docutils literal notranslate"><span class="pre">Selafin</span> <span class="pre">File</span> <span class="pre">(*.slf)</span></code> and <code class="docutils literal notranslate"><span class="pre">UGRID</span> <span class="pre">(*.nc)</span></code>.</p></li>
+<li><p>Indicate the <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">Coordinate Reference System</span></a> to assign
+to the dataset</p></li>
+<li><p>The above steps will generate an empty layer that you can afterwards
+digitize vertices and add dataset groups to.
+It’s however also possible to initialize the layer with an existing mesh layer,
+i.e. populate the new layer with vertices or faces from the other.
+To do so:</p>
+<ol class="arabic simple">
+<li><p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Initialize Mesh using</span></p></li>
+<li><p>and select either a <span class="guilabel">Mesh from the current project</span>
+or <span class="guilabel">Mesh from a file</span>. Informations on the selected mesh file
+are displayed for checkup.</p></li>
+</ol>
+<p>Note that only the frame of the mesh layer is transferred to the new layer;
+their datasets are not copied.</p>
+</li>
+</ol>
+</section>
+<section id="creating-a-new-gpx-layer">
+<span id="vector-create-gpx"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id16"><span class="section-number">13.2.1.5. </span>Creating a new GPX layer</a><a class="headerlink" href="#creating-a-new-gpx-layer" title="Permalink to this headline"></a></h3>
+<p>To create a new GPX file:</p>
+<ol class="arabic simple">
+<li><p>Select <span class="menuselection">Create Layer ►</span> <a class="reference internal" href="../../../_images/create_gpx.png"><img alt="createGPX" src="../../../_images/create_gpx.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New GPX Layer…</span> from the <span class="menuselection">Layer</span> menu.</p></li>
+<li><p>In the dialog, choose where to save the new file, name it and press <span class="guilabel">Save</span>.</p></li>
+<li><p>Three new layers are added to the <span class="guilabel">Layers Panel</span>:</p>
+<ul class="simple">
+<li><p>a point layer to digitize locations (<code class="docutils literal notranslate"><span class="pre">waypoints</span></code>) with fields storing
+the name, elevation, comment, description, source, url and url name</p></li>
+<li><p>a line layer to digitize sequences of locations that make up a planned
+route (<code class="docutils literal notranslate"><span class="pre">routes</span></code>) with fields storing the name, symbol, number, comment,
+description, source, url, url name</p></li>
+<li><p>and a line layer to track the receiver’s movement over time (<code class="docutils literal notranslate"><span class="pre">tracks</span></code>)
+with fields storing the name, symbol, number, comment, description, source,
+url, url name.</p></li>
+</ul>
+</li>
+<li><p>You can now edit any of them as described in section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">Digitizing an existing layer</span></a>.</p></li>
+</ol>
+</section>
+<section id="creating-a-new-temporary-scratch-layer">
+<span id="vector-new-scratch-layer"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id17"><span class="section-number">13.2.1.6. </span>Creating a new Temporary Scratch Layer</a><a class="headerlink" href="#creating-a-new-temporary-scratch-layer" title="Permalink to this headline"></a></h3>
+<p>Temporary Scratch Layers are in-memory layers, meaning that they are not saved
+on disk and will be discarded when QGIS is closed. They can be handy for storing
+features you temporarily need or as intermediate layers during geoprocessing
+operations.</p>
+<p>To create a new Temporary Scratch layer, choose the <a class="reference internal" href="../../../_images/mActionCreateMemory.png"><img alt="createMemory" src="../../../_images/mActionCreateMemory.png" style="width: 1.5em;" /></a>
+<span class="menuselection">New Temporary Scratch Layer…</span> entry in the
+<span class="menuselection">Layer ► Create Layer ►</span> menu or in the <span class="guilabel">Data
+Source Manager</span> toolbar.
+The <span class="guilabel">New Temporary Scratch Layer</span> dialog will be displayed as shown in
+<a class="reference internal" href="#figure-create-temporary"><span class="std std-numref">Fig. 13.20</span></a>. Then:</p>
+<ol class="arabic simple">
+<li><p>Provide the <span class="guilabel">Layer name</span></p></li>
+<li><p>Select the <span class="guilabel">Geometry type</span>. Here you can create a:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">geometry</span></code> type layer, served as simple table,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Point</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiPoint</span></code> layer,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LineString/CompoundCurve</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiLineString/MultiCurve</span></code> layer,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Polygon/CurvePolygon</span></code> or <code class="docutils literal notranslate"><span class="pre">MultiPolygon/MultiSurface</span></code> layer.</p></li>
+</ul>
+</li>
+<li><p>For geometric types, specify the dimensions of the dataset: check whether
+it should <span class="guilabel">Include Z dimension</span> and/or <span class="guilabel">Include M values</span></p></li>
+<li><p>Specify the coordinate reference system using the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> button.</p></li>
+<li><p>Add fields to the layer. Note that unlike many formats, temporary
+layers can be created without any fields. This step is thus optional.</p>
+<ol class="arabic simple">
+<li><p>Enter the <span class="guilabel">Name</span> of the field</p></li>
+<li><p>Select the data <span class="guilabel">Type</span>: <span class="guilabel">Text</span>, <span class="guilabel">Whole number</span>,
+<span class="guilabel">Decimal number</span>, <span class="guilabel">Boolean</span>, <span class="guilabel">Date</span>,
+<span class="guilabel">Time</span>, <span class="guilabel">Date &amp; Time</span> and <span class="guilabel">Binary (BLOB)</span>
+are supported.</p></li>
+<li><p>Depending on the selected data format, enter the <span class="guilabel">Length</span> and
+<span class="guilabel">Precision</span></p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <span class="guilabel">Add to Fields List</span> button</p></li>
+<li><p>Repeat the steps above for each field you need to add</p></li>
+</ol>
+</li>
+<li><p>Once you are happy with the settings, click <span class="guilabel">OK</span>.
+QGIS will add the new layer to the <span class="guilabel">Layers</span> panel, and you can edit
+it as described in section <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#sec-edit-existing-layer"><span class="std std-ref">Digitizing an existing layer</span></a>.</p></li>
+</ol>
+<figure class="align-center" id="id6">
+<span id="figure-create-temporary"></span><img alt="../../../_images/editNewTemporaryLayer.png" src="../../../_images/editNewTemporaryLayer.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.20 </span><span class="caption-text">Creating a new Temporary Scratch layer dialog</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can also create prepopulated temporary scratch layers using e.g. the
+clipboard (see <a class="reference internal" href="#paste-into-layer"><span class="std std-ref">Creating new layers from the clipboard</span></a>) or as a result of a <a class="reference internal" href="../processing_algs/index.html#processing-algs"><span class="std std-ref">Processing
+algorithm</span></a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Permanently store a memory layer on disk</strong></p>
+<p>To avoid data loss when closing a project with temporary scratch layers,
+you can save these layers to any vector format supported by QGIS:</p>
+<ul class="simple">
+<li><p>clicking the <a class="reference internal" href="../../../_images/mIndicatorMemory.png"><img alt="indicatorMemory" src="../../../_images/mIndicatorMemory.png" style="width: 1.5em;" /></a> indicator icon next to the layer;</p></li>
+<li><p>selecting the <span class="guilabel">Make permanent</span> entry in the layer contextual menu;</p></li>
+<li><p>using the <span class="menuselection">Export ►</span> entry
+from the contextual menu or the <span class="menuselection">Layer ► Save As…</span> menu.</p></li>
+</ul>
+<p>Each of these commands opens the <span class="guilabel">Save Vector Layer as</span> dialog
+described in the <a class="reference internal" href="#general-saveas"><span class="std std-ref">Creating new layers from an existing layer</span></a> section and the saved file
+replaces the temporary one in the <span class="guilabel">Layers</span> panel.</p>
+</div>
+</section>
+</section>
+<section id="creating-new-layers-from-an-existing-layer">
+<span id="general-saveas"></span><span id="index-7"></span><h2><a class="toc-backref" href="#id18"><span class="section-number">13.2.2. </span>Creating new layers from an existing layer</a><a class="headerlink" href="#creating-new-layers-from-an-existing-layer" title="Permalink to this headline"></a></h2>
+<p>Both raster and vector layers can be saved in a different format and/or
+reprojected to a different coordinate reference system (CRS) using the
+<span class="menuselection">Layer ► Save As…</span> menu or right-clicking on the
+layer in the <span class="guilabel">Layers panel</span> and selecting:</p>
+<ul class="simple">
+<li><p><span class="menuselection">Export ► Save As…</span> for raster layers</p></li>
+<li><p><span class="menuselection">Export ► Save Features As…</span> or
+<span class="menuselection">Export ► Save Selected Features As…</span> for vector
+layers.</p></li>
+<li><p>Drag and drop the layer from the layer tree to the PostGIS entry in the
+<span class="guilabel">Browser Panel</span>. Note that you must have a PostGIS
+connection in the <span class="guilabel">Browser Panel</span>.</p></li>
+</ul>
+<section id="common-parameters">
+<h3><a class="toc-backref" href="#id19"><span class="section-number">13.2.2.1. </span>Common parameters</a><a class="headerlink" href="#common-parameters" title="Permalink to this headline"></a></h3>
+<p>The <span class="guilabel">Save Layer as…</span> dialog shows several parameters to change the
+behavior when saving the layer.
+Among the common parameters for raster and vector are:</p>
+<ul class="simple">
+<li><p><span class="guilabel">File name</span>: the location of the file on the disk. It can refer to
+the output layer or to a container that stores the layer (for
+example database-like formats such as GeoPackage, SpatiaLite or Open Document
+Spreadsheets).</p></li>
+<li><p><span class="guilabel">CRS</span>: can be changed to reproject the data</p></li>
+<li><p><span class="guilabel">Extent</span> (possible values are <strong>layer</strong>, <strong>Map view</strong> or
+<strong>user-defined</strong> extent)</p></li>
+<li><p><span class="guilabel">Add saved file to map</span>: to add the new layer to the canvas</p></li>
+</ul>
+<p>However, some parameters are specific to raster and vector formats:</p>
+</section>
+<section id="raster-specific-parameters">
+<h3><a class="toc-backref" href="#id20"><span class="section-number">13.2.2.2. </span>Raster specific parameters</a><a class="headerlink" href="#raster-specific-parameters" title="Permalink to this headline"></a></h3>
+<p>Depending on the format of export, some of these options may not be available:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Output mode</span> (it can be <strong>raw data</strong> or <strong>rendered image</strong>)</p></li>
+<li><p><span class="guilabel">Format</span>: exports to any raster format GDAL can write to, such as
+GeoTiff, GeoPackage, MBTiles, Geospatial PDF, SAGA GIS Binary Grid,
+Intergraph Raster, ESRI .hdr Labelled…</p></li>
+<li><p><span class="guilabel">Resolution</span></p></li>
+<li><p><span class="guilabel">Create Options</span>: use advanced options (file compression, block
+sizes, colorimetry…) when generating files, either from the <a class="reference internal" href="../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">predefined
+create profiles</span></a> related to the output format or by
+setting each parameter.</p></li>
+<li><p><span class="guilabel">Pyramids</span> creation</p></li>
+<li><p><span class="guilabel">VRT Tiles</span> in case you opted to <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create VRT</span></p></li>
+<li><p><span class="guilabel">No data values</span></p></li>
+</ul>
+<figure class="align-center" id="id7">
+<span id="figure-save-raster"></span><img alt="../../../_images/saveasraster.png" src="../../../_images/saveasraster.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.21 </span><span class="caption-text">Saving as a new raster layer</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="vector-specific-parameters">
+<h3><a class="toc-backref" href="#id21"><span class="section-number">13.2.2.3. </span>Vector specific parameters</a><a class="headerlink" href="#vector-specific-parameters" title="Permalink to this headline"></a></h3>
+<p>Depending on the format of export, some of these options may be available:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Format</span>: exports to any vector format GDAL can write to, such as
+GeoPackage, GML, ESRI Shapefile, AutoCAD DXF, ESRI FileGDB, Mapinfo TAB or
+MIF, SpatiaLite, CSV, KML, ODS, …</p></li>
+<li><p><span class="guilabel">Layer name</span>: available when the <span class="guilabel">File name</span> refers to a
+container-like format, this entry represents the output layer.</p></li>
+<li><p><span class="guilabel">Encoding</span></p></li>
+<li><p><span class="guilabel">Save only selected features</span></p></li>
+<li><p><span class="guilabel">Select fields to export and their export options</span>. In case you set
+your fields behavior with some <a class="reference internal" href="../working_with_vector/vector_properties.html#configure-field"><span class="std std-ref">Edit widgets</span></a>, e.g.
+<code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">map</span></code>, you can keep the displayed values in the layer by checking
+<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Replace all selected raw fields values by displayed
+values</span>.</p></li>
+<li><p><span class="guilabel">Persist layer metadata</span>: ensures that any layer <a class="reference internal" href="../working_with_vector/vector_properties.html#vectormetadatamenu"><span class="std std-ref">metadata</span></a> present in the source layer will be copied and stored:</p>
+<ul>
+<li><p>in the newly created layer, if the output is of GeoPackage format</p></li>
+<li><p>as a <code class="file docutils literal notranslate"><span class="pre">.qmd</span></code> file along with the output layer, for other formats.
+Note that file-based formats supporting more than one dataset
+(e.g. SpatiaLite, DXF,…) may have unintended behavior.</p></li>
+</ul>
+</li>
+<li><p><span class="guilabel">Symbology export</span>: can be used mainly for DXF export and for all
+file formats who manage OGR feature styles (see note below) as DXF, KML, tab
+file formats:</p>
+<ul>
+<li><p><strong>No symbology</strong>: default style of the application that reads the data</p></li>
+<li><p><strong>Feature symbology</strong>: save style with OGR Feature Styles (see note below)</p></li>
+<li><p><strong>Symbol Layer symbology</strong>: save with OGR Feature Styles (see note below)
+but export the same geometry multiple times if there are multiple symbology
+symbol layers used</p></li>
+<li><p>A <strong>Scale</strong> value can be applied to the latest options</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note" id="ogr-features-note">
+<p class="admonition-title">Note</p>
+<p><em>OGR Feature Styles</em> are a way to store style directly in
+the data as a hidden attribute. Only some formats can handle this kind of
+information. KML, DXF and TAB file formats are such formats. For advanced
+details, you can read the <a class="reference external" href="https://gdal.org/user/ogr_feature_style.html">OGR Feature Styles specification</a> document.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Geometry</span>: you can configure the geometry capabilities of the
+output layer</p>
+<ul>
+<li><p><span class="guilabel">geometry type</span>: keeps the original geometry of the features when
+set to <strong>Automatic</strong>, otherwise removes or overrides it with any type. You
+can add an empty geometry column to an attribute table and remove the
+geometry column of a spatial layer.</p></li>
+<li><p><span class="guilabel">Force multi-type</span>: forces creation of multi-geometry features in
+the layer.</p></li>
+<li><p><span class="guilabel">Include z-dimension</span> to geometries.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Overriding layer geometry type makes it possible to do things like save a
+geometryless table (e.g. <code class="file docutils literal notranslate"><span class="pre">.csv</span></code> file) into a shapefile WITH any type of
+geometry (point, line, polygon), so that geometries can then be manually added
+to rows with the <a class="reference internal" href="../../../_images/mActionAddPart.png"><img alt="addPart" src="../../../_images/mActionAddPart.png" style="width: 1.5em;" /></a> <sup>Add Part</sup> tool.</p>
+</div>
+<ul class="simple">
+<li><p><span class="guilabel">Datasource Options</span>, <span class="guilabel">Layer Options</span> or
+<span class="guilabel">Custom Options</span> which allow you to configure advanced parameters
+depending on the output format. Some are described in <a class="reference internal" href="supported_data.html#supported-format"><span class="std std-ref">Exploring Data Formats and Fields</span></a>
+but for full details, see the <a class="reference external" href="https://gdal.org">GDAL</a> driver documentation.
+Each file format has its own custom parameters, e.g. for the <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code> format
+have a look at the
+<a class="reference external" href="https://gdal.org/drivers/vector/geojson.html#layer-creation-options">GDAL GeoJSON</a>
+documentation.</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<span id="figure-save-vector"></span><img alt="../../../_images/saveasvector.png" src="../../../_images/saveasvector.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.22 </span><span class="caption-text">Saving as a new vector layer</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p id="index-8">When saving a vector layer into an existing file, depending on the capabilities
+of the output format (Geopackage, SpatiaLite, FileGDB…), the user can
+decide whether to:</p>
+<ul class="simple">
+<li><p>overwrite the whole file</p></li>
+<li><p>overwrite only the target layer (the layer name is configurable)</p></li>
+<li><p>append features to the existing target layer</p></li>
+<li><p>append features, add new fields if there are any.</p></li>
+</ul>
+<p>For formats like ESRI Shapefile, MapInfo .tab, feature append is also available.</p>
+</section>
+</section>
+<section id="creating-new-dxf-files">
+<span id="create-dxf-files"></span><span id="index-9"></span><h2><a class="toc-backref" href="#id22"><span class="section-number">13.2.3. </span>Creating new DXF files</a><a class="headerlink" href="#creating-new-dxf-files" title="Permalink to this headline"></a></h2>
+<p>Besides the <span class="guilabel">Save As…</span> dialog which provides options to export a
+single layer to another format, including <code class="file docutils literal notranslate"><span class="pre">*.DXF</span></code>, QGIS provides another
+tool to export multiple layers as a single DXF layer. It’s accessible in the
+<span class="menuselection">Project ► Import/Export ► Export Project to DXF…</span> menu.</p>
+<p>In the <span class="guilabel">DXF Export</span> dialog:</p>
+<ol class="arabic">
+<li><p>Provide the destination file.</p></li>
+<li><p>Choose the symbology mode and scale (see the <a class="reference internal" href="#ogr-features-note"><span class="std std-ref">OGR Feature Styles</span></a> note), if applicable.</p></li>
+<li><p>Select the data <span class="guilabel">Encoding</span>.</p></li>
+<li><p>Select the <span class="guilabel">CRS</span> to apply: the selected layers will be reprojected
+to the given CRS.</p></li>
+<li><p>Select the layers to include in the DXF files either by checking them in the
+table widget or automatically picking them from an existing <a class="reference internal" href="../introduction/general_tools.html#map-themes"><span class="std std-ref">map theme</span></a>.
+The <span class="guilabel">Select All</span> and <span class="guilabel">Deselect All</span> buttons
+can help to quickly set the data to export.</p>
+<p>For each layer, you can choose whether to export all the features in a
+single DXF layer or rely on a field whose values are used to split the
+features into layers in the DXF output.</p>
+</li>
+</ol>
+<p>Optionally, you can also choose to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use the layer title as name if set</span> instead of the
+layer name itself;</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Export features intersecting the current map extent</span>;</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Force 2d output (eg. to support polyline width)</span>;</p></li>
+<li><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Export label as MTEXT elements</span> or TEXT elements.</p></li>
+</ul>
+<figure class="align-center" id="id9">
+<span id="figure-create-dxf"></span><img alt="../../../_images/export_dxf.png" src="../../../_images/export_dxf.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.23 </span><span class="caption-text">Exporting a project to DXF dialog</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="creating-new-layers-from-the-clipboard">
+<span id="paste-into-layer"></span><h2><a class="toc-backref" href="#id23"><span class="section-number">13.2.4. </span>Creating new layers from the clipboard</a><a class="headerlink" href="#creating-new-layers-from-the-clipboard" title="Permalink to this headline"></a></h2>
+<p>Features that are on the clipboard can be pasted into a new layer. To do this,
+Select some features, copy them to the clipboard, and then paste them into a
+new layer using <span class="menuselection">Edit ► Paste Features as ►</span> and choosing:</p>
+<ul class="simple">
+<li><p><span class="guilabel">New Vector Layer…</span>: the <span class="guilabel">Save vector layer as…</span>
+dialog appears (see <a class="reference internal" href="#general-saveas"><span class="std std-ref">Creating new layers from an existing layer</span></a> for parameters)</p></li>
+<li><p>or <span class="guilabel">Temporary Scratch Layer…</span>: you need to provide a name
+for the layer</p></li>
+</ul>
+<p>A new layer, filled with selected features and their attributes is
+created (and added to map canvas).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Creating layers from the clipboard is possible with features
+selected and copied within QGIS as well as features from another
+application, as long as their geometries are defined using well-known
+text (WKT).</p>
+</div>
+</section>
+<section id="creating-virtual-layers">
+<span id="vector-virtual-layers"></span><span id="index-10"></span><h2><a class="toc-backref" href="#id24"><span class="section-number">13.2.5. </span>Creating virtual layers</a><a class="headerlink" href="#creating-virtual-layers" title="Permalink to this headline"></a></h2>
+<p>A virtual layer is a special kind of vector layer.
+It allows you to define a layer as the result of an
+SQL query involving any number of other vector layers that
+QGIS is able to open. Virtual layers do not carry
+data by themselves and can be seen as views.</p>
+<p>To create a virtual layer, open the virtual layer creation dialog by:</p>
+<ul class="simple">
+<li><p>choosing the <a class="reference internal" href="../../../_images/mActionAddVirtualLayer.png"><img alt="addVirtualLayer" src="../../../_images/mActionAddVirtualLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Add/Edit Virtual Layer</span> entry
+in the <span class="menuselection">Layer ► Add Layer ►</span> menu;</p></li>
+<li><p>enabling the <a class="reference internal" href="../../../_images/mActionAddVirtualLayer.png"><img alt="addVirtualLayer" src="../../../_images/mActionAddVirtualLayer.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Virtual Layer</span> tab in the
+<span class="guilabel">Data Source Manager</span> dialog;</p></li>
+<li><p>or using the <span class="guilabel">DB Manager</span> dialog tree.</p></li>
+</ul>
+<p>The dialog allows you to specify a <span class="guilabel">Layer name</span> and an SQL
+<span class="guilabel">Query</span>. The query can use the name (or id) of loaded vector
+layers as tables, as well as their field names as columns.</p>
+<p>For example, if you have a layer called <code class="docutils literal notranslate"><span class="pre">airports</span></code>, you can create a new
+virtual layer called <code class="docutils literal notranslate"><span class="pre">public_airports</span></code> with an SQL query like:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">airports</span>
+<span class="k">WHERE</span> <span class="n">USE</span> <span class="o">=</span> <span class="ss">&quot;Civilian/Public&quot;</span>
+</pre></div>
+</div>
+<p>The SQL query will be executed, regardless of the underlying provider of the
+<code class="docutils literal notranslate"><span class="pre">airports</span></code> layer, even if this provider does not directly support SQL
+queries.</p>
+<figure class="align-center" id="id10">
+<img alt="../../../_images/create_virtual_layers.png" src="../../../_images/create_virtual_layers.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.24 </span><span class="caption-text">Create virtual layers dialog</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Joins and complex queries can also be created, for example, to join airports
+and country information:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">airports</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">country</span><span class="p">.</span><span class="n">population</span>
+<span class="k">FROM</span> <span class="n">airports</span>
+<span class="k">JOIN</span> <span class="n">country</span>
+<span class="k">ON</span> <span class="n">airports</span><span class="p">.</span><span class="n">country</span> <span class="o">=</span> <span class="n">country</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s also possible to create virtual layers using the SQL window of
+<a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager Plugin</span></a>.</p>
+</div>
+<section id="embedding-layers-for-use-in-queries">
+<h3><a class="toc-backref" href="#id25"><span class="section-number">13.2.5.1. </span>Embedding layers for use in queries</a><a class="headerlink" href="#embedding-layers-for-use-in-queries" title="Permalink to this headline"></a></h3>
+<p>Besides the vector layers available in the map canvas, the user can add layers
+to the <span class="guilabel">Embedded layers</span> list, which can be used in queries
+without the need to have them showing in the map canvas or Layers panel.</p>
+<p>To embed a layer, click <span class="guilabel">Add</span> and provide the <span class="guilabel">Local name</span>,
+<span class="guilabel">Provider</span>, <span class="guilabel">Encoding</span> and the path to the
+<span class="guilabel">Source</span>.</p>
+<p>The <span class="guilabel">Import</span> button allows adding layers in the map canvas into
+the Embedded layers list. Those layers can then be removed from the
+Layers panel without breaking existent queries.</p>
+</section>
+<section id="supported-query-language">
+<h3><a class="toc-backref" href="#id26"><span class="section-number">13.2.5.2. </span>Supported query language</a><a class="headerlink" href="#supported-query-language" title="Permalink to this headline"></a></h3>
+<p>The underlying engine uses SQLite and SpatiaLite to operate.</p>
+<p>It means you can use all of the SQL your local installation of SQLite
+understands.</p>
+<p>Functions from SQLite and spatial functions from SpatiaLite
+can also be used in a virtual layer query. For instance, creating a point
+layer out of an attribute-only layer can be done with a query similar to:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">MakePoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">4326</span><span class="p">)</span> <span class="k">as</span> <span class="n">geometry</span>
+<span class="k">FROM</span> <span class="n">coordinates</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../working_with_vector/functions_list.html#functions-list"><span class="std std-ref">Functions of QGIS expressions</span></a> can also be used in a
+virtual layer query.</p>
+<p>To refer the geometry column of a layer, use the name <code class="docutils literal notranslate"><span class="pre">geometry</span></code>.</p>
+<p>Contrary to a pure SQL query, all the fields of a virtual layer query must
+be named. Don’t forget to use the <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword to name your columns if they
+are the result of a computation or a function call.</p>
+</section>
+<section id="performance-issues">
+<h3><a class="toc-backref" href="#id27"><span class="section-number">13.2.5.3. </span>Performance issues</a><a class="headerlink" href="#performance-issues" title="Permalink to this headline"></a></h3>
+<p>With default parameters, the virtual layer engine will try its best to
+detect the type of the different columns of the query, including the type of the
+geometry column if one is present.</p>
+<p>This is done by introspecting the query when possible or by fetching the first
+row of the query (LIMIT 1) as a last resort.
+Fetching the first row of the result just to create the layer may be undesirable
+for performance reasons.</p>
+<p>The creation dialog parameters:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Unique identifier column</span>: specifies a field
+of the query that represents unique integer values that QGIS can
+use as row identifiers.
+By default, an autoincrementing integer value is used.
+Defining a unique identifier column speeds up the selection of
+rows by id.</p></li>
+<li><p><span class="guilabel">No geometry</span>: forces the virtual layer to ignore
+any geometry field. The resulting layer is an attribute-only layer.</p></li>
+<li><p>Geometry <span class="guilabel">Column</span>: specifies the name of the geometry column.</p></li>
+<li><p>Geometry <span class="guilabel">Type</span>: specifies the type of the geometry.</p></li>
+<li><p>Geometry <span class="guilabel">CRS</span>: specifies the
+coordinate reference system of the virtual layer.</p></li>
+</ul>
+</section>
+<section id="special-comments">
+<h3><a class="toc-backref" href="#id28"><span class="section-number">13.2.5.4. </span>Special comments</a><a class="headerlink" href="#special-comments" title="Permalink to this headline"></a></h3>
+<p>The virtual layer engine tries to determine the type of each column of the
+query. If it fails, the first row of the query is fetched to determine
+column types.</p>
+<p>The type of a particular column can be specified directly in the query by
+using some special comments.</p>
+<p>The syntax is the following: <code class="docutils literal notranslate"><span class="pre">/*:type*/</span></code>. It has to be placed just after
+the name of a column. <code class="docutils literal notranslate"><span class="pre">type</span></code> can be either <code class="docutils literal notranslate"><span class="pre">int</span></code> for integers, <code class="docutils literal notranslate"><span class="pre">real</span></code>
+for floating point numbers or <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
+<p>For instance:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">id</span><span class="o">+</span><span class="mi">1</span> <span class="k">as</span> <span class="n">nid</span> <span class="cm">/*:int*/</span>
+<span class="k">FROM</span> <span class="k">table</span>
+</pre></div>
+</div>
+<p>The type and coordinate reference system of the geometry column can also be set
+thanks to special comments with the following syntax <code class="docutils literal notranslate"><span class="pre">/*:gtype:srid*/</span></code> where
+<code class="docutils literal notranslate"><span class="pre">gtype</span></code> is the geometry type (<code class="docutils literal notranslate"><span class="pre">point</span></code>, <code class="docutils literal notranslate"><span class="pre">linestring</span></code>, <code class="docutils literal notranslate"><span class="pre">polygon</span></code>,
+<code class="docutils literal notranslate"><span class="pre">multipoint</span></code>, <code class="docutils literal notranslate"><span class="pre">multilinestring</span></code> or <code class="docutils literal notranslate"><span class="pre">multipolygon</span></code>) and <code class="docutils literal notranslate"><span class="pre">srid</span></code> an
+integer representing the EPSG code of a coordinate reference system.</p>
+</section>
+<section id="use-of-indexes">
+<h3><a class="toc-backref" href="#id29"><span class="section-number">13.2.5.5. </span>Use of indexes</a><a class="headerlink" href="#use-of-indexes" title="Permalink to this headline"></a></h3>
+<p>When requesting a layer through a virtual layer, the source layer indices
+will be used in the following ways:</p>
+<ul class="simple">
+<li><p>if an <code class="docutils literal notranslate"><span class="pre">=</span></code> predicate is used on the primary key column of the layer, the
+underlying data provider will be asked for a particular id (FilterFid)</p></li>
+<li><p>for any other predicates (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, etc.) or on a column without
+a primary key, a request built from an expression will be used to request the
+underlying vector data provider. It means indexes may be used on database
+providers if they exist.</p></li>
+</ul>
+<p>A specific syntax exists to handle spatial predicates in requests and triggers
+the use of a spatial index: a hidden column named <code class="docutils literal notranslate"><span class="pre">_search_frame_</span></code> exists
+for each virtual layer. This column can be compared for equality to a bounding
+box. Example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="o">*</span>
+<span class="k">FROM</span> <span class="n">vtab</span>
+<span class="k">WHERE</span> <span class="n">_search_frame_</span><span class="o">=</span><span class="n">BuildMbr</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">.</span><span class="mi">10</span><span class="p">,</span><span class="mi">49</span><span class="p">.</span><span class="mi">38</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span><span class="mi">49</span><span class="p">.</span><span class="mi">99</span><span class="p">,</span><span class="mi">4326</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Spatial binary predicates like <code class="docutils literal notranslate"><span class="pre">ST_Intersects</span></code> are sped up significantly
+when used in conjunction with this spatial index syntax.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="opening_data.html" class="btn btn-neutral float-left" title="13.1. Opening Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="supported_data.html" class="btn btn-neutral float-right" title="13.3. Exploring Data Formats and Fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/managing_data_source/create_layers.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/managing_data_source/create_layers.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/create_layers.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/managing_data_source/create_layers.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/managing_data_source/create_layers.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/managing_data_source/create_layers.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/managing_data_source/create_layers.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/managing_data_source/create_layers.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/managing_data_source/create_layers.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/managing_data_source/create_layers.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/managing_data_source/create_layers.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/managing_data_source/create_layers.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/managing_data_source/create_layers.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/managing_data_source/create_layers.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

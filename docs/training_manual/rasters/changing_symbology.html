@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7.2. Lesson: Changing Raster Symbology &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/changing_symbology.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="7.3. Lesson: Terrain Analysis" href="terrain_analysis.html" />
+    <link rel="prev" title="7.1. Lesson: Working with Raster Data" href="data_manipulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/changing_symbology.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. Module: Rasters</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_manipulation.html">7.1. Lesson: Working with Raster Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">7.2. Lesson: Changing Raster Symbology</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty">7.2.1.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-changing-raster-layer-symbology">7.2.2.  Follow Along: Changing Raster Layer Symbology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-singleband-gray">7.2.3.  Follow Along: Singleband gray</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-singleband-pseudocolor">7.2.4.  Follow Along: Singleband pseudocolor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fa-changing-the-transparency">7.2.5. Follow Along: Changing the transparency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">7.2.6. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference">7.2.7. Reference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">7.2.8. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="terrain_analysis.html">7.3. Lesson: Terrain Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7. </span>Module: Rasters</a> &raquo;</li>
+      <li><span class="section-number">7.2. </span>Lesson: Changing Raster Symbology</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/rasters/changing_symbology.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="data_manipulation.html" class="btn btn-neutral float-left" title="7.1. Lesson: Working with Raster Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="7.3. Lesson: Terrain Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-changing-raster-symbology">
+<h1><span class="section-number">7.2. </span>Lesson: Changing Raster Symbology<a class="headerlink" href="#ls-changing-raster-symbology" title="Permalink to this headline"></a></h1>
+<p>Not all raster data are aerial photos.
+There are many other forms of raster data, and in many of those cases,
+it is essential to symbolize the them so that they becomes properly
+visible and useful.</p>
+<p><strong>The goal for this lesson:</strong> To change the symbology for a raster
+layer.</p>
+<section id="basic-ty">
+<h2><span class="section-number">7.2.1. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself<a class="headerlink" href="#basic-ty" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Use the <span class="guilabel">Browser</span> Panel to load <code class="file docutils literal notranslate"><span class="pre">srtm_41_19.tif</span></code>,
+found under <code class="file docutils literal notranslate"><span class="pre">exercise_data/raster/SRTM/</span></code></p></li>
+<li><p>Zoom to the extent of this layer by right-clicking on it in the
+<span class="guilabel">Layers panel</span> and selecting <span class="guilabel">Zoom to Layer</span>.</p></li>
+</ol>
+<p>This dataset is a <em>Digital Elevation Model (DEM)</em>.
+It is a map of the elevation (altitude) of the terrain, allowing us to
+see where the mountains and valleys are, for example.</p>
+<p>While each pixel of the dataset of the previous section contained
+color information, in a <em>DEM</em>, each pixel contains elevation values.</p>
+<p>Once the DEM is loaded, you will notice that it is a grayscale
+representation:</p>
+<figure class="align-center">
+<img alt="../../../_images/greyscale_dem.png" src="../../../_images/greyscale_dem.png" />
+</figure>
+<p>QGIS has automatically applied a stretch to the pixel values of the
+image for visualization purposes, and we will learn more about how
+this works as we continue.</p>
+</section>
+<section id="basic-fa-changing-raster-layer-symbology">
+<h2><span class="section-number">7.2.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Changing Raster Layer Symbology<a class="headerlink" href="#basic-fa-changing-raster-layer-symbology" title="Permalink to this headline"></a></h2>
+<p>You have two different options to change the raster symbology:</p>
+<ol class="arabic simple">
+<li><p>Within the <span class="guilabel">Layer Properties</span> dialog, by right-clicking
+on the layer in the Layer tree and selecting the
+<span class="guilabel">Properties</span> option.
+Then switch to the <span class="guilabel">Symbology</span> tab</p></li>
+<li><p>By clicking on the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <sup>Open the Layer Styling panel</sup>
+button right above the <span class="guilabel">Layers</span> panel (shortcut
+<kbd class="kbd docutils literal notranslate">F7</kbd>).
+This will open the <span class="guilabel">Layer Styling</span> panel, where you can
+switch to the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <sup>Symbology</sup> tab.</p></li>
+</ol>
+<p>Choose the method you prefer to work with.</p>
+</section>
+<section id="basic-fa-singleband-gray">
+<h2><span class="section-number">7.2.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Singleband gray<a class="headerlink" href="#basic-fa-singleband-gray" title="Permalink to this headline"></a></h2>
+<p>When you load a raster file, if it is not a photo image like the ones
+of the previous section, the default style is set to a grayscale
+gradient.</p>
+<p>Let’s explore some of the features of this renderer.</p>
+<figure class="align-center">
+<img alt="../../../_images/dem_layer_properties.png" src="../../../_images/dem_layer_properties.png" />
+</figure>
+<p>The default <span class="guilabel">Color gradient</span> is set to <code class="docutils literal notranslate"><span class="pre">Black</span> <span class="pre">to</span> <span class="pre">white</span></code>,
+meaning that low pixel values are black and while high values are
+white.
+Try to invert this setting to <code class="docutils literal notranslate"><span class="pre">White</span> <span class="pre">to</span> <span class="pre">black</span></code> and see the results.</p>
+<p>Very important is the <span class="guilabel">Contrast enhancement</span> parameter: by
+default it is set to <code class="docutils literal notranslate"><span class="pre">Stretch</span> <span class="pre">to</span> <span class="pre">MinMax</span></code> meaning that the pixel
+values are stretched to the minimum and maximum values.</p>
+<p>Look at the difference with the enhancement (left) and without (right):</p>
+<figure class="align-center">
+<img alt="../../../_images/enhancement.png" src="../../../_images/enhancement.png" />
+</figure>
+<p>But what are the minimum and maximum values that should be used for
+the stretch?
+The ones that are currently under
+<span class="guilabel">Min / Max Value Settings</span>.
+There are many ways to calculate the minimum and maximum values and
+use them for the stretch:</p>
+<ol class="arabic simple">
+<li><p><strong>User Defined</strong>: you enter the <span class="guilabel">Min</span> and <span class="guilabel">Max</span>
+values manually</p></li>
+<li><p><strong>Cumulative count cut</strong>: this is useful when you have some extreme
+low or high values. It <em>cuts</em> the <code class="docutils literal notranslate"><span class="pre">2%</span></code> (or the value you choose)
+of these values</p></li>
+<li><p><strong>Min / max</strong>: the <em>Real</em> or <em>Estimated</em> minimum and maximum values
+of the raster</p></li>
+<li><p><strong>Mean +/- standard deviation</strong>: the values will be calculated
+according to the mean value and the standard deviation</p></li>
+</ol>
+</section>
+<section id="basic-fa-singleband-pseudocolor">
+<h2><span class="section-number">7.2.4. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Singleband pseudocolor<a class="headerlink" href="#basic-fa-singleband-pseudocolor" title="Permalink to this headline"></a></h2>
+<p>Grayscales are not always great styles for raster layers.
+Let’s try to make the DEM more colorful.</p>
+<ul class="simple">
+<li><p>Change the <span class="guilabel">Render type</span> to
+<span class="guilabel">Singleband pseudocolor</span>.
+If you don’t like the default colors loaded, select another
+<span class="guilabel">Color ramp</span></p></li>
+<li><p>Click the <span class="guilabel">Classify</span> button to generate a new color
+classification</p></li>
+<li><p>If it is not generated automatically click on the <span class="guilabel">OK</span>
+button to apply this classification to the DEM</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/dem_pseudocolor_properties.png" src="../../../_images/dem_pseudocolor_properties.png" />
+</figure>
+<p>You’ll see the raster looking like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/pseudocolor_raster.png" src="../../../_images/pseudocolor_raster.png" />
+</figure>
+<p>This is an interesting way of looking at the DEM.
+You will now see that the values of the raster are again properly
+displayed, going from blue for the lower areas to red for the higher
+ones.</p>
+</section>
+<section id="fa-changing-the-transparency">
+<h2><span class="section-number">7.2.5. </span>Follow Along: Changing the transparency<a class="headerlink" href="#fa-changing-the-transparency" title="Permalink to this headline"></a></h2>
+<p>Sometimes changing the transparency of the whole raster layer can help
+you to see other layers covered by the raster itself and better
+understand the study area.</p>
+<p>To change the transparency of the whole raster switch to the
+<span class="guilabel">Transparency</span> tab and use the slider of the
+<span class="guilabel">Global Opacity</span> to lower the opacity:</p>
+<figure class="align-center">
+<img alt="../../../_images/global_transparency.png" src="../../../_images/global_transparency.png" />
+</figure>
+<p>More interesting is changing the transparency for some pixel values.
+For example in the raster we used you can see a homogeneous color at
+the corners.
+To set these pixels as transparent, go to
+<span class="guilabel">Custom Transparency Options</span> in the
+<span class="guilabel">Transparency</span> tab.</p>
+<ul>
+<li><p>By clicking on the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add values manually</sup> button,
+you can add a range of values and set their transparency percentage</p></li>
+<li><p>For single values the <a class="reference internal" href="../../../_images/mActionContextHelp.png"><img alt="contextHelp" src="../../../_images/mActionContextHelp.png" style="width: 1.5em;" /></a> <sup>Add values from display</sup>
+button is more useful</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionContextHelp.png"><img alt="contextHelp" src="../../../_images/mActionContextHelp.png" style="width: 1.5em;" /></a> <sup>Add values from display</sup> button.
+The dialog disappears, and you can interact with the map.</p></li>
+<li><p>Click on the homogeneous color in a corner of the DEM</p></li>
+<li><p>You will see that the transparency table will be filled with the
+clicked values:</p>
+<figure class="align-center">
+<img alt="../../../_images/click_transparency.png" src="../../../_images/click_transparency.png" />
+</figure>
+</li>
+<li><p>Click on <span class="guilabel">OK</span> to close the dialog and see the changes.</p>
+<figure class="align-center">
+<img alt="../../../_images/good_raster.png" src="../../../_images/good_raster.png" />
+</figure>
+<p>See? The corners are now 100% transparent.</p>
+</li>
+</ul>
+</section>
+<section id="ic">
+<h2><span class="section-number">7.2.6. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>These are some the basic functions to get you started with raster
+symbology.
+QGIS also gives you many other options, such as symbolizing a layer
+using paletted/unique values, representing different bands with
+different colors in a multispectral image, or making an automatic
+hillshade effect (useful only with DEM raster files).</p>
+</section>
+<section id="reference">
+<h2><span class="section-number">7.2.7. </span>Reference<a class="headerlink" href="#reference" title="Permalink to this headline"></a></h2>
+<p>The SRTM dataset was obtained from
+<a class="reference external" href="http://srtm.csi.cgiar.org/">http://srtm.csi.cgiar.org/</a></p>
+</section>
+<section id="wn">
+<h2><span class="section-number">7.2.8. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now that we can see our data displayed properly, let’s investigate how we can
+analyze it further.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_manipulation.html" class="btn btn-neutral float-left" title="7.1. Lesson: Working with Raster Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terrain_analysis.html" class="btn btn-neutral float-right" title="7.3. Lesson: Terrain Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/rasters/changing_symbology.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/rasters/changing_symbology.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/rasters/changing_symbology.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/rasters/changing_symbology.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/rasters/changing_symbology.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/rasters/changing_symbology.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/rasters/changing_symbology.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/rasters/changing_symbology.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/rasters/changing_symbology.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/rasters/changing_symbology.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/rasters/changing_symbology.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/rasters/changing_symbology.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/rasters/changing_symbology.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/rasters/changing_symbology.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

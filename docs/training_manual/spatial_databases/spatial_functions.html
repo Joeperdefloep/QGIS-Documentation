@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.1. Lesson: PostGIS Setup &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_functions.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16.2. Lesson: Simple Feature Model" href="simple_feature_model.html" />
+    <link rel="prev" title="16. Module: Spatial Database Concepts with PostGIS" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_functions.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">16. Module: Spatial Database Concepts with PostGIS</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.1. Lesson: PostGIS Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-under-ubuntu">16.1.1. Installing under Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-under-windows">16.1.2. Installing under Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-on-other-platforms">16.1.3. Installing on Other Platforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-databases-to-use-postgis">16.1.4. Configuring Databases to use PostGIS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#looking-at-the-installed-postgis-functions">16.1.5. Looking at the installed PostGIS functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spatial-reference-systems">16.1.6. Spatial Reference Systems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">16.1.7. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">16.1.8. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simple_feature_model.html">16.2. Lesson: Simple Feature Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="import_export.html">16.3. Lesson: Import and Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_queries.html">16.4. Lesson: Spatial Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.html">16.5. Lesson: Geometry Construction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">16. </span>Module: Spatial Database Concepts with PostGIS</a> &raquo;</li>
+      <li><span class="section-number">16.1. </span>Lesson: PostGIS Setup</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/spatial_databases/spatial_functions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="16. Module: Spatial Database Concepts with PostGIS" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simple_feature_model.html" class="btn btn-neutral float-right" title="16.2. Lesson: Simple Feature Model" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-postgis-setup">
+<h1><span class="section-number">16.1. </span>Lesson: PostGIS Setup<a class="headerlink" href="#ls-postgis-setup" title="Permalink to this headline"></a></h1>
+<p>Setting up PostGIS functions will allow you to access spatial functions from
+within PostgreSQL.</p>
+<p><strong>The goal for this lesson:</strong> To install spatial functions and briefly demo
+their effects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will assume the use of PostGIS version 2.1 or newer in this exercise. The
+installation and database configuration are different for older versions,
+but the rest of this material in this module will still work. Consult the
+documentation for your platform for help with installation and database
+configuration.</p>
+</div>
+<section id="installing-under-ubuntu">
+<h2><span class="section-number">16.1.1. </span>Installing under Ubuntu<a class="headerlink" href="#installing-under-ubuntu" title="Permalink to this headline"></a></h2>
+<p>Postgis is easily installed from apt.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install postgresql
+$ sudo apt install postgis
+</pre></div>
+</div>
+<p>Really, it’s that easy…</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The exact versions that will be installed depend on which version of Ubuntu you are using and which
+repositories you have configured. After installing you can check the version by issuing a <code class="docutils literal notranslate"><span class="pre">select</span>
+<span class="pre">PostGIS_full_version();</span></code> query with psql or another tool.</p>
+</div>
+<p>To install a specific version (eg, PostgreSQL version 13 and PostGIS 3), you can use the following
+commands.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install wget ca-certificates
+$ sudo lsb_release -a
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc <span class="p">|</span> sudo apt-key add -
+$ sudo sh -c <span class="s1">&#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main&quot; &gt;&gt; /etc/apt/sources.list.d/pgdg.list&#39;</span>
+$ sudo apt-get update
+$ sudo apt install postgis postgresql-13-postgis-3
+</pre></div>
+</div>
+</section>
+<section id="installing-under-windows">
+<h2><span class="section-number">16.1.2. </span>Installing under Windows<a class="headerlink" href="#installing-under-windows" title="Permalink to this headline"></a></h2>
+<p>Installing on Windows can be done from binary packages using a normal Windows installation dialogs.</p>
+<p>First Visit <a class="reference external" href="https://www.postgresql.org/download/">the download page</a>. Then follow <a class="reference external" href="https://www.bostongis.com/PrinterFriendly.aspx?content_name=postgis_tut01">this guide</a>.</p>
+<p>More information about installing on Windows can be found on the <a class="reference external" href="https://postgis.net/windows_downloads">PostGIS
+website</a>.</p>
+</section>
+<section id="installing-on-other-platforms">
+<h2><span class="section-number">16.1.3. </span>Installing on Other Platforms<a class="headerlink" href="#installing-on-other-platforms" title="Permalink to this headline"></a></h2>
+<p>The <a class="reference external" href="https://postgis.net/install/">PostGIS website download</a> has information about
+installing on other platforms including macOS and on other Linux distributions</p>
+</section>
+<section id="configuring-databases-to-use-postgis">
+<h2><span class="section-number">16.1.4. </span>Configuring Databases to use PostGIS<a class="headerlink" href="#configuring-databases-to-use-postgis" title="Permalink to this headline"></a></h2>
+<p>Once PostGIS is installed, you will need to configure your database to use
+the extensions. If you have installed PostGIS version &gt; 2.0, this is as simple
+as issuing the following command with psql using the address database from our
+previous exercise.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ psql -d address -c <span class="s2">&quot;CREATE EXTENSION postgis;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Depending on your version, you could find more instructions on how
+to spatially enable a database at
+<a class="reference external" href="https://postgis.net/docs/postgis_administration.html#create_spatial_db">https://postgis.net/docs/postgis_administration.html#create_spatial_db</a>.</p>
+</div>
+</section>
+<section id="looking-at-the-installed-postgis-functions">
+<h2><span class="section-number">16.1.5. </span>Looking at the installed PostGIS functions<a class="headerlink" href="#looking-at-the-installed-postgis-functions" title="Permalink to this headline"></a></h2>
+<p>PostGIS can be thought of as a collection of in-database functions that extend
+the core capabilities of PostgreSQL so that it can deal with spatial data. By
+‘deal with’, we mean store, retrieve, query and manipulate. In order to do
+this, a number of functions are installed into the database.</p>
+<p>Our PostgreSQL <code class="docutils literal notranslate"><span class="pre">address</span></code> database is now geospatially enabled, thanks to PostGIS.
+We are going to delve a lot deeper into this in the coming sections, but let’s
+give you a quick little taster. Let’s say we want to create a point from text.
+First we use the psql command to find functions relating to point. If you are not
+already connected to the <code class="docutils literal notranslate"><span class="pre">address</span></code> database, do so now. Then run:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\df</span> <span class="ss">*point*</span>
+</pre></div>
+</div>
+<p>This is the command we’re looking for: <kbd class="kbd docutils literal notranslate">st_pointfromtext</kbd>.  To page through
+the list, use the down arrow, then press <kbd class="kbd docutils literal notranslate">Q</kbd> to quit back to the psql shell.</p>
+<p>Try running this command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_pointfromtext</span><span class="p">(</span><span class="s1">&#39;POINT(1 1)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">st_pointfromtext</span>
+<span class="c1">--------------------------------------------</span>
+<span class="mi">0101000000000000000000</span><span class="n">F03F000000000000F03F</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Three things to note:</p>
+<ul class="simple">
+<li><p>We defined a point at position 1,1 (EPSG:4326 is assumed) using
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">POINT(1</kbd> <kbd class="kbd docutils literal notranslate">1)</kbd></kbd>,</p></li>
+<li><p>We ran an sql statement, but not on any table, just on data entered from the
+SQL prompt,</p></li>
+<li><p>The resulting row does not make much sense.</p></li>
+</ul>
+<p>The resulting row is in the OGC format called ‘Well Known Binary’ (WKB). We will
+look at this format in detail in the next section.</p>
+<p>To get the results back as text, we can do a quick scan through the function list
+for something that returns text:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\df</span> <span class="ss">*text</span>
+</pre></div>
+</div>
+<p>The query we’re looking for now is <code class="docutils literal notranslate"><span class="pre">st_astext</span></code>. Let’s combine it with the
+previous query:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">st_pointfromtext</span><span class="p">(</span><span class="s1">&#39;POINT(1 1)&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="n">st_astext</span>
+<span class="c1">------------</span>
+  <span class="n">POINT</span><span class="p">(</span><span class="mi">1</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, we entered the string <kbd class="kbd docutils literal notranslate">POINT(1,1)</kbd>, turned it
+into a point using <kbd class="kbd docutils literal notranslate">st_pointfromtext()</kbd>, and turned it back into a
+human-readable form with <kbd class="kbd docutils literal notranslate">st_astext()</kbd>, which gave us back our original
+string.</p>
+<p>One last example before we really get into the detail of using PostGIS:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">st_buffer</span><span class="p">(</span><span class="n">st_pointfromtext</span><span class="p">(</span><span class="s1">&#39;POINT(1 1)&#39;</span><span class="p">),</span><span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>What did that do? It created a buffer of 1 degree around our point, and
+returned the result as text.</p>
+</section>
+<section id="spatial-reference-systems">
+<h2><span class="section-number">16.1.6. </span>Spatial Reference Systems<a class="headerlink" href="#spatial-reference-systems" title="Permalink to this headline"></a></h2>
+<p>In addition to the PostGIS functions, the extension contains a collection of
+spatial reference system (SRS) definitions as defined by the European Petroleum
+Survey Group (EPSG). These are used during operations such as coordinate
+reference system (CRS) conversions.</p>
+<p>We can inspect these SRS definitions in our database as they are stored in
+normal database tables.</p>
+<p>First, let’s look at the schema of the table by entering the following command
+in the psql prompt:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\d</span> <span class="ss">spatial_ref_sys</span>
+</pre></div>
+</div>
+<p>The result should be this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Table</span> <span class="ss">&quot;public.spatial_ref_sys&quot;</span>
+   <span class="k">Column</span>   <span class="o">|</span>          <span class="k">Type</span>           <span class="o">|</span> <span class="n">Modifiers</span>
+ <span class="c1">-----------+-------------------------+-----------</span>
+  <span class="n">srid</span>      <span class="o">|</span> <span class="nb">integer</span>                 <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+  <span class="n">auth_name</span> <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span>  <span class="o">|</span>
+  <span class="n">auth_srid</span> <span class="o">|</span> <span class="nb">integer</span>                 <span class="o">|</span>
+  <span class="n">srtext</span>    <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span> <span class="o">|</span>
+  <span class="n">proj4text</span> <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span> <span class="o">|</span>
+  <span class="n">Indexes</span><span class="p">:</span>
+<span class="ss">&quot;spatial_ref_sys_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">srid</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use standard SQL queries (as we have learned from our introductory
+sections), to view and manipulate this table - though its not a good idea to
+update or delete any records unless you know what you are doing.</p>
+<p>One SRID you may be interested in is EPSG:4326 - the geographic / lat lon
+reference system using the WGS 84 ellipsoid. Let’s take a look at it:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">spatial_ref_sys</span> <span class="k">where</span> <span class="n">srid</span><span class="o">=</span><span class="mi">4326</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">srid</span>      <span class="o">|</span> <span class="mi">4326</span>
+<span class="n">auth_name</span> <span class="o">|</span> <span class="n">EPSG</span>
+<span class="n">auth_srid</span> <span class="o">|</span> <span class="mi">4326</span>
+<span class="n">srtext</span>    <span class="o">|</span> <span class="n">GEOGCS</span><span class="p">[</span><span class="ss">&quot;WGS 84&quot;</span><span class="p">,</span><span class="n">DATUM</span><span class="p">[</span><span class="ss">&quot;WGS_1984&quot;</span><span class="p">,</span><span class="n">SPHEROID</span><span class="p">[</span><span class="ss">&quot;WGS</span>
+<span class="ss">84&quot;</span><span class="p">,</span><span class="mi">6378137</span><span class="p">,</span><span class="mi">298</span><span class="p">.</span><span class="mi">257223563</span><span class="p">,</span><span class="n">AUTHORITY</span><span class="p">[</span><span class="ss">&quot;EPSG&quot;</span><span class="p">,</span><span class="ss">&quot;7030&quot;</span><span class="p">]],</span><span class="n">TOWGS84</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span>
+<span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">AUTHORITY</span><span class="p">[</span><span class="ss">&quot;EPSG&quot;</span><span class="p">,</span><span class="ss">&quot;6326&quot;</span><span class="p">]],</span><span class="n">PRIMEM</span><span class="p">[</span><span class="ss">&quot;Greenwich&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">AUTHORITY</span><span class="p">[</span><span class="ss">&quot;EPSG&quot;</span><span class="p">,</span><span class="ss">&quot;8901&quot;</span><span class="p">]],</span><span class="n">UNIT</span><span class="p">[</span><span class="ss">&quot;degree&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">.</span><span class="mi">01745329251994328</span><span class="p">,</span>
+<span class="n">AUTHORITY</span><span class="p">[</span><span class="ss">&quot;EPSG&quot;</span><span class="p">,</span><span class="ss">&quot;9122&quot;</span><span class="p">]],</span><span class="n">AUTHORITY</span><span class="p">[</span><span class="ss">&quot;EPSG&quot;</span><span class="p">,</span><span class="ss">&quot;4326&quot;</span><span class="p">]]</span>
+<span class="n">proj4text</span> <span class="o">|</span> <span class="o">+</span><span class="n">proj</span><span class="o">=</span><span class="n">longlat</span> <span class="o">+</span><span class="n">ellps</span><span class="o">=</span><span class="n">WGS84</span> <span class="o">+</span><span class="n">datum</span><span class="o">=</span><span class="n">WGS84</span> <span class="o">+</span><span class="n">no_defs</span>
+</pre></div>
+</div>
+<p>The <kbd class="kbd docutils literal notranslate">srtext</kbd> is the projection definition in well known text (you may recognise
+this from .prj files in your shapefile collection).</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">16.1.7. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You now have PostGIS functions installed in your copy of PostgreSQL. With this
+you’ll be able to make use of PostGIS’ extensive spatial functions.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">16.1.8. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next you’ll learn how spatial features are represented in a database.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="16. Module: Spatial Database Concepts with PostGIS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simple_feature_model.html" class="btn btn-neutral float-right" title="16.2. Lesson: Simple Feature Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/spatial_functions.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/spatial_functions.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_functions.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/spatial_databases/spatial_functions.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/spatial_databases/spatial_functions.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/spatial_databases/spatial_functions.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/spatial_databases/spatial_functions.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/spatial_databases/spatial_functions.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/spatial_databases/spatial_functions.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/spatial_databases/spatial_functions.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/spatial_databases/spatial_functions.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/spatial_databases/spatial_functions.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/spatial_databases/spatial_functions.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/spatial_databases/spatial_functions.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. Lesson: Symbology &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/basic_map/symbology.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3. Module: Classifying Vector Data" href="../vector_classification/index.html" />
+    <link rel="prev" title="2.3. Lesson: Navigating the Map Canvas" href="mapviewnavigation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/basic_map/symbology.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">2. Module: Creating and Exploring a Basic Map</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="overview.html">2.1. Lesson: An Overview of the Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preparation.html">2.2. Lesson: Adding your first layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mapviewnavigation.html">2.3. Lesson: Navigating the Map Canvas</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.4. Lesson: Symbology</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-changing-colors">2.4.1.  Follow Along: Changing Colors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty">2.4.2.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-changing-symbol-structure">2.4.3.  Follow Along: Changing Symbol Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">2.4.4.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-scale-based-visibility">2.4.5.  Follow Along: Scale-Based Visibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-adding-symbol-layers">2.4.6.  Follow Along: Adding Symbol Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty">2.4.7.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-ordering-symbol-levels">2.4.8.  Follow Along: Ordering Symbol Levels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.4.9.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-ty">2.4.10.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-symbol-layer-types">2.4.11.  Follow Along: Symbol layer types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backlink-symbology-marker-line">2.4.12.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-geometry-generator-symbology">2.4.13.  Follow Along: Geometry generator symbology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-creating-a-custom-svg-fill">2.4.14.  Follow Along: Creating a Custom SVG Fill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">2.4.15. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr">2.4.16. Further Reading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">2.4.17. What’s Next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">2. </span>Module: Creating and Exploring a Basic Map</a> &raquo;</li>
+      <li><span class="section-number">2.4. </span>Lesson: Symbology</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/basic_map/symbology.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="mapviewnavigation.html" class="btn btn-neutral float-left" title="2.3. Lesson: Navigating the Map Canvas" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../vector_classification/index.html" class="btn btn-neutral float-right" title="3. Module: Classifying Vector Data" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-symbology">
+<h1><span class="section-number">2.4. </span>Lesson: Symbology<a class="headerlink" href="#ls-symbology" title="Permalink to this headline"></a></h1>
+<p>The symbology of a layer is its visual appearance on the map.
+The basic strength of GIS over other ways of representing data with spatial
+aspects is that with GIS, you have a dynamic visual representation of the data
+you’re working with.</p>
+<p>Therefore, the visual appearance of the map (which depends on the symbology of
+the individual layers) is very important. The end user of the maps you produce
+will need to be able to easily see what the map represents. Equally as
+important, you need to be able to explore the data as you’re working with it,
+and good symbology helps a lot.</p>
+<p>In other words, having proper symbology is not a luxury or just nice to have.
+In fact, it’s essential for you to use a GIS properly and produce maps and
+information that people will be able to use.</p>
+<p><strong>The goal for this lesson:</strong> To be able to create any symbology you want for
+any vector layer.</p>
+<section id="basic-fa-changing-colors">
+<h2><span class="section-number">2.4.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Changing Colors<a class="headerlink" href="#basic-fa-changing-colors" title="Permalink to this headline"></a></h2>
+<p>To change a layer’s symbology, open its <span class="guilabel">Layer Properties</span>. Let’s
+begin by changing the color of the <span class="guilabel">landuse</span> layer.</p>
+<ol class="arabic">
+<li><p>Right-click on the <span class="guilabel">landuse</span> layer in the layers list.</p></li>
+<li><p>Select the menu item <span class="guilabel">Properties…</span> in the menu that appears.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, you can also access a layer’s properties by
+double-clicking on the layer in the Layers list.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> button at the top of the <span class="guilabel">Layers</span>
+panel will open the <span class="guilabel">Layer Styling</span> panel. You can use this
+panel to change some properties of the layer: by default, changes will be
+applied immediately!</p>
+</div>
+</li>
+<li><p>In the <span class="guilabel">Layer Properties</span> window, select the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a>
+<span class="guilabel">Symbology</span> tab:</p>
+<figure class="align-center">
+<img alt="../../../_images/layer_properties_style.png" src="../../../_images/layer_properties_style.png" />
+</figure>
+</li>
+<li><p>Click the color select button next to the <span class="guilabel">Color</span> label.
+A standard color dialog will appear.</p></li>
+<li><p>Choose a gray color and click <span class="guilabel">OK</span>.</p></li>
+<li><p>Click <span class="guilabel">OK</span> again in the <span class="guilabel">Layer Properties</span> window, and
+you will see the color change being applied to the layer.</p></li>
+</ol>
+</section>
+<section id="basic-ty">
+<h2><span class="section-number">2.4.2. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself<a class="headerlink" href="#basic-ty" title="Permalink to this headline"></a></h2>
+<p>Change the color of the <span class="guilabel">water</span> layer to light blue. Try to use the
+<span class="guilabel">Layer Styling</span> panel instead of the <span class="guilabel">Layer Properties</span> menu.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Solution</p>
+<ul class="simple">
+<li><p>Verify that the colors are changing as you expect them to change.</p></li>
+<li><p>It is enough to select the <span class="guilabel">water</span> layer in the legend and then click
+on the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <sup>Open the Layer Styling panel</sup> button. Change the color
+to one that fits the water layer.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/answer_water_blue.png" src="../../../_images/answer_water_blue.png" />
+</figure>
+<p>If you want to work on only one layer at a time and don’t want the
+other layers to distract you, you can hide a layer by clicking in the checkbox
+next to its name in the layers list. If the box is blank, then the layer
+is hidden.</p>
+</div>
+</section>
+<section id="basic-fa-changing-symbol-structure">
+<h2><span class="section-number">2.4.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Changing Symbol Structure<a class="headerlink" href="#basic-fa-changing-symbol-structure" title="Permalink to this headline"></a></h2>
+<p>This is good stuff so far, but there’s more to a layer’s symbology than just
+its color. Next we want to eliminate the lines between the different land use
+areas so as to make the map less visually cluttered.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> window for the <span class="guilabel">landuse</span>
+layer.</p>
+<p>Under the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="guilabel">Symbology</span> tab, you will see the same kind
+of dialog as before. This time, however, you’re doing more than just quickly
+changing the color.</p>
+</li>
+<li><p>In the symbol layers tree, expand the <span class="guilabel">Fill</span> dropdown
+and select the <span class="guilabel">Simple fill</span> option.</p></li>
+<li><p>Click on the <span class="guilabel">Stroke style</span> dropdown. At the moment, it should be
+showing a short line and the words <span class="guilabel">Solid Line</span>.</p></li>
+<li><p>Change this to <span class="guilabel">No Pen</span>.</p>
+<figure class="align-center">
+<img alt="../../../_images/simple_fill_selected.png" src="../../../_images/simple_fill_selected.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+</ol>
+<p>Now the <span class="guilabel">landuse</span> layer won’t have any lines between areas.</p>
+</section>
+<section id="id1">
+<h2><span class="section-number">2.4.4. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Change the <span class="guilabel">water</span> layer’s symbology again so that it has a
+darker blue outline.</p></li>
+<li><p>Change the <span class="guilabel">rivers</span> layer’s symbology to a sensible representation
+of waterways.</p></li>
+</ul>
+<p>Remember: you can use the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <sup>Open the Layer Styling panel</sup>
+button and see all the changes instantly. That panel also allows you to undo
+individual changes while symbolizing a layer.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Your map should now look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/answer_symbology1.png" src="../../../_images/answer_symbology1.png" />
+</figure>
+<p>If you are a Beginner-level user, you may stop here.</p>
+<ul class="simple">
+<li><p>Use the method above to change the colors and styles for all the remaining
+layers.</p></li>
+<li><p>Try using natural colors for the objects. For example, a road should not be
+red or blue, but can be gray or black.</p></li>
+<li><p>Also feel free to experiment with different <span class="guilabel">Fill style</span> and
+<span class="guilabel">Stroke style</span> settings for the polygons.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/answer_symbology2.png" src="../../../_images/answer_symbology2.png" />
+</figure>
+</div>
+</section>
+<section id="moderate-fa-scale-based-visibility">
+<h2><span class="section-number">2.4.5. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Scale-Based Visibility<a class="headerlink" href="#moderate-fa-scale-based-visibility" title="Permalink to this headline"></a></h2>
+<p>Sometimes you will find that a layer is not suitable for a given scale. For
+example, a dataset of all the continents may have low detail, and not be very
+accurate at street level. When that happens, you want to be able to hide the
+dataset at inappropriate scales.</p>
+<p>In our case, we may decide to hide the buildings from view at small scales. This
+map, for example…</p>
+<figure class="align-center">
+<img alt="../../../_images/buildings_small_scale.png" src="../../../_images/buildings_small_scale.png" />
+</figure>
+<p>… is not very useful. The buildings are hard to distinguish at that scale.</p>
+<p>To enable scale-based rendering:</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog for the <span class="guilabel">buildings</span>
+layer.</p></li>
+<li><p>Activate the <a class="reference internal" href="../../../_images/rendering.png"><img alt="rendering" src="../../../_images/rendering.png" style="width: 1.5em;" /></a> <span class="guilabel">Rendering</span> tab.</p></li>
+<li><p>Enable scale-based rendering by clicking on the checkbox labeled
+<span class="guilabel">Scale dependent visibility</span>:</p></li>
+<li><p>Change the <span class="guilabel">Minimum</span> value to <code class="docutils literal notranslate"><span class="pre">1:10000</span></code>.</p>
+<figure class="align-center">
+<img alt="../../../_images/scale_dependent_visibility.png" src="../../../_images/scale_dependent_visibility.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+</ol>
+<p>Test the effects of this by zooming in and out in your map, noting when the
+<span class="guilabel">buildings</span> layer disappears and reappears.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use your mouse wheel to zoom in increments.
+Alternatively, use the zoom tools to zoom to a window:</p>
+<p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a></p>
+</div>
+</section>
+<section id="moderate-fa-adding-symbol-layers">
+<h2><span class="section-number">2.4.6. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Adding Symbol Layers<a class="headerlink" href="#moderate-fa-adding-symbol-layers" title="Permalink to this headline"></a></h2>
+<p>Now that you know how to change simple symbology for layers, the next step is
+to create more complex symbology. QGIS allows you to do this using symbol
+layers.</p>
+<ol class="arabic">
+<li><p>Go back to the <span class="guilabel">landuse</span> layer’s symbol properties panel (by clicking
+<span class="guilabel">Simple fill</span> in the symbol layers tree).</p>
+<p>In this example, the current symbol has no outline (i.e., it uses the
+<span class="guilabel">No Pen</span> border style).</p>
+<figure class="align-center">
+<img alt="../../../_images/simple_fill_selected.png" src="../../../_images/simple_fill_selected.png" />
+</figure>
+</li>
+<li><p>Select the <span class="guilabel">Fill</span> level in the tree and click
+the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add symbol layer</sup> button.
+The dialog will change to look something like this, with a new symbol layer
+added:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_symbol_layer.png" src="../../../_images/new_symbol_layer.png" />
+</figure>
+<p>It may appear somewhat different in color, for example, but you’re going
+to change that anyway.</p>
+</li>
+</ol>
+<p>Now there’s a second symbol layer. Being a solid color, it will of course
+completely hide the previous kind of symbol. Plus, it has a <span class="guilabel">Solid
+Line</span> border style, which we don’t want. Clearly this symbol has to be changed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s important not to get confused between a map layer and a symbol
+layer. A map layer is a vector (or raster) that has been loaded into the
+map. A symbol layer is part of the symbol used to represent a map layer.
+This course will usually refer to a map layer as just a layer, but a symbol
+layer will always be called a symbol layer, to prevent confusion.</p>
+</div>
+<p>With the new <span class="guilabel">Simple Fill</span> symbol layer selected:</p>
+<ol class="arabic">
+<li><p>Set the border style to <span class="guilabel">No Pen</span>, as before.</p></li>
+<li><p>Change the fill style to something other than <span class="guilabel">Solid</span> or
+<span class="guilabel">No brush</span>. For example:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_fill_settings.png" src="../../../_images/new_fill_settings.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+</ol>
+<p>Now you can see your results and tweak them as needed.
+You can even add multiple extra symbol layers and create a kind of texture for
+your layer that way.</p>
+<figure class="align-center">
+<img alt="../../../_images/multiple_symbol_layers.png" src="../../../_images/multiple_symbol_layers.png" />
+</figure>
+<p>It’s fun! But it probably has too many colors to use in a real map…</p>
+</section>
+<section id="moderate-ty">
+<h2><span class="section-number">2.4.7. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself<a class="headerlink" href="#moderate-ty" title="Permalink to this headline"></a></h2>
+<p>Remembering to zoom in if necessary, create a simple, but not distracting
+texture for the <span class="guilabel">buildings</span> layer using the methods above.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Customize your <span class="guilabel">buildings</span> layer as you like, but remember that it
+has to be easy to tell different layers apart on the map.</p>
+<p>Here’s an example:</p>
+<figure class="align-center">
+<img alt="../../../_images/answer_buildings_symbology.png" src="../../../_images/answer_buildings_symbology.png" />
+</figure>
+</div>
+</section>
+<section id="moderate-fa-ordering-symbol-levels">
+<h2><span class="section-number">2.4.8. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Ordering Symbol Levels<a class="headerlink" href="#moderate-fa-ordering-symbol-levels" title="Permalink to this headline"></a></h2>
+<p>When symbol layers are rendered, they are also rendered in a sequence, similar
+to the way the different map layers are rendered. This means that in some cases,
+having many symbol layers in one symbol can cause unexpected results.</p>
+<ol class="arabic simple">
+<li><p>Give the <span class="guilabel">roads</span> layer an extra symbol layer (using the method
+for adding symbol layers demonstrated above).</p></li>
+<li><p>Give the base line a <span class="guilabel">Stroke width</span> of <code class="docutils literal notranslate"><span class="pre">1.5</span></code> and a black color.</p></li>
+<li><p>Give the new, uppermost layer a thickness of <code class="docutils literal notranslate"><span class="pre">0.8</span></code> and a white color.</p></li>
+</ol>
+<p>You’ll notice that this happens:</p>
+<figure class="align-center">
+<img alt="../../../_images/bad_roads_symbology.png" src="../../../_images/bad_roads_symbology.png" />
+</figure>
+<p>Well, roads have now a <em>street</em> like symbology, but you see that lines are
+overlapping each others at each cross. That’s not what we want at all!</p>
+<p>To prevent this from happening, you can sort the symbol levels and thereby
+control the order in which the different symbol layers are rendered.</p>
+<p>To change the order of the symbol layers:</p>
+<ol class="arabic">
+<li><p>Select the topmost <span class="guilabel">Line</span> layer in the symbol layers tree.</p></li>
+<li><p>Click <span class="menuselection">Advanced ► Symbol levels…</span> in the
+bottom right-hand corner of the window.</p>
+<figure class="align-center">
+<img alt="../../../_images/symbol_levels_main_dialog.png" src="../../../_images/symbol_levels_main_dialog.png" />
+</figure>
+<p>This will open a dialog like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/symbol_levels_dialog.png" src="../../../_images/symbol_levels_dialog.png" />
+</figure>
+</li>
+<li><p>Check <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Enable symbol levels</span>. You can then set the
+layer order of each symbol by entering the corresponding level number.
+0 is the bottom layer.</p>
+<p>In our case, we just want to activate the option, like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/correct_symbol_layers.png" src="../../../_images/correct_symbol_layers.png" />
+</figure>
+<p>This will render the white line above the thick black line borders:</p>
+</li>
+<li><p>Click <span class="guilabel">OK</span> twice to return to the map.</p>
+<p>The map will now look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/better_roads_symbology.png" src="../../../_images/better_roads_symbology.png" />
+</figure>
+</li>
+</ol>
+<p>When you’re done, remember to save the symbol itself so as not to lose your
+work if you change the symbol again in the future. You can save your current
+symbol style by clicking the <span class="guilabel">Save Style…</span> button at the bottom
+of the <span class="guilabel">Layer Properties</span> dialog.
+We will be using the <span class="guilabel">QGIS QML Style File</span> format.</p>
+<p>Save your style in the <code class="file docutils literal notranslate"><span class="pre">solution/styles/better_roads.qml</span></code> folder. You can load a
+previously saved style at any time by clicking the <span class="guilabel">Load Style…</span>
+button. Before you change a style, keep in mind that any unsaved style you are
+replacing will be lost.</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.4.9. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Change the appearance of the <span class="guilabel">roads</span> layer again.</p>
+<p>Make the roads narrow and yellow, with a thin, pale gray outline and a
+thin black line in the middle. Remember that you may need to change the layer
+rendering order via the <span class="menuselection">Advanced ► Symbol levels…</span> dialog.</p>
+<figure class="align-center">
+<img alt="../../../_images/target_road_symbology.png" src="../../../_images/target_road_symbology.png" />
+</figure>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>To make the required symbol, you need three symbol layers:</p>
+<figure class="align-center">
+<img alt="../../../_images/answer_road_symbology.png" src="../../../_images/answer_road_symbology.png" />
+</figure>
+<p>The lowest symbol layer is a broad, solid gray line. On top of it there is a
+slightly thinner solid yellow line and finally another thinner solid black line.</p>
+<p>If your symbol layers resemble the above but you’re not getting the result
+you want:</p>
+<ol class="arabic">
+<li><p>Check that your symbol levels look something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/answer_road_symbol_levels.png" src="../../../_images/answer_road_symbol_levels.png" />
+</figure>
+</li>
+<li><p>Now your map should look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/target_road_symbology_answer.png" src="../../../_images/target_road_symbology_answer.png" />
+</figure>
+</li>
+</ol>
+</div>
+</section>
+<section id="hard-ty">
+<h2><span class="section-number">2.4.10. </span><img alt="hard" src="../../../_images/hard.png" /> Try Yourself<a class="headerlink" href="#hard-ty" title="Permalink to this headline"></a></h2>
+<p>Symbol levels also work for classified layers (i.e., layers having multiple
+symbols). Since we haven’t covered classification yet, you will work with some
+rudimentary pre-classified data.</p>
+<ol class="arabic">
+<li><p>Create a new project and add only the <span class="guilabel">roads</span> dataset.</p></li>
+<li><p>Apply the style file <code class="file docutils literal notranslate"><span class="pre">advanced_levels_demo.qml</span></code> provided in
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/styles</span></code> to the layer. This can be done through the
+<span class="menuselection">Style ► Load Style…</span> combobox at the bottom of the
+<span class="guilabel">Layer Properties</span> dialog.</p></li>
+<li><p>Zoom in to the Swellendam area.</p></li>
+<li><p>Using symbol layers, ensure that the outlines of layers flow into one another
+as per the image below:</p>
+<figure class="align-center">
+<img alt="../../../_images/correct_advanced_levels.png" src="../../../_images/correct_advanced_levels.png" />
+</figure>
+</li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<ol class="arabic simple">
+<li><p>Adjust your symbol levels to these values:</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/answer_road_symbol_layers.png" src="../../../_images/answer_road_symbol_layers.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>Experiment with different values to get different results.</p></li>
+<li><p>Open your original map again before continuing with the next exercise.</p></li>
+</ol>
+</div>
+</section>
+<section id="moderate-fa-symbol-layer-types">
+<h2><span class="section-number">2.4.11. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Symbol layer types<a class="headerlink" href="#moderate-fa-symbol-layer-types" title="Permalink to this headline"></a></h2>
+<p>In addition to setting fill colors and using predefined patterns, you can use
+different symbol layer types entirely. The only type we’ve been using up to now
+was the <span class="guilabel">Simple Fill</span> type. The more advanced symbol layer types allow
+you to customize your symbols even further.</p>
+<p>Each type of vector (point, line and polygon) has its own set of symbol layer
+types. First we will look at the types available for points.</p>
+<section id="point-symbol-layer-types">
+<h3><span class="section-number">2.4.11.1. </span>Point Symbol Layer Types<a class="headerlink" href="#point-symbol-layer-types" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p>Uncheck all the layers except for <span class="guilabel">places</span>.</p></li>
+<li><p>Change the symbol properties for the <span class="guilabel">places</span> layer:</p>
+<figure class="align-center">
+<img alt="../../../_images/places_layer_properties.png" src="../../../_images/places_layer_properties.png" />
+</figure>
+</li>
+<li><p>You can access the various symbol layer types by selecting the
+<span class="guilabel">Simple marker</span> layer in the symbol layers tree, then
+click the <span class="guilabel">Symbol layer type</span> dropdown:</p>
+<figure class="align-center">
+<img alt="../../../_images/marker_type_dropdown.png" src="../../../_images/marker_type_dropdown.png" />
+</figure>
+</li>
+<li><p>Investigate the various options available to you, and choose a symbol with
+styling you think is appropriate.</p></li>
+<li><p>If in doubt, use a round <span class="guilabel">Simple marker</span> with a white border and
+pale green fill, with a <span class="guilabel">Size</span> of <code class="docutils literal notranslate"><span class="pre">3.00</span></code> and a
+<span class="guilabel">Stroke width</span> of <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p></li>
+</ol>
+</section>
+<section id="line-symbol-layer-types">
+<h3><span class="section-number">2.4.11.2. </span>Line Symbol Layer Types<a class="headerlink" href="#line-symbol-layer-types" title="Permalink to this headline"></a></h3>
+<p>To see the various options available for line data:</p>
+<ol class="arabic">
+<li><p>Change the <span class="guilabel">Symbol layer type</span> for the <span class="guilabel">roads</span> layer’s
+topmost symbol layer to <span class="guilabel">Marker line</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/change_to_marker_line.png" src="../../../_images/change_to_marker_line.png" />
+</figure>
+</li>
+<li><p>Select the <span class="guilabel">Simple marker</span> layer in the symbol layers
+tree. Change the symbol properties to match this dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/simple_marker_line_properties.png" src="../../../_images/simple_marker_line_properties.png" />
+</figure>
+</li>
+<li><p>Select the <span class="guilabel">Marker line</span> layer and change the interval to <code class="docutils literal notranslate"><span class="pre">1.00</span></code>:</p>
+<figure class="align-center">
+<img alt="../../../_images/marker_line_interval.png" src="../../../_images/marker_line_interval.png" />
+</figure>
+</li>
+<li><p>Ensure that the symbol levels are correct (via the
+<span class="menuselection">Advanced ► Symbol levels</span> dialog we used earlier) before
+applying the style.</p></li>
+</ol>
+<p>Once you have applied the style, take a look at its results on the map. As you
+can see, these symbols change direction along with the road but don’t always
+bend along with it. This is useful for some purposes, but not for others. If
+you prefer, you can change the symbol layer in question back to the way it was
+before.</p>
+</section>
+<section id="polygon-symbol-layer-types">
+<h3><span class="section-number">2.4.11.3. </span>Polygon Symbol Layer Types<a class="headerlink" href="#polygon-symbol-layer-types" title="Permalink to this headline"></a></h3>
+<p>To see the various options available for polygon data:</p>
+<ol class="arabic">
+<li><p>Change the <span class="guilabel">Symbol layer type</span> for the <span class="guilabel">water</span> layer, as
+before for the other layers.</p></li>
+<li><p>Investigate what the different options on the list can do.</p></li>
+<li><p>Choose one of them that you find suitable.</p></li>
+<li><p>If in doubt, use the <span class="guilabel">Point pattern fill</span> with the following
+options:</p>
+<figure class="align-center">
+<img alt="../../../_images/pattern_fill_size.png" src="../../../_images/pattern_fill_size.png" />
+</figure>
+<figure class="align-center">
+<img alt="../../../_images/pattern_fill_distances.png" src="../../../_images/pattern_fill_distances.png" />
+</figure>
+</li>
+<li><p>Add a new symbol layer with a normal <span class="guilabel">Simple fill</span>.</p></li>
+<li><p>Make it the same light blue with a darker blue border.</p></li>
+<li><p>Move it underneath the point pattern symbol layer with the <span class="guilabel">Move
+down</span> button:</p>
+<figure class="align-center">
+<img alt="../../../_images/simple_fill_move_down.png" src="../../../_images/simple_fill_move_down.png" />
+</figure>
+</li>
+</ol>
+<p>As a result, you have a textured symbol for the water layer, with the added
+benefit that you can change the size, shape and distance of the individual dots
+that make up the texture.</p>
+</section>
+</section>
+<section id="backlink-symbology-marker-line">
+<span id="id3"></span><h2><span class="section-number">2.4.12. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself<a class="headerlink" href="#backlink-symbology-marker-line" title="Permalink to this headline"></a></h2>
+<p>Apply a green transparent fill color to the <span class="guilabel">protected_areas</span> layer,
+and change the outline to look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/marker_line_preview.png" src="../../../_images/marker_line_preview.png" />
+</figure>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Here are examples of the symbol structure:</p>
+<figure class="align-center">
+<img alt="../../../_images/answer_marker_line.png" src="../../../_images/answer_marker_line.png" />
+</figure>
+<figure class="align-center">
+<img alt="../../../_images/answer_marker_line2.png" src="../../../_images/answer_marker_line2.png" />
+</figure>
+</div>
+</section>
+<section id="hard-fa-geometry-generator-symbology">
+<h2><span class="section-number">2.4.13. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Geometry generator symbology<a class="headerlink" href="#hard-fa-geometry-generator-symbology" title="Permalink to this headline"></a></h2>
+<p>You can use the Geometry generator symbology with all layer types (points, lines
+and polygons). The resulting symbol depends directly on the layer type.</p>
+<p>Very briefly, the Geometry generator symbology allows you to run some spatial
+operations within the symbology itself. For example you can run a real centroid
+spatial operation on a polygon layer without creating a point layer.</p>
+<p>Moreover, you have all the styling options to change the appearance of the resulting
+symbol.</p>
+<p>Let’s give it a try!</p>
+<ol class="arabic">
+<li><p>Select the <span class="guilabel">water</span> layer.</p></li>
+<li><p>Click on <span class="guilabel">Simple fill</span> and change the <span class="guilabel">Symbol layer type</span>
+to <span class="guilabel">Geometry generator</span>.</p>
+<figure class="align-center">
+<img alt="../../../_images/geometry_generator.png" src="../../../_images/geometry_generator.png" />
+</figure>
+</li>
+<li><p>Before to start writing the spatial query we have to choose the Geometry Type
+in output. In this example we are going to create centroids for each feature,
+so change the Geometry Type to <span class="guilabel">Point / Multipoint</span>.</p></li>
+<li><p>Now let’s write the query in the query panel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>centroid($geometry)
+</pre></div>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/geometry_generator_query.png" src="../../../_images/geometry_generator_query.png" />
+</figure>
+</li>
+<li><p>When you click on <span class="guilabel">OK</span> you will see that the <span class="guilabel">water</span> layer
+is rendered as a point layer! We have just run a spatial operation within the
+layer symbology itself, isn’t that amazing?</p>
+<figure class="align-center">
+<img alt="../../../_images/geometry_generator_result.png" src="../../../_images/geometry_generator_result.png" />
+</figure>
+</li>
+</ol>
+<p>With the Geometry generator symbology you can really go over the edge of <em>normal</em>
+symbology.</p>
+<section id="id4">
+<h3><span class="section-number">2.4.13.1. </span><img alt="hard" src="../../../_images/hard.png" /> Try Yourself<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<p>Geometry generator are just another symbol level. Try to add another
+<span class="guilabel">Simple fill</span> underneath the <span class="guilabel">Geometry generator</span> one.</p>
+<p>Change also the appearance of the Simple marker of the Geometry generator symbology.</p>
+<p>The final result should look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/geometry_generator_preview.png" src="../../../_images/geometry_generator_preview.png" />
+</figure>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<ol class="arabic simple">
+<li><p>Click on the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button to add another Symbol level.</p></li>
+<li><p>Move the new symbol at the bottom of the list clicking the <a class="reference internal" href="../../../_images/mActionArrowDown.png"><img alt="arrowDown" src="../../../_images/mActionArrowDown.png" style="width: 1.5em;" /></a> button.</p></li>
+<li><p>Choose a good color to fill the water polygons.</p></li>
+<li><p>Click on <span class="guilabel">Marker</span> of the Geometry generator symbology and change the
+circle with another shape as your wish.</p></li>
+<li><p>Try experimenting other options to get more useful results.</p></li>
+</ol>
+</div>
+</section>
+</section>
+<section id="hard-fa-creating-a-custom-svg-fill">
+<h2><span class="section-number">2.4.14. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Creating a Custom SVG Fill<a class="headerlink" href="#hard-fa-creating-a-custom-svg-fill" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To do this exercise, you will need to have the free vector editing
+software <a class="reference external" href="https://inkscape.org/">Inkscape</a> installed.</p>
+</div>
+<ol class="arabic">
+<li><p>Start the Inkscape program.
+You will see the following interface:</p>
+<figure class="align-center">
+<img alt="../../../_images/inkscape_default.png" src="../../../_images/inkscape_default.png" />
+</figure>
+<p>You should find this familiar if you have used other vector image editing
+programs, like Corel.</p>
+<p>First, we’ll change the canvas to a size appropriate for a small texture.</p>
+</li>
+<li><p>Click on the menu item <span class="menuselection">File ► Document Properties</span>. This
+will give you the <span class="guilabel">Document Properties</span> dialog.</p></li>
+<li><p>Change the <span class="guilabel">Units</span> to <span class="guilabel">px</span>.</p></li>
+<li><p>Change the <span class="guilabel">Width</span> and <span class="guilabel">Height</span> to <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p></li>
+<li><p>Close the dialog when you are done.</p></li>
+<li><p>Click on the menu item <span class="menuselection">View ► Zoom ► Page</span> to see the
+page you are working with.</p></li>
+<li><p>Select the <span class="guilabel">Circle</span> tool:</p>
+<figure class="align-center">
+<img alt="../../../_images/inkscape_circle_tool.png" src="../../../_images/inkscape_circle_tool.png" />
+</figure>
+</li>
+<li><p>Click and drag on the page to draw an ellipse. To make the ellipse turn into
+a circle, hold the <kbd class="kbd docutils literal notranslate">Ctrl</kbd> button while you’re drawing it.</p></li>
+<li><p>Right-click on the circle you just created and open its <span class="guilabel">Fill and
+Stroke</span> options. You can modify its rendering, such as:</p>
+<ol class="arabic simple">
+<li><p>Change the <span class="guilabel">Fill</span> color to a somehow pale grey-blue,</p></li>
+<li><p>Assign to the border a darker color in <span class="guilabel">Stroke paint</span> tab,</p></li>
+<li><p>And reduce the border thickness under <span class="guilabel">Stroke style</span> tab.</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/inkscape_stroke_fill.png" src="../../../_images/inkscape_stroke_fill.png" />
+</figure>
+</li>
+<li><p>Draw a line using the <span class="guilabel">Pencil</span> tool:</p>
+<ol class="arabic simple">
+<li><p>Click once to start the line. Hold <kbd class="kbd docutils literal notranslate">Ctrl</kbd> to make it snap to increments
+of 15 degrees.</p></li>
+<li><p>Move the pointer horizontally and place a point with a simple click.</p></li>
+<li><p>Click and snap to the vertex of the line and trace a vertical line, ended
+by a simple click.</p></li>
+<li><p>Now join the two end vertices.</p></li>
+<li><p>Change the color and width of the triangle symbol to match the circle’s stroke
+and move it around as necessary, so that you end up with a symbol like this one:</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/inkscape_final_symbol.png" src="../../../_images/inkscape_final_symbol.png" />
+</figure>
+</li>
+<li><p>If the symbol you get satisfies you, then save it as <span class="guilabel">landuse_symbol</span>
+under the directory that the course is in, under <code class="file docutils literal notranslate"><span class="pre">exercise_data/symbols</span></code>,
+as SVG file.</p></li>
+</ol>
+<p>In QGIS:</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> for the <code class="file docutils literal notranslate"><span class="pre">landuse</span></code> layer.</p></li>
+<li><p>In the <a class="reference internal" href="../../../_images/symbology.png"><img alt="symbology" src="../../../_images/symbology.png" style="width: 2em;" /></a> <span class="guilabel">Symbology</span> tab, change the symbol structure by
+changing the <span class="guilabel">Symbol Layer Type</span> to <span class="guilabel">SVG Fill```</span>
+shown below.</p></li>
+<li><p>Click the <span class="guilabel">…</span> button and then
+<span class="guilabel">Select File…</span> to select your SVG image.</p>
+<p>It’s added to the symbol tree and you can now customize its different
+characteristics (colors, angle, effects, units…).</p>
+<figure class="align-center">
+<img alt="../../../_images/svg_symbol_settings.png" src="../../../_images/svg_symbol_settings.png" />
+</figure>
+</li>
+</ol>
+<p>Once you validate the dialog, features in <span class="guilabel">landuse</span> layer should now
+be covered by a set of symbols, showing a texture like the one on the
+following map. If textures are not visible, you may need to zoom in the map
+canvas or set in the layer properties a bigger <span class="guilabel">Texture width</span>.</p>
+<figure class="align-center">
+<img alt="../../../_images/svg_symbol_result.png" src="../../../_images/svg_symbol_result.png" />
+</figure>
+</section>
+<section id="ic">
+<h2><span class="section-number">2.4.15. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Changing the symbology for the different layers has transformed a collection of
+vector files into a legible map. Not only can you see what’s happening, it’s
+even nice to look at!</p>
+</section>
+<section id="fr">
+<h2><span class="section-number">2.4.16. </span>Further Reading<a class="headerlink" href="#fr" title="Permalink to this headline"></a></h2>
+<p><a class="reference external" href="https://gis.stackexchange.com/questions/3083/seeking-examples-of-beautiful-maps">Examples of Beautiful Maps</a></p>
+</section>
+<section id="wn">
+<h2><span class="section-number">2.4.17. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Changing symbols for whole layers is useful, but the information contained
+within each layer is not yet available to someone reading these maps. What are
+the streets called? Which administrative regions do certain areas belong to?
+What are the relative surface areas of the farms? All of this information is
+still hidden. The next lesson will explain how to represent this data on your
+map.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you remember to save your map recently?</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mapviewnavigation.html" class="btn btn-neutral float-left" title="2.3. Lesson: Navigating the Map Canvas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../vector_classification/index.html" class="btn btn-neutral float-right" title="3. Module: Classifying Vector Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/basic_map/symbology.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/basic_map/symbology.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/basic_map/symbology.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/basic_map/symbology.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/basic_map/symbology.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/basic_map/symbology.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/basic_map/symbology.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/basic_map/symbology.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/basic_map/symbology.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/basic_map/symbology.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/basic_map/symbology.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/basic_map/symbology.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/basic_map/symbology.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/basic_map/symbology.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

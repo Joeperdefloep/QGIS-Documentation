@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Vector Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/vector_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Vector Attribute Data" href="vector_attribute_data.html" />
+    <link rel="prev" title="2. Introducing GIS" href="introducing_gis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/vector_data.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">A Gentle Introduction to GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introducing_gis.html">2. Introducing GIS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Vector Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">3.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#point-features-in-detail">3.2. Point features in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polyline-features-in-detail">3.3. Polyline features in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#polygon-features-in-detail">3.4. Polygon features in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vector-data-in-layers">3.5. Vector data in layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-vector-data">3.6. Editing vector data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scale-and-vector-data">3.7. Scale and vector data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbology">3.8. Symbology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-can-we-do-with-vector-data-in-a-gis">3.9. What can we do with vector data in a GIS?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems-with-vector-data">3.10. Common problems with vector data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-have-we-learned">3.11. What have we learned?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#now-you-try">3.12. Now you try!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#something-to-think-about">3.13. Something to think about</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">3.14. Further reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">3.15. What’s next?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vector_attribute_data.html">4. Vector Attribute Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_capture.html">5. Data Capture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data.html">6. Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">7. Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_reference_systems.html">8. Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_production.html">9. Map Production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_spatial_analysis_buffers.html">10. Vector Spatial Analysis (Buffers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_analysis_interpolation.html">11. Spatial Analysis (Interpolation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors_and_contributors.html">12. About the authors &amp; contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_free_documentation_license.html">13. GNU Free Documentation License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">A Gentle Introduction to GIS</a> &raquo;</li>
+      <li><span class="section-number">3. </span>Vector Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/gentle_gis_introduction/vector_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="introducing_gis.html" class="btn btn-neutral float-left" title="2. Introducing GIS" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector_attribute_data.html" class="btn btn-neutral float-right" title="4. Vector Attribute Data" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector-data">
+<span id="gentle-gis-vector-data"></span><h1><span class="section-number">3. </span>Vector Data<a class="headerlink" href="#vector-data" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 10%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="../../_images/gentlelogo.png"><img alt="gentleLogo" src="../../_images/gentlelogo.png" style="width: 3em;" /></a></p></td>
+<td><p>Objectives:</p></td>
+<td><p>Understanding of vector data models as used in GIS.</p></td>
+</tr>
+<tr class="row-even"><td><p>Keywords:</p></td>
+<td><p>Vector, Point, Polyline, Polygon, Vertex, Geometry, Scale, Data Quality, Symbology, Data Sources</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview">
+<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p><strong>Vector</strong> data provide a way to represent real world <strong>features</strong> within the GIS
+environment. A feature is anything you can see on the landscape. Imagine you are
+standing on the top of a hill. Looking down you can see houses, roads, trees,
+rivers, and so on (see <a class="reference internal" href="#figure-vector-landscape"><span class="std std-numref">Fig. 3.13</span></a>). Each one of these things would be a
+<strong>feature</strong> when we represent them in a GIS Application. Vector features have
+<strong>attributes</strong>, which consist of text or numerical information that <strong>describe</strong>
+the features.</p>
+<figure class="align-center" id="id1">
+<span id="figure-vector-landscape"></span><a class="reference internal image-reference" href="../../_images/landscape.jpg"><img alt="../../_images/landscape.jpg" src="../../_images/landscape.jpg" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Looking over a landscape you can see the main features, such as roads, houses
+and trees.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>A vector feature has its shape represented using <strong>geometry</strong>. The geometry is
+made up of one or more interconnected <strong>vertices</strong>. A vertex describes a position
+in space using an <strong>X</strong>, <strong>Y</strong> and optionally <strong>Z</strong> axis. Geometries which have
+vertices with a <code class="docutils literal notranslate"><span class="pre">Z</span></code> axis are often referred to as <strong>2.5D</strong> since they describe
+height or depth at each vertex, but not both.</p>
+<p>When a feature’s geometry consists of only a single vertex, it is referred to as
+a <strong>point</strong> feature (see illustration <a class="reference internal" href="#figure-geometry-point"><span class="std std-numref">Fig. 3.14</span></a>). Where the geometry
+consists of two or more vertices and the first and last vertex are not equal, a
+<strong>polyline</strong> feature is formed (see illustration <a class="reference internal" href="#figure-geometry-polyline"><span class="std std-numref">Fig. 3.15</span></a>). Where
+three or more vertices are present, and the last vertex is equal to the first, an
+enclosed <strong>polygon</strong> feature is formed (see illustration <a class="reference internal" href="#figure-geometry-polygon"><span class="std std-numref">Fig. 3.16</span></a>).</p>
+<figure class="align-center" id="id2">
+<span id="figure-geometry-point"></span><a class="reference internal image-reference" href="../../_images/point_feature.png"><img alt="../../_images/point_feature.png" src="../../_images/point_feature.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">A point feature is described by its X, Y and optionally Z coordinate. The point
+attributes describe the point e.g. if it is a tree or a lamp post.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id3">
+<span id="figure-geometry-polyline"></span><a class="reference internal image-reference" href="../../_images/polyline_feature.png"><img alt="../../_images/polyline_feature.png" src="../../_images/polyline_feature.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.15 </span><span class="caption-text">A polyline is a sequence of joined vertices. Each vertex has an X, Y (and
+optionally Z) coordinate. Attributes describe the polyline.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<span id="figure-geometry-polygon"></span><a class="reference internal image-reference" href="../../_images/polygon_feature.png"><img alt="../../_images/polygon_feature.png" src="../../_images/polygon_feature.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.16 </span><span class="caption-text">A polygon, like a polyline, is a sequence of vertices. However in a polygon,
+the first and last vertices are always at the same position.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Looking back at the picture of a landscape we showed you further up, you should
+be able to see the different types of features in the way that a GIS represents
+them now (see illustration <a class="reference internal" href="#figure-geometry-landscape"><span class="std std-numref">Fig. 3.17</span></a>).</p>
+<figure class="align-center" id="id5">
+<span id="figure-geometry-landscape"></span><a class="reference internal image-reference" href="../../_images/landscape_geometry.jpg"><img alt="../../_images/landscape_geometry.jpg" src="../../_images/landscape_geometry.jpg" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.17 </span><span class="caption-text">Landscape features as we would present them in a GIS. Rivers (blue) and roads
+(green) can be represented as lines, trees as points (red) and houses as
+polygons (white).</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="point-features-in-detail">
+<h2><span class="section-number">3.2. </span>Point features in detail<a class="headerlink" href="#point-features-in-detail" title="Permalink to this headline"></a></h2>
+<p>The first thing we need to realise when talking about point features is that what
+we describe as a point in GIS is a matter of opinion, and often dependent on
+scale. let’s look at cities for example. If you have a small scale map (which
+covers a large area), it may make sense to represent a city using a point feature.
+However as you zoom in to the map, moving towards a larger scale, it makes more
+sense to show the city limits as a polygon.</p>
+<p>When you choose to use points to represent a feature is mostly a matter of scale
+(how far away are you from the feature), convenience (it takes less time and
+effort to create point features than polygon features), and the type of feature
+(some things like telephone poles just don’t make sense to be stored as polygons).</p>
+<p>As we show in illustration <a class="reference internal" href="#figure-geometry-point"><span class="std std-numref">Fig. 3.14</span></a>, a point feature has an X, Y
+and optionally, Z value. The X and Y values will depend on the <strong>Coordinate
+Reference System</strong> (CRS) being used. We are going to go into more detail about
+Coordinate Reference Systems in a later tutorial. For now let’s simply say that
+a CRS is a way to accurately describe where a particular place is on the earth’s
+surface. One of the most common reference systems is <strong>Longitude and Latitude</strong>.
+Lines of Longitude run from the North Pole to the South Pole. Lines of Latitude
+run from the East to West. You can describe precisely where you are at any place
+on the earth by giving someone your Longitude (X) and Latitude (Y). If you make
+a similar measurement for a tree or a telephone pole and marked it on a map, you
+will have created a point feature.</p>
+<p>Since we know the earth is not flat, it is often useful to add a Z value to a
+point feature. This describes how high above sea level you are.</p>
+</section>
+<section id="polyline-features-in-detail">
+<h2><span class="section-number">3.3. </span>Polyline features in detail<a class="headerlink" href="#polyline-features-in-detail" title="Permalink to this headline"></a></h2>
+<p>Where a point feature is a single vertex, <strong>a polyline has two or more vertices</strong>.
+The polyline is a continuous path drawn through each vertex, as shown in
+<a class="reference internal" href="#figure-geometry-polyline"><span class="std std-numref">Fig. 3.15</span></a>. When two vertices are joined, a line is created. When
+more than two are joined, they form a ‘line of lines’, or <strong>polyline</strong>.</p>
+<p>A polyline is used to show the geometry of <strong>linear features</strong> such as roads,
+rivers, contours, footpaths, flight paths and so on. Sometimes we have special
+rules for polylines in addition to their basic geometry. For example contour
+lines may touch (e.g. at a cliff face) but should never cross over each other.
+Similarly, polylines used to store a road network should be connected at
+intersections. In some GIS applications you can set these special rules for a
+feature type (e.g. roads) and the GIS will ensure that these polylines always
+comply to these rules.</p>
+<p>If a curved polyline has very large distances between vertices, it may appear
+<strong>angular</strong> or jagged, depending on the scale at which it is viewed (see
+<a class="reference internal" href="#figure-polyline-jagged"><span class="std std-numref">Fig. 3.18</span></a>). Because of this it is important that polylines are
+digitised (captured into the computer) with distances between vertices that are
+small enough for the scale at which you want to use the data.</p>
+<figure class="align-center" id="id6">
+<span id="figure-polyline-jagged"></span><a class="reference internal image-reference" href="../../_images/jagged_polyline.png"><img alt="../../_images/jagged_polyline.png" src="../../_images/jagged_polyline.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.18 </span><span class="caption-text">Polylines viewed at a smaller scale (1:20 000 to the left) may appear smooth
+and curved. When zoomed in to a larger scale (1:500 to the right) polylines
+may look very angular.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <strong>attributes</strong> of a polyline describe its properties or characteristics. For
+example a road polyline may have attributes that describe whether it is surfaced
+with gravel or tar, how many lanes it has, whether it is a one way street, and
+so on. The GIS can use these attributes to symbolise the polyline feature with a
+suitable colour or line style.</p>
+</section>
+<section id="polygon-features-in-detail">
+<h2><span class="section-number">3.4. </span>Polygon features in detail<a class="headerlink" href="#polygon-features-in-detail" title="Permalink to this headline"></a></h2>
+<p>Polygon features are <strong>enclosed areas</strong> like dams, islands, country boundaries
+and so on. Like polyline features, polygons are created from a series of vertices
+that are connected with a continuous line. However because a polygon always
+describes an enclosed area, the first and last vertices should always be at the
+same place! Polygons often have <strong>shared geometry</strong> –– boundaries that are in
+common with a neighbouring polygon. Many GIS applications have the capability to
+ensure that the boundaries of neighbouring polygons exactly coincide. We will
+explore this in the <a class="reference internal" href="topology.html#gentle-gis-topology"><span class="std std-ref">Topology</span></a> topic later in this tutorial.</p>
+<p>As with points and polylines, polygons have <strong>attributes</strong>. The attributes
+describe each polygon. For example a dam may have attributes for depth and water
+quality.</p>
+</section>
+<section id="vector-data-in-layers">
+<h2><span class="section-number">3.5. </span>Vector data in layers<a class="headerlink" href="#vector-data-in-layers" title="Permalink to this headline"></a></h2>
+<p>Now that we have described what vector data is, let’s look at how vector data is
+managed and used in a GIS environment. Most GIS applications group vector features
+into <strong>layers</strong>. Features in a layer have the same geometry type (e.g. they
+will all be points) and the same kinds of attributes (e.g. information about what
+species a tree is for a trees layer). For example if you have recorded the
+positions of all the footpaths in your school, they will usually be stored
+together on the computer hard disk and shown in the GIS as a single layer. This
+is convenient because it allows you to hide or show all of the features for that
+layer in your GIS application with a single mouse click.</p>
+</section>
+<section id="editing-vector-data">
+<h2><span class="section-number">3.6. </span>Editing vector data<a class="headerlink" href="#editing-vector-data" title="Permalink to this headline"></a></h2>
+<p>The GIS application will allow you to create and modify the geometry data in a
+layer –– a process called <strong>digitising</strong> –– which we will look at more closely
+in a later tutorial. If a layer contains polygons (e.g. farm dams), the GIS
+application will only allow you to create new polygons in that layer. Similarly
+if you want to change the shape of a feature, the application will only allow you
+to do it if the changed shape is correct. For example it won’t allow you to edit
+a line in such a way that it has only one vertex –– remember in our discussion
+of lines above that all lines must have at least two vertices.</p>
+<p>Creating and editing vector data is an important function of a GIS since it is
+one of the main ways in which you can create personal data for things you are
+interested in. Say for example you are monitoring pollution in a river. You could
+use the GIS to digitise all outfalls for storm water drains (as point features).
+You could also digitise the river itself (as a polyline feature). Finally you
+could take readings of pH levels along the course of the river and digitise the
+places where you made these readings (as a point layer).</p>
+<p>As well as creating your own data, there is a lot of free vector data that you
+can obtain and use. For example, you can obtain vector data that appears on the
+1:50 000 map sheets from the Chief Directorate: Surveys and Mapping.</p>
+</section>
+<section id="scale-and-vector-data">
+<h2><span class="section-number">3.7. </span>Scale and vector data<a class="headerlink" href="#scale-and-vector-data" title="Permalink to this headline"></a></h2>
+<p>Map <strong>scale</strong> is an important issue to consider when working with vector data in
+a GIS. When data is captured, it is usually digitised from existing maps, or by
+taking information from surveyor records and global positioning system devices.
+Maps have different scales, so if you import vector data from a map into a GIS
+environment (for example by digitising paper maps), the digital vector data will
+have the same scale issues as the original map. This effect can be seen in
+illustrations <a class="reference internal" href="#figure-vector-small-scale"><span class="std std-numref">Fig. 3.19</span></a> and <a class="reference internal" href="#figure-vector-large-scale"><span class="std std-numref">Fig. 3.20</span></a>. Many
+issues can arise from making a poor choice of map scale. For example using the
+vector data in illustration <a class="reference internal" href="#figure-vector-small-scale"><span class="std std-numref">Fig. 3.19</span></a> to plan a wetland
+conservation area could result in important parts of the wetland being left out
+of the reserve! On the other hand if you are trying to create a regional map,
+using data captured at 1:1000 000 might be just fine and will save you a lot of
+time and effort capturing the data.</p>
+<figure class="align-center" id="id7">
+<span id="figure-vector-small-scale"></span><a class="reference internal image-reference" href="../../_images/small_scale.png"><img alt="../../_images/small_scale.png" src="../../_images/small_scale.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.19 </span><span class="caption-text">Vector data (red lines) that was digitised from a small scale (1:1000 000) map.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id8">
+<span id="figure-vector-large-scale"></span><a class="reference internal image-reference" href="../../_images/large_scale.png"><img alt="../../_images/large_scale.png" src="../../_images/large_scale.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.20 </span><span class="caption-text">Vector data (green lines) that was digitised from a large scale (1:50 000) map.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="symbology">
+<h2><span class="section-number">3.8. </span>Symbology<a class="headerlink" href="#symbology" title="Permalink to this headline"></a></h2>
+<p>When you add vector layers to the map view in a GIS application, they will be
+drawn with random colours and basic symbols. One of the great advantages of using
+a GIS is that you can create personalised maps very easily. The GIS program will
+let you choose colours to suite the feature type (e.g. you can tell it to draw a
+water bodies vector layer in blue). The GIS will also let you adjust the symbol
+used. So if you have a trees point layer, you can show each tree position with a
+small picture of a tree, rather than the basic circle marker that the GIS uses
+when you first load the layer (see illustrations <a class="reference internal" href="#figure-vector-symbology"><span class="std std-numref">Fig. 3.21</span></a>,
+<a class="reference internal" href="#figure-generic-symbology"><span class="std std-numref">Fig. 3.22</span></a> and <a class="reference internal" href="#figure-custom-symbology"><span class="std std-numref">Fig. 3.23</span></a>).</p>
+<figure class="align-center" id="id9">
+<span id="figure-vector-symbology"></span><a class="reference internal image-reference" href="../../_images/symbology_settings.png"><img alt="../../_images/symbology_settings.png" src="../../_images/symbology_settings.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.21 </span><span class="caption-text">In the GIS, you can use a panel (like the one above) to adjust how features
+in your layer should be drawn.</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
+<span id="figure-generic-symbology"></span><a class="reference internal image-reference" href="../../_images/symbology_generic.png"><img alt="../../_images/symbology_generic.png" src="../../_images/symbology_generic.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.22 </span><span class="caption-text">When a layer (for example the trees layer above) is first loaded, a GIS
+application will give it a generic symbol.</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<span id="figure-custom-symbology"></span><a class="reference internal image-reference" href="../../_images/symbology_custom.png"><img alt="../../_images/symbology_custom.png" src="../../_images/symbology_custom.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.23 </span><span class="caption-text">After making our adjustments it is much easier to see that our points represent
+trees.</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Symbology is a powerful feature, making maps come to life and the data in your
+GIS easier to understand. In the topic that follows (<a class="reference internal" href="vector_attribute_data.html#gentle-gis-attributes"><span class="std std-ref">Vector Attribute Data</span></a>)
+we will explore more deeply how symbology can help the user to understand vector
+data.</p>
+</section>
+<section id="what-can-we-do-with-vector-data-in-a-gis">
+<h2><span class="section-number">3.9. </span>What can we do with vector data in a GIS?<a class="headerlink" href="#what-can-we-do-with-vector-data-in-a-gis" title="Permalink to this headline"></a></h2>
+<p>At the simplest level we can use vector data in a GIS Application in much the
+same way you would use a normal topographic map. The real power of GIS starts to
+show itself when you start to ask questions like ‘which houses are within the 100
+year flood level of a river?’; ‘where is the best place to put a hospital so that
+it is easily accessible to as many people as possible?’; ‘which learners live in
+a particular suburb?’. A GIS is a great tool for answering these types of
+questions with the help of vector data. Generally we refer to the process of
+answering these types of questions as <strong>spatial analysis</strong>. In later topics of
+this tutorial we will look at spatial analysis in more detail.</p>
+</section>
+<section id="common-problems-with-vector-data">
+<h2><span class="section-number">3.10. </span>Common problems with vector data<a class="headerlink" href="#common-problems-with-vector-data" title="Permalink to this headline"></a></h2>
+<p>Working with vector data does have some problems. We already mentioned the issues
+that can arise with vectors captured at different scales. Vector data also needs
+a lot of work and maintenance to ensure that it is accurate and reliable.
+Inaccurate vector data can occur when the instruments used to capture the data
+are not properly set up, when the people capturing the data aren’t being careful,
+when time or money don’t allow for enough detail in the collection process, and
+so on.</p>
+<p>If you have poor quality vector data, you can often detect this when viewing the
+data in a GIS. For example <strong>slivers</strong> can occur when the edges of two polygon
+areas don’t meet properly (see <a class="reference internal" href="#figure-vector-slivers"><span class="std std-numref">Fig. 3.24</span></a>).</p>
+<figure class="align-center" id="id12">
+<span id="figure-vector-slivers"></span><a class="reference internal image-reference" href="../../_images/vector_slivers.png"><img alt="../../_images/vector_slivers.png" src="../../_images/vector_slivers.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.24 </span><span class="caption-text">Slivers occur when the vertices of two polygons do not match up on their
+borders. At a small scale (e.g. 1 on left) you may not be able to see these
+errors. At a large scale they are visible as thin strips between two polygons
+(2 on right).</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Overshoots</strong> can occur when a line feature such as a road does not meet another
+road exactly at an intersection. <strong>Undershoots</strong> can occur when a line feature
+(e.g. a river) does not exactly meet another feature to which it should be
+connected. Figure <a class="reference internal" href="#figure-vector-shoots"><span class="std std-numref">Fig. 3.25</span></a> demonstrates what undershoots and
+overshoots look like.</p>
+<figure class="align-center" id="id13">
+<span id="figure-vector-shoots"></span><a class="reference internal image-reference" href="../../_images/vector_overshoots.png"><img alt="../../_images/vector_overshoots.png" src="../../_images/vector_overshoots.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.25 </span><span class="caption-text">Undershoots (1) occur when digitised vector lines that should connect to each
+other don’t quite touch. Overshoots (2) happen if a line ends beyond the line
+it should connect to.</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Because of these types of errors, it is very important to digitise data carefully
+and accurately. In the upcoming topic on <strong>topology</strong>, we will examine some of
+these types of errors in more detail.</p>
+</section>
+<section id="what-have-we-learned">
+<h2><span class="section-number">3.11. </span>What have we learned?<a class="headerlink" href="#what-have-we-learned" title="Permalink to this headline"></a></h2>
+<p>Let’s wrap up what we covered in this worksheet:</p>
+<ul class="simple">
+<li><p><strong>Vector data</strong> is used to represent real world <strong>features</strong> in a GIS.</p></li>
+<li><p>A vector feature can have a <strong>geometry</strong> type of <strong>point</strong>, <strong>line</strong> or a
+<strong>polygon</strong>.</p></li>
+<li><p>Each vector feature has <strong>attribute data</strong> that describes it.</p></li>
+<li><p>Feature geometry is described in terms of <strong>vertices.</strong></p></li>
+<li><p>Point geometries are made up of a <strong>single vertex</strong> (X,Y and optionally Z).</p></li>
+<li><p>Polyline geometries are made up of <strong>two or more</strong> vertices forming a connected
+line.</p></li>
+<li><p>Polygon geometries are made up of <strong>at least four vertices</strong> forming an enclosed
+area. The first and last vertices are always in the same place.</p></li>
+<li><p>Choosing which geometry type to use depends on scale, convenience and what you
+want to do with the data in the GIS.</p></li>
+<li><p>Most GIS applications do not allow you to mix more than one geometry type in a
+single layer.</p></li>
+<li><p>Digitising is the process of creating digital vector data by drawing it in a
+GIS application.</p></li>
+<li><p>Vector data can have quality issues such as <strong>undershoots</strong>, <strong>overshoots</strong> and
+<strong>slivers</strong> which you need to be aware of.</p></li>
+<li><p>Vector data can be used for <strong>spatial analysis</strong> in a GIS application, for
+example to find the nearest hospital to a school.</p></li>
+</ul>
+<p>We have summarised the GIS Vector Data concept in Figure <a class="reference internal" href="#figure-vector-summary"><span class="std std-numref">Fig. 3.26</span></a>.</p>
+<figure class="align-center" id="id14">
+<span id="figure-vector-summary"></span><a class="reference internal image-reference" href="../../_images/vector_summary.png"><img alt="../../_images/vector_summary.png" src="../../_images/vector_summary.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.26 </span><span class="caption-text">This diagram shows how GIS applications deal with vector data.</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="now-you-try">
+<h2><span class="section-number">3.12. </span>Now you try!<a class="headerlink" href="#now-you-try" title="Permalink to this headline"></a></h2>
+<p>Here are some ideas for you to try with your learners:</p>
+<ul class="simple">
+<li><p>Using a copy of a toposheet map for your local area (like the one shown in
+<a class="reference internal" href="#figure-sample-map"><span class="std std-numref">Fig. 3.27</span></a>), see if your learners can identify examples of the different
+types of vector data by highlighting them on the map.</p></li>
+<li><p>Think of how you would create vector features in a GIS to represent real world
+features on your school grounds. Create a table of different features in and
+around your school and then task your learners to decide whether they would be
+best represented in the GIS as a point, line or polygon. See <a class="reference internal" href="#table-vector-1">table_vector_1</a>
+for an example.</p></li>
+</ul>
+<figure class="align-center" id="id15">
+<span id="figure-sample-map"></span><a class="reference internal image-reference" href="../../_images/sample_map.png"><img alt="../../_images/sample_map.png" src="../../_images/sample_map.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3.27 </span><span class="caption-text">Can you identify two point features and one polygon feature on this map?</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-default" id="table-vector-1">
+<colgroup>
+<col style="width: 63%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Real world feature</p></th>
+<th class="head"><p>Suitable Geometry Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The school flagpole</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>The soccer field</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>The footpaths in and around the school</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Places where taps are located</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Etc.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table Vector 1: Create a table like this (leaving the geometry type column empty)
+and ask your learners to decide on suitable geometry types.</p>
+</section>
+<section id="something-to-think-about">
+<h2><span class="section-number">3.13. </span>Something to think about<a class="headerlink" href="#something-to-think-about" title="Permalink to this headline"></a></h2>
+<p>If you don’t have a computer available, you can use a toposheet and transparency
+sheets to show your learners about vector data.</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">3.14. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline"></a></h2>
+<p>The QGIS User Guide also has more detailed information on working with vector
+data in QGIS.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">3.15. </span>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>In the section that follows we will take a closer look at <strong>attribute data</strong> to
+see how it can be used to describe vector features.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introducing_gis.html" class="btn btn-neutral float-left" title="2. Introducing GIS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector_attribute_data.html" class="btn btn-neutral float-right" title="4. Vector Attribute Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/vector_data.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/vector_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/vector_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/vector_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/vector_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/vector_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/vector_data.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/gentle_gis_introduction/vector_data.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/vector_data.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/gentle_gis_introduction/vector_data.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/gentle_gis_introduction/vector_data.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/vector_data.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/gentle_gis_introduction/vector_data.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/gentle_gis_introduction/vector_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Expressions, Filtering and Calculating Values &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/expressions.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="12. Reading And Storing Settings" href="settings.html" />
+    <link rel="prev" title="10. Map Rendering and Printing" href="composer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/expressions.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11. Expressions, Filtering and Calculating Values</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parsing-expressions">11.1. Parsing Expressions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluating-expressions">11.2. Evaluating Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-expressions">11.2.1. Basic Expressions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expressions-with-features">11.2.2. Expressions with features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtering-a-layer-with-expressions">11.2.3. Filtering a layer with expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-expression-errors">11.3. Handling expression errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">11. </span>Expressions, Filtering and Calculating Values</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/expressions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="composer.html" class="btn btn-neutral float-left" title="10. Map Rendering and Printing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="settings.html" class="btn btn-neutral float-right" title="12. Reading And Storing Settings" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="expressions-filtering-and-calculating-values">
+<span id="expressions"></span><span id="index-0"></span><h1><span class="section-number">11. </span>Expressions, Filtering and Calculating Values<a class="headerlink" href="#expressions-filtering-and-calculating-values" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">edit</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">QgsExpression</span><span class="p">,</span>
+<span class="linenos"> 4</span>    <span class="n">QgsExpressionContext</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">QgsFeature</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="n">QgsFeatureRequest</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">QgsField</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">QgsFields</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">QgsVectorLayer</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">QgsPointXY</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">QgsGeometry</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">QgsProject</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="n">QgsExpressionContextUtils</span>
+<span class="linenos">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#parsing-expressions" id="id1">Parsing Expressions</a></p></li>
+<li><p><a class="reference internal" href="#evaluating-expressions" id="id2">Evaluating Expressions</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-expressions" id="id3">Basic Expressions</a></p></li>
+<li><p><a class="reference internal" href="#expressions-with-features" id="id4">Expressions with features</a></p></li>
+<li><p><a class="reference internal" href="#filtering-a-layer-with-expressions" id="id5">Filtering a layer with expressions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#handling-expression-errors" id="id6">Handling expression errors</a></p></li>
+</ul>
+</div>
+<p>QGIS has some support for parsing of SQL-like expressions. Only a small subset
+of SQL syntax is supported. The expressions can be evaluated either as boolean
+predicates (returning <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code>) or as functions (returning a scalar value).
+See <a class="reference internal" href="../user_manual/working_with_vector/expression.html#vector-expressions"><span class="std std-ref">Expressions</span></a> in the User Manual for a complete list of available
+functions.</p>
+<p>Three basic types are supported:</p>
+<ul class="simple">
+<li><p>number — both whole numbers and decimal numbers, e.g. <code class="docutils literal notranslate"><span class="pre">123</span></code>, <code class="docutils literal notranslate"><span class="pre">3.14</span></code></p></li>
+<li><p>string — they have to be enclosed in single quotes: <code class="docutils literal notranslate"><span class="pre">'hello</span> <span class="pre">world'</span></code></p></li>
+<li><p>column reference — when evaluating, the reference is substituted with the
+actual value of the field. The names are not escaped.</p></li>
+</ul>
+<p>The following operations are available:</p>
+<ul class="simple">
+<li><p>arithmetic operators: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code></p></li>
+<li><p>parentheses: for enforcing the operator precedence: <code class="docutils literal notranslate"><span class="pre">(1</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">3</span></code></p></li>
+<li><p>unary plus and minus: <code class="docutils literal notranslate"><span class="pre">-12</span></code>, <code class="docutils literal notranslate"><span class="pre">+5</span></code></p></li>
+<li><p>mathematical functions: <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">tan</span></code>, <code class="docutils literal notranslate"><span class="pre">asin</span></code>,
+<code class="docutils literal notranslate"><span class="pre">acos</span></code>, <code class="docutils literal notranslate"><span class="pre">atan</span></code></p></li>
+<li><p>conversion functions: <code class="docutils literal notranslate"><span class="pre">to_int</span></code>, <code class="docutils literal notranslate"><span class="pre">to_real</span></code>, <code class="docutils literal notranslate"><span class="pre">to_string</span></code>, <code class="docutils literal notranslate"><span class="pre">to_date</span></code></p></li>
+<li><p>geometry functions: <code class="docutils literal notranslate"><span class="pre">$area</span></code>, <code class="docutils literal notranslate"><span class="pre">$length</span></code></p></li>
+<li><p>geometry handling functions: <code class="docutils literal notranslate"><span class="pre">$x</span></code>, <code class="docutils literal notranslate"><span class="pre">$y</span></code>, <code class="docutils literal notranslate"><span class="pre">$geometry</span></code>, <code class="docutils literal notranslate"><span class="pre">num_geometries</span></code>, <code class="docutils literal notranslate"><span class="pre">centroid</span></code></p></li>
+</ul>
+<p>And the following predicates are supported:</p>
+<ul class="simple">
+<li><p>comparison: <code class="docutils literal notranslate"><span class="pre">=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></li>
+<li><p>pattern matching: <code class="docutils literal notranslate"><span class="pre">LIKE</span></code> (using % and _), <code class="docutils literal notranslate"><span class="pre">~</span></code> (regular expressions)</p></li>
+<li><p>logical predicates: <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, <code class="docutils literal notranslate"><span class="pre">NOT</span></code></p></li>
+<li><p>NULL value checking: <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NULL</span></code>, <code class="docutils literal notranslate"><span class="pre">IS</span> <span class="pre">NOT</span> <span class="pre">NULL</span></code></p></li>
+</ul>
+<p>Examples of predicates:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sin(angle)</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Hello'</span> <span class="pre">LIKE</span> <span class="pre">'He%'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">&gt;</span> <span class="pre">10</span> <span class="pre">AND</span> <span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">10)</span> <span class="pre">OR</span> <span class="pre">z</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+</ul>
+<p>Examples of scalar expressions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">^</span> <span class="pre">10</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqrt(val)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$length</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+</ul>
+<section id="parsing-expressions">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">11.1. </span>Parsing Expressions</a><a class="headerlink" href="#parsing-expressions" title="Permalink to this headline"></a></h2>
+<p>The following example shows how to check if a given expression can be parsed correctly:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;1 + 1 = 2&#39;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">assert</span><span class="p">(</span><span class="ow">not</span> <span class="n">exp</span><span class="o">.</span><span class="n">hasParserError</span><span class="p">())</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;1 + 1 = &#39;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">assert</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">hasParserError</span><span class="p">())</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">assert</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">parserErrorString</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">syntax error, unexpected $end&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="evaluating-expressions">
+<span id="index-2"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">11.2. </span>Evaluating Expressions</a><a class="headerlink" href="#evaluating-expressions" title="Permalink to this headline"></a></h2>
+<p>Expressions can be used in different contexts, for example to filter features or to compute
+new field values. In any case, the expression has to be evaluated. That means that its
+value is computed by performing the specified computational steps, which can range from
+simple arithmetic to aggregate expressions.</p>
+<section id="basic-expressions">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">11.2.1. </span>Basic Expressions</a><a class="headerlink" href="#basic-expressions" title="Permalink to this headline"></a></h3>
+<p>This basic expression evaluates a simple arithmetic operation:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;2 * 3&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exp</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsExpression: &#39;2 * 3&#39;&gt;
+6
+</pre></div>
+</div>
+<p>Expression can also be used for comparison, evaluating to 1 (<code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code>)
+or 0 (<code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code>)</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;1 + 1 = 2&#39;</span><span class="p">)</span>
+<span class="n">exp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+<span class="c1"># 1</span>
+</pre></div>
+</div>
+</section>
+<section id="expressions-with-features">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">11.2.2. </span>Expressions with features</a><a class="headerlink" href="#expressions-with-features" title="Permalink to this headline"></a></h3>
+<p>To evaluate an expression against a feature, a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsExpressionContext.html#qgis.core.QgsExpressionContext" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsExpressionContext</span></code></a>
+object has to be created and passed to the evaluate function in order to allow the expression to access
+the feature’s field values.</p>
+<p>The following example shows how to create a feature with a field called “Column” and how to add this
+feature to the expression context.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">fields</span> <span class="o">=</span> <span class="n">QgsFields</span><span class="p">()</span>
+<span class="linenos"> 2</span><span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos"> 5</span><span class="n">feature</span><span class="o">.</span><span class="n">setFields</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;&quot;Column&quot;&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">context</span> <span class="o">=</span> <span class="n">QgsExpressionContext</span><span class="p">()</span>
+<span class="linenos">10</span><span class="n">context</span><span class="o">.</span><span class="n">setFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">exp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<span class="linenos">12</span><span class="c1"># 99</span>
+</pre></div>
+</div>
+<p>The following is a more complete example of how to use expressions in the context of a vector layer, in
+order to compute new field values:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QVariant</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="c1"># create a vector layer</span>
+<span class="linenos"> 4</span><span class="n">vl</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;Point&quot;</span><span class="p">,</span> <span class="s2">&quot;Companies&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">pr</span> <span class="o">=</span> <span class="n">vl</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span>
+<span class="linenos"> 6</span><span class="n">pr</span><span class="o">.</span><span class="n">addAttributes</span><span class="p">([</span><span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">String</span><span class="p">),</span>
+<span class="linenos"> 7</span>                  <span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Employees&quot;</span><span class="p">,</span>  <span class="n">QVariant</span><span class="o">.</span><span class="n">Int</span><span class="p">),</span>
+<span class="linenos"> 8</span>                  <span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Revenue&quot;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">),</span>
+<span class="linenos"> 9</span>                  <span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Rev. per employee&quot;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">),</span>
+<span class="linenos">10</span>                  <span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Sum&quot;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">),</span>
+<span class="linenos">11</span>                  <span class="n">QgsField</span><span class="p">(</span><span class="s2">&quot;Fun&quot;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">)])</span>
+<span class="linenos">12</span><span class="n">vl</span><span class="o">.</span><span class="n">updateFields</span><span class="p">()</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="c1"># add data to the first three fields</span>
+<span class="linenos">15</span><span class="n">my_data</span> <span class="o">=</span> <span class="p">[</span>
+<span class="linenos">16</span>    <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;ABC&#39;</span><span class="p">,</span> <span class="s1">&#39;emp&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;rev&#39;</span><span class="p">:</span> <span class="mf">100.1</span><span class="p">},</span>
+<span class="linenos">17</span>    <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;DEF&#39;</span><span class="p">,</span> <span class="s1">&#39;emp&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;rev&#39;</span><span class="p">:</span> <span class="mf">50.5</span><span class="p">},</span>
+<span class="linenos">18</span>    <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;GHI&#39;</span><span class="p">,</span> <span class="s1">&#39;emp&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;rev&#39;</span><span class="p">:</span> <span class="mf">725.9</span><span class="p">}]</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="k">for</span> <span class="n">rec</span> <span class="ow">in</span> <span class="n">my_data</span><span class="p">:</span>
+<span class="linenos">21</span>    <span class="n">f</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos">22</span>    <span class="n">pt</span> <span class="o">=</span> <span class="n">QgsPointXY</span><span class="p">(</span><span class="n">rec</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+<span class="linenos">23</span>    <span class="n">f</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromPointXY</span><span class="p">(</span><span class="n">pt</span><span class="p">))</span>
+<span class="linenos">24</span>    <span class="n">f</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="n">rec</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;emp&#39;</span><span class="p">],</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;rev&#39;</span><span class="p">]])</span>
+<span class="linenos">25</span>    <span class="n">pr</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span><span class="n">vl</span><span class="o">.</span><span class="n">updateExtents</span><span class="p">()</span>
+<span class="linenos">28</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vl</span><span class="p">)</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="c1"># The first expression computes the revenue per employee.</span>
+<span class="linenos">31</span><span class="c1"># The second one computes the sum of all revenue values in the layer.</span>
+<span class="linenos">32</span><span class="c1"># The final third expression doesn’t really make sense but illustrates</span>
+<span class="linenos">33</span><span class="c1"># the fact that we can use a wide range of expression functions, such</span>
+<span class="linenos">34</span><span class="c1"># as area and buffer in our expressions:</span>
+<span class="linenos">35</span><span class="n">expression1</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;&quot;Revenue&quot;/&quot;Employees&quot;&#39;</span><span class="p">)</span>
+<span class="linenos">36</span><span class="n">expression2</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;sum(&quot;Revenue&quot;)&#39;</span><span class="p">)</span>
+<span class="linenos">37</span><span class="n">expression3</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;area(buffer($geometry,&quot;Employees&quot;))&#39;</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="c1"># QgsExpressionContextUtils.globalProjectLayerScopes() is a convenience</span>
+<span class="linenos">40</span><span class="c1"># function that adds the global, project, and layer scopes all at once.</span>
+<span class="linenos">41</span><span class="c1"># Alternatively, those scopes can also be added manually. In any case,</span>
+<span class="linenos">42</span><span class="c1"># it is important to always go from “most generic” to “most specific”</span>
+<span class="linenos">43</span><span class="c1"># scope, i.e. from global to project to layer</span>
+<span class="linenos">44</span><span class="n">context</span> <span class="o">=</span> <span class="n">QgsExpressionContext</span><span class="p">()</span>
+<span class="linenos">45</span><span class="n">context</span><span class="o">.</span><span class="n">appendScopes</span><span class="p">(</span><span class="n">QgsExpressionContextUtils</span><span class="o">.</span><span class="n">globalProjectLayerScopes</span><span class="p">(</span><span class="n">vl</span><span class="p">))</span>
+<span class="linenos">46</span>
+<span class="linenos">47</span><span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">vl</span><span class="p">):</span>
+<span class="linenos">48</span>    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">vl</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+<span class="linenos">49</span>        <span class="n">context</span><span class="o">.</span><span class="n">setFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="linenos">50</span>        <span class="n">f</span><span class="p">[</span><span class="s1">&#39;Rev. per employee&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expression1</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<span class="linenos">51</span>        <span class="n">f</span><span class="p">[</span><span class="s1">&#39;Sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expression2</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<span class="linenos">52</span>        <span class="n">f</span><span class="p">[</span><span class="s1">&#39;Fun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">expression3</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<span class="linenos">53</span>        <span class="n">vl</span><span class="o">.</span><span class="n">updateFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="linenos">54</span>
+<span class="linenos">55</span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;Sum&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>876.5
+</pre></div>
+</div>
+</section>
+<section id="filtering-a-layer-with-expressions">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">11.2.3. </span>Filtering a layer with expressions</a><a class="headerlink" href="#filtering-a-layer-with-expressions" title="Permalink to this headline"></a></h3>
+<p>The following example can be used to filter a layer and return any feature that
+matches a predicate.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;Point?field=Test:integer&quot;</span><span class="p">,</span>
+<span class="linenos"> 2</span>                           <span class="s2">&quot;addfeat&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos"> 8</span>    <span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="n">i</span><span class="p">])</span>
+<span class="linenos"> 9</span>    <span class="k">assert</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">))</span>
+<span class="linenos">10</span><span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">expression</span> <span class="o">=</span> <span class="s1">&#39;Test &gt;= 3&#39;</span>
+<span class="linenos">13</span><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">matches</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">16</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="linenos">17</span>   <span class="n">matches</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="nb">print</span><span class="p">(</span><span class="n">matches</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</section>
+</section>
+<section id="handling-expression-errors">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">11.3. </span>Handling expression errors</a><a class="headerlink" href="#handling-expression-errors" title="Permalink to this headline"></a></h2>
+<p>Expression-related errors can occur during expression parsing or evaluation:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">exp</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s2">&quot;1 + 1 = 2&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">hasParserError</span><span class="p">():</span>
+<span class="linenos">3</span>   <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">parserErrorString</span><span class="p">())</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">value</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+<span class="linenos">6</span><span class="k">if</span> <span class="n">exp</span><span class="o">.</span><span class="n">hasEvalError</span><span class="p">():</span>
+<span class="linenos">7</span>   <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">exp</span><span class="o">.</span><span class="n">evalErrorString</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="composer.html" class="btn btn-neutral float-left" title="10. Map Rendering and Printing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="settings.html" class="btn btn-neutral float-right" title="12. Reading And Storing Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/expressions.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/expressions.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/expressions.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/expressions.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/expressions.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/expressions.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/expressions.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/expressions.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/expressions.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/expressions.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/expressions.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/expressions.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/expressions.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/expressions.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

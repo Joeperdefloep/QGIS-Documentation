@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.3. Lesson: Digitizing Forest Stands &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/stands_digitazing.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14.4. Lesson: Updating Forest Stands" href="updating_stands.html" />
+    <link rel="prev" title="14.2. Lesson: Georeferencing a Map" href="map_georeferencing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/stands_digitazing.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Module: Forestry Application</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forestry_intro.html">14.1. Lesson: Forestry Module Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_georeferencing.html">14.2. Lesson: Georeferencing a Map</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.3. Lesson: Digitizing Forest Stands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-extracting-the-forest-stands-borders">14.3.1.  Follow Along: Extracting the Forest Stands Borders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-georeference-the-green-pixels-image">14.3.2.  Try Yourself Georeference the Green Pixels Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-creating-supporting-points-for-digitizing">14.3.3.  Follow Along: Creating Supporting Points for Digitizing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-digitize-the-forest-stands">14.3.4.  Follow Along: Digitize the Forest Stands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-finish-digitizing-the-forest-stands">14.3.5.  Try Yourself Finish Digitizing the Forest Stands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-joining-the-forest-stand-data">14.3.6.  Follow Along: Joining the Forest Stand Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-renaming-attribute-names-and-adding-area-and-perimeter">14.3.7.  Try Yourself Renaming Attribute Names and Adding Area and Perimeter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">14.3.8. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">14.3.9. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="updating_stands.html">14.4. Lesson: Updating Forest Stands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systematic_sampling.html">14.5. Lesson: Systematic Sampling Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forest_maps.html">14.6. Lesson: Creating Detailed Maps with the Atlas Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters_calculation.html">14.7. Lesson: Calculating the Forest Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_lidar.html">14.8. Lesson: DEM from LiDAR Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="results_map.html">14.9. Lesson: Map Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">14. </span>Module: Forestry Application</a> &raquo;</li>
+      <li><span class="section-number">14.3. </span>Lesson: Digitizing Forest Stands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/forestry/stands_digitazing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="map_georeferencing.html" class="btn btn-neutral float-left" title="14.2. Lesson: Georeferencing a Map" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updating_stands.html" class="btn btn-neutral float-right" title="14.4. Lesson: Updating Forest Stands" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-digitizing-forest-stands">
+<h1><span class="section-number">14.3. </span>Lesson: Digitizing Forest Stands<a class="headerlink" href="#ls-digitizing-forest-stands" title="Permalink to this headline"></a></h1>
+<p>Unless you are going to use your georeferenced map as a simple background image,
+the next natural step is to digitize elements from it. You have already done so
+in the exercises about creating vector data in <a class="reference internal" href="../create_vector_data/create_new_vector.html"><span class="doc">Lesson: Creating a New Vector Dataset</span></a>,
+when you digitized the school fields. In this lesson, you are going to digitize
+the forest stands’ borders that appear in the map as green lines but instead of
+doing it using an aerial image, you will use your georeferenced map.</p>
+<p><strong>The goal for this lesson:</strong> Learn a technique to help the digitizing task,
+digitizing forest stands and finally adding the inventory data to them.</p>
+<section id="basic-fa-extracting-the-forest-stands-borders">
+<h2><span class="section-number">14.3.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Extracting the Forest Stands Borders<a class="headerlink" href="#basic-fa-extracting-the-forest-stands-borders" title="Permalink to this headline"></a></h2>
+<p>Open your <kbd class="kbd docutils literal notranslate">map_digitizing.qgs</kbd> project in QGIS, that you saved from the previous lesson.</p>
+<p>Once you have scanned and georeferenced your map you could start to digitize
+directly by looking at the image as a guide. That would most likely be the way
+to go if the image you are going to digitize from is, for example, an aerial
+photograph.</p>
+<p>If what you are using to digitize is a good map, as it is in our case, it is
+likely that the information is clearly displayed as lines with different colors
+for each type of element. Those colors can be relatively easy extracted as
+individual images using an image processing software like <a class="reference external" href="https://www.gimp.org/">GIMP</a>.
+Such separate images can be used to assist the digitizing, as you will see below.</p>
+<p>The first step will be to use GIMP to obtain an image that contains only the
+forest stands, that is, all those greenish lines that you could see in the
+original scanned map:</p>
+<ul class="simple">
+<li><p>Open GIMP (if you don’t have it installed yet, download it from the internet
+or ask your teacher).</p></li>
+<li><p>Open the original map image, <span class="menuselection">File ► Open</span>, <kbd class="kbd docutils literal notranslate">rautjarvi_map.tif</kbd>
+in the <kbd class="kbd docutils literal notranslate">exercise_data/forestry</kbd> folder. Note that the forest stands are
+represented as green lines (with the number of the stand also in green inside
+each polygon).</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/gimp_map.png" src="../../../_images/gimp_map.png" />
+</figure>
+<p>Now you can select the pixels in the image that are making up the forest stands’
+borders (the greenish pixels):</p>
+<ul class="simple">
+<li><p>Open the tool <span class="menuselection">Select ► By color</span>.</p></li>
+<li><p>With the tool active, zoom into the image (<span class="guilabel">Ctrl + mouse wheel</span>)
+so that a forest stand line is close enough to differentiate the pixels forming
+the line. See the left image below.</p></li>
+<li><p>Click and drag the mouse cursor in the middle of the line so that the tool
+will collect several pixel color values.</p></li>
+<li><p>Release the mouse click and wait a few seconds. The pixels matching the colors
+collected by the tool will be selected through the whole image.</p></li>
+<li><p>Zoom out to see how the greenish pixels have been selected throughout the image.</p></li>
+<li><p>If you are not happy with the result, repeat the click and drag operation.</p></li>
+<li><p>Your pixel selection should look something like the right image below.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/green_px_selected.png" src="../../../_images/green_px_selected.png" />
+</figure>
+<p>Once you are done with the selection you need to copy this selection as a new
+layer and then save it as separate image file:</p>
+<ul class="simple">
+<li><p>Copy (<span class="guilabel">Ctr+C</span>) the selected pixels.</p></li>
+<li><p>And paste the pixels directly (<span class="guilabel">Ctr+V</span>), GIMP will display the pasted
+pixels as a new temporary layer in the <span class="guilabel">Layers - Brushes</span> panel as a
+<span class="guilabel">Floating Selection (Pasted Layer)</span>.</p></li>
+<li><p>Right click that temporary layer and select <span class="guilabel">To New Layer</span>.</p></li>
+<li><p>Click the “eye” icon next to the original image layer to switch it off, so that
+only the <span class="guilabel">Pasted Layer</span> is visible:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/saving_green_px.png" src="../../../_images/saving_green_px.png" />
+</figure>
+<ul class="simple">
+<li><p>Finally, select <span class="menuselection">File ► Export…</span>, set <span class="guilabel">Select
+File Type (By Extension)</span> as a <span class="guilabel">TIFF image</span>, select the
+<kbd class="kbd docutils literal notranslate">digitizing</kbd> folder and name it <kbd class="kbd docutils literal notranslate">rautjarvi_map_green.tif</kbd>.
+Select no compression when asked.</p></li>
+</ul>
+<p>You could do the same process with other elements in the image, for example
+extracting the black lines that represent roads or the brown ones that represent
+the terrain’ contour lines. But for us, the forest stands is enough.</p>
+</section>
+<section id="basic-ty-georeference-the-green-pixels-image">
+<h2><span class="section-number">14.3.2. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Georeference the Green Pixels Image<a class="headerlink" href="#basic-ty-georeference-the-green-pixels-image" title="Permalink to this headline"></a></h2>
+<p>As you did in the previous lesson, you need to georeference this new image to
+be able to use it with the rest of your data.</p>
+<p>Note that you don’t need to digitize the ground control points any more because
+this image is basically the same image as the original map image, as far as the
+Georeferencer tool is concerned. Here are some things you should remember:</p>
+<ul class="simple">
+<li><p>This image is also, of course, in <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">KKJ</kbd> <kbd class="kbd docutils literal notranslate">/</kbd> <kbd class="kbd docutils literal notranslate">Finland</kbd> <kbd class="kbd docutils literal notranslate">zone</kbd> <kbd class="kbd docutils literal notranslate">2</kbd></kbd> CRS.</p></li>
+<li><p>You should use the ground control points you saved, <span class="menuselection">File ► Load GCP points</span>.</p></li>
+<li><p>Remember to review the <span class="guilabel">Transformation settings</span>.</p></li>
+<li><p>Name the output raster as <kbd class="kbd docutils literal notranslate">rautjarvi_green_georef.tif</kbd> in the <kbd class="kbd docutils literal notranslate">digitizing</kbd> folder.</p></li>
+</ul>
+<p>Check that the new raster is fitting nicely with the original map.</p>
+</section>
+<section id="basic-fa-creating-supporting-points-for-digitizing">
+<h2><span class="section-number">14.3.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Creating Supporting Points for Digitizing<a class="headerlink" href="#basic-fa-creating-supporting-points-for-digitizing" title="Permalink to this headline"></a></h2>
+<p>Having in mind the digitizing tools in QGIS, you might already be thinking that
+it would be helpful to snap to those green pixels while digitizing. That is
+precisely what you are going to do next create points from those pixels to use
+them later to help you follow the forest stands’ borders when digitizing, by
+using the snapping tools available in QGIS.</p>
+<ul class="simple">
+<li><p>Use the <span class="menuselection">Raster ► Conversion ► Polygonize (Raster to Vector)</span>
+tool to vectorize your green lines to polygons. If you don’t remember how, you
+can review it in <a class="reference internal" href="../complete_analysis/raster_to_vector.html"><span class="doc">Lesson: Raster to Vector Conversion</span></a>.</p></li>
+<li><p>Save as <kbd class="kbd docutils literal notranslate">rautjarvi_green_polygon.shp</kbd> inside the <kbd class="kbd docutils literal notranslate">digitizing</kbd> folder.</p></li>
+</ul>
+<p>Zoom in and see what the polygons look like. You will get something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/green_polygons.png" src="../../../_images/green_polygons.png" />
+</figure>
+<p>Next one option to get points out of those polygons is to get their centroids:</p>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Vector ► Geometry tools ► Polygon centroids</span>.</p></li>
+<li><p>Set the polygon layer you just got as the input file for the tool.</p></li>
+<li><p>Name the output as <kbd class="kbd docutils literal notranslate">green_centroids.shp</kbd> inside the <kbd class="kbd docutils literal notranslate">digitizing</kbd> folder.</p></li>
+<li><p>Check <span class="menuselection">Add result to canvas</span>.</p></li>
+<li><p>Run the tool to calculate the centroids for the polygons.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/green_points.png" src="../../../_images/green_points.png" />
+</figure>
+<p>Now you can remove the <span class="guilabel">rautjarvi_green_polygon</span> layer from the TOC.</p>
+<p>Change the symbology of the centroids layer as:</p>
+<ul class="simple">
+<li><p>Open the <span class="guilabel">Layer Properties</span> for <span class="guilabel">green_centroids</span>.</p></li>
+<li><p>Go to the <span class="guilabel">Symbology</span> tab.</p></li>
+<li><p>Set the <span class="guilabel">Unit</span> to Map unit.</p></li>
+<li><p>Set the <span class="guilabel">Size</span> to 1.</p></li>
+</ul>
+<p>It is not necessary to differentiate points from each other, you just need them
+to be there for the snapping tools to use them. You can use those points now to
+follow the original lines much easily than without them.</p>
+</section>
+<section id="basic-fa-digitize-the-forest-stands">
+<h2><span class="section-number">14.3.4. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Digitize the Forest Stands<a class="headerlink" href="#basic-fa-digitize-the-forest-stands" title="Permalink to this headline"></a></h2>
+<p>Now you are ready to start with the actual digitizing work. You would start by
+creating a vector file of <span class="guilabel">polygon type</span>, but for this exercise,
+there is a shapefile with part of the area of interest already digitized. You
+will just finish digitizing the half of the forest stands that are left between
+the main roads (wide pink lines) and the lake:</p>
+<figure class="align-center">
+<img alt="../../../_images/forest_stands_to_digitize.png" src="../../../_images/forest_stands_to_digitize.png" />
+</figure>
+<ul class="simple">
+<li><p>Go to the <kbd class="kbd docutils literal notranslate">digitizing</kbd> folder using your file manager browser.</p></li>
+<li><p>Drag and drop the <kbd class="kbd docutils literal notranslate">forest_stands.shp</kbd> vector file to your map.</p></li>
+</ul>
+<p>Change the new layer’s symbology so that it will be easier to see what polygons
+have already been digitized:</p>
+<ul class="simple">
+<li><p>The filling of the polygon to green.</p></li>
+<li><p>The polygons’ borders to 1 mm.</p></li>
+<li><p>and set the transparency to 50%.</p></li>
+</ul>
+<p>Now, if you remember past modules, we have to set up and activate the snapping options:</p>
+<ul class="simple">
+<li><p>Go to <span class="menuselection">Project ► Snapping options…</span>.</p></li>
+<li><p>Activate the snapping for the <kbd class="kbd docutils literal notranslate">green_centroids</kbd> and the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layers.</p></li>
+<li><p>Set their <span class="guilabel">Tolerance</span> to 5 map units.</p></li>
+<li><p>Check the <span class="guilabel">Avoid Int.</span> box for the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layer.</p></li>
+<li><p>Check <span class="guilabel">Enable topological editing</span>.</p></li>
+<li><p>Click <span class="guilabel">Apply</span>.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/snapping_settings_forest.png" src="../../../_images/snapping_settings_forest.png" />
+</figure>
+<p>With these snapping settings, whenever you are digitizing and get close enough
+to one of the points in the centroids layer or any vertex of your digitized
+polygons, a pink cross will appear on the point that will be snapped to.</p>
+<p>Finally, turn off the visibility of all the layers except <kbd class="kbd docutils literal notranslate">forest_stands</kbd>
+and <kbd class="kbd docutils literal notranslate">rautjarvi_georef</kbd>. Make sure that the map image has not transparency any more.</p>
+<p>A couple of important things to note before you start digitizing:</p>
+<ul class="simple">
+<li><p>Don’t try to be too accurate with the digitizing of the borders.</p></li>
+<li><p>If a border is a straight line, digitize it with just two nodes. In general,
+digitize using as few nodes as possible.</p></li>
+<li><p>Zoom in to close ranges only if you feel that you need to be accurate, for
+example, at some corners or when you want a polygon to connect with another
+polygon at a certain node.</p></li>
+<li><p>Use the mouse’s middle button to zoom in/out and to pan as you digitize.</p></li>
+<li><p>Digitize only one polygon at a time.</p></li>
+<li><p>After digitizing one polygon, write the forest stand id that you can see from the map.</p></li>
+</ul>
+<p>Now you can start digitizing:</p>
+<ul class="simple">
+<li><p>Locate the forest stand number 357 in the map window.</p></li>
+<li><p>Enable editing for the <kbd class="kbd docutils literal notranslate">forest_stands.shp</kbd> layer.</p></li>
+<li><p>Select the <span class="guilabel">Add feature</span> tool.</p></li>
+<li><p>Start digitizing the stand <kbd class="kbd docutils literal notranslate">357</kbd> by connecting some of the dots.</p></li>
+<li><p>Note the pink crosses indicating the snapping.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/dgitizing_357_1.png" src="../../../_images/dgitizing_357_1.png" />
+</figure>
+<ul class="simple">
+<li><p>When you are done, right click to end digitizing that polygon.</p></li>
+<li><p>Enter the forest stand <kbd class="kbd docutils literal notranslate">id</kbd> (in this case 357).</p></li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+</ul>
+<p>If you were not prompted for the polygon <kbd class="kbd docutils literal notranslate">id</kbd> when you finished digitizing it,
+go to <span class="menuselection">Settings ► Options ► Digitizing</span> and make sure that the
+<span class="guilabel">Suppress attribute form pop-up after feature creation</span> is not checked.</p>
+<p>Your digitized polygon will look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/dgitizing_357_3.png" src="../../../_images/dgitizing_357_3.png" />
+</figure>
+<p>Now for the second polygon, pick up the stand number 358. Make sure that the
+<span class="guilabel">Avoid int.</span> is checked for the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layer. This
+option does not allow intersecting polygons at digitizing, so that if you
+digitize  over an existing polygon, the new polygon will be trimmed to meet
+the border of the already existing polygons. You can use this characteristic
+to automatically obtain a common border.</p>
+<ul class="simple">
+<li><p>Begin digitizing the stand 358 at one of the common corners with the stand 357.</p></li>
+<li><p>Then continue normally until you get to the other common corner for both stands.</p></li>
+<li><p>Finally, digitize a few points inside polygon 357 making sure that the common
+border is not intersected. See left image below.</p></li>
+<li><p>Right click to finish editing the forest stand 358.</p></li>
+<li><p>Enter the <kbd class="kbd docutils literal notranslate">id</kbd> as 358.</p></li>
+<li><p>Click <span class="guilabel">OK</span>, your new polygon should show a common border with the
+stand 357 as you can see in the image on the right.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/dgitizing_358_5.png" src="../../../_images/dgitizing_358_5.png" />
+</figure>
+<p>The part of the polygon that was overlapping the existing polygon has been
+automatically trimmed out and you are left with a common border, as you intended
+it to be.</p>
+</section>
+<section id="basic-ty-finish-digitizing-the-forest-stands">
+<h2><span class="section-number">14.3.5. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Finish Digitizing the Forest Stands<a class="headerlink" href="#basic-ty-finish-digitizing-the-forest-stands" title="Permalink to this headline"></a></h2>
+<p>Now you have two forest stands ready. And a good idea on how to proceed.
+Continue digitizing on your own until you have digitized all the forest stands
+that are limited by the main road and the lake.</p>
+<p>It might look like a lot of work, but you will soon get used to digitizing the
+forest stands. It should take you about 15 minutes.</p>
+<p>During the digitizing you might need to edit or delete nodes, split or merge polygons.
+You learned about the necessary tools in <a class="reference internal" href="../create_vector_data/topo_editing.html"><span class="doc">Lesson: Feature Topology</span></a>,
+now is probably a good moment to go read about them again.</p>
+<p>Remember that having <span class="guilabel">Enable topological editing</span> activated,
+allows you to move nodes common to two polygons so that the common border is
+edited at the same time for both polygons.</p>
+<p>Your result will look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/stands_fully_digitized.png" src="../../../_images/stands_fully_digitized.png" />
+</figure>
+</section>
+<section id="basic-fa-joining-the-forest-stand-data">
+<h2><span class="section-number">14.3.6. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Joining the Forest Stand Data<a class="headerlink" href="#basic-fa-joining-the-forest-stand-data" title="Permalink to this headline"></a></h2>
+<p>It is possible that the forest inventory data you have for you map is also
+written in paper. In that case, you would have to first write that data to a text
+file or a spreadsheet. For this exercise, the information from the inventory for
+1994 (the same inventory as the map) is ready as a comma separated text (csv) file.</p>
+<p>Open the <kbd class="kbd docutils literal notranslate">rautjarvi_1994.csv</kbd> file from the <kbd class="kbd docutils literal notranslate">exercise_data\forestry</kbd>
+directory in a text editor and note that the inventory data file has an attribute
+called <kbd class="kbd docutils literal notranslate">ID</kbd> that has the numbers of the forest stands. Those numbers are
+the same as the forest stands ids you have entered for your polygons and can be
+used to link the data from the text file to your vector file. You can see the
+metadata for this inventory data in the file <kbd class="kbd docutils literal notranslate">rautjarvi_1994_legend.txt</kbd>
+in the same folder.</p>
+<ul class="simple">
+<li><p>Open the <kbd class="kbd docutils literal notranslate">.csv</kbd> in QGIS with the <span class="menuselection">Layer ► Add Delimited
+Text Layer…</span> tool. In the dialog, set it as follows:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/inventory_csv_import.png" src="../../../_images/inventory_csv_import.png" />
+</figure>
+<p>To add the data from the <kbd class="kbd docutils literal notranslate">.csv</kbd> file:</p>
+<ul class="simple">
+<li><p>Open the Layer Properties for the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layer.</p></li>
+<li><p>Go to the <span class="guilabel">Joins</span> tab.</p></li>
+<li><p>Click the plus sign on the bottom of the dialog box.</p></li>
+<li><p>Select <kbd class="kbd docutils literal notranslate">rautjarvi_1994.csv</kbd> as the <span class="guilabel">Join layer</span> and <kbd class="kbd docutils literal notranslate">ID</kbd>
+as the <span class="guilabel">Join</span> field.</p></li>
+<li><p>Make sure that the <span class="guilabel">Target</span> field is also set to <kbd class="kbd docutils literal notranslate">id</kbd>.</p></li>
+<li><p>Click <span class="guilabel">OK</span> two times.</p></li>
+</ul>
+<p>The data from the text file should be now linked to your vector file. To see
+what has happened, open the attribute table for the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layer.
+You can see that all the attributes from the inventory data file are now linked
+to your digitized vector layer.</p>
+</section>
+<section id="basic-ty-renaming-attribute-names-and-adding-area-and-perimeter">
+<h2><span class="section-number">14.3.7. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Renaming Attribute Names and Adding Area and Perimeter<a class="headerlink" href="#basic-ty-renaming-attribute-names-and-adding-area-and-perimeter" title="Permalink to this headline"></a></h2>
+<p>The data from the <kbd class="kbd docutils literal notranslate">.csv</kbd> file is just linked to your vector file. To make
+this link permanent, so that the data is actually recorded to the vector file
+you need to save the <kbd class="kbd docutils literal notranslate">forest_stands</kbd> layer as a new vector file. Close the
+attribute table and right click the forest_stands layer to save it as
+<kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd>.</p>
+<p>Open your new <kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd> in your map if you did not added yet.
+Then open the attribute table. You notice that the names of the columns that you
+just added are no very useful. To solve this:</p>
+<ul class="simple">
+<li><p>Add the plugin <span class="guilabel">Table Manager</span> as you have done with other plugins before.</p></li>
+<li><p>Make sure the plugin is activated.</p></li>
+<li><p>In the TOC select the layer <kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd>.</p></li>
+<li><p>Then, go to <span class="menuselection">Vector ► Table Manager ► Table manager</span>.</p></li>
+<li><p>Use the dialogue box to edit the names of the columns to match the ones in the <kbd class="kbd docutils literal notranslate">.csv</kbd> file.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/forestry_table_manager.png" src="../../../_images/forestry_table_manager.png" />
+</figure>
+<ul class="simple">
+<li><p>Click on <span class="guilabel">Save</span>.</p></li>
+<li><p>Select <span class="guilabel">Yes</span> to keep the layer style.</p></li>
+<li><p>Close the <span class="guilabel">Table Manager</span> dialogue.</p></li>
+</ul>
+<p>To finish gathering the information related to these forest stands, you might
+calculate the area and the perimeter of the stands. You calculated areas for
+polygons in <a class="reference internal" href="../complete_analysis/analysis_exercise.html"><span class="doc">Lesson: Supplementary Exercise</span></a>. Go back to that
+lesson if you need to and calculate the areas for the forest stands, name the
+new attribute <kbd class="kbd docutils literal notranslate">Area</kbd> and make sure that the values calculated are in hectares.</p>
+<p>Now your <kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd> layer is ready and packed with all the
+available information.</p>
+<p>Save your project to keep the current map presentation in case you need to come
+back later to it.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">14.3.8. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>It has taken a few clicks of the mouse but you now have your old inventory data
+in digital format and ready for use in QGIS.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">14.3.9. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>You could start doing different analysis with your brand new dataset, but you
+might be more interested in performing analysis in a dataset more up to date.
+The topic of the next lesson will be the creation of forest stands using current
+aerial photos and the addition of some relevant information to your dataset.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="map_georeferencing.html" class="btn btn-neutral float-left" title="14.2. Lesson: Georeferencing a Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="updating_stands.html" class="btn btn-neutral float-right" title="14.4. Lesson: Updating Forest Stands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/stands_digitazing.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/stands_digitazing.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/stands_digitazing.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/forestry/stands_digitazing.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/forestry/stands_digitazing.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/forestry/stands_digitazing.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/forestry/stands_digitazing.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/forestry/stands_digitazing.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/forestry/stands_digitazing.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/forestry/stands_digitazing.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/forestry/stands_digitazing.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/forestry/stands_digitazing.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/forestry/stands_digitazing.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/forestry/stands_digitazing.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

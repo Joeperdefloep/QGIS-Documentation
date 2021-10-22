@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20. QGIS Server and Python &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/server.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="21. Cheat sheet for PyQGIS" href="cheat_sheet.html" />
+    <link rel="prev" title="19. Network analysis library" href="network_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/server.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">20. QGIS Server and Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">20.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-api-basics">20.2. Server API basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-or-embedding">20.3. Standalone or embedding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">20.4. Server plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#server-filter-plugins">20.4.1. Server filter plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-services">20.4.2. Custom services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-apis">20.4.3. Custom APIs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">20. </span>QGIS Server and Python</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/server.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="network_analysis.html" class="btn btn-neutral float-left" title="19. Network analysis library" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cheat_sheet.html" class="btn btn-neutral float-right" title="21. Cheat sheet for PyQGIS" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="index-0"></span><section id="qgis-server-and-python">
+<span id="server-plugins"></span><h1><span class="section-number">20. </span>QGIS Server and Python<a class="headerlink" href="#qgis-server-and-python" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id4">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#server-api-basics" id="id5">Server API basics</a></p></li>
+<li><p><a class="reference internal" href="#standalone-or-embedding" id="id6">Standalone or embedding</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id7">Server plugins</a></p>
+<ul>
+<li><p><a class="reference internal" href="#server-filter-plugins" id="id8">Server filter plugins</a></p>
+<ul>
+<li><p><a class="reference internal" href="#i-o-filters" id="id9">I/O filters</a></p></li>
+<li><p><a class="reference internal" href="#raising-exceptions-from-a-plugin" id="id10">Raising exceptions from a plugin</a></p></li>
+<li><p><a class="reference internal" href="#writing-a-server-plugin" id="id11">Writing a server plugin</a></p></li>
+<li><p><a class="reference internal" href="#plugin-files" id="id12">Plugin files</a></p></li>
+<li><p><a class="reference internal" href="#access-control-filters" id="id13">Access control filters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#custom-services" id="id14">Custom services</a></p></li>
+<li><p><a class="reference internal" href="#custom-apis" id="id15">Custom APIs</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">20.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>To learn more about QGIS Server, read the <a class="reference internal" href="../server_manual/index.html#qgis-server-manual"><span class="std std-ref">QGIS Server Guide/Manual</span></a>.</p>
+<p>QGIS Server is three different things:</p>
+<ol class="arabic simple">
+<li><p>QGIS Server library: a library that provides an API for creating OGC web services</p></li>
+<li><p>QGIS Server FCGI: a FCGI binary application <code class="file docutils literal notranslate"><span class="pre">qgis_maserv.fcgi</span></code> that
+together with a web server implements a set of OGC services (WMS, WFS, WCS etc.)
+and OGC APIs (WFS3/OAPIF)</p></li>
+<li><p>QGIS Development Server: a development server binary application <code class="file docutils literal notranslate"><span class="pre">qgis_mapserver</span></code>
+that implements a set of OGC services (WMS, WFS, WCS etc.) and OGC APIs (WFS3/OAPIF)</p></li>
+</ol>
+<p>This chapter of the cookbook focuses on the first topic and by explaining the usage of QGIS Server API
+it shows how it is possible to use Python to extend, enhance or customize the server behavior or how to
+use the QGIS Server API to embed QGIS server into another application.</p>
+<p>There are a few different ways you can alter the behavior of QGIS Server or extend its
+capabilities to offer new custom services or APIs, these are the main scenarios you
+may face:</p>
+<ul class="simple">
+<li><p>EMBEDDING → Use QGIS Server API from another Python application</p></li>
+<li><p>STANDALONE → Run QGIS Server as a standalone WSGI/HTTP service</p></li>
+<li><p>FILTERS → Enhance/Customize QGIS Server with filter plugins</p></li>
+<li><p>SERVICES → Add a new <em>SERVICE</em></p></li>
+<li><p>OGC APIs → Add a new <em>OGC API</em></p></li>
+</ul>
+<p>Embedding and standalone applications require using the QGIS Server Python API directly from
+another Python script or application. The remaining options are better suited for when
+you want to add custom features to a standard QGIS Server binary application (FCGI or
+development server): in this case you’ll need to write a Python plugin for the server
+application and register your custom filters, services or APIs.</p>
+</section>
+<section id="server-api-basics">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">20.2. </span>Server API basics</a><a class="headerlink" href="#server-api-basics" title="Permalink to this headline"></a></h2>
+<p>The fundamental classes involved in a typical QGIS Server application are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServer.html#qgis.server.QgsServer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServer</span></code></a> the server instance
+(typically a single instance for the whole application life)</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerRequest.html#qgis.server.QgsServerRequest" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerRequest</span></code></a> the request object
+(typically recreated on each request)</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServer.html#qgis.server.QgsServer.handleRequest" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QgsServer.handleRequest(request,</span> <span class="pre">response)</span></code></a>
+processes the request and populates the response</p></li>
+</ul>
+<p>The QGIS Server FCGI or development server workflow can be summarized as follows:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>initialize the QgsApplication
+<span class="linenos">2</span>create the QgsServer
+<span class="linenos">3</span>the main server loop waits forever for client requests:
+<span class="linenos">4</span>    for each incoming request:
+<span class="linenos">5</span>        create a QgsServerRequest request
+<span class="linenos">6</span>        create a QgsServerResponse response
+<span class="linenos">7</span>        call QgsServer.handleRequest(request, response)
+<span class="linenos">8</span>            filter plugins may be executed
+<span class="linenos">9</span>        send the output to the client
+</pre></div>
+</div>
+<p>Inside the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServer.html#qgis.server.QgsServer.handleRequest" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QgsServer.handleRequest(request,</span> <span class="pre">response)</span></code></a> method
+the filter plugins callbacks are called and <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerRequest.html#qgis.server.QgsServerRequest" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerRequest</span></code></a> and
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerResponse.html#qgis.server.QgsServerResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerResponse</span></code></a> are made available to the plugins through
+the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a> class.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>QGIS server classes are not thread safe, you should always use a multiprocessing
+model or containers when building scalable applications based on QGIS Server API.</p>
+</div>
+</section>
+<section id="standalone-or-embedding">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">20.3. </span>Standalone or embedding</a><a class="headerlink" href="#standalone-or-embedding" title="Permalink to this headline"></a></h2>
+<p>For standalone server applications or embedding, you will need
+to use the above mentioned server classes directly, wrapping them up
+into a web server implementation that manages all the HTTP protocol interactions
+with the client.</p>
+<p>A minimal example of the QGIS Server API usage (without the HTTP part) follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsApplication</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.server</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="n">app</span> <span class="o">=</span> <span class="n">QgsApplication</span><span class="p">([],</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Create the server instance, it may be a single one that</span>
+<span class="linenos"> 6</span><span class="c1"># is reused on multiple requests</span>
+<span class="linenos"> 7</span><span class="n">server</span> <span class="o">=</span> <span class="n">QgsServer</span><span class="p">()</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c1"># Create the request by specifying the full URL and an optional body</span>
+<span class="linenos">10</span><span class="c1"># (for example for POST requests)</span>
+<span class="linenos">11</span><span class="n">request</span> <span class="o">=</span> <span class="n">QgsBufferServerRequest</span><span class="p">(</span>
+<span class="linenos">12</span>    <span class="s1">&#39;http://localhost:8081/?MAP=/qgis-server/projects/helloworld.qgs&#39;</span> <span class="o">+</span>
+<span class="linenos">13</span>    <span class="s1">&#39;&amp;SERVICE=WMS&amp;REQUEST=GetCapabilities&#39;</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="c1"># Create a response objects</span>
+<span class="linenos">16</span><span class="n">response</span> <span class="o">=</span> <span class="n">QgsBufferServerResponse</span><span class="p">()</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="c1"># Handle the request</span>
+<span class="linenos">19</span><span class="n">server</span><span class="o">.</span><span class="n">handleRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">())</span>
+<span class="linenos">22</span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">))</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="n">app</span><span class="o">.</span><span class="n">exitQgis</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Here is a complete standalone application example developed for the continuous integrations
+testing on QGIS source code repository, it showcases a wide set of different plugin filters
+and authentication schemes (not mean for production because they were developed for testing
+purposes only but still interesting for learning): <a class="reference external" href="https://github.com/qgis/QGIS/blob/master/tests/src/python/qgis_wrapped_server.py">https://github.com/qgis/QGIS/blob/master/tests/src/python/qgis_wrapped_server.py</a></p>
+</section>
+<section id="id1">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">20.4. </span>Server plugins</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>Server python plugins are loaded once when the QGIS Server application starts
+and can be used to register filters, services or APIs.</p>
+<p>The structure of a server plugin is very similar to their desktop counterpart,
+a <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a> object is made available to
+the plugins and the plugins can register one or more custom filters, services or APIs
+to the corresponding registry by using one of the methods exposed by the server interface.</p>
+<section id="server-filter-plugins">
+<h3><a class="toc-backref" href="#id8"><span class="section-number">20.4.1. </span>Server filter plugins</a><a class="headerlink" href="#server-filter-plugins" title="Permalink to this headline"></a></h3>
+<p>Filters come in three different flavors and they can be instanciated by subclassing
+one of the classes below and by calling the corresponding method of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a>:</p>
+<table class="colwidths-auto docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>Filter Type</p></td>
+<td><p>Base Class</p></td>
+<td><p>QgsServerInterface registration</p></td>
+</tr>
+<tr class="row-even"><td><p>I/O</p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerFilter</span></code></a></p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.registerFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerFilter()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Access Control</p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsAccessControlFilter</span></code></a></p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.registerAccessControl" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerAccessControl()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Cache</p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerCacheFilter.html#qgis.server.QgsServerCacheFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerCacheFilter</span></code></a></p></td>
+<td><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.registerServerCache" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerServerCache()</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="i-o-filters">
+<h4><a class="toc-backref" href="#id9"><span class="section-number">20.4.1.1. </span>I/O filters</a><a class="headerlink" href="#i-o-filters" title="Permalink to this headline"></a></h4>
+<p>I/O filters can modify the server input and output (the request and the response)
+of the core services (WMS, WFS etc.) allowing to do any kind of manipulation
+of the services workflow. It is possible for example to restrict the access to
+selected layers, to inject an XSL stylesheet to the XML response, to add a
+watermark to a generated WMS image and so on.</p>
+<p>From this point, you might find useful a quick look to the
+<a class="reference external" href="https://qgis.org/pyqgis/master/server">server plugins API docs</a>.</p>
+<p>Each filter should implement at least one of three callbacks:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.requestReady" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">requestReady()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.responseComplete" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">responseComplete()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a></p></li>
+</ul>
+<p>All filters have access to the request/response object
+(<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsRequestHandler.html#qgis.server.QgsRequestHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a>)
+and can manipulate all its properties (input/output) and
+raise exceptions (while in a quite particular way as we’ll see below).</p>
+<p>Here is the pseudo code showing how the server handles a typical request and when the
+filter’s callbacks are called:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>for each incoming request:
+<span class="linenos"> 2</span>    create GET/POST request handler
+<span class="linenos"> 3</span>    pass request to an instance of QgsServerInterface
+<span class="linenos"> 4</span>    call requestReady filters
+<span class="linenos"> 5</span>    if there is not a response:
+<span class="linenos"> 6</span>        if SERVICE is WMS/WFS/WCS:
+<span class="linenos"> 7</span>            create WMS/WFS/WCS service
+<span class="linenos"> 8</span>            call service’s executeRequest
+<span class="linenos"> 9</span>                possibly call sendResponse for each chunk of bytes
+<span class="linenos">10</span>                sent to the client by a streaming services (WFS)
+<span class="linenos">11</span>        call responseComplete
+<span class="linenos">12</span>        call sendResponse
+<span class="linenos">13</span>    request handler sends the response to the client
+</pre></div>
+</div>
+<p>The following paragraphs describe the available callbacks in details.</p>
+<section id="requestready">
+<h5><span class="section-number">20.4.1.1.1. </span>requestReady<a class="headerlink" href="#requestready" title="Permalink to this headline"></a></h5>
+<p>This is called when the request is ready: incoming URL and data have been parsed
+and before entering the core services (WMS, WFS etc.) switch, this is the point
+where you can manipulate the input and perform actions like:</p>
+<ul class="simple">
+<li><p>authentication/authorization</p></li>
+<li><p>redirects</p></li>
+<li><p>add/remove certain parameters (typenames for example)</p></li>
+<li><p>raise exceptions</p></li>
+</ul>
+<p>You could even substitute a core service completely by changing <strong>SERVICE</strong>
+parameter and hence bypassing the core service completely (not that this make
+much sense though).</p>
+</section>
+<section id="sendresponse">
+<h5><span class="section-number">20.4.1.1.2. </span>sendResponse<a class="headerlink" href="#sendresponse" title="Permalink to this headline"></a></h5>
+<p>This is called whenever any output is sent to <strong>FCGI</strong> <code class="docutils literal notranslate"><span class="pre">stdout</span></code> (and from there, to
+the client). This is normally done after core services have finished their process
+and after responseComplete hook was called, but in a few cases XML can become so
+huge that a streaming XML implementation is needed (WFS GetFeature is one of them).
+In that case, instead of a single call to
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a>, the method might
+be exceptionally called multiple times before the response is complete,
+and in that case (and only in that case) it is also called
+before <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.responseComplete" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">responseComplete()</span></code></a>.</p>
+<p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a> is the best place
+for direct manipulation of core service’s
+output and while <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.responseComplete" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">responseComplete()</span></code></a>
+is typically also an option,
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a> is the only
+viable option in case of streaming services.</p>
+</section>
+<section id="responsecomplete">
+<h5><span class="section-number">20.4.1.1.3. </span>responseComplete<a class="headerlink" href="#responsecomplete" title="Permalink to this headline"></a></h5>
+<p>This is called once when core services (if hit) finish their process and the
+request is ready to be sent to the client. As discussed above, this is normally
+called before <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a>
+except for streaming services (or other plugin
+filters) that might have called
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a> earlier.</p>
+<p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.responseComplete" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">responseComplete()</span></code></a> is the
+ideal place to provide new services implementation
+(WPS or custom services) and to perform direct manipulation of the output coming
+from core services (for example to add a watermark upon a WMS image).</p>
+</section>
+</section>
+<section id="raising-exceptions-from-a-plugin">
+<h4><a class="toc-backref" href="#id10"><span class="section-number">20.4.1.2. </span>Raising exceptions from a plugin</a><a class="headerlink" href="#raising-exceptions-from-a-plugin" title="Permalink to this headline"></a></h4>
+<p>Some work has still to be done on this topic: the current implementation can
+distinguish between handled and unhandled exceptions by setting a
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsRequestHandler.html#qgis.server.QgsRequestHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> property to an
+instance of QgsMapServiceException,
+this way the main C++ code can catch handled python exceptions and ignore
+unhandled exceptions (or better: log them).</p>
+<p>This approach basically works but it is not very “pythonic”: a better approach
+would be to raise exceptions from python code and see them bubbling up into C++
+loop for being handled there.</p>
+</section>
+<section id="writing-a-server-plugin">
+<span id="index-1"></span><h4><a class="toc-backref" href="#id11"><span class="section-number">20.4.1.3. </span>Writing a server plugin</a><a class="headerlink" href="#writing-a-server-plugin" title="Permalink to this headline"></a></h4>
+<p>A server plugin is a standard QGIS Python plugin as described in
+<a class="reference internal" href="plugins/index.html#developing-plugins"><span class="std std-ref">Developing Python Plugins</span></a>, that just provides an additional (or alternative)
+interface: a typical QGIS desktop plugin has access to QGIS application
+through the <a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgisInterface</span></code></a> instance, a server
+plugin has only access to a <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a>
+when it is executed within the QGIS Server application context.</p>
+<p>To make QGIS Server aware that a plugin has a server interface, a special
+metadata entry is needed (in <code class="file docutils literal notranslate"><span class="pre">metadata.txt</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Only plugins that have the <code class="docutils literal notranslate"><span class="pre">server=True</span></code> metadata set will be loaded and executed by QGIS Server.</p>
+</div>
+<p>The example plugin discussed here (with many more) is available
+on github at <a class="reference external" href="https://github.com/elpaso/qgis3-server-vagrant/tree/master/resources/web/plugins">https://github.com/elpaso/qgis3-server-vagrant/tree/master/resources/web/plugins</a>,
+a few server plugins are also published in the official <a class="reference external" href="https://plugins.qgis.org/plugins/server">QGIS plugins repository</a>.</p>
+</section>
+<section id="plugin-files">
+<h4><a class="toc-backref" href="#id12"><span class="section-number">20.4.1.4. </span>Plugin files</a><a class="headerlink" href="#plugin-files" title="Permalink to this headline"></a></h4>
+<p>Here’s the directory structure of our example server plugin.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">PYTHON_PLUGINS_PATH</span><span class="o">/</span>
+<span class="linenos">2</span>  <span class="n">HelloServer</span><span class="o">/</span>
+<span class="linenos">3</span>    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>    <span class="o">--&gt;</span> <span class="o">*</span><span class="n">required</span><span class="o">*</span>
+<span class="linenos">4</span>    <span class="n">HelloServer</span><span class="o">.</span><span class="n">py</span>  <span class="o">--&gt;</span> <span class="o">*</span><span class="n">required</span><span class="o">*</span>
+<span class="linenos">5</span>    <span class="n">metadata</span><span class="o">.</span><span class="n">txt</span>   <span class="o">--&gt;</span> <span class="o">*</span><span class="n">required</span><span class="o">*</span>
+</pre></div>
+</div>
+<section id="init-py">
+<span id="index-2"></span><h5><span class="section-number">20.4.1.4.1. </span>__init__.py<a class="headerlink" href="#init-py" title="Permalink to this headline"></a></h5>
+<p>This file is required by Python’s import system. Also, QGIS Server requires that this
+file contains a <code class="xref py py-func docutils literal notranslate"><span class="pre">serverClassFactory()</span></code> function, which is called when the
+plugin gets loaded into QGIS Server when the server starts. It receives reference to instance of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a> and must return instance
+of your plugin’s class.
+This is how the example plugin <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> looks like:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">serverClassFactory</span><span class="p">(</span><span class="n">serverIface</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">.HelloServer</span> <span class="kn">import</span> <span class="n">HelloServerServer</span>
+    <span class="k">return</span> <span class="n">HelloServerServer</span><span class="p">(</span><span class="n">serverIface</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="helloserver-py">
+<h5><span class="section-number">20.4.1.4.2. </span>HelloServer.py<a class="headerlink" href="#helloserver-py" title="Permalink to this headline"></a></h5>
+<p>This is where the magic happens and this is how magic looks like:
+(e.g. <code class="file docutils literal notranslate"><span class="pre">HelloServer.py</span></code>)</p>
+<p>A server plugin typically consists in one or more callbacks packed into instances
+of a <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerFilter</span></code></a>.</p>
+<p>Each <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerFilter</span></code></a> implements one or more
+of the following callbacks:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.requestReady" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">requestReady()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.responseComplete" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">responseComplete()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerFilter.html#qgis.server.QgsServerFilter.sendResponse" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sendResponse()</span></code></a></p></li>
+</ul>
+<p>The following example implements a minimal filter which prints <em>HelloServer!</em>
+in case the <strong>SERVICE</strong> parameter equals to “HELLO”:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">HelloFilter</span><span class="p">(</span><span class="n">QgsServerFilter</span><span class="p">):</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos"> 4</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">serverIface</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="nf">requestReady</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;HelloFilter.requestReady&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="nf">sendResponse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">10</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;HelloFilter.sendResponse&quot;</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="k">def</span> <span class="nf">responseComplete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">13</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;HelloFilter.responseComplete&quot;</span><span class="p">)</span>
+<span class="linenos">14</span>        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">requestHandler</span><span class="p">()</span>
+<span class="linenos">15</span>        <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameterMap</span><span class="p">()</span>
+<span class="linenos">16</span>        <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SERVICE&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;HELLO&#39;</span><span class="p">:</span>
+<span class="linenos">17</span>            <span class="n">request</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="linenos">18</span>            <span class="n">request</span><span class="o">.</span><span class="n">setResponseHeader</span><span class="p">(</span><span class="s1">&#39;Content-type&#39;</span><span class="p">,</span> <span class="s1">&#39;text/plain&#39;</span><span class="p">)</span>
+<span class="linenos">19</span>            <span class="c1"># Note that the content is of type &quot;bytes&quot;</span>
+<span class="linenos">20</span>            <span class="n">request</span><span class="o">.</span><span class="n">appendBody</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;HelloServer!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The filters must be registered into the <strong>serverIface</strong> as in the following example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HelloServerServer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+        <span class="n">serverIface</span><span class="o">.</span><span class="n">registerFilter</span><span class="p">(</span><span class="n">HelloFilter</span><span class="p">(</span><span class="n">serverIface</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The second parameter of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.registerFilter" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerFilter()</span></code></a> sets a priority which
+defines the order for the callbacks with the same name (the lower priority is
+invoked first).</p>
+<p>By using the three callbacks, plugins can manipulate the input and/or the output
+of the server in many different ways. In every moment, the plugin instance has
+access to the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsRequestHandler.html#qgis.server.QgsRequestHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> through
+the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a>.
+The <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsRequestHandler.html#qgis.server.QgsRequestHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRequestHandler</span></code></a> class has plenty of
+methods that can be used to alter
+the input parameters before entering the core processing of the server (by using
+<code class="xref py py-func docutils literal notranslate"><span class="pre">requestReady()</span></code>) or after the request has been processed by the core services
+(by using <code class="xref py py-func docutils literal notranslate"><span class="pre">sendResponse()</span></code>).</p>
+<p>The following examples cover some common use cases:</p>
+</section>
+<section id="modifying-the-input">
+<h5><span class="section-number">20.4.1.4.3. </span>Modifying the input<a class="headerlink" href="#modifying-the-input" title="Permalink to this headline"></a></h5>
+<p>The example plugin contains a test example that changes input parameters coming
+from the query string, in this example a new parameter is injected into the
+(already parsed) <code class="docutils literal notranslate"><span class="pre">parameterMap</span></code>, this parameter is then visible by core services
+(WMS etc.), at the end of core services processing we check that the parameter
+is still there:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">ParamsFilter</span><span class="p">(</span><span class="n">QgsServerFilter</span><span class="p">):</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos"> 4</span>        <span class="nb">super</span><span class="p">(</span><span class="n">ParamsFilter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">serverIface</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="nf">requestReady</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">requestHandler</span><span class="p">()</span>
+<span class="linenos"> 8</span>        <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameterMap</span><span class="p">(</span> <span class="p">)</span>
+<span class="linenos"> 9</span>        <span class="n">request</span><span class="o">.</span><span class="n">setParameter</span><span class="p">(</span><span class="s1">&#39;TEST_NEW_PARAM&#39;</span><span class="p">,</span> <span class="s1">&#39;ParamsFilter&#39;</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="k">def</span> <span class="nf">responseComplete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">12</span>        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">requestHandler</span><span class="p">()</span>
+<span class="linenos">13</span>        <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameterMap</span><span class="p">(</span> <span class="p">)</span>
+<span class="linenos">14</span>        <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TEST_NEW_PARAM&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;ParamsFilter&#39;</span><span class="p">:</span>
+<span class="linenos">15</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;SUCCESS - ParamsFilter.responseComplete&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">17</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;FAIL    - ParamsFilter.responseComplete&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is an extract of what you see in the log file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span> src/core/qgsmessagelog.cpp: <span class="m">45</span>: <span class="o">(</span>logMessage<span class="o">)</span> <span class="o">[</span>0ms<span class="o">]</span> <span class="m">2014</span>-12-12T12:39:29 plugin<span class="o">[</span><span class="m">0</span><span class="o">]</span> HelloServerServer - loading filter ParamsFilter
+<span class="linenos">2</span> src/core/qgsmessagelog.cpp: <span class="m">45</span>: <span class="o">(</span>logMessage<span class="o">)</span> <span class="o">[</span>1ms<span class="o">]</span> <span class="m">2014</span>-12-12T12:39:29 Server<span class="o">[</span><span class="m">0</span><span class="o">]</span> Server plugin HelloServer loaded!
+<span class="linenos">3</span> src/core/qgsmessagelog.cpp: <span class="m">45</span>: <span class="o">(</span>logMessage<span class="o">)</span> <span class="o">[</span>0ms<span class="o">]</span> <span class="m">2014</span>-12-12T12:39:29 Server<span class="o">[</span><span class="m">0</span><span class="o">]</span> Server python plugins loaded
+<span class="linenos">4</span> src/mapserver/qgshttprequesthandler.cpp: <span class="m">547</span>: <span class="o">(</span>requestStringToParameterMap<span class="o">)</span> <span class="o">[</span>1ms<span class="o">]</span> inserting pair SERVICE // HELLO into the parameter map
+<span class="linenos">5</span> src/mapserver/qgsserverfilter.cpp: <span class="m">42</span>: <span class="o">(</span>requestReady<span class="o">)</span> <span class="o">[</span>0ms<span class="o">]</span> QgsServerFilter plugin default requestReady called
+<span class="hll"><span class="linenos">6</span> src/core/qgsmessagelog.cpp: <span class="m">45</span>: <span class="o">(</span>logMessage<span class="o">)</span> <span class="o">[</span>0ms<span class="o">]</span> <span class="m">2014</span>-12-12T12:39:29 plugin<span class="o">[</span><span class="m">0</span><span class="o">]</span> SUCCESS - ParamsFilter.responseComplete
+</span></pre></div>
+</div>
+<p>On the highlighted line the “SUCCESS” string indicates that the plugin passed the test.</p>
+<p>The same technique can be exploited to use a custom service instead of a core
+one: you could for example skip a <strong>WFS</strong> <strong>SERVICE</strong> request or any other core
+request just by changing the <strong>SERVICE</strong> parameter to something different and
+the core service will be skipped. Then you can inject your custom results into
+the output and send them to the client (this is explained below).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you really want to implement a custom service it is recommended to subclass
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsService.html#qgis.server.QgsService" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsService</span></code></a> and register your service on
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.serviceRegistry" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerFilter()</span></code></a> by
+calling its <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServiceRegistry.html#qgis.server.QgsServiceRegistry.registerService" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerService(service)</span></code></a></p>
+</div>
+</section>
+<section id="modifying-or-replacing-the-output">
+<h5><span class="section-number">20.4.1.4.4. </span>Modifying or replacing the output<a class="headerlink" href="#modifying-or-replacing-the-output" title="Permalink to this headline"></a></h5>
+<p>The watermark filter example shows how to replace the WMS output with a new
+image obtained by adding a watermark image on the top of the WMS image generated
+by the WMS core service:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.server</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">class</span> <span class="nc">WatermarkFilter</span><span class="p">(</span><span class="n">QgsServerFilter</span><span class="p">):</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos"> 8</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">serverIface</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="k">def</span> <span class="nf">responseComplete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">11</span>        <span class="n">request</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serverInterface</span><span class="p">()</span><span class="o">.</span><span class="n">requestHandler</span><span class="p">()</span>
+<span class="linenos">12</span>        <span class="n">params</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">parameterMap</span><span class="p">(</span> <span class="p">)</span>
+<span class="linenos">13</span>        <span class="c1"># Do some checks</span>
+<span class="linenos">14</span>        <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;SERVICE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;WMS&#39;</span> \
+<span class="linenos">15</span>                <span class="ow">and</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;REQUEST&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;GETMAP&#39;</span> \
+<span class="linenos">16</span>                <span class="ow">and</span> <span class="ow">not</span> <span class="n">request</span><span class="o">.</span><span class="n">exceptionRaised</span><span class="p">()</span> <span class="p">):</span>
+<span class="linenos">17</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;WatermarkFilter.responseComplete: image ready </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">parameter</span><span class="p">(</span><span class="s2">&quot;FORMAT&quot;</span><span class="p">))</span>
+<span class="linenos">18</span>            <span class="c1"># Get the image</span>
+<span class="linenos">19</span>            <span class="n">img</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">()</span>
+<span class="linenos">20</span>            <span class="n">img</span><span class="o">.</span><span class="n">loadFromData</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">())</span>
+<span class="linenos">21</span>            <span class="c1"># Adds the watermark</span>
+<span class="linenos">22</span>            <span class="n">watermark</span> <span class="o">=</span> <span class="n">QImage</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;media/watermark.png&#39;</span><span class="p">))</span>
+<span class="linenos">23</span>            <span class="n">p</span> <span class="o">=</span> <span class="n">QPainter</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="linenos">24</span>            <span class="n">p</span><span class="o">.</span><span class="n">drawImage</span><span class="p">(</span><span class="n">QRect</span><span class="p">(</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">watermark</span><span class="p">)</span>
+<span class="linenos">25</span>            <span class="n">p</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+<span class="linenos">26</span>            <span class="n">ba</span> <span class="o">=</span> <span class="n">QByteArray</span><span class="p">()</span>
+<span class="linenos">27</span>            <span class="n">buffer</span> <span class="o">=</span> <span class="n">QBuffer</span><span class="p">(</span><span class="n">ba</span><span class="p">)</span>
+<span class="linenos">28</span>            <span class="n">buffer</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">QIODevice</span><span class="o">.</span><span class="n">WriteOnly</span><span class="p">)</span>
+<span class="linenos">29</span>            <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="s2">&quot;PNG&quot;</span> <span class="k">if</span> <span class="s2">&quot;png&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">parameter</span><span class="p">(</span><span class="s2">&quot;FORMAT&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;JPG&quot;</span><span class="p">)</span>
+<span class="linenos">30</span>            <span class="c1"># Set the body</span>
+<span class="linenos">31</span>            <span class="n">request</span><span class="o">.</span><span class="n">clearBody</span><span class="p">()</span>
+<span class="linenos">32</span>            <span class="n">request</span><span class="o">.</span><span class="n">appendBody</span><span class="p">(</span><span class="n">ba</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example the <strong>SERVICE</strong> parameter value is checked and if the incoming
+request is a <strong>WMS</strong> <strong>GETMAP</strong> and no exceptions have been set by a previously
+executed plugin or by the core service (WMS in this case), the WMS generated
+image is retrieved from the output buffer and the watermark image is added.
+The final step is to clear the output buffer and replace it with the newly
+generated image. Please note that in a real-world situation we should also check
+for the requested image type instead of supporting PNG or JPG only.</p>
+</section>
+</section>
+<section id="access-control-filters">
+<h4><a class="toc-backref" href="#id13"><span class="section-number">20.4.1.5. </span>Access control filters</a><a class="headerlink" href="#access-control-filters" title="Permalink to this headline"></a></h4>
+<p>Access control filters gives the developer a fine-grained control over which layers,
+features and attributes can be accessed, the following callbacks can be implemented
+in an access control filter:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.layerFilterExpression" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layerFilterExpression(layer)</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.layerFilterSubsetString" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layerFilterSubsetString(layer)</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.layerPermissions" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layerPermissions(layer)</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.authorizedLayerAttributes" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">authorizedLayerAttributes(layer,</span> <span class="pre">attributes)</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.allowToEdit" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">allowToEdit(layer,</span> <span class="pre">feature)</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.cacheKey" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cacheKey()</span></code></a></p></li>
+</ul>
+<section id="id2">
+<h5><span class="section-number">20.4.1.5.1. </span>Plugin files<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h5>
+<p>Here’s the directory structure of our example plugin:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>PYTHON_PLUGINS_PATH/
+<span class="linenos">2</span>  MyAccessControl/
+<span class="linenos">3</span>    __init__.py    --&gt; *required*
+<span class="linenos">4</span>    AccessControl.py  --&gt; *required*
+<span class="linenos">5</span>    metadata.txt   --&gt; *required*
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h5><span class="section-number">20.4.1.5.2. </span>__init__.py<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h5>
+<p>This file is required by Python’s import system. As for all QGIS server plugins, this
+file contains a <code class="xref py py-func docutils literal notranslate"><span class="pre">serverClassFactory()</span></code> function, which is called when the
+plugin gets loaded into QGIS Server at startup. It receives a reference to an instance of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerInterface</span></code></a> and must return an instance
+of your plugin’s class.
+This is how the example plugin <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> looks like:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">serverClassFactory</span><span class="p">(</span><span class="n">serverIface</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">MyAccessControl.AccessControl</span> <span class="kn">import</span> <span class="n">AccessControlServer</span>
+    <span class="k">return</span> <span class="n">AccessControlServer</span><span class="p">(</span><span class="n">serverIface</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="accesscontrol-py">
+<h5><span class="section-number">20.4.1.5.3. </span>AccessControl.py<a class="headerlink" href="#accesscontrol-py" title="Permalink to this headline"></a></h5>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">AccessControlFilter</span><span class="p">(</span><span class="n">QgsAccessControlFilter</span><span class="p">):</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">server_iface</span><span class="p">):</span>
+<span class="linenos"> 4</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">server_iface</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="nf">layerFilterExpression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="sd">&quot;&quot;&quot; Return an additional expression filter &quot;&quot;&quot;</span>
+<span class="linenos"> 8</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">layerFilterExpression</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="k">def</span> <span class="nf">layerFilterSubsetString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+<span class="linenos">11</span>        <span class="sd">&quot;&quot;&quot; Return an additional subset string (typically SQL) filter &quot;&quot;&quot;</span>
+<span class="linenos">12</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">layerFilterSubsetString</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="k">def</span> <span class="nf">layerPermissions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+<span class="linenos">15</span>        <span class="sd">&quot;&quot;&quot; Return the layer rights &quot;&quot;&quot;</span>
+<span class="linenos">16</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">layerPermissions</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>    <span class="k">def</span> <span class="nf">authorizedLayerAttributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+<span class="linenos">19</span>        <span class="sd">&quot;&quot;&quot; Return the authorised layer attributes &quot;&quot;&quot;</span>
+<span class="linenos">20</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">authorizedLayerAttributes</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span>    <span class="k">def</span> <span class="nf">allowToEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<span class="linenos">23</span>        <span class="sd">&quot;&quot;&quot; Are we authorised to modify the following geometry &quot;&quot;&quot;</span>
+<span class="linenos">24</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">allowToEdit</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">feature</span><span class="p">)</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="k">def</span> <span class="nf">cacheKey</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cacheKey</span><span class="p">()</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="k">class</span> <span class="nc">AccessControlServer</span><span class="p">:</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span>   <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos">32</span>      <span class="sd">&quot;&quot;&quot; Register AccessControlFilter &quot;&quot;&quot;</span>
+<span class="linenos">33</span>      <span class="n">serverIface</span><span class="o">.</span><span class="n">registerAccessControl</span><span class="p">(</span><span class="n">AccessControlFilter</span><span class="p">(</span><span class="n">serverIface</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example gives a full access for everybody.</p>
+<p>It’s the role of the plugin to know who is logged on.</p>
+<p>On all those methods we have the layer on argument to be able to customise
+the restriction per layer.</p>
+</section>
+<section id="layerfilterexpression">
+<h5><span class="section-number">20.4.1.5.4. </span>layerFilterExpression<a class="headerlink" href="#layerfilterexpression" title="Permalink to this headline"></a></h5>
+<p>Used to add an Expression to limit the results, e.g.:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">layerFilterExpression</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;$role = &#39;user&#39;&quot;</span>
+</pre></div>
+</div>
+<p>To limit on feature where the attribute role is equals to “user”.</p>
+</section>
+<section id="layerfiltersubsetstring">
+<h5><span class="section-number">20.4.1.5.5. </span>layerFilterSubsetString<a class="headerlink" href="#layerfiltersubsetstring" title="Permalink to this headline"></a></h5>
+<p>Same than the previous but use the <code class="docutils literal notranslate"><span class="pre">SubsetString</span></code> (executed in the database)</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">layerFilterSubsetString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;role = &#39;user&#39;&quot;</span>
+</pre></div>
+</div>
+<p>To limit on feature where the attribute role is equals to “user”.</p>
+</section>
+<section id="layerpermissions">
+<h5><span class="section-number">20.4.1.5.6. </span>layerPermissions<a class="headerlink" href="#layerpermissions" title="Permalink to this headline"></a></h5>
+<p>Limit the access to the layer.</p>
+<p>Return an object of type <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.layerPermissions" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">LayerPermissions()</span></code></a>, which has the properties:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.LayerPermissions.canRead" title="(in QGIS Python API vmaster)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">canRead</span></code></a>
+to see it in the <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code> and have read access.</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.LayerPermissions.canInsert" title="(in QGIS Python API vmaster)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">canInsert</span></code></a>
+to be able to insert a new feature.</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.LayerPermissions.canUpdate" title="(in QGIS Python API vmaster)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">canUpdate</span></code></a>
+to be able to update a feature.</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsAccessControlFilter.html#qgis.server.QgsAccessControlFilter.LayerPermissions.canDelete" title="(in QGIS Python API vmaster)"><code class="xref py py-attr docutils literal notranslate"><span class="pre">canDelete</span></code></a>
+to be able to delete a feature.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">layerPermissions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">rights</span> <span class="o">=</span> <span class="n">QgsAccessControlFilter</span><span class="o">.</span><span class="n">LayerPermissions</span><span class="p">()</span>
+<span class="linenos">3</span>    <span class="n">rights</span><span class="o">.</span><span class="n">canRead</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="linenos">4</span>    <span class="n">rights</span><span class="o">.</span><span class="n">canInsert</span> <span class="o">=</span> <span class="n">rights</span><span class="o">.</span><span class="n">canUpdate</span> <span class="o">=</span> <span class="n">rights</span><span class="o">.</span><span class="n">canDelete</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="linenos">5</span>    <span class="k">return</span> <span class="n">rights</span>
+</pre></div>
+</div>
+<p>To limit everything on read only access.</p>
+</section>
+<section id="authorizedlayerattributes">
+<h5><span class="section-number">20.4.1.5.7. </span>authorizedLayerAttributes<a class="headerlink" href="#authorizedlayerattributes" title="Permalink to this headline"></a></h5>
+<p>Used to limit the visibility of a specific subset of attribute.</p>
+<p>The argument attribute return the current set of visible attributes.</p>
+<p>Example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">authorizedLayerAttributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">attributes</span> <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="s2">&quot;role&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To hide the ‘role’ attribute.</p>
+</section>
+<section id="allowtoedit">
+<h5><span class="section-number">20.4.1.5.8. </span>allowToEdit<a class="headerlink" href="#allowtoedit" title="Permalink to this headline"></a></h5>
+<p>This is used to limit the editing on a subset of features.</p>
+<p>It is used in the <code class="docutils literal notranslate"><span class="pre">WFS-Transaction</span></code> protocol.</p>
+<p>Example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">allowToEdit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">attribute</span><span class="p">(</span><span class="s1">&#39;role&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;user&#39;</span>
+</pre></div>
+</div>
+<p>To be able to edit only feature that has the attribute role
+with the value user.</p>
+</section>
+<section id="cachekey">
+<h5><span class="section-number">20.4.1.5.9. </span>cacheKey<a class="headerlink" href="#cachekey" title="Permalink to this headline"></a></h5>
+<p>QGIS server maintain a cache of the capabilities then to have a cache
+per role you can return the role in this method. Or return <code class="docutils literal notranslate"><span class="pre">None</span></code>
+to completely disable the cache.</p>
+</section>
+</section>
+</section>
+<section id="custom-services">
+<h3><a class="toc-backref" href="#id14"><span class="section-number">20.4.2. </span>Custom services</a><a class="headerlink" href="#custom-services" title="Permalink to this headline"></a></h3>
+<p>In QGIS Server, core services such as WMS, WFS and WCS are implemented as subclasses of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsService.html#qgis.server.QgsService" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsService</span></code></a>.</p>
+<p>To implemented a new service that will be executed when the query string parameter <code class="docutils literal notranslate"><span class="pre">SERVICE</span></code>
+matches the service name, you can implemented your own <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsService.html#qgis.server.QgsService" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsService</span></code></a>
+and register your service on the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.serviceRegistry" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serviceRegistry()</span></code></a> by
+calling its <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServiceRegistry.html#qgis.server.QgsServiceRegistry.registerService" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerService(service)</span></code></a>.</p>
+<p>Here is an example of a custom service named CUSTOM:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.server</span> <span class="kn">import</span> <span class="n">QgsService</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsMessageLog</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">CustomServiceService</span><span class="p">(</span><span class="n">QgsService</span><span class="p">):</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>        <span class="n">QgsService</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">10</span>        <span class="k">return</span> <span class="s2">&quot;CUSTOM&quot;</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>    <span class="k">def</span> <span class="nf">version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">13</span>        <span class="k">return</span> <span class="s2">&quot;1.0.0&quot;</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>    <span class="k">def</span> <span class="nf">executeRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">project</span><span class="p">):</span>
+<span class="linenos">16</span>        <span class="n">response</span><span class="o">.</span><span class="n">setStatusCode</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<span class="linenos">17</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s1">&#39;Custom service executeRequest&#39;</span><span class="p">)</span>
+<span class="linenos">18</span>        <span class="n">response</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Custom service executeRequest&quot;</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="k">class</span> <span class="nc">CustomService</span><span class="p">():</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos">24</span>        <span class="n">serverIface</span><span class="o">.</span><span class="n">serviceRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerService</span><span class="p">(</span><span class="n">CustomServiceService</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-apis">
+<h3><a class="toc-backref" href="#id15"><span class="section-number">20.4.3. </span>Custom APIs</a><a class="headerlink" href="#custom-apis" title="Permalink to this headline"></a></h3>
+<p>In QGIS Server, core OGC APIs such OAPIF (aka WFS3) are implemented as collections of
+<a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerOgcApiHandler.html#qgis.server.QgsServerOgcApiHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApiHandler</span></code></a> subclasses that
+are registered to an instance of <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerOgcApi.html#qgis.server.QgsServerOgcApi" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApi</span></code></a>
+(or it’s parent class <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerApi.html#qgis.server.QgsServerApi" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerApi</span></code></a>).</p>
+<p>To implemented a new API that will be executed when the url path matches
+a certain URL, you can implemented your own <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerOgcApiHandler.html#qgis.server.QgsServerOgcApiHandler" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApiHandler</span></code></a>
+instances, add them to an <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerOgcApi.html#qgis.server.QgsServerOgcApi" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsServerOgcApi</span></code></a> and register
+the API on the <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServerInterface.html#qgis.server.QgsServerInterface.serviceRegistry" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serviceRegistry()</span></code></a> by
+calling its <a class="reference external" href="https://qgis.org/pyqgis/master/server/QgsServiceRegistry.html#qgis.server.QgsServiceRegistry.registerApi" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">registerApi(api)</span></code></a>.</p>
+<p>Here is an example of a custom API that will be executed when the URL contains <code class="docutils literal notranslate"><span class="pre">/customapi</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QBuffer</span><span class="p">,</span> <span class="n">QIODevice</span><span class="p">,</span> <span class="n">QTextStream</span><span class="p">,</span> <span class="n">QRegularExpression</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">qgis.server</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 6</span>    <span class="n">QgsServiceRegistry</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">QgsService</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">QgsServerFilter</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">QgsServerOgcApi</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">QgsServerQueryStringParameter</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">QgsServerOgcApiHandler</span><span class="p">,</span>
+<span class="linenos">12</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">15</span>    <span class="n">QgsMessageLog</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">QgsJsonExporter</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">QgsCircle</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">QgsFeature</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="n">QgsPoint</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="n">QgsGeometry</span><span class="p">,</span>
+<span class="linenos">21</span><span class="p">)</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="k">class</span> <span class="nc">CustomApiHandler</span><span class="p">(</span><span class="n">QgsServerOgcApiHandler</span><span class="p">):</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">27</span>        <span class="nb">super</span><span class="p">(</span><span class="n">CustomApiHandler</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="linenos">28</span>        <span class="bp">self</span><span class="o">.</span><span class="n">setContentTypes</span><span class="p">([</span><span class="n">QgsServerOgcApi</span><span class="o">.</span><span class="n">HTML</span><span class="p">,</span> <span class="n">QgsServerOgcApi</span><span class="o">.</span><span class="n">JSON</span><span class="p">])</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="k">def</span> <span class="nf">path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">31</span>        <span class="k">return</span> <span class="n">QRegularExpression</span><span class="p">(</span><span class="s2">&quot;/customapi&quot;</span><span class="p">)</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>    <span class="k">def</span> <span class="nf">operationId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">34</span>        <span class="k">return</span> <span class="s2">&quot;CustomApiXYCircle&quot;</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span>    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">37</span>        <span class="k">return</span> <span class="s2">&quot;Creates a circle around a point&quot;</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>    <span class="k">def</span> <span class="nf">description</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">40</span>        <span class="k">return</span> <span class="s2">&quot;Creates a circle around a point&quot;</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span>    <span class="k">def</span> <span class="nf">linkTitle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">43</span>        <span class="k">return</span> <span class="s2">&quot;Custom Api XY Circle&quot;</span>
+<span class="linenos">44</span>
+<span class="linenos">45</span>    <span class="k">def</span> <span class="nf">linkType</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">46</span>        <span class="k">return</span> <span class="n">QgsServerOgcApi</span><span class="o">.</span><span class="n">data</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span>    <span class="k">def</span> <span class="nf">handleRequest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="linenos">49</span>        <span class="sd">&quot;&quot;&quot;Simple Circle&quot;&quot;&quot;</span>
+<span class="linenos">50</span>
+<span class="linenos">51</span>        <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+<span class="linenos">52</span>        <span class="n">x</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+<span class="linenos">53</span>        <span class="n">y</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+<span class="linenos">54</span>        <span class="n">r</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">]</span>
+<span class="linenos">55</span>        <span class="n">f</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos">56</span>        <span class="n">f</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">])</span>
+<span class="linenos">57</span>        <span class="n">f</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QgsCircle</span><span class="p">(</span><span class="n">QgsPoint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">)</span><span class="o">.</span><span class="n">toCircularString</span><span class="p">())</span>
+<span class="linenos">58</span>        <span class="n">exporter</span> <span class="o">=</span> <span class="n">QgsJsonExporter</span><span class="p">()</span>
+<span class="linenos">59</span>        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">exporter</span><span class="o">.</span><span class="n">exportFeature</span><span class="p">(</span><span class="n">f</span><span class="p">)),</span> <span class="n">context</span><span class="p">)</span>
+<span class="linenos">60</span>
+<span class="linenos">61</span>    <span class="k">def</span> <span class="nf">templatePath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="linenos">62</span>        <span class="c1"># The template path is used to serve HTML content</span>
+<span class="linenos">63</span>        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;circle.html&#39;</span><span class="p">)</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span>    <span class="k">def</span> <span class="nf">parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="linenos">66</span>        <span class="k">return</span> <span class="p">[</span><span class="n">QgsServerQueryStringParameter</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">QgsServerQueryStringParameter</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="s1">&#39;X coordinate&#39;</span><span class="p">),</span>
+<span class="linenos">67</span>                <span class="n">QgsServerQueryStringParameter</span><span class="p">(</span>
+<span class="linenos">68</span>                    <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">QgsServerQueryStringParameter</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="s1">&#39;Y coordinate&#39;</span><span class="p">),</span>
+<span class="linenos">69</span>                <span class="n">QgsServerQueryStringParameter</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">QgsServerQueryStringParameter</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">)]</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span>
+<span class="linenos">72</span><span class="k">class</span> <span class="nc">CustomApi</span><span class="p">():</span>
+<span class="linenos">73</span>
+<span class="linenos">74</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serverIface</span><span class="p">):</span>
+<span class="linenos">75</span>        <span class="n">api</span> <span class="o">=</span> <span class="n">QgsServerOgcApi</span><span class="p">(</span><span class="n">serverIface</span><span class="p">,</span> <span class="s1">&#39;/customapi&#39;</span><span class="p">,</span>
+<span class="linenos">76</span>                            <span class="s1">&#39;custom api&#39;</span><span class="p">,</span> <span class="s1">&#39;a custom api&#39;</span><span class="p">,</span> <span class="s1">&#39;1.1&#39;</span><span class="p">)</span>
+<span class="linenos">77</span>        <span class="n">handler</span> <span class="o">=</span> <span class="n">CustomApiHandler</span><span class="p">()</span>
+<span class="linenos">78</span>        <span class="n">api</span><span class="o">.</span><span class="n">registerHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+<span class="linenos">79</span>        <span class="n">serverIface</span><span class="o">.</span><span class="n">serviceRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">registerApi</span><span class="p">(</span><span class="n">api</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="network_analysis.html" class="btn btn-neutral float-left" title="19. Network analysis library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cheat_sheet.html" class="btn btn-neutral float-right" title="21. Cheat sheet for PyQGIS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/server.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/server.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/server.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/server.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/server.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/server.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/server.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/server.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/server.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/server.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/server.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/server.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

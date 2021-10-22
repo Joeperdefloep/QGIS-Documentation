@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.4. Lesson: Spatial Queries &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_queries.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16.5. Lesson: Geometry Construction" href="geometry.html" />
+    <link rel="prev" title="16.3. Lesson: Import and Export" href="import_export.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_queries.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">16. Module: Spatial Database Concepts with PostGIS</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="spatial_functions.html">16.1. Lesson: PostGIS Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simple_feature_model.html">16.2. Lesson: Simple Feature Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="import_export.html">16.3. Lesson: Import and Export</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.4. Lesson: Spatial Queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#spatial-operators">16.4.1. Spatial Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spatial-indexes">16.4.2. Spatial Indexes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-moderate">16.4.3. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#postgis-spatial-functions-demo">16.4.4. PostGIS Spatial Functions Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">16.4.5. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">16.4.6. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.html">16.5. Lesson: Geometry Construction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">16. </span>Module: Spatial Database Concepts with PostGIS</a> &raquo;</li>
+      <li><span class="section-number">16.4. </span>Lesson: Spatial Queries</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/spatial_databases/spatial_queries.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="import_export.html" class="btn btn-neutral float-left" title="16.3. Lesson: Import and Export" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geometry.html" class="btn btn-neutral float-right" title="16.5. Lesson: Geometry Construction" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-spatial-queries">
+<h1><span class="section-number">16.4. </span>Lesson: Spatial Queries<a class="headerlink" href="#ls-spatial-queries" title="Permalink to this headline"></a></h1>
+<p>Spatial queries are no different from other database queries. You can use the
+geometry column like any other database column. With the installation of
+PostGIS in our database, we have additional functions to query our database.</p>
+<p><strong>The goal for this lesson:</strong> To see how spatial functions are implemented
+similarly to “normal” non-spatial functions.</p>
+<section id="spatial-operators">
+<h2><span class="section-number">16.4.1. </span>Spatial Operators<a class="headerlink" href="#spatial-operators" title="Permalink to this headline"></a></h2>
+<p>When you want to know which points are within a distance of 2 degrees to a
+point(X,Y) you can do this with:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span>
+<span class="k">from</span> <span class="n">people</span>
+<span class="k">where</span> <span class="n">st_distance</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span><span class="s1">&#39;SRID=4326;POINT(33 -34)&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="n">id</span> <span class="o">|</span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span> <span class="o">|</span> <span class="n">street_id</span> <span class="o">|</span>   <span class="n">phone_no</span>    <span class="o">|</span>   <span class="n">the_geom</span>
+<span class="c1">----+--------------+----------+-----------+---------------+---------------</span>
+  <span class="mi">6</span> <span class="o">|</span> <span class="n">Fault</span> <span class="n">Towers</span> <span class="o">|</span>       <span class="mi">34</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span> <span class="mi">072</span> <span class="mi">812</span> <span class="mi">31</span> <span class="mi">28</span> <span class="o">|</span> <span class="mi">01010008040</span><span class="n">C0</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the_geom value above was truncated for space on this page. If you
+want to see the point in human-readable coordinates, try something similar
+to what you did in the section “View a point as WKT”, above.</p>
+</div>
+<p>How do we know that the query above returns all the points within 2 <em>degrees</em>?
+Why not 2 <em>meters</em>? Or any other unit, for that matter?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The units being used by the example query are degrees, because the CRS that
+the layer is using is WGS 84. This is a Geographic CRS, which means that its
+units are in degrees. A Projected CRS, like the UTM projections, is in meters.</p>
+<p>Remember that when you write a query, you need to know which units the layer’s
+CRS is in. This will allow you to write a query that will return the results
+that you expect.</p>
+</div>
+</section>
+<section id="spatial-indexes">
+<h2><span class="section-number">16.4.2. </span>Spatial Indexes<a class="headerlink" href="#spatial-indexes" title="Permalink to this headline"></a></h2>
+<p>We also can define spatial indexes. A spatial index makes your spatial queries
+much faster. To create a spatial index on the geometry column use:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">INDEX</span> <span class="n">people_geo_idx</span>
+  <span class="k">ON</span> <span class="n">people</span>
+  <span class="k">USING</span> <span class="n">gist</span>
+  <span class="p">(</span><span class="n">the_geom</span><span class="p">);</span>
+
+<span class="go">\d people</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="k">Table</span> <span class="s s-Name">&quot;public.people&quot;</span>
+   <span class="k">Column</span>   <span class="o">|</span>         <span class="k">Type</span>          <span class="o">|</span>                <span class="n">Modifiers</span>
+ <span class="c1">-----------+-----------------------+----------------------------------------</span>
+  <span class="n">id</span>        <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span>
+            <span class="o">|</span>                       <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;people_id_seq&#39;</span><span class="o">::</span><span class="n">regclass</span><span class="p">)</span>
+  <span class="k">name</span>      <span class="o">|</span> <span class="nb">character</span> <span class="k">varying</span><span class="p">(</span><span class="mf">50</span><span class="p">)</span> <span class="o">|</span>
+  <span class="n">house_no</span>  <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+  <span class="n">street_id</span> <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+  <span class="n">phone_no</span>  <span class="o">|</span> <span class="nb">character</span> <span class="k">varying</span>     <span class="o">|</span>
+  <span class="n">the_geom</span>  <span class="o">|</span> <span class="n">geometry</span>              <span class="o">|</span>
+<span class="k">Indexes</span><span class="p">:</span>
+  <span class="s s-Name">&quot;people_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+  <span class="s s-Name">&quot;people_geo_idx&quot;</span> <span class="n">gist</span> <span class="p">(</span><span class="n">the_geom</span><span class="p">)</span>  <span class="o">&lt;--</span> <span class="k">new</span> <span class="n">spatial</span> <span class="k">key</span> <span class="n">added</span>
+  <span class="s s-Name">&quot;people_name_idx&quot;</span> <span class="n">btree</span> <span class="p">(</span><span class="k">name</span><span class="p">)</span>
+<span class="k">Check</span> <span class="k">constraints</span><span class="p">:</span>
+  <span class="s s-Name">&quot;people_geom_point_chk&quot;</span> <span class="k">CHECK</span> <span class="p">(</span><span class="n">st_geometrytype</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;ST_Point&#39;</span><span class="o">::</span><span class="nb">text</span>
+  <span class="k">OR</span> <span class="n">the_geom</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span>
+<span class="k">Foreign</span><span class="o">-</span><span class="k">key</span> <span class="k">constraints</span><span class="p">:</span>
+  <span class="s s-Name">&quot;people_street_id_fkey&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">street_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">streets</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ty-moderate">
+<h2><span class="section-number">16.4.3. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h2>
+<p>Modify the cities table so its geometry column is spatially indexed.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">INDEX</span> <span class="n">cities_geo_idx</span>
+  <span class="n">ON</span> <span class="n">cities</span>
+  <span class="n">USING</span> <span class="n">gist</span> <span class="p">(</span><span class="n">the_geom</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="postgis-spatial-functions-demo">
+<h2><span class="section-number">16.4.4. </span>PostGIS Spatial Functions Demo<a class="headerlink" href="#postgis-spatial-functions-demo" title="Permalink to this headline"></a></h2>
+<p>In order to demo PostGIS spatial functions, we’ll create a new database
+containing some (fictional) data.</p>
+<p>To start, create a new database (exit the psql shell first):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>createdb postgis_demo
+</pre></div>
+</div>
+<p>Remember to install the postgis extensions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql -d postgis_demo -c <span class="s2">&quot;CREATE EXTENSION postgis;&quot;</span>
+</pre></div>
+</div>
+<p>Next, import the data provided in the <kbd class="kbd docutils literal notranslate">exercise_data/postgis/</kbd> directory.
+Refer back to the previous lesson for instructions, but remember that you’ll
+need to create a new PostGIS connection to the new database. You can import from
+the terminal or via DB Manager. Import the files into the following database
+tables:</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">points.shp</kbd> into <kbd class="kbd docutils literal notranslate">building</kbd></p></li>
+<li><p><kbd class="kbd docutils literal notranslate">lines.shp</kbd> into <kbd class="kbd docutils literal notranslate">road</kbd></p></li>
+<li><p><kbd class="kbd docutils literal notranslate">polygons.shp</kbd> into <kbd class="kbd docutils literal notranslate">region</kbd></p></li>
+</ul>
+<p>Load these three database layers into QGIS via the <span class="guilabel">Add PostGIS
+Layers</span> dialog, as usual. When you open their attribute tables, you’ll note
+that they have both an <kbd class="kbd docutils literal notranslate">id</kbd> field and a <kbd class="kbd docutils literal notranslate">gid</kbd> field created by the
+PostGIS import.</p>
+<p>Now that the tables are imported, we can use PostGIS to query the data. Go back
+to your terminal (command line) and enter the psql prompt by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="n">postgis_demo</span>
+</pre></div>
+</div>
+<p>We’ll demo some of these select statements by creating views from them, so that
+you can open them in QGIS and see the results.</p>
+<section id="select-by-location">
+<h3><span class="section-number">16.4.4.1. </span>Select by location<a class="headerlink" href="#select-by-location" title="Permalink to this headline"></a></h3>
+<p>Get all the buildings in the KwaZulu region:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">st_astext</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">as</span> <span class="n">point</span>
+  <span class="k">FROM</span> <span class="n">building</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+    <span class="k">WHERE</span> <span class="n">st_within</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+    <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;KwaZulu&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span>                  <span class="n">point</span>
+<span class="c1">----+------+------------------------------------------</span>
+ <span class="mi">30</span> <span class="o">|</span> <span class="n">York</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">1622345</span><span class="p">.</span><span class="mi">23785063</span> <span class="mi">6940490</span><span class="p">.</span><span class="mi">65844485</span><span class="p">)</span>
+ <span class="mi">33</span> <span class="o">|</span> <span class="n">York</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">1622495</span><span class="p">.</span><span class="mi">65620524</span> <span class="mi">6940403</span><span class="p">.</span><span class="mi">87862489</span><span class="p">)</span>
+ <span class="mi">35</span> <span class="o">|</span> <span class="n">York</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">1622403</span><span class="p">.</span><span class="mi">09106394</span> <span class="mi">6940212</span><span class="p">.</span><span class="mi">96302097</span><span class="p">)</span>
+ <span class="mi">36</span> <span class="o">|</span> <span class="n">York</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">1622287</span><span class="p">.</span><span class="mi">38463732</span> <span class="mi">6940357</span><span class="p">.</span><span class="mi">59605424</span><span class="p">)</span>
+ <span class="mi">40</span> <span class="o">|</span> <span class="n">York</span> <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">1621888</span><span class="p">.</span><span class="mi">19746548</span> <span class="mi">6940508</span><span class="p">.</span><span class="mi">01440885</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or, if we create a view from it:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_select_location</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">gid</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">a</span><span class="p">.</span><span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">building</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+      <span class="k">WHERE</span> <span class="n">st_within</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+      <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;KwaZulu&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Add the view as a layer and view it in QGIS:</p>
+<figure class="align-center">
+<img alt="../../../_images/kwazulu_view_result.png" src="../../../_images/kwazulu_view_result.png" />
+</figure>
+</section>
+<section id="select-neighbors">
+<h3><span class="section-number">16.4.4.2. </span>Select neighbors<a class="headerlink" href="#select-neighbors" title="Permalink to this headline"></a></h3>
+<p>Show a list of all the names of regions adjoining the Hokkaido region:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span>
+  <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+    <span class="k">WHERE</span> <span class="n">st_touches</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+    <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hokkaido&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>    <span class="n">name</span>
+<span class="c1">--------------</span>
+ <span class="n">Missouri</span>
+ <span class="n">Saskatchewan</span>
+ <span class="n">Wales</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As a view:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_regions_adjoining_hokkaido</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">gid</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+      <span class="k">WHERE</span> <span class="n">TOUCHES</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+      <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hokkaido&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In QGIS:</p>
+<figure class="align-center">
+<img alt="../../../_images/adjoining_result.png" src="../../../_images/adjoining_result.png" />
+</figure>
+<p>Note the missing region (Queensland). This may be due to a topology error.
+Artifacts such as this can alert us to potential problems in the data. To solve
+this enigma without getting caught up in the anomalies the data may have, we
+could use a buffer intersect instead:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_hokkaido_buffer</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">gid</span><span class="p">,</span> <span class="n">ST_BUFFER</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">region</span>
+      <span class="k">WHERE</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hokkaido&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This creates a buffer of 100 meters around the region Hokkaido.</p>
+<p>The darker area is the buffer:</p>
+<figure class="align-center">
+<img alt="../../../_images/hokkaido_buffer.png" src="../../../_images/hokkaido_buffer.png" />
+</figure>
+<p>Select using the buffer:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_hokkaido_buffer_select</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">gid</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span>
+    <span class="k">FROM</span>
+    <span class="p">(</span>
+      <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span>
+        <span class="n">vw_hokkaido_buffer</span>
+    <span class="p">)</span> <span class="n">a</span><span class="p">,</span>
+    <span class="n">region</span> <span class="n">b</span>
+    <span class="k">WHERE</span> <span class="n">ST_INTERSECTS</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+    <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;Hokkaido&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In this query, the original buffer view is used as any other table would be. It
+is given the alias <kbd class="kbd docutils literal notranslate">a</kbd>, and its geometry field, <kbd class="kbd docutils literal notranslate">a.the_geom</kbd>, is used
+to select any polygon in the <kbd class="kbd docutils literal notranslate">region</kbd> table (alias <kbd class="kbd docutils literal notranslate">b</kbd>) that
+intersects it. However, Hokkaido itself is excluded from this select statement,
+because we don’t want it; we only want the regions adjoining it.</p>
+<p>In QGIS:</p>
+<figure class="align-center">
+<img alt="../../../_images/hokkaido_buffer_select.png" src="../../../_images/hokkaido_buffer_select.png" />
+</figure>
+<p>It is also possible to select all objects within a given distance, without the
+extra step of creating a buffer:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_hokkaido_distance_select</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">gid</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+      <span class="k">WHERE</span> <span class="n">ST_DISTANCE</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span>
+      <span class="k">AND</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Hokkaido&#39;</span>
+      <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">!=</span> <span class="s1">&#39;Hokkaido&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This achieves the same result, without need for the interim buffer step:</p>
+<figure class="align-center">
+<img alt="../../../_images/hokkaido_distance_select.png" src="../../../_images/hokkaido_distance_select.png" />
+</figure>
+</section>
+<section id="select-unique-values">
+<h3><span class="section-number">16.4.4.3. </span>Select unique values<a class="headerlink" href="#select-unique-values" title="Permalink to this headline"></a></h3>
+<p>Show a list of unique town names for all buildings in the Queensland region:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span>
+  <span class="k">FROM</span> <span class="n">building</span> <span class="n">a</span><span class="p">,</span> <span class="n">region</span> <span class="n">b</span>
+    <span class="k">WHERE</span> <span class="n">st_within</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+    <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Queensland&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>  <span class="n">name</span>
+<span class="c1">---------</span>
+ <span class="n">Beijing</span>
+ <span class="n">Berlin</span>
+ <span class="n">Atlanta</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="further-examples">
+<h3><span class="section-number">16.4.4.4. </span>Further examples …<a class="headerlink" href="#further-examples" title="Permalink to this headline"></a></h3>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_shortestline</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">gid</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span>
+        <span class="n">ST_ASTEXT</span><span class="p">(</span><span class="n">ST_SHORTESTLINE</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">))</span> <span class="k">as</span> <span class="nb">text</span><span class="p">,</span>
+        <span class="n">ST_SHORTESTLINE</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">AS</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">road</span> <span class="n">a</span><span class="p">,</span> <span class="n">building</span> <span class="n">b</span>
+      <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="mi">5</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="mi">22</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_longestline</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">b</span><span class="p">.</span><span class="n">gid</span> <span class="k">AS</span> <span class="n">gid</span><span class="p">,</span>
+         <span class="n">ST_ASTEXT</span><span class="p">(</span><span class="n">ST_LONGESTLINE</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">))</span> <span class="k">as</span> <span class="nb">text</span><span class="p">,</span>
+         <span class="n">ST_LONGESTLINE</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">,</span> <span class="n">b</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">AS</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">road</span> <span class="n">a</span><span class="p">,</span> <span class="n">building</span> <span class="n">b</span>
+      <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="mi">5</span> <span class="k">AND</span> <span class="n">b</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="mi">22</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_road_centroid</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">gid</span> <span class="k">as</span> <span class="n">gid</span><span class="p">,</span> <span class="n">ST_CENTROID</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">road</span> <span class="n">a</span>
+      <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_region_centroid</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">a</span><span class="p">.</span><span class="n">gid</span> <span class="k">as</span> <span class="n">gid</span><span class="p">,</span> <span class="n">ST_CENTROID</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">as</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span>
+      <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Saskatchewan&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">ST_PERIMETER</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span>
+    <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Queensland&#39;</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="n">ST_AREA</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="n">region</span> <span class="n">a</span>
+    <span class="k">WHERE</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Queensland&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_simplify</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">gid</span><span class="p">,</span> <span class="n">ST_Simplify</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="k">AS</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">road</span><span class="p">;</span>
+
+<span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_simplify_more</span> <span class="k">AS</span>
+  <span class="k">SELECT</span> <span class="n">gid</span><span class="p">,</span> <span class="n">ST_Simplify</span><span class="p">(</span><span class="n">the_geom</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span> <span class="k">AS</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">road</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">vw_convex_hull</span> <span class="k">AS</span>
+  <span class="k">SELECT</span>
+    <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">over</span> <span class="p">(</span><span class="k">order</span> <span class="k">by</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="k">as</span> <span class="n">id</span><span class="p">,</span>
+    <span class="n">a</span><span class="p">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">town</span><span class="p">,</span>
+    <span class="n">ST_CONVEXHULL</span><span class="p">(</span><span class="n">ST_COLLECT</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">the_geom</span><span class="p">))</span> <span class="k">AS</span> <span class="n">the_geom</span>
+    <span class="k">FROM</span> <span class="n">building</span> <span class="n">a</span>
+    <span class="k">GROUP</span> <span class="k">BY</span> <span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ic">
+<h2><span class="section-number">16.4.5. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have seen how to query spatial objects using the new database functions
+from PostGIS.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">16.4.6. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next we’re going to investigate the structures of more complex geometries and
+how to create them using PostGIS.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="import_export.html" class="btn btn-neutral float-left" title="16.3. Lesson: Import and Export" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="geometry.html" class="btn btn-neutral float-right" title="16.5. Lesson: Geometry Construction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/spatial_queries.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/spatial_queries.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/spatial_queries.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/spatial_databases/spatial_queries.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/spatial_databases/spatial_queries.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/spatial_databases/spatial_queries.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/spatial_databases/spatial_queries.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/spatial_databases/spatial_queries.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/spatial_databases/spatial_queries.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/spatial_databases/spatial_queries.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/spatial_databases/spatial_queries.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/spatial_databases/spatial_queries.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/spatial_databases/spatial_queries.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/spatial_databases/spatial_queries.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

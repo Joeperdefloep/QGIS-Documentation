@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1. Lesson: Using Print Layout &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/map_composer/map_composer.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4.2. Lesson: Creating a Dynamic Print Layout" href="dynamic_layout.html" />
+    <link rel="prev" title="4. Module: Laying out the Maps" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/map_composer/map_composer.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">4. Module: Laying out the Maps</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.1. Lesson: Using Print Layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-the-layout-manager">4.1.1.  Follow Along: The Layout Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-basic-map-composition">4.1.2.  Follow Along: Basic Map Composition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-adding-a-title">4.1.3.  Follow Along: Adding a Title</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-adding-a-legend">4.1.4.  Follow Along: Adding a Legend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-customizing-legend-items">4.1.5.  Follow Along: Customizing Legend Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-exporting-your-map">4.1.6.  Follow Along: Exporting Your Map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">4.1.7. In Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dynamic_layout.html">4.2. Lesson: Creating a Dynamic Print Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="day_1_assignment.html">4.3. Assignment 1</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">4. </span>Module: Laying out the Maps</a> &raquo;</li>
+      <li><span class="section-number">4.1. </span>Lesson: Using Print Layout</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/map_composer/map_composer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="4. Module: Laying out the Maps" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamic_layout.html" class="btn btn-neutral float-right" title="4.2. Lesson: Creating a Dynamic Print Layout" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-using-print-layout">
+<h1><span class="section-number">4.1. </span>Lesson: Using Print Layout<a class="headerlink" href="#ls-using-print-layout" title="Permalink to this headline"></a></h1>
+<p>Now that you’ve got a map, you need to be able to print it or to
+export it to a document.
+The reason is, a GIS map file is not an image. Rather, it saves the
+state of the GIS program, with references to all the layers, their
+labels,colors, etc.
+So for someone who doesn’t have the data or the same GIS program
+(such as QGIS), the map file will be useless.
+Luckily, QGIS can export its map file to a format that anyone’s
+computer can read, as well as printing out the map if you have a
+printer connected.
+Both exporting and printing is handled via the <em>Print Layout</em>.</p>
+<p><strong>The goal for this lesson:</strong> To use the QGIS <em>Print Layout</em> to create
+a basic map with all the required settings.</p>
+<section id="basic-fa-the-layout-manager">
+<h2><span class="section-number">4.1.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: The Layout Manager<a class="headerlink" href="#basic-fa-the-layout-manager" title="Permalink to this headline"></a></h2>
+<p>QGIS allows you to create multiple maps using the same map file.
+For this reason, it has a tool called the <em>Layout Manager</em>.</p>
+<ol class="arabic">
+<li><p>Click on the <span class="menuselection">Project ► Layout Manager…</span> menu
+entry to open this tool.
+You’ll see a blank <span class="guilabel">Layout manager</span> dialog appear.</p>
+<figure class="align-center">
+<img alt="../../../_images/layout_manager_dialog.png" src="../../../_images/layout_manager_dialog.png" />
+</figure>
+</li>
+<li><p>Under <span class="guilabel">New from Template</span>, select
+<span class="guilabel">Empty layout</span> and press the <span class="guilabel">Create…</span> button.</p></li>
+<li><p>Give the new layout the name of Swellendam and
+click <span class="guilabel">OK</span>.</p></li>
+<li><p>You will now see the <em>Print Layout</em> window:</p>
+<figure class="align-center">
+<img alt="../../../_images/print_composer_dialog.png" src="../../../_images/print_composer_dialog.png" />
+</figure>
+</li>
+</ol>
+<p>You could also create this new layout via the
+<span class="menuselection">Project ► New Print Layout…</span> menu.</p>
+<p>Whichever route you take, the new print layout is now accessible from
+the <span class="menuselection">Project ► Layouts ►</span> menu, as in the image below.</p>
+<figure class="align-center">
+<img alt="../../../_images/print_composer_menu.png" src="../../../_images/print_composer_menu.png" />
+</figure>
+</section>
+<section id="basic-fa-basic-map-composition">
+<h2><span class="section-number">4.1.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Basic Map Composition<a class="headerlink" href="#basic-fa-basic-map-composition" title="Permalink to this headline"></a></h2>
+<p>In this example, the composition was already the way we wanted it.
+Ensure that yours is as well.</p>
+<ol class="arabic">
+<li><p>Right-click on the sheet in the central part of the layout window
+and choose <span class="guilabel">Page properties…</span> in the context menu.</p></li>
+<li><p>Check that the values in the <span class="guilabel">Item Properties</span> tab are
+set to the following:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Size</span>: <code class="docutils literal notranslate"><span class="pre">A4</span></code></p></li>
+<li><p><span class="guilabel">Orientation</span>: <code class="docutils literal notranslate"><span class="pre">Landscape</span></code></p></li>
+</ul>
+<p>Now you’ve got the page layout the way you wanted it, but this
+page is still blank.
+It clearly lacks a map. Let’s fix that!</p>
+</li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionAddMap.png"><img alt="addMap" src="../../../_images/mActionAddMap.png" style="width: 1.5em;" /></a> <sup>Add Map</sup> button.</p>
+<p>With this tool activated, you will be able to place a map on the
+page.</p>
+</li>
+<li><p>Click and drag a box on the blank page:</p>
+<figure class="align-center">
+<img alt="../../../_images/drag_add_map.png" src="../../../_images/drag_add_map.png" />
+</figure>
+<p>The map will appear on the page.</p>
+</li>
+<li><p>Move the map by clicking and dragging it around:</p>
+<figure class="align-center">
+<img alt="../../../_images/move_map.png" src="../../../_images/move_map.png" />
+</figure>
+</li>
+<li><p>Resize it by clicking and dragging the boxes on the edges:</p>
+<figure class="align-center">
+<img alt="../../../_images/resize_map.png" src="../../../_images/resize_map.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your map may look a lot different, of course!
+This depends on how your own project is set up.
+But not to worry! These instructions are general, so they will
+work the same regardless of what the map itself looks like.</p>
+</div>
+</li>
+<li><p>Be sure to leave margins along the edges, and a space along the
+top for the title.</p></li>
+<li><p>Zoom in and out on the page (but not the map!) by using these
+buttons:</p>
+<p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a></p>
+</li>
+<li><p>Zoom and pan the map in the main QGIS window.
+You can also pan the map using the <a class="reference internal" href="../../../_images/mActionMoveItemContent.png"><img alt="moveItemContent" src="../../../_images/mActionMoveItemContent.png" style="width: 1.5em;" /></a>
+<sup>Move item content</sup> tool.</p>
+<p>The map view updates as you zoom in or zoom out.</p>
+</li>
+<li><p>If, for any reason, the map view does not refresh correctly,
+you can force the map to refresh by clicking the
+<a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>Refresh view</sup> button.</p>
+<p>Remember that the size and position you’ve given the map doesn’t
+need to be final.
+You can always come back and change it later if you’re not
+satisfied.
+For now, you need to ensure that you’ve saved your work on this
+map.
+Because a <em>Print Layout</em> in QGIS is part of the main map file,
+you must save your project.</p>
+</li>
+<li><p>Go to the <span class="menuselection">Layout ►</span> <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a>
+<span class="menuselection">Save Project</span>.
+This is a convenient shortcut to the one in the main dialog.</p></li>
+</ol>
+</section>
+<section id="basic-fa-adding-a-title">
+<h2><span class="section-number">4.1.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Adding a Title<a class="headerlink" href="#basic-fa-adding-a-title" title="Permalink to this headline"></a></h2>
+<p>Now your map is looking good on the page, but your readers/users are
+not being told what’s going on yet.
+They need some context, which is what you’ll provide for them by
+adding map elements.
+First, let us add a title.</p>
+<ol class="arabic">
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionLabel.png"><img alt="label" src="../../../_images/mActionLabel.png" style="width: 1.5em;" /></a> <sup>Add Label</sup> button</p></li>
+<li><p>Click on the page, above the map, accept the suggested values in
+the <span class="guilabel">New Item Properties</span> dialog, and a label will
+appear at the top of the map.</p></li>
+<li><p>Resize it and place it in the top center of the page.
+It can be resized and moved in the same way that you resized and
+moved the map.</p>
+<p>As you move the title, you’ll notice that guidelines appear to
+help you position the title in the center of the page.</p>
+<p>However, there is also a tool in the Actions Toolbar to help
+position the title relative to the map (not the page):</p>
+<p><a class="reference internal" href="../../../_images/mActionAlignLeft.png"><img alt="alignLeft" src="../../../_images/mActionAlignLeft.png" style="width: 1.5em;" /></a></p>
+</li>
+<li><p>Click the map to select it</p></li>
+<li><p>Hold in <kbd class="kbd docutils literal notranslate">Shift</kbd> on your keyboard and click on the label so
+that both the map and the label are selected.</p></li>
+<li><p>Look for the <a class="reference internal" href="../../../_images/mActionAlignLeft.png"><img alt="alignLeft" src="../../../_images/mActionAlignLeft.png" style="width: 1.5em;" /></a> <sup>Align selected items left</sup> button
+and click on the dropdown arrow next to it to reveal the
+positioning options and click <a class="reference internal" href="../../../_images/mActionAlignHCenter.png"><img alt="alignHCenter" src="../../../_images/mActionAlignHCenter.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Align center</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/align_center_dropdown.png" src="../../../_images/align_center_dropdown.png" />
+</figure>
+<p>Now the label frame is centered on the map, but not the contents.
+To center the contents of the label:</p>
+<ol class="arabic">
+<li><p>Select the label by clicking on it.</p></li>
+<li><p>Click on the <span class="guilabel">Item Properties</span> tab in the side panel
+of the layout window.</p></li>
+<li><p>Change the text of the label to “Swellendam”:</p>
+<figure class="align-center">
+<img alt="../../../_images/title_font_alignment.png" src="../../../_images/title_font_alignment.png" />
+</figure>
+</li>
+<li><p>Use this interface to set the font and alignment options
+under the <span class="guilabel">Appearance</span> section:</p>
+<ol class="arabic simple">
+<li><p>Choose a large but sensible font (the example will use the
+default font with a size of <code class="docutils literal notranslate"><span class="pre">36</span></code>)</p></li>
+<li><p>Set the <span class="guilabel">Horizontal Alignment</span> to <span class="guilabel">Center</span>.</p></li>
+</ol>
+<p>You can also change the font color, but it’s probably best to
+keep it black as per the default.</p>
+</li>
+<li><p>The default setting is not to add a frame to the title’s text box.
+However, if you wish to add a frame, you can do so:</p>
+<ol class="arabic simple">
+<li><p>In the <span class="guilabel">Item Properties</span> tab, scroll down until you
+see the <span class="guilabel">Frame</span> option.</p></li>
+<li><p>Click the <span class="guilabel">Frame</span> checkbox to enable the frame.
+You can also change the frame’s color and width.</p></li>
+</ol>
+</li>
+</ol>
+<p>In this example, we won’t enable the frame, so here is our page so
+far:</p>
+<figure class="align-center">
+<img alt="../../../_images/page_so_far.png" src="../../../_images/page_so_far.png" />
+</figure>
+<p>To make sure that you don’t accidentally move these elements
+around now that you’ve aligned them, you can lock items into place:</p>
+<ol class="arabic">
+<li><p>Select both the label and the map items</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionLockItems.png"><img alt="lockItems" src="../../../_images/mActionLockItems.png" style="width: 1.5em;" /></a> <sup>Lock Selected Items</sup> button in
+the <em>Actions</em> Toolbar.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Click the <a class="reference internal" href="../../../_images/mActionUnlockAll.png"><img alt="unlockAll" src="../../../_images/mActionUnlockAll.png" style="width: 1.5em;" /></a> <sup>Unlock All Items</sup> button
+in the <em>Actions</em> Toolbar to be able to edit the items again.</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="basic-fa-adding-a-legend">
+<h2><span class="section-number">4.1.4. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Adding a Legend<a class="headerlink" href="#basic-fa-adding-a-legend" title="Permalink to this headline"></a></h2>
+<p>The map reader also needs to be able to see what various things on
+the map actually mean.
+In some cases, like the place names, this is quite obvious.
+In other cases, it’s more difficult to guess, like the colors of the
+forests.
+Let’s add a new legend.</p>
+<ol class="arabic">
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionAddLegend.png"><img alt="addLegend" src="../../../_images/mActionAddLegend.png" style="width: 1.5em;" /></a> <sup>Add Legend</sup> button</p></li>
+<li><p>Click on the page to place the legend, accept the suggested values
+in the <span class="guilabel">New Item Properties</span> dialog,</p></li>
+<li><p>A legend is added to the layout page, showing layers symbology
+as set in the main dialog.</p></li>
+<li><p>As usual, you can click and move the item to where you want it:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/legend_added.png"><img alt="../../../_images/legend_added.png" src="../../../_images/legend_added.png" style="width: 100%;" /></a>
+</figure>
+</li>
+</ol>
+</section>
+<section id="moderate-fa-customizing-legend-items">
+<h2><span class="section-number">4.1.5. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Customizing Legend Items<a class="headerlink" href="#moderate-fa-customizing-legend-items" title="Permalink to this headline"></a></h2>
+<p>Not everything on the legend is necessary, so let’s remove some
+unwanted items.</p>
+<ol class="arabic simple">
+<li><p>In the <span class="guilabel">Item Properties</span> tab, you’ll find the
+<span class="guilabel">Legend items</span> group.</p></li>
+<li><p>Uncheck the <a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Auto update</span> box, allowing you
+to directly modify the legend items</p></li>
+<li><p>Select the entry with <span class="guilabel">buildings</span></p></li>
+<li><p>Delete it from the legend by clicking the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> button</p></li>
+</ol>
+<p>You can also rename items.</p>
+<ol class="arabic simple">
+<li><p>Select a layer from the same list.</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/symbologyEdit.png"><img alt="symbologyEdit" src="../../../_images/symbologyEdit.png" style="width: 1.5em;" /></a> <sup>Edit selected item properties</sup> button.</p></li>
+<li><p>Rename the layers to <code class="docutils literal notranslate"><span class="pre">Places</span></code>, <code class="docutils literal notranslate"><span class="pre">Roads</span> <span class="pre">and</span> <span class="pre">Streets</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Surface</span> <span class="pre">Water</span></code>, and <code class="docutils literal notranslate"><span class="pre">Rivers</span></code>.</p></li>
+</ol>
+<p>You can also reorder the items:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/categories_reordered.png"><img alt="../../../_images/categories_reordered.png" src="../../../_images/categories_reordered.png" style="width: 100%;" /></a>
+</figure>
+<p>As the legend will likely be widened by the new layer names, you may
+wish to move and resize the legend and or map.
+This is the result:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/map_composer_result.png"><img alt="../../../_images/map_composer_result.png" src="../../../_images/map_composer_result.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="basic-fa-exporting-your-map">
+<h2><span class="section-number">4.1.6. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Exporting Your Map<a class="headerlink" href="#basic-fa-exporting-your-map" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Did you remember to save your work often?</p>
+</div>
+<p>Finally the map is ready for export! You’ll see the export buttons
+near the top left corner of the layout window:</p>
+<ul>
+<li><p><a class="reference internal" href="../../../_images/mActionFilePrint.png"><img alt="filePrint" src="../../../_images/mActionFilePrint.png" style="width: 1.5em;" /></a> <sup>Print Layout</sup>: interfaces with a printer.
+Since the printer options will differ depending on the model of
+printer that you’re working with, it’s probably better to consult the
+printer manual or a general guide to printing for more information on
+this topic.</p>
+<p>The other buttons allow you to export the map page to a file.</p>
+</li>
+<li><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <sup>Export as Image</sup>: gives you a selection
+of various common image formats to choose from.
+This is probably the simplest option, but the image it creates is
+“dead” and difficult to edit.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a> <sup>Export as SVG</sup>: If you’re sending the map to a
+cartographer (who may want to edit the map for publication),
+it’s best to export as an SVG. SVG stands for “Scalable Vector Graphic”,
+and can be imported to programs like <a class="reference external" href="https://inkscape.org/">Inkscape</a>
+or other vector image editing software.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <sup>Export as PDF</sup>: If you need to send the map to a client,
+it’s most common to use a PDF, because it’s easier to set up printing
+options for a PDF.
+Some cartographers may prefer PDF as well, if they have a program
+that allows them to import and edit this format.</p></li>
+</ul>
+<p>For our purposes, we’re going to use PDF.</p>
+<ol class="arabic">
+<li><p>Click the <a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <sup>Export as PDF</sup> button</p></li>
+<li><p>Choose a save location and a file name as usual.
+The following dialog will show up.</p>
+<figure class="align-center">
+<img alt="../../../_images/layout_export_pdf.png" src="../../../_images/layout_export_pdf.png" />
+</figure>
+</li>
+<li><p>You can safely use the default values now and click
+<span class="guilabel">Save</span>.</p>
+<p>QGIS will proceed to the map export and push a message
+on top of the print layout dialog as soon as it finishes.</p>
+</li>
+<li><p>Click the hyperlink in the message to open the folder in which
+the PDF has been saved in your system’s file manager</p></li>
+<li><p>Open it and see how your layout looks.</p>
+<p>Everything is OK?
+Congratulations on your first completed QGIS map project!</p>
+</li>
+<li><p>Anything unsatisfying? Go back to the QGIS window, do the
+appropriate modifications and export again.</p></li>
+<li><p>Remember to save your project file.</p></li>
+</ol>
+</section>
+<section id="ic">
+<h2><span class="section-number">4.1.7. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Now you know how to create a basic static map layout. We can go a step
+further and create a map layout that adapts dynamically, with more
+layout items.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="4. Module: Laying out the Maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dynamic_layout.html" class="btn btn-neutral float-right" title="4.2. Lesson: Creating a Dynamic Print Layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/map_composer/map_composer.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/map_composer/map_composer.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/map_composer/map_composer.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/map_composer/map_composer.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/map_composer/map_composer.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/map_composer/map_composer.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/map_composer/map_composer.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/map_composer/map_composer.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/map_composer/map_composer.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/map_composer/map_composer.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/map_composer/map_composer.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/map_composer/map_composer.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/map_composer/map_composer.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/map_composer/map_composer.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

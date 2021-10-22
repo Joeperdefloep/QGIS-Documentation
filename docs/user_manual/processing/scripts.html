@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23.9. Writing new Processing algorithms as Python scripts &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/scripts.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="23.10. Configuring external applications" href="3rdParty.html" />
+    <link rel="prev" title="23.8. Using processing from the command line" href="standalone.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/scripts.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">23. QGIS processing framework</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">23.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">23.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbox.html">23.3. The Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">23.4. The history manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler.html">23.5. The graphical modeler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch.html">23.6. The batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">23.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">23.8. Using processing from the command line</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">23.9. Writing new Processing algorithms as Python scripts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extending-qgsprocessingalgorithm">23.9.1. Extending QgsProcessingAlgorithm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-alg-decorator">23.9.2. The &#64;alg decorator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-and-output-types-for-processing-algorithms">23.9.3. Input and output types for Processing Algorithms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#handing-algorithm-output">23.9.4. Handing algorithm output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#communicating-with-the-user">23.9.5. Communicating with the user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documenting-your-scripts">23.9.6. Documenting your scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flags">23.9.7. Flags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#best-practices-for-writing-script-algorithms">23.9.8. Best practices for writing script algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">23.10. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">23. </span>QGIS processing framework</a> &raquo;</li>
+      <li><span class="section-number">23.9. </span>Writing new Processing algorithms as Python scripts</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/scripts.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="standalone.html" class="btn btn-neutral float-left" title="23.8. Using processing from the command line" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3rdParty.html" class="btn btn-neutral float-right" title="23.10. Configuring external applications" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="writing-new-processing-algorithms-as-python-scripts">
+<h1><span class="section-number">23.9. </span>Writing new Processing algorithms as Python scripts<a class="headerlink" href="#writing-new-processing-algorithms-as-python-scripts" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#extending-qgsprocessingalgorithm" id="id1">Extending QgsProcessingAlgorithm</a></p></li>
+<li><p><a class="reference internal" href="#the-alg-decorator" id="id2">The &#64;alg decorator</a></p></li>
+<li><p><a class="reference internal" href="#input-and-output-types-for-processing-algorithms" id="id3">Input and output types for Processing Algorithms</a></p>
+<ul>
+<li><p><a class="reference internal" href="#input-types" id="id4">Input types</a></p></li>
+<li><p><a class="reference internal" href="#output-types" id="id5">Output types</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#handing-algorithm-output" id="id6">Handing algorithm output</a></p></li>
+<li><p><a class="reference internal" href="#communicating-with-the-user" id="id7">Communicating with the user</a></p></li>
+<li><p><a class="reference internal" href="#documenting-your-scripts" id="id8">Documenting your scripts</a></p></li>
+<li><p><a class="reference internal" href="#flags" id="id9">Flags</a></p></li>
+<li><p><a class="reference internal" href="#best-practices-for-writing-script-algorithms" id="id10">Best practices for writing script algorithms</a></p></li>
+</ul>
+</div>
+<p>There are two options for writing Processing algorithms using Python.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#scripts-extend"><span class="std std-ref">Extending</span></a> <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a></p></li>
+<li><p><a class="reference internal" href="#scripts-alg"><span class="std std-ref">Using the &#64;alg decorator</span></a></p></li>
+</ul>
+<p>Within QGIS, you can use <span class="guilabel">Create new script</span> in the
+<span class="guilabel">Scripts</span> menu at the top of the <span class="guilabel">Processing Toolbox</span>
+to open the <span class="guilabel">Processing Script Editor</span> where you can write
+your code.
+To simplify the task, you can start with a script template by using
+<span class="guilabel">Create new script from template</span> from the same menu.
+This opens a template that extends
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a>.</p>
+<p>If you save the script in the <code class="file docutils literal notranslate"><span class="pre">scripts</span></code> folder
+(the default location) with a <code class="file docutils literal notranslate"><span class="pre">.py</span></code> extension, the algorithm will
+become available in the <span class="guilabel">Processing Toolbox</span>.</p>
+<section id="extending-qgsprocessingalgorithm">
+<span id="scripts-extend"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">23.9.1. </span>Extending QgsProcessingAlgorithm</a><a class="headerlink" href="#extending-qgsprocessingalgorithm" title="Permalink to this headline"></a></h2>
+<p>The following code</p>
+<ol class="arabic simple">
+<li><p>takes a vector layer as input</p></li>
+<li><p>counts the number of features</p></li>
+<li><p>does a buffer operation</p></li>
+<li><p>creates a raster layer from the result of the buffer operation</p></li>
+<li><p>returns the buffer layer, raster layer and number of features</p></li>
+</ol>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QCoreApplication</span>
+<span class="linenos">  2</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QgsProcessing</span><span class="p">,</span>
+<span class="linenos">  3</span>                       <span class="n">QgsProcessingAlgorithm</span><span class="p">,</span>
+<span class="linenos">  4</span>                       <span class="n">QgsProcessingException</span><span class="p">,</span>
+<span class="linenos">  5</span>                       <span class="n">QgsProcessingOutputNumber</span><span class="p">,</span>
+<span class="linenos">  6</span>                       <span class="n">QgsProcessingParameterDistance</span><span class="p">,</span>
+<span class="linenos">  7</span>                       <span class="n">QgsProcessingParameterFeatureSource</span><span class="p">,</span>
+<span class="linenos">  8</span>                       <span class="n">QgsProcessingParameterVectorDestination</span><span class="p">,</span>
+<span class="linenos">  9</span>                       <span class="n">QgsProcessingParameterRasterDestination</span><span class="p">)</span>
+<span class="linenos"> 10</span><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="linenos"> 11</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span><span class="k">class</span> <span class="nc">ExampleProcessingAlgorithm</span><span class="p">(</span><span class="n">QgsProcessingAlgorithm</span><span class="p">):</span>
+<span class="linenos"> 14</span>    <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 15</span><span class="sd">    This is an example algorithm that takes a vector layer,</span>
+<span class="linenos"> 16</span><span class="sd">    creates some new layers and returns some results.</span>
+<span class="linenos"> 17</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos"> 18</span>
+<span class="linenos"> 19</span>    <span class="k">def</span> <span class="nf">tr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+<span class="linenos"> 20</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 21</span><span class="sd">        Returns a translatable string with the self.tr() function.</span>
+<span class="linenos"> 22</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 23</span>        <span class="k">return</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;Processing&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+<span class="linenos"> 24</span>
+<span class="linenos"> 25</span>    <span class="k">def</span> <span class="nf">createInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 26</span>        <span class="c1"># Must return a new copy of your algorithm.</span>
+<span class="linenos"> 27</span>        <span class="k">return</span> <span class="n">ExampleProcessingAlgorithm</span><span class="p">()</span>
+<span class="linenos"> 28</span>
+<span class="linenos"> 29</span>    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 30</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 31</span><span class="sd">        Returns the unique algorithm name.</span>
+<span class="linenos"> 32</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 33</span>        <span class="k">return</span> <span class="s1">&#39;bufferrasterextend&#39;</span>
+<span class="linenos"> 34</span>
+<span class="linenos"> 35</span>    <span class="k">def</span> <span class="nf">displayName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 36</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 37</span><span class="sd">        Returns the translated algorithm name.</span>
+<span class="linenos"> 38</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 39</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Buffer and export to raster (extend)&#39;</span><span class="p">)</span>
+<span class="linenos"> 40</span>
+<span class="linenos"> 41</span>    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 42</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 43</span><span class="sd">        Returns the name of the group this algorithm belongs to.</span>
+<span class="linenos"> 44</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 45</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
+<span class="linenos"> 46</span>
+<span class="linenos"> 47</span>    <span class="k">def</span> <span class="nf">groupId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 48</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 49</span><span class="sd">        Returns the unique ID of the group this algorithm belongs</span>
+<span class="linenos"> 50</span><span class="sd">        to.</span>
+<span class="linenos"> 51</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 52</span>        <span class="k">return</span> <span class="s1">&#39;examplescripts&#39;</span>
+<span class="linenos"> 53</span>
+<span class="linenos"> 54</span>    <span class="k">def</span> <span class="nf">shortHelpString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 55</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 56</span><span class="sd">        Returns a localised short help string for the algorithm.</span>
+<span class="linenos"> 57</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 58</span>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Example algorithm short description&#39;</span><span class="p">)</span>
+<span class="linenos"> 59</span>
+<span class="linenos"> 60</span>    <span class="k">def</span> <span class="nf">initAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos"> 61</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 62</span><span class="sd">        Here we define the inputs and outputs of the algorithm.</span>
+<span class="linenos"> 63</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 64</span>        <span class="c1"># &#39;INPUT&#39; is the recommended name for the main input</span>
+<span class="linenos"> 65</span>        <span class="c1"># parameter.</span>
+<span class="linenos"> 66</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+<span class="linenos"> 67</span>            <span class="n">QgsProcessingParameterFeatureSource</span><span class="p">(</span>
+<span class="linenos"> 68</span>                <span class="s1">&#39;INPUT&#39;</span><span class="p">,</span>
+<span class="linenos"> 69</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Input vector layer&#39;</span><span class="p">),</span>
+<span class="linenos"> 70</span>                <span class="n">types</span><span class="o">=</span><span class="p">[</span><span class="n">QgsProcessing</span><span class="o">.</span><span class="n">TypeVectorAnyGeometry</span><span class="p">]</span>
+<span class="linenos"> 71</span>            <span class="p">)</span>
+<span class="linenos"> 72</span>        <span class="p">)</span>
+<span class="linenos"> 73</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+<span class="linenos"> 74</span>            <span class="n">QgsProcessingParameterVectorDestination</span><span class="p">(</span>
+<span class="linenos"> 75</span>                <span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">,</span>
+<span class="linenos"> 76</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Buffer output&#39;</span><span class="p">),</span>
+<span class="linenos"> 77</span>            <span class="p">)</span>
+<span class="linenos"> 78</span>        <span class="p">)</span>
+<span class="linenos"> 79</span>        <span class="c1"># &#39;OUTPUT&#39; is the recommended name for the main output</span>
+<span class="linenos"> 80</span>        <span class="c1"># parameter.</span>
+<span class="linenos"> 81</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+<span class="linenos"> 82</span>            <span class="n">QgsProcessingParameterRasterDestination</span><span class="p">(</span>
+<span class="linenos"> 83</span>                <span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span>
+<span class="linenos"> 84</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Raster output&#39;</span><span class="p">)</span>
+<span class="linenos"> 85</span>            <span class="p">)</span>
+<span class="linenos"> 86</span>        <span class="p">)</span>
+<span class="linenos"> 87</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+<span class="linenos"> 88</span>            <span class="n">QgsProcessingParameterDistance</span><span class="p">(</span>
+<span class="linenos"> 89</span>                <span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span>
+<span class="linenos"> 90</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">),</span>
+<span class="linenos"> 91</span>                <span class="n">defaultValue</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+<span class="linenos"> 92</span>                <span class="c1"># Make distance units match the INPUT layer units:</span>
+<span class="linenos"> 93</span>                <span class="n">parentParameterName</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span>
+<span class="linenos"> 94</span>            <span class="p">)</span>
+<span class="linenos"> 95</span>        <span class="p">)</span>
+<span class="linenos"> 96</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+<span class="linenos"> 97</span>            <span class="n">QgsProcessingParameterDistance</span><span class="p">(</span>
+<span class="linenos"> 98</span>                <span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span>
+<span class="linenos"> 99</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;CELLSIZE&#39;</span><span class="p">),</span>
+<span class="linenos">100</span>                <span class="n">defaultValue</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+<span class="linenos">101</span>                <span class="n">parentParameterName</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span>
+<span class="linenos">102</span>            <span class="p">)</span>
+<span class="linenos">103</span>        <span class="p">)</span>
+<span class="linenos">104</span>        <span class="bp">self</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span>
+<span class="linenos">105</span>            <span class="n">QgsProcessingOutputNumber</span><span class="p">(</span>
+<span class="linenos">106</span>                <span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">,</span>
+<span class="linenos">107</span>                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Number of features processed&#39;</span><span class="p">)</span>
+<span class="linenos">108</span>            <span class="p">)</span>
+<span class="linenos">109</span>        <span class="p">)</span>
+<span class="linenos">110</span>
+<span class="linenos">111</span>    <span class="k">def</span> <span class="nf">processAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+<span class="linenos">112</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">113</span><span class="sd">        Here is where the processing itself takes place.</span>
+<span class="linenos">114</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos">115</span>        <span class="c1"># First, we get the count of features from the INPUT layer.</span>
+<span class="linenos">116</span>        <span class="c1"># This layer is defined as a QgsProcessingParameterFeatureSource</span>
+<span class="linenos">117</span>        <span class="c1"># parameter, so it is retrieved by calling</span>
+<span class="linenos">118</span>        <span class="c1"># self.parameterAsSource.</span>
+<span class="linenos">119</span>        <span class="n">input_featuresource</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsSource</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
+<span class="linenos">120</span>                                                     <span class="s1">&#39;INPUT&#39;</span><span class="p">,</span>
+<span class="linenos">121</span>                                                     <span class="n">context</span><span class="p">)</span>
+<span class="linenos">122</span>        <span class="n">numfeatures</span> <span class="o">=</span> <span class="n">input_featuresource</span><span class="o">.</span><span class="n">featureCount</span><span class="p">()</span>
+<span class="linenos">123</span>
+<span class="linenos">124</span>        <span class="c1"># Retrieve the buffer distance and raster cell size numeric</span>
+<span class="linenos">125</span>        <span class="c1"># values. Since these are numeric values, they are retrieved</span>
+<span class="linenos">126</span>        <span class="c1"># using self.parameterAsDouble.</span>
+<span class="linenos">127</span>        <span class="n">bufferdist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span>
+<span class="linenos">128</span>                                            <span class="n">context</span><span class="p">)</span>
+<span class="linenos">129</span>        <span class="n">rastercellsize</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span>
+<span class="linenos">130</span>                                                <span class="n">context</span><span class="p">)</span>
+<span class="linenos">131</span>        <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">132</span>            <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">133</span>        <span class="n">buffer_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<span class="linenos">134</span>            <span class="s1">&#39;native:buffer&#39;</span><span class="p">,</span>
+<span class="linenos">135</span>            <span class="p">{</span>
+<span class="linenos">136</span>                <span class="c1"># Here we pass on the original parameter values of INPUT</span>
+<span class="linenos">137</span>                <span class="c1"># and BUFFER_OUTPUT to the buffer algorithm.</span>
+<span class="linenos">138</span>                <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;INPUT&#39;</span><span class="p">],</span>
+<span class="linenos">139</span>                <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">140</span>                <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="n">bufferdist</span><span class="p">,</span>
+<span class="linenos">141</span>                <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="linenos">142</span>                <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">143</span>                <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">144</span>                <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">145</span>                <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="linenos">146</span>            <span class="p">},</span>
+<span class="linenos">147</span>            <span class="c1"># Because the buffer algorithm is being run as a step in</span>
+<span class="linenos">148</span>            <span class="c1"># another larger algorithm, the is_child_algorithm option</span>
+<span class="linenos">149</span>            <span class="c1"># should be set to True</span>
+<span class="linenos">150</span>            <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">151</span>            <span class="c1">#</span>
+<span class="linenos">152</span>            <span class="c1"># It&#39;s important to pass on the context and feedback objects to</span>
+<span class="linenos">153</span>            <span class="c1"># child algorithms, so that they can properly give feedback to</span>
+<span class="linenos">154</span>            <span class="c1"># users and handle cancelation requests.</span>
+<span class="linenos">155</span>            <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">156</span>            <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+<span class="linenos">157</span>
+<span class="linenos">158</span>        <span class="c1"># Check for cancelation</span>
+<span class="linenos">159</span>        <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">160</span>            <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">161</span>
+<span class="linenos">162</span>        <span class="c1"># Run the separate rasterization algorithm using the buffer result</span>
+<span class="linenos">163</span>        <span class="c1"># as an input.</span>
+<span class="linenos">164</span>        <span class="n">rasterized_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<span class="linenos">165</span>            <span class="s1">&#39;qgis:rasterize&#39;</span><span class="p">,</span>
+<span class="linenos">166</span>            <span class="p">{</span>
+<span class="linenos">167</span>                <span class="c1"># Here we pass the &#39;OUTPUT&#39; value from the buffer&#39;s result</span>
+<span class="linenos">168</span>                <span class="c1"># dictionary off to the rasterize child algorithm.</span>
+<span class="linenos">169</span>                <span class="s1">&#39;LAYER&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">170</span>                <span class="s1">&#39;EXTENT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">171</span>                <span class="s1">&#39;MAP_UNITS_PER_PIXEL&#39;</span><span class="p">:</span> <span class="n">rastercellsize</span><span class="p">,</span>
+<span class="linenos">172</span>                <span class="c1"># Use the original parameter value.</span>
+<span class="linenos">173</span>                <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+<span class="linenos">174</span>            <span class="p">},</span>
+<span class="linenos">175</span>            <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">176</span>            <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">177</span>            <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+<span class="linenos">178</span>
+<span class="linenos">179</span>        <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">180</span>            <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">181</span>
+<span class="linenos">182</span>        <span class="c1"># Return the results</span>
+<span class="linenos">183</span>        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">rasterized_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">184</span>                <span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">185</span>                <span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">:</span> <span class="n">numfeatures</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Processing algorithm standard functions:</p>
+<ul>
+<li><dl class="simple">
+<dt>createInstance (mandatory)</dt><dd><p>Must return a new copy of your algorithm.
+If you change the name of the class, make sure you also update the value
+returned here to match!</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>name (mandatory)</dt><dd><p>Returns the unique algorithm name, used for identifying the algorithm.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>displayName (mandatory)</dt><dd><p>Returns the translated algorithm name.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>group</dt><dd><p>Returns the name of the group this algorithm belongs to.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>groupId</dt><dd><p>Returns the unique ID of the group this algorithm belongs to.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>shortHelpString</dt><dd><p>Returns a localised short help string for the algorithm.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>initAlgorithm (mandatory)</dt><dd><p>Here we define the inputs and outputs of the algorithm.</p>
+<p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code> and <code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code> are recommended names for the main input and
+main output parameters, respectively.</p>
+<p>If a parameter depends on another parameter, <code class="docutils literal notranslate"><span class="pre">parentParameterName</span></code>
+is used to specify this relationship (could be the field / band of a
+layer or the distance units of a layer).</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>processAlgorithm (mandatory)</dt><dd><p>This is where the processing takes place.</p>
+<p>Parameters are retrieved using special purpose functions, for
+instance <code class="docutils literal notranslate"><span class="pre">parameterAsSource</span></code> and <code class="docutils literal notranslate"><span class="pre">parameterAsDouble</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">processing.run</span></code> can be used to run other processing algorithms from
+a processing algorithm. The first parameter is the name of the
+algorithm, the second is a dictionary of the parameters to the algorithm.
+<code class="docutils literal notranslate"><span class="pre">is_child_algorithm</span></code> is normally set to <code class="docutils literal notranslate"><span class="pre">True</span></code> when running an
+algorithm from within another algorithm.
+<code class="docutils literal notranslate"><span class="pre">context</span></code> and <code class="docutils literal notranslate"><span class="pre">feedback</span></code> inform the algorithm about the
+environment to run in and the channel for communicating with the user
+(catching cancel request, reporting progress, providing textual feedback).
+When using the (parent) algorithm’s parameters as parameters to “child”
+algorithms, the original parameter values should be used (e.g.
+<code class="docutils literal notranslate"><span class="pre">parameters['OUTPUT']</span></code>).</p>
+<p>It is good practice to check the feedback object for cancelation
+as much as is sensibly possible! Doing so allows for responsive
+cancelation, instead of forcing users to wait for unwanted processing
+to occur.</p>
+<p>The algorithm should return values for all the output
+parameters it has defined as a dictionary.
+In this case, that’s the buffer and rasterized output layers, and the
+count of features processed.
+The dictionary keys must match the original parameter/output names.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="the-alg-decorator">
+<span id="scripts-alg"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">23.9.2. </span>The &#64;alg decorator</a><a class="headerlink" href="#the-alg-decorator" title="Permalink to this headline"></a></h2>
+<p>Using the &#64;alg decorator, you can create your own algorithms by writing the
+Python code and adding a few extra lines to supply additional
+information needed to make it a proper Processing algorithm.
+This simplifies the creation of algorithms and the specification of inputs
+and outputs.</p>
+<p>One important limitation with the decorator approach is that algorithms
+created in this way will always be added to a user’s Processing Scripts
+provider – it is not possible to add these algorithms to a custom provider,
+e.g. for use in plugins.</p>
+<p>The following code uses the &#64;alg decorator to</p>
+<ol class="arabic simple">
+<li><p>use a vector layer as input</p></li>
+<li><p>count the number of features</p></li>
+<li><p>do a buffer operation</p></li>
+<li><p>create a raster layer from the result of the buffer operation</p></li>
+<li><p>returns the buffer layer, raster layer and number of features</p></li>
+</ol>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.processing</span> <span class="kn">import</span> <span class="n">alg</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="nd">@alg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bufferrasteralg&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer and export to raster (alg)&#39;</span><span class="p">,</span>
+<span class="linenos"> 6</span>     <span class="n">group</span><span class="o">=</span><span class="s1">&#39;examplescripts&#39;</span><span class="p">,</span> <span class="n">group_label</span><span class="o">=</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="c1"># &#39;INPUT&#39; is the recommended name for the main input parameter</span>
+<span class="linenos"> 8</span><span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input vector layer&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="c1"># &#39;OUTPUT&#39; is the recommended name for the main output parameter</span>
+<span class="linenos">10</span><span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">RASTER_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span>
+<span class="linenos">11</span>           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raster output&#39;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">VECTOR_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">,</span>
+<span class="linenos">13</span>           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer output&#39;</span><span class="p">)</span>
+<span class="linenos">14</span><span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">DISTANCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BUFFER DISTANCE&#39;</span><span class="p">,</span>
+<span class="linenos">15</span>           <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="linenos">16</span><span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">DISTANCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RASTER CELL SIZE&#39;</span><span class="p">,</span>
+<span class="linenos">17</span>           <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="linenos">18</span><span class="nd">@alg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">,</span>
+<span class="linenos">19</span>            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of features processed&#39;</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="k">def</span> <span class="nf">bufferrasteralg</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+<span class="linenos">22</span>    <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos">23</span><span class="sd">    Description of the algorithm.</span>
+<span class="linenos">24</span><span class="sd">    (If there is no comment here, you will get an error)</span>
+<span class="linenos">25</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos">26</span>    <span class="n">input_featuresource</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsSource</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
+<span class="linenos">27</span>                                                     <span class="s1">&#39;INPUT&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+<span class="linenos">28</span>    <span class="n">numfeatures</span> <span class="o">=</span> <span class="n">input_featuresource</span><span class="o">.</span><span class="n">featureCount</span><span class="p">()</span>
+<span class="linenos">29</span>    <span class="n">bufferdist</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span>
+<span class="linenos">30</span>                                            <span class="n">context</span><span class="p">)</span>
+<span class="linenos">31</span>    <span class="n">rastercellsize</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span>
+<span class="linenos">32</span>                                                <span class="n">context</span><span class="p">)</span>
+<span class="linenos">33</span>    <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">34</span>        <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">35</span>    <span class="n">buffer_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;native:buffer&#39;</span><span class="p">,</span>
+<span class="linenos">36</span>                               <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;INPUT&#39;</span><span class="p">],</span>
+<span class="linenos">37</span>                                <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">38</span>                                <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="n">bufferdist</span><span class="p">,</span>
+<span class="linenos">39</span>                                <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+<span class="linenos">40</span>                                <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">41</span>                                <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">42</span>                                <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="linenos">43</span>                                <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="linenos">44</span>                                <span class="p">},</span>
+<span class="linenos">45</span>                               <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="linenos">46</span>                               <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">47</span>                               <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+<span class="linenos">48</span>    <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">49</span>        <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">50</span>    <span class="n">rasterized_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;qgis:rasterize&#39;</span><span class="p">,</span>
+<span class="linenos">51</span>                               <span class="p">{</span><span class="s1">&#39;LAYER&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">52</span>                                <span class="s1">&#39;EXTENT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">53</span>                                <span class="s1">&#39;MAP_UNITS_PER_PIXEL&#39;</span><span class="p">:</span> <span class="n">rastercellsize</span><span class="p">,</span>
+<span class="linenos">54</span>                                <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+<span class="linenos">55</span>                               <span class="p">},</span>
+<span class="linenos">56</span>                               <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+<span class="linenos">57</span>                               <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+<span class="linenos">58</span>    <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">59</span>        <span class="k">return</span> <span class="p">{}</span>
+<span class="linenos">60</span>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">rasterized_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">61</span>            <span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+<span class="linenos">62</span>            <span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">:</span> <span class="n">numfeatures</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, it involves two algorithms (‘native:buffer’ and
+‘qgis:rasterize’).
+The last one (‘qgis:rasterize’) creates a raster layer from the buffer
+layer that was generated by the first one (‘native:buffer’).</p>
+<p>The part of the code where this processing takes place is not
+difficult to understand if you have read the previous chapter.
+The first lines, however, need some additional explanation.
+They provide the information that is needed to turn your code into
+an algorithm that can be run from any of the GUI components, like
+the toolbox or the graphical modeler.</p>
+<p>These lines are all calls to the <code class="docutils literal notranslate"><span class="pre">&#64;alg</span></code> decorator functions that
+help simplify the coding of the algorithm.</p>
+<ul class="simple">
+<li><p>The &#64;alg decorator is used to define the name and location of the
+algorithm in the Toolbox.</p></li>
+<li><p>The &#64;alg.input decorator is used to define the inputs of the algorithm.</p></li>
+<li><p>The &#64;alg.output decorator is used to define the outputs of the algorithm.</p></li>
+</ul>
+</section>
+<section id="input-and-output-types-for-processing-algorithms">
+<span id="processing-algs-input-output"></span><h2><a class="toc-backref" href="#id3"><span class="section-number">23.9.3. </span>Input and output types for Processing Algorithms</a><a class="headerlink" href="#input-and-output-types-for-processing-algorithms" title="Permalink to this headline"></a></h2>
+<p>Here is the list of input and output types that are supported in
+Processing with their corresponding alg decorator constants
+(<code class="file docutils literal notranslate"><span class="pre">algfactory.py</span></code> contains the complete list of alg constants).
+Sorted on class name.</p>
+<section id="input-types">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">23.9.3.1. </span>Input types</a><a class="headerlink" href="#input-types" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 45%" />
+<col style="width: 31%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Alg constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterAuthConfig.html#qgis.core.QgsProcessingParameterAuthConfig" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterAuthConfig</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.AUTH_CFG</span></code></p></td>
+<td><p>Allows users to select from available authentication configurations or
+create new authentication configurations</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterBand.html#qgis.core.QgsProcessingParameterBand" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterBand</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.BAND</span></code></p></td>
+<td><p>A band of a raster layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterBoolean.html#qgis.core.QgsProcessingParameterBoolean" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterBoolean</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.BOOL</span></code></p></td>
+<td><p>A boolean value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterColor.html#qgis.core.QgsProcessingParameterColor" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterColor</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.COLOR</span></code></p></td>
+<td><p>A color</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterCoordinateOperation.html#qgis.core.QgsProcessingParameterCoordinateOperation" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterCoordinateOperation</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.COORDINATE_OPERATION</span></code></p></td>
+<td><p>A coordinate operation (for CRS transformations)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterCrs.html#qgis.core.QgsProcessingParameterCrs" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterCrs</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.CRS</span></code></p></td>
+<td><p>A Coordinate Reference System</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterDatabaseSchema.html#qgis.core.QgsProcessingParameterDatabaseSchema" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDatabaseSchema</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.DATABASE_SCHEMA</span></code></p></td>
+<td><p>A database schema</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterDatabaseTable.html#qgis.core.QgsProcessingParameterDatabaseTable" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDatabaseTable</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.DATABASE_TABLE</span></code></p></td>
+<td><p>A database table</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterDateTime.html#qgis.core.QgsProcessingParameterDateTime" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDateTime</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.DATETIME</span></code></p></td>
+<td><p>A datetime (or a pure date or time)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterDistance.html#qgis.core.QgsProcessingParameterDistance" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterDistance</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.DISTANCE</span></code></p></td>
+<td><p>A double numeric parameter for distance values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterEnum.html#qgis.core.QgsProcessingParameterEnum" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterEnum</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.ENUM</span></code></p></td>
+<td><p>An enumeration, allowing for selection from a set of predefined values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterExpression.html#qgis.core.QgsProcessingParameterExpression" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterExpression</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.EXPRESSION</span></code></p></td>
+<td><p>An expression</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterExtent.html#qgis.core.QgsProcessingParameterExtent" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterExtent</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.EXTENT</span></code></p></td>
+<td><p>A spatial extent defined by xmin, xmax, ymin, ymax</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterField.html#qgis.core.QgsProcessingParameterField" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterField</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FIELD</span></code></p></td>
+<td><p>A field in the attribute table of a vector layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterFile.html#qgis.core.QgsProcessingParameterFile" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFile</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FILE</span></code></p></td>
+<td><p>A filename of an existing file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterFileDestination.html#qgis.core.QgsProcessingParameterFileDestination" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFileDestination</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FILE_DEST</span></code></p></td>
+<td><p>A filename for a newly created output file</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterFolderDestination.html#qgis.core.QgsProcessingParameterFolderDestination" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFolderDestination</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FOLDER_DEST</span></code></p></td>
+<td><p>A folder (destination folder)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterNumber.html#qgis.core.QgsProcessingParameterNumber" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterNumber</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.INT</span></code></p></td>
+<td><p>An integer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterLayout.html#qgis.core.QgsProcessingParameterLayout" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterLayout</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.LAYOUT</span></code></p></td>
+<td><p>A layout</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterLayoutItem.html#qgis.core.QgsProcessingParameterLayoutItem" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterLayoutItem</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.LAYOUT_ITEM</span></code></p></td>
+<td><p>A layout item</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterMapLayer.html#qgis.core.QgsProcessingParameterMapLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMapLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MAPLAYER</span></code></p></td>
+<td><p>A map layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterMapTheme.html#qgis.core.QgsProcessingParameterMapTheme" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMapTheme</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MAP_THEME</span></code></p></td>
+<td><p>A project map theme</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterMatrix.html#qgis.core.QgsProcessingParameterMatrix" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMatrix</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MATRIX</span></code></p></td>
+<td><p>A matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterMeshLayer.html#qgis.core.QgsProcessingParameterMeshLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMeshLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MESH_LAYER</span></code></p></td>
+<td><p>A mesh layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterMultipleLayers.html#qgis.core.QgsProcessingParameterMultipleLayers" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterMultipleLayers</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MULTILAYER</span></code></p></td>
+<td><p>A set of layers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterNumber.html#qgis.core.QgsProcessingParameterNumber" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterNumber</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.NUMBER</span></code></p></td>
+<td><p>A numerical value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterPoint.html#qgis.core.QgsProcessingParameterPoint" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterPoint</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.POINT</span></code></p></td>
+<td><p>A point</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterProviderConnection.html#qgis.core.QgsProcessingParameterProviderConnection" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterProviderConnection</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.PROVIDER_CONNECTION</span></code></p></td>
+<td><p>An available connection for a database provider</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterRange.html#qgis.core.QgsProcessingParameterRange" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterRange</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.RANGE</span></code></p></td>
+<td><p>A number range</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterRasterLayer.html#qgis.core.QgsProcessingParameterRasterLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterRasterLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.RASTER_LAYER</span></code></p></td>
+<td><p>A raster layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterRasterDestination.html#qgis.core.QgsProcessingParameterRasterDestination" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterRasterDestination</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.RASTER_LAYER_DEST</span></code></p></td>
+<td><p>A raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterScale.html#qgis.core.QgsProcessingParameterScale" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterScale</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.SCALE</span></code></p></td>
+<td><p>A map scale</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterFeatureSink.html#qgis.core.QgsProcessingParameterFeatureSink" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFeatureSink</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.SINK</span></code></p></td>
+<td><p>A feature sink</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterFeatureSource.html#qgis.core.QgsProcessingParameterFeatureSource" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterFeatureSource</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.SOURCE</span></code></p></td>
+<td><p>A feature source</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterString.html#qgis.core.QgsProcessingParameterString" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterString</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.STRING</span></code></p></td>
+<td><p>A text string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterVectorLayer.html#qgis.core.QgsProcessingParameterVectorLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterVectorLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.VECTOR_LAYER</span></code></p></td>
+<td><p>A vector layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingParameterVectorDestination.html#qgis.core.QgsProcessingParameterVectorDestination" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingParameterVectorDestination</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.VECTOR_LAYER_DEST</span></code></p></td>
+<td><p>A vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="output-types">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">23.9.3.2. </span>Output types</a><a class="headerlink" href="#output-types" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Alg constant</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputBoolean.html#qgis.core.QgsProcessingOutputBoolean" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputBoolean</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.BOOL</span></code></p></td>
+<td><p>A boolean value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputNumber.html#qgis.core.QgsProcessingOutputNumber" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputNumber</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.DISTANCE</span></code></p></td>
+<td><p>A double numeric parameter for distance values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputFile.html#qgis.core.QgsProcessingOutputFile" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputFile</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FILE</span></code></p></td>
+<td><p>A filename of an existing file</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputFolder.html#qgis.core.QgsProcessingOutputFolder" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputFolder</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.FOLDER</span></code></p></td>
+<td><p>A folder</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputHtml.html#qgis.core.QgsProcessingOutputHtml" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputHtml</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.HTML</span></code></p></td>
+<td><p>HTML</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputNumber.html#qgis.core.QgsProcessingOutputNumber" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputNumber</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.INT</span></code></p></td>
+<td><p>A integer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputLayerDefinition.html#qgis.core.QgsProcessingOutputLayerDefinition" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputLayerDefinition</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.LAYERDEF</span></code></p></td>
+<td><p>A layer definition</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputMapLayer.html#qgis.core.QgsProcessingOutputMapLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputMapLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MAPLAYER</span></code></p></td>
+<td><p>A map layer</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputMultipleLayers.html#qgis.core.QgsProcessingOutputMultipleLayers" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputMultipleLayers</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.MULTILAYER</span></code></p></td>
+<td><p>A set of layers</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputNumber.html#qgis.core.QgsProcessingOutputNumber" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputNumber</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.NUMBER</span></code></p></td>
+<td><p>A numerical value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputRasterLayer.html#qgis.core.QgsProcessingOutputRasterLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputRasterLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.RASTER_LAYER</span></code></p></td>
+<td><p>A raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputString.html#qgis.core.QgsProcessingOutputString" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputString</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.STRING</span></code></p></td>
+<td><p>A text string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingOutputVectorLayer.html#qgis.core.QgsProcessingOutputVectorLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingOutputVectorLayer</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">alg.VECTOR_LAYER</span></code></p></td>
+<td><p>A vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="handing-algorithm-output">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">23.9.4. </span>Handing algorithm output</a><a class="headerlink" href="#handing-algorithm-output" title="Permalink to this headline"></a></h2>
+<p>When you declare an output representing a layer (raster or vector),
+the algorithm will try to add it to QGIS once it is finished.</p>
+<ul class="simple">
+<li><p>Raster layer output: QgsProcessingParameterRasterDestination /
+alg.RASTER_LAYER_DEST.</p></li>
+<li><p>Vector layer output: QgsProcessingParameterVectorDestination /
+alg.VECTOR_LAYER_DEST.</p></li>
+</ul>
+<p>So even if the <code class="docutils literal notranslate"><span class="pre">processing.run()</span></code> method does not add the layers
+it creates to the user’s current project,
+the two output layers (buffer and raster buffer) will be loaded,
+since they are saved to the destinations entered by the user (or to
+temporary destinations if the user does not specify destinations).</p>
+<p>If a layer is created as output of an algorithm, it should be
+declared as such.
+Otherwise, you will not be able to properly use the algorithm in the
+modeler, since what is declared will not match what the algorithm
+really creates.</p>
+<p>You can return strings, numbers and more by specifying them in the result
+dictionary (as demonstrated for “NUMBEROFFEATURES”), but they should
+always be explicitly defined as outputs from your algorithm.
+We encourage algorithms to output as many useful values as possible,
+since these can be valuable for use in later algorithms when your
+algorithm is used as part of a model.</p>
+</section>
+<section id="communicating-with-the-user">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">23.9.5. </span>Communicating with the user</a><a class="headerlink" href="#communicating-with-the-user" title="Permalink to this headline"></a></h2>
+<p>If your algorithm takes a long time to process, it is a good idea to
+inform the user about the progress.  You can use <code class="docutils literal notranslate"><span class="pre">feedback</span></code>
+(<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingFeedback</span></code></a>) for this.</p>
+<p>The progress text and progressbar can be updated using two methods:
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback.setProgressText" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setProgressText(text)</span></code></a>
+and <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsFeedback.html#qgis.core.QgsFeedback.setProgress" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setProgress(percent)</span></code></a>.</p>
+<p>You can provide more information by using
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback.pushCommandInfo" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pushCommandInfo(text)</span></code></a>,
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback.pushDebugInfo" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pushDebugInfo(text)</span></code></a>,
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback.pushInfo" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pushInfo(text)</span></code></a> and
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback.reportError" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reportError(text)</span></code></a>.</p>
+<p>If your script has a problem, the correct way of handling it is to raise
+a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingException.html#qgis.core.QgsProcessingException" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingException</span></code></a>.
+You can pass a message as an argument to the constructor of the exception.
+Processing will take care of handling it and communicating with the user,
+depending on where the algorithm is being executed from (toolbox, modeler,
+Python console, …)</p>
+</section>
+<section id="documenting-your-scripts">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">23.9.6. </span>Documenting your scripts</a><a class="headerlink" href="#documenting-your-scripts" title="Permalink to this headline"></a></h2>
+<p>You can document your scripts by overloading the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.helpString" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">helpString()</span></code></a> and
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.helpUrl" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">helpUrl()</span></code></a> methods of
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a>.</p>
+</section>
+<section id="flags">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">23.9.7. </span>Flags</a><a class="headerlink" href="#flags" title="Permalink to this headline"></a></h2>
+<p>You can override the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm.flags" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flags()</span></code></a>
+method of <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingAlgorithm.html#qgis.core.QgsProcessingAlgorithm" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingAlgorithm</span></code></a>
+to tell QGIS more about your algorithm.
+You can for instance tell QGIS that the script shall be hidden from
+the modeler, that it can be canceled, that it is not thread safe,
+and more.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>By default, Processing runs algorithms in a separate thread in order
+to keep QGIS responsive while the processing task runs.
+If your algorithm is regularly crashing, you are probably using API
+calls which are not safe to do in a background thread.
+Try returning the QgsProcessingAlgorithm.FlagNoThreading flag from
+your algorithm’s flags() method to force Processing to run your
+algorithm in the main thread instead.</p>
+</div>
+</section>
+<section id="best-practices-for-writing-script-algorithms">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">23.9.8. </span>Best practices for writing script algorithms</a><a class="headerlink" href="#best-practices-for-writing-script-algorithms" title="Permalink to this headline"></a></h2>
+<p>Here’s a quick summary of ideas to consider when creating your script
+algorithms and, especially, if you want to share them with other QGIS users.
+Following these simple rules will ensure consistency across the different
+Processing elements such as the toolbox, the modeler or the batch processing
+interface.</p>
+<ul class="simple">
+<li><p>Do not load resulting layers. Let Processing handle your results and load
+your layers if needed.</p></li>
+<li><p>Always declare the outputs your algorithm creates.</p></li>
+<li><p>Do not show message boxes or use any GUI element from the script.
+If you want to communicate with the user, use the methods of the
+feedback object
+(<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingFeedback.html#qgis.core.QgsProcessingFeedback" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingFeedback</span></code></a>) or
+throw a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProcessingException.html#qgis.core.QgsProcessingException" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProcessingException</span></code></a>.</p></li>
+</ul>
+<p>There are already many processing algorithms available in QGIS.
+You can find code on <a class="reference external" href="https://github.com/qgis/QGIS/blob/master/python/plugins/processing/algs/qgis">https://github.com/qgis/QGIS/blob/master/python/plugins/processing/algs/qgis</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="standalone.html" class="btn btn-neutral float-left" title="23.8. Using processing from the command line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="3rdParty.html" class="btn btn-neutral float-right" title="23.10. Configuring external applications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/scripts.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing/scripts.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing/scripts.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing/scripts.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing/scripts.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing/scripts.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing/scripts.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing/scripts.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing/scripts.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing/scripts.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing/scripts.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/scripts.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

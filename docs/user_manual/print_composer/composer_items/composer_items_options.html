@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18.2.1. Layout Items Common Options &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_items_options.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="18.2.2. The Map Item" href="composer_map.html" />
+    <link rel="prev" title="18.2. Layout Items" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">18. Laying out the maps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../overview_composer.html">18.1. Overview of the Print Layout</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">18.2. Layout Items</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">18.2.1. Layout Items Common Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map.html">18.2.2. The Map Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map3d.html">18.2.3. The 3D Map Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_label.html">18.2.4. The Label Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_legend.html">18.2.5. The Legend Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_scale_bar.html">18.2.6. The Scale Bar Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_tables.html">18.2.7. The Table Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_image.html">18.2.8. The Picture and the North Arrow Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_html_frame.html">18.2.9. The HTML Frame Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_shapes.html">18.2.10. The Shape Items</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../create_output.html">18.3. Creating an Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../create_reports.html">18.4. Creating a Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">18. </span>Laying out the maps</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">18.2. </span>Layout Items</a> &raquo;</li>
+      <li><span class="section-number">18.2.1. </span>Layout Items Common Options</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/print_composer/composer_items/composer_items_options.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="18.2. Layout Items" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_map.html" class="btn btn-neutral float-right" title="18.2.2. The Map Item" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="layout-items-common-options">
+<span id="layout-item-options"></span><span id="index-0"></span><h1><span class="section-number">18.2.1. </span>Layout Items Common Options<a class="headerlink" href="#layout-items-common-options" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-a-layout-item" id="id6">Creating a layout item</a></p></li>
+<li><p><a class="reference internal" href="#interacting-with-layout-items" id="id7">Interacting with layout items</a></p>
+<ul>
+<li><p><a class="reference internal" href="#moving-and-resizing-items" id="id8">Moving and resizing items</a></p></li>
+<li><p><a class="reference internal" href="#grouping-items" id="id9">Grouping items</a></p></li>
+<li><p><a class="reference internal" href="#locking-items" id="id10">Locking items</a></p></li>
+<li><p><a class="reference internal" href="#alignment" id="id11">Alignment</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#items-common-properties" id="id12">Items Common Properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#position-and-size" id="id13">Position and Size</a></p></li>
+<li><p><a class="reference internal" href="#rendering-mode" id="id14">Rendering mode</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id15">Variables</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>QGIS provides a large set of items to layout a map. They can be of map, legend,
+scale bar, picture, table, north arrow, image type… They however share some
+common options and behavior that are exposed below.</p>
+<section id="creating-a-layout-item">
+<span id="create-layout-item"></span><h2><a class="toc-backref" href="#id6"><span class="section-number">18.2.1.1. </span>Creating a layout item</a><a class="headerlink" href="#creating-a-layout-item" title="Permalink to this headline"></a></h2>
+<p>Items can be created using different tools, either from scratch or based on
+existing items.</p>
+<p>To create a layout item from scratch:</p>
+<ol class="arabic">
+<li><p>Select the corresponding tool either from the <span class="menuselection">Add Item</span> menu
+or the <span class="guilabel">Toolbox</span> bar.</p></li>
+<li><p>Then:</p>
+<ul>
+<li><p>Click on the page and fill the size and placement information requested
+in the <span class="guilabel">New Item Properties</span> dialog that pops up (for details,
+see <a class="reference internal" href="#position-size"><span class="std std-ref">Position and Size</span></a>);</p>
+<figure class="align-center" id="id1">
+<span id="figure-layout-new-item"></span><img alt="../../../../_images/new_item_properties.png" src="../../../../_images/new_item_properties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.9 </span><span class="caption-text">New Item properties dialog</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Or click-and-drag to define the initial size and placement of the item.
+You can rely on <a class="reference internal" href="../overview_composer.html#grid-guides"><span class="std std-ref">grids and guides</span></a> snapping for a better
+position.</p></li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because they can have particular shapes, drawing node or arrow items does not
+work with one-click nor click-and-drag methods; you need to click and
+place each node of the item. See <a class="reference internal" href="composer_shapes.html#layout-node-based-shape-item"><span class="std std-ref">The Node-Based Shape Items</span></a> for more
+details.</p>
+</div>
+<p>You can also:</p>
+<ol class="arabic">
+<li><p>Select an existing item with the <a class="reference internal" href="../../../../_images/mActionSelect.png"><img alt="select" src="../../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move item</sup> button from
+the <span class="guilabel">Toolbox</span> toolbar</p></li>
+<li><p>Use the contextual menu or the <span class="menuselection">Edit</span> menu tools to copy/cut
+the item and paste it at the mouse position as a new item.</p>
+<p>You can also use the <span class="guilabel">Paste in Place</span> (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd>) command
+to duplicate an item from one page to another and place it in the new page at
+the same coordinates as the original.</p>
+</li>
+</ol>
+<p>Moreover, you can create items using a print layout template (for details, see
+<a class="reference internal" href="../overview_composer.html#layout-manager"><span class="std std-ref">The Layout Manager</span></a>) through the <span class="menuselection">Layout ► Add Items from
+Template…</span> command.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Add layout items using the file browser</strong></p>
+<p>From your file browser or using the <span class="guilabel">Browser</span> panel, drag-and-drop a
+print layout template (<code class="file docutils literal notranslate"><span class="pre">.qpt</span></code> file) onto a print layout dialog and QGIS
+automatically adds all items from that template to the layout.</p>
+</div>
+</section>
+<section id="interacting-with-layout-items">
+<span id="interact-layout-item"></span><h2><a class="toc-backref" href="#id7"><span class="section-number">18.2.1.2. </span>Interacting with layout items</a><a class="headerlink" href="#interacting-with-layout-items" title="Permalink to this headline"></a></h2>
+<p>Each item inside the print layout can be moved and resized to create a perfect
+layout. For both operations the first step is to activate the <a class="reference internal" href="../../../../_images/mActionSelect.png"><img alt="select" src="../../../../_images/mActionSelect.png" style="width: 1.5em;" /></a>
+<sup>Select/Move item</sup> tool and click on the item.</p>
+<p>You can select multiple items with the <a class="reference internal" href="../../../../_images/mActionSelect.png"><img alt="select" src="../../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move item</sup> button:
+click and drag over the items or hold the <kbd class="kbd docutils literal notranslate">Shift</kbd> button and click on each
+of the items you want.
+To deselect an item, click on it holding the <kbd class="kbd docutils literal notranslate">Shift</kbd> button.</p>
+<p>Each time there’s a selection, count of selected items is displayed on the
+status bar.
+Inside the <span class="menuselection">Edit</span> menu, you can find actions to select all the
+items, clear all selections, invert the current selection and more…</p>
+<section id="moving-and-resizing-items">
+<span id="move-resize"></span><h3><a class="toc-backref" href="#id8"><span class="section-number">18.2.1.2.1. </span>Moving and resizing items</a><a class="headerlink" href="#moving-and-resizing-items" title="Permalink to this headline"></a></h3>
+<p>Unless <span class="menuselection">View ► Show Bounding Boxes</span> option is unchecked, a
+selected item will show squares on its boundaries ; moving one of them with
+the mouse will resize the item in the corresponding direction. While resizing,
+holding <kbd class="kbd docutils literal notranslate">Shift</kbd> will maintain the aspect ratio. Holding <kbd class="kbd docutils literal notranslate">Alt</kbd> will
+resize from the item center.</p>
+<p>To move a layout item, select it with the mouse and move while holding the left
+button. If you need to constrain the movements to the horizontal or vertical
+axis, just hold the <kbd class="kbd docutils literal notranslate">Shift</kbd> button on the keyboard while moving the mouse.
+You can also move a selected item using the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Arrow</kbd> <kbd class="kbd docutils literal notranslate">keys</kbd></kbd> on the keyboard;
+if the movement is too slow, you can speed it up by holding <kbd class="kbd docutils literal notranslate">Shift</kbd>.
+If you need better precision, use the <span class="guilabel">Position and size</span> properties,
+or grid/guides snapping as explained above for item’s creation.</p>
+<p>Resizing or moving several items at once is made the same way as for a single
+item. QGIS however provides some advanced tools to automatically resize a selection
+of items following different rules:</p>
+<ul class="simple">
+<li><p>each item height matches the <a class="reference internal" href="../../../../_images/mActionResizeTallest.png"><img alt="resizeTallest" src="../../../../_images/mActionResizeTallest.png" style="width: 1.5em;" /></a> tallest or the <a class="reference internal" href="../../../../_images/mActionResizeShortest.png"><img alt="resizeShortest" src="../../../../_images/mActionResizeShortest.png" style="width: 1.5em;" /></a>
+shortest selected item;</p></li>
+<li><p>each item width matches the <a class="reference internal" href="../../../../_images/mActionResizeWidest.png"><img alt="resizeWidest" src="../../../../_images/mActionResizeWidest.png" style="width: 1.5em;" /></a> widest or the <a class="reference internal" href="../../../../_images/mActionResizeNarrowest.png"><img alt="resizeNarrowest" src="../../../../_images/mActionResizeNarrowest.png" style="width: 1.5em;" /></a>
+narrowest selected item;</p></li>
+<li><p>resizes items to <a class="reference internal" href="../../../../_images/mActionResizeSquare.png"><img alt="resizeSquare" src="../../../../_images/mActionResizeSquare.png" style="width: 1.5em;" /></a> squares: each item is enlarged to form a
+square.</p></li>
+</ul>
+<p>Likewise, automated tools are available to organize multiple items position
+by distributing equidistantly:</p>
+<ul class="simple">
+<li><p>edges (left, right, top or bottom) of items;</p></li>
+<li><p>centers of items either horizontally or vertically.</p></li>
+</ul>
+</section>
+<section id="grouping-items">
+<span id="group-items"></span><h3><a class="toc-backref" href="#id9"><span class="section-number">18.2.1.2.2. </span>Grouping items</a><a class="headerlink" href="#grouping-items" title="Permalink to this headline"></a></h3>
+<p>Grouping items allows you to manipulate a set of items like a single one: you
+can easily resize, move, delete, copy the items as a whole.</p>
+<p>To create a group of items, select more than one and press the <a class="reference internal" href="../../../../_images/mActionGroupItems.png"><img alt="groupItems" src="../../../../_images/mActionGroupItems.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Group</span> button on the <span class="menuselection">View</span> menu or the
+<span class="guilabel">Actions</span> toolbar or from the right-click menu. A row named <code class="docutils literal notranslate"><span class="pre">Group</span></code>
+is added to the <span class="menuselection">Items</span> panel and can be locked or hidden like
+any other <a class="reference internal" href="../overview_composer.html#layout-items-panel"><span class="std std-ref">Items panel’s object</span></a>.
+Grouped items are <strong>not individually</strong> selectable on the canvas; use the Items panel
+for direct selection and access the item’s properties panel.</p>
+</section>
+<section id="locking-items">
+<span id="lock-items"></span><h3><a class="toc-backref" href="#id10"><span class="section-number">18.2.1.2.3. </span>Locking items</a><a class="headerlink" href="#locking-items" title="Permalink to this headline"></a></h3>
+<p>Once you have found the correct position for an item, you can lock it by using
+the <a class="reference internal" href="../../../../_images/locked.png"><img alt="locked" src="../../../../_images/locked.png" style="width: 1.5em;" /></a> <span class="guilabel">Lock selected items</span> button in the <span class="menuselection">Items</span>
+menu or the <span class="guilabel">Actions</span> toolbar or ticking the box next
+to the item in the <span class="menuselection">Items</span> panel. Locked items are <strong>not</strong>
+selectable on the canvas.</p>
+<p>Locked items can be unlocked by selecting the item in the <span class="menuselection">Items</span>
+panel and unchecking the tickbox or you can use the icons on the toolbar.</p>
+</section>
+<section id="alignment">
+<span id="align-items"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id11"><span class="section-number">18.2.1.2.4. </span>Alignment</a><a class="headerlink" href="#alignment" title="Permalink to this headline"></a></h3>
+<p>Raising or lowering the visual hierarchy for elements are inside the <a class="reference internal" href="../../../../_images/mActionRaiseItems.png"><img alt="raiseItems" src="../../../../_images/mActionRaiseItems.png" style="width: 1.5em;" /></a>
+<sup>Raise selected items</sup> pull-down menu. Choose an element on the print layout
+canvas and select the matching functionality to raise or lower the selected
+element compared to the other elements. This order is
+shown in the <span class="menuselection">Items</span> panel. You can also raise or lower objects
+in the <span class="menuselection">Items</span> panel by clicking and dragging an object’s label
+in this list.</p>
+<figure class="align-center" id="id2">
+<span id="figure-layout-common-align"></span><img alt="../../../../_images/alignment_lines.png" src="../../../../_images/alignment_lines.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.10 </span><span class="caption-text">Alignment helper lines in the print layout</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>There are several alignment options available within the <a class="reference internal" href="../../../../_images/mActionAlignLeft.png"><img alt="alignLeft" src="../../../../_images/mActionAlignLeft.png" style="width: 1.5em;" /></a>
+<sup>Align selected items</sup> pull-down menu (see <a class="reference internal" href="#figure-layout-common-align"><span class="std std-numref">Fig. 18.10</span></a>).
+To use an alignment function, you first select the elements and then click on
+one of the alignment icons:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../_images/mActionAlignLeft.png"><img alt="alignLeft" src="../../../../_images/mActionAlignLeft.png" style="width: 1.5em;" /></a> <span class="guilabel">Align Left</span> or <a class="reference internal" href="../../../../_images/mActionAlignRight.png"><img alt="alignRight" src="../../../../_images/mActionAlignRight.png" style="width: 1.5em;" /></a> <span class="guilabel">Align Right</span>;</p></li>
+<li><p><a class="reference internal" href="../../../../_images/mActionAlignTop.png"><img alt="alignTop" src="../../../../_images/mActionAlignTop.png" style="width: 1.5em;" /></a> <span class="guilabel">Align Top</span> or <a class="reference internal" href="../../../../_images/mActionAlignBottom.png"><img alt="alignBottom" src="../../../../_images/mActionAlignBottom.png" style="width: 1.5em;" /></a> <span class="guilabel">Align Bottom</span>;</p></li>
+<li><p><a class="reference internal" href="../../../../_images/mActionAlignHCenter.png"><img alt="alignHCenter" src="../../../../_images/mActionAlignHCenter.png" style="width: 1.5em;" /></a> <span class="guilabel">Align Center</span> horizontally or <a class="reference internal" href="../../../../_images/mActionAlignVCenter.png"><img alt="alignVCenter" src="../../../../_images/mActionAlignVCenter.png" style="width: 1.5em;" /></a>
+<span class="guilabel">Align Center Vertical</span>.</p></li>
+</ul>
+<p>All selected elements will then be aligned to their
+common bounding box. When moving items on the layout canvas, alignment helper
+lines appear when borders, centers or corners are aligned.</p>
+</section>
+</section>
+<section id="items-common-properties">
+<span id="item-common-properties"></span><h2><a class="toc-backref" href="#id12"><span class="section-number">18.2.1.3. </span>Items Common Properties</a><a class="headerlink" href="#items-common-properties" title="Permalink to this headline"></a></h2>
+<p>Layout items have a set of common properties you will find at the bottom of
+the <span class="guilabel">Item Properties</span> panel: Position and size, Rotation, Frame,
+Background, Item ID, Variables and Rendering (See <a class="reference internal" href="#figure-layout-common"><span class="std std-numref">Fig. 18.11</span></a>).</p>
+<figure class="align-center" id="id3">
+<span id="figure-layout-common"></span><img alt="../../../../_images/common_properties.png" src="../../../../_images/common_properties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.11 </span><span class="caption-text">Common Item Properties groups</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference internal" href="../../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>Data defined override</sup> icon next to most of the
+options means that you can associate that property with a layer, features
+attributes, geometry or with any other layout item’s property, using
+<a class="reference internal" href="../../working_with_vector/expression.html#vector-expressions"><span class="std std-ref">expressions</span></a> or <a class="reference internal" href="../../introduction/general_tools.html#general-tools-variables"><span class="std std-ref">variables</span></a>. For more information see <a class="reference internal" href="../../introduction/general_tools.html#data-defined"><span class="std std-ref">Data defined override setup</span></a>.</p>
+</div>
+<ul class="simple" id="frame-dialog">
+<li><p>The <span class="guilabel">Position and size</span> group lets you define the size and position
+of the frame which contains the item (see <a class="reference internal" href="#position-size"><span class="std std-ref">Position and Size</span></a> for more
+information).</p></li>
+<li><p>The <span class="guilabel">Rotation</span> sets the rotation of the element (in degrees).</p></li>
+<li><p>The <a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Frame</span> shows or hides the frame around the item.
+Use the <span class="guilabel">Color</span>, <span class="guilabel">Thickness</span> and <span class="guilabel">Join
+style</span> widgets to adjust those properties.</p></li>
+<li><p>Use the <span class="guilabel">Background color</span> menu for setting a background color.
+Click on the [Color…] button to display a dialog where you can pick a color
+or choose from a custom setting.
+Transparency can be adjusted through altering the alpha field settings.</p></li>
+<li><p>Use the <span class="guilabel">Item ID</span> to create a relationship to other print layout
+items. This is used with QGIS server and other potential web clients. You can
+set an ID on an item (for example, a map or a label), and then the web client
+can send data to set a property (e.g., label text) for that specific item.
+The GetProjectSettings command will list the items and IDs which are available
+in a layout.</p></li>
+<li><p><span class="guilabel">Rendering</span> mode helps you set whether and how the item can be
+displayed: you can, for instance, apply <a class="reference internal" href="../../introduction/general_tools.html#blend-modes"><span class="std std-ref">blending mode</span></a>,
+adjust the opacity of the item or <span class="guilabel">Exclude item from exports</span>.</p></li>
+</ul>
+<section id="position-and-size">
+<span id="position-size"></span><h3><a class="toc-backref" href="#id13"><span class="section-number">18.2.1.3.1. </span>Position and Size</a><a class="headerlink" href="#position-and-size" title="Permalink to this headline"></a></h3>
+<p>Extending the features of the <a class="reference internal" href="#create-layout-item"><span class="std std-ref">New Item Properties</span></a>
+dialog with data-defined capabilities, this group allows you to place the items
+accurately.</p>
+<figure class="align-center" id="id4">
+<span id="figure-layout-position"></span><img alt="../../../../_images/position_size.png" src="../../../../_images/position_size.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.12 </span><span class="caption-text">Position and size</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>the actual number of the page to place the item on;</p></li>
+<li><p>the reference point of the item;</p></li>
+<li><p>the <span class="guilabel">X</span> and <span class="guilabel">Y</span> coordinates of the <span class="guilabel">Reference
+point</span> of the item on the chosen page. The ratio between these values can be
+locked by clicking on the <a class="reference internal" href="../../../../_images/lockedGray.png"><img alt="lockedGray" src="../../../../_images/lockedGray.png" style="width: 1.2em;" /></a> button. Changes made to a value using
+the widget or the <a class="reference internal" href="../../../../_images/mActionSelect.png"><img alt="select" src="../../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move item</sup> tool will
+be reflected in both of them;</p></li>
+<li><p>the <span class="guilabel">Width</span> and <span class="guilabel">Height</span> of the item bounding box. As
+for coordinates, the ratio between width and height can be locked.</p></li>
+</ul>
+</section>
+<section id="rendering-mode">
+<span id="layout-rendering-mode"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">18.2.1.3.2. </span>Rendering mode</a><a class="headerlink" href="#rendering-mode" title="Permalink to this headline"></a></h3>
+<p>QGIS allows advanced rendering for layout items just like vector and
+raster layers.</p>
+<figure class="align-center" id="id5">
+<span id="figure-layout-common-rendering"></span><img alt="../../../../_images/rendering_mode.png" src="../../../../_images/rendering_mode.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.13 </span><span class="caption-text">Rendering mode</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="guilabel">Blending mode</span>: With this tool you can achieve effects which would
+otherwise only be achieved using graphic rendering software. The pixels of
+your overlaying and underlaying items can be mixed according to the mode set
+(see <a class="reference internal" href="../../introduction/general_tools.html#blend-modes"><span class="std std-ref">Blending Modes</span></a> for description of each effect).</p></li>
+<li><p><span class="guilabel">Transparency</span> <img alt="slider" src="../../../../_images/slider.png" />: You can make the underlying item in the
+layout visible with this tool.
+Use the slider to adapt the visibility of your item to your needs.
+You can also make a precise definition of the percentage of visibility in the
+menu beside the slider.</p></li>
+<li><p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Exclude item from exports</span>: You can decide to make an
+item invisible in all exports.
+After activating this checkbox, the item will not be included in export to
+PDF, print etc..</p></li>
+</ul>
+</section>
+<section id="variables">
+<h3><a class="toc-backref" href="#id15"><span class="section-number">18.2.1.3.3. </span>Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline"></a></h3>
+<p>The <span class="guilabel">Variables</span> lists all the variables available at
+the layout item’s level (which includes all global, project and
+composition’s variables). Map items also include Map settings variables that
+provide easy access to values like the map’s scale, extent, and so on.</p>
+<p>In <span class="guilabel">Variables</span>, it’s also possible to manage item-level variables.
+Click the <a class="reference internal" href="../../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button to add a new custom variable. Likewise, select any
+custom item-level variable from the list and click the <a class="reference internal" href="../../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> button to
+remove it.</p>
+<p>More information on variables usage in the <a class="reference internal" href="../../introduction/general_tools.html#general-tools-variables"><span class="std std-ref">Storing values in Variables</span></a> section.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="18.2. Layout Items" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_map.html" class="btn btn-neutral float-right" title="18.2.2. The Map Item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/print_composer/composer_items/composer_items_options.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/print_composer/composer_items/composer_items_options.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

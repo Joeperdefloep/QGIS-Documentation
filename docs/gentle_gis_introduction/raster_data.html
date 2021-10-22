@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. Raster Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/raster_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="7. Topology" href="topology.html" />
+    <link rel="prev" title="5. Data Capture" href="data_capture.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/raster_data.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">A Gentle Introduction to GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introducing_gis.html">2. Introducing GIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data.html">3. Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_attribute_data.html">4. Vector Attribute Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_capture.html">5. Data Capture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6. Raster Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">6.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-data-in-detail">6.2. Raster data in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#georeferencing">6.3. Georeferencing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sources-of-raster-data">6.4. Sources of raster data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-resolution">6.5. Spatial Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectral-resolution">6.6. Spectral resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-to-vector-conversion">6.7. Raster to vector conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vector-to-raster-conversion">6.8. Vector to raster conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-analysis">6.9. Raster analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems-things-to-be-aware-of">6.10. Common problems / things to be aware of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-have-we-learned">6.11. What have we learned?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#now-you-try">6.12. Now you try!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#something-to-think-about">6.13. Something to think about</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">6.14. Further reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">6.15. What’s next?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">7. Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_reference_systems.html">8. Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_production.html">9. Map Production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_spatial_analysis_buffers.html">10. Vector Spatial Analysis (Buffers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_analysis_interpolation.html">11. Spatial Analysis (Interpolation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors_and_contributors.html">12. About the authors &amp; contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_free_documentation_license.html">13. GNU Free Documentation License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">A Gentle Introduction to GIS</a> &raquo;</li>
+      <li><span class="section-number">6. </span>Raster Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/gentle_gis_introduction/raster_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="data_capture.html" class="btn btn-neutral float-left" title="5. Data Capture" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topology.html" class="btn btn-neutral float-right" title="7. Topology" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raster-data">
+<h1><span class="section-number">6. </span>Raster Data<a class="headerlink" href="#raster-data" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="../../_images/gentlelogo.png"><img alt="gentleLogo" src="../../_images/gentlelogo.png" style="width: 3em;" /></a></p></td>
+<td><p>Objectives:</p></td>
+<td><p>Understand what raster data is and how it can be used in a GIS.</p></td>
+</tr>
+<tr class="row-even"><td><p>Keywords:</p></td>
+<td><p>Raster, Pixel, Remote Sensing, Satellite, Image, Georeference</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview">
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>In the previous topics we have taken a closer look at vector data. While vector
+features use geometry (points, polylines and polygons) to represent the real
+world, raster data takes a different approach. Rasters are made up of a matrix
+of pixels (also called cells), each containing a value that represents the
+conditions for the area covered by that cell (see <a class="reference internal" href="#figure-raster"><span class="std std-numref">Fig. 6.2</span></a>). In this topic
+we are going to take a closer look at raster data, when it is useful and when it
+makes more sense to use vector data.</p>
+<figure class="align-center" id="id1">
+<span id="figure-raster"></span><a class="reference internal image-reference" href="../../_images/raster_dataset.png"><img alt="../../_images/raster_dataset.png" src="../../_images/raster_dataset.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">A raster dataset is composed of rows (running across) and columns (running
+down) of pixels (also know as cells). Each pixel represents a geographical
+region, and the value in that pixel represents some characteristic of that
+region.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="raster-data-in-detail">
+<h2><span class="section-number">6.2. </span>Raster data in detail<a class="headerlink" href="#raster-data-in-detail" title="Permalink to this headline"></a></h2>
+<p>Raster data is used in a GIS application when we want to display information that
+is continuous across an area and cannot easily be divided into vector features.
+When we introduced you to vector data we showed you the image in <a class="reference internal" href="#figure-landscape"><span class="std std-numref">Fig. 6.3</span></a>.
+Point, polyline and polygon features work well for representing some features on
+this landscape, such as trees, roads and building footprints. Other features on
+a landscape can be more difficult to represent using vector features. For example
+the grasslands shown have many variations in colour and density of cover. It
+would be easy enough to make a single polygon around each grassland area, but a
+lot of the information about the grassland would be lost in the process of
+simplifying the features to a single polygon. This is because when you give a
+vector feature attribute values, they apply to the whole feature, so vectors
+aren’t very good at representing features that are not homogeneous (entirely the
+same) all over. Another approach you could take is to digitise every small
+variation of grass colour and cover as a separate polygon. The problem with that
+approach is that it will take a huge amount of work in order to create a good
+vector dataset.</p>
+<figure class="align-center" id="id2">
+<span id="figure-landscape"></span><a class="reference internal image-reference" href="../../_images/landscape.jpg"><img alt="../../_images/landscape.jpg" src="../../_images/landscape.jpg" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Some features on a landscape are easy to represent as points, polylines and
+polygons (e.g. trees, roads, houses). In other cases it can be difficult. For
+example how would you represent the grasslands? As polygons? What about the
+variations in colour you can see in the grass? When you are trying to represent
+large areas with continuously changing values, raster data can be a better
+choice.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Using raster data is a solution to these problems. Many people use raster data as
+a <strong>backdrop</strong> to be used behind vector layers in order to provide more meaning
+to the vector information. The human eye is very good at interpreting images and
+so using an image behind vector layers, results in maps with a lot more meaning.
+Raster data is not only good for images that depict the real world surface (e.g.
+satellite images and aerial photographs), they are also good for representing more
+abstract ideas. For example, rasters can be used to show rainfall trends over an
+area, or to depict the fire risk on a landscape. In these kinds of applications,
+each cell in the raster represents a different value e.g. risk of fire on a scale
+of one to ten.</p>
+<p>An example that shows the difference between an image obtained from a satellite
+and one that shows calculated values can be seen in <a class="reference internal" href="#figure-raster-types"><span class="std std-numref">Fig. 6.4</span></a>.</p>
+<figure class="align-center" id="id3">
+<span id="figure-raster-types"></span><a class="reference internal image-reference" href="../../_images/raster_types.png"><img alt="../../_images/raster_types.png" src="../../_images/raster_types.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.4 </span><span class="caption-text">True colour raster images (left) are useful as they provide a lot of detail
+that is hard to capture as vector features but easy to see when looking at the
+raster image. Raster data can also be non-photographic data such as the raster
+layer shown on the right which shows the calculated average minimum temperature
+in the Western Cape for the month of March.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="georeferencing">
+<h2><span class="section-number">6.3. </span>Georeferencing<a class="headerlink" href="#georeferencing" title="Permalink to this headline"></a></h2>
+<p>Georeferencing is the process of defining exactly where on the earth’s surface
+an image or raster dataset was created. This positional information is stored
+with the digital version of the aerial photo. When the GIS application opens the
+photo, it uses the positional information to ensure that the photo appears in the
+correct place on the map. Normally this positional information consists of a
+coordinate for the top left pixel in the image, the size of each pixel in the X
+direction, the size of each pixel in the Y direction, and the amount (if any) by
+which the image is rotated. With these few pieces of information, the GIS
+application can ensure that raster data are displayed in the correct place. The
+georeferencing information for a raster is often provided in a small text file
+accompanying the raster.</p>
+</section>
+<section id="sources-of-raster-data">
+<h2><span class="section-number">6.4. </span>Sources of raster data<a class="headerlink" href="#sources-of-raster-data" title="Permalink to this headline"></a></h2>
+<p>Raster data can be obtained in a number of ways. Two of the most common ways are
+aerial photography and satellite imagery. In aerial photography, an aeroplane
+flies over an area with a camera mounted underneath it. The photographs are then
+imported into a computer and georeferenced. Satellite imagery is created when
+satellites orbiting the earth point special digital cameras towards the earth
+and then take an image of the area on earth they are passing over. Once the image
+has been taken it is sent back to earth using radio signals to special receiving
+stations such as the one shown in <a class="reference internal" href="#figure-csir-station"><span class="std std-numref">Fig. 6.5</span></a>. The process of capturing raster data from
+an aeroplane or satellite is called <strong>remote sensing</strong>.</p>
+<figure class="align-center" id="id4">
+<span id="figure-csir-station"></span><a class="reference internal image-reference" href="../../_images/csir_station.jpg"><img alt="../../_images/csir_station.jpg" src="../../_images/csir_station.jpg" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.5 </span><span class="caption-text">The CSIR Satellite Applications Center at Hartebeeshoek near Johannesburg.
+Special antennae track satellites as they pass overhead and download images
+using radio waves.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>In other cases, raster data can be computed. For example an insurance company may
+take police crime incident reports and create a country wide raster map showing
+how high the incidence of crime is likely to be in each area. Meteorologists
+(people who study weather patterns) might generate a province level raster showing
+average temperature, rainfall and wind direction using data collected from weather
+stations (see <a class="reference internal" href="#figure-csir-station"><span class="std std-numref">Fig. 6.5</span></a>). In these cases, they will often use raster
+analysis techniques such as interpolation (which we describe in Topic
+<a class="reference internal" href="spatial_analysis_interpolation.html#spatial-analysys"><span class="std std-ref">Spatial Analysis (Interpolation)</span></a>).</p>
+<p>Sometimes raster data are created from vector data because the data owners want
+to share the data in an easy to use format. For example, a company with road,
+rail, cadastral and other vector datasets may choose to generate a raster version
+of these datasets so that employees can view these datasets in a web browser.
+This is normally only useful if the attributes, that users need to be aware of,
+can be represented on the map with labels or symbology. If the user needs to look
+at the attribute table for the data, providing it in raster format could be a bad
+choice because raster layers do not usually have any attribute data associated
+with them.</p>
+</section>
+<section id="spatial-resolution">
+<h2><span class="section-number">6.5. </span>Spatial Resolution<a class="headerlink" href="#spatial-resolution" title="Permalink to this headline"></a></h2>
+<p>Every raster layer in a GIS has pixels (cells) of a fixed size that determine its
+spatial resolution. This becomes apparent when you look at an image at a small
+scale (see <a class="reference internal" href="#figure-raster-small-scale"><span class="std std-numref">Fig. 6.6</span></a>) and then zoom in to a large scale (see
+<a class="reference internal" href="#figure-raster-large-scale"><span class="std std-numref">Fig. 6.7</span></a>).</p>
+<figure class="align-center" id="id5">
+<span id="figure-raster-small-scale"></span><a class="reference internal image-reference" href="../../_images/raster_small_scale.png"><img alt="../../_images/raster_small_scale.png" src="../../_images/raster_small_scale.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.6 </span><span class="caption-text">This satellite image looks good when using a small scale…</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<span id="figure-raster-large-scale"></span><a class="reference internal image-reference" href="../../_images/raster_large_scale.png"><img alt="../../_images/raster_large_scale.png" src="../../_images/raster_large_scale.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6.7 </span><span class="caption-text">…but when viewed at a large scale you can see the individual pixels that
+the image is composed of.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Several factors determine the spatial resolution of an image. For remote sensing
+data, spatial resolution is usually determined by the capabilities of the sensor
+used to take an image. For example SPOT5 satellites can take images where each
+pixel is 10 m x 10 m. Other satellites, for example MODIS take images only at
+500 m x 500 m per pixel. In aerial photography, pixel sizes of 50 cm x 50 cm are
+not uncommon. Images with a pixel size covering a small area are called ‘<strong>high
+resolution</strong>’ images because it is possible to make out a high degree of detail
+in the image. Images with a pixel size covering a large area are called ‘<strong>low
+resolution</strong>’ images because the amount of detail the images show is low.</p>
+<p>In raster data that is computed by spatial analysis (such as the rainfall map we
+mentioned earlier), the spatial density of information used to create the raster
+will usually determine the spatial resolution. For example if you want to create
+a high resolution average rainfall map, you would ideally need many weather
+stations in close proximity to each other.</p>
+<p>One of the main things to be aware of with rasters captured at a high spatial
+resolution is storage requirements. Think of a raster that is 3 x 3 pixels, each
+of which contains a number representing average rainfall. To store all the
+information contained in the raster, you will need to store 9 numbers in the
+computer’s memory. Now imagine you want to have a raster layer for the whole of
+South Africa with pixels of 1 km x 1 km. South Africa is around 1,219,090 km <sup>2</sup>.
+Which means your computer would need to store over a million numbers on its hard
+disk in order to hold all of the information. Making the pixel size smaller would
+greatly increase the amount of storage needed.</p>
+<p>Sometimes using a low spatial resolution is useful when you want to work with a
+large area and are not interested in looking at any one area in a lot of detail.
+The cloud maps you see on the weather report, are an example of this –– it’s
+useful to see the clouds across the whole country. Zooming in to one particular
+cloud in high resolution will not tell you very much about the upcoming weather!</p>
+<p>On the other hand, using low resolution raster data can be problematic if you are
+interested in a small region because you probably won’t be able to make out any
+individual features from the image.</p>
+</section>
+<section id="spectral-resolution">
+<h2><span class="section-number">6.6. </span>Spectral resolution<a class="headerlink" href="#spectral-resolution" title="Permalink to this headline"></a></h2>
+<p>If you take a colour photograph with a digital camera or camera on a cellphone,
+the camera uses electronic sensors to detect red, green and blue light. When the
+picture is displayed on a screen or printed out, the red, green and blue (RGB)
+information is combined to show you an image that your eyes can interpret. While
+the information is still in digital format though, this RGB information is stored
+in separate colour <strong>bands</strong>.</p>
+<p>Whilst our eyes can only see RGB wavelengths, the electronic sensors in cameras
+are able to detect wavelengths that our eyes cannot. Of course in a hand held
+camera it probably doesn’t make sense to record information from the <strong>non-visible</strong>
+parts of the spectrum since most people just want to look at pictures of their
+dog or what have you. Raster images that include data for non-visible parts of
+the light spectrum are often referred to as multi-spectral images. In GIS
+recording the non-visible parts of the spectrum can be very useful. For example,
+measuring infra-red light can be useful in identifying water bodies.</p>
+<p>Because having images containing multiple bands of light is so useful in GIS,
+raster data are often provided as multi-band images. Each band in the image is
+like a separate layer. The GIS will combine three of the bands and show them as
+red, green and blue so that the human eye can see them. The number of bands in a
+raster image is referred to as its <strong>spectral resolution</strong>.</p>
+<p>If an image consists of only one band, it is often called a <strong>grayscale</strong> image.
+With grayscale images, you can apply false colouring to make the differences in
+values in the pixels more obvious. Images with false colouring applied are often
+referred to as <strong>pseudocolour images</strong>.</p>
+</section>
+<section id="raster-to-vector-conversion">
+<h2><span class="section-number">6.7. </span>Raster to vector conversion<a class="headerlink" href="#raster-to-vector-conversion" title="Permalink to this headline"></a></h2>
+<p>In our discussion of vector data, we explained that often raster data are used as
+a backdrop layer, which is then used as a base from which vector features can be
+digitised.</p>
+<p>Another approach is to use advanced computer programs to automatically extract
+vector features from images. Some features such as roads show in an image as a
+sudden change of colour from neighbouring pixels. The computer program looks for
+such colour changes and creates vector features as a result. This kind of
+functionality is normally only available in very specialised (and often expensive)
+GIS software.</p>
+</section>
+<section id="vector-to-raster-conversion">
+<h2><span class="section-number">6.8. </span>Vector to raster conversion<a class="headerlink" href="#vector-to-raster-conversion" title="Permalink to this headline"></a></h2>
+<p>Sometimes it is useful to convert vector data into raster data. One side effect
+of this is that attribute data (that is attributes associated with the original
+vector data) will be lost when the conversion takes place. Having vectors
+converted to raster format can be useful though when you want to give GIS data
+to non GIS users. With the simpler raster formats, the person you give the raster
+image to can simply view it as an image on their computer without needing any
+special GIS software.</p>
+</section>
+<section id="raster-analysis">
+<h2><span class="section-number">6.9. </span>Raster analysis<a class="headerlink" href="#raster-analysis" title="Permalink to this headline"></a></h2>
+<p>There are a great many analytical tools that can be run on raster data which
+cannot be used with vector data. For example, rasters can be used to model water
+flow over the land surface. This information can be used to calculate where
+watersheds and stream networks exist, based on the terrain.</p>
+<p>Raster data are also often used in agriculture and forestry to manage crop
+production. For example with a satellite image of a farmer’s lands, you can
+identify areas where the plants are growing poorly and then use that information
+to apply more fertilizer on the affected areas only. Foresters use raster data
+to estimate how much timber can be harvested from an area.</p>
+<p>Raster data is also very important for disaster management. Analysis of Digital
+Elevation Models (a kind of raster where each pixel contains the height above
+sea level) can then be used to identify areas that are likely to be flooded.
+This can then be used to target rescue and relief efforts to areas where it is
+needed the most.</p>
+</section>
+<section id="common-problems-things-to-be-aware-of">
+<h2><span class="section-number">6.10. </span>Common problems / things to be aware of<a class="headerlink" href="#common-problems-things-to-be-aware-of" title="Permalink to this headline"></a></h2>
+<p>As we have already mentioned, high resolution raster data can require large
+amounts of computer storage.</p>
+</section>
+<section id="what-have-we-learned">
+<h2><span class="section-number">6.11. </span>What have we learned?<a class="headerlink" href="#what-have-we-learned" title="Permalink to this headline"></a></h2>
+<p>Let’s wrap up what we covered in this worksheet:</p>
+<ul class="simple">
+<li><p>Raster data are a grid of regularly sized <strong>pixels.</strong></p></li>
+<li><p>Raster data are good for showing <strong>continually varying information.</strong></p></li>
+<li><p>The size of pixels in a raster determines its <strong>spatial resolution.</strong></p></li>
+<li><p>Raster images can contain one or more <strong>bands</strong>, each covering the same spatial
+area, but containing different information.</p></li>
+<li><p>When raster data contains bands from different parts of the electromagnetic
+spectrum, they are called <strong>multi-spectral images</strong>.</p></li>
+<li><p>Three of the bands of a multi-spectral image can be shown in the colours Red,
+Green and Blue so that we can see them.</p></li>
+<li><p>Images with a single band are called grayscale images.</p></li>
+<li><p>Single band, grayscale images can be shown in pseudocolour by the GIS.</p></li>
+<li><p>Raster images can consume a large amount of storage space.</p></li>
+</ul>
+</section>
+<section id="now-you-try">
+<h2><span class="section-number">6.12. </span>Now you try!<a class="headerlink" href="#now-you-try" title="Permalink to this headline"></a></h2>
+<p>Here are some ideas for you to try with your learners:</p>
+<ul class="simple">
+<li><p>Discuss with your learners in which situations you would use raster data and
+in which you would use vector data.</p></li>
+<li><p>Get your learners to create a raster map of your school by using A4 transparency
+sheets with grid lines drawn on them. Overlay the transparencies onto a
+toposheet or aerial photograph of your school. Now let each learner or group
+of learners colour in cells that represent a certain type of feature e.g.
+building, playground, sports field, trees, footpaths etc. When they are all
+finished, overlay all the sheets together and see if it makes a good raster
+map representation of your school. Which types of features worked well when
+represented as rasters? How did your choice in cell size affect your ability
+to represent different feature types?</p></li>
+</ul>
+</section>
+<section id="something-to-think-about">
+<h2><span class="section-number">6.13. </span>Something to think about<a class="headerlink" href="#something-to-think-about" title="Permalink to this headline"></a></h2>
+<p>If you don’t have a computer available, you can understand raster data using pen
+and paper. Draw a grid of squares onto a sheet of paper to represent your soccer
+field. Fill the grid in with numbers representing values for grass cover on your
+soccer field. If a patch is bare give the cell a value of 0. If the patch is
+mixed bare and covered, give it a value of 1. If an area is completely covered
+with grass, give it a value of 2. Now use pencil crayons to colour the cells
+based on their values. Colour cells with value 2 dark green. Value 1 should get
+coloured light green, and value 0 coloured in brown. When you finish, you should
+have a raster map of your soccer field!</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">6.14. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline"></a></h2>
+<p><strong>Book</strong>:</p>
+<ul class="simple">
+<li><p>Chang, Kang-Tsung (2006). Introduction to Geographic Information Systems. 3rd
+Edition. McGraw Hill. ISBN: 0070658986</p></li>
+<li><p>DeMers, Michael N. (2005). Fundamentals of Geographic Information Systems. 3rd
+Edition. Wiley. ISBN: 9814126195</p></li>
+</ul>
+<p><strong>Website:</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/GIS_file_formats#Raster">https://en.wikipedia.org/wiki/GIS_file_formats#Raster</a></p>
+<p>The QGIS User Guide also has more detailed information on working with raster
+data in QGIS.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">6.15. </span>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>In the section that follows we will take a closer look at <strong>topology</strong> to see
+how the relationship between vector features can be used to ensure the best data
+quality.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_capture.html" class="btn btn-neutral float-left" title="5. Data Capture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topology.html" class="btn btn-neutral float-right" title="7. Topology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/raster_data.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/raster_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/raster_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/raster_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/raster_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/raster_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/raster_data.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/gentle_gis_introduction/raster_data.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/raster_data.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/gentle_gis_introduction/raster_data.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/gentle_gis_introduction/raster_data.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/raster_data.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/gentle_gis_introduction/raster_data.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/gentle_gis_introduction/raster_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

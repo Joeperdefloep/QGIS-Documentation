@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>17.8. Running an external algorithm &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/processing/first_saga_alg.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="17.9. The processing log" href="log.html" />
+    <link rel="prev" title="17.7. Selection" href="selection.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/processing/first_saga_alg.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">17. The QGIS processing guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">17.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="warning.html">17.2. An important warning before starting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="set_up.html">17.3. Setting-up the processing framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="first_alg.html">17.4. Running our first algorithm. The  toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="second_alg.html">17.5. More algorithms and data types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="crs.html">17.6. CRSs. Reprojecting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="selection.html">17.7. Selection</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">17.8. Running an external algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">17.9. The processing log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="no_data.html">17.10. The raster calculator. No-data values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vector_calculator.html">17.11. Vector calculator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extents.html">17.12. Defining extents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="html.html">17.13. HTML outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="john_snow.html">17.14. First analysis example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cutting_merging.html">17.15. Clipping and merging raster layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hydro.html">17.16. Hydrological analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_twi.html">17.17. Starting with the graphical modeler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro.html">17.18. More complex models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_calculator.html">17.19. Numeric calculations in the modeler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_hydro_twi.html">17.20. A model within a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler_only.html">17.21. Using modeler-only tools for creating a model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation.html">17.22. Interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interpolation_cross.html">17.23. More interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative.html">17.24. Iterative execution of algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iterative_model.html">17.25. More iterative execution of algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_conversion.html">17.26. The batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_modeler.html">17.27. Models in the batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hooks.html">17.28. Pre- and post-execution script hooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="more_backends.html">17.29. Other programs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="interp_contour.html">17.30. Interpolation and contouring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generalize.html">17.31. Vector simplification and smoothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solar.html">17.32. Planning a solar farm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="r_intro.html">17.33. Use R scripts in Processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geomorpho.html">17.34. Predicting landslides</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">17. </span>The QGIS processing guide</a> &raquo;</li>
+      <li><span class="section-number">17.8. </span>Running an external algorithm</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/processing/first_saga_alg.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="selection.html" class="btn btn-neutral float-left" title="17.7. Selection" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="log.html" class="btn btn-neutral float-right" title="17.9. The processing log" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="running-an-external-algorithm">
+<h1><span class="section-number">17.8. </span>Running an external algorithm<a class="headerlink" href="#running-an-external-algorithm" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this lesson we will see how to use algorithms that depend on a
+third-party application, particularly SAGA, which is one of the main
+algorithm providers.</p>
+</div>
+<p>All the algorithms that we have run so far are part of processing framework.
+That is, they are <em>native</em> algorithms implemented in the plugin and run by QGIS
+just like the plugin itself is run. However, one of the greatest features of the
+processing framework is that it can use algorithms from external applications
+and extend the possibilities of those applications. Such algorithms are wrapped
+and included in the toolbox, so you can easily use them from QGIS,
+and use QGIS data to run them.</p>
+<p>Some of the algorithms that you see in the simplified view require third party
+applications to be installed in your system. One algorithm provider of special
+interest is SAGA (System for Automated Geospatial Analysis). First, we need to
+configure everything so QGIS can correctly call SAGA. This is not difficult,
+but it’s important to understand how it works. Each external application has
+its own configuration, and later in this same manual we will talk about some
+of the other ones, but SAGA is going to be our main backend, so we will discuss it here.</p>
+<p>If you are on Windows, the best way to work with external algorithms is to
+install QGIS using the standalone installer. It will take care of installing
+all the needed dependencies, including SAGA, so if you have used it, there is
+nothing else to do. You can open the settings dialog and go to the <em>Providers/SAGA</em> group.</p>
+<figure class="align-default">
+<img alt="../../../_images/saga_config.png" src="../../../_images/saga_config.png" />
+</figure>
+<p>The SAGA path should already be configured and pointing to the folder where SAGA is installed.</p>
+<p>If you have installed QGIS not using the standalone installer, then you must
+enter the path to your SAGA installation (which you must have installed separately)
+there. The required version is SAGA 2.1 [this is changing according to the releases of SAGA].</p>
+<p>In case you are using Linux, you do not have to set the path to your SAGA installation
+in the processing configuration. Instead, you must install SAGA and make sure that
+the SAGA folder is in PATH, so it can be called from the console (just open a
+console and type <code class="docutils literal notranslate"><span class="pre">saga_cmd</span></code> to check it). Under Linux, the target version for
+SAGA is also 2.1, but in some installations (such as the OSGeo Live DVD)
+you might have just 2.0.8 available. There are some 2.1 packages available,
+but they are not commonly installed and might have some issues, so if you prefer
+to use the more common and stable 2.0.8, you can do it by enabling 2.0.8
+compatibility in the configuration dialog, under the <em>SAGA</em> group.</p>
+<figure class="align-default">
+<img alt="../../../_images/enable208.png" src="../../../_images/enable208.png" />
+</figure>
+<p>Once SAGA is installed, you can launch a SAGA algorithm double clicking on its name,
+as with any other algorithm. Since we are using the simplified interface,
+you do not know which algorithms are based on SAGA or in another external
+application, but if you happen to double–click on one of them and the
+corresponding application is not installed, you will see something like this.</p>
+<figure class="align-default">
+<img alt="../../../_images/missing_saga.png" src="../../../_images/missing_saga.png" />
+</figure>
+<p>In our case, and assuming that SAGA is correctly installed and configured,
+you should not see this window, and you will get to the parameters dialog instead.</p>
+<p>Let’s try with a SAGA–based algorithm, the one called <em>Split shapes layer randomly</em>.</p>
+<figure class="align-default">
+<img alt="../../../_images/split.png" src="../../../_images/split.png" />
+</figure>
+<p>Use the points layer in the project corresponding to this lesson as input,
+and the default parameter values, and you will get something like this
+(the split is random, so your result might be different).</p>
+<figure class="align-default">
+<img alt="../../../_images/split_layer1.png" src="../../../_images/split_layer1.png" />
+</figure>
+<p>The input layer has been split in two layers, each one with the same number of
+points. This result has been computed by SAGA, and later taken by QGIS and
+added to the QGIS project.</p>
+<p>If all goes fine, you will not notice any difference between this SAGA–based
+algorithm and one of the others that we have previously run. However, SAGA might,
+for some reason, not be able to produce a result and not generate the file that
+QGIS is expecting. In that case, there will be problems adding the result to the
+QGIS project, and an error message like this will be shown.</p>
+<figure class="align-default">
+<img alt="../../../_images/missing_result.png" src="../../../_images/missing_result.png" />
+</figure>
+<p>This kind of problems might happen, even if SAGA (or any other application that
+we are calling from the processing framework) is correctly installed, and it is
+important to know how to deal with them. Let’s produce one of those error messages.</p>
+<p>Open the <em>Create graticule</em> algorithm and use the following values.</p>
+<figure class="align-default">
+<img alt="../../../_images/create_graticule.png" src="../../../_images/create_graticule.png" />
+</figure>
+<p>We are using  width and height values that is larger than the specified extent,
+so SAGA cannot produce any output. In other words, the parameter values are wrong,
+but they are not checked until SAGA gets them and tries to create the graticule.
+Since it cannot create it, it will not produce the expected layer, and you will
+see the error message shown above.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In SAGA &gt;= 2.2.3, the command will adjust automatically wrong input data,
+so you’ll not get an error. To provoke an error, use negative values for division.</p>
+</div>
+<p>Understanding this kind of problems will help you solve them and find an explanation
+to what is happening. As you can see in the error message, a test is performed
+to check that the connection with SAGA is working correctly, indicating you
+that there might be a problem in how the algorithm was executed. This applies
+not only to SAGA, but also to other external applications as well.</p>
+<p>In the next lesson we will introduce the processing log, where information about
+commands run by geoalgorithms is kept, and you will see how to get more detail
+when issues like this appear.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="selection.html" class="btn btn-neutral float-left" title="17.7. Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="log.html" class="btn btn-neutral float-right" title="17.9. The processing log" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/processing/first_saga_alg.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/processing/first_saga_alg.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/processing/first_saga_alg.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/processing/first_saga_alg.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/processing/first_saga_alg.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/processing/first_saga_alg.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/processing/first_saga_alg.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/processing/first_saga_alg.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/processing/first_saga_alg.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/processing/first_saga_alg.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/processing/first_saga_alg.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/processing/first_saga_alg.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/processing/first_saga_alg.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/processing/first_saga_alg.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

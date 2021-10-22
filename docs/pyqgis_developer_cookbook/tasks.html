@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15. Tasks - doing heavy work in the background &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/tasks.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="16. Developing Python Plugins" href="plugins/index.html" />
+    <link rel="prev" title="14. Authentication infrastructure" href="authentication.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/tasks.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">15. Tasks - doing heavy work in the background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">15.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">15.2. Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extending-qgstask">15.2.1. Extending QgsTask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-from-function">15.2.2. Task from function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-from-a-processing-algorithm">15.2.3. Task from a processing algorithm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">15. </span>Tasks - doing heavy work in the background</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/tasks.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="authentication.html" class="btn btn-neutral float-left" title="14. Authentication infrastructure" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugins/index.html" class="btn btn-neutral float-right" title="16. Developing Python Plugins" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tasks-doing-heavy-work-in-the-background">
+<span id="tasks"></span><h1><span class="section-number">15. </span>Tasks - doing heavy work in the background<a class="headerlink" href="#tasks-doing-heavy-work-in-the-background" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 2</span>  <span class="n">QgsProcessingContext</span><span class="p">,</span>
+<span class="linenos"> 3</span>  <span class="n">QgsTaskManager</span><span class="p">,</span>
+<span class="linenos"> 4</span>  <span class="n">QgsTask</span><span class="p">,</span>
+<span class="linenos"> 5</span>  <span class="n">QgsProcessingAlgRunnerTask</span><span class="p">,</span>
+<span class="linenos"> 6</span>  <span class="n">Qgis</span><span class="p">,</span>
+<span class="linenos"> 7</span>  <span class="n">QgsProcessingFeedback</span><span class="p">,</span>
+<span class="linenos"> 8</span>  <span class="n">QgsApplication</span><span class="p">,</span>
+<span class="linenos"> 9</span>  <span class="n">QgsMessageLog</span><span class="p">,</span>
+<span class="linenos">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id1">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id2">Examples</a></p>
+<ul>
+<li><p><a class="reference internal" href="#extending-qgstask" id="id3">Extending QgsTask</a></p></li>
+<li><p><a class="reference internal" href="#task-from-function" id="id4">Task from function</a></p></li>
+<li><p><a class="reference internal" href="#task-from-a-processing-algorithm" id="id5">Task from a processing algorithm</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">15.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Background processing using threads is a way to maintain a responsive
+user interface when heavy processing is going on.
+Tasks can be used to achieve threading in QGIS.</p>
+<p>A task (<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a>) is a container for the code to be performed
+in the background, and the task manager (<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTaskManager.html#qgis.core.QgsTaskManager" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a>) is
+used to control the running of the tasks.
+These classes simplify background processing in QGIS by providing
+mechanisms for signaling, progress reporting and access
+to the status for background processes.
+Tasks can be grouped using subtasks.</p>
+<p>The global task manager (found with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsApplication.html#qgis.core.QgsApplication.taskManager" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QgsApplication.taskManager()</span></code></a>)
+is normally used. This means that your tasks may not be the only
+tasks that are controlled by the task manager.</p>
+<p>There are several ways to create a QGIS task:</p>
+<ul>
+<li><p>Create your own task by extending <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpecialisedTask</span><span class="p">(</span><span class="n">QgsTask</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a task from a function</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">def</span> <span class="nf">heavyFunction</span><span class="p">():</span>
+<span class="linenos"> 2</span>    <span class="c1"># Some CPU intensive processing ...</span>
+<span class="linenos"> 3</span>    <span class="k">pass</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="k">def</span> <span class="nf">workdone</span><span class="p">():</span>
+<span class="linenos"> 6</span>    <span class="c1"># ... do something useful with the results</span>
+<span class="linenos"> 7</span>    <span class="k">pass</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">task</span> <span class="o">=</span> <span class="n">QgsTask</span><span class="o">.</span><span class="n">fromFunction</span><span class="p">(</span><span class="s1">&#39;heavy function&#39;</span><span class="p">,</span> <span class="n">heavyFunction</span><span class="p">,</span>
+<span class="linenos">10</span>                     <span class="n">onfinished</span><span class="o">=</span><span class="n">workdone</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a task from a processing algorithm</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="linenos">2</span><span class="n">context</span> <span class="o">=</span> <span class="n">QgsProcessingContext</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">feedback</span> <span class="o">=</span> <span class="n">QgsProcessingFeedback</span><span class="p">()</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">buffer_alg</span> <span class="o">=</span> <span class="n">QgsApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">processingRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">algorithmById</span><span class="p">(</span><span class="s1">&#39;native:buffer&#39;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">task</span> <span class="o">=</span> <span class="n">QgsProcessingAlgRunnerTask</span><span class="p">(</span><span class="n">buffer_alg</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span>
+<span class="linenos">7</span>                           <span class="n">feedback</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Any background task (regardless of how it is created) must NEVER
+use any QObject that lives on the main thread, such as accessing
+QgsVectorLayer, QgsProject or perform any GUI based operations
+like creating new widgets or interacting with existing widgets.
+Qt widgets must only be accessed or modified from the main thread.
+Data that is used in a task must be copied before the task is started.
+Attempting to use them from background threads will result in
+crashes.</p>
+</div>
+<p>Dependencies between tasks can be described using the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask.addSubTask" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addSubTask()</span></code></a>
+function of <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a>.
+When a dependency is stated, the task manager will automatically
+determine how these dependencies will be executed.
+Wherever possible dependencies will be executed in parallel in order
+to satisfy them as quickly as possible.
+If a task on which another task depends is canceled, the dependent
+task will also be canceled.
+Circular dependencies can make deadlocks possible, so be careful.</p>
+<p>If a task depends on a layer being available, this can be stated
+using the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask.setDependentLayers" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setDependentLayers()</span></code></a>
+function of <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a>.
+If a layer on which a task depends is not available, the task will be
+canceled.</p>
+<p>Once the task has been created it can be scheduled for running using
+the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTaskManager.html#qgis.core.QgsTaskManager.addTask" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addTask()</span></code></a> function of the task manager.
+Adding a task to the manager automatically transfers ownership of
+that task to the manager, and the manager will cleanup and delete
+tasks after they have executed.
+The scheduling of the tasks is influenced by the task priority, which
+is set in <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTaskManager.html#qgis.core.QgsTaskManager.addTask" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addTask()</span></code></a>.</p>
+<p>The status of tasks can be monitored using <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a> and
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTaskManager.html#qgis.core.QgsTaskManager" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTaskManager</span></code></a> signals and functions.</p>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">15.2. </span>Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="extending-qgstask">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">15.2.1. </span>Extending QgsTask</a><a class="headerlink" href="#extending-qgstask" title="Permalink to this headline"></a></h3>
+<p>In this example <code class="docutils literal notranslate"><span class="pre">RandomIntegerSumTask</span></code> extends <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a> and will
+generate 100 random integers between 0 and 500 during a specified period
+of time.
+If the random number is 42, the task is aborted and an exception is
+raised.
+Several instances of <code class="docutils literal notranslate"><span class="pre">RandomIntegerSumTask</span></code> (with subtasks) are generated
+and added to the task manager, demonstrating two types of
+dependencies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos">  2</span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="linenos">  3</span>
+<span class="linenos">  4</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">  5</span>    <span class="n">QgsApplication</span><span class="p">,</span> <span class="n">QgsTask</span><span class="p">,</span> <span class="n">QgsMessageLog</span><span class="p">,</span>
+<span class="linenos">  6</span>    <span class="p">)</span>
+<span class="linenos">  7</span>
+<span class="linenos">  8</span><span class="n">MESSAGE_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;RandomIntegerSumTask&#39;</span>
+<span class="linenos">  9</span>
+<span class="linenos"> 10</span><span class="k">class</span> <span class="nc">RandomIntegerSumTask</span><span class="p">(</span><span class="n">QgsTask</span><span class="p">):</span>
+<span class="linenos"> 11</span>    <span class="sd">&quot;&quot;&quot;This shows how to subclass QgsTask&quot;&quot;&quot;</span>
+<span class="linenos"> 12</span>
+<span class="linenos"> 13</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="linenos"> 14</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="n">QgsTask</span><span class="o">.</span><span class="n">CanCancel</span><span class="p">)</span>
+<span class="linenos"> 15</span>        <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="n">duration</span>
+<span class="linenos"> 16</span>        <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 17</span>        <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 18</span>        <span class="bp">self</span><span class="o">.</span><span class="n">exception</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="linenos"> 19</span>
+<span class="linenos"> 20</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 21</span>        <span class="sd">&quot;&quot;&quot;Here you implement your heavy lifting.</span>
+<span class="linenos"> 22</span><span class="sd">        Should periodically test for isCanceled() to gracefully</span>
+<span class="linenos"> 23</span><span class="sd">        abort.</span>
+<span class="linenos"> 24</span><span class="sd">        This method MUST return True or False.</span>
+<span class="linenos"> 25</span><span class="sd">        Raising exceptions will crash QGIS, so we handle them</span>
+<span class="linenos"> 26</span><span class="sd">        internally and raise them in self.finished</span>
+<span class="linenos"> 27</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 28</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s1">&#39;Started task &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos"> 29</span>                                     <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">()),</span>
+<span class="linenos"> 30</span>                                 <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos"> 31</span>        <span class="n">wait_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="linenos"> 32</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="linenos"> 33</span>            <span class="n">sleep</span><span class="p">(</span><span class="n">wait_time</span><span class="p">)</span>
+<span class="linenos"> 34</span>            <span class="c1"># use setProgress to report progress</span>
+<span class="linenos"> 35</span>            <span class="bp">self</span><span class="o">.</span><span class="n">setProgress</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos"> 36</span>            <span class="n">arandominteger</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="linenos"> 37</span>            <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">+=</span> <span class="n">arandominteger</span>
+<span class="linenos"> 38</span>            <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos"> 39</span>            <span class="c1"># check isCanceled() to handle cancellation</span>
+<span class="linenos"> 40</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos"> 41</span>                <span class="k">return</span> <span class="kc">False</span>
+<span class="linenos"> 42</span>            <span class="c1"># simulate exceptions to show how to abort task</span>
+<span class="linenos"> 43</span>            <span class="k">if</span> <span class="n">arandominteger</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
+<span class="linenos"> 44</span>                <span class="c1"># DO NOT raise Exception(&#39;bad value!&#39;)</span>
+<span class="linenos"> 45</span>                <span class="c1"># this would crash QGIS</span>
+<span class="linenos"> 46</span>                <span class="bp">self</span><span class="o">.</span><span class="n">exception</span> <span class="o">=</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;bad value!&#39;</span><span class="p">)</span>
+<span class="linenos"> 47</span>                <span class="k">return</span> <span class="kc">False</span>
+<span class="linenos"> 48</span>        <span class="k">return</span> <span class="kc">True</span>
+<span class="linenos"> 49</span>
+<span class="linenos"> 50</span>    <span class="k">def</span> <span class="nf">finished</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+<span class="linenos"> 51</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 52</span><span class="sd">        This function is automatically called when the task has</span>
+<span class="linenos"> 53</span><span class="sd">        completed (successfully or not).</span>
+<span class="linenos"> 54</span><span class="sd">        You implement finished() to do whatever follow-up stuff</span>
+<span class="linenos"> 55</span><span class="sd">        should happen after the task is complete.</span>
+<span class="linenos"> 56</span><span class="sd">        finished is always called from the main thread, so it&#39;s safe</span>
+<span class="linenos"> 57</span><span class="sd">        to do GUI operations and raise Python exceptions here.</span>
+<span class="linenos"> 58</span><span class="sd">        result is the return value from self.run.</span>
+<span class="linenos"> 59</span><span class="sd">        &quot;&quot;&quot;</span>
+<span class="linenos"> 60</span>        <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+<span class="linenos"> 61</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos"> 62</span>                <span class="s1">&#39;RandomTask &quot;</span><span class="si">{name}</span><span class="s1">&quot; completed</span><span class="se">\n</span><span class="s1">&#39;</span> \
+<span class="linenos"> 63</span>                <span class="s1">&#39;RandomTotal: </span><span class="si">{total}</span><span class="s1"> (with </span><span class="si">{iterations}</span><span class="s1"> &#39;</span>\
+<span class="linenos"> 64</span>              <span class="s1">&#39;iterations)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos"> 65</span>                  <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">(),</span>
+<span class="linenos"> 66</span>                  <span class="n">total</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">,</span>
+<span class="linenos"> 67</span>                  <span class="n">iterations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">),</span>
+<span class="linenos"> 68</span>              <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+<span class="linenos"> 69</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 70</span>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exception</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 71</span>                <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos"> 72</span>                    <span class="s1">&#39;RandomTask &quot;</span><span class="si">{name}</span><span class="s1">&quot; not successful but without &#39;</span>\
+<span class="linenos"> 73</span>                    <span class="s1">&#39;exception (probably the task was manually &#39;</span>\
+<span class="linenos"> 74</span>                    <span class="s1">&#39;canceled by the user)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos"> 75</span>                        <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">()),</span>
+<span class="linenos"> 76</span>                    <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+<span class="linenos"> 77</span>            <span class="k">else</span><span class="p">:</span>
+<span class="linenos"> 78</span>                <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos"> 79</span>                    <span class="s1">&#39;RandomTask &quot;</span><span class="si">{name}</span><span class="s1">&quot; Exception: </span><span class="si">{exception}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos"> 80</span>                        <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">(),</span>
+<span class="linenos"> 81</span>                        <span class="n">exception</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">exception</span><span class="p">),</span>
+<span class="linenos"> 82</span>                    <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+<span class="linenos"> 83</span>                <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">exception</span>
+<span class="linenos"> 84</span>
+<span class="linenos"> 85</span>    <span class="k">def</span> <span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 86</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos"> 87</span>            <span class="s1">&#39;RandomTask &quot;</span><span class="si">{name}</span><span class="s1">&quot; was canceled&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos"> 88</span>                <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">()),</span>
+<span class="linenos"> 89</span>            <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos"> 90</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+<span class="linenos"> 91</span>
+<span class="linenos"> 92</span>
+<span class="linenos"> 93</span><span class="n">longtask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu long&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="linenos"> 94</span><span class="n">shorttask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu short&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos"> 95</span><span class="n">minitask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu mini&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos"> 96</span><span class="n">shortsubtask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu subtask short&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="linenos"> 97</span><span class="n">longsubtask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu subtask long&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="linenos"> 98</span><span class="n">shortestsubtask</span> <span class="o">=</span> <span class="n">RandomIntegerSumTask</span><span class="p">(</span><span class="s1">&#39;waste cpu subtask shortest&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="linenos"> 99</span>
+<span class="linenos">100</span><span class="c1"># Add a subtask (shortsubtask) to shorttask that must run after</span>
+<span class="linenos">101</span><span class="c1"># minitask and longtask has finished</span>
+<span class="linenos">102</span><span class="n">shorttask</span><span class="o">.</span><span class="n">addSubTask</span><span class="p">(</span><span class="n">shortsubtask</span><span class="p">,</span> <span class="p">[</span><span class="n">minitask</span><span class="p">,</span> <span class="n">longtask</span><span class="p">])</span>
+<span class="linenos">103</span><span class="c1"># Add a subtask (longsubtask) to longtask that must be run</span>
+<span class="linenos">104</span><span class="c1"># before the parent task</span>
+<span class="linenos">105</span><span class="n">longtask</span><span class="o">.</span><span class="n">addSubTask</span><span class="p">(</span><span class="n">longsubtask</span><span class="p">,</span> <span class="p">[],</span> <span class="n">QgsTask</span><span class="o">.</span><span class="n">ParentDependsOnSubTask</span><span class="p">)</span>
+<span class="linenos">106</span><span class="c1"># Add a subtask (shortestsubtask) to longtask</span>
+<span class="linenos">107</span><span class="n">longtask</span><span class="o">.</span><span class="n">addSubTask</span><span class="p">(</span><span class="n">shortestsubtask</span><span class="p">)</span>
+<span class="linenos">108</span>
+<span class="linenos">109</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">longtask</span><span class="p">)</span>
+<span class="linenos">110</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">shorttask</span><span class="p">)</span>
+<span class="linenos">111</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">minitask</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>RandomIntegerSumTask(0): Started task &quot;waste cpu subtask shortest&quot;
+<span class="linenos"> 2</span>RandomIntegerSumTask(0): Started task &quot;waste cpu short&quot;
+<span class="linenos"> 3</span>RandomIntegerSumTask(0): Started task &quot;waste cpu mini&quot;
+<span class="linenos"> 4</span>RandomIntegerSumTask(0): Started task &quot;waste cpu subtask long&quot;
+<span class="linenos"> 5</span>RandomIntegerSumTask(3): Task &quot;waste cpu subtask shortest&quot; completed
+<span class="linenos"> 6</span>RandomTotal: 25452 (with 100 iterations)
+<span class="linenos"> 7</span>RandomIntegerSumTask(3): Task &quot;waste cpu mini&quot; completed
+<span class="linenos"> 8</span>RandomTotal: 23810 (with 100 iterations)
+<span class="linenos"> 9</span>RandomIntegerSumTask(3): Task &quot;waste cpu subtask long&quot; completed
+<span class="linenos">10</span>RandomTotal: 26308 (with 100 iterations)
+<span class="linenos">11</span>RandomIntegerSumTask(0): Started task &quot;waste cpu long&quot;
+<span class="linenos">12</span>RandomIntegerSumTask(3): Task &quot;waste cpu long&quot; completed
+<span class="linenos">13</span>RandomTotal: 22534 (with 100 iterations)
+</pre></div>
+</div>
+</section>
+<section id="task-from-function">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">15.2.2. </span>Task from function</a><a class="headerlink" href="#task-from-function" title="Permalink to this headline"></a></h3>
+<p>Create a task from a function (<code class="docutils literal notranslate"><span class="pre">doSomething</span></code> in this example).
+The first parameter of the function will hold the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsTask.html#qgis.core.QgsTask" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsTask</span></code></a>
+for the function.
+An important (named) parameter is <code class="docutils literal notranslate"><span class="pre">on_finished</span></code>, that specifies a
+function that will be called when the task has completed.
+The <code class="docutils literal notranslate"><span class="pre">doSomething</span></code> function in this example has an additional named
+parameter <code class="docutils literal notranslate"><span class="pre">wait_time</span></code>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">MESSAGE_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;TaskFromFunction&#39;</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">def</span> <span class="nf">doSomething</span><span class="p">(</span><span class="n">task</span><span class="p">,</span> <span class="n">wait_time</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="sd">&quot;&quot;&quot;</span>
+<span class="linenos"> 8</span><span class="sd">    Raises an exception to abort the task.</span>
+<span class="linenos"> 9</span><span class="sd">    Returns a result if success.</span>
+<span class="linenos">10</span><span class="sd">    The result will be passed, together with the exception (None in</span>
+<span class="linenos">11</span><span class="sd">    the case of success), to the on_finished method.</span>
+<span class="linenos">12</span><span class="sd">    If there is an exception, there will be no result.</span>
+<span class="linenos">13</span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="linenos">14</span>    <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s1">&#39;Started task </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">description</span><span class="p">()),</span>
+<span class="linenos">15</span>                             <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">wait_time</span> <span class="o">=</span> <span class="n">wait_time</span> <span class="o">/</span> <span class="mi">100</span>
+<span class="linenos">17</span>    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">18</span>    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos">19</span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="linenos">20</span>        <span class="n">sleep</span><span class="p">(</span><span class="n">wait_time</span><span class="p">)</span>
+<span class="linenos">21</span>        <span class="c1"># use task.setProgress to report progress</span>
+<span class="linenos">22</span>        <span class="n">task</span><span class="o">.</span><span class="n">setProgress</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="linenos">23</span>        <span class="n">arandominteger</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="linenos">24</span>        <span class="n">total</span> <span class="o">+=</span> <span class="n">arandominteger</span>
+<span class="linenos">25</span>        <span class="n">iterations</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="linenos">26</span>        <span class="c1"># check task.isCanceled() to handle cancellation</span>
+<span class="linenos">27</span>        <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+<span class="linenos">28</span>            <span class="n">stopped</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+<span class="linenos">29</span>            <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">30</span>        <span class="c1"># raise an exception to abort the task</span>
+<span class="linenos">31</span>        <span class="k">if</span> <span class="n">arandominteger</span> <span class="o">==</span> <span class="mi">42</span><span class="p">:</span>
+<span class="linenos">32</span>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;bad value!&#39;</span><span class="p">)</span>
+<span class="linenos">33</span>    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">total</span><span class="p">,</span> <span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="n">iterations</span><span class="p">,</span>
+<span class="linenos">34</span>            <span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="n">task</span><span class="o">.</span><span class="n">description</span><span class="p">()}</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="k">def</span> <span class="nf">stopped</span><span class="p">(</span><span class="n">task</span><span class="p">):</span>
+<span class="linenos">37</span>    <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos">38</span>        <span class="s1">&#39;Task &quot;</span><span class="si">{name}</span><span class="s1">&quot; was canceled&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos">39</span>            <span class="n">name</span><span class="o">=</span><span class="n">task</span><span class="o">.</span><span class="n">description</span><span class="p">()),</span>
+<span class="linenos">40</span>        <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos">41</span>
+<span class="linenos">42</span><span class="k">def</span> <span class="nf">completed</span><span class="p">(</span><span class="n">exception</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="linenos">43</span>    <span class="sd">&quot;&quot;&quot;This is called when doSomething is finished.</span>
+<span class="linenos">44</span><span class="sd">    Exception is not None if doSomething raises an exception.</span>
+<span class="linenos">45</span><span class="sd">    result is the return value of doSomething.&quot;&quot;&quot;</span>
+<span class="linenos">46</span>    <span class="k">if</span> <span class="n">exception</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">47</span>        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">48</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos">49</span>                <span class="s1">&#39;Completed with no exception and no result &#39;</span>\
+<span class="linenos">50</span>                <span class="s1">&#39;(probably manually canceled by the user)&#39;</span><span class="p">,</span>
+<span class="linenos">51</span>                <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+<span class="linenos">52</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">53</span>            <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span>
+<span class="linenos">54</span>                <span class="s1">&#39;Task </span><span class="si">{name}</span><span class="s1"> completed</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="linenos">55</span>                <span class="s1">&#39;Total: </span><span class="si">{total}</span><span class="s1"> ( with </span><span class="si">{iterations}</span><span class="s1"> &#39;</span>
+<span class="linenos">56</span>                <span class="s1">&#39;iterations)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="linenos">57</span>                    <span class="n">name</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;task&#39;</span><span class="p">],</span>
+<span class="linenos">58</span>                    <span class="n">total</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">],</span>
+<span class="linenos">59</span>                    <span class="n">iterations</span><span class="o">=</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;iterations&#39;</span><span class="p">]),</span>
+<span class="linenos">60</span>                <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos">61</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">62</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;Exception: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">exception</span><span class="p">),</span>
+<span class="linenos">63</span>                                 <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+<span class="linenos">64</span>        <span class="k">raise</span> <span class="n">exception</span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="c1"># Create a few tasks</span>
+<span class="linenos">67</span><span class="n">task1</span> <span class="o">=</span> <span class="n">QgsTask</span><span class="o">.</span><span class="n">fromFunction</span><span class="p">(</span><span class="s1">&#39;Waste cpu 1&#39;</span><span class="p">,</span> <span class="n">doSomething</span><span class="p">,</span>
+<span class="linenos">68</span>                             <span class="n">on_finished</span><span class="o">=</span><span class="n">completed</span><span class="p">,</span> <span class="n">wait_time</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="linenos">69</span><span class="n">task2</span> <span class="o">=</span> <span class="n">QgsTask</span><span class="o">.</span><span class="n">fromFunction</span><span class="p">(</span><span class="s1">&#39;Waste cpu 2&#39;</span><span class="p">,</span> <span class="n">doSomething</span><span class="p">,</span>
+<span class="linenos">70</span>                             <span class="n">on_finished</span><span class="o">=</span><span class="n">completed</span><span class="p">,</span> <span class="n">wait_time</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="linenos">71</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">task1</span><span class="p">)</span>
+<span class="linenos">72</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">task2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>RandomIntegerSumTask(0): Started task &quot;waste cpu subtask short&quot;
+<span class="linenos">2</span>RandomTaskFromFunction(0): Started task Waste cpu 1
+<span class="linenos">3</span>RandomTaskFromFunction(0): Started task Waste cpu 2
+<span class="linenos">4</span>RandomTaskFromFunction(0): Task Waste cpu 2 completed
+<span class="linenos">5</span>RandomTotal: 23263 ( with 100 iterations)
+<span class="linenos">6</span>RandomTaskFromFunction(0): Task Waste cpu 1 completed
+<span class="linenos">7</span>RandomTotal: 25044 ( with 100 iterations)
+</pre></div>
+</div>
+</section>
+<section id="task-from-a-processing-algorithm">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">15.2.3. </span>Task from a processing algorithm</a><a class="headerlink" href="#task-from-a-processing-algorithm" title="Permalink to this headline"></a></h3>
+<p>Create a task that uses the algorithm <a class="reference internal" href="../user_manual/processing_algs/qgis/vectorcreation.html#qgisrandompointsinextent"><span class="std std-ref">qgis:randompointsinextent</span></a> to
+generate 50000 random points inside a specified extent.  The result is
+added to the project in a safe way.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QgsTaskManager</span><span class="p">,</span> <span class="n">QgsMessageLog</span><span class="p">,</span>
+<span class="linenos"> 3</span>                       <span class="n">QgsProcessingAlgRunnerTask</span><span class="p">,</span> <span class="n">QgsApplication</span><span class="p">,</span>
+<span class="linenos"> 4</span>                       <span class="n">QgsProcessingContext</span><span class="p">,</span> <span class="n">QgsProcessingFeedback</span><span class="p">,</span>
+<span class="linenos"> 5</span>                       <span class="n">QgsProject</span><span class="p">)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">MESSAGE_CATEGORY</span> <span class="o">=</span> <span class="s1">&#39;AlgRunnerTask&#39;</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="k">def</span> <span class="nf">task_finished</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">successful</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+<span class="linenos">10</span>    <span class="k">if</span> <span class="ow">not</span> <span class="n">successful</span><span class="p">:</span>
+<span class="linenos">11</span>        <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s1">&#39;Task finished unsucessfully&#39;</span><span class="p">,</span>
+<span class="linenos">12</span>                                 <span class="n">MESSAGE_CATEGORY</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="n">output_layer</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">getMapLayer</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">])</span>
+<span class="linenos">14</span>    <span class="c1"># because getMapLayer doesn&#39;t transfer ownership, the layer will</span>
+<span class="linenos">15</span>    <span class="c1"># be deleted when context goes out of scope and you&#39;ll get a</span>
+<span class="linenos">16</span>    <span class="c1"># crash.</span>
+<span class="linenos">17</span>    <span class="c1"># takeMapLayer transfers ownership so it&#39;s then safe to add it</span>
+<span class="linenos">18</span>    <span class="c1"># to the project and give the project ownership.</span>
+<span class="linenos">19</span>    <span class="k">if</span> <span class="n">output_layer</span> <span class="ow">and</span> <span class="n">output_layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+<span class="linenos">20</span>        <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span>
+<span class="linenos">21</span>             <span class="n">context</span><span class="o">.</span><span class="n">takeResultLayer</span><span class="p">(</span><span class="n">output_layer</span><span class="o">.</span><span class="n">id</span><span class="p">()))</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="n">alg</span> <span class="o">=</span> <span class="n">QgsApplication</span><span class="o">.</span><span class="n">processingRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">algorithmById</span><span class="p">(</span>
+<span class="linenos">24</span>                                      <span class="s1">&#39;qgis:randompointsinextent&#39;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">context</span> <span class="o">=</span> <span class="n">QgsProcessingContext</span><span class="p">()</span>
+<span class="linenos">26</span><span class="n">feedback</span> <span class="o">=</span> <span class="n">QgsProcessingFeedback</span><span class="p">()</span>
+<span class="linenos">27</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos">28</span>    <span class="s1">&#39;EXTENT&#39;</span><span class="p">:</span> <span class="s1">&#39;0.0,10.0,40,50 [EPSG:4326]&#39;</span><span class="p">,</span>
+<span class="linenos">29</span>    <span class="s1">&#39;MIN_DISTANCE&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">30</span>    <span class="s1">&#39;POINTS_NUMBER&#39;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+<span class="linenos">31</span>    <span class="s1">&#39;TARGET_CRS&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:4326&#39;</span><span class="p">,</span>
+<span class="linenos">32</span>    <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;memory:My random points&#39;</span>
+<span class="linenos">33</span><span class="p">}</span>
+<span class="linenos">34</span><span class="n">task</span> <span class="o">=</span> <span class="n">QgsProcessingAlgRunnerTask</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">)</span>
+<span class="linenos">35</span><span class="n">task</span><span class="o">.</span><span class="n">executed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">partial</span><span class="p">(</span><span class="n">task_finished</span><span class="p">,</span> <span class="n">context</span><span class="p">))</span>
+<span class="linenos">36</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">taskManager</span><span class="p">()</span><span class="o">.</span><span class="n">addTask</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>See also: <a class="reference external" href="https://opengis.ch/2018/06/22/threads-in-pyqgis3/">https://opengis.ch/2018/06/22/threads-in-pyqgis3/</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="authentication.html" class="btn btn-neutral float-left" title="14. Authentication infrastructure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plugins/index.html" class="btn btn-neutral float-right" title="16. Developing Python Plugins" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/tasks.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/tasks.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/tasks.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/tasks.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/tasks.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/tasks.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/tasks.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/tasks.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/tasks.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/tasks.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/tasks.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/tasks.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/tasks.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/tasks.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

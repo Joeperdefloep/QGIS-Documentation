@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QGIS User Guide &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/index.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. Preamble" href="preamble/preamble.html" />
+    <link rel="prev" title="Documentation for QGIS testing" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/index.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>QGIS User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Documentation for QGIS testing" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="preamble/preamble.html" class="btn btn-neutral float-right" title="1. Preamble" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qgis-user-guide">
+<span id="qgis-manual-index-reference"></span><h1>QGIS User Guide<a class="headerlink" href="#qgis-user-guide" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="preamble/preamble.html">1. Preamble</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/preamble.html#what-is-new-in-qgis-version">1.1. What is new in QGIS testing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preamble/conventions.html">3. Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/conventions.html#gui-conventions">3.1. GUI Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/conventions.html#text-or-keyboard-conventions">3.2. Text or Keyboard Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/conventions.html#platform-specific-instructions">3.3. Platform-specific instructions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preamble/features.html">4. Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#view-data">4.1. View data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#explore-data-and-compose-maps">4.2. Explore data and compose maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#create-edit-manage-and-export-data">4.3. Create, edit, manage and export data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#analyze-data">4.4. Analyze data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#publish-maps-on-the-internet">4.5. Publish maps on the Internet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#extend-qgis-functionality-through-plugins">4.6. Extend QGIS functionality through plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#python-console">4.7. Python Console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/features.html#known-issues">4.8. Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">5. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/getting_started.html#installing-qgis">5.1. Installing QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/getting_started.html#starting-and-stopping-qgis">5.2. Starting and stopping QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/getting_started.html#sample-session-loading-raster-and-vector-layers">5.3. Sample Session: Loading raster and vector layers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/project_files.html">6. Working with Project Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project_files.html#introducing-qgis-projects">6.1. Introducing QGIS projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project_files.html#handling-broken-file-paths">6.2. Handling broken file paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project_files.html#generating-output">6.3. Generating output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/qgis_gui.html">7. QGIS GUI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html#menu-bar">7.1. Menu Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html#panels-and-toolbars">7.2. Panels and Toolbars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html#map-view">7.3. Map View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html#d-map-view">7.4. 3D Map View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_gui.html#status-bar">7.5. Status Bar</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/browser.html">8. The Browser panel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/browser.html#resources-that-can-be-opened-run-from-the-browser">8.1. Resources that can be opened / run from the Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/browser.html#browser-panel-top-level-entries">8.2. Browser panel top-level entries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/browser.html#resources">8.3. Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/qgis_configuration.html">9. QGIS Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#options">9.1. Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#working-with-user-profiles">9.2. Working with User Profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#project-properties">9.3. Project Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#customization">9.4. Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#keyboard-shortcuts">9.5. Keyboard shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/qgis_configuration.html#running-qgis-with-advanced-settings">9.6. Running QGIS with advanced settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_projections/working_with_projections.html">10. Working with Projections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#overview-of-projection-support">10.1. Overview of Projection Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#layer-coordinate-reference-systems">10.2. Layer Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#project-coordinate-reference-systems">10.3. Project Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#coordinate-reference-system-selector">10.4. Coordinate Reference System Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#custom-coordinate-reference-system">10.5. Custom Coordinate Reference System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_projections/working_with_projections.html#datum-transformations">10.6. Datum Transformations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/general_tools.html">11. General Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#context-help">11.1. Context help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#panels">11.2. Panels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#nesting-projects">11.3. Nesting Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#working-with-the-map-canvas">11.4. Working with the map canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#interacting-with-features">11.5. Interacting with features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#save-and-share-layer-properties">11.6. Save and Share Layer Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#documenting-your-data">11.7. Documenting your data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#storing-values-in-variables">11.8. Storing values in Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#authentication">11.9. Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/general_tools.html#common-widgets">11.10. Common widgets</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="style_library/index.html">12. The Style Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="style_library/style_manager.html">12.1. The Style Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_library/symbol_selector.html">12.2. The Symbol Selector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_library/label_settings.html">12.3. Setting a label</a></li>
+<li class="toctree-l2"><a class="reference internal" href="style_library/3d_symbols.html">12.4. Creating 3D Symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_data_source/index.html">13. Managing Data Source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="managing_data_source/opening_data.html">13.1. Opening Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_data_source/create_layers.html">13.2. Creating Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_data_source/supported_data.html">13.3. Exploring Data Formats and Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_vector/index.html">14. Working with Vector Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/vector_properties.html">14.1. The Vector Properties Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/expression.html">14.2. Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/functions_list.html">14.3. List of functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/attribute_table.html">14.4. Working with the Attribute Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector/editing_geometry_attributes.html">14.5. Editing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_raster/index.html">15. Working with Raster Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_raster/raster_properties.html">15.1. Raster Properties Dialog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_raster/raster_analysis.html">15.2. Raster Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_raster/georeferencer.html">15.3. Georeferencer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_mesh/mesh_properties.html#what-s-a-mesh">16.1. What’s a mesh?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_mesh/mesh_properties.html#supported-formats">16.2. Supported formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_mesh/mesh_properties.html#mesh-dataset-properties">16.3. Mesh Dataset Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_mesh/mesh_properties.html#mesh-calculator">16.4. Mesh Calculator</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector_tiles/vector_tiles_properties.html#what-are-vector-tiles">17.1. What are Vector Tiles?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector_tiles/vector_tiles_properties.html#supported-formats">17.2. Supported Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_vector_tiles/vector_tiles_properties.html#vector-tiles-dataset-properties">17.3. Vector Tiles Dataset Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="print_composer/index.html">18. Laying out the maps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="print_composer/overview_composer.html">18.1. Overview of the Print Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="print_composer/composer_items/index.html">18.2. Layout Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="print_composer/create_output.html">18.3. Creating an Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="print_composer/create_reports.html">18.4. Creating a Report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_ogc/ogc_client_support.html#wms-wmts-client">19.1. WMS/WMTS Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_ogc/ogc_client_support.html#wcs-client">19.2. WCS Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_ogc/ogc_client_support.html#wfs-and-wfs-t-client">19.3. WFS and WFS-T Client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="working_with_gps/index.html">20. Working with GPS Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="working_with_gps/plugins_gps.html">20.1. GPS Plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="working_with_gps/live_GPS_tracking.html">20.2. Live GPS tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auth_system/index.html">21. Authentication System</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="auth_system/auth_overview.html">21.1. Authentication System Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_system/auth_workflows.html">21.2. User Authentication Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth_system/auth_considerations.html">21.3. Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grass_integration/grass_integration.html">22. GRASS GIS Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#demo-dataset">22.1. Demo dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#loading-grass-raster-and-vector-layers">22.2. Loading GRASS raster and vector layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#importing-data-into-a-grass-location-via-drag-and-drop">22.3. Importing data into a GRASS LOCATION via drag and drop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#managing-grass-data-in-qgis-browser">22.4. Managing GRASS data in QGIS Browser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#grass-options">22.5. GRASS Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#starting-the-grass-plugin">22.6. Starting the GRASS plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#opening-grass-mapset">22.7. Opening GRASS mapset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#grass-location-and-mapset">22.8. GRASS LOCATION and MAPSET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#importing-data-into-a-grass-location">22.9. Importing data into a GRASS LOCATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#the-grass-vector-data-model">22.10. The GRASS vector data model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#creating-a-new-grass-vector-layer">22.11. Creating a new GRASS vector layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#digitizing-and-editing-a-grass-vector-layer">22.12. Digitizing and editing a GRASS vector layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#the-grass-region-tool">22.13. The GRASS region tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grass_integration/grass_integration.html#the-grass-toolbox">22.14. The GRASS Toolbox</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="processing/index.html">23. QGIS processing framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="processing/intro.html">23.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/configuration.html">23.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/toolbox.html">23.3. The Toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/history.html">23.4. The history manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/modeler.html">23.5. The graphical modeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/batch.html">23.6. The batch processing interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/console.html">23.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/standalone.html">23.8. Using processing from the command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/scripts.html">23.9. Writing new Processing algorithms as Python scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/3rdParty.html">23.10. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="processing_algs/index.html">24. Processing providers and algorithms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/qgis/index.html">24.1. QGIS algorithm provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/gdal/index.html">24.2. GDAL algorithm provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/lidartools/lastools.html">24.3. LAStools algorithm provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/taudem/index.html">24.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing_algs/otb.html">24.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plugins/index.html">25. Plugins</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plugins/plugins.html">25.1. QGIS Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/core_plugins/index.html">25.2. Using QGIS Core Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/python_console.html">25.3. QGIS Python console</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preamble/help_and_support.html">26. Help and Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#mailing-lists">26.1. Mailing lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#irc">26.2. IRC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#commercial-support">26.3. Commercial support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#bugtracker">26.4. BugTracker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#blog">26.5. Blog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#plugins">26.6. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/help_and_support.html#wiki">26.7. Wiki</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="preamble/contributors.html">27. Contributors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="preamble/contributors.html#authors">27.1. Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/contributors.html#translators">27.2. Translators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preamble/contributors.html#statistics-of-translation">27.3. Statistics of translation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appendices/index.html">28. Appendices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appendices/GNU_GPL.html">28.1. Appendix A: GNU General Public License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendices/GNU_FDL.html">28.2. Appendix B: GNU Free Documentation License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendices/qgis_file_formats.html">28.3. Appendix C: QGIS File Formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="appendices/qgis_r_syntax.html">28.4. Appendix D: QGIS R script syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Documentation for QGIS testing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="preamble/preamble.html" class="btn btn-neutral float-right" title="1. Preamble" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/index.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/index.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/index.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/index.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/index.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/index.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/index.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/index.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/index.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/index.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/index.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/index.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/index.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/index.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

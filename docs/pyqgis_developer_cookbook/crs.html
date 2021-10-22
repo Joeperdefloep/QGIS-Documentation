@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. Projections Support &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/crs.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="9. Using the Map Canvas" href="canvas.html" />
+    <link rel="prev" title="7. Geometry Handling" href="geometry.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/crs.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">8. Projections Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#coordinate-reference-systems">8.1. Coordinate reference systems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crs-transformation">8.2. CRS Transformation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">8. </span>Projections Support</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/crs.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="geometry.html" class="btn btn-neutral float-left" title="7. Geometry Handling" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="canvas.html" class="btn btn-neutral float-right" title="9. Using the Map Canvas" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="projections-support">
+<span id="crs"></span><h1><span class="section-number">8. </span>Projections Support<a class="headerlink" href="#projections-support" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">2</span>    <span class="n">QgsCoordinateReferenceSystem</span><span class="p">,</span>
+<span class="linenos">3</span>    <span class="n">QgsCoordinateTransform</span><span class="p">,</span>
+<span class="linenos">4</span>    <span class="n">QgsProject</span><span class="p">,</span>
+<span class="linenos">5</span>    <span class="n">QgsPointXY</span><span class="p">,</span>
+<span class="linenos">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#coordinate-reference-systems" id="id1">Coordinate reference systems</a></p></li>
+<li><p><a class="reference internal" href="#crs-transformation" id="id2">CRS Transformation</a></p></li>
+</ul>
+</div>
+<section id="coordinate-reference-systems">
+<span id="index-0"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">8.1. </span>Coordinate reference systems</a><a class="headerlink" href="#coordinate-reference-systems" title="Permalink to this headline"></a></h2>
+<p>Coordinate reference systems (CRS) are encapsulated by the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateReferenceSystem</span></code></a>
+class. Instances of this class can be created in several different ways:</p>
+<ul>
+<li><p>specify CRS by its ID</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># EPSG 4326 is allocated for WGS84</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">isValid</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+<p>QGIS supports different CRS identifiers with the following formats:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EPSG:&lt;code&gt;</span></code> — ID assigned by the EPSG organization - handled with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromOgcWmsCrs" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createFromOgcWms()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POSTGIS:&lt;srid&gt;</span></code>— ID used in PostGIS databases - handled with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromSrid" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createFromSrid()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INTERNAL:&lt;srsid&gt;</span></code> — ID used in the internal QGIS database - handled with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromSrsId" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createFromSrsId()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJ:&lt;proj&gt;</span></code> - handled with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromProj" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createFromProj()</span></code></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WKT:&lt;wkt&gt;</span></code> - handled with <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.createFromWkt" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">createFromWkt()</span></code></a></p></li>
+</ul>
+</li>
+</ul>
+<p>If no prefix is specified, WKT definition is assumed.</p>
+<ul>
+<li><p>specify CRS by its well-known text (WKT)</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">wkt</span> <span class="o">=</span> <span class="s1">&#39;GEOGCS[&quot;WGS84&quot;, DATUM[&quot;WGS84&quot;, SPHEROID[&quot;WGS84&quot;, 6378137.0, 298.257223563]],&#39;</span> \
+<span class="linenos">2</span>      <span class="s1">&#39;PRIMEM[&quot;Greenwich&quot;, 0.0], UNIT[&quot;degree&quot;,0.017453292519943295],&#39;</span> \
+<span class="linenos">3</span>      <span class="s1">&#39;AXIS[&quot;Longitude&quot;,EAST], AXIS[&quot;Latitude&quot;,NORTH]]&#39;</span>
+<span class="linenos">4</span><span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="n">wkt</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">isValid</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</li>
+<li><p>create an invalid CRS and then use one of the <code class="docutils literal notranslate"><span class="pre">create*</span></code> functions to
+initialize it. In the following example we use a Proj string to initialize the
+projection.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">()</span>
+<span class="n">crs</span><span class="o">.</span><span class="n">createFromProj</span><span class="p">(</span><span class="s2">&quot;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">isValid</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</li>
+</ul>
+<p>It’s wise to check whether creation (i.e. lookup in the database) of the CRS
+has been successful: <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateReferenceSystem.html#qgis.core.QgsCoordinateReferenceSystem.isValid" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">isValid()</span></code></a>
+must return <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Note that for initialization of spatial reference systems QGIS needs to look up
+appropriate values in its internal database <code class="file docutils literal notranslate"><span class="pre">srs.db</span></code>. Thus in case you
+create an independent application you need to set paths correctly with
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsApplication.html#qgis.core.QgsApplication.setPrefixPath" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">QgsApplication.setPrefixPath()</span></code></a>,
+otherwise it will fail to find the
+database. If you are running the commands from the QGIS Python console or
+developing a plugin you do not care: everything is already set up for you.</p>
+<p>Accessing spatial reference system information:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;QGIS CRS ID:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">srsid</span><span class="p">())</span>
+<span class="linenos"> 4</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PostGIS SRID:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">postgisSrid</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Description:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">description</span><span class="p">())</span>
+<span class="linenos"> 6</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Projection Acronym:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">projectionAcronym</span><span class="p">())</span>
+<span class="linenos"> 7</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ellipsoid Acronym:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">ellipsoidAcronym</span><span class="p">())</span>
+<span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proj String:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">toProj</span><span class="p">())</span>
+<span class="linenos"> 9</span><span class="c1"># check whether it&#39;s geographic or projected coordinate system</span>
+<span class="linenos">10</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Is geographic:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">isGeographic</span><span class="p">())</span>
+<span class="linenos">11</span><span class="c1"># check type of map units in this CRS (values defined in QGis::units enum)</span>
+<span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Map units:&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">.</span><span class="n">mapUnits</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>QGIS CRS ID: 3452
+<span class="linenos">2</span>PostGIS SRID: 4326
+<span class="linenos">3</span>Description: WGS 84
+<span class="linenos">4</span>Projection Acronym: longlat
+<span class="linenos">5</span>Ellipsoid Acronym: EPSG:7030
+<span class="linenos">6</span>Proj String: +proj=longlat +datum=WGS84 +no_defs
+<span class="linenos">7</span>Is geographic: True
+<span class="linenos">8</span>Map units: 6
+</pre></div>
+</div>
+</section>
+<section id="crs-transformation">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">8.2. </span>CRS Transformation</a><a class="headerlink" href="#crs-transformation" title="Permalink to this headline"></a></h2>
+<p>You can do transformation between different spatial reference systems by using
+the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransform</span></code></a> class.
+The easiest way to use it is to create a source and destination CRS and
+construct a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsCoordinateTransform</span></code></a>
+instance with them and the current project. Then just repeatedly call
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsCoordinateTransform.html#qgis.core.QgsCoordinateTransform.transform" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">transform()</span></code></a> function to do
+the transformation. By default it does forward transformation, but it is capable
+to do also inverse transformation.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">crsSrc</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>    <span class="c1"># WGS 84</span>
+<span class="linenos"> 2</span><span class="n">crsDest</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:32633&quot;</span><span class="p">)</span>  <span class="c1"># WGS 84 / UTM zone 33N</span>
+<span class="linenos"> 3</span><span class="n">transformContext</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">transformContext</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">xform</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span><span class="n">crsSrc</span><span class="p">,</span> <span class="n">crsDest</span><span class="p">,</span> <span class="n">transformContext</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># forward transformation: src -&gt; dest</span>
+<span class="linenos"> 7</span><span class="n">pt1</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="linenos"> 8</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transformed point:&quot;</span><span class="p">,</span> <span class="n">pt1</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># inverse transformation: dest -&gt; src</span>
+<span class="linenos">11</span><span class="n">pt2</span> <span class="o">=</span> <span class="n">xform</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">pt1</span><span class="p">,</span> <span class="n">QgsCoordinateTransform</span><span class="o">.</span><span class="n">ReverseTransform</span><span class="p">)</span>
+<span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transformed back:&quot;</span><span class="p">,</span> <span class="n">pt2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Transformed point: &lt;QgsPointXY: POINT(832713.79873844375833869 553423.98688333143945783)&gt;
+Transformed back: &lt;QgsPointXY: POINT(18 5)&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geometry.html" class="btn btn-neutral float-left" title="7. Geometry Handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="canvas.html" class="btn btn-neutral float-right" title="9. Using the Map Canvas" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/crs.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/crs.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/crs.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/crs.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/crs.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/crs.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/crs.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/crs.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/crs.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/crs.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/crs.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/crs.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/crs.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/crs.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

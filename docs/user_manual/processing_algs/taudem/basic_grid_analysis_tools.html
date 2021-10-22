@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.4.1. Basic Grid Analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="24.4.2. Specialized Grid Analysis" href="specialized_grid_analysis_tools.html" />
+    <link rel="prev" title="24.4. TauDEM algorithm provider" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">24. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">24.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">24.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">24.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">24.4. TauDEM algorithm provider</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">24.4.1. Basic Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="specialized_grid_analysis_tools.html">24.4.2. Specialized Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stream_network_analysis_tools.html">24.4.3. Stream Network Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">24.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">24. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">24.4. </span>TauDEM algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">24.4.1. </span>Basic Grid Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="24.4. TauDEM algorithm provider" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="specialized_grid_analysis_tools.html" class="btn btn-neutral float-right" title="24.4.2. Specialized Grid Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-grid-analysis">
+<h1><span class="section-number">24.4.1. </span>Basic Grid Analysis<a class="headerlink" href="#basic-grid-analysis" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#d-infinity-contributing-area" id="id11">D-Infinity Contributing Area</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-flow-directions" id="id12">D-Infinity Flow Directions</a></p></li>
+<li><p><a class="reference internal" href="#d8-contributing-area" id="id13">D8 Contributing Area</a></p></li>
+<li><p><a class="reference internal" href="#d8-flow-directions" id="id14">D8 Flow Directions</a></p></li>
+<li><p><a class="reference internal" href="#grid-network" id="id15">Grid Network</a></p></li>
+<li><p><a class="reference internal" href="#pit-remove" id="id16">Pit Remove</a></p></li>
+</ul>
+</div>
+<section id="d-infinity-contributing-area">
+<h2><a class="toc-backref" href="#id11"><span class="section-number">24.4.1.1. </span>D-Infinity Contributing Area</a><a class="headerlink" href="#d-infinity-contributing-area" title="Permalink to this headline"></a></h2>
+<p>Calculates a grid of specific catchment area which is the contributing area per
+unit contour length using the multiple flow direction D-infinity approach.
+D-infinity flow direction is defined as steepest downward slope on planar
+triangular facets on a block centered grid. The contribution at each grid cell
+is taken as the grid cell length (or when the optional weight grid input is used,
+from the weight grid). The contributing area of each grid cell is then taken as
+its own contribution plus the contribution from upslope neighbors that have some
+fraction draining to it according to the D-infinity flow model. The flow from each
+cell either all drains to one neighbor, if the angle falls along a cardinal
+(0, π/2, π, 3π/2) or ordinal (π/4, 3π/4, 5π/4, 7π/4) direction, or is on an angle
+falling between the direct angle to two adjacent neighbors. In the latter case
+the flow is proportioned between these two neighbor cells according to how close
+the flow direction angle is to the direct angle to those cells. The contour
+length used here is the grid cell size. The resulting units of the specific
+catchment area are length units the same as those of the grid cell size.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tardemfig.png" src="../../../../_images/tardemfig.png" />
+</figure>
+<p>When the optional weight grid is not used, the result is reported in terms of
+specific catchment area, the upslope area per unit contour length, taken here as
+the number of cells times grid cell length (cell area divided by cell length).
+This assumes that grid cell length is the effective contour length, in the
+definition of specific catchment area and does not distinguish any difference in
+contour length dependent upon the flow direction. When the optional weight grid
+is used, the result is reported directly as a summation of weights, without any
+scaling.</p>
+<p>If the optional outlet point shapefile is used, only the outlet cells and the
+cells upslope (by the D-infinity flow model) of them are in the domain to be
+evaluated.</p>
+<p>By default, the tool checks for edge contamination. This is defined as the
+possibility that a contributing area value may be underestimated due to grid
+cells outside of the domain not being counted. This occurs when drainage is
+inwards from the boundaries or areas with “no data” values for elevation. The
+algorithm recognizes this and reports “no data” for the contributing area. It is
+common to see streaks of “no data” values extending inwards from boundaries
+along flow paths that enter the domain at a boundary. This is the desired effect
+and indicates that contributing area for these grid cells is unknown due to it
+being dependent on terrain outside of the domain of data available. Edge
+contamination checking may be turned off in cases where you know it is not an
+issue or want to ignore these problems, if for example, the DEM has been clipped
+along a watershed outline.</p>
+<section id="parameters">
+<h3><span class="section-number">24.4.1.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D-infinity flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of flow directions based on the D-infinity flow method
+using the steepest slope of a triangular facet.
+Flow direction is determined as the direction of the steepest
+downward slope on the 8 triangular facets of a 3x3 block
+centered grid.
+Flow direction is encoded as an angle in radians,
+counter-clockwise from east as a continuous (floating point)
+quantity between 0 and 2π.
+The resulting flow in a grid is then usually interpreted as
+being proportioned between the two neighboring cells that
+define the triangular facet with the steepest downward slope.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlets</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTLETS</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shapefile defining the outlets of interest.
+If this input file is used, only the cells upslope of these
+outlet cells are considered to be within the domain being evaluated.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Weight grid</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT_GRID</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving contribution to flow for each cell.
+These contributions (also sometimes referred to as weights or
+loadings) are used in the contributing area accumulation.
+If this input file is not used, the result is reported in
+terms of specific catchment area (the upslope area per unit
+contour length) taken as the number of cells times grid cell
+length (cell area divided by cell length).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Check for edge contamination</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EDGE_CONTAMINATION</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag that indicates whether the tool should check for
+edge contamination.
+Edge contamination is defined as the possibility that a
+contributing area value may be underestimated due to the
+fact that grid cells outside of the domain have not been
+evaluated.
+This occurs when drainage is inwards from the boundaries or
+areas with NODATA values for elevation.
+The algorithm recognizes this and reports NODATA for the
+impated cells.
+It is common to see streaks of NODATA values extending
+inwards from boundaries along flow paths that enter the domain
+at a boundary.
+This is the desired effect and indicates that contributing area
+for these grid cells is unknown due to it being dependent on
+terrain outside of the domain of available data.
+Edge contamination checking may be turned off in cases where
+you know this is not an issue, or want to ignore these problems,
+if for example, the DEM has been clipped along a watershed
+outline.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-infinity specific catchment area</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_CONTRIB_AREA</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">24.4.1.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D-infinity specific catchment area</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_CONTRIB_AREA</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of specific catchment area which is the contributing
+area per unit contour length using the multiple flow direction
+D-infinity approach.
+The contributing area of each grid cell is then taken as its
+own contribution plus the contribution from upslope neighbors
+that have some fraction draining to it according to the
+D-infinity flow model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:areadinf</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-flow-directions">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">24.4.1.2. </span>D-Infinity Flow Directions</a><a class="headerlink" href="#d-infinity-flow-directions" title="Permalink to this headline"></a></h2>
+<p>Assigns a flow direction based on the D-infinity flow method using the steepest
+slope of a triangular facet (Tarboton, 1997, “A New Method for the Determination
+of Flow Directions and Contributing Areas in Grid Digital Elevation Models”,
+Water Resources Research, 33(2): 309-319). Flow direction is defined as steepest
+downward slope on planar triangular facets on a block centered grid. Flow
+direction is encoded as an angle in radians counter-clockwise from east as a
+continuous (floating point) quantity between 0 and 2π. The flow direction angle
+is determined as the direction of the steepest downward slope on the eight
+triangular facets formed in a 3 x 3 grid cell window centered on the grid cell of
+interest. The resulting flow in a grid is then usually interpreted as being
+proportioned between the two neighboring cells that define the triangular facet
+with the steepest downward slope.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tardemfig.png" src="../../../../_images/tardemfig.png" />
+</figure>
+<p>A block-centered representation is used with each elevation value taken to
+represent the elevation of the center of the corresponding grid cell. Eight planar
+triangular facets are formed between each grid cell and its eight neighbors. Each
+of these has a downslope vector which when drawn outwards from the center may be
+at an angle that lies within or outside the 45 degree (π/4 radian) angle range
+of the facet at the center point. If the slope vector angle is within the facet
+angle, it represents the steepest flow direction on that facet. If the slope
+vector angle is outside a facet, the steepest flow direction associated with that
+facet is taken along the steepest edge. The slope and flow direction associated
+with the grid cell is taken as the magnitude and direction of the steepest
+downslope vector from all eight facets. Slope is measured as drop/distance,
+i.e. tan of the slope angle.</p>
+<p>In the case where no slope vectors are positive (downslope), the flow direction
+is set using the method of Garbrecht and Martz (1997) for the determination of
+flow across flat areas. This makes flat areas drain away from high ground and
+towards low ground. The flow path grid to enforce drainage along existing streams
+is an optional input, and if used, takes precedence over elevations for the
+setting of flow directions.</p>
+<p>The D-infinity flow direction algorithm may be applied to a DEM that has not had
+its pits filled, but it will then result in “no data” values for the D-infinity
+flow direction and slope associated with the lowest point of the pit.</p>
+<section id="id1">
+<h3><span class="section-number">24.4.1.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pit filled elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIT_FILLED</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values.
+This is usually the output of the <strong>“Pit Remove”</strong> tool, in
+which case it is elevations with pits removed.
+Pits are low elevation areas in digital elevation models
+(DEMs) that are completely surrounded by higher terrain.
+They are generally taken to be artifacts of the digitation
+process that interfere with the processing of flow across DEMs.
+So they are removed by raising their elevation to the point
+where they just drain off the domain.
+This step is not essential if you have reason to believe that
+the pits in your DEM are real.
+If a few pits actually exist and so should not be removed,
+while at the same time others are believed to be artifacts
+that need to be removed, the actual pits should have NODATA
+elevation values inserted at their lowest point.
+NODATA values serve to define edges of the domain in the flow
+field, and elevations are only raised to where flow is off an
+edge, so an internal NODATA value will stop a pit from being
+removed, if necessary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D-infinity flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output flow direction raster.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>D-infinity slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_SLOPE</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output slope raster.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">24.4.1.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D-infinity flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of flow directions based on the D-infinity flow
+method using the steepest slope of a triangular facet.
+Flow direction is determined as the direction of the steepest
+downward slope on the 8 triangular facets of a 3x3 block
+centered grid.
+Flow direction is encoded as an angle in radians,
+counter-clockwise from east as a continuous (floating point)
+quantity between 0 and 2π.
+The resulting flow in a grid is then usually interpreted as
+being proportioned between the two neighboring cells that define
+the triangular facet with the steepest downward slope.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D-infinity slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_SLOPE</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of slope evaluated using the D-infinity method described
+in Tarboton, D. G., (1997), “A New Method for the Determination
+of Flow Directions and Contributing Areas in Grid Digital
+Elevation Models”, Water Resources Research, 33(2): 309-319.
+This is the steepest outwards slope on one of eight triangular
+facets centered at each grid cell, measured as drop/distance,
+i.e. tan of the slope angle.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfflowdir</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d8-contributing-area">
+<h2><a class="toc-backref" href="#id13"><span class="section-number">24.4.1.3. </span>D8 Contributing Area</a><a class="headerlink" href="#d8-contributing-area" title="Permalink to this headline"></a></h2>
+<p>Calculates a grid of contributing areas using the single direction D8 flow model.
+The contribution of each grid cell is taken as one (or when the optional weight
+grid is used, the value from the weight grid). The contributing area for each
+grid cell is taken as its own contribution plus the contribution from upslope
+neighbors that drain in to it according to the D8 flow model.</p>
+<p>If the optional outlet point shapefile is used, only the outlet cells and the
+cells upslope (by the D8 flow model) of them are in the domain to be evaluated.</p>
+<p>By default, the tool checks for edge contamination. This is defined as the
+possibility that a contributing area value may be underestimated due to grid
+cells outside of the domain not being counted. This occurs when drainage is
+inwards from the boundaries or areas with “no data” values for elevation. The
+algorithm recognizes this and reports “no data” for the contributing area. It is
+common to see streaks of “no data” values extending inwards from boundaries
+along flow paths that enter the domain at a boundary. This is the desired effect
+and indicates that contributing area for these grid cells is unknown due to it
+being dependent on terrain outside of the domain of data available. Edge
+contamination checking may be turned off in cases where you know this is not an
+issue or want to ignore these problems, if for example, the DEM has been clipped
+along a watershed outline.</p>
+<section id="id3">
+<h3><span class="section-number">24.4.1.3.1. </span>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D8 flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each
+cell, as the direction of the one of its eight adjacent or
+diagonal neighbors with the steepest downward slope.
+This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlets</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTLETS</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shapefile defining the outlets of interest.
+If this input file is used, only the cells upslope of these
+outlet cells are considered to be within the domain being
+evaluated.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Weight grid</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WEIGHT_GRID</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving contribution to flow for each cell.
+These contributions (also sometimes referred to as weights
+or loadings) are used in the contributing area accumulation.
+If this input file is not used, the contribution to flow
+will assumed to be one for each grid cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Check for edge contamination</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EDGE_CONTAMINATION</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag that indicates whether the tool should check for edge
+contamination.
+Edge contamination is defined as the possibility that a
+contributing area value may be underestimated due to the fact
+that grid cells outside of the domain have not been evaluated.
+This occurs when drainage is inwards from the boundaries or
+areas with NODATA values for elevation.
+The algorithm recognizes this and reports NODATA for the
+impated cells.
+It is common to see streaks of NODATA values extending inwards
+from boundaries along flow paths that enter the domain at a
+boundary.
+This is the desired effect and indicates that contributing area
+for these grid cells is unknown due to it being dependent on
+terrain outside of the domain of available data.
+Edge contamination checking may be turned off in cases where
+you know this is not an issue, or want to ignore these
+problems, if for example, the DEM has been clipped along a
+watershed outline.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 specific catchment area</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_CONTRIB_AREA</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id4">
+<h3><span class="section-number">24.4.1.3.2. </span>Outputs<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D8 specific catchment area</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_CONTRIB_AREA</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of contributing area values calculated as the cells own
+contribution plus the contribution from upslope neighbors that
+drain in to it according to the D8 flow model.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:aread8</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d8-flow-directions">
+<h2><a class="toc-backref" href="#id14"><span class="section-number">24.4.1.4. </span>D8 Flow Directions</a><a class="headerlink" href="#d8-flow-directions" title="Permalink to this headline"></a></h2>
+<p>Creates 2 grids. The first contains the flow direction from each grid cell to one
+of its adjacent or diagonal neighbors, calculated using the direction of steepest
+descent. The second contain the slope, as evaluated in the direction of steepest
+descent, and is reported as drop/distance, i.e. tan of the angle. Flow direction
+is reported as NODATA for any grid cell adjacent to the edge of the DEM domain,
+or adjacent to a NODATA value in the DEM. In flat areas, flow directions are
+assigned away from higher ground and towards lower ground using the method of
+Garbrecht and Martz (1997). The D8 flow direction algorithm may be applied to a
+DEM that has not had its pits filled, but it will then result in NODATA values
+for flow direction and slope at the lowest point of each pit.</p>
+<p>D8 Flow Direction Coding:</p>
+<ul class="simple">
+<li><p>1 — East</p></li>
+<li><p>2 — Northeast</p></li>
+<li><p>3 — North</p></li>
+<li><p>4 — Northwest</p></li>
+<li><p>5 — West</p></li>
+<li><p>6 — Southwest</p></li>
+<li><p>7 — South</p></li>
+<li><p>8 — Southeast</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../../_images/d8index.png" src="../../../../_images/d8index.png" />
+</figure>
+<p>The flow direction routing across flat areas is performed according to the method
+described by Garbrecht, J. and L. W. Martz, (1997), “The Assignment of Drainage
+Direction Over Flat Surfaces in Raster Digital Elevation Models”, Journal of
+Hydrology, 193: 204-213.</p>
+<section id="id5">
+<h3><span class="section-number">24.4.1.4.1. </span>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pit filled elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIT_FILLED</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values.
+This is usually the output of the <strong>“Pit Remove”</strong> tool, in
+which case it is elevations with pits removed.
+Pits are low elevation areas in digital elevation models
+(DEMs) that are completely surrounded by higher terrain.
+They are generally taken to be artifacts of the digitation
+process that interfere with the processing of flow across DEMs.
+So they are removed by raising their elevation to the point
+where they just drain off the domain.
+This step is not essential if you have reason to believe that
+the pits in your DEM are real.
+If a few pits actually exist and so should not be removed,
+while at the same time others are believed to be artifacts
+that need to be removed, the actual pits should have NODATA
+elevation values inserted at their lowest point.
+NODATA values serve to define edges of the domain in the flow
+field, and elevations are only raised to where flow is off an
+edge, so an internal NODATA value will stop a pit from being
+removed, if necessary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output flow direction raster.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_SLOPE</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output slope raster.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">24.4.1.4.2. </span>Outputs<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D8 flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each
+cell, as the direction of the one of its eight adjacent or
+diagonal neighbors with the steepest downward slope.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 slope</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_SLOPE</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving slope in the D8 flow direction.
+This is measured as drop/distance.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:d8flowdir</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="grid-network">
+<h2><a class="toc-backref" href="#id15"><span class="section-number">24.4.1.5. </span>Grid Network</a><a class="headerlink" href="#grid-network" title="Permalink to this headline"></a></h2>
+<p>Creates 3 grids that contain for each grid cell: 1) the longest path, 2) the total
+path, and 3) the Strahler order number. These values are derived from the network
+defined by the D8 flow model.</p>
+<p>The longest upslope length is the length of the flow path from the furthest cell
+that drains to each cell. The total upslope path length is the length of the
+entire grid network upslope of each grid cell. Lengths are measured between cell
+centers taking into account cell size and whether the direction is adjacent or
+diagonal.</p>
+<p>Strahler order is defined as follows: A network of flow paths is defined by the
+D8 Flow Direction grid. Source flow paths have a Strahler order number of one.
+When two flow paths of different order join the order of the downstream flow path
+is the order of the highest incoming flow path. When two flow paths of equal
+order join the downstream flow path order is increased by 1. When more than two
+flow paths join the downstream flow path order is calculated as the maximum of
+the highest incoming flow path order or the second highest incoming flow path
+order + 1. This generalizes the common definition to cases where more than two
+flow paths join at a point.</p>
+<p>Where the optional mask grid and threshold value are input, the function is
+evaluated only considering grid cells that lie in the domain with mask grid value
+greater than or equal to the threshold value. Source (first order) grid cells are
+taken as those that do not have any other grid cells from inside the domain
+draining in to them, and only when two of these flow paths join is order
+propagated according to the ordering rules. Lengths are also only evaluated
+counting paths within the domain greater than or equal to the threshold.</p>
+<p>If the optional outlet point shapefile is used, only the outlet cells and the
+cells upslope (by the D8 flow model) of them are in the domain to be evaluated.</p>
+<section id="id7">
+<h3><span class="section-number">24.4.1.5.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>D8 flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D8_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each
+cell, as the direction of the one of its eight adjacent or
+diagonal neighbors with the steepest downward slope.
+This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mask Grid</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MASK_GRID</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid that is used to determine the domain do be analyzed.
+If the mask grid value &gt;= mask threshold (see below), then
+the cell will be included in the domain.
+While this tool does not have an edge contamination flag,
+if edge contamination analysis is needed, then a mask grid
+from a function like <strong>“D8 Contributing Area”</strong> that does
+support edge contamination can be used to achieve the same
+result.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mask threshold</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">THRESHOLD</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 100.0</p>
+</td>
+<td><p>This input parameter is used in the calculation mask grid
+value &gt;= mask threshold to determine if the grid cell is
+in the domain to be analyzed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlets</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTLETS</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shapefile defining the outlets of interest.
+If this input file is used, only the cells upslope of these
+outlet cells are considered to be within the domain being
+evaluated.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Longest upslope length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LONGEST_PATH</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster with total upslope
+lengths.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total upslope length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOTAL_PATH</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster with upslope lengths.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Strahler network order</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STRAHLER_ORDER</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster with Strahler network
+order.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">24.4.1.5.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Longest upslope length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LONGEST_PATH</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid that gives the length of the longest upslope D8 flow
+path terminating at each grid cell.
+Lengths are measured between cell centers taking into account
+cell size and whether the direction is adjacent or diagonal.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Total upslope length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TOTAL_PATH</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The total upslope path length is the length of the entire
+D8 flow grid network upslope of each grid cell.
+Lengths are measured between cell centers taking into account
+cell size and whether the direction is adjacent or diagonal.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Strahler network order</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STRAHLER_ORDER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the Strahler order number for each cell.
+A network of flow paths is defined by the D8 Flow Direction
+grid.
+Source flow paths have a Strahler order number of one.
+When two flow paths of different order join the order of the
+downstream flow path is the order of the highest incoming flow
+path.
+When two flow paths of equal order join the downstream flow
+path order is increased by 1.
+When more than two flow paths join the downstream flow path
+order is calculated as the maximum of the highest incoming
+flow path order or the second highest incoming flow path order
++ 1.
+This generalizes the common definition to cases where more
+than two flow paths join at a point.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:gridnet</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="pit-remove">
+<h2><a class="toc-backref" href="#id16"><span class="section-number">24.4.1.6. </span>Pit Remove</a><a class="headerlink" href="#pit-remove" title="Permalink to this headline"></a></h2>
+<p>Identifies all pits in the DEM and raises their elevation to the level of the
+lowest pour point around their edge. Pits are low elevation areas in digital
+elevation models (DEMs) that are completely surrounded by higher terrain. They
+are generally taken to be artifacts that interfere with the routing of flow
+across DEMs, so are removed by raising their elevation to the point where they
+drain off the edge of the domain. The pour point is the lowest point on the
+boundary of the “watershed” draining to the pit. This step is not essential if
+you have reason to believe that the pits in your DEM are real. If a few pits
+actually exist and so should not be removed, while at the same time others are
+believed to be artifacts that need to be removed, the actual pits should have
+NODATA elevation values inserted at their lowest point. NODATA values serve
+to define edges in the domain, and elevations are only raised to where flow is
+off an edge, so an internal NODATA value will stop a pit from being removed,
+if necessary.</p>
+<section id="id9">
+<h3><span class="section-number">24.4.1.6.1. </span>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ELEVATION</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A digital elevation model (DEM) grid to serve as the base
+input for the terrain analysis and stream delineation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Depression mask</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DEPRESSION_MASK</span></code></p></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Consider only 4 way neighbors</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FOUR_NEIGHBOURS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit removed elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIT_FILLED</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the (pit filled) output raster.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3><span class="section-number">24.4.1.6.2. </span>Outputs<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Pit removed elevation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PIT_FILLED</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values with pits removed so that flow
+is routed off of the domain.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:pitremove</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="24.4. TauDEM algorithm provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="specialized_grid_analysis_tools.html" class="btn btn-neutral float-right" title="24.4.2. Specialized Grid Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/taudem/basic_grid_analysis_tools.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

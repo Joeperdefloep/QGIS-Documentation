@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.1. Structuring Python Plugins &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/plugins/plugins.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16.2. Code Snippets" href="snippets.html" />
+    <link rel="prev" title="16. Developing Python Plugins" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">16. Developing Python Plugins</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.1. Structuring Python Plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#writing-a-plugin">16.1.1. Writing a plugin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#plugin-content">16.1.2. Plugin content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation">16.1.3. Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#translation">16.1.4. Translation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tips-and-tricks">16.1.5. Tips and Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="snippets.html">16.2. Code Snippets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ide_debugging.html">16.3. IDE settings for writing and debugging plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="releasing.html">16.4. Releasing your plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">16. </span>Developing Python Plugins</a> &raquo;</li>
+      <li><span class="section-number">16.1. </span>Structuring Python Plugins</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/plugins/plugins.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="16. Developing Python Plugins" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="snippets.html" class="btn btn-neutral float-right" title="16.2. Code Snippets" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="structuring-python-plugins">
+<span id="structuring-plugins"></span><span id="index-0"></span><h1><span class="section-number">16.1. </span>Structuring Python Plugins<a class="headerlink" href="#structuring-python-plugins" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#writing-a-plugin" id="id2">Writing a plugin</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plugin-files" id="id3">Plugin files</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#plugin-content" id="id4">Plugin content</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plugin-metadata" id="id5">Plugin metadata</a></p></li>
+<li><p><a class="reference internal" href="#init-py" id="id6">__init__.py</a></p></li>
+<li><p><a class="reference internal" href="#mainplugin-py" id="id7">mainPlugin.py</a></p></li>
+<li><p><a class="reference internal" href="#resource-file" id="id8">Resource File</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documentation" id="id9">Documentation</a></p></li>
+<li><p><a class="reference internal" href="#translation" id="id10">Translation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#software-requirements" id="id11">Software requirements</a></p></li>
+<li><p><a class="reference internal" href="#files-and-directory" id="id12">Files and directory</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pro-file" id="id13">.pro file</a></p></li>
+<li><p><a class="reference internal" href="#ts-file" id="id14">.ts file</a></p></li>
+<li><p><a class="reference internal" href="#qm-file" id="id15">.qm file</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#translate-using-makefile" id="id16">Translate using Makefile</a></p></li>
+<li><p><a class="reference internal" href="#load-the-plugin" id="id17">Load the plugin</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tips-and-tricks" id="id18">Tips and Tricks</a></p>
+<ul>
+<li><p><a class="reference internal" href="#plugin-reloader" id="id19">Plugin Reloader</a></p></li>
+<li><p><a class="reference internal" href="#accessing-plugins" id="id20">Accessing Plugins</a></p></li>
+<li><p><a class="reference internal" href="#log-messages" id="id21">Log Messages</a></p></li>
+<li><p><a class="reference internal" href="#share-your-plugin" id="id22">Share your plugin</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>In order to create a plugin, here are some steps to follow:</p>
+<ol class="arabic simple">
+<li><p><em>Idea</em>: Have an idea about what you want to do with your new QGIS plugin.
+Why do you do it?
+What problem do you want to solve?
+Is there already another plugin for that problem?</p></li>
+<li><p><em>Create files</em>: some are essentials (see <a class="reference internal" href="#plugin-files-architecture"><span class="std std-ref">Plugin files</span></a>)</p></li>
+<li><p><em>Write code</em>: Write the code in appropriate files</p></li>
+<li><p><em>Test</em>: <a class="reference internal" href="#plugin-reloader-trick"><span class="std std-ref">Reload your plugin</span></a> to check if
+everything is OK</p></li>
+<li><p><em>Publish</em>: Publish your plugin in QGIS repository or make your own
+repository as an “arsenal” of personal “GIS weapons”.</p></li>
+</ol>
+<section id="writing-a-plugin">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">16.1.1. </span>Writing a plugin</a><a class="headerlink" href="#writing-a-plugin" title="Permalink to this headline"></a></h2>
+<p>Since the introduction of Python plugins in QGIS, a number of plugins have
+appeared. The QGIS team maintains an <a class="reference internal" href="releasing.html#official-pyqgis-repository"><span class="std std-ref">Official Python plugin repository</span></a>.
+You can use their source to learn more about programming with PyQGIS or
+find out whether you are duplicating development effort.</p>
+<section id="plugin-files">
+<span id="plugin-files-architecture"></span><h3><a class="toc-backref" href="#id3"><span class="section-number">16.1.1.1. </span>Plugin files</a><a class="headerlink" href="#plugin-files" title="Permalink to this headline"></a></h3>
+<p>Here’s the directory structure of our example plugin</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHON_PLUGINS_PATH</span><span class="o">/</span>
+  <span class="n">MyPlugin</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>    <span class="o">--&gt;</span> <span class="o">*</span><span class="n">required</span><span class="o">*</span>
+    <span class="n">mainPlugin</span><span class="o">.</span><span class="n">py</span>  <span class="o">--&gt;</span> <span class="o">*</span><span class="n">core</span> <span class="n">code</span><span class="o">*</span>
+    <span class="n">metadata</span><span class="o">.</span><span class="n">txt</span>   <span class="o">--&gt;</span> <span class="o">*</span><span class="n">required</span><span class="o">*</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">qrc</span>  <span class="o">--&gt;</span> <span class="o">*</span><span class="n">likely</span> <span class="n">useful</span><span class="o">*</span>
+    <span class="n">resources</span><span class="o">.</span><span class="n">py</span>   <span class="o">--&gt;</span> <span class="o">*</span><span class="n">compiled</span> <span class="n">version</span><span class="p">,</span> <span class="n">likely</span> <span class="n">useful</span><span class="o">*</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">ui</span>        <span class="o">--&gt;</span> <span class="o">*</span><span class="n">likely</span> <span class="n">useful</span><span class="o">*</span>
+    <span class="n">form</span><span class="o">.</span><span class="n">py</span>        <span class="o">--&gt;</span> <span class="o">*</span><span class="n">compiled</span> <span class="n">version</span><span class="p">,</span> <span class="n">likely</span> <span class="n">useful</span><span class="o">*</span>
+</pre></div>
+</div>
+<p>What is the meaning of the files:</p>
+<ul class="simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> = The starting point of the plugin. It has to have the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">classFactory()</span></code> method and may have any other initialisation code.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">mainPlugin.py</span></code> = The main working code of the plugin. Contains all
+the information about the actions of the plugin and the main code.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">resources.qrc</span></code> = The .xml document created by Qt Designer. Contains
+relative paths to resources of the forms.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">resources.py</span></code> = The translation of the .qrc file described above to
+Python.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">form.ui</span></code> = The GUI created by Qt Designer.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">form.py</span></code> = The translation of the form.ui described above to Python.</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">metadata.txt</span></code> = Contains general info, version, name and some other
+metadata used by plugins website and plugin infrastructure.</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/wonder-sk/qgis-minimal-plugin">Here</a>
+is a way of creating the basic files (skeleton) of a typical
+QGIS Python plugin.</p>
+<p>There is a QGIS plugin called
+<a class="reference external" href="https://plugins.qgis.org/plugins/pluginbuilder3/">Plugin Builder 3</a>
+that creates a plugin template for QGIS.
+This is the recommended option, as it produces 3.x compatible sources.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you plan to upload the plugin to the <a class="reference internal" href="releasing.html#official-pyqgis-repository"><span class="std std-ref">Official Python plugin repository</span></a>
+you must check that your plugin follows some additional rules, required for
+plugin <a class="reference internal" href="releasing.html#official-pyqgis-repository-validation"><span class="std std-ref">Validation</span></a></p>
+</div>
+</section>
+</section>
+<section id="plugin-content">
+<span id="index-2"></span><h2><a class="toc-backref" href="#id4"><span class="section-number">16.1.2. </span>Plugin content</a><a class="headerlink" href="#plugin-content" title="Permalink to this headline"></a></h2>
+<p>Here you can find information and examples about what to add in each of the
+files in the file structure described above.</p>
+<section id="plugin-metadata">
+<span id="index-3"></span><span id="id1"></span><h3><a class="toc-backref" href="#id5"><span class="section-number">16.1.2.1. </span>Plugin metadata</a><a class="headerlink" href="#plugin-metadata" title="Permalink to this headline"></a></h3>
+<p>First, the plugin manager needs to retrieve some basic information about the
+plugin such as its name, description etc. File <code class="file docutils literal notranslate"><span class="pre">metadata.txt</span></code> is the
+right place to put this information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All metadata must be in UTF-8 encoding.</p>
+</div>
+<table class="docutils align-default" id="plugin-metadata-table">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 8%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Metadata name</p></th>
+<th class="head"><p>Required</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name</p></td>
+<td><p>True</p></td>
+<td><p>a short string  containing the name of the plugin</p></td>
+</tr>
+<tr class="row-odd"><td><p>qgisMinimumVersion</p></td>
+<td><p>True</p></td>
+<td><p>dotted notation of minimum QGIS version</p></td>
+</tr>
+<tr class="row-even"><td><p>qgisMaximumVersion</p></td>
+<td><p>False</p></td>
+<td><p>dotted notation of maximum QGIS version</p></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>True</p></td>
+<td><p>short text which describes the plugin, no HTML allowed</p></td>
+</tr>
+<tr class="row-even"><td><p>about</p></td>
+<td><p>True</p></td>
+<td><p>longer text which describes the plugin in details, no HTML allowed</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>True</p></td>
+<td><p>short string with the version dotted notation</p></td>
+</tr>
+<tr class="row-even"><td><p>author</p></td>
+<td><p>True</p></td>
+<td><p>author name</p></td>
+</tr>
+<tr class="row-odd"><td><p>email</p></td>
+<td><p>True</p></td>
+<td><p>email of the author, only shown on the website to logged in users,
+but visible in the Plugin Manager after the plugin is installed</p></td>
+</tr>
+<tr class="row-even"><td><p>changelog</p></td>
+<td><p>False</p></td>
+<td><p>string, can be multiline, no HTML allowed</p></td>
+</tr>
+<tr class="row-odd"><td><p>experimental</p></td>
+<td><p>False</p></td>
+<td><p>boolean flag, <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code> -
+<code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> if this version is experimental</p></td>
+</tr>
+<tr class="row-even"><td><p>deprecated</p></td>
+<td><p>False</p></td>
+<td><p>boolean flag, <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code>, applies to
+the whole plugin and not just to the uploaded version</p></td>
+</tr>
+<tr class="row-odd"><td><p>tags</p></td>
+<td><p>False</p></td>
+<td><p>comma separated list, spaces are allowed inside individual tags</p></td>
+</tr>
+<tr class="row-even"><td><p>homepage</p></td>
+<td><p>False</p></td>
+<td><p>a valid URL pointing to the homepage of your plugin</p></td>
+</tr>
+<tr class="row-odd"><td><p>repository</p></td>
+<td><p>True</p></td>
+<td><p>a valid URL for the source code repository</p></td>
+</tr>
+<tr class="row-even"><td><p>tracker</p></td>
+<td><p>False</p></td>
+<td><p>a valid URL for tickets and bug reports</p></td>
+</tr>
+<tr class="row-odd"><td><p>icon</p></td>
+<td><p>False</p></td>
+<td><p>a file name or a relative path (relative to
+the base folder of the plugin’s compressed
+package) of a web friendly image (PNG, JPEG)</p></td>
+</tr>
+<tr class="row-even"><td><p>category</p></td>
+<td><p>False</p></td>
+<td><p>one of <code class="docutils literal notranslate"><span class="pre">Raster</span></code>, <code class="docutils literal notranslate"><span class="pre">Vector</span></code>, <code class="docutils literal notranslate"><span class="pre">Database</span></code> and <code class="docutils literal notranslate"><span class="pre">Web</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>plugin_dependencies</p></td>
+<td><p>False</p></td>
+<td><p>PIP-like comma separated list of other plugins to install</p></td>
+</tr>
+<tr class="row-even"><td><p>server</p></td>
+<td><p>False</p></td>
+<td><p>boolean flag, <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code>, determines if
+the plugin has a server interface</p></td>
+</tr>
+<tr class="row-odd"><td><p>hasProcessingProvider</p></td>
+<td><p>False</p></td>
+<td><p>boolean flag, <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code>, determines if
+the plugin provides processing algorithms</p></td>
+</tr>
+</tbody>
+</table>
+<p>By default, plugins are placed in the <span class="menuselection">Plugins</span> menu (we will see
+in the next section how to add a menu entry for your plugin) but they can also
+be placed into <span class="menuselection">Raster</span>, <span class="menuselection">Vector</span>,
+<span class="menuselection">Database</span> and <span class="menuselection">Web</span> menus.</p>
+<p>A corresponding “category” metadata entry exists to specify that, so the plugin
+can be classified accordingly. This metadata entry is used as tip for users and
+tells them where (in which menu) the plugin can be found. Allowed values for
+“category” are: Vector, Raster, Database or Web. For example, if your plugin
+will be available from <cite>Raster</cite> menu, add this to <code class="file docutils literal notranslate"><span class="pre">metadata.txt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">category</span><span class="o">=</span><span class="n">Raster</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <cite>qgisMaximumVersion</cite> is empty, it will be automatically set to the major
+version plus <cite>.99</cite> when uploaded to the <a class="reference internal" href="releasing.html#official-pyqgis-repository"><span class="std std-ref">Official Python plugin repository</span></a>.</p>
+</div>
+<p>An example for this metadata.txt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">section</span> <span class="ow">is</span> <span class="n">mandatory</span>
+
+<span class="p">[</span><span class="n">general</span><span class="p">]</span>
+<span class="n">name</span><span class="o">=</span><span class="n">HelloWorld</span>
+<span class="n">email</span><span class="o">=</span><span class="n">me</span><span class="nd">@example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">author</span><span class="o">=</span><span class="n">Just</span> <span class="n">Me</span>
+<span class="n">qgisMinimumVersion</span><span class="o">=</span><span class="mf">3.0</span>
+<span class="n">description</span><span class="o">=</span><span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">example</span> <span class="n">plugin</span> <span class="k">for</span> <span class="n">greeting</span> <span class="n">the</span> <span class="n">world</span><span class="o">.</span>
+    <span class="n">Multiline</span> <span class="ow">is</span> <span class="n">allowed</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="n">starting</span> <span class="k">with</span> <span class="n">spaces</span> <span class="n">belong</span> <span class="n">to</span> <span class="n">the</span> <span class="n">same</span>
+    <span class="n">field</span><span class="p">,</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">case</span> <span class="n">to</span> <span class="n">the</span> <span class="s2">&quot;description&quot;</span> <span class="n">field</span><span class="o">.</span>
+    <span class="n">HTML</span> <span class="n">formatting</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">allowed</span><span class="o">.</span>
+<span class="n">about</span><span class="o">=</span><span class="n">This</span> <span class="n">paragraph</span> <span class="n">can</span> <span class="n">contain</span> <span class="n">a</span> <span class="n">detailed</span> <span class="n">description</span>
+    <span class="n">of</span> <span class="n">the</span> <span class="n">plugin</span><span class="o">.</span> <span class="n">Multiline</span> <span class="ow">is</span> <span class="n">allowed</span><span class="p">,</span> <span class="n">HTML</span> <span class="ow">is</span> <span class="ow">not</span><span class="o">.</span>
+<span class="n">version</span><span class="o">=</span><span class="n">version</span> <span class="mf">1.2</span>
+<span class="n">tracker</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">bugs</span><span class="o">.</span><span class="n">itopen</span><span class="o">.</span><span class="n">it</span>
+<span class="n">repository</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itopen</span><span class="o">.</span><span class="n">it</span><span class="o">/</span><span class="n">repo</span>
+<span class="p">;</span> <span class="n">end</span> <span class="n">of</span> <span class="n">mandatory</span> <span class="n">metadata</span>
+
+<span class="p">;</span> <span class="n">start</span> <span class="n">of</span> <span class="n">optional</span> <span class="n">metadata</span>
+<span class="n">category</span><span class="o">=</span><span class="n">Raster</span>
+<span class="n">changelog</span><span class="o">=</span><span class="n">The</span> <span class="n">changelog</span> <span class="n">lists</span> <span class="n">the</span> <span class="n">plugin</span> <span class="n">versions</span>
+    <span class="ow">and</span> <span class="n">their</span> <span class="n">changes</span> <span class="k">as</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">example</span> <span class="n">below</span><span class="p">:</span>
+    <span class="mf">1.0</span> <span class="o">-</span> <span class="n">First</span> <span class="n">stable</span> <span class="n">release</span>
+    <span class="mf">0.9</span> <span class="o">-</span> <span class="n">All</span> <span class="n">features</span> <span class="n">implemented</span>
+    <span class="mf">0.8</span> <span class="o">-</span> <span class="n">First</span> <span class="n">testing</span> <span class="n">release</span>
+
+<span class="p">;</span> <span class="n">Tags</span> <span class="n">are</span> <span class="ow">in</span> <span class="n">comma</span> <span class="n">separated</span> <span class="n">value</span> <span class="nb">format</span><span class="p">,</span> <span class="n">spaces</span> <span class="n">are</span> <span class="n">allowed</span> <span class="n">within</span> <span class="n">the</span>
+<span class="p">;</span> <span class="n">tag</span> <span class="n">name</span><span class="o">.</span>
+<span class="p">;</span> <span class="n">Tags</span> <span class="n">should</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">English</span> <span class="n">language</span><span class="o">.</span> <span class="n">Please</span> <span class="n">also</span> <span class="n">check</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">tags</span> <span class="ow">and</span>
+<span class="p">;</span> <span class="n">synonyms</span> <span class="n">before</span> <span class="n">creating</span> <span class="n">a</span> <span class="n">new</span> <span class="n">one</span><span class="o">.</span>
+<span class="n">tags</span><span class="o">=</span><span class="n">wkt</span><span class="p">,</span><span class="n">raster</span><span class="p">,</span><span class="n">hello</span> <span class="n">world</span>
+
+<span class="p">;</span> <span class="n">these</span> <span class="n">metadata</span> <span class="n">can</span> <span class="n">be</span> <span class="n">empty</span><span class="p">,</span> <span class="n">they</span> <span class="n">will</span> <span class="n">eventually</span> <span class="n">become</span> <span class="n">mandatory</span><span class="o">.</span>
+<span class="n">homepage</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">itopen</span><span class="o">.</span><span class="n">it</span>
+<span class="n">icon</span><span class="o">=</span><span class="n">icon</span><span class="o">.</span><span class="n">png</span>
+
+<span class="p">;</span> <span class="n">experimental</span> <span class="n">flag</span> <span class="p">(</span><span class="n">applies</span> <span class="n">to</span> <span class="n">the</span> <span class="n">single</span> <span class="n">version</span><span class="p">)</span>
+<span class="n">experimental</span><span class="o">=</span><span class="kc">True</span>
+
+<span class="p">;</span> <span class="n">deprecated</span> <span class="n">flag</span> <span class="p">(</span><span class="n">applies</span> <span class="n">to</span> <span class="n">the</span> <span class="n">whole</span> <span class="n">plugin</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">only</span> <span class="n">to</span> <span class="n">the</span> <span class="n">uploaded</span> <span class="n">version</span><span class="p">)</span>
+<span class="n">deprecated</span><span class="o">=</span><span class="kc">False</span>
+
+<span class="p">;</span> <span class="k">if</span> <span class="n">empty</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">automatically</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">major</span> <span class="n">version</span> <span class="o">+</span> <span class="mf">.99</span>
+<span class="n">qgisMaximumVersion</span><span class="o">=</span><span class="mf">3.99</span>
+
+<span class="p">;</span> <span class="n">Since</span> <span class="n">QGIS</span> <span class="mf">3.8</span><span class="p">,</span> <span class="n">a</span> <span class="n">comma</span> <span class="n">separated</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">plugins</span> <span class="n">to</span> <span class="n">be</span> <span class="n">installed</span>
+<span class="p">;</span> <span class="p">(</span><span class="ow">or</span> <span class="n">upgraded</span><span class="p">)</span> <span class="n">can</span> <span class="n">be</span> <span class="n">specified</span><span class="o">.</span>
+<span class="p">;</span> <span class="n">The</span> <span class="n">example</span> <span class="n">below</span> <span class="n">will</span> <span class="k">try</span> <span class="n">to</span> <span class="n">install</span> <span class="p">(</span><span class="ow">or</span> <span class="n">upgrade</span><span class="p">)</span> <span class="s2">&quot;MyOtherPlugin&quot;</span> <span class="n">version</span> <span class="mf">1.12</span>
+<span class="p">;</span> <span class="ow">and</span> <span class="nb">any</span> <span class="n">version</span> <span class="n">of</span> <span class="s2">&quot;YetAnotherPlugin&quot;</span>
+<span class="n">plugin_dependencies</span><span class="o">=</span><span class="n">MyOtherPlugin</span><span class="o">==</span><span class="mf">1.12</span><span class="p">,</span><span class="n">YetAnotherPlugin</span>
+</pre></div>
+</div>
+</section>
+<section id="init-py">
+<span id="index-4"></span><h3><a class="toc-backref" href="#id6"><span class="section-number">16.1.2.2. </span>__init__.py</a><a class="headerlink" href="#init-py" title="Permalink to this headline"></a></h3>
+<p>This file is required by Python’s import system. Also, QGIS requires that this
+file contains a <code class="xref py py-func docutils literal notranslate"><span class="pre">classFactory()</span></code> function, which is called when the
+plugin gets loaded into QGIS. It receives a reference to the instance of
+<a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgisInterface</span></code></a> and must return an object of your plugin’s class from
+the <code class="file docutils literal notranslate"><span class="pre">mainplugin.py</span></code> — in our case it’s called <code class="docutils literal notranslate"><span class="pre">TestPlugin</span></code> (see below).
+This is how <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> should look like</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
+  <span class="kn">from</span> <span class="nn">.mainPlugin</span> <span class="kn">import</span> <span class="n">TestPlugin</span>
+  <span class="k">return</span> <span class="n">TestPlugin</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
+
+<span class="c1"># any other initialisation needed</span>
+</pre></div>
+</div>
+</section>
+<section id="mainplugin-py">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">16.1.2.3. </span>mainPlugin.py</a><a class="headerlink" href="#mainplugin-py" title="Permalink to this headline"></a></h3>
+<p>This is where the magic happens and this is how magic looks like:
+(e.g. <code class="file docutils literal notranslate"><span class="pre">mainPlugin.py</span></code>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># initialize Qt resources from file resources.py</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">resources</span>
+
+<span class="k">class</span> <span class="nc">TestPlugin</span><span class="p">:</span>
+
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iface</span><span class="p">):</span>
+    <span class="c1"># save reference to the QGIS interface</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span> <span class="o">=</span> <span class="n">iface</span>
+
+  <span class="k">def</span> <span class="nf">initGui</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># create action that will start plugin configuration</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s2">&quot;:/plugins/testplug/icon.png&quot;</span><span class="p">),</span>
+                          <span class="s2">&quot;Test plugin&quot;</span><span class="p">,</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;testAction&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setWhatsThis</span><span class="p">(</span><span class="s2">&quot;Configuration for test plugin&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setStatusTip</span><span class="p">(</span><span class="s2">&quot;This is status tip&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+
+    <span class="c1"># add toolbar button and menu item</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">addToolBarIcon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">addPluginToMenu</span><span class="p">(</span><span class="s2">&quot;&amp;Test plugins&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+
+    <span class="c1"># connect to signal renderComplete which is emitted when canvas</span>
+    <span class="c1"># rendering is done</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">renderComplete</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renderTest</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">unload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># remove the plugin menu item and icon</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">removePluginMenu</span><span class="p">(</span><span class="s2">&quot;&amp;Test plugins&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">removeToolBarIcon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+
+    <span class="c1"># disconnect form signal of the canvas</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">renderComplete</span><span class="o">.</span><span class="n">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">renderTest</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># create and show a configuration dialog or something similar</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TestPlugin: run called!&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">renderTest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">painter</span><span class="p">):</span>
+    <span class="c1"># use painter for drawing to map canvas</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TestPlugin: renderTest called!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The only plugin functions that must exist in the main plugin source file (e.g.
+<code class="file docutils literal notranslate"><span class="pre">mainPlugin.py</span></code>) are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__</span></code> which gives access to QGIS interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initGui()</span></code> called when the plugin is loaded</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unload()</span></code> called when the plugin is unloaded</p></li>
+</ul>
+<p>In the above example, <a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToMenu()</span></code></a> is used.
+This will add the corresponding menu action to the <span class="menuselection">Plugins</span>
+menu. Alternative methods exist to add the action to a different menu. Here is
+a list of those methods:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToRasterMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToRasterMenu()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToVectorMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToVectorMenu()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToDatabaseMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToDatabaseMenu()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToWebMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToWebMenu()</span></code></a></p></li>
+</ul>
+<p>All of them have the same syntax as the
+<a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addPluginToMenu" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addPluginToMenu()</span></code></a> method.</p>
+<p>Adding your plugin menu to one of those predefined method is recommended to
+keep consistency in how plugin entries are organized. However, you can add your
+custom menu group directly to the menu bar, as the next example demonstrates:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initGui</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span> <span class="o">=</span> <span class="n">QMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;testMenu&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">setTitle</span><span class="p">(</span><span class="s2">&quot;MyMenu&quot;</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s2">&quot;:/plugins/testplug/icon.png&quot;</span><span class="p">),</span>
+                          <span class="s2">&quot;Test plugin&quot;</span><span class="p">,</span>
+                          <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setObjectName</span><span class="p">(</span><span class="s2">&quot;testAction&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setWhatsThis</span><span class="p">(</span><span class="s2">&quot;Configuration for test plugin&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">setStatusTip</span><span class="p">(</span><span class="s2">&quot;This is status tip&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">triggered</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
+
+    <span class="n">menuBar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span><span class="o">.</span><span class="n">menuBar</span><span class="p">()</span>
+    <span class="n">menuBar</span><span class="o">.</span><span class="n">insertMenu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">firstRightStandardMenu</span><span class="p">()</span><span class="o">.</span><span class="n">menuAction</span><span class="p">(),</span>
+                       <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">unload</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">deleteLater</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Don’t forget to set <code class="xref py py-class docutils literal notranslate"><span class="pre">QAction</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">QMenu</span></code> <code class="docutils literal notranslate"><span class="pre">objectName</span></code> to a name
+specific to your plugin so that it can be customized.</p>
+</section>
+<section id="resource-file">
+<span id="index-5"></span><h3><a class="toc-backref" href="#id8"><span class="section-number">16.1.2.4. </span>Resource File</a><a class="headerlink" href="#resource-file" title="Permalink to this headline"></a></h3>
+<p>You can see that in <code class="xref py py-func docutils literal notranslate"><span class="pre">initGui()</span></code> we’ve used an icon from the resource file
+(called <code class="file docutils literal notranslate"><span class="pre">resources.qrc</span></code> in our case)</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;RCC&gt;</span>
+  <span class="nt">&lt;qresource</span> <span class="na">prefix=</span><span class="s">&quot;/plugins/testplug&quot;</span> <span class="nt">&gt;</span>
+     <span class="nt">&lt;file&gt;</span>icon.png<span class="nt">&lt;/file&gt;</span>
+  <span class="nt">&lt;/qresource&gt;</span>
+<span class="nt">&lt;/RCC&gt;</span>
+</pre></div>
+</div>
+<p>It is good to use a prefix that will not collide with other plugins or any
+parts of QGIS, otherwise you might get resources you did not want. Now you
+just need to generate a Python file that will contain the resources. It’s
+done with <strong class="command">pyrcc5</strong> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyrcc5</span> <span class="o">-</span><span class="n">o</span> <span class="n">resources</span><span class="o">.</span><span class="n">py</span> <span class="n">resources</span><span class="o">.</span><span class="n">qrc</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Windows environments, attempting to run the <strong class="command">pyrcc5</strong> from
+Command Prompt or Powershell will probably result in the error “Windows
+cannot access the specified device, path, or file […]”.  The easiest
+solution is probably to use the OSGeo4W Shell but if you are comfortable
+modifying the PATH environment variable or specifiying the path to the
+executable explicitly you should be able to find it at
+<code class="file docutils literal notranslate"><span class="pre">&lt;Your</span> <span class="pre">QGIS</span> <span class="pre">Install</span> <span class="pre">Directory&gt;\bin\pyrcc5.exe</span></code>.</p>
+</div>
+<p>And that’s all… nothing complicated :)</p>
+<p>If you’ve done everything correctly you should be able to find and load
+your plugin in the plugin manager and see a message in console when toolbar
+icon or appropriate menu item is selected.</p>
+<p>When working on a real plugin it’s wise to write the plugin in another
+(working) directory and create a makefile which will generate UI + resource
+files and install the plugin into your QGIS installation.</p>
+</section>
+</section>
+<section id="documentation">
+<span id="index-6"></span><h2><a class="toc-backref" href="#id9"><span class="section-number">16.1.3. </span>Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline"></a></h2>
+<p>The documentation for the plugin can be written as HTML help files. The
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">qgis.utils</span></code> module provides a function, <code class="xref py py-func docutils literal notranslate"><span class="pre">showPluginHelp()</span></code> which
+will open the help file browser, in the same way as other QGIS help.</p>
+<p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">showPluginHelp()</span></code> function looks for help files in the same
+directory as the calling module. It will look for, in turn,
+<code class="file docutils literal notranslate"><span class="pre">index-ll_cc.html</span></code>, <code class="file docutils literal notranslate"><span class="pre">index-ll.html</span></code>, <code class="file docutils literal notranslate"><span class="pre">index-en.html</span></code>,
+<code class="file docutils literal notranslate"><span class="pre">index-en_us.html</span></code> and <code class="file docutils literal notranslate"><span class="pre">index.html</span></code>, displaying whichever it finds
+first. Here <code class="docutils literal notranslate"><span class="pre">ll_cc</span></code> is the QGIS locale. This allows multiple translations of
+the documentation to be included with the plugin.</p>
+<p>The <code class="xref py py-func docutils literal notranslate"><span class="pre">showPluginHelp()</span></code> function can also take parameters packageName,
+which identifies a specific plugin for which the help will be displayed,
+filename, which can replace “index” in the names of files being searched,
+and section, which is the name of an html anchor tag in the document
+on which the browser will be positioned.</p>
+</section>
+<section id="translation">
+<span id="index-7"></span><h2><a class="toc-backref" href="#id10"><span class="section-number">16.1.4. </span>Translation</a><a class="headerlink" href="#translation" title="Permalink to this headline"></a></h2>
+<p>With a few steps you can set up the environment for the plugin localization so
+that depending on the locale settings of your computer the plugin will be loaded
+in different languages.</p>
+<section id="software-requirements">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">16.1.4.1. </span>Software requirements</a><a class="headerlink" href="#software-requirements" title="Permalink to this headline"></a></h3>
+<p>The easiest way to create and manage all the translation files is to install
+<a class="reference external" href="https://doc.qt.io/qt-5/qtlinguist-index.html">Qt Linguist</a>.
+In a Debian-based GNU/Linux environment you can install it typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span>
+</pre></div>
+</div>
+</section>
+<section id="files-and-directory">
+<h3><a class="toc-backref" href="#id12"><span class="section-number">16.1.4.2. </span>Files and directory</a><a class="headerlink" href="#files-and-directory" title="Permalink to this headline"></a></h3>
+<p>When you create the plugin you will find the <code class="docutils literal notranslate"><span class="pre">i18n</span></code> folder within the main
+plugin directory.</p>
+<p><strong>All the translation files have to be within this directory.</strong></p>
+<section id="pro-file">
+<h4><a class="toc-backref" href="#id13"><span class="section-number">16.1.4.2.1. </span>.pro file</a><a class="headerlink" href="#pro-file" title="Permalink to this headline"></a></h4>
+<p>First you should create a <code class="docutils literal notranslate"><span class="pre">.pro</span></code> file, that is a <em>project</em> file that can be
+managed by <strong>Qt Linguist</strong>.</p>
+<p>In this <code class="docutils literal notranslate"><span class="pre">.pro</span></code> file you have to specify all the files and forms you want to
+translate. This file is used to set up the localization files and variables.
+A possible project file, matching the structure of our
+<a class="reference internal" href="#plugin-files-architecture"><span class="std std-ref">example plugin</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FORMS</span> <span class="o">=</span> <span class="o">../</span><span class="n">form</span><span class="o">.</span><span class="n">ui</span>
+<span class="n">SOURCES</span> <span class="o">=</span> <span class="o">../</span><span class="n">your_plugin</span><span class="o">.</span><span class="n">py</span>
+<span class="n">TRANSLATIONS</span> <span class="o">=</span> <span class="n">your_plugin_it</span><span class="o">.</span><span class="n">ts</span>
+</pre></div>
+</div>
+<p>Your plugin might follow a more complex structure, and it might be distributed
+across several files. If this is the case, keep in mind that <code class="docutils literal notranslate"><span class="pre">pylupdate5</span></code>,
+the program we use to read the <code class="docutils literal notranslate"><span class="pre">.pro</span></code> file and update the translatable string,
+does not expand wild card characters, so you need to place every file explicitly
+in the <code class="docutils literal notranslate"><span class="pre">.pro</span></code> file.
+Your project file might then look like something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FORMS</span> <span class="o">=</span> <span class="o">../</span><span class="n">ui</span><span class="o">/</span><span class="n">about</span><span class="o">.</span><span class="n">ui</span> <span class="o">../</span><span class="n">ui</span><span class="o">/</span><span class="n">feedback</span><span class="o">.</span><span class="n">ui</span> \
+        <span class="o">../</span><span class="n">ui</span><span class="o">/</span><span class="n">main_dialog</span><span class="o">.</span><span class="n">ui</span>
+<span class="n">SOURCES</span> <span class="o">=</span> <span class="o">../</span><span class="n">your_plugin</span><span class="o">.</span><span class="n">py</span> <span class="o">../</span><span class="n">computation</span><span class="o">.</span><span class="n">py</span> \
+          <span class="o">../</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Furthermore, the <code class="docutils literal notranslate"><span class="pre">your_plugin.py</span></code> file is the file that <em>calls</em> all the menu
+and sub-menus of your plugin in the QGIS toolbar and you want to translate them
+all.</p>
+<p>Finally with the <em>TRANSLATIONS</em> variable you can specify the translation
+languages you want.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be sure to name the <code class="docutils literal notranslate"><span class="pre">ts</span></code> file like <code class="docutils literal notranslate"><span class="pre">your_plugin_</span></code> + <code class="docutils literal notranslate"><span class="pre">language</span></code> + <code class="docutils literal notranslate"><span class="pre">.ts</span></code>
+otherwise the language loading will fail! Use the 2 letter shortcut for the
+language (<strong>it</strong> for Italian, <strong>de</strong> for German, etc…)</p>
+</div>
+</section>
+<section id="ts-file">
+<h4><a class="toc-backref" href="#id14"><span class="section-number">16.1.4.2.2. </span>.ts file</a><a class="headerlink" href="#ts-file" title="Permalink to this headline"></a></h4>
+<p>Once you have created the <code class="docutils literal notranslate"><span class="pre">.pro</span></code> you are ready to generate the <code class="docutils literal notranslate"><span class="pre">.ts</span></code> file(s)
+for the language(s) of your plugin.</p>
+<p>Open a terminal, go to <code class="docutils literal notranslate"><span class="pre">your_plugin/i18n</span></code> directory and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pylupdate5</span> <span class="n">your_plugin</span><span class="o">.</span><span class="n">pro</span>
+</pre></div>
+</div>
+<p>you should see the <code class="docutils literal notranslate"><span class="pre">your_plugin_language.ts</span></code> file(s).</p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">.ts</span></code> file with <strong>Qt Linguist</strong> and start to translate.</p>
+</section>
+<section id="qm-file">
+<h4><a class="toc-backref" href="#id15"><span class="section-number">16.1.4.2.3. </span>.qm file</a><a class="headerlink" href="#qm-file" title="Permalink to this headline"></a></h4>
+<p>When you finish to translate your plugin (if some strings are not completed the
+source language for those strings will be used) you have to create the <code class="docutils literal notranslate"><span class="pre">.qm</span></code>
+file (the compiled <code class="docutils literal notranslate"><span class="pre">.ts</span></code> file that will be used by QGIS).</p>
+<p>Just open a terminal cd in <code class="docutils literal notranslate"><span class="pre">your_plugin/i18n</span></code> directory and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lrelease</span> <span class="n">your_plugin</span><span class="o">.</span><span class="n">ts</span>
+</pre></div>
+</div>
+<p>now, in the <code class="docutils literal notranslate"><span class="pre">i18n</span></code> directory you will see the <code class="docutils literal notranslate"><span class="pre">your_plugin.qm</span></code> file(s).</p>
+</section>
+</section>
+<section id="translate-using-makefile">
+<h3><a class="toc-backref" href="#id16"><span class="section-number">16.1.4.3. </span>Translate using Makefile</a><a class="headerlink" href="#translate-using-makefile" title="Permalink to this headline"></a></h3>
+<p>Alternatively you can use the makefile to extract messages from python code and
+Qt dialogs, if you created your plugin with Plugin Builder.
+At the beginning of the Makefile there is a LOCALES variable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOCALES</span> <span class="o">=</span> <span class="n">en</span>
+</pre></div>
+</div>
+<p>Add the abbreviation of the language to this variable, for example for
+Hungarian language:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOCALES</span> <span class="o">=</span> <span class="n">en</span> <span class="n">hu</span>
+</pre></div>
+</div>
+<p>Now you can generate or update the <code class="file docutils literal notranslate"><span class="pre">hu.ts</span></code> file (and the <code class="file docutils literal notranslate"><span class="pre">en.ts</span></code> too)
+from the sources by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">transup</span>
+</pre></div>
+</div>
+<p>After this, you have updated <code class="docutils literal notranslate"><span class="pre">.ts</span></code> file for all languages set in the LOCALES
+variable.
+Use <strong>Qt Linguist</strong> to translate the program messages.
+Finishing the translation the <code class="docutils literal notranslate"><span class="pre">.qm</span></code> files can be created by the transcompile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">transcompile</span>
+</pre></div>
+</div>
+<p>You have to distribute <code class="docutils literal notranslate"><span class="pre">.ts</span></code> files with your plugin.</p>
+</section>
+<section id="load-the-plugin">
+<h3><a class="toc-backref" href="#id17"><span class="section-number">16.1.4.4. </span>Load the plugin</a><a class="headerlink" href="#load-the-plugin" title="Permalink to this headline"></a></h3>
+<p>In order to see the translation of your plugin, open QGIS, change the
+language (<span class="menuselection">Settings ► Options ► General</span>) and restart QGIS.</p>
+<p>You should see your plugin in the correct language.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you change something in your plugin (new UIs, new menu, etc..) you have to
+<strong>generate again</strong> the update version of both <code class="docutils literal notranslate"><span class="pre">.ts</span></code> and <code class="docutils literal notranslate"><span class="pre">.qm</span></code> file, so run
+again the command of above.</p>
+</div>
+</section>
+</section>
+<section id="tips-and-tricks">
+<h2><a class="toc-backref" href="#id18"><span class="section-number">16.1.5. </span>Tips and Tricks</a><a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline"></a></h2>
+<section id="plugin-reloader">
+<span id="plugin-reloader-trick"></span><h3><a class="toc-backref" href="#id19"><span class="section-number">16.1.5.1. </span>Plugin Reloader</a><a class="headerlink" href="#plugin-reloader" title="Permalink to this headline"></a></h3>
+<p>During development of your plugin you will frequently need to reload it in QGIS
+for testing. This is very easy using the <strong>Plugin Reloader</strong> plugin. You can find it
+with the <a class="reference internal" href="../../user_manual/plugins/plugins.html#plugins"><span class="std std-ref">Plugin Manager</span></a>.</p>
+</section>
+<section id="accessing-plugins">
+<h3><a class="toc-backref" href="#id20"><span class="section-number">16.1.5.2. </span>Accessing Plugins</a><a class="headerlink" href="#accessing-plugins" title="Permalink to this headline"></a></h3>
+<p>You can access all the classes of installed plugins from within QGIS using python,
+which can be handy for debugging purposes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_plugin</span> <span class="o">=</span> <span class="n">qgis</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;My Plugin&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="log-messages">
+<h3><a class="toc-backref" href="#id21"><span class="section-number">16.1.5.3. </span>Log Messages</a><a class="headerlink" href="#log-messages" title="Permalink to this headline"></a></h3>
+<p>Plugins have their own tab within the <a class="reference internal" href="../../user_manual/introduction/general_tools.html#log-message-panel"><span class="std std-ref">Log Messages Panel</span></a>.</p>
+</section>
+<section id="share-your-plugin">
+<h3><a class="toc-backref" href="#id22"><span class="section-number">16.1.5.4. </span>Share your plugin</a><a class="headerlink" href="#share-your-plugin" title="Permalink to this headline"></a></h3>
+<p>QGIS is hosting hundreds of plugins in the plugin repository. Consider sharing
+yours! It will extend the possibilities of QGIS and people will be able to learn
+from your code. All hosted plugins can be found and installed from within QGIS
+with the Plugin Manager.</p>
+<p>Information and requirements are here: <a class="reference external" href="https://plugins.qgis.org/">plugins.qgis.org</a>.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="16. Developing Python Plugins" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="snippets.html" class="btn btn-neutral float-right" title="16.2. Code Snippets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/plugins/plugins.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/plugins/plugins.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

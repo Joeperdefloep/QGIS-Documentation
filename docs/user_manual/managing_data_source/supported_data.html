@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13.3. Exploring Data Formats and Fields &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/supported_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14. Working with Vector Data" href="../working_with_vector/index.html" />
+    <link rel="prev" title="13.2. Creating Layers" href="create_layers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/supported_data.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">13. Managing Data Source</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="opening_data.html">13.1. Opening Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_layers.html">13.2. Creating Layers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">13.3. Exploring Data Formats and Fields</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#raster-data">13.3.1. Raster data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vector-data">13.3.2. Vector Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">13. </span>Managing Data Source</a> &raquo;</li>
+      <li><span class="section-number">13.3. </span>Exploring Data Formats and Fields</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/managing_data_source/supported_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="create_layers.html" class="btn btn-neutral float-left" title="13.2. Creating Layers" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector/index.html" class="btn btn-neutral float-right" title="14. Working with Vector Data" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exploring-data-formats-and-fields">
+<span id="supported-format"></span><h1><span class="section-number">13.3. </span>Exploring Data Formats and Fields<a class="headerlink" href="#exploring-data-formats-and-fields" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#raster-data" id="id4">Raster data</a></p></li>
+<li><p><a class="reference internal" href="#vector-data" id="id5">Vector Data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#geopackage" id="id6">GeoPackage</a></p></li>
+<li><p><a class="reference internal" href="#esri-shapefile-format" id="id7">ESRI Shapefile format</a></p></li>
+<li><p><a class="reference internal" href="#delimited-text-files" id="id8">Delimited Text Files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#storing-geometry-information-in-delimited-text-files" id="id9">Storing geometry information in delimited text files</a></p></li>
+<li><p><a class="reference internal" href="#using-csvt-file-to-control-field-formatting" id="id10">Using CSVT file to control field formatting</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#postgis-layers" id="id11">PostGIS Layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#primary-key" id="id12">Primary key</a></p></li>
+<li><p><a class="reference internal" href="#view" id="id13">View</a></p></li>
+<li><p><a class="reference internal" href="#qgis-layer-style-table-and-database-backup" id="id14">QGIS layer_style table and database backup</a></p></li>
+<li><p><a class="reference internal" href="#filter-database-side" id="id15">Filter database side</a></p></li>
+<li><p><a class="reference internal" href="#support-of-postgresql-data-types" id="id16">Support of PostgreSQL data types</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#importing-data-into-postgresql" id="id17">Importing Data into PostgreSQL</a></p>
+<ul>
+<li><p><a class="reference internal" href="#db-manager" id="id18">DB Manager</a></p></li>
+<li><p><a class="reference internal" href="#shp2pgsql" id="id19">shp2pgsql</a></p></li>
+<li><p><a class="reference internal" href="#ogr2ogr" id="id20">ogr2ogr</a></p></li>
+<li><p><a class="reference internal" href="#improving-performance" id="id21">Improving Performance</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#vector-layers-crossing-180-degrees-longitude" id="id22">Vector layers crossing 180° longitude</a></p>
+<ul>
+<li><p><a class="reference internal" href="#usage" id="id23">Usage</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#spatialite-layers" id="id24">SpatiaLite Layers</a></p></li>
+<li><p><a class="reference internal" href="#geojson-specific-parameters" id="id25">GeoJSON specific parameters</a></p></li>
+<li><p><a class="reference internal" href="#sap-hana-spatial-layers" id="id26">SAP HANA Spatial Layers</a></p>
+<ul>
+<li><p><a class="reference internal" href="#feature-identification" id="id27">Feature Identification</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-tables" id="id28">Adding tables</a></p></li>
+<li><p><a class="reference internal" href="#adding-views" id="id29">Adding views</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="raster-data">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">13.3.1. </span>Raster data</a><a class="headerlink" href="#raster-data" title="Permalink to this headline"></a></h2>
+<p>GIS raster data are matrices of discrete cells that represent
+features / phenomena on, above or below the earth’s surface.
+Each cell in the raster grid has the same size, and cells are usually
+rectangular (in QGIS they will always be rectangular).
+Typical raster datasets include remote sensing data, such as aerial
+photography, or satellite imagery and modelled data, such as
+elevation or temperature.</p>
+<p>Unlike vector data, raster data typically do not have an associated
+database record for each cell.
+They are geocoded by pixel resolution and the X/Y coordinate of a
+corner pixel of the raster layer. This allows QGIS to position the
+data correctly on the map canvas.</p>
+<p>The GeoPackage format is convenient for storing raster data when
+working with QGIS.
+The popular and powerful GeoTiff format is a good alternative.</p>
+<p>QGIS makes use of georeference information inside the raster layer
+(e.g., <span class="target" id="index-0"></span>GeoTiff) or an associated <em>world file</em> to properly
+display the data.</p>
+</section>
+<section id="vector-data">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">13.3.2. </span>Vector Data</a><a class="headerlink" href="#vector-data" title="Permalink to this headline"></a></h2>
+<p>Many of the features and tools available in QGIS work the same,
+regardless the vector data source.
+However, because of the differences in format specifications
+(GeoPackage, ESRI Shapefile, MapInfo and MicroStation file formats,
+AutoCAD DXF, PostGIS, SpatiaLite, Oracle Spatial, MSSQL
+Spatial, SAP HANA Spatial databases and many more), QGIS may handle some of
+their properties differently.
+Support is provided by the
+<a class="reference external" href="https://gdal.org/drivers/vector/index.html">OGR Simple Feature Library</a>.
+This section describes how to work with these specificities.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS supports (multi)point, (multi)line, (multi)polygon,
+CircularString, CompoundCurve, CurvePolygon, MultiCurve,
+MultiSurface feature types, all optionally with Z and/or M values.</p>
+<p>You should also note that some drivers don’t support some of these
+feature types, like CircularString, CompoundCurve, CurvePolygon,
+MultiCurve, MultiSurface feature type. QGIS will convert them.</p>
+</div>
+<section id="geopackage">
+<span id="vector-geopackage"></span><span id="index-1"></span><h3><a class="toc-backref" href="#id6"><span class="section-number">13.3.2.1. </span>GeoPackage</a><a class="headerlink" href="#geopackage" title="Permalink to this headline"></a></h3>
+<p>The <a class="reference external" href="https://www.geopackage.org/">GeoPackage</a> (GPKG) format is
+platform-independent, and is implemented as a SQLite database
+container, and can be used to store both vector and raster data.
+The format was defined by the Open Geospatial Consortium (OGC),
+and was published in 2014.</p>
+<p>GeoPackage can be used to store the following in a SQLite database:</p>
+<ul class="simple">
+<li><p><strong>vector</strong> features</p></li>
+<li><p><strong>tile matrix sets of imagery</strong> and <strong>raster</strong> maps</p></li>
+<li><p>attributes (non-spatial data)</p></li>
+<li><p>extensions</p></li>
+</ul>
+<p>Since QGIS version 3.8, GeoPackage can also store QGIS projects.
+GeoPackage layers can have JSON fields.</p>
+<p>GeoPackage is the default format for vector data in QGIS.</p>
+</section>
+<section id="esri-shapefile-format">
+<span id="vector-shapefiles"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id7"><span class="section-number">13.3.2.2. </span>ESRI Shapefile format</a><a class="headerlink" href="#esri-shapefile-format" title="Permalink to this headline"></a></h3>
+<p>The ESRI Shapefile format is still one of the most used vector
+file formats, even if it has some limitations compared to for
+instance GeoPackage and SpatiaLite.</p>
+<p>An ESRI Shapefile format dataset consists of several files.
+The following three are required:</p>
+<ol class="arabic simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">.shp</span></code> file containing the feature geometries</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">.dbf</span></code> file containing the attributes in dBase format</p></li>
+<li><p><code class="file docutils literal notranslate"><span class="pre">.shx</span></code> index file</p></li>
+</ol>
+<p>An ESRI Shapefile format dataset can also include a file with a
+<code class="file docutils literal notranslate"><span class="pre">.prj</span></code> suffix, which contains projection information.
+While it is very useful to have a projection file, it is not
+mandatory.
+A Shapefile format dataset can contain additional files.
+For further details, see the the ESRI technical specification at
+<a class="reference external" href="https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf">https://www.esri.com/library/whitepapers/pdfs/shapefile.pdf</a>.</p>
+<p>GDAL 3.1 has read-write support for compressed ESRI Shapefile
+format (<code class="file docutils literal notranslate"><span class="pre">shz</span></code> and <code class="file docutils literal notranslate"><span class="pre">shp.zip</span></code>).</p>
+<p><strong>Improving Performance for ESRI Shapefile format datasets</strong></p>
+<p>To improve the drawing performance for an ESRI Shapefile format
+dataset, you can create a spatial index.
+A spatial index will improve the speed of both zooming and panning.
+Spatial indexes used by QGIS have a <code class="file docutils literal notranslate"><span class="pre">.qix</span></code> extension.</p>
+<p>Use these steps to create the index:</p>
+<ol class="arabic simple">
+<li><p>Load an ESRI Shapefile format dataset (see <a class="reference internal" href="opening_data.html#browser-panel"><span class="std std-ref">The Browser Panel</span></a>)</p></li>
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog by double-clicking on
+the layer name in the legend or by right-clicking and choosing
+<span class="menuselection">Properties…</span> from the context menu</p></li>
+<li><p>In the <span class="guilabel">Source</span> tab, click the
+<span class="guilabel">Create Spatial Index</span> button</p></li>
+</ol>
+<p><strong>Problem loading a .prj file</strong></p>
+<p>If you load an ESRI Shapefile format dataset with a <code class="file docutils literal notranslate"><span class="pre">.prj</span></code> file
+and QGIS is not able to read the coordinate reference system from
+that file, you will need to define the proper projection manually in
+the <span class="menuselection">Layer Properties ► Source</span> tab of the layer by
+clicking the <a class="reference internal" href="../../../_images/mActionSetProjection.png"><img alt="setProjection" src="../../../_images/mActionSetProjection.png" style="width: 1.5em;" /></a> <sup>Select CRS</sup> button.
+This is due to the fact that <code class="file docutils literal notranslate"><span class="pre">.prj</span></code> files often do not provide
+the complete projection parameters as used in QGIS and listed in the
+<span class="guilabel">CRS</span> dialog.</p>
+<p>For the same reason, if you create a new ESRI Shapefile format dataset
+with QGIS, two different projection files are created: a <code class="file docutils literal notranslate"><span class="pre">.prj</span></code>
+file with limited projection parameters, compatible with ESRI
+software, and a <code class="file docutils literal notranslate"><span class="pre">.qpj</span></code> file, providing all the parameters of the
+CRS.
+Whenever QGIS finds a <code class="file docutils literal notranslate"><span class="pre">.qpj</span></code> file, it will be used instead of
+the <code class="file docutils literal notranslate"><span class="pre">.prj</span></code>.</p>
+</section>
+<section id="delimited-text-files">
+<span id="vector-csv"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id8"><span class="section-number">13.3.2.3. </span>Delimited Text Files</a><a class="headerlink" href="#delimited-text-files" title="Permalink to this headline"></a></h3>
+<p>Delimited text files are very common and widely used because of their
+simplicity and readability – data can be viewed and edited in a plain
+text editor.
+A delimited text file is tabular data with columns separated by
+a defined character and rows separated by line breaks.
+The first row usually contains the column names. A common type of
+delimited text file is a CSV (Comma Separated Values), with
+columns separated by commas.
+Delimited text files can also contain positional information (see
+<a class="reference internal" href="#csv-geometry"><span class="std std-ref">Storing geometry information in delimited text files</span></a>).</p>
+<p>QGIS allows you to load a delimited text file as a layer or an ordinary
+table (see <a class="reference internal" href="opening_data.html#browser-panel"><span class="std std-ref">The Browser Panel</span></a> or <a class="reference internal" href="opening_data.html#vector-loading-csv"><span class="std std-ref">Importing a delimited text file</span></a>).
+First check that the file meets the following requirements:</p>
+<ol class="arabic simple">
+<li><p>The file must have a delimited header row of field names.
+This must be the first line of the data (ideally the first row in
+the text file).</p></li>
+<li><p>If geometry should be enabled, the file must contain field(s)
+that define the geometry. These field(s) can have any name.</p></li>
+<li><p>The X and Y coordinates fields (if geometry is defined by
+coordinates) must be specified as numbers.
+The coordinate system is not important.</p></li>
+<li><p>If you have a CSV file with non-string columns, you must have an
+accompanying CSVT file (see section <a class="reference internal" href="#csvt-files"><span class="std std-ref">Using CSVT file to control field formatting</span></a>).</p></li>
+</ol>
+<p>The elevation point data file <code class="file docutils literal notranslate"><span class="pre">elevp.csv</span></code> in the QGIS sample
+dataset (see section <a class="reference internal" href="../introduction/getting_started.html#label-sampledata"><span class="std std-ref">Downloading sample data</span></a>) is an example of a
+valid text file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">;</span><span class="n">Y</span><span class="p">;</span><span class="n">ELEV</span>
+<span class="o">-</span><span class="mi">300120</span><span class="p">;</span><span class="mi">7689960</span><span class="p">;</span><span class="mi">13</span>
+<span class="o">-</span><span class="mi">654360</span><span class="p">;</span><span class="mi">7562040</span><span class="p">;</span><span class="mi">52</span>
+<span class="mi">1640</span><span class="p">;</span><span class="mi">7512840</span><span class="p">;</span><span class="mi">3</span>
+<span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Some things to note about the text file:</p>
+<ol class="arabic simple">
+<li><p>The example text file uses <code class="docutils literal notranslate"><span class="pre">;</span></code> (semicolon) as delimiter
+(any character can be used to delimit the fields).</p></li>
+<li><p>The first row is the header row. It contains the fields <code class="docutils literal notranslate"><span class="pre">X</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">ELEV</span></code>.</p></li>
+<li><p>No quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) are used to delimit text fields</p></li>
+<li><p>The X coordinates are contained in the <code class="docutils literal notranslate"><span class="pre">X</span></code> field</p></li>
+<li><p>The Y coordinates are contained in the <code class="docutils literal notranslate"><span class="pre">Y</span></code> field</p></li>
+</ol>
+<section id="storing-geometry-information-in-delimited-text-files">
+<span id="csv-geometry"></span><h4><a class="toc-backref" href="#id9"><span class="section-number">13.3.2.3.1. </span>Storing geometry information in delimited text files</a><a class="headerlink" href="#storing-geometry-information-in-delimited-text-files" title="Permalink to this headline"></a></h4>
+<p>Delimited text files can contain geometry information in two main
+forms:</p>
+<ul class="simple">
+<li><p>As coordinates in separate columns (eg. <code class="docutils literal notranslate"><span class="pre">Xcol</span></code>, <code class="docutils literal notranslate"><span class="pre">Ycol</span></code>… ),
+for point geometry data;</p></li>
+<li><p>As well-known text (WKT) representation of geometry in a single
+column, for any geometry type.</p></li>
+</ul>
+<p>Features with curved geometries (CircularString, CurvePolygon and
+CompoundCurve) are supported.
+Here are some examples of geometry types in a delimited text file
+with geometries coded as WKT:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Label</span><span class="p">;</span><span class="n">WKT_geom</span>
+<span class="n">LineString</span><span class="p">;</span><span class="n">LINESTRING</span><span class="p">(</span><span class="mf">10.0</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">11.0</span> <span class="mf">21.0</span><span class="p">,</span> <span class="mf">13.0</span> <span class="mf">25.5</span><span class="p">)</span>
+<span class="n">CircularString</span><span class="p">;</span><span class="n">CIRCULARSTRING</span><span class="p">(</span><span class="mi">268</span> <span class="mi">415</span><span class="p">,</span><span class="mi">227</span> <span class="mi">505</span><span class="p">,</span><span class="mi">227</span> <span class="mi">406</span><span class="p">)</span>
+<span class="n">CurvePolygon</span><span class="p">;</span><span class="n">CURVEPOLYGON</span><span class="p">(</span><span class="n">CIRCULARSTRING</span><span class="p">(</span><span class="mi">1</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">7</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">CompoundCurve</span><span class="p">;</span><span class="n">COMPOUNDCURVE</span><span class="p">((</span><span class="mi">5</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">13</span><span class="p">),</span> <span class="n">CIRCULARSTRING</span><span class="p">(</span><span class="mi">5</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">7</span> <span class="mi">15</span><span class="p">,</span>
+  <span class="mi">9</span> <span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">9</span> <span class="mi">3</span><span class="p">),</span> <span class="n">CIRCULARSTRING</span><span class="p">(</span><span class="mi">9</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Delimited text files also support Z and M coordinates in geometries:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LINESTRINGZ</span><span class="p">(</span><span class="mf">10.0</span> <span class="mf">20.0</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mf">11.0</span> <span class="mf">21.0</span> <span class="mf">31.0</span><span class="p">,</span> <span class="mf">11.0</span> <span class="mf">22.0</span> <span class="mf">30.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-csvt-file-to-control-field-formatting">
+<span id="csvt-files"></span><span id="index-4"></span><h4><a class="toc-backref" href="#id10"><span class="section-number">13.3.2.3.2. </span>Using CSVT file to control field formatting</a><a class="headerlink" href="#using-csvt-file-to-control-field-formatting" title="Permalink to this headline"></a></h4>
+<p>When loading CSV files, the OGR driver assumes all fields are strings
+(i.e. text) unless it is told otherwise.
+You can create a CSVT file to tell OGR (and QGIS) the data type of the
+different columns:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Whole number</p></td>
+<td><p>Integer</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Decimal number</p></td>
+<td><p>Real</p></td>
+<td><p>3.456</p></td>
+</tr>
+<tr class="row-even"><td><p>Date</p></td>
+<td><p>Date (YYYY-MM-DD)</p></td>
+<td><p>2016-07-28</p></td>
+</tr>
+<tr class="row-odd"><td><p>Time</p></td>
+<td><p>Time (HH:MM:SS+nn)</p></td>
+<td><p>18:33:12+00</p></td>
+</tr>
+<tr class="row-even"><td><p>Date &amp; Time</p></td>
+<td><p>DateTime (YYYY-MM-DD HH:MM:SS+nn)</p></td>
+<td><p>2016-07-28 18:33:12+00</p></td>
+</tr>
+</tbody>
+</table>
+<p>The CSVT file is a <strong>ONE line</strong> plain text file with the data types in
+quotes and separated by commas, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Integer&quot;</span><span class="p">,</span><span class="s2">&quot;Real&quot;</span><span class="p">,</span><span class="s2">&quot;String&quot;</span>
+</pre></div>
+</div>
+<p>You can even specify width and precision of each column, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Integer(6)&quot;</span><span class="p">,</span><span class="s2">&quot;Real(5.5)&quot;</span><span class="p">,</span><span class="s2">&quot;String(22)&quot;</span>
+</pre></div>
+</div>
+<p>This file is saved in the same folder as the <code class="file docutils literal notranslate"><span class="pre">.csv</span></code> file, with
+the same name, but <code class="file docutils literal notranslate"><span class="pre">.csvt</span></code> as the extension.</p>
+<p><em>You can find more information at</em>
+<a class="reference external" href="https://gdal.org/drivers/vector/csv.html">GDAL CSV Driver</a>.</p>
+</section>
+</section>
+<section id="postgis-layers">
+<span id="label-postgis"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id11"><span class="section-number">13.3.2.4. </span>PostGIS Layers</a><a class="headerlink" href="#postgis-layers" title="Permalink to this headline"></a></h3>
+<p>PostGIS layers are stored in a PostgreSQL database.
+The advantages of PostGIS are spatial indexing, filtering and
+querying capabilities.
+Using PostGIS, vector functions such as select and identify work more
+accurately than they do with OGR layers in QGIS.</p>
+<div class="admonition tip" id="tip-postgis-layers">
+<p class="admonition-title">Tip</p>
+<p><strong>PostGIS Layers</strong></p>
+<p>Normally, a PostGIS layer is identified by an entry in the
+geometry_columns table.
+QGIS can load layers that do not have an entry in the
+geometry_columns table.
+This includes both tables and views.
+Refer to your PostgreSQL manual for information on creating views.</p>
+</div>
+<p>This section contains some details on how QGIS accesses PostgreSQL layers.
+Most of the time, QGIS should simply provide you with a list of database
+tables that can be loaded, and it will load them on request. However, if you
+have trouble loading a PostgreSQL table into QGIS, the information below may
+help you understand QGIS messages and give you directions for modifying
+the PostgreSQL table or view definition to allow QGIS to load it.</p>
+<section id="primary-key">
+<h4><a class="toc-backref" href="#id12"><span class="section-number">13.3.2.4.1. </span>Primary key</a><a class="headerlink" href="#primary-key" title="Permalink to this headline"></a></h4>
+<p>QGIS requires that PostgreSQL layers contain a column that can be used
+as a unique key for the layer. For tables, this usually means that the table
+needs a primary key, or a column with a unique constraint on it. In QGIS,
+this column needs to be of type int4 (an integer of size 4 bytes).
+Alternatively, the ctid column can be used as primary key. If a table lacks
+these items, the oid column will be used instead.
+Performance will be improved if the column is indexed (note that
+primary keys are automatically indexed in PostgreSQL).</p>
+<p>QGIS offers a checkbox <strong>Select at id</strong> that is activated by default.
+This option gets the ids without the attributes, which is faster in
+most cases.</p>
+</section>
+<section id="view">
+<h4><a class="toc-backref" href="#id13"><span class="section-number">13.3.2.4.2. </span>View</a><a class="headerlink" href="#view" title="Permalink to this headline"></a></h4>
+<p>If the PostgreSQL layer is a view, the same requirement exists, but views
+do not always have primary keys or columns with unique constraints on them. You
+have to define a primary key field (has to be integer) in the QGIS dialog before
+you can load the view. If a suitable column does not exist in the view, QGIS
+will not load the layer. If this occurs, the solution is to alter the view so
+that it does include a suitable column (a type of integer and either a primary
+key or with a unique constraint, preferably indexed).</p>
+<p>As for table, a checkbox <strong>Select at id</strong> is activated by default
+(see above for the meaning of the checkbox).
+It can make sense to disable this option when you use expensive views.</p>
+</section>
+<section id="qgis-layer-style-table-and-database-backup">
+<span id="layer-style-backup"></span><h4><a class="toc-backref" href="#id14"><span class="section-number">13.3.2.4.3. </span>QGIS layer_style table and database backup</a><a class="headerlink" href="#qgis-layer-style-table-and-database-backup" title="Permalink to this headline"></a></h4>
+<p>If you want to make a backup of your PostGIS database using the
+<code class="file docutils literal notranslate"><span class="pre">pg_dump</span></code> and <code class="file docutils literal notranslate"><span class="pre">pg_restore</span></code> commands, and the default layer
+styles as saved by QGIS fail to restore afterwards, you need to set
+the XML option to <code class="file docutils literal notranslate"><span class="pre">DOCUMENT</span></code> before the restore command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span> <span class="n">XML</span> <span class="k">OPTION</span> <span class="n">DOCUMENT</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="filter-database-side">
+<h4><a class="toc-backref" href="#id15"><span class="section-number">13.3.2.4.4. </span>Filter database side</a><a class="headerlink" href="#filter-database-side" title="Permalink to this headline"></a></h4>
+<p>QGIS allows to filter features already on server side. Check
+<span class="menuselection">Settings ► Options ► Data Sources ►</span> <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a>
+<span class="menuselection">Execute expressions on server-side if possible</span>
+to do so.
+Only supported expressions will be sent to the database.
+Expressions using unsupported operators or functions will gracefully
+fallback to local evaluation.</p>
+</section>
+<section id="support-of-postgresql-data-types">
+<h4><a class="toc-backref" href="#id16"><span class="section-number">13.3.2.4.5. </span>Support of PostgreSQL data types</a><a class="headerlink" href="#support-of-postgresql-data-types" title="Permalink to this headline"></a></h4>
+<p>Data types supported by the PostgreSQL provider include:
+integer, float, boolean, binary object, varchar, geometry, timestamp,
+array, hstore and json.</p>
+</section>
+</section>
+<section id="importing-data-into-postgresql">
+<span id="vector-import-data-in-postgis"></span><span id="index-6"></span><h3><a class="toc-backref" href="#id17"><span class="section-number">13.3.2.5. </span>Importing Data into PostgreSQL</a><a class="headerlink" href="#importing-data-into-postgresql" title="Permalink to this headline"></a></h3>
+<p>Data can be imported into PostgreSQL/PostGIS using several tools,
+including the DB Manager plugin and the command line tools shp2pgsql
+and ogr2ogr.</p>
+<section id="db-manager">
+<h4><a class="toc-backref" href="#id18"><span class="section-number">13.3.2.5.1. </span>DB Manager</a><a class="headerlink" href="#db-manager" title="Permalink to this headline"></a></h4>
+<p>QGIS comes with a core plugin named <a class="reference internal" href="../../../_images/dbmanager.png"><img alt="dbManager" src="../../../_images/dbmanager.png" style="width: 1.5em;" /></a> <sup>DB Manager</sup>.
+It can be used to load data, and it includes support for schemas.
+See section <a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager Plugin</span></a> for more information.</p>
+</section>
+<section id="shp2pgsql">
+<h4><a class="toc-backref" href="#id19"><span class="section-number">13.3.2.5.2. </span>shp2pgsql</a><a class="headerlink" href="#shp2pgsql" title="Permalink to this headline"></a></h4>
+<p>PostGIS includes a utility called <strong>shp2pgsql</strong>, that can be used to import
+Shapefile format datasets into a PostGIS-enabled database.
+For example, to import a Shapefile format dataset named
+<code class="file docutils literal notranslate"><span class="pre">lakes.shp</span></code> into a PostgreSQL database named <code class="docutils literal notranslate"><span class="pre">gis_data</span></code>, use
+the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">shp2pgsql</span> <span class="o">-</span><span class="n">s</span> <span class="mi">2964</span> <span class="n">lakes</span><span class="o">.</span><span class="n">shp</span> <span class="n">lakes_new</span> <span class="o">|</span> <span class="n">psql</span> <span class="n">gis_data</span>
+</pre></div>
+</div>
+<p>This creates a new layer named <code class="docutils literal notranslate"><span class="pre">lakes_new</span></code> in the <code class="docutils literal notranslate"><span class="pre">gis_data</span></code> database.
+The new layer will have a spatial reference identifier (SRID) of 2964.
+See section <a class="reference internal" href="../working_with_projections/working_with_projections.html#label-projections"><span class="std std-ref">Working with Projections</span></a> for more information about spatial
+reference systems and projections.</p>
+<div class="admonition tip" id="tip-export-from-postgis">
+<span id="index-7"></span><p class="admonition-title">Tip</p>
+<p><strong>Exporting datasets from PostGIS</strong></p>
+<p>There is also a tool for exporting
+PostGIS datasets to Shapefile format: <strong>pgsql2shp</strong>.
+It is shipped within your PostGIS distribution.</p>
+</div>
+</section>
+<section id="ogr2ogr">
+<span id="index-8"></span><h4><a class="toc-backref" href="#id20"><span class="section-number">13.3.2.5.3. </span>ogr2ogr</a><a class="headerlink" href="#ogr2ogr" title="Permalink to this headline"></a></h4>
+<p>In addition to <strong>shp2pgsql</strong> and <strong>DB Manager</strong>, there is another tool
+for feeding geographical data in PostGIS: <strong>ogr2ogr</strong>.
+It is part of your GDAL installation.</p>
+<p>To import a Shapefile format dataset into PostGIS, do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogr2ogr</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;PostgreSQL&quot;</span> <span class="n">PG</span><span class="p">:</span><span class="s2">&quot;dbname=postgis host=myhost.de user=postgres</span>
+<span class="n">password</span><span class="o">=</span><span class="n">topsecret</span><span class="s2">&quot; alaska.shp</span>
+</pre></div>
+</div>
+<p>This will import the Shapefile format dataset <code class="file docutils literal notranslate"><span class="pre">alaska.shp</span></code> into the
+PostGIS database <em>postgis</em> using the user <em>postgres</em> with the password
+<em>topsecret</em> on the host server <em>myhost.de</em>.</p>
+<p>Note that OGR must be built with PostgreSQL to support PostGIS.
+You can verify this by typing (in <a class="reference internal" href="../../../_images/nix.png"><img alt="nix" src="../../../_images/nix.png" style="width: 1em;" /></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ogrinfo</span> <span class="o">--</span><span class="n">formats</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">i</span> <span class="n">post</span>
+</pre></div>
+</div>
+<p>If you prefer to use the PostgreSQL’s <strong>COPY</strong> command instead of the default
+<strong>INSERT INTO</strong> method, you can export the following environment variable
+(at least available on <a class="reference internal" href="../../../_images/nix.png"><img alt="nix" src="../../../_images/nix.png" style="width: 1em;" /></a> and <a class="reference internal" href="../../../_images/osx.png"><img alt="osx" src="../../../_images/osx.png" style="width: 1em;" /></a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">PG_USE_COPY</span><span class="o">=</span><span class="n">YES</span>
+</pre></div>
+</div>
+<p><strong>ogr2ogr</strong> does not create spatial indexes like <strong>shp2pgsl</strong> does. You
+need to create them manually, using the normal SQL command <strong>CREATE INDEX</strong>
+afterwards, as an extra step (as described in the next section
+<a class="reference internal" href="#vector-improving-performance"><span class="std std-ref">Improving Performance</span></a>).</p>
+</section>
+<section id="improving-performance">
+<span id="vector-improving-performance"></span><span id="index-9"></span><h4><a class="toc-backref" href="#id21"><span class="section-number">13.3.2.5.4. </span>Improving Performance</a><a class="headerlink" href="#improving-performance" title="Permalink to this headline"></a></h4>
+<p>Retrieving features from a PostgreSQL database can be time-consuming, especially
+over a network. You can improve the drawing performance of PostgreSQL layers by
+ensuring that a PostGIS spatial index exists on each layer in the
+database. PostGIS supports creation of a GiST (Generalized Search Tree)
+index to speed up spatial searching (GiST index information is taken
+from the PostGIS documentation available at <a class="reference external" href="https://postgis.net">https://postgis.net</a>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can use the DBManager to create an index for your layer.
+You should first select the layer and click on
+<span class="menuselection">Table ► Edit table</span>, go to
+<span class="menuselection">Indexes</span> tab and click on
+<span class="guilabel">Add Spatial Index</span>.</p>
+</div>
+<p>The syntax for creating a GiST index is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">INDEX</span> <span class="p">[</span><span class="n">indexname</span><span class="p">]</span> <span class="n">ON</span> <span class="p">[</span><span class="n">tablename</span><span class="p">]</span>
+  <span class="n">USING</span> <span class="n">GIST</span> <span class="p">(</span> <span class="p">[</span><span class="n">geometryfield</span><span class="p">]</span> <span class="n">GIST_GEOMETRY_OPS</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>Note that for large tables, creating the index can take a long time.
+Once the index is created, you should perform a <code class="docutils literal notranslate"><span class="pre">VACUUM</span> <span class="pre">ANALYZE</span></code>.
+See the PostGIS documentation (POSTGIS-PROJECT in
+<a class="reference internal" href="../literature_web/literature_and_web_references.html#literature-and-web"><span class="std std-ref">Literature and Web References</span></a>) for more information.</p>
+<p>The following example creates a GiST index:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gsherman@madison:~/current$ psql gis_data
+Welcome to psql 8.3.0, the PostgreSQL interactive terminal.
+
+Type:  \copyright for distribution terms
+       \h for help with SQL commands
+       \? for help with psql commands
+       \g or terminate with semicolon to execute query
+       \q to quit
+
+gis_data=# CREATE INDEX sidx_alaska_lakes ON alaska_lakes
+gis_data-# USING GIST (the_geom GIST_GEOMETRY_OPS);
+CREATE INDEX
+gis_data=# VACUUM ANALYZE alaska_lakes;
+VACUUM
+gis_data=# \q
+gsherman@madison:~/current$
+</pre></div>
+</div>
+</section>
+</section>
+<section id="vector-layers-crossing-180-degrees-longitude">
+<span id="index-10"></span><h3><a class="toc-backref" href="#id22"><span class="section-number">13.3.2.6. </span>Vector layers crossing 180° longitude</a><a class="headerlink" href="#vector-layers-crossing-180-degrees-longitude" title="Permalink to this headline"></a></h3>
+<p>Many GIS packages don’t wrap vector maps with a geographic reference system
+(lat/lon) crossing the 180 degrees longitude line
+(<a class="reference external" href="http://postgis.refractions.net/documentation/manual-2.0/ST_Shift_Longitude.html">http://postgis.refractions.net/documentation/manual-2.0/ST_Shift_Longitude.html</a>).
+As result, if we open such a map in QGIS, we could see two widely
+separated locations, that should appear near each other.
+In <a class="reference internal" href="#figure-vector-crossing"><span class="std std-numref">Fig. 13.25</span></a>, the tiny point on the far left of the map
+canvas (Chatham Islands) should be within the grid, to the right of
+the New Zealand main islands.</p>
+<figure class="align-center" id="id2">
+<span id="figure-vector-crossing"></span><img alt="../../../_images/vectorNotWrapping.png" src="../../../_images/vectorNotWrapping.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 13.25 </span><span class="caption-text">Map in lat/lon crossing the 180° longitude line</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>A work-around is to transform the longitude values using PostGIS and the
+<strong>ST_Shift_Longitude</strong> function.
+This function reads every point/vertex in every component of every
+feature in a geometry, and if the longitude coordinate is &lt; 0°, it adds 360° to it.
+The result is a 0° - 360° version of the data to be
+plotted in a 180°-centric map.</p>
+<figure class="align-center" id="id3">
+<span id="figure-vector-crossing-map"></span><a class="reference internal image-reference" href="../../../_images/vectorWrapping.png"><img alt="../../../_images/vectorWrapping.png" src="../../../_images/vectorWrapping.png" style="width: 25em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.26 </span><span class="caption-text">Crossing 180° longitude applying the <strong>ST_Shift_Longitude</strong>
+function</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="usage">
+<h4><a class="toc-backref" href="#id23"><span class="section-number">13.3.2.6.1. </span>Usage</a><a class="headerlink" href="#usage" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Import data into PostGIS (<a class="reference internal" href="#vector-import-data-in-postgis"><span class="std std-ref">Importing Data into PostgreSQL</span></a>) using,
+for example, the DB Manager plugin.</p></li>
+<li><p>Use the PostGIS command line interface to issue the following command
+(in this example, “TABLE” is the actual name of your PostGIS table):
+<code class="docutils literal notranslate"><span class="pre">gis_data=#</span> <span class="pre">update</span> <span class="pre">TABLE</span> <span class="pre">set</span> <span class="pre">the_geom=ST_Shift_Longitude(the_geom);</span></code></p></li>
+<li><p>If everything went well, you should receive a confirmation about the
+number of features that were updated.
+Then you’ll be able to load the map and see the difference
+(<a class="reference internal" href="#figure-vector-crossing-map">Figure_vector_crossing_map</a>).</p></li>
+</ul>
+</section>
+</section>
+<section id="spatialite-layers">
+<span id="spatialite-data"></span><span id="index-11"></span><h3><a class="toc-backref" href="#id24"><span class="section-number">13.3.2.7. </span>SpatiaLite Layers</a><a class="headerlink" href="#spatialite-layers" title="Permalink to this headline"></a></h3>
+<p>If you want to save a vector layer using the SpatiaLite format, you
+can do this by following instructions at <a class="reference internal" href="create_layers.html#general-saveas"><span class="std std-ref">Creating new layers from an existing layer</span></a>.
+You select <code class="docutils literal notranslate"><span class="pre">SpatiaLite</span></code> as <span class="guilabel">Format</span> and
+enter both <span class="guilabel">File name</span> and <span class="guilabel">Layer name</span>.</p>
+<p>Also, you can select <code class="docutils literal notranslate"><span class="pre">SQLite</span></code> as format and then add
+<code class="docutils literal notranslate"><span class="pre">SPATIALITE=YES</span></code> in the
+<span class="menuselection">Custom Options ► Data source</span> field.
+This tells GDAL to create a SpatiaLite database.
+See also <a class="reference external" href="https://gdal.org/drivers/vector/sqlite.html">https://gdal.org/drivers/vector/sqlite.html</a>.</p>
+<p>QGIS also supports editable views in SpatiaLite.
+For SpatiaLite data management, you can also use the core plugin
+<a class="reference internal" href="../plugins/core_plugins/plugins_db_manager.html#dbmanager"><span class="std std-ref">DB Manager</span></a>.</p>
+<p>If you want to create a new SpatiaLite layer, please refer to section
+<a class="reference internal" href="create_layers.html#vector-create-spatialite"><span class="std std-ref">Creating a new SpatiaLite layer</span></a>.</p>
+</section>
+<section id="geojson-specific-parameters">
+<span id="export-geojson-files"></span><span id="index-12"></span><h3><a class="toc-backref" href="#id25"><span class="section-number">13.3.2.8. </span>GeoJSON specific parameters</a><a class="headerlink" href="#geojson-specific-parameters" title="Permalink to this headline"></a></h3>
+<p>When <a class="reference internal" href="create_layers.html#general-saveas"><span class="std std-ref">exporting layers</span></a> to GeoJSON, there are
+some specific <span class="guilabel">Layer Options</span> available. These options
+come from GDAL which is responsible for the writing of the file:</p>
+<ul class="simple">
+<li><p><span class="guilabel">COORDINATE_PRECISION</span> the maximum number of digits after the
+decimal separator to write in coordinates. Defaults to 15 (note: for Lat Lon
+coordinates 6 is considered enough). Truncation will occur to remove
+trailing zeros.</p></li>
+<li><p><span class="guilabel">RFC7946</span> by default GeoJSON 2008 will be used.
+If set to YES, the updated RFC 7946 standard will be used.
+Default is NO (thus GeoJSON 2008).
+See <a class="reference external" href="https://gdal.org/drivers/vector/geojson.html#rfc-7946-write-support">https://gdal.org/drivers/vector/geojson.html#rfc-7946-write-support</a> for
+the main differences, in short: only EPSG:4326 is allowed, other crs’s will
+be transformed, polygons will be written such as to follow the right-hand
+rule for orientation, values of a “bbox” array are
+[west, south, east, north], not [minx, miny, maxx, maxy].
+Some extension member names are forbidden in FeatureCollection,
+Feature and Geometry objects, the default coordinate precision is 7
+decimal digits</p></li>
+<li><p><span class="guilabel">WRITE_BBOX</span> set to YES to include the bounding
+box of the geometries at the feature and feature collection level</p></li>
+</ul>
+<p>Besides GeoJSON there is also an option to export to
+“GeoJSON - Newline Delimited”
+(see <a class="reference external" href="https://gdal.org/drivers/vector/geojsonseq.html">https://gdal.org/drivers/vector/geojsonseq.html</a>).
+Instead of a FeatureCollection with Features, you can stream one type
+(probably only Features) sequentially separated with newlines.</p>
+<p>GeoJSON - Newline Delimited has some specific Layer options availabe too:</p>
+<ul class="simple">
+<li><p><span class="guilabel">COORDINATE_PRECISION</span> see above (same as for GeoJSON)</p></li>
+<li><p><span class="guilabel">RS</span> whether to start records with the RS=0x1E character.
+The difference is how the features are separated: only by a newline
+(LF) character (Newline Delimited JSON, geojsonl) or by also prepending a
+record-separator (RS) character (giving GeoJSON Text Sequences,
+geojsons).
+Default to NO.
+Files are given the <code class="file docutils literal notranslate"><span class="pre">.json</span></code> extension if extension is not provided.</p></li>
+</ul>
+</section>
+<section id="sap-hana-spatial-layers">
+<span id="label-hana-spatial"></span><span id="index-13"></span><h3><a class="toc-backref" href="#id26"><span class="section-number">13.3.2.9. </span>SAP HANA Spatial Layers</a><a class="headerlink" href="#sap-hana-spatial-layers" title="Permalink to this headline"></a></h3>
+<p>This section contains some details on how QGIS accesses SAP HANA layers. Most of
+the time, QGIS should simply provide you with a list of database tables and
+views that can be loaded, and it will load them on request. However, if you have
+trouble loading an SAP HANA table or view into QGIS, the information below may
+help you understand the root cause and assist in resolving the issue.</p>
+<section id="feature-identification">
+<h4><a class="toc-backref" href="#id27"><span class="section-number">13.3.2.9.1. </span>Feature Identification</a><a class="headerlink" href="#feature-identification" title="Permalink to this headline"></a></h4>
+<p>If you’d like to use all of QGIS’ feature editing capabilities, QGIS must be
+able to unambiguously identify each feature in a layer. Internally, QGIS uses a
+64-bit signed integer to identify features, whereas the negative range is
+reserved for special purposes.</p>
+<p>Therefore, the SAP HANA provider requires a unique key that can be mapped to a
+positive 64-bit integer to fully support QGIS’ feature editing capabilities. If
+it is not possible to create such a mapping, you might still view the features,
+but editing might not work.</p>
+<section id="adding-tables">
+<h5><a class="toc-backref" href="#id28"><span class="section-number">13.3.2.9.1.1. </span>Adding tables</a><a class="headerlink" href="#adding-tables" title="Permalink to this headline"></a></h5>
+<p>When adding a table as a layer, the SAP HANA provider uses the table’s primary
+key to map it to a unique feature id. Therefore, to have full feature editing
+support, you need to have a primary key to your table definition.</p>
+<p>The SAP HANA provider supports multi-column primary keys, but if you’d like to
+get the best performance, your primary key should be a single column of type
+<code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>.</p>
+</section>
+<section id="adding-views">
+<h5><a class="toc-backref" href="#id29"><span class="section-number">13.3.2.9.1.2. </span>Adding views</a><a class="headerlink" href="#adding-views" title="Permalink to this headline"></a></h5>
+<p>When adding a view as a layer, the SAP HANA provider cannot automatically
+indentify columns that unambiguously identify a feature. Furthermore, some views
+are read-only and cannot be edited.</p>
+<p>To have full feature editing support, the view must be updatable (check column
+<code class="docutils literal notranslate"><span class="pre">IS_READ_ONLY</span></code> in system view <code class="docutils literal notranslate"><span class="pre">SYS.VIEWS</span></code> for the view in question) and you
+must manually provide QGIS with one or more columns that identify a feature. The
+columns can be given by using
+<span class="menuselection">Layer ► Add Layer ► Add SAP HANA Spatial Layer</span> and then
+selecting the columns in the <span class="guilabel">Feature id</span> column. For best
+performance, the <span class="guilabel">Feature id</span> value should be a single <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>
+column.</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="create_layers.html" class="btn btn-neutral float-left" title="13.2. Creating Layers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_vector/index.html" class="btn btn-neutral float-right" title="14. Working with Vector Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/managing_data_source/supported_data.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/managing_data_source/supported_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/managing_data_source/supported_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/managing_data_source/supported_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/managing_data_source/supported_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/managing_data_source/supported_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/managing_data_source/supported_data.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/managing_data_source/supported_data.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/managing_data_source/supported_data.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/managing_data_source/supported_data.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/managing_data_source/supported_data.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/managing_data_source/supported_data.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/managing_data_source/supported_data.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/managing_data_source/supported_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

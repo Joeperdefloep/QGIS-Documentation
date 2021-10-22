@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>18.2.8. The Picture and the North Arrow Items &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_image.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="18.2.9. The HTML Frame Item" href="composer_html_frame.html" />
+    <link rel="prev" title="18.2.7. The Table Items" href="composer_tables.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_image.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">18. Laying out the maps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../overview_composer.html">18.1. Overview of the Print Layout</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">18.2. Layout Items</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="composer_items_options.html">18.2.1. Layout Items Common Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map.html">18.2.2. The Map Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map3d.html">18.2.3. The 3D Map Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_label.html">18.2.4. The Label Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_legend.html">18.2.5. The Legend Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_scale_bar.html">18.2.6. The Scale Bar Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_tables.html">18.2.7. The Table Items</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">18.2.8. The Picture and the North Arrow Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_html_frame.html">18.2.9. The HTML Frame Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_shapes.html">18.2.10. The Shape Items</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../create_output.html">18.3. Creating an Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../create_reports.html">18.4. Creating a Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">18. </span>Laying out the maps</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">18.2. </span>Layout Items</a> &raquo;</li>
+      <li><span class="section-number">18.2.8. </span>The Picture and the North Arrow Items</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/print_composer/composer_items/composer_image.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="composer_tables.html" class="btn btn-neutral float-left" title="18.2.7. The Table Items" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_html_frame.html" class="btn btn-neutral float-right" title="18.2.9. The HTML Frame Item" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-picture-and-the-north-arrow-items">
+<span id="index-0"></span><h1><span class="section-number">18.2.8. </span>The Picture and the North Arrow Items<a class="headerlink" href="#the-picture-and-the-north-arrow-items" title="Permalink to this headline"></a></h1>
+<p>The <span class="guilabel">Picture</span> item is a tool that helps decorate your map with
+pictures, logos… It can also be used to add north arrows, despite the
+dedicated <a class="reference internal" href="#layout-northarrow-item"><span class="std std-ref">North arrow</span></a> tool.</p>
+<section id="the-picture-item">
+<span id="layout-picture-item"></span><h2><span class="section-number">18.2.8.1. </span>The Picture Item<a class="headerlink" href="#the-picture-item" title="Permalink to this headline"></a></h2>
+<p>You can add a picture by dragging it from your file manager onto the
+canvas, or by using the <a class="reference internal" href="../../../../_images/mActionAddImage.png"><img alt="addImage" src="../../../../_images/mActionAddImage.png" style="width: 1.5em;" /></a> <sup>Add Picture</sup>, following
+<a class="reference internal" href="composer_items_options.html#create-layout-item"><span class="std std-ref">items creation instructions</span></a>.
+Then you can manipulate it, as explained in
+<a class="reference internal" href="composer_items_options.html#interact-layout-item"><span class="std std-ref">Interacting with layout items</span></a>.</p>
+<p id="index-1">When using <a class="reference internal" href="../../../../_images/mActionAddImage.png"><img alt="addImage" src="../../../../_images/mActionAddImage.png" style="width: 1.5em;" /></a> <sup>Add Picture</sup>, the picture item will be a
+blank frame that you can customize using its
+<span class="guilabel">Item Properties</span> panel.
+Other than the <a class="reference internal" href="composer_items_options.html#item-common-properties"><span class="std std-ref">items common properties</span></a>,
+this feature has the following functionalities (see
+<a class="reference internal" href="#figure-layout-image"><span class="std std-numref">Fig. 18.49</span></a>):</p>
+<figure class="align-center" id="id1">
+<span id="figure-layout-image"></span><img alt="../../../../_images/image_mainproperties.png" src="../../../../_images/image_mainproperties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.49 </span><span class="caption-text">Picture Item Properties panel</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>There are several ways to set the <span class="guilabel">Image source</span> (to select
+the image you want to display):</p>
+<ol class="arabic simple">
+<li><p>In the <span class="guilabel">Main properties</span> group, use the <span class="guilabel">…</span>
+<sup>Browse</sup> button of <span class="guilabel">image source</span> to
+select a file on your computer. The browser will start in the
+SVG-libraries provided with QGIS. You can also select other image
+formats (like <code class="file docutils literal notranslate"><span class="pre">.png</span></code> or <code class="file docutils literal notranslate"><span class="pre">.jpg</span></code>).</p></li>
+<li><p>You can enter the source directly in the <span class="guilabel">Image source</span> text field.
+You can even provide a remote URL that points to a picture.</p></li>
+<li><p>From the <span class="guilabel">Search directories</span> area you can select an
+image from the loaded previews to set the image source.
+These images are by default provided by folders set in
+<span class="menuselection">Settings ► Options ► System ► SVG Paths</span>.</p></li>
+<li><p>Use the <a class="reference internal" href="../../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>data defined override</sup> button to set
+the image source from a feature attribute or using a regular
+expression.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the <span class="guilabel">Search directories</span> group, you can use
+the <span class="guilabel">Add</span> and <span class="guilabel">Remove</span> buttons to customize
+the list of folders to fetch and preview images from.</p>
+</div>
+<p>With the <span class="guilabel">Resize mode</span> option, you can set how the image is
+displayed when the frame is resized:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Zoom</span></code>: enlarges/reduces the image to the frame while maintaining
+the aspect ratio of picture</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Stretch</span></code>: stretches the image to fit inside the frame</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Clip</span></code>: use this mode for raster images only, it sets the size of
+the image to the original image size without scaling, and the frame
+is used to clip the image.
+So only the part of the image that is inside the frame will be
+visible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Zoom</span> <span class="pre">and</span> <span class="pre">resize</span> <span class="pre">frame</span></code>: enlarges the image to fit the frame, and
+then resizes frame to fit the resulting image dimensions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Resize</span> <span class="pre">frame</span> <span class="pre">to</span> <span class="pre">image</span> <span class="pre">size</span></code>: sets the size of the frame to match
+the original size of the image (no scaling)</p></li>
+</ul>
+<p>Depending on the selected <span class="guilabel">Resize mode</span>, the
+<span class="guilabel">Placement</span> and <span class="guilabel">Image rotation</span> options may be
+disabled.
+<span class="guilabel">Placement</span> lets you select the position of the image
+inside its frame.</p>
+<p id="parameterized-svg">The QGIS provided (default) <code class="file docutils literal notranslate"><span class="pre">.SVG</span></code> files are customizable,
+meaning that you can easily apply other <span class="guilabel">Fill color</span>,
+<span class="guilabel">Stroke color</span> (including opacity) and
+<span class="guilabel">Stroke width</span> than the original, using their
+corresponding feature in the <span class="guilabel">SVG Parameters</span> group.
+These properties can also be <a class="reference internal" href="../../introduction/general_tools.html#data-defined"><span class="std std-ref">data-defined</span></a>.</p>
+<p>If you add an <code class="file docutils literal notranslate"><span class="pre">.SVG</span></code> file that does not enable these properties,
+you may need to add the following tags to the file in order to add
+support e.g. for transparency:</p>
+<ul class="simple">
+<li><p><cite>fill-opacity=”param(fill-opacity)”</cite></p></li>
+<li><p><cite>stroke-opacity=”param(outline-opacity)”</cite></p></li>
+</ul>
+<p>You can read this <a class="reference external" href="https://blog.sourcepole.ch/2011/06/30/svg-symbols-in-qgis-with-modifiable-colors/">blog post</a>
+to see an example.</p>
+<p>Images can be rotated with the <span class="guilabel">Image rotation</span> field.
+Activating the <a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Sync with map</span> checkbox
+synchronizes the rotation of the image with the rotation applied to a
+selected map item.
+This is a convenient feature for north arrows that you can align with
+either:</p>
+<ul class="simple">
+<li><p><strong>Grid north</strong>: the direction of a grid line which is parallel to
+the central meridian of the national/local grid</p></li>
+<li><p><strong>True north</strong>: direction of a meridian of longitude.</p></li>
+</ul>
+<p>You can also apply a declination <span class="guilabel">Offset</span> to the picture rotation.</p>
+</section>
+<section id="the-north-arrow-item">
+<span id="layout-northarrow-item"></span><span id="index-2"></span><h2><span class="section-number">18.2.8.2. </span>The North Arrow Item<a class="headerlink" href="#the-north-arrow-item" title="Permalink to this headline"></a></h2>
+<p>You can add a north arrow with the <a class="reference internal" href="../../../../_images/north_arrow.png"><img alt="northArrow" src="../../../../_images/north_arrow.png" style="width: 1.5em;" /></a>
+<sup>Add North Arrow</sup> button, following
+<a class="reference internal" href="composer_items_options.html#create-layout-item"><span class="std std-ref">items creation instructions</span></a> and
+manipulate it the same way as exposed in <a class="reference internal" href="composer_items_options.html#interact-layout-item"><span class="std std-ref">Interacting with layout items</span></a>.</p>
+<p>Since north arrows are images, the <span class="guilabel">North Arrow</span> item has
+the same properties as the <a class="reference internal" href="#layout-picture-item"><span class="std std-ref">picture item</span></a>.
+The main differences are:</p>
+<ul class="simple">
+<li><p>A default north arrow is used when adding the item, instead of a
+blank frame</p></li>
+<li><p>The north arrow item is synced with a map item by default: the
+<span class="guilabel">Sync with map</span> property is the map over which the north
+arrow item is drawn.
+If none, it falls back to the <a class="reference internal" href="../overview_composer.html#reference-map"><span class="std std-ref">reference map</span></a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many of the north arrows do not have an ‘N’ added in the north
+arrow.
+This is done on purpose, since there are languages that do not use
+an ‘N’ for North.</p>
+</div>
+<figure class="align-center" id="id2">
+<span id="figure-layout-image-north"></span><img alt="../../../../_images/north_arrows.png" src="../../../../_images/north_arrows.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 18.50 </span><span class="caption-text">North arrows available for selection in provided SVG library</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="composer_tables.html" class="btn btn-neutral float-left" title="18.2.7. The Table Items" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_html_frame.html" class="btn btn-neutral float-right" title="18.2.9. The HTML Frame Item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_image.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_image.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_image.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/print_composer/composer_items/composer_image.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/composer_items/composer_image.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/print_composer/composer_items/composer_image.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/print_composer/composer_items/composer_image.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/print_composer/composer_items/composer_image.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/print_composer/composer_items/composer_image.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

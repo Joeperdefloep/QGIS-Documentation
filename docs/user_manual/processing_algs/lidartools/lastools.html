@@ -1,0 +1,4004 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.3. LAStools algorithm provider &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/lidartools/lastools.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="24.4. TauDEM algorithm provider" href="../taudem/index.html" />
+    <link rel="prev" title="24.2.8. Vector miscellaneous" href="../gdal/vectormiscellaneous.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/lidartools/lastools.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">24. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">24.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">24.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">24.3. LAStools algorithm provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#blast2dem">24.3.1. blast2dem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blast2iso">24.3.2. blast2iso</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2dem">24.3.3. las2dem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2iso">24.3.4. las2iso</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2las-filter">24.3.5. las2las_filter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2las-project">24.3.6. las2las_project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2las-transform">24.3.7. las2las_transform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#las2txt">24.3.8. las2txt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasindex">24.3.9. lasindex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasgrid">24.3.10. lasgrid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasinfo">24.3.11. lasinfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasmerge">24.3.12. lasmerge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasprecision">24.3.13. lasprecision</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasquery">24.3.14. lasquery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lasvalidate">24.3.15. lasvalidate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#laszip">24.3.16. laszip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#txt2las">24.3.17. txt2las</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">24.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">24.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">24. </span>Processing providers and algorithms</a> &raquo;</li>
+      <li><span class="section-number">24.3. </span>LAStools algorithm provider</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/lidartools/lastools.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../gdal/vectormiscellaneous.html" class="btn btn-neutral float-left" title="24.2.8. Vector miscellaneous" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../taudem/index.html" class="btn btn-neutral float-right" title="24.4. TauDEM algorithm provider" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lastools-algorithm-provider">
+<h1><span class="section-number">24.3. </span>LAStools algorithm provider<a class="headerlink" href="#lastools-algorithm-provider" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://rapidlasso.com/lastools/">LAStools</a> is a collection of
+highly efficient, multicore command line tools for LiDAR data
+processing.</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#blast2dem" id="id63">blast2dem</a></p></li>
+<li><p><a class="reference internal" href="#blast2iso" id="id64">blast2iso</a></p></li>
+<li><p><a class="reference internal" href="#las2dem" id="id65">las2dem</a></p></li>
+<li><p><a class="reference internal" href="#las2iso" id="id66">las2iso</a></p></li>
+<li><p><a class="reference internal" href="#las2las-filter" id="id67">las2las_filter</a></p></li>
+<li><p><a class="reference internal" href="#las2las-project" id="id68">las2las_project</a></p></li>
+<li><p><a class="reference internal" href="#las2las-transform" id="id69">las2las_transform</a></p></li>
+<li><p><a class="reference internal" href="#las2txt" id="id70">las2txt</a></p></li>
+<li><p><a class="reference internal" href="#lasindex" id="id71">lasindex</a></p></li>
+<li><p><a class="reference internal" href="#lasgrid" id="id72">lasgrid</a></p></li>
+<li><p><a class="reference internal" href="#lasinfo" id="id73">lasinfo</a></p></li>
+<li><p><a class="reference internal" href="#lasmerge" id="id74">lasmerge</a></p></li>
+<li><p><a class="reference internal" href="#lasprecision" id="id75">lasprecision</a></p></li>
+<li><p><a class="reference internal" href="#lasquery" id="id76">lasquery</a></p></li>
+<li><p><a class="reference internal" href="#lasvalidate" id="id77">lasvalidate</a></p></li>
+<li><p><a class="reference internal" href="#laszip" id="id78">laszip</a></p></li>
+<li><p><a class="reference internal" href="#txt2las" id="id79">txt2las</a></p></li>
+</ul>
+</div>
+<section id="blast2dem">
+<span id="lastoolsblast2dem"></span><h2><a class="toc-backref" href="#id63"><span class="section-number">24.3.1. </span>blast2dem</a><a class="headerlink" href="#blast2dem" title="Permalink to this headline"></a></h2>
+<section id="description">
+<h3><span class="section-number">24.3.1.1. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h3>
+<p>Turns points (up to billions) via seamless Delaunay triangulation
+implemented using streaming into large elevation, intensity, or RGB
+rasters.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/blast/blast2dem">blast2dem</a> page and
+its online
+<a class="reference external" href="http://lastools.org/download/blast2dem_README.txt">README</a> file.</p>
+</section>
+<section id="parameters">
+<h3><span class="section-number">24.3.1.2. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be rastered in
+LAS/LAZ format.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>filter (by return, classification, flag)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_RETURN_CLASS_FLAGS1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies which points to use to construct the temporary
+TIN that is then rasterized.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — keep_last</p></li>
+<li><p>2 — keep_first</p></li>
+<li><p>3 — keep_middle</p></li>
+<li><p>4 — keep_single</p></li>
+<li><p>5 — drop_single</p></li>
+<li><p>6 — keep_double</p></li>
+<li><p>7 — keep_class 2</p></li>
+<li><p>8 — keep_class 2 8</p></li>
+<li><p>9 — keep_class 8</p></li>
+<li><p>10 — keep_class 6</p></li>
+<li><p>11 — keep_class 9</p></li>
+<li><p>12 — keep_class 3 4 5</p></li>
+<li><p>13 — keep_class 2 6</p></li>
+<li><p>14 — drop_class 7</p></li>
+<li><p>15 — drop_withheld</p></li>
+<li><p>16 — drop_synthetic</p></li>
+<li><p>17 — drop_overlap</p></li>
+<li><p>18 — keep_withheld</p></li>
+<li><p>19 — keep_synthetic</p></li>
+<li><p>20 — keep_keypoint</p></li>
+<li><p>21 — keep_overlap</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>step size / pixel size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STEP</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Specifies the size of the cells of the grid
+the TIN is rasterized onto</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies the attribute that is to be rastered.
+One of:</p>
+<ul class="simple">
+<li><p>0 — elevation</p></li>
+<li><p>1 — slope</p></li>
+<li><p>2 — intensity</p></li>
+<li><p>3 — rgb</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Product</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies how the attribute is to be turned
+into raster values.
+One of:</p>
+<ul class="simple">
+<li><p>0 — actual values</p></li>
+<li><p>1 — hillshade</p></li>
+<li><p>2 — gray</p></li>
+<li><p>3 — false</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use tile bounding box (after tiling with buffer)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USE_TILE_BB</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Specifies to limit the rastered area to the tile
+bounding box (only meaningful for input LAS/LAZ
+tiles that were created with lastile).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output raster is stored.
+Use image rasters like TIF, PNG, and JPG for false color,
+gray ramps, and hillshades.
+Use value rasters like TIF, BIL, IMG, ASC, DTM, FLT, XYZ,
+and CSV for actual values.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">24.3.1.3. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">24.3.1.4. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:blast2dem</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="blast2iso">
+<span id="lastoolsblast2iso"></span><h2><a class="toc-backref" href="#id64"><span class="section-number">24.3.2. </span>blast2iso</a><a class="headerlink" href="#blast2iso" title="Permalink to this headline"></a></h2>
+<section id="id2">
+<h3><span class="section-number">24.3.2.1. </span>Description<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<p>Turns points (up to billions) via seamless Delaunay triangulation
+implemented using streaming into iso-contour lines.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/blast/blast2iso">blast2iso</a> page and
+its online
+<a class="reference external" href="http://lastools.org/download/blast2iso_README.txt">README</a> file.</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">24.3.2.2. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be used for creating
+iso-contour lines.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>smooth underlying TIN</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies if and with how many passes the temporary
+TIN should be smoothed</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>extract isoline with a spacing of</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ISO_EVERY</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10.0</p>
+</td>
+<td><p>Specifies spacing at which iso-contour lines are getting
+extracted (contour interval)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>clean isolines shorter than (0 = do not clean)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLEAN</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Omits iso-contour lines that are shorter than the specified
+length</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>simplify segments shorter than (0 = do not simplify)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIMPLIFY_LENGTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Rudimentary simplification of iso-contour line segments
+that are shorter than the specified length.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>simplify segment pairs with area less than (0 = do not simplify)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIMPLIFY_AREA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Rudimentary simplification of bumps formed by
+consecutive line segments whose area is smaller than the
+specified size.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output vector file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_VECTOR</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output vector is stored.
+Use SHP or WKT output files.
+If your input LiDAR file is in geographic coordinates
+(long/lat) or has geo-referencing information (but
+only then) you can also create a KML output file.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">24.3.2.3. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output vector file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_VECTOR</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The output line vector layer with contours</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">24.3.2.4. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:blast2iso</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2dem">
+<span id="lastoolslas2dem"></span><h2><a class="toc-backref" href="#id65"><span class="section-number">24.3.3. </span>las2dem</a><a class="headerlink" href="#las2dem" title="Permalink to this headline"></a></h2>
+<section id="id7">
+<h3><span class="section-number">24.3.3.1. </span>Description<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<p>Turns points (up to 20 million) via a temporary Delaunay triangulation
+that is rasterized with a user-defined step size into an elevation,
+intensity, or RGB raster.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/lastools/las2dem">las2dem</a>
+page and its online
+<a class="reference external" href="http://lastools.org/download/las2dem_README.txt">README</a> file.</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">24.3.3.2. </span>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be rastered in
+LAS/LAZ format.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>filter (by return, classification, flags)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_RETURN_CLASS_FLAGS1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies which points to use to construct the temporary
+TIN that is then rasterized.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — keep_last</p></li>
+<li><p>2 — keep_first</p></li>
+<li><p>3 — keep_middle</p></li>
+<li><p>4 — keep_single</p></li>
+<li><p>5 — drop_single</p></li>
+<li><p>6 — keep_double</p></li>
+<li><p>7 — keep_class 2</p></li>
+<li><p>8 — keep_class 2 8</p></li>
+<li><p>9 — keep_class 8</p></li>
+<li><p>10 — keep_class 6</p></li>
+<li><p>11 — keep_class 9</p></li>
+<li><p>12 — keep_class 3 4 5</p></li>
+<li><p>13 — keep_class 3</p></li>
+<li><p>14 — keep_class 4</p></li>
+<li><p>15 — keep_class 5</p></li>
+<li><p>16 — keep_class 2 6</p></li>
+<li><p>17 — drop_class 7</p></li>
+<li><p>18 — drop_withheld</p></li>
+<li><p>19 — drop_synthetic</p></li>
+<li><p>20 — drop_overlap</p></li>
+<li><p>21 — keep_withheld</p></li>
+<li><p>22 — keep_synthetic</p></li>
+<li><p>23 — keep_keypoint</p></li>
+<li><p>24 — keep_overlap</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>step size / pixel size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STEP</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Specifies the size of the cells of the grid
+the TIN is rasterized onto</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies the attribute to rasterise.
+One of:</p>
+<ul class="simple">
+<li><p>0 — elevation</p></li>
+<li><p>1 — slope</p></li>
+<li><p>2 — intensity</p></li>
+<li><p>3 — rgb</p></li>
+<li><p>4 — edge_longest</p></li>
+<li><p>5 — edge_shortest</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Product</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PRODUCT</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies how the attribute is to be turned
+into raster values.
+One of:</p>
+<ul class="simple">
+<li><p>0 — actual values</p></li>
+<li><p>1 — hillshade</p></li>
+<li><p>2 — gray</p></li>
+<li><p>3 — false</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Use tile bounding box (after tiling with buffer)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USE_TILE_BB</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Specifies to limit the rastered area to the tile
+bounding box (only meaningful for input LAS/LAZ
+tiles that were created with lastile).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output raster is stored.
+Use image rasters like TIF, PNG, and JPG for false color,
+gray ramps, and hillshades.
+Use value rasters like TIF, BIL, IMG, ASC, DTM, FLT, XYZ,
+and CSV for actual values.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id10">
+<h3><span class="section-number">24.3.3.3. </span>Outputs<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">24.3.3.4. </span>Python code<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2dem</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2iso">
+<span id="lastoolslas2iso"></span><h2><a class="toc-backref" href="#id66"><span class="section-number">24.3.4. </span>las2iso</a><a class="headerlink" href="#las2iso" title="Permalink to this headline"></a></h2>
+<section id="id12">
+<h3><span class="section-number">24.3.4.1. </span>Description<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p>Turns point clouds (up to 20 million per file) into iso-contour lines
+by creating a temporary Delaunay triangulation on which the contours
+are then traced.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/lastools/las2iso">las2iso</a> page and its
+online <a class="reference external" href="http://lastools.org/download/las2iso_README.txt">README</a>
+file.</p>
+</section>
+<section id="id14">
+<h3><span class="section-number">24.3.4.2. </span>Parameters<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be used for creating
+iso-contour lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>smooth underlying TIN</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies if and with how many passes the temporary
+TIN should be smoothed</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>extract isoline with a spacing of</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ISO_EVERY</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10.0</p>
+</td>
+<td><p>Specifies spacing at which iso-contour lines are getting
+extracted (contour interval)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>clean isolines shorter than (0 = do not clean)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CLEAN</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Omits iso-contour lines that are shorter than the specified
+length</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>simplify segments shorter than (0 = do not simplify)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIMPLIFY_LENGTH</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Rudimentary simplification of iso-contour line segments
+that are shorter than the specified length.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>simplify segment pairs with area less than (0 = do not simplify)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SIMPLIFY_AREA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.0</p>
+</td>
+<td><p>Rudimentary simplification of bumps formed by
+consecutive line segments whose area is smaller than the
+specified size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output vector file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_VECTOR</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output vector is stored.
+Use SHP or WKT output files.
+If your input LiDAR file is in geographic coordinates
+(long/lat) or has geo-referencing information (but
+only then) you can also create a KML output file.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">24.3.4.3. </span>Outputs<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output vector file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_VECTOR</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The output line vector layer with contours</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id16">
+<h3><span class="section-number">24.3.4.4. </span>Python code<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2iso</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2las-filter">
+<span id="lastoolslas2las-filter"></span><h2><a class="toc-backref" href="#id67"><span class="section-number">24.3.5. </span>las2las_filter</a><a class="headerlink" href="#las2las-filter" title="Permalink to this headline"></a></h2>
+<section id="id17">
+<h3><span class="section-number">24.3.5.1. </span>Description<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<p>Uses las2las to filter LiDAR points based on different attributes and
+to write the surviving subset of points to a new LAZ or LAS file.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/lastools/las2las">las2las</a> page and its
+online <a class="reference external" href="http://lastools.org/download/las2las_README.txt">README</a>
+file.</p>
+</section>
+<section id="id18">
+<h3><span class="section-number">24.3.5.2. </span>Parameters<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be used for creating
+iso-contour lines.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>filter (by return, classification, flags)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_RETURN_CLASS_FLAGS1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Filters points based on various options such as return,
+classification, or flags.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — keep_last</p></li>
+<li><p>2 — keep_first</p></li>
+<li><p>3 — keep_middle</p></li>
+<li><p>4 — keep_single</p></li>
+<li><p>5 — drop_single</p></li>
+<li><p>6 — keep_double</p></li>
+<li><p>7 — keep_class 2</p></li>
+<li><p>8 — keep_class 2 8</p></li>
+<li><p>9 — keep_class 8</p></li>
+<li><p>10 — keep_class 6</p></li>
+<li><p>11 — keep_class 9</p></li>
+<li><p>12 — keep_class 3 4 5</p></li>
+<li><p>13 — keep_class 3</p></li>
+<li><p>14 — keep_class 4</p></li>
+<li><p>15 — keep_class 5</p></li>
+<li><p>16 — keep_class 2 6</p></li>
+<li><p>17 — drop_class 7</p></li>
+<li><p>18 — drop_withheld</p></li>
+<li><p>19 — drop_synthetic</p></li>
+<li><p>20 — drop_overlap</p></li>
+<li><p>21 — keep_withheld</p></li>
+<li><p>22 — keep_synthetic</p></li>
+<li><p>23 — keep_keypoint</p></li>
+<li><p>24 — keep_overlap</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>second filter (by return, classification, flags)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_RETURN_CLASS_FLAGS2</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Filters points based on various options such as return,
+classification, or flags.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — keep_last</p></li>
+<li><p>2 — keep_first</p></li>
+<li><p>3 — keep_middle</p></li>
+<li><p>4 — keep_single</p></li>
+<li><p>5 — drop_single</p></li>
+<li><p>6 — keep_double</p></li>
+<li><p>7 — keep_class 2</p></li>
+<li><p>8 — keep_class 2 8</p></li>
+<li><p>9 — keep_class 8</p></li>
+<li><p>10 — keep_class 6</p></li>
+<li><p>11 — keep_class 9</p></li>
+<li><p>12 — keep_class 3 4 5</p></li>
+<li><p>13 — keep_class 3</p></li>
+<li><p>14 — keep_class 4</p></li>
+<li><p>15 — keep_class 5</p></li>
+<li><p>16 — keep_class 2 6</p></li>
+<li><p>17 — drop_class 7</p></li>
+<li><p>18 — drop_withheld</p></li>
+<li><p>19 — drop_synthetic</p></li>
+<li><p>20 — drop_overlap</p></li>
+<li><p>21 — keep_withheld</p></li>
+<li><p>22 — keep_synthetic</p></li>
+<li><p>23 — keep_keypoint</p></li>
+<li><p>24 — keep_overlap</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>filter (by coordinate, intensity, GPS time, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_COORDS_INTENSITY1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Filters points based on various other options (that require a
+value as argument).
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — drop_x_above</p></li>
+<li><p>2 — drop_x_below</p></li>
+<li><p>3 — drop_y_above</p></li>
+<li><p>4 — drop_y_below</p></li>
+<li><p>5 — drop_z_above</p></li>
+<li><p>6 — drop_z_below</p></li>
+<li><p>7 — drop_intensity_above</p></li>
+<li><p>8 — drop_intensity_below</p></li>
+<li><p>9 — drop_gps_time_above</p></li>
+<li><p>10 — drop_gps_time_below</p></li>
+<li><p>11 — drop_scan_angle_above</p></li>
+<li><p>12 — drop_scan_angle_below</p></li>
+<li><p>13 — keep_point_source</p></li>
+<li><p>14 — drop_point_source</p></li>
+<li><p>15 — drop_point_source_above</p></li>
+<li><p>16 — drop_point_source_below</p></li>
+<li><p>17 — keep_user_data</p></li>
+<li><p>18 — drop_user_data</p></li>
+<li><p>19 — drop_user_data_above</p></li>
+<li><p>20 — drop_user_data_below</p></li>
+<li><p>21 — keep_every_nth</p></li>
+<li><p>22 — keep_random_fraction</p></li>
+<li><p>23 — thin_with_grid</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for filter (by coordinate, intensity, GPS time, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_COORDS_INTENSITY1_ARG</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: None</p>
+</td>
+<td><p>The value to use as the argument for the filter selected above</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>second filter (by coordinate, intensity, GPS time, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_COORDS_INTENSITY2</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Filters points based on various other options (that require a
+value as argument).
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — drop_x_above</p></li>
+<li><p>2 — drop_x_below</p></li>
+<li><p>3 — drop_y_above</p></li>
+<li><p>4 — drop_y_below</p></li>
+<li><p>5 — drop_z_above</p></li>
+<li><p>6 — drop_z_below</p></li>
+<li><p>7 — drop_intensity_above</p></li>
+<li><p>8 — drop_intensity_below</p></li>
+<li><p>9 — drop_gps_time_above</p></li>
+<li><p>10 — drop_gps_time_below</p></li>
+<li><p>11 — drop_scan_angle_above</p></li>
+<li><p>12 — drop_scan_angle_below</p></li>
+<li><p>13 — keep_point_source</p></li>
+<li><p>14 — drop_point_source</p></li>
+<li><p>15 — drop_point_source_above</p></li>
+<li><p>16 — drop_point_source_below</p></li>
+<li><p>17 — keep_user_data</p></li>
+<li><p>18 — drop_user_data</p></li>
+<li><p>19 — drop_user_data_above</p></li>
+<li><p>20 — drop_user_data_below</p></li>
+<li><p>21 — keep_every_nth</p></li>
+<li><p>22 — keep_random_fraction</p></li>
+<li><p>23 — thin_with_grid</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for second filter (by coordinate, intensity, GPS time, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_COORDS_INTENSITY2_ARG</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: None</p>
+</td>
+<td><p>The value to use as the argument for the filter selected above</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output point cloud is stored. Use LAZ for
+compressed output,
+LAS for uncompressed output, and TXT for ASCII.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id19">
+<h3><span class="section-number">24.3.5.3. </span>Outputs<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output LAS/LAZ format file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><span class="section-number">24.3.5.4. </span>Python code<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2las_filter</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2las-project">
+<span id="lastoolslas2las-project"></span><h2><a class="toc-backref" href="#id68"><span class="section-number">24.3.6. </span>las2las_project</a><a class="headerlink" href="#las2las-project" title="Permalink to this headline"></a></h2>
+<p>Transform LAS/LAZ files in a folder to another CRS.</p>
+<section id="id21">
+<h3><span class="section-number">24.3.6.1. </span>Parameters<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>Input LAS/LAZ file</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>source projection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SOURCE_PROJECTION</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — epsg</p></li>
+<li><p>2 — utm</p></li>
+<li><p>3 — sp83</p></li>
+<li><p>4 — sp27</p></li>
+<li><p>5 — longlat</p></li>
+<li><p>6 — latlong</p></li>
+<li><p>7 — ecef</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>source utm zone</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SOURCE_UTM</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — 1 (north)</p></li>
+<li><p>2 — 2 (north)</p></li>
+<li><p>3 — 3 (north)</p></li>
+<li><p>4 — 4 (north)</p></li>
+<li><p>5 — 5 (north)</p></li>
+<li><p>6 — 6 (north)</p></li>
+<li><p>7 — 7 (north)</p></li>
+<li><p>8 — 8 (north)</p></li>
+<li><p>9 — 9 (north)</p></li>
+<li><p>10 — 10 (north)</p></li>
+<li><p>11 — 11 (north)</p></li>
+<li><p>12 — 12 (north)</p></li>
+<li><p>13 — 13 (north)</p></li>
+<li><p>14 — 14 (north)</p></li>
+<li><p>15 — 15 (north)</p></li>
+<li><p>16 — 16 (north)</p></li>
+<li><p>17 — 17 (north)</p></li>
+<li><p>18 — 18 (north)</p></li>
+<li><p>19 — 19 (north)</p></li>
+<li><p>20 — 20 (north)</p></li>
+<li><p>21 — 21 (north)</p></li>
+<li><p>22 — 22 (north)</p></li>
+<li><p>23 — 23 (north)</p></li>
+<li><p>24 — 24 (north)</p></li>
+<li><p>25 — 25 (north)</p></li>
+<li><p>26 — 26 (north)</p></li>
+<li><p>27 — 27 (north)</p></li>
+<li><p>28 — 28 (north)</p></li>
+<li><p>29 — 29 (north)</p></li>
+<li><p>30 — 30 (north)</p></li>
+<li><p>31 — 31 (north)</p></li>
+<li><p>32 — 32 (north)</p></li>
+<li><p>33 — 33 (north)</p></li>
+<li><p>34 — 34 (north)</p></li>
+<li><p>35 — 35 (north)</p></li>
+<li><p>36 — 36 (north)</p></li>
+<li><p>37 — 37 (north)</p></li>
+<li><p>38 — 38 (north)</p></li>
+<li><p>39 — 39 (north)</p></li>
+<li><p>40 — 40 (north)</p></li>
+<li><p>41 — 41 (north)</p></li>
+<li><p>42 — 42 (north)</p></li>
+<li><p>43 — 43 (north)</p></li>
+<li><p>44 — 44 (north)</p></li>
+<li><p>45 — 45 (north)</p></li>
+<li><p>46 — 46 (north)</p></li>
+<li><p>47 — 47 (north)</p></li>
+<li><p>48 — 48 (north)</p></li>
+<li><p>49 — 49 (north)</p></li>
+<li><p>50 — 50 (north)</p></li>
+<li><p>51 — 51 (north)</p></li>
+<li><p>52 — 52 (north)</p></li>
+<li><p>53 — 53 (north)</p></li>
+<li><p>54 — 54 (north)</p></li>
+<li><p>55 — 55 (north)</p></li>
+<li><p>56 — 56 (north)</p></li>
+<li><p>57 — 57 (north)</p></li>
+<li><p>58 — 58 (north)</p></li>
+<li><p>59 — 59 (north)</p></li>
+<li><p>60 — 60 (north)</p></li>
+<li><p>61 — 1 (south)</p></li>
+<li><p>62 — 2 (south)</p></li>
+<li><p>63 — 3 (south)</p></li>
+<li><p>64 — 4 (south)</p></li>
+<li><p>65 — 5 (south)</p></li>
+<li><p>66 — 6 (south)</p></li>
+<li><p>67 — 7 (south)</p></li>
+<li><p>68 — 8 (south)</p></li>
+<li><p>69 — 9 (south)</p></li>
+<li><p>70 — 10 (south)</p></li>
+<li><p>71 — 11 (south)</p></li>
+<li><p>72 — 12 (south)</p></li>
+<li><p>73 — 13 (south)</p></li>
+<li><p>74 — 14 (south)</p></li>
+<li><p>75 — 15 (south)</p></li>
+<li><p>76 — 16 (south)</p></li>
+<li><p>77 — 17 (south)</p></li>
+<li><p>78 — 18 (south)</p></li>
+<li><p>79 — 19 (south)</p></li>
+<li><p>80 — 20 (south)</p></li>
+<li><p>81 — 21 (south)</p></li>
+<li><p>82 — 22 (south)</p></li>
+<li><p>83 — 23 (south)</p></li>
+<li><p>84 — 24 (south)</p></li>
+<li><p>85 — 25 (south)</p></li>
+<li><p>86 — 26 (south)</p></li>
+<li><p>87 — 27 (south)</p></li>
+<li><p>88 — 28 (south)</p></li>
+<li><p>89 — 29 (south)</p></li>
+<li><p>90 — 30 (south)</p></li>
+<li><p>91 — 31 (south)</p></li>
+<li><p>92 — 32 (south)</p></li>
+<li><p>93 — 33 (south)</p></li>
+<li><p>94 — 34 (south)</p></li>
+<li><p>95 — 35 (south)</p></li>
+<li><p>96 — 36 (south)</p></li>
+<li><p>97 — 37 (south)</p></li>
+<li><p>98 — 38 (south)</p></li>
+<li><p>99 — 39 (south)</p></li>
+<li><p>100 — 40 (south)</p></li>
+<li><p>101 — 41 (south)</p></li>
+<li><p>102 — 42 (south)</p></li>
+<li><p>103 — 43 (south)</p></li>
+<li><p>104 — 44 (south)</p></li>
+<li><p>105 — 45 (south)</p></li>
+<li><p>106 — 46 (south)</p></li>
+<li><p>107 — 47 (south)</p></li>
+<li><p>108 — 48 (south)</p></li>
+<li><p>109 — 49 (south)</p></li>
+<li><p>110 — 50 (south)</p></li>
+<li><p>111 — 51 (south)</p></li>
+<li><p>112 — 52 (south)</p></li>
+<li><p>113 — 53 (south)</p></li>
+<li><p>114 — 54 (south)</p></li>
+<li><p>115 — 55 (south)</p></li>
+<li><p>116 — 56 (south)</p></li>
+<li><p>117 — 57 (south)</p></li>
+<li><p>118 — 58 (south)</p></li>
+<li><p>119 — 59 (south)</p></li>
+<li><p>120 — 60 (south)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>source state plane code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SOURCE_SP</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — AK_10</p></li>
+<li><p>2 — AK_2</p></li>
+<li><p>3 — AK_3</p></li>
+<li><p>4 — AK_4</p></li>
+<li><p>5 — AK_5</p></li>
+<li><p>6 — AK_6</p></li>
+<li><p>7 — AK_7</p></li>
+<li><p>8 — AK_8</p></li>
+<li><p>9 — AK_9</p></li>
+<li><p>10 — AL_E</p></li>
+<li><p>11 — AL_W</p></li>
+<li><p>12 — AR_N</p></li>
+<li><p>13 — AR_S</p></li>
+<li><p>14 — AZ_C</p></li>
+<li><p>15 — AZ_E</p></li>
+<li><p>16 — AZ_W</p></li>
+<li><p>17 — CA_I</p></li>
+<li><p>18 — CA_II</p></li>
+<li><p>19 — CA_III</p></li>
+<li><p>20 — CA_IV</p></li>
+<li><p>21 — CA_V</p></li>
+<li><p>22 — CA_VI</p></li>
+<li><p>23 — CA_VII</p></li>
+<li><p>24 — CO_C</p></li>
+<li><p>25 — CO_N</p></li>
+<li><p>26 — CO_S</p></li>
+<li><p>27 — CT</p></li>
+<li><p>28 — DE</p></li>
+<li><p>29 — FL_E</p></li>
+<li><p>30 — FL_N</p></li>
+<li><p>31 — FL_W</p></li>
+<li><p>32 — GA_E</p></li>
+<li><p>33 — GA_W</p></li>
+<li><p>34 — HI_1</p></li>
+<li><p>35 — HI_2</p></li>
+<li><p>36 — HI_3</p></li>
+<li><p>37 — HI_4</p></li>
+<li><p>38 — HI_5</p></li>
+<li><p>39 — IA_N</p></li>
+<li><p>40 — IA_S</p></li>
+<li><p>41 — ID_C</p></li>
+<li><p>42 — ID_E</p></li>
+<li><p>43 — ID_W</p></li>
+<li><p>44 — IL_E</p></li>
+<li><p>45 — IL_W</p></li>
+<li><p>46 — IN_E</p></li>
+<li><p>47 — IN_W</p></li>
+<li><p>48 — KS_N</p></li>
+<li><p>49 — KS_S</p></li>
+<li><p>50 — KY_N</p></li>
+<li><p>51 — KY_S</p></li>
+<li><p>52 — LA_N</p></li>
+<li><p>53 — LA_S</p></li>
+<li><p>54 — MA_I</p></li>
+<li><p>55 — MA_M</p></li>
+<li><p>56 — MD</p></li>
+<li><p>57 — ME_E</p></li>
+<li><p>58 — ME_W</p></li>
+<li><p>59 — MI_C</p></li>
+<li><p>60 — MI_N</p></li>
+<li><p>61 — MI_S</p></li>
+<li><p>62 — MN_C</p></li>
+<li><p>63 — MN_N</p></li>
+<li><p>64 — MN_S</p></li>
+<li><p>65 — MO_C</p></li>
+<li><p>66 — MO_E</p></li>
+<li><p>67 — MO_W</p></li>
+<li><p>68 — MS_E</p></li>
+<li><p>69 — MS_W</p></li>
+<li><p>70 — MT_C</p></li>
+<li><p>71 — MT_N</p></li>
+<li><p>72 — MT_S</p></li>
+<li><p>73 — NC</p></li>
+<li><p>74 — ND_N</p></li>
+<li><p>75 — ND_S</p></li>
+<li><p>76 — NE_N</p></li>
+<li><p>77 — NE_S</p></li>
+<li><p>78 — NH</p></li>
+<li><p>79 — NJ</p></li>
+<li><p>80 — NM_C</p></li>
+<li><p>81 — NM_E</p></li>
+<li><p>82 — NM_W</p></li>
+<li><p>83 — NV_C</p></li>
+<li><p>84 — NV_E</p></li>
+<li><p>85 — NV_W</p></li>
+<li><p>86 — NY_C</p></li>
+<li><p>87 — NY_E</p></li>
+<li><p>88 — NY_LI</p></li>
+<li><p>89 — NY_W</p></li>
+<li><p>90 — OH_N</p></li>
+<li><p>91 — OH_S</p></li>
+<li><p>92 — OK_N</p></li>
+<li><p>93 — OK_S</p></li>
+<li><p>94 — OR_N</p></li>
+<li><p>95 — OR_S</p></li>
+<li><p>96 — PA_N</p></li>
+<li><p>97 — PA_S</p></li>
+<li><p>98 — PR</p></li>
+<li><p>99 — RI</p></li>
+<li><p>100 — SC_N</p></li>
+<li><p>101 — SC_S</p></li>
+<li><p>102 — SD_N</p></li>
+<li><p>103 — SD_S</p></li>
+<li><p>104 — St.Croix</p></li>
+<li><p>105 — TN</p></li>
+<li><p>106 — TX_C</p></li>
+<li><p>107 — TX_N</p></li>
+<li><p>108 — TX_NC</p></li>
+<li><p>109 — TX_S</p></li>
+<li><p>110 — TX_SC</p></li>
+<li><p>111 — UT_C</p></li>
+<li><p>112 — UT_N</p></li>
+<li><p>113 — UT_S</p></li>
+<li><p>114 — VA_N</p></li>
+<li><p>115 — VA_S</p></li>
+<li><p>116 — VT</p></li>
+<li><p>117 — WA_N</p></li>
+<li><p>118 — WA_S</p></li>
+<li><p>119 — WI_C</p></li>
+<li><p>120 — WI_N</p></li>
+<li><p>121 — WI_S</p></li>
+<li><p>122 — WV_N</p></li>
+<li><p>123 — WV_S</p></li>
+<li><p>124 — WY_E</p></li>
+<li><p>125 — WY_EC</p></li>
+<li><p>126 — WY_W</p></li>
+<li><p>127 — WY_WC</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>target projection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_PROJECTION</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — epsg</p></li>
+<li><p>2 — utm</p></li>
+<li><p>3 — sp83</p></li>
+<li><p>4 — sp27</p></li>
+<li><p>5 — longlat</p></li>
+<li><p>6 — latlong</p></li>
+<li><p>7 — ecef</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>target utm zone</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_UTM</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — 1 (north)</p></li>
+<li><p>2 — 2 (north)</p></li>
+<li><p>3 — 3 (north)</p></li>
+<li><p>4 — 4 (north)</p></li>
+<li><p>5 — 5 (north)</p></li>
+<li><p>6 — 6 (north)</p></li>
+<li><p>7 — 7 (north)</p></li>
+<li><p>8 — 8 (north)</p></li>
+<li><p>9 — 9 (north)</p></li>
+<li><p>10 — 10 (north)</p></li>
+<li><p>11 — 11 (north)</p></li>
+<li><p>12 — 12 (north)</p></li>
+<li><p>13 — 13 (north)</p></li>
+<li><p>14 — 14 (north)</p></li>
+<li><p>15 — 15 (north)</p></li>
+<li><p>16 — 16 (north)</p></li>
+<li><p>17 — 17 (north)</p></li>
+<li><p>18 — 18 (north)</p></li>
+<li><p>19 — 19 (north)</p></li>
+<li><p>20 — 20 (north)</p></li>
+<li><p>21 — 21 (north)</p></li>
+<li><p>22 — 22 (north)</p></li>
+<li><p>23 — 23 (north)</p></li>
+<li><p>24 — 24 (north)</p></li>
+<li><p>25 — 25 (north)</p></li>
+<li><p>26 — 26 (north)</p></li>
+<li><p>27 — 27 (north)</p></li>
+<li><p>28 — 28 (north)</p></li>
+<li><p>29 — 29 (north)</p></li>
+<li><p>30 — 30 (north)</p></li>
+<li><p>31 — 31 (north)</p></li>
+<li><p>32 — 32 (north)</p></li>
+<li><p>33 — 33 (north)</p></li>
+<li><p>34 — 34 (north)</p></li>
+<li><p>35 — 35 (north)</p></li>
+<li><p>36 — 36 (north)</p></li>
+<li><p>37 — 37 (north)</p></li>
+<li><p>38 — 38 (north)</p></li>
+<li><p>39 — 39 (north)</p></li>
+<li><p>40 — 40 (north)</p></li>
+<li><p>41 — 41 (north)</p></li>
+<li><p>42 — 42 (north)</p></li>
+<li><p>43 — 43 (north)</p></li>
+<li><p>44 — 44 (north)</p></li>
+<li><p>45 — 45 (north)</p></li>
+<li><p>46 — 46 (north)</p></li>
+<li><p>47 — 47 (north)</p></li>
+<li><p>48 — 48 (north)</p></li>
+<li><p>49 — 49 (north)</p></li>
+<li><p>50 — 50 (north)</p></li>
+<li><p>51 — 51 (north)</p></li>
+<li><p>52 — 52 (north)</p></li>
+<li><p>53 — 53 (north)</p></li>
+<li><p>54 — 54 (north)</p></li>
+<li><p>55 — 55 (north)</p></li>
+<li><p>56 — 56 (north)</p></li>
+<li><p>57 — 57 (north)</p></li>
+<li><p>58 — 58 (north)</p></li>
+<li><p>59 — 59 (north)</p></li>
+<li><p>60 — 60 (north)</p></li>
+<li><p>61 — 1 (south)</p></li>
+<li><p>62 — 2 (south)</p></li>
+<li><p>63 — 3 (south)</p></li>
+<li><p>64 — 4 (south)</p></li>
+<li><p>65 — 5 (south)</p></li>
+<li><p>66 — 6 (south)</p></li>
+<li><p>67 — 7 (south)</p></li>
+<li><p>68 — 8 (south)</p></li>
+<li><p>69 — 9 (south)</p></li>
+<li><p>70 — 10 (south)</p></li>
+<li><p>71 — 11 (south)</p></li>
+<li><p>72 — 12 (south)</p></li>
+<li><p>73 — 13 (south)</p></li>
+<li><p>74 — 14 (south)</p></li>
+<li><p>75 — 15 (south)</p></li>
+<li><p>76 — 16 (south)</p></li>
+<li><p>77 — 17 (south)</p></li>
+<li><p>78 — 18 (south)</p></li>
+<li><p>79 — 19 (south)</p></li>
+<li><p>80 — 20 (south)</p></li>
+<li><p>81 — 21 (south)</p></li>
+<li><p>82 — 22 (south)</p></li>
+<li><p>83 — 23 (south)</p></li>
+<li><p>84 — 24 (south)</p></li>
+<li><p>85 — 25 (south)</p></li>
+<li><p>86 — 26 (south)</p></li>
+<li><p>87 — 27 (south)</p></li>
+<li><p>88 — 28 (south)</p></li>
+<li><p>89 — 29 (south)</p></li>
+<li><p>90 — 30 (south)</p></li>
+<li><p>91 — 31 (south)</p></li>
+<li><p>92 — 32 (south)</p></li>
+<li><p>93 — 33 (south)</p></li>
+<li><p>94 — 34 (south)</p></li>
+<li><p>95 — 35 (south)</p></li>
+<li><p>96 — 36 (south)</p></li>
+<li><p>97 — 37 (south)</p></li>
+<li><p>98 — 38 (south)</p></li>
+<li><p>99 — 39 (south)</p></li>
+<li><p>100 — 40 (south)</p></li>
+<li><p>101 — 41 (south)</p></li>
+<li><p>102 — 42 (south)</p></li>
+<li><p>103 — 43 (south)</p></li>
+<li><p>104 — 44 (south)</p></li>
+<li><p>105 — 45 (south)</p></li>
+<li><p>106 — 46 (south)</p></li>
+<li><p>107 — 47 (south)</p></li>
+<li><p>108 — 48 (south)</p></li>
+<li><p>109 — 49 (south)</p></li>
+<li><p>110 — 50 (south)</p></li>
+<li><p>111 — 51 (south)</p></li>
+<li><p>112 — 52 (south)</p></li>
+<li><p>113 — 53 (south)</p></li>
+<li><p>114 — 54 (south)</p></li>
+<li><p>115 — 55 (south)</p></li>
+<li><p>116 — 56 (south)</p></li>
+<li><p>117 — 57 (south)</p></li>
+<li><p>118 — 58 (south)</p></li>
+<li><p>119 — 59 (south)</p></li>
+<li><p>120 — 60 (south)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>target state plane code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_SP</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — AK_10</p></li>
+<li><p>2 — AK_2</p></li>
+<li><p>3 — AK_3</p></li>
+<li><p>4 — AK_4</p></li>
+<li><p>5 — AK_5</p></li>
+<li><p>6 — AK_6</p></li>
+<li><p>7 — AK_7</p></li>
+<li><p>8 — AK_8</p></li>
+<li><p>9 — AK_9</p></li>
+<li><p>10 — AL_E</p></li>
+<li><p>11 — AL_W</p></li>
+<li><p>12 — AR_N</p></li>
+<li><p>13 — AR_S</p></li>
+<li><p>14 — AZ_C</p></li>
+<li><p>15 — AZ_E</p></li>
+<li><p>16 — AZ_W</p></li>
+<li><p>17 — CA_I</p></li>
+<li><p>18 — CA_II</p></li>
+<li><p>19 — CA_III</p></li>
+<li><p>20 — CA_IV</p></li>
+<li><p>21 — CA_V</p></li>
+<li><p>22 — CA_VI</p></li>
+<li><p>23 — CA_VII</p></li>
+<li><p>24 — CO_C</p></li>
+<li><p>25 — CO_N</p></li>
+<li><p>26 — CO_S</p></li>
+<li><p>27 — CT</p></li>
+<li><p>28 — DE</p></li>
+<li><p>29 — FL_E</p></li>
+<li><p>30 — FL_N</p></li>
+<li><p>31 — FL_W</p></li>
+<li><p>32 — GA_E</p></li>
+<li><p>33 — GA_W</p></li>
+<li><p>34 — HI_1</p></li>
+<li><p>35 — HI_2</p></li>
+<li><p>36 — HI_3</p></li>
+<li><p>37 — HI_4</p></li>
+<li><p>38 — HI_5</p></li>
+<li><p>39 — IA_N</p></li>
+<li><p>40 — IA_S</p></li>
+<li><p>41 — ID_C</p></li>
+<li><p>42 — ID_E</p></li>
+<li><p>43 — ID_W</p></li>
+<li><p>44 — IL_E</p></li>
+<li><p>45 — IL_W</p></li>
+<li><p>46 — IN_E</p></li>
+<li><p>47 — IN_W</p></li>
+<li><p>48 — KS_N</p></li>
+<li><p>49 — KS_S</p></li>
+<li><p>50 — KY_N</p></li>
+<li><p>51 — KY_S</p></li>
+<li><p>52 — LA_N</p></li>
+<li><p>53 — LA_S</p></li>
+<li><p>54 — MA_I</p></li>
+<li><p>55 — MA_M</p></li>
+<li><p>56 — MD</p></li>
+<li><p>57 — ME_E</p></li>
+<li><p>58 — ME_W</p></li>
+<li><p>59 — MI_C</p></li>
+<li><p>60 — MI_N</p></li>
+<li><p>61 — MI_S</p></li>
+<li><p>62 — MN_C</p></li>
+<li><p>63 — MN_N</p></li>
+<li><p>64 — MN_S</p></li>
+<li><p>65 — MO_C</p></li>
+<li><p>66 — MO_E</p></li>
+<li><p>67 — MO_W</p></li>
+<li><p>68 — MS_E</p></li>
+<li><p>69 — MS_W</p></li>
+<li><p>70 — MT_C</p></li>
+<li><p>71 — MT_N</p></li>
+<li><p>72 — MT_S</p></li>
+<li><p>73 — NC</p></li>
+<li><p>74 — ND_N</p></li>
+<li><p>75 — ND_S</p></li>
+<li><p>76 — NE_N</p></li>
+<li><p>77 — NE_S</p></li>
+<li><p>78 — NH</p></li>
+<li><p>79 — NJ</p></li>
+<li><p>80 — NM_C</p></li>
+<li><p>81 — NM_E</p></li>
+<li><p>82 — NM_W</p></li>
+<li><p>83 — NV_C</p></li>
+<li><p>84 — NV_E</p></li>
+<li><p>85 — NV_W</p></li>
+<li><p>86 — NY_C</p></li>
+<li><p>87 — NY_E</p></li>
+<li><p>88 — NY_LI</p></li>
+<li><p>89 — NY_W</p></li>
+<li><p>90 — OH_N</p></li>
+<li><p>91 — OH_S</p></li>
+<li><p>92 — OK_N</p></li>
+<li><p>93 — OK_S</p></li>
+<li><p>94 — OR_N</p></li>
+<li><p>95 — OR_S</p></li>
+<li><p>96 — PA_N</p></li>
+<li><p>97 — PA_S</p></li>
+<li><p>98 — PR</p></li>
+<li><p>99 — RI</p></li>
+<li><p>100 — SC_N</p></li>
+<li><p>101 — SC_S</p></li>
+<li><p>102 — SD_N</p></li>
+<li><p>103 — SD_S</p></li>
+<li><p>104 — St.Croix</p></li>
+<li><p>105 — TN</p></li>
+<li><p>106 — TX_C</p></li>
+<li><p>107 — TX_N</p></li>
+<li><p>108 — TX_NC</p></li>
+<li><p>109 — TX_S</p></li>
+<li><p>110 — TX_SC</p></li>
+<li><p>111 — UT_C</p></li>
+<li><p>112 — UT_N</p></li>
+<li><p>113 — UT_S</p></li>
+<li><p>114 — VA_N</p></li>
+<li><p>115 — VA_S</p></li>
+<li><p>116 — VT</p></li>
+<li><p>117 — WA_N</p></li>
+<li><p>118 — WA_S</p></li>
+<li><p>119 — WI_C</p></li>
+<li><p>120 — WI_N</p></li>
+<li><p>121 — WI_S</p></li>
+<li><p>122 — WV_N</p></li>
+<li><p>123 — WV_S</p></li>
+<li><p>124 — WY_E</p></li>
+<li><p>125 — WY_EC</p></li>
+<li><p>126 — WY_W</p></li>
+<li><p>127 — WY_WC</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[folder]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">folder]</span></code></p>
+</td>
+<td><p>Specifies where the folder for the output point clouds.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary Directory</p></li>
+<li><p>Save to Directory…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id22">
+<h3><span class="section-number">24.3.6.2. </span>Outputs<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output LAS/LAZ format file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3><span class="section-number">24.3.6.3. </span>Python code<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2las_project</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2las-transform">
+<span id="lastoolslas2las-transform"></span><h2><a class="toc-backref" href="#id69"><span class="section-number">24.3.7. </span>las2las_transform</a><a class="headerlink" href="#las2las-transform" title="Permalink to this headline"></a></h2>
+<section id="id24">
+<h3><span class="section-number">24.3.7.1. </span>Description<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<p>Uses las2las to filter LiDAR points based on different attributes and
+to write the surviving subset of points to a new LAZ or LAS file.</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/lastools/las2las">las2las</a> page and its
+online <a class="reference external" href="http://lastools.org/download/las2las_README.txt">README</a>
+file.</p>
+</section>
+<section id="id26">
+<h3><span class="section-number">24.3.7.2. </span>Parameters<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The first file containing points to be merged</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>transform (coordinates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_COORDINATE1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Either translate, scale, or clamp the X, Y, or Z coordinate by
+the value specified below. One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — translate_x</p></li>
+<li><p>2 — translate_y</p></li>
+<li><p>3 — translate_z</p></li>
+<li><p>4 — scale_x</p></li>
+<li><p>5 — scale_y</p></li>
+<li><p>6 — scale_z</p></li>
+<li><p>7 — clamp_z_above</p></li>
+<li><p>8 — clamp_z_below</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for transform (coordinates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_COORDINATE1_ARG</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>The value that specifies the amount of translating, scaling, or
+clamping done by the transform selected above.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>second transform (coordinates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_COORDINATE2</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Either translate, scale, or clamp the X, Y, or Z coordinate by
+the value specified below. One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — translate_x</p></li>
+<li><p>2 — translate_y</p></li>
+<li><p>3 — translate_z</p></li>
+<li><p>4 — scale_x</p></li>
+<li><p>5 — scale_y</p></li>
+<li><p>6 — scale_z</p></li>
+<li><p>7 — clamp_z_above</p></li>
+<li><p>8 — clamp_z_below</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for second transform (coordinates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_COORDINATE2_ARG</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>The value that specifies the amount of translating, scaling, or
+clamping done by the transform selected above.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>transform (intensities, scan angles, GPS times, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_OTHER1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Either translate, scale, or clamp the X, Y, or Z coordinate by
+the value specified below. One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — scale_intensity</p></li>
+<li><p>2 — translate_intensity</p></li>
+<li><p>3 — clamp_intensity_above</p></li>
+<li><p>4 — clamp_intensity_below</p></li>
+<li><p>5 — scale_scan_angle</p></li>
+<li><p>6 — translate_scan_angle</p></li>
+<li><p>7 — translate_gps_time</p></li>
+<li><p>8 — set_classification</p></li>
+<li><p>9 — set_user_data</p></li>
+<li><p>10 — set_point_source</p></li>
+<li><p>11 — scale_rgb_up</p></li>
+<li><p>12 — scale_rgb_down</p></li>
+<li><p>13 — repair_zero_returns</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for transform (intensities, scan angles, GPS times, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_OTHER1_ARG</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>The value that specifies the amount of scaling, translating,
+clamping or setting that is done by the transform selected
+above.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>second transform (intensities, scan angles, GPS times, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_OTHER2</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Either translate, scale, or clamp the X, Y, or Z coordinate by
+the value specified below. One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — scale_intensity</p></li>
+<li><p>2 — translate_intensity</p></li>
+<li><p>3 — clamp_intensity_above</p></li>
+<li><p>4 — clamp_intensity_below</p></li>
+<li><p>5 — scale_scan_angle</p></li>
+<li><p>6 — translate_scan_angle</p></li>
+<li><p>7 — translate_gps_time</p></li>
+<li><p>8 — set_classification</p></li>
+<li><p>9 — set_user_data</p></li>
+<li><p>10 — set_point_source</p></li>
+<li><p>11 — scale_rgb_up</p></li>
+<li><p>12 — scale_rgb_down</p></li>
+<li><p>13 — repair_zero_returns</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>value for second transform (intensities, scan angles, GPS times, …)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TRANSFORM_OTHER2_ARG</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>The value that specifies the amount of scaling, translating,
+clamping or setting that is done by the transform selected
+above.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>operations (first 7 need an argument)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPERATION</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — set_point_type</p></li>
+<li><p>2 — set_point_size</p></li>
+<li><p>3 — set_version_minor</p></li>
+<li><p>4 — set_version_major</p></li>
+<li><p>5 — start_at_point</p></li>
+<li><p>6 — stop_at_point</p></li>
+<li><p>7 — remove_vlr</p></li>
+<li><p>8 — auto_reoffset</p></li>
+<li><p>9 — week_to_adjusted</p></li>
+<li><p>10 — adjusted_to_week</p></li>
+<li><p>11 — auto reoffset</p></li>
+<li><p>12 — scale_rgb_up</p></li>
+<li><p>13 — scale_rgb_down</p></li>
+<li><p>14 — remove_all_vlrs</p></li>
+<li><p>15 — remove_extra</p></li>
+<li><p>16 — clip_to_bounding_box</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>argument for operation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPERATIONARG</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>The value to use as the argument for the operation selected
+above</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output point cloud is stored.
+Use LAZ for compressed output, LAS for uncompressed output,
+and TXT for ASCII.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3><span class="section-number">24.3.7.3. </span>Outputs<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output (merged) LAS/LAZ format file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id28">
+<h3><span class="section-number">24.3.7.4. </span>Python code<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2las_transform</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="las2txt">
+<span id="lastoolslas2txt"></span><h2><a class="toc-backref" href="#id70"><span class="section-number">24.3.8. </span>las2txt</a><a class="headerlink" href="#las2txt" title="Permalink to this headline"></a></h2>
+<section id="id29">
+<h3><span class="section-number">24.3.8.1. </span>Description<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<p>Translates a LAS/LAZ file to a text file.</p>
+</section>
+<section id="id30">
+<h3><span class="section-number">24.3.8.2. </span>Parameters<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: None</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse_string</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PARSE</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘xyz’</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output file.  One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id31">
+<h3><span class="section-number">24.3.8.3. </span>Outputs<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><span class="section-number">24.3.8.4. </span>Python code<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:las2txt</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasindex">
+<span id="lastoolslasindex"></span><h2><a class="toc-backref" href="#id71"><span class="section-number">24.3.9. </span>lasindex</a><a class="headerlink" href="#lasindex" title="Permalink to this headline"></a></h2>
+<section id="id33">
+<h3><span class="section-number">24.3.9.1. </span>Description<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p>&lt;put algorithm description here&gt;</p>
+</section>
+<section id="id34">
+<h3><span class="section-number">24.3.9.2. </span>Parameters<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: None</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>append *.lax file to *.laz file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">APPEND_LAX</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>is mobile or terrestrial LiDAR (not airborne)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOBILE_OR_TERRESTRIAL</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id35">
+<h3><span class="section-number">24.3.9.3. </span>Outputs<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h3>
+<p>The algorithm has no output.</p>
+</section>
+<section id="id36">
+<h3><span class="section-number">24.3.9.4. </span>Python code<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasgrid">
+<span id="lastoolslasgrid"></span><h2><a class="toc-backref" href="#id72"><span class="section-number">24.3.10. </span>lasgrid</a><a class="headerlink" href="#lasgrid" title="Permalink to this headline"></a></h2>
+<p>Grids a selected attribute (e.g. elevation, intensity, classification,
+scan angle, …) of a large point clouds with a user-defined step size
+onto raster using a particular method (e.g. min, max, average).</p>
+<p>For more info see the
+<a class="reference external" href="https://rapidlasso.com/lastools/lasgrid">lasgrid</a> page and its
+online <a class="reference external" href="http://lastools.org/download/lasgrid_README.txt">README</a>
+file.</p>
+<section id="id38">
+<h3><span class="section-number">24.3.10.1. </span>Parameters<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file containing the points to be rastered in
+LAS/LAZ format.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>filter (by return, classification, flags)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILTER_RETURN_CLASS_FLAGS1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies the subset of points to use for the gridding.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — keep_last</p></li>
+<li><p>2 — keep_first</p></li>
+<li><p>3 — keep_middle</p></li>
+<li><p>4 — keep_single</p></li>
+<li><p>5 — drop_single</p></li>
+<li><p>6 — keep_double</p></li>
+<li><p>7 — keep_class 2</p></li>
+<li><p>8 — keep_class 2 8</p></li>
+<li><p>9 — keep_class 8</p></li>
+<li><p>10 — keep_class 6</p></li>
+<li><p>11 — keep_class 9</p></li>
+<li><p>12 — keep_class 3 4 5</p></li>
+<li><p>13 — keep_class 3</p></li>
+<li><p>14 — keep_class 4</p></li>
+<li><p>15 — keep_class 5</p></li>
+<li><p>16 — keep_class 2 6</p></li>
+<li><p>17 — drop_class 7</p></li>
+<li><p>18 — drop_withheld</p></li>
+<li><p>19 — drop_synthetic</p></li>
+<li><p>20 — drop_overlap</p></li>
+<li><p>21 — keep_withheld</p></li>
+<li><p>22 — keep_synthetic</p></li>
+<li><p>23 — keep_keypoint</p></li>
+<li><p>24 — keep_overlap</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>step size / pixel size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STEP</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>Specifies the size of the cells of the grid
+the TIN is rasterized onto</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ATTRIBUTE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies the attribute to rasterise.
+One of:</p>
+<ul class="simple">
+<li><p>0 — elevation</p></li>
+<li><p>1 — intensity</p></li>
+<li><p>2 — rgb</p></li>
+<li><p>3 — classification</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Method</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METHOD</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Specifies how the attributes falling into one cell are turned
+into a raster value.
+One of:</p>
+<ul class="simple">
+<li><p>0 — lowest</p></li>
+<li><p>1 — heighest</p></li>
+<li><p>2 — average</p></li>
+<li><p>3 — stddev</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>use tile bounding box (after tiling with buffer)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USE_TILE_BB</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Specifies to limit the rastered area to the tile
+bounding box (only meaningful for input LAS/LAZ
+tiles that were created with lastile).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output raster is stored.
+Use image rasters like TIF, PNG, and JPG for false color,
+gray ramps, and hillshades.
+Use value rasters like TIF, BIL, IMG, ASC, DTM, FLT, XYZ,
+and CSV for actual values.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id39">
+<h3><span class="section-number">24.3.10.2. </span>Outputs<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output raster file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_RASTER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output raster</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id40">
+<h3><span class="section-number">24.3.10.3. </span>Python code<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasgrid</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasinfo">
+<span id="lastoolslasinfo"></span><h2><a class="toc-backref" href="#id73"><span class="section-number">24.3.11. </span>lasinfo</a><a class="headerlink" href="#lasinfo" title="Permalink to this headline"></a></h2>
+<section id="id41">
+<h3><span class="section-number">24.3.11.1. </span>Parameters<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file to get information about.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>compute density</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_DENSITY</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>repair bounding box</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REPAIR_BB</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>repair counters</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REPAIR_COUNTERS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO1</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>First histogram.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — x</p></li>
+<li><p>2 — y</p></li>
+<li><p>3 — z</p></li>
+<li><p>4 — intensity</p></li>
+<li><p>5 — classification</p></li>
+<li><p>6 — scan_angle</p></li>
+<li><p>7 — user_data</p></li>
+<li><p>8 — point_source</p></li>
+<li><p>9 — gps_time</p></li>
+<li><p>10 — X</p></li>
+<li><p>11 — Y</p></li>
+<li><p>12 — Z</p></li>
+<li><p>13 — attribute0</p></li>
+<li><p>14 — attribute1</p></li>
+<li><p>15 — attribute2</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>bin size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO1_BIN</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO2</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Second histogram.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — x</p></li>
+<li><p>2 — y</p></li>
+<li><p>3 — z</p></li>
+<li><p>4 — intensity</p></li>
+<li><p>5 — classification</p></li>
+<li><p>6 — scan_angle</p></li>
+<li><p>7 — user_data</p></li>
+<li><p>8 — point_source</p></li>
+<li><p>9 — gps_time</p></li>
+<li><p>10 — X</p></li>
+<li><p>11 — Y</p></li>
+<li><p>12 — Z</p></li>
+<li><p>13 — attribute0</p></li>
+<li><p>14 — attribute1</p></li>
+<li><p>15 — attribute2</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>bin size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO2_BIN</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO3</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Third histogram.
+One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — x</p></li>
+<li><p>2 — y</p></li>
+<li><p>3 — z</p></li>
+<li><p>4 — intensity</p></li>
+<li><p>5 — classification</p></li>
+<li><p>6 — scan_angle</p></li>
+<li><p>7 — user_data</p></li>
+<li><p>8 — point_source</p></li>
+<li><p>9 — gps_time</p></li>
+<li><p>10 — X</p></li>
+<li><p>11 — Y</p></li>
+<li><p>12 — Z</p></li>
+<li><p>13 — attribute0</p></li>
+<li><p>14 — attribute1</p></li>
+<li><p>15 — attribute2</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>bin size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HISTO3_BIN</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output is stored.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id42">
+<h3><span class="section-number">24.3.11.2. </span>Outputs<a class="headerlink" href="#id42" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file with the output</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id43">
+<h3><span class="section-number">24.3.11.3. </span>Python code<a class="headerlink" href="#id43" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasinfo</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasmerge">
+<span id="lastoolslasmerge"></span><h2><a class="toc-backref" href="#id74"><span class="section-number">24.3.12. </span>lasmerge</a><a class="headerlink" href="#lasmerge" title="Permalink to this headline"></a></h2>
+<p>Merge up to seven LAS/LAZ files into one.</p>
+<section id="id44">
+<h3><span class="section-number">24.3.12.1. </span>Parameters<a class="headerlink" href="#id44" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>files are flightlines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILES_ARE_FLIGHTLINES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>apply file source ID</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">APPLY_FILE_SOURCE_ID</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The first file containing points to be merged</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>2nd file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE2</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The second file to merge</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>3rd file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE3</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The third file to merge</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>4th file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE4</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The fourth file to merge</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>5th file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE5</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The fifth file to merge</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>6th file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE6</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The sixth file to merge</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>7th file</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE7</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The seventh file to merge</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output point cloud is stored.
+Use LAZ for compressed output, LAS for uncompressed output,
+and TXT for ASCII.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id45">
+<h3><span class="section-number">24.3.12.2. </span>Outputs<a class="headerlink" href="#id45" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output (merged) LAS/LAZ format file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id46">
+<h3><span class="section-number">24.3.12.3. </span>Python code<a class="headerlink" href="#id46" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasmerge</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasprecision">
+<span id="lastoolslasprecision"></span><h2><a class="toc-backref" href="#id75"><span class="section-number">24.3.13. </span>lasprecision</a><a class="headerlink" href="#lasprecision" title="Permalink to this headline"></a></h2>
+<section id="id47">
+<h3><span class="section-number">24.3.13.1. </span>Parameters<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file the input point cloud</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output ASCII file is stored.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id48">
+<h3><span class="section-number">24.3.13.2. </span>Outputs<a class="headerlink" href="#id48" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output ASCII file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output ASCII file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id49">
+<h3><span class="section-number">24.3.13.3. </span>Python code<a class="headerlink" href="#id49" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasprecision</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasquery">
+<span id="lastoolslasquery"></span><h2><a class="toc-backref" href="#id76"><span class="section-number">24.3.14. </span>lasquery</a><a class="headerlink" href="#lasquery" title="Permalink to this headline"></a></h2>
+<section id="id50">
+<h3><span class="section-number">24.3.14.1. </span>Description<a class="headerlink" href="#id50" title="Permalink to this headline"></a></h3>
+<p>&lt;put algorithm description here&gt;</p>
+</section>
+<section id="id51">
+<h3><span class="section-number">24.3.14.2. </span>Parameters<a class="headerlink" href="#id51" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file the input point cloud</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>area of interest</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AOI</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>The extent</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id52">
+<h3><span class="section-number">24.3.14.3. </span>Outputs<a class="headerlink" href="#id52" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id53">
+<h3><span class="section-number">24.3.14.4. </span>Python code<a class="headerlink" href="#id53" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasquery</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="lasvalidate">
+<span id="lastoolslasvalidate"></span><h2><a class="toc-backref" href="#id77"><span class="section-number">24.3.15. </span>lasvalidate</a><a class="headerlink" href="#lasvalidate" title="Permalink to this headline"></a></h2>
+<section id="id54">
+<h3><span class="section-number">24.3.15.1. </span>Parameters<a class="headerlink" href="#id54" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file the input point cloud</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>save report to ‘*_LVS.xml’</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ONE_REPORT_PER_FILE</span></code></p></td>
+<td><p>[boolean]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output XML file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output XML file is stored.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id55">
+<h3><span class="section-number">24.3.15.2. </span>Outputs<a class="headerlink" href="#id55" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output XML file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_GENERIC</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output XML file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id56">
+<h3><span class="section-number">24.3.15.3. </span>Python code<a class="headerlink" href="#id56" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:lasvalidate</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="laszip">
+<span id="lastoolslaszip"></span><h2><a class="toc-backref" href="#id78"><span class="section-number">24.3.16. </span>laszip</a><a class="headerlink" href="#laszip" title="Permalink to this headline"></a></h2>
+<section id="id57">
+<h3><span class="section-number">24.3.16.1. </span>Parameters<a class="headerlink" href="#id57" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file to be zipped</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>only report size</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REPORT_SIZE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>create spatial indexing file (*.lax)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CREATE_LAX</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>append *.lax into *.laz file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">APPEND_LAX</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output point cloud is stored. Use LAZ for
+compressed output,
+LAS for uncompressed output, and TXT for ASCII.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id58">
+<h3><span class="section-number">24.3.16.2. </span>Outputs<a class="headerlink" href="#id58" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id59">
+<h3><span class="section-number">24.3.16.3. </span>Python code<a class="headerlink" href="#id59" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:laszip</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="txt2las">
+<span id="lastoolstxt2las"></span><h2><a class="toc-backref" href="#id79"><span class="section-number">24.3.17. </span>txt2las</a><a class="headerlink" href="#txt2las" title="Permalink to this headline"></a></h2>
+<section id="id60">
+<h3><span class="section-number">24.3.17.1. </span>Parameters<a class="headerlink" href="#id60" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>verbose</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Generates more textual control output to the console</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>run new 64 bit executable</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPU64</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>open LAStools GUI</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GUI</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Starts the GUI of LAStools with pre-populated input files</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>input LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The file to be zipped</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse lines as</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PARSE</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘xyz’</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>skip the first n lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SKIP</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>resolution of x and y coordinate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR_XY</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.01</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>resolution of z coordinate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR_Z</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.01</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>resolution of z coordinate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SCALE_FACTOR_Z</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.01</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>source projection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PROJECTION</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — epsg</p></li>
+<li><p>2 — utm</p></li>
+<li><p>3 — sp83</p></li>
+<li><p>4 — sp27</p></li>
+<li><p>5 — longlat</p></li>
+<li><p>6 — latlong</p></li>
+<li><p>7 — ecef</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>source epsg code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EPSG_CODE</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>utm zone</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UTM</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — 1 (north)</p></li>
+<li><p>2 — 2 (north)</p></li>
+<li><p>3 — 3 (north)</p></li>
+<li><p>4 — 4 (north)</p></li>
+<li><p>5 — 5 (north)</p></li>
+<li><p>6 — 6 (north)</p></li>
+<li><p>7 — 7 (north)</p></li>
+<li><p>8 — 8 (north)</p></li>
+<li><p>9 — 9 (north)</p></li>
+<li><p>10 — 10 (north)</p></li>
+<li><p>11 — 11 (north)</p></li>
+<li><p>12 — 12 (north)</p></li>
+<li><p>13 — 13 (north)</p></li>
+<li><p>14 — 14 (north)</p></li>
+<li><p>15 — 15 (north)</p></li>
+<li><p>16 — 16 (north)</p></li>
+<li><p>17 — 17 (north)</p></li>
+<li><p>18 — 18 (north)</p></li>
+<li><p>19 — 19 (north)</p></li>
+<li><p>20 — 20 (north)</p></li>
+<li><p>21 — 21 (north)</p></li>
+<li><p>22 — 22 (north)</p></li>
+<li><p>23 — 23 (north)</p></li>
+<li><p>24 — 24 (north)</p></li>
+<li><p>25 — 25 (north)</p></li>
+<li><p>26 — 26 (north)</p></li>
+<li><p>27 — 27 (north)</p></li>
+<li><p>28 — 28 (north)</p></li>
+<li><p>29 — 29 (north)</p></li>
+<li><p>30 — 30 (north)</p></li>
+<li><p>31 — 31 (north)</p></li>
+<li><p>32 — 32 (north)</p></li>
+<li><p>33 — 33 (north)</p></li>
+<li><p>34 — 34 (north)</p></li>
+<li><p>35 — 35 (north)</p></li>
+<li><p>36 — 36 (north)</p></li>
+<li><p>37 — 37 (north)</p></li>
+<li><p>38 — 38 (north)</p></li>
+<li><p>39 — 39 (north)</p></li>
+<li><p>40 — 40 (north)</p></li>
+<li><p>41 — 41 (north)</p></li>
+<li><p>42 — 42 (north)</p></li>
+<li><p>43 — 43 (north)</p></li>
+<li><p>44 — 44 (north)</p></li>
+<li><p>45 — 45 (north)</p></li>
+<li><p>46 — 46 (north)</p></li>
+<li><p>47 — 47 (north)</p></li>
+<li><p>48 — 48 (north)</p></li>
+<li><p>49 — 49 (north)</p></li>
+<li><p>50 — 50 (north)</p></li>
+<li><p>51 — 51 (north)</p></li>
+<li><p>52 — 52 (north)</p></li>
+<li><p>53 — 53 (north)</p></li>
+<li><p>54 — 54 (north)</p></li>
+<li><p>55 — 55 (north)</p></li>
+<li><p>56 — 56 (north)</p></li>
+<li><p>57 — 57 (north)</p></li>
+<li><p>58 — 58 (north)</p></li>
+<li><p>59 — 59 (north)</p></li>
+<li><p>60 — 60 (north)</p></li>
+<li><p>61 — 1 (south)</p></li>
+<li><p>62 — 2 (south)</p></li>
+<li><p>63 — 3 (south)</p></li>
+<li><p>64 — 4 (south)</p></li>
+<li><p>65 — 5 (south)</p></li>
+<li><p>66 — 6 (south)</p></li>
+<li><p>67 — 7 (south)</p></li>
+<li><p>68 — 8 (south)</p></li>
+<li><p>69 — 9 (south)</p></li>
+<li><p>70 — 10 (south)</p></li>
+<li><p>71 — 11 (south)</p></li>
+<li><p>72 — 12 (south)</p></li>
+<li><p>73 — 13 (south)</p></li>
+<li><p>74 — 14 (south)</p></li>
+<li><p>75 — 15 (south)</p></li>
+<li><p>76 — 16 (south)</p></li>
+<li><p>77 — 17 (south)</p></li>
+<li><p>78 — 18 (south)</p></li>
+<li><p>79 — 19 (south)</p></li>
+<li><p>80 — 20 (south)</p></li>
+<li><p>81 — 21 (south)</p></li>
+<li><p>82 — 22 (south)</p></li>
+<li><p>83 — 23 (south)</p></li>
+<li><p>84 — 24 (south)</p></li>
+<li><p>85 — 25 (south)</p></li>
+<li><p>86 — 26 (south)</p></li>
+<li><p>87 — 27 (south)</p></li>
+<li><p>88 — 28 (south)</p></li>
+<li><p>89 — 29 (south)</p></li>
+<li><p>90 — 30 (south)</p></li>
+<li><p>91 — 31 (south)</p></li>
+<li><p>92 — 32 (south)</p></li>
+<li><p>93 — 33 (south)</p></li>
+<li><p>94 — 34 (south)</p></li>
+<li><p>95 — 35 (south)</p></li>
+<li><p>96 — 36 (south)</p></li>
+<li><p>97 — 37 (south)</p></li>
+<li><p>98 — 38 (south)</p></li>
+<li><p>99 — 39 (south)</p></li>
+<li><p>100 — 40 (south)</p></li>
+<li><p>101 — 41 (south)</p></li>
+<li><p>102 — 42 (south)</p></li>
+<li><p>103 — 43 (south)</p></li>
+<li><p>104 — 44 (south)</p></li>
+<li><p>105 — 45 (south)</p></li>
+<li><p>106 — 46 (south)</p></li>
+<li><p>107 — 47 (south)</p></li>
+<li><p>108 — 48 (south)</p></li>
+<li><p>109 — 49 (south)</p></li>
+<li><p>110 — 50 (south)</p></li>
+<li><p>111 — 51 (south)</p></li>
+<li><p>112 — 52 (south)</p></li>
+<li><p>113 — 53 (south)</p></li>
+<li><p>114 — 54 (south)</p></li>
+<li><p>115 — 55 (south)</p></li>
+<li><p>116 — 56 (south)</p></li>
+<li><p>117 — 57 (south)</p></li>
+<li><p>118 — 58 (south)</p></li>
+<li><p>119 — 59 (south)</p></li>
+<li><p>120 — 60 (south)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>state plane code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SP</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — —</p></li>
+<li><p>1 — AK_10</p></li>
+<li><p>2 — AK_2</p></li>
+<li><p>3 — AK_3</p></li>
+<li><p>4 — AK_4</p></li>
+<li><p>5 — AK_5</p></li>
+<li><p>6 — AK_6</p></li>
+<li><p>7 — AK_7</p></li>
+<li><p>8 — AK_8</p></li>
+<li><p>9 — AK_9</p></li>
+<li><p>10 — AL_E</p></li>
+<li><p>11 — AL_W</p></li>
+<li><p>12 — AR_N</p></li>
+<li><p>13 — AR_S</p></li>
+<li><p>14 — AZ_C</p></li>
+<li><p>15 — AZ_E</p></li>
+<li><p>16 — AZ_W</p></li>
+<li><p>17 — CA_I</p></li>
+<li><p>18 — CA_II</p></li>
+<li><p>19 — CA_III</p></li>
+<li><p>20 — CA_IV</p></li>
+<li><p>21 — CA_V</p></li>
+<li><p>22 — CA_VI</p></li>
+<li><p>23 — CA_VII</p></li>
+<li><p>24 — CO_C</p></li>
+<li><p>25 — CO_N</p></li>
+<li><p>26 — CO_S</p></li>
+<li><p>27 — CT</p></li>
+<li><p>28 — DE</p></li>
+<li><p>29 — FL_E</p></li>
+<li><p>30 — FL_N</p></li>
+<li><p>31 — FL_W</p></li>
+<li><p>32 — GA_E</p></li>
+<li><p>33 — GA_W</p></li>
+<li><p>34 — HI_1</p></li>
+<li><p>35 — HI_2</p></li>
+<li><p>36 — HI_3</p></li>
+<li><p>37 — HI_4</p></li>
+<li><p>38 — HI_5</p></li>
+<li><p>39 — IA_N</p></li>
+<li><p>40 — IA_S</p></li>
+<li><p>41 — ID_C</p></li>
+<li><p>42 — ID_E</p></li>
+<li><p>43 — ID_W</p></li>
+<li><p>44 — IL_E</p></li>
+<li><p>45 — IL_W</p></li>
+<li><p>46 — IN_E</p></li>
+<li><p>47 — IN_W</p></li>
+<li><p>48 — KS_N</p></li>
+<li><p>49 — KS_S</p></li>
+<li><p>50 — KY_N</p></li>
+<li><p>51 — KY_S</p></li>
+<li><p>52 — LA_N</p></li>
+<li><p>53 — LA_S</p></li>
+<li><p>54 — MA_I</p></li>
+<li><p>55 — MA_M</p></li>
+<li><p>56 — MD</p></li>
+<li><p>57 — ME_E</p></li>
+<li><p>58 — ME_W</p></li>
+<li><p>59 — MI_C</p></li>
+<li><p>60 — MI_N</p></li>
+<li><p>61 — MI_S</p></li>
+<li><p>62 — MN_C</p></li>
+<li><p>63 — MN_N</p></li>
+<li><p>64 — MN_S</p></li>
+<li><p>65 — MO_C</p></li>
+<li><p>66 — MO_E</p></li>
+<li><p>67 — MO_W</p></li>
+<li><p>68 — MS_E</p></li>
+<li><p>69 — MS_W</p></li>
+<li><p>70 — MT_C</p></li>
+<li><p>71 — MT_N</p></li>
+<li><p>72 — MT_S</p></li>
+<li><p>73 — NC</p></li>
+<li><p>74 — ND_N</p></li>
+<li><p>75 — ND_S</p></li>
+<li><p>76 — NE_N</p></li>
+<li><p>77 — NE_S</p></li>
+<li><p>78 — NH</p></li>
+<li><p>79 — NJ</p></li>
+<li><p>80 — NM_C</p></li>
+<li><p>81 — NM_E</p></li>
+<li><p>82 — NM_W</p></li>
+<li><p>83 — NV_C</p></li>
+<li><p>84 — NV_E</p></li>
+<li><p>85 — NV_W</p></li>
+<li><p>86 — NY_C</p></li>
+<li><p>87 — NY_E</p></li>
+<li><p>88 — NY_LI</p></li>
+<li><p>89 — NY_W</p></li>
+<li><p>90 — OH_N</p></li>
+<li><p>91 — OH_S</p></li>
+<li><p>92 — OK_N</p></li>
+<li><p>93 — OK_S</p></li>
+<li><p>94 — OR_N</p></li>
+<li><p>95 — OR_S</p></li>
+<li><p>96 — PA_N</p></li>
+<li><p>97 — PA_S</p></li>
+<li><p>98 — PR</p></li>
+<li><p>99 — RI</p></li>
+<li><p>100 — SC_N</p></li>
+<li><p>101 — SC_S</p></li>
+<li><p>102 — SD_N</p></li>
+<li><p>103 — SD_S</p></li>
+<li><p>104 — St.Croix</p></li>
+<li><p>105 — TN</p></li>
+<li><p>106 — TX_C</p></li>
+<li><p>107 — TX_N</p></li>
+<li><p>108 — TX_NC</p></li>
+<li><p>109 — TX_S</p></li>
+<li><p>110 — TX_SC</p></li>
+<li><p>111 — UT_C</p></li>
+<li><p>112 — UT_N</p></li>
+<li><p>113 — UT_S</p></li>
+<li><p>114 — VA_N</p></li>
+<li><p>115 — VA_S</p></li>
+<li><p>116 — VT</p></li>
+<li><p>117 — WA_N</p></li>
+<li><p>118 — WA_S</p></li>
+<li><p>119 — WI_C</p></li>
+<li><p>120 — WI_N</p></li>
+<li><p>121 — WI_S</p></li>
+<li><p>122 — WV_N</p></li>
+<li><p>123 — WV_S</p></li>
+<li><p>124 — WY_E</p></li>
+<li><p>125 — WY_EC</p></li>
+<li><p>126 — WY_W</p></li>
+<li><p>127 — WY_WC</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>additional command line parameter(s)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDITIONAL_OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>Specifies other command-line switches not available
+via this menu but known to the (advanced) LAStools user.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specifies where the output point cloud is stored. Use LAZ for
+compressed output,
+LAS for uncompressed output, and TXT for ASCII.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id61">
+<h3><span class="section-number">24.3.17.2. </span>Outputs<a class="headerlink" href="#id61" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>output LAS/LAZ file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LASLAZ</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>The output file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id62">
+<h3><span class="section-number">24.3.17.3. </span>Python code<a class="headerlink" href="#id62" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">lastools:txt2las</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../gdal/vectormiscellaneous.html" class="btn btn-neutral float-left" title="24.2.8. Vector miscellaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../taudem/index.html" class="btn btn-neutral float-right" title="24.4. TauDEM algorithm provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/lidartools/lastools.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/lidartools/lastools.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/lidartools/lastools.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/lidartools/lastools.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/lidartools/lastools.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/lidartools/lastools.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/lidartools/lastools.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/lidartools/lastools.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/lidartools/lastools.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

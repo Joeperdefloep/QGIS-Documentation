@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.8. Lesson: DEM from LiDAR Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/basic_lidar.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14.9. Lesson: Map Presentation" href="results_map.html" />
+    <link rel="prev" title="14.7. Lesson: Calculating the Forest Parameters" href="parameters_calculation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/basic_lidar.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Module: Forestry Application</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forestry_intro.html">14.1. Lesson: Forestry Module Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_georeferencing.html">14.2. Lesson: Georeferencing a Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stands_digitazing.html">14.3. Lesson: Digitizing Forest Stands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="updating_stands.html">14.4. Lesson: Updating Forest Stands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systematic_sampling.html">14.5. Lesson: Systematic Sampling Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forest_maps.html">14.6. Lesson: Creating Detailed Maps with the Atlas Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters_calculation.html">14.7. Lesson: Calculating the Forest Parameters</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.8. Lesson: DEM from LiDAR Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-installing-lastools">14.8.1.  Follow Along: Installing Lastools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-calculating-a-dem-with-lastools">14.8.2.  Follow Along: Calculating a DEM with LAStools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-creating-a-terrain-hillshade">14.8.3.  Follow Along: Creating a Terrain Hillshade</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">14.8.4. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">14.8.5. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="results_map.html">14.9. Lesson: Map Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">14. </span>Module: Forestry Application</a> &raquo;</li>
+      <li><span class="section-number">14.8. </span>Lesson: DEM from LiDAR Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/forestry/basic_lidar.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="parameters_calculation.html" class="btn btn-neutral float-left" title="14.7. Lesson: Calculating the Forest Parameters" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="results_map.html" class="btn btn-neutral float-right" title="14.9. Lesson: Map Presentation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-dem-from-lidar-data">
+<h1><span class="section-number">14.8. </span>Lesson: DEM from LiDAR Data<a class="headerlink" href="#ls-dem-from-lidar-data" title="Permalink to this headline"></a></h1>
+<p>You can improve the look of your maps by using different background images.
+You could use the basic map or the aerial image you have been using before,
+but a hillshade raster of the terrain will look nicer in some situations.</p>
+<p>You will use LAStools to extract a DEM from a LiDAR dataset and then create a
+hillshade raster to use in your map presentation later.</p>
+<p><strong>The goal for this lesson:</strong> Install LAStools and calculate a DEM from LiDAR
+data and a hillshade raster.</p>
+<section id="basic-fa-installing-lastools">
+<h2><span class="section-number">14.8.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Installing Lastools<a class="headerlink" href="#basic-fa-installing-lastools" title="Permalink to this headline"></a></h2>
+<p>Managing LiDAR data within QGIS is possible using the Processing framework and
+the algorithms provided by <a class="reference external" href="https://rapidlasso.com/2013/09/29/how-to-install-lastools-toolbox-in-qgis">LAStools</a>.</p>
+<p>You can obtain a digital elevation model (DEM) from a LiDAR point cloud and then
+create a hillshade raster that is visually more intuitive for presentation purposes.
+First you will have to set up the <span class="guilabel">Processing</span> framework settings to
+properly work with LAStools:</p>
+<ul class="simple">
+<li><p>Close QGIS, if you have already started it.</p></li>
+<li><p>An old lidar plugin might be installed by default in your system in the folder
+<code class="file docutils literal notranslate"><span class="pre">C:/Program</span> <span class="pre">Files/QGIS</span> <span class="pre">Valmiera/apps/qgis/python/plugins/processing/</span></code>.</p></li>
+<li><p>If you have a folder named <kbd class="kbd docutils literal notranslate">lidar</kbd>, delete it. This is valid for some
+installations of QGIS 2.2 and 2.4.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/remove_lidar_folder.png" src="../../../_images/remove_lidar_folder.png" />
+</figure>
+<ul class="simple">
+<li><p>Go to the <code class="file docutils literal notranslate"><span class="pre">exercise_data\forestry\lidar\</span></code> folder, there you can find
+the file <code class="file docutils literal notranslate"><span class="pre">QGIS_2_2_toolbox.zip</span></code>. Open it and extract the <kbd class="kbd docutils literal notranslate">lidar</kbd>
+folder to replace the one you just deleted.</p></li>
+<li><p>If you are using a different QGIS version, you can see more installation
+instructions in <a class="reference external" href="https://rapidlasso.com/2013/09/29/how-to-install-lastools-toolbox-in-qgis/">this tutorial</a>.</p></li>
+</ul>
+<p>Now you need to install the LAStools to your computer. Get the newest
+<em>lastools</em> version <a class="reference external" href="https://lastools.github.io/download/LAStools.zip">here</a>
+and extract the content of the <code class="file docutils literal notranslate"><span class="pre">lastools.zip</span></code> file into a folder in your
+system, for example, <code class="file docutils literal notranslate"><span class="pre">C:\lastools\</span></code>. The path to the <code class="file docutils literal notranslate"><span class="pre">lastools</span></code>
+folder cannot have spaces or special characters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Read the <kbd class="kbd docutils literal notranslate">LICENSE.txt</kbd> file inside the <kbd class="kbd docutils literal notranslate">lastools</kbd> folder.
+Some of the LAStools are open source and other are closed source and require
+licensing for most commercial and governmental use.  For education and
+evaluation purposes you can use and test LAStools as much as you need to.</p>
+</div>
+<p>The plugin and the actual algorithms are now installed in your computer and
+almost ready to use, you just need to set up the Processing framework to start using them:</p>
+<ul class="simple">
+<li><p>Open a new project in QGIS.</p></li>
+<li><p>Set the project’s CRS to <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ETRS89</kbd> <kbd class="kbd docutils literal notranslate">/</kbd> <kbd class="kbd docutils literal notranslate">ETRS</kbd>-<kbd class="kbd docutils literal notranslate">TM35FIN</kbd></kbd>.</p></li>
+<li><p>Save the project as <kbd class="kbd docutils literal notranslate">forest_lidar.qgs</kbd>.</p></li>
+</ul>
+<p>To setup the LAStools in QGIS:</p>
+<ul class="simple">
+<li><p>Go to <span class="menuselection">Processing ► Options and configuration</span>.</p></li>
+<li><p>In the <span class="guilabel">Processing options</span> dialog, go to <span class="guilabel">Providers</span> and
+then to <span class="guilabel">Tools for LiDAR data</span>.</p></li>
+<li><p>Check <span class="guilabel">Activate</span>.</p></li>
+<li><p>For <span class="guilabel">LAStools folder</span> set <kbd class="kbd docutils literal notranslate">c:\lastools\</kbd> (or the folder you
+extracted LAStools to).</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/processing_options.png" src="../../../_images/processing_options.png" />
+</figure>
+</section>
+<section id="basic-fa-calculating-a-dem-with-lastools">
+<h2><span class="section-number">14.8.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Calculating a DEM with LAStools<a class="headerlink" href="#basic-fa-calculating-a-dem-with-lastools" title="Permalink to this headline"></a></h2>
+<p>You have already used the <span class="menuselection">Processing</span> toolbox in <a class="reference internal" href="../vector_analysis/spatial_statistics.html"><span class="doc">Lesson: Spatial Statistics</span></a>
+to run some SAGA algorithms. Now you are going to use it to run LAStools programs:</p>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Processing ► Toolbox</span>.</p></li>
+<li><p>In the dropdown menu at the bottom, select <span class="guilabel">Advanced interface</span>.</p></li>
+<li><p>You should see the <span class="guilabel">Tools for LiDAR data</span> category.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/processing_toolbox.png" src="../../../_images/processing_toolbox.png" />
+</figure>
+<ul class="simple">
+<li><p>Expand it to see the tools available, and expand also the <span class="guilabel">LAStools</span>
+category (the number of algorithms may vary).</p></li>
+<li><p>Scroll down until you find the <span class="guilabel">lasview</span> algorithm, double click it to open.</p></li>
+<li><p>At <span class="guilabel">Input LAS/LAZ file</span>, browse to <code class="file docutils literal notranslate"><span class="pre">exercise_data\forestry\lidar\</span></code>
+and select the <code class="file docutils literal notranslate"><span class="pre">rautjarvi_lidar.laz</span></code> file.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/lasview_dialog.png" src="../../../_images/lasview_dialog.png" />
+</figure>
+<ul class="simple">
+<li><p>Click <span class="guilabel">Run</span>.</p></li>
+</ul>
+<p>Now you can see the LiDAR data in the <span class="guilabel">just a little LAS and LAZ viewer</span> dialog window:</p>
+<figure class="align-center">
+<img alt="../../../_images/full_lidar.png" src="../../../_images/full_lidar.png" />
+</figure>
+<p>There are many things you can do within this viewer, but for now you can just
+click and drag on the viewer to pan the LiDAR point cloud to see what it looks like.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to know further details on how the LAStools work, you can
+read the <code class="file docutils literal notranslate"><span class="pre">README</span></code> text files about each of the tools, in the <code class="file docutils literal notranslate"><span class="pre">C:\lastools\bin\</span></code>
+folder. Tutorials and other materials are available at the <a class="reference external" href="https://rapidlasso.com/">Rapidlasso webpage</a>.</p>
+</div>
+<ul class="simple">
+<li><p>Close the viewer when you are ready.</p></li>
+</ul>
+<p>Creating a DEM with LAStools can be done in two steps, first one to classify the
+point cloud into <kbd class="kbd docutils literal notranslate">ground</kbd> and <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">no</kbd> <kbd class="kbd docutils literal notranslate">ground</kbd></kbd> points and then calculating
+a DEM using only the <kbd class="kbd docutils literal notranslate">ground</kbd> points.</p>
+<ul class="simple">
+<li><p>Go back to the <span class="guilabel">Processing Toolbox</span>.</p></li>
+<li><p>Note the <span class="guilabel">Search…</span> box, write <kbd class="kbd docutils literal notranslate">lasground</kbd>.</p></li>
+<li><p>Double click to open the <span class="guilabel">lasground</span> tool and set it as shown in this image:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/lasground_dialog.png" src="../../../_images/lasground_dialog.png" />
+</figure>
+<ul class="simple">
+<li><p>The output file is saved to the same folder where the <code class="file docutils literal notranslate"><span class="pre">rautjarvi_lidar.laz</span></code>
+is located and it is named <code class="file docutils literal notranslate"><span class="pre">rautjarvi_lidar_1.las</span></code>.</p></li>
+</ul>
+<p>You can open it with <span class="guilabel">lasview</span> if you want to check it.</p>
+<figure class="align-center">
+<img alt="../../../_images/lasground_result.png" src="../../../_images/lasground_result.png" />
+</figure>
+<p>The brown points are the points classified as ground and the gray ones are the rest,
+you can click the letter <kbd class="kbd docutils literal notranslate">g</kbd> to visualize only the ground points or the
+letter <kbd class="kbd docutils literal notranslate">u</kbd> to see only the unclassified points. Click the letter <kbd class="kbd docutils literal notranslate">a</kbd>
+to see all the points again. Check the <code class="file docutils literal notranslate"><span class="pre">lasview_README.txt</span></code> file for more
+commands. If you are interested, also this <a class="reference external" href="https://rapidlasso.com/2014/03/02/tutorial-manual-lidar-editing/">tutorial</a>
+about editing LiDAR points manually will show you different operations within
+the viewer.</p>
+<ul class="simple">
+<li><p>Close the viewer again.</p></li>
+<li><p>In the <span class="guilabel">Processing Toolbox</span>, search for <kbd class="kbd docutils literal notranslate">las2dem</kbd>.</p></li>
+<li><p>Open the <span class="guilabel">las2dem</span> tool and set it as shown in this image:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/las2dem_dialog.png" src="../../../_images/las2dem_dialog.png" />
+</figure>
+<p>The result DEM is added to your map with the generic name <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Output</kbd> <kbd class="kbd docutils literal notranslate">raster</kbd> <kbd class="kbd docutils literal notranslate">file</kbd></kbd>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <span class="guilabel">lasground</span> and <span class="guilabel">las2dem</span> tools require licensing.
+You can use the unlicensed tool as indicated in the license file, but you get
+the diagonals you can appreciate in the image results.</p>
+</div>
+</section>
+<section id="basic-fa-creating-a-terrain-hillshade">
+<h2><span class="section-number">14.8.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Creating a Terrain Hillshade<a class="headerlink" href="#basic-fa-creating-a-terrain-hillshade" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>For visualization purposes, a hillshade generated from a DEM gives a better</dt><dd><p>visualization of the terrain:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Raster ► Terrain analysis ► Hillshade</span>.</p></li>
+<li><p>As the <span class="guilabel">Output layer</span>, browse to <code class="file docutils literal notranslate"><span class="pre">exercise_data\forestry\lidar\</span></code>
+and name the file <code class="file docutils literal notranslate"><span class="pre">hillshade.tif</span></code>.</p></li>
+<li><p>Leave the rest of parameters with the default settings.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/dem_hillshade.png" src="../../../_images/dem_hillshade.png" />
+</figure>
+<ul class="simple">
+<li><p>Select <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ETRS89</kbd> <kbd class="kbd docutils literal notranslate">/</kbd> <kbd class="kbd docutils literal notranslate">ETRS</kbd>-<kbd class="kbd docutils literal notranslate">TM35FIN</kbd></kbd> as the CRS when prompted.</p></li>
+</ul>
+<p>Despite the diagonal lines remaining in the hillshade raster result, you can
+clearly see an accurate relief of the area. You can even see the different
+soil drains that have been dug in the forests.</p>
+<figure class="align-center">
+<img alt="../../../_images/hillshade_result.png" src="../../../_images/hillshade_result.png" />
+</figure>
+</section>
+<section id="ic">
+<h2><span class="section-number">14.8.4. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Using LiDAR data to get a DEM, specially in forested areas, gives good results
+with not much effort. You could also use ready LiDAR derived DEMs or other
+sources like the <a class="reference external" href="https://srtm.csi.cgiar.org/srtmdata/">SRTM 9m resolution DEMs</a>.
+Either way, you can use them to create a hillshade raster to use in your map
+presentations.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">14.8.5. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>In the next, and final step in this module, lesson you will use the hillshade
+raster and the forest inventory results to create a map presentation of the results.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="parameters_calculation.html" class="btn btn-neutral float-left" title="14.7. Lesson: Calculating the Forest Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="results_map.html" class="btn btn-neutral float-right" title="14.9. Lesson: Map Presentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/basic_lidar.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/basic_lidar.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/basic_lidar.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/forestry/basic_lidar.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/forestry/basic_lidar.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/forestry/basic_lidar.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/forestry/basic_lidar.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/forestry/basic_lidar.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/forestry/basic_lidar.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/forestry/basic_lidar.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/forestry/basic_lidar.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/forestry/basic_lidar.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/forestry/basic_lidar.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/forestry/basic_lidar.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

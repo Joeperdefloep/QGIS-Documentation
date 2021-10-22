@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.4. Lesson: Spatial Statistics &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/vector_analysis/spatial_statistics.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="7. Module: Rasters" href="../rasters/index.html" />
+    <link rel="prev" title="6.3. Lesson: Network Analysis" href="network_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_analysis/spatial_statistics.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">6. Module: Vector Analysis</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="reproject_transform.html">6.1. Lesson: Reprojecting and Transforming Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_analysis.html">6.2. Lesson: Vector Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="network_analysis.html">6.3. Lesson: Network Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">6.4. Lesson: Spatial Statistics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-create-a-test-dataset">6.4.1.  Follow Along: Create a Test Dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-basic-statistics">6.4.2.  Follow Along: Basic Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-compute-statistics-on-distances-between-points">6.4.3.  Follow Along: Compute statistics on distances between points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-nearest-neighbor-analysis-within-layer">6.4.4.  Follow Along: Nearest Neighbor Analysis (within layer)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-mean-coordinates">6.4.5.  Follow Along: Mean Coordinates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-image-histograms">6.4.6.  Follow Along: Image Histograms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-spatial-interpolation">6.4.7.  Follow Along: Spatial Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-different-interpolation-methods">6.4.8.  Try Yourself Different interpolation methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">6.4.9. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">6.4.10. What’s Next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">6. </span>Module: Vector Analysis</a> &raquo;</li>
+      <li><span class="section-number">6.4. </span>Lesson: Spatial Statistics</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/vector_analysis/spatial_statistics.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="network_analysis.html" class="btn btn-neutral float-left" title="6.3. Lesson: Network Analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rasters/index.html" class="btn btn-neutral float-right" title="7. Module: Rasters" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-spatial-statistics">
+<h1><span class="section-number">6.4. </span>Lesson: Spatial Statistics<a class="headerlink" href="#ls-spatial-statistics" title="Permalink to this headline"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lesson developed by Linfiniti and S Motala (Cape Peninsula
+University of Technology)</p>
+</div>
+<p>Spatial statistics allows you to analyze and understand what is going
+on in a given vector dataset.
+QGIS includes many useful tools for statistical analysis.</p>
+<p><strong>The goal for this lesson:</strong> To know how to use QGIS’ spatial
+statistics tools within the <span class="guilabel">Processing Toolbox</span>.</p>
+<section id="basic-fa-create-a-test-dataset">
+<h2><span class="section-number">6.4.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Create a Test Dataset<a class="headerlink" href="#basic-fa-create-a-test-dataset" title="Permalink to this headline"></a></h2>
+<p>We will create a random set of points, to get a dataset to work with.</p>
+<p>To do so, you will need a polygon dataset to define the area you
+want to create the points in.</p>
+<p>We will use the area covered by streets.</p>
+<ol class="arabic">
+<li><p>Start a new project</p></li>
+<li><p>Add your <code class="docutils literal notranslate"><span class="pre">roads</span></code> dataset, as well as <code class="docutils literal notranslate"><span class="pre">srtm_41_19</span></code> (elevation
+data) found in <code class="file docutils literal notranslate"><span class="pre">exercise_data/raster/SRTM/</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might find that the SRTM DEM layer has a different
+CRS to that of the roads layer.
+QGIS is reprojecting both layers in a single CRS.
+For the following exercises this difference does not matter,
+but feel free to reproject (as shown earlier in this module).</p>
+</div>
+</li>
+<li><p>Open <span class="guilabel">Processing</span> toolbox</p></li>
+<li><p>Use the
+<span class="menuselection">Vector Geometry ► Minimum bounding geometry</span>
+tool to generate an area enclosing all the roads by selecting
+<code class="docutils literal notranslate"><span class="pre">Convex</span> <span class="pre">Hull</span></code> as the <span class="guilabel">Geometry Type</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/roads_hull_setup.png" src="../../../_images/roads_hull_setup.png" />
+</figure>
+<p>As you know, if you don’t specify the output, <em>Processing</em> creates
+temporary layers.
+It is up to you to save the layers immediately or at a later stage.</p>
+</li>
+</ol>
+<section id="creating-random-points">
+<h3><span class="section-number">6.4.1.1. </span>Creating random points<a class="headerlink" href="#creating-random-points" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Create 100 random points in this area using the tool at
+<span class="menuselection">Vector Creation ► Random points in layer bounds</span>,
+with a minimum distance of <code class="docutils literal notranslate"><span class="pre">0.0</span></code>:</p>
+<figure class="align-center">
+<img alt="../../../_images/random_points_setup.png" src="../../../_images/random_points_setup.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The yellow warning sign tells you that that parameter
+concerns distances.
+The <span class="guilabel">Bounding geometry</span> layer is in a Geographical
+Coordinate System and the algorithm is just reminding you this.
+For this example we won’t use this parameter so you can ignore
+it.</p>
+</div>
+</li>
+</ul>
+<p>If needed, move the generated random point to the top of the legend
+to see them better:</p>
+<figure class="align-center">
+<img alt="../../../_images/random_points_result.png" src="../../../_images/random_points_result.png" />
+</figure>
+</section>
+<section id="sampling-the-data">
+<h3><span class="section-number">6.4.1.2. </span>Sampling the data<a class="headerlink" href="#sampling-the-data" title="Permalink to this headline"></a></h3>
+<p>To create a sample dataset from the raster, you’ll need to use the
+<span class="menuselection">Raster Analysis ► Sample raster values</span> algorithm. This tool samples the raster at the locations of the points and
+adds the raster values in new field(s) depending on the number of bands in the raster.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Sample raster values</span> algorithm dialog</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">Random_points</span></code> as the layer containing sampling
+points, and the SRTM raster as the band to get values from.
+The default name of the new field is <code class="docutils literal notranslate"><span class="pre">rvalue_N</span></code>, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is
+the number of the raster band.
+You can change the name of the prefix if you want.</p>
+<figure class="align-center">
+<img alt="../../../_images/sample_raster_dialog.png" src="../../../_images/sample_raster_dialog.png" />
+</figure>
+</li>
+<li><p>Press <span class="guilabel">Run</span></p></li>
+</ol>
+<p>Now you can check the sampled data from the raster file in the
+attribute table of the <code class="docutils literal notranslate"><span class="pre">Sampled</span> <span class="pre">Points</span></code> layer.
+They will be in a new field with the name you have chosen.</p>
+<p>A possible sample layer is shown here:</p>
+<figure class="align-center">
+<img alt="../../../_images/random_samples_result.png" src="../../../_images/random_samples_result.png" />
+</figure>
+<p>The sample points are classified using the <code class="docutils literal notranslate"><span class="pre">rvalue_1</span></code> field such
+that red points are at a higher altitude.</p>
+<p>You will be using this sample layer for the rest of the statistical
+exercises.</p>
+</section>
+</section>
+<section id="basic-fa-basic-statistics">
+<h2><span class="section-number">6.4.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Basic Statistics<a class="headerlink" href="#basic-fa-basic-statistics" title="Permalink to this headline"></a></h2>
+<p>Now get the basic statistics for this layer.</p>
+<ol class="arabic">
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionSum.png"><img alt="sum" src="../../../_images/mActionSum.png" style="width: 1.2em;" /></a> <sup>Show statistical summary</sup> icon in the
+<span class="guilabel">Attributes Toolbar</span>.
+A new panel will pop up.</p></li>
+<li><p>In the dialog that appears, specify the <code class="docutils literal notranslate"><span class="pre">Sampled</span> <span class="pre">Points</span></code> layer as
+the source.</p></li>
+<li><p>Select the <em>rvalue_1</em> field in the field combo box.
+This is the field you will calculate statistics for.</p></li>
+<li><p>The <span class="guilabel">Statistics</span> Panel will be automatically updated
+with the calculated statistics:</p>
+<figure class="align-center">
+<img alt="../../../_images/basic_statistics_results.png" src="../../../_images/basic_statistics_results.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can copy the values by clicking on the <a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a>
+<sup>Copy Statistics To Clipboard</sup> button and paste the results
+into a spreadsheet.</p>
+</div>
+</li>
+<li><p>Close the <span class="guilabel">Statistics</span> Panel when done</p></li>
+</ol>
+<p>Many different statistics are available:</p>
+<dl class="simple">
+<dt>Count</dt><dd><p>The number of samples/values.</p>
+</dd>
+<dt>Sum</dt><dd><p>The values added together.</p>
+</dd>
+<dt>Mean</dt><dd><p>The mean (average) value is simply the sum of the values divided by
+the number of values.</p>
+</dd>
+<dt>Median</dt><dd><p>If you arrange all the values from smallest to greatest, the middle
+value (or the average of the two middle values, if N is an even
+number) is the median of the values.</p>
+</dd>
+<dt>St Dev (pop)</dt><dd><p>The standard deviation.
+Gives an indication of how closely the values are clustered around
+the mean.
+The smaller the standard deviation, the closer values tend to be to
+the mean.</p>
+</dd>
+<dt>Minimum</dt><dd><p>The minimum value.</p>
+</dd>
+<dt>Maximum</dt><dd><p>The maximum value.</p>
+</dd>
+<dt>Range</dt><dd><p>The difference between the minimum and maximum values.</p>
+</dd>
+<dt>Q1</dt><dd><p>First quartile of the data.</p>
+</dd>
+<dt>Q3</dt><dd><p>Third quartile of the data.</p>
+</dd>
+<dt>Missing (null) values</dt><dd><p>The number of missing values.</p>
+</dd>
+</dl>
+</section>
+<section id="basic-fa-compute-statistics-on-distances-between-points">
+<h2><span class="section-number">6.4.3. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Compute statistics on distances between points<a class="headerlink" href="#basic-fa-compute-statistics-on-distances-between-points" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Create a new temporary point layer.</p></li>
+<li><p>Enter edit mode, and digitize three points somewhere among the
+other points.</p>
+<p>Alternatively, use the same random point generation method as
+before, but specify only <strong>three</strong> points.</p>
+</li>
+<li><p>Save your new layer as <span class="guilabel">distance_points</span> in the format
+you prefer.</p></li>
+</ol>
+<p>To generate statistics on the distances between points in the two
+layers:</p>
+<ol class="arabic">
+<li><p>Open the <span class="menuselection">Vector Analysis ► Distance matrix</span> tool.</p></li>
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">distance_points</span></code> layer as the input layer, and the
+<code class="docutils literal notranslate"><span class="pre">Sampled</span> <span class="pre">Points</span></code> layer as the target layer.</p></li>
+<li><p>Set it up like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/distance_matrix_setup.png" src="../../../_images/distance_matrix_setup.png" />
+</figure>
+</li>
+<li><p>If you want you can save the output layer as a file or just run the
+algorithm and save the temporary output layer later.</p></li>
+<li><p>Click <span class="guilabel">Run</span> to generate the distance matrix layer.</p></li>
+<li><p>Open the attribute table of the generated layer: values refer to
+the distances between the <span class="guilabel">distance_points</span> features and
+their two nearest points in the <span class="guilabel">Sampled Points</span> layer:</p>
+<figure class="align-center">
+<img alt="../../../_images/distance_matrix_example.png" src="../../../_images/distance_matrix_example.png" />
+</figure>
+</li>
+</ol>
+<p>With these parameters, the <em>Distance Matrix</em> tool calculates distance
+statistics for each point of the input layer with respect to the
+nearest points of the target layer.
+The fields of the output layer contain the mean, standard deviation,
+minimum and maximum for the distances to the nearest neighbors of the
+points in the input layer.</p>
+</section>
+<section id="basic-fa-nearest-neighbor-analysis-within-layer">
+<h2><span class="section-number">6.4.4. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Nearest Neighbor Analysis (within layer)<a class="headerlink" href="#basic-fa-nearest-neighbor-analysis-within-layer" title="Permalink to this headline"></a></h2>
+<p>To do a nearest neighbor analysis of a point layer:</p>
+<ol class="arabic">
+<li><p>Choose
+<span class="menuselection">Vector analysis ► Nearest neighbor analysis</span>.</p></li>
+<li><p>In the dialog that appears, select the <span class="guilabel">Random points</span>
+layer and click <span class="guilabel">Run</span>.</p></li>
+<li><p>The results will appear in the Processing <span class="guilabel">Result Viewer</span>
+Panel.</p>
+<figure class="align-center">
+<img alt="../../../_images/result_viewer.png" src="../../../_images/result_viewer.png" />
+</figure>
+</li>
+<li><p>Click on the blue link to open the <code class="docutils literal notranslate"><span class="pre">html</span></code> page with the results:</p>
+<figure class="align-center">
+<img alt="../../../_images/nearest_neighbour_example.png" src="../../../_images/nearest_neighbour_example.png" />
+</figure>
+</li>
+</ol>
+</section>
+<section id="basic-fa-mean-coordinates">
+<h2><span class="section-number">6.4.5. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Mean Coordinates<a class="headerlink" href="#basic-fa-mean-coordinates" title="Permalink to this headline"></a></h2>
+<p>To get the mean coordinates of a dataset:</p>
+<ol class="arabic simple">
+<li><p>Start <span class="menuselection">Vector analysis ► Mean coordinate(s)</span></p></li>
+<li><p>In the dialog that appears, specify <span class="guilabel">Random points</span> as
+<span class="guilabel">Input layer</span>, and leave the optional choices unchanged.</p></li>
+<li><p>Click <span class="guilabel">Run</span>.</p></li>
+</ol>
+<p>Let us compare this to the central coordinate of the polygon that was
+used to create the random sample.</p>
+<ol class="arabic simple">
+<li><p>Start <span class="menuselection">Vector geometry ► Centroids</span></p></li>
+<li><p>In the dialog that appears, select <code class="docutils literal notranslate"><span class="pre">Bounding</span> <span class="pre">geometry</span></code> as the
+input layer.</p></li>
+</ol>
+<p>As you can see, the mean coordinates (pink point) and the center of
+the study area (in green) don’t necessarily coincide.</p>
+<p>The centroid is the barycenter of the layer (the barycenter of a
+square is the center of the square) while the mean coordinates
+represent the average of all node coordinates.</p>
+<figure class="align-center">
+<img alt="../../../_images/polygon_centroid_mean.png" src="../../../_images/polygon_centroid_mean.png" />
+</figure>
+</section>
+<section id="basic-fa-image-histograms">
+<h2><span class="section-number">6.4.6. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Image Histograms<a class="headerlink" href="#basic-fa-image-histograms" title="Permalink to this headline"></a></h2>
+<p>The histogram of a dataset shows the distribution of its values.
+The simplest way to demonstrate this in QGIS is via the image
+histogram, available in the <span class="guilabel">Layer Properties</span> dialog of any
+image layer (raster dataset).</p>
+<ol class="arabic">
+<li><p>In your <span class="guilabel">Layers</span> panel, right-click on the <code class="docutils literal notranslate"><span class="pre">srtm_41_19</span></code>
+layer</p></li>
+<li><p>Select <span class="menuselection">Properties</span></p></li>
+<li><p>Choose the <span class="guilabel">Histogram</span> tab.
+You may need to click on the <span class="guilabel">Compute Histogram</span> button
+to generate the graphic.
+You will see a graph that shows the frequency distribution for the
+raster values.</p>
+<figure class="align-center">
+<img alt="../../../_images/histogram_export.png" src="../../../_images/histogram_export.png" />
+</figure>
+</li>
+<li><p>The graph can be exported as an image with the <a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a>
+<sup>Save plot</sup> button</p></li>
+<li><p>You can see more detailed information about the layer in the
+<span class="guilabel">Information</span> tab (the mean and max values are estimated,
+and may not be exact).</p></li>
+</ol>
+<p>The mean value is <code class="docutils literal notranslate"><span class="pre">332.8</span></code> (estimated to 324.3), and the maximum
+value is <code class="docutils literal notranslate"><span class="pre">1699</span></code> (estimated to 1548)!
+You can zoom in the histogram.
+Since there are a lot of pixels with value <code class="docutils literal notranslate"><span class="pre">0</span></code>, the histogram looks
+compressed vertically.
+By zooming in to cover everything but the peak at <code class="docutils literal notranslate"><span class="pre">0</span></code>, you will see
+more details:</p>
+<blockquote>
+<div><figure class="align-center">
+<img alt="../../../_images/histogram_export_zoom.png" src="../../../_images/histogram_export_zoom.png" />
+</figure>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the mean and maximum values are not the same as above, it
+can be due to the min/max value calculation.
+Open the <span class="guilabel">Symbology</span> tab and expand the
+<span class="guilabel">Min / Max Value Settings</span> menu.
+Choose <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a><span class="guilabel">Min / max</span> and click on
+<span class="guilabel">Apply</span>.</p>
+</div>
+<p>Keep in mind that a histogram shows you the distribution of
+values, and not all values are necessarily visible on the graph.</p>
+</section>
+<section id="basic-fa-spatial-interpolation">
+<h2><span class="section-number">6.4.7. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Spatial Interpolation<a class="headerlink" href="#basic-fa-spatial-interpolation" title="Permalink to this headline"></a></h2>
+<p>Let’s say you have a collection of sample points from which you would
+like to extrapolate data.
+For example, you might have access to the <span class="guilabel">Sampled points</span>
+dataset we created earlier, and would like to have some idea of what
+the terrain looks like.</p>
+<ol class="arabic simple">
+<li><p>To start, launch the
+<span class="menuselection">GDAL ► Raster analysis ► Grid (IDW with nearest neighbor searching)</span>
+tool in the <span class="guilabel">Processing Toolbox</span>.</p></li>
+<li><p>For <span class="guilabel">Point layer</span> select <code class="docutils literal notranslate"><span class="pre">Sampled</span> <span class="pre">points</span></code></p></li>
+<li><p>Set <span class="guilabel">Weighting power</span> to <code class="docutils literal notranslate"><span class="pre">5.0</span></code></p></li>
+<li><p>In <span class="guilabel">Advanced parameters</span>, set
+<span class="guilabel">Z value from field</span> to <code class="docutils literal notranslate"><span class="pre">rvalue_1</span></code></p></li>
+<li><p>Finally click on <span class="guilabel">Run</span> and wait until the processing ends</p></li>
+<li><p>Close the dialog</p></li>
+</ol>
+<p>Here is a comparison of the original dataset (left) to the one
+constructed from our sample points (right).
+Yours may look different due to the random nature of the location of
+the sample points.</p>
+<figure class="align-center">
+<img alt="../../../_images/interpolation_comparison.png" src="../../../_images/interpolation_comparison.png" />
+</figure>
+<p>As you can see, 100 sample points aren’t really enough to get a
+detailed impression of the terrain.
+It gives a very general idea, but it can be misleading as well.</p>
+</section>
+<section id="moderate-ty-different-interpolation-methods">
+<h2><span class="section-number">6.4.8. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Different interpolation methods<a class="headerlink" href="#moderate-ty-different-interpolation-methods" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Use the processes shown above to create a set of 10 000 random
+points</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the number of points is really big, the processing
+time can take a long time.</p>
+</div>
+</li>
+<li><p>Use these points to sample the original DEM</p></li>
+<li><p>Use the <span class="guilabel">Grid (IDW with nearest neighbor searching)</span> tool
+on this dataset.</p></li>
+<li><p>Set <span class="guilabel">Power</span> and <span class="guilabel">Smoothing</span> to <code class="docutils literal notranslate"><span class="pre">5.0</span></code> and
+<code class="docutils literal notranslate"><span class="pre">2.0</span></code>, respectively.</p></li>
+</ol>
+<p>The results (depending on the positioning of your random points) will
+look more or less like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/interpolation_comparison_10000.png" src="../../../_images/interpolation_comparison_10000.png" />
+</figure>
+<p>This is a better representation of the terrain, due to the greater
+density of sample points. Remember, larger samples give better
+results.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">6.4.9. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>QGIS has a number of tools for analyzing the spatial statistical
+properties of datasets.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">6.4.10. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now that we have covered vector analysis, why not see what can be
+done with rasters?
+That is what we will do in the next module!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="network_analysis.html" class="btn btn-neutral float-left" title="6.3. Lesson: Network Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../rasters/index.html" class="btn btn-neutral float-right" title="7. Module: Rasters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_analysis/spatial_statistics.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_analysis/spatial_statistics.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_analysis/spatial_statistics.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/vector_analysis/spatial_statistics.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/vector_analysis/spatial_statistics.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/vector_analysis/spatial_statistics.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/vector_analysis/spatial_statistics.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/vector_analysis/spatial_statistics.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/vector_analysis/spatial_statistics.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

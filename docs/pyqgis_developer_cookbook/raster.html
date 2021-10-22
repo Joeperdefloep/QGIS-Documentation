@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Using Raster Layers &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/raster.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Using Vector Layers" href="vector.html" />
+    <link rel="prev" title="4. Accessing the Table Of Contents (TOC)" href="legend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/raster.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Using Raster Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layer-details">5.1. Layer Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renderer">5.2. Renderer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#single-band-rasters">5.2.1. Single Band Rasters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multi-band-rasters">5.2.2. Multi Band Rasters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#query-values">5.3. Query Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-raster-data">5.4. Editing raster data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">5. </span>Using Raster Layers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/raster.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="legend.html" class="btn btn-neutral float-left" title="4. Accessing the Table Of Contents (TOC)" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector.html" class="btn btn-neutral float-right" title="6. Using Vector Layers" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <span class="target" id="raster"></span><section id="using-raster-layers">
+<span id="index-0"></span><h1><span class="section-number">5. </span>Using Raster Layers<a class="headerlink" href="#using-raster-layers" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">QgsRasterLayer</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">QgsProject</span><span class="p">,</span>
+<span class="linenos"> 4</span>    <span class="n">QgsPointXY</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">QgsRaster</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="n">QgsRasterShader</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">QgsColorRampShader</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">QgsSingleBandPseudoColorRenderer</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">QgsSingleBandColorDataRenderer</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">QgsSingleBandGrayRenderer</span><span class="p">,</span>
+<span class="linenos">11</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">14</span>    <span class="n">QColor</span><span class="p">,</span>
+<span class="linenos">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#layer-details" id="id1">Layer Details</a></p></li>
+<li><p><a class="reference internal" href="#renderer" id="id2">Renderer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#single-band-rasters" id="id3">Single Band Rasters</a></p></li>
+<li><p><a class="reference internal" href="#multi-band-rasters" id="id4">Multi Band Rasters</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#query-values" id="id5">Query Values</a></p></li>
+<li><p><a class="reference internal" href="#editing-raster-data" id="id6">Editing raster data</a></p></li>
+</ul>
+</div>
+<section id="layer-details">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">5.1. </span>Layer Details</a><a class="headerlink" href="#layer-details" title="Permalink to this headline"></a></h2>
+<p>A raster layer consists of one or more raster bands — referred to as
+single band and multi band rasters. One band represents a matrix of
+values. A color image (e.g. aerial photo) is a raster consisting of red,
+blue and green bands. Single band rasters typically represent either continuous
+variables (e.g. elevation) or discrete variables (e.g. land use). In some
+cases, a raster layer comes with a palette and the raster values refer to
+the colors stored in the palette.</p>
+<p>The following code assumes <code class="docutils literal notranslate"><span class="pre">rlayer</span></code> is a
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterLayer.html#qgis.core.QgsRasterLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterLayer</span></code></a> object.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">rlayer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;srtm&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># get the resolution of the raster in layer unit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">width</span><span class="p">(),</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">height</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>919 619
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the extent of the layer as QgsRectangle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsRectangle: 20.06856808199999875 -34.27001076999999896, 20.83945284300000012 -33.75077500700000144&gt;
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the extent of the layer as Strings</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>20.0685680819999988,-34.2700107699999990 : 20.8394528430000001,-33.7507750070000014
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the raster type: 0 = GrayOrUndefined (single band), 1 = Palette (single band), 2 = Multiband</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">rasterType</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># get the total band count of the raster</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">bandCount</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the first band name of the raster</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">bandName</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Band 1: Height
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all the available metadata as a QgsLayerMetadata object</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">metadata</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;qgis._core.QgsLayerMetadata object at 0x13711d558&gt;
+</pre></div>
+</div>
+</section>
+<section id="renderer">
+<span id="index-2"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">5.2. </span>Renderer</a><a class="headerlink" href="#renderer" title="Permalink to this headline"></a></h2>
+<p>When a raster layer is loaded, it gets a default renderer based on its
+type. It can be altered either in the layer properties or programmatically.</p>
+<p>To query the current renderer:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">renderer</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;qgis._core.QgsSingleBandGrayRenderer object at 0x7f471c1da8a0&gt;
+</pre></div>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">renderer</span><span class="p">()</span><span class="o">.</span><span class="n">type</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>singlebandgray
+</pre></div>
+</div>
+<p>To set a renderer, use the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterLayer.html#qgis.core.QgsRasterLayer.setRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setRenderer()</span></code></a>
+method of <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterLayer.html#qgis.core.QgsRasterLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterLayer</span></code></a>. There are a
+number of renderer classes (derived from <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterRenderer.html#qgis.core.QgsRasterRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterRenderer</span></code></a>):</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsHillshadeRenderer.html#qgis.core.QgsHillshadeRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsHillshadeRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMultiBandColorRenderer.html#qgis.core.QgsMultiBandColorRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMultiBandColorRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsPalettedRasterRenderer.html#qgis.core.QgsPalettedRasterRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPalettedRasterRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterContourRenderer.html#qgis.core.QgsRasterContourRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterContourRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsSingleBandColorDataRenderer.html#qgis.core.QgsSingleBandColorDataRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSingleBandColorDataRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsSingleBandGrayRenderer.html#qgis.core.QgsSingleBandGrayRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSingleBandGrayRenderer</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsSingleBandPseudoColorRenderer.html#qgis.core.QgsSingleBandPseudoColorRenderer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsSingleBandPseudoColorRenderer</span></code></a></p></li>
+</ul>
+<p>Single band raster layers can be drawn either in gray colors (low values =
+black, high values = white) or with a pseudocolor algorithm that assigns colors
+to the values.
+Single band rasters with a palette can also be drawn using the palette.
+Multiband layers are typically drawn by mapping the bands to RGB colors.
+Another possibility is to use just one band for drawing.</p>
+<section id="single-band-rasters">
+<span id="index-3"></span><h3><a class="toc-backref" href="#id3"><span class="section-number">5.2.1. </span>Single Band Rasters</a><a class="headerlink" href="#single-band-rasters" title="Permalink to this headline"></a></h3>
+<p>Let’s say we want a render single band raster layer with colors ranging from
+green to yellow (corresponding to pixel values from 0 to 255).
+In the first stage we will prepare a
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterShader.html#qgis.core.QgsRasterShader" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterShader</span></code></a> object and configure
+its shader function:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">fcn</span> <span class="o">=</span> <span class="n">QgsColorRampShader</span><span class="p">()</span>
+<span class="linenos">2</span><span class="n">fcn</span><span class="o">.</span><span class="n">setColorRampType</span><span class="p">(</span><span class="n">QgsColorRampShader</span><span class="o">.</span><span class="n">Interpolated</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">lst</span> <span class="o">=</span> <span class="p">[</span> <span class="n">QgsColorRampShader</span><span class="o">.</span><span class="n">ColorRampItem</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span>
+<span class="linenos">4</span>      <span class="n">QgsColorRampShader</span><span class="o">.</span><span class="n">ColorRampItem</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="n">QColor</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="p">]</span>
+<span class="linenos">5</span><span class="n">fcn</span><span class="o">.</span><span class="n">setColorRampItemList</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">shader</span> <span class="o">=</span> <span class="n">QgsRasterShader</span><span class="p">()</span>
+<span class="linenos">7</span><span class="n">shader</span><span class="o">.</span><span class="n">setRasterShaderFunction</span><span class="p">(</span><span class="n">fcn</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The shader maps the colors as specified by its color map. The color map is
+provided as a list of pixel values with associated colors.
+There are three modes of interpolation:</p>
+<ul class="simple">
+<li><p>linear (<code class="docutils literal notranslate"><span class="pre">Interpolated</span></code>): the color is linearly interpolated
+from the color map entries above and below the pixel value</p></li>
+<li><p>discrete (<code class="docutils literal notranslate"><span class="pre">Discrete</span></code>): the color is taken from the closest color
+map entry with equal or higher value</p></li>
+<li><p>exact (<code class="docutils literal notranslate"><span class="pre">Exact</span></code>): the color is not interpolated, only pixels with
+values equal to color map entries will be drawn</p></li>
+</ul>
+<p>In the second step we will associate this shader with the raster layer:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">renderer</span> <span class="o">=</span> <span class="n">QgsSingleBandPseudoColorRenderer</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">shader</span><span class="p">)</span>
+<span class="n">rlayer</span><span class="o">.</span><span class="n">setRenderer</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The number <code class="docutils literal notranslate"><span class="pre">1</span></code> in the code above is the band number (raster bands are
+indexed from one).</p>
+<p>Finally we have to use the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapLayer.html#qgis.core.QgsMapLayer.triggerRepaint" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">triggerRepaint()</span></code></a> method
+to see the results:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">rlayer</span><span class="o">.</span><span class="n">triggerRepaint</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="multi-band-rasters">
+<span id="index-4"></span><h3><a class="toc-backref" href="#id4"><span class="section-number">5.2.2. </span>Multi Band Rasters</a><a class="headerlink" href="#multi-band-rasters" title="Permalink to this headline"></a></h3>
+<p>By default, QGIS maps the first three bands to red, green and blue to
+create a color image (this is the <code class="docutils literal notranslate"><span class="pre">MultiBandColor</span></code> drawing style).
+In some cases you might want to override these setting.
+The following code interchanges red band (1) and green band (2):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">rlayer_multi</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;multiband&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rlayer_multi</span><span class="o">.</span><span class="n">renderer</span><span class="p">()</span><span class="o">.</span><span class="n">setGreenBand</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rlayer_multi</span><span class="o">.</span><span class="n">renderer</span><span class="p">()</span><span class="o">.</span><span class="n">setRedBand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case only one band is necessary for visualization of the raster,
+single band drawing can be chosen, either gray levels or pseudocolor.</p>
+<p>We have to use <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapLayer.html#qgis.core.QgsMapLayer.triggerRepaint" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">triggerRepaint()</span></code></a>
+to update the map and see the result:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">rlayer_multi</span><span class="o">.</span><span class="n">triggerRepaint</span><span class="p">()</span>
+</pre></div>
+</div>
+<span class="target" id="index-5"></span></section>
+</section>
+<section id="query-values">
+<span id="index-6"></span><h2><a class="toc-backref" href="#id5"><span class="section-number">5.3. </span>Query Values</a><a class="headerlink" href="#query-values" title="Permalink to this headline"></a></h2>
+<p>Raster values can be queried using the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterDataProvider.html#qgis.core.QgsRasterDataProvider.sample" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sample()</span></code></a> method of
+the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterDataProvider.html#qgis.core.QgsRasterDataProvider" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterDataProvider</span></code></a> class.
+You have to specify a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsPointXY.html#qgis.core.QgsPointXY" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsPointXY</span></code></a>
+and the band number of the raster layer you want to query. The method returns a
+tuple with the value and <code class="xref py py-const docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-const docutils literal notranslate"><span class="pre">False</span></code> depending on the results:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mf">20.50</span><span class="p">,</span> <span class="o">-</span><span class="mi">34</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another method to query raster values is using the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterDataProvider.html#qgis.core.QgsRasterDataProvider.identify" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">identify()</span></code></a> method that returns a
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterIdentifyResult.html#qgis.core.QgsRasterIdentifyResult" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterIdentifyResult</span></code></a> object.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ident</span> <span class="o">=</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">identify</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mf">20.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">34</span><span class="p">),</span> <span class="n">QgsRaster</span><span class="o">.</span><span class="n">IdentifyFormatValue</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">ident</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">ident</span><span class="o">.</span><span class="n">results</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{1: 323.0}
+</pre></div>
+</div>
+<p>In this case, the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterIdentifyResult.html#qgis.core.QgsRasterIdentifyResult.results" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">results()</span></code></a>
+method returns a dictionary, with band indices as keys, and band values as
+values.
+For instance, something like <code class="docutils literal notranslate"><span class="pre">{1:</span> <span class="pre">323.0}</span></code></p>
+</section>
+<section id="editing-raster-data">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">5.4. </span>Editing raster data</a><a class="headerlink" href="#editing-raster-data" title="Permalink to this headline"></a></h2>
+<p>You can create a raster layer using the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterBlock.html#qgis.core.QgsRasterBlock" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsRasterBlock</span></code></a>
+class. For example, to create a 2x2 raster block with one byte per pixel:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">block</span> <span class="o">=</span> <span class="n">QgsRasterBlock</span><span class="p">(</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Byte</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">block</span><span class="o">.</span><span class="n">setData</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;</span><span class="se">\xaa\xbb\xcc\xdd</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Raster pixels can be overwritten thanks to the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsRasterDataProvider.html#qgis.core.QgsRasterDataProvider.writeBlock" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">writeBlock()</span></code></a> method.
+To overwrite existing raster data at position 0,0 by the 2x2 block:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span>
+<span class="n">provider</span><span class="o">.</span><span class="n">setEditable</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">provider</span><span class="o">.</span><span class="n">writeBlock</span><span class="p">(</span><span class="n">block</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">provider</span><span class="o">.</span><span class="n">setEditable</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="legend.html" class="btn btn-neutral float-left" title="4. Accessing the Table Of Contents (TOC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vector.html" class="btn btn-neutral float-right" title="6. Using Vector Layers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/raster.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/raster.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/raster.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/raster.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/raster.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/raster.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/raster.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/raster.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/raster.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/raster.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/raster.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/raster.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/raster.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/raster.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

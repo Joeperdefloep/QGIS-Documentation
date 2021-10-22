@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Loading Layers &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/loadlayer.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Accessing the Table Of Contents (TOC)" href="legend.html" />
+    <link rel="prev" title="2. Loading Projects" href="loadproject.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/loadlayer.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. Loading Layers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vector-layers">3.1. Vector Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raster-layers">3.2. Raster Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qgsproject-instance">3.3. QgsProject instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">3. </span>Loading Layers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/loadlayer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="loadproject.html" class="btn btn-neutral float-left" title="2. Loading Projects" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="legend.html" class="btn btn-neutral float-right" title="4. Accessing the Table Of Contents (TOC)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="loading-layers">
+<span id="loadlayerpy"></span><h1><span class="section-number">3. </span>Loading Layers<a class="headerlink" href="#loading-layers" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span> <span class="c1"># This is is needed in the pyqgis console also</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QgsVectorLayer</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#vector-layers" id="id1">Vector Layers</a></p></li>
+<li><p><a class="reference internal" href="#raster-layers" id="id2">Raster Layers</a></p></li>
+<li><p><a class="reference internal" href="#qgsproject-instance" id="id3">QgsProject instance</a></p></li>
+</ul>
+</div>
+<p>Let’s open some layers with data. QGIS recognizes vector and raster layers.
+Additionally, custom layer types are available, but we are not going to discuss
+them here.</p>
+<section id="vector-layers">
+<span id="index-0"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">3.1. </span>Vector Layers</a><a class="headerlink" href="#vector-layers" title="Permalink to this headline"></a></h2>
+<p>To create and add a vector layer instance to the project, specify the layer’s data source
+identifier, name for the layer and provider’s name:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># get the path to the shapefile e.g. /home/project/data/ports.shp</span>
+<span class="linenos"> 2</span><span class="n">path_to_airports_layer</span> <span class="o">=</span> <span class="s2">&quot;testdata/airports.shp&quot;</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># The format is:</span>
+<span class="linenos"> 5</span><span class="c1"># vlayer = QgsVectorLayer(data_source, layer_name, provider_name)</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">path_to_airports_layer</span><span class="p">,</span> <span class="s2">&quot;Airports layer&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="k">if</span> <span class="ow">not</span> <span class="n">vlayer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+<span class="linenos"> 9</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">11</span>    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The data source identifier is a string and it is specific to each vector data
+provider. Layer’s name is used in the layer list widget. It is important to
+check whether the layer has been loaded successfully. If it was not, an invalid
+layer instance is returned.</p>
+<p>For a geopackage vector layer:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># get the path to a geopackage  e.g. /usr/share/qgis/resources/data/world_map.gpkg</span>
+<span class="linenos"> 2</span><span class="n">path_to_gpkg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">pkgDataPath</span><span class="p">(),</span> <span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;world_map.gpkg&quot;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="c1"># append the layername part</span>
+<span class="linenos"> 4</span><span class="n">gpkg_countries_layer</span> <span class="o">=</span> <span class="n">path_to_gpkg</span> <span class="o">+</span> <span class="s2">&quot;|layername=countries&quot;</span>
+<span class="linenos"> 5</span><span class="c1"># e.g. gpkg_places_layer = &quot;/usr/share/qgis/resources/data/world_map.gpkg|layername=countries&quot;</span>
+<span class="linenos"> 6</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">gpkg_countries_layer</span><span class="p">,</span> <span class="s2">&quot;Countries layer&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="k">if</span> <span class="ow">not</span> <span class="n">vlayer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+<span class="linenos"> 8</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">10</span>    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The quickest way to open and display a vector layer in QGIS is the
+<a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface.addVectorLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addVectorLayer()</span></code></a>
+method of the <a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgisInterface</span></code></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addVectorLayer</span><span class="p">(</span><span class="n">path_to_airports_layer</span><span class="p">,</span> <span class="s2">&quot;Airports layer&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">vlayer</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This creates a new layer and adds it to the current QGIS project (making it appear
+in the layer list) in one step. The function returns the layer instance or <code class="docutils literal notranslate"><span class="pre">None</span></code>
+if the layer couldn’t be loaded.</p>
+<p>The following list shows how to access various data sources using vector data
+providers:</p>
+<ul id="index-1">
+<li><p>OGR library (Shapefile and many other file formats) — data source is the
+path to the file:</p>
+<ul>
+<li><p>for Shapefile:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;testdata/airports.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;layer_name_you_like&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>for dxf (note the internal options in data source uri):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;testdata/sample.dxf|layername=entities|geometrytype=Polygon&quot;</span>
+<span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;layer_name_you_like&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<ul id="index-2">
+<li><p>PostGIS database - data source is a string with all information needed to
+create a connection to PostgreSQL database.</p>
+<p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> class
+can generate this string for you. Note that QGIS has to be compiled with
+Postgres support, otherwise this provider isn’t available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">()</span>
+<span class="linenos">2</span><span class="c1"># set host name, port, database name, username and password</span>
+<span class="linenos">3</span><span class="n">uri</span><span class="o">.</span><span class="n">setConnection</span><span class="p">(</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span> <span class="s2">&quot;5432&quot;</span><span class="p">,</span> <span class="s2">&quot;dbname&quot;</span><span class="p">,</span> <span class="s2">&quot;johny&quot;</span><span class="p">,</span> <span class="s2">&quot;xxx&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="c1"># set database schema, table name, geometry column and optionally</span>
+<span class="linenos">5</span><span class="c1"># subset (WHERE clause)</span>
+<span class="linenos">6</span><span class="n">uri</span><span class="o">.</span><span class="n">setDataSource</span><span class="p">(</span><span class="s2">&quot;public&quot;</span><span class="p">,</span> <span class="s2">&quot;roads&quot;</span><span class="p">,</span> <span class="s2">&quot;the_geom&quot;</span><span class="p">,</span> <span class="s2">&quot;cityid = 2643&quot;</span><span class="p">,</span> <span class="s2">&quot;primary_key_field&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">False</span></code> argument passed to <code class="docutils literal notranslate"><span class="pre">uri.uri(False)</span></code> prevents the
+expansion of the authentication configuration parameters, if you are not using
+any authentication configuration this argument does not make any difference.</p>
+</div>
+</li>
+</ul>
+<ul id="index-3">
+<li><p>CSV or other delimited text files — to open a file with a semicolon as a
+delimiter, with field “x” for X coordinate and field “y” for Y coordinate
+you would use something like this:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;file://</span><span class="si">{}</span><span class="s2">/testdata/delimited_xy.csv?delimiter=</span><span class="si">{}</span><span class="s2">&amp;xField=</span><span class="si">{}</span><span class="s2">&amp;yField=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;delimitedtext&quot;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The provider string is structured as a URL, so
+the path must be prefixed with <code class="docutils literal notranslate"><span class="pre">file://</span></code>. Also it allows WKT (well known
+text) formatted geometries as an alternative to <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> fields,
+and allows the coordinate reference system to be specified. For example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;file:///some/path/file.csv?delimiter=</span><span class="si">{}</span><span class="s2">&amp;crs=epsg:4723&amp;wktField=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</li>
+</ul>
+<ul id="index-4">
+<li><p>GPX files — the “gpx” data provider reads tracks, routes and waypoints from
+gpx files. To open a file, the type (track/route/waypoint) needs to be
+specified as part of the url:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;testdata/layers.gpx?type=track&quot;</span>
+<span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;gpx&quot;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="index-5">
+<li><p>SpatiaLite database — Similarly to PostGIS databases,
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a> can be used for generation of data
+source identifier:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">()</span>
+<span class="linenos"> 2</span><span class="n">uri</span><span class="o">.</span><span class="n">setDatabase</span><span class="p">(</span><span class="s1">&#39;/home/martin/test-2.3.sqlite&#39;</span><span class="p">)</span>
+<span class="linenos"> 3</span><span class="n">schema</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="linenos"> 4</span><span class="n">table</span> <span class="o">=</span> <span class="s1">&#39;Towns&#39;</span>
+<span class="linenos"> 5</span><span class="n">geom_column</span> <span class="o">=</span> <span class="s1">&#39;Geometry&#39;</span>
+<span class="linenos"> 6</span><span class="n">uri</span><span class="o">.</span><span class="n">setDataSource</span><span class="p">(</span><span class="n">schema</span><span class="p">,</span> <span class="n">table</span><span class="p">,</span> <span class="n">geom_column</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">display_name</span> <span class="o">=</span> <span class="s1">&#39;Towns&#39;</span>
+<span class="linenos"> 9</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="n">display_name</span><span class="p">,</span> <span class="s1">&#39;spatialite&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="index-6">
+<li><p>MySQL WKB-based geometries, through OGR — data source is the connection
+string to the table:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;MySQL:dbname,host=localhost,port=3306,user=root,password=xxx|layername=my_table&quot;</span>
+<span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span> <span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;my table&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span> <span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<ul id="index-7">
+<li><p>WFS connection: the connection is defined with a URI and using the <code class="docutils literal notranslate"><span class="pre">WFS</span></code> provider:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;https://demo.mapserver.org/cgi-bin/wfs?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typename=ms:cities&quot;</span>
+<span class="n">vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;my wfs layer&quot;</span><span class="p">,</span> <span class="s2">&quot;WFS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The uri can be created using the standard <code class="docutils literal notranslate"><span class="pre">urllib</span></code> library:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 4</span>    <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="s1">&#39;WFS&#39;</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;2.0.0&#39;</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="s1">&#39;request&#39;</span><span class="p">:</span> <span class="s1">&#39;GetFeature&#39;</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="s1">&#39;typename&#39;</span><span class="p">:</span> <span class="s1">&#39;ms:cities&#39;</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="s1">&#39;srsname&#39;</span><span class="p">:</span> <span class="s2">&quot;EPSG:4326&quot;</span>
+<span class="linenos"> 9</span><span class="p">}</span>
+<span class="linenos">10</span><span class="n">uri2</span> <span class="o">=</span> <span class="s1">&#39;https://demo.mapserver.org/cgi-bin/wfs?&#39;</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">unquote</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can change the data source of an existing layer by calling
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapLayer.html#qgis.core.QgsMapLayer.setDataSource" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setDataSource()</span></code></a>
+on a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> instance, as
+in the following example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;https://demo.mapserver.org/cgi-bin/wfs?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;typename=ms:cities&quot;</span>
+<span class="linenos">2</span><span class="n">provider_options</span> <span class="o">=</span> <span class="n">QgsDataProvider</span><span class="o">.</span><span class="n">ProviderOptions</span><span class="p">()</span>
+<span class="linenos">3</span><span class="c1"># Use project&#39;s transform context</span>
+<span class="linenos">4</span><span class="n">provider_options</span><span class="o">.</span><span class="n">transformContext</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">transformContext</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">vlayer</span><span class="o">.</span><span class="n">setDataSource</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;WFS&quot;</span><span class="p">,</span> <span class="n">provider_options</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="k">del</span><span class="p">(</span><span class="n">vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="raster-layers">
+<span id="index-8"></span><h2><a class="toc-backref" href="#id2"><span class="section-number">3.2. </span>Raster Layers</a><a class="headerlink" href="#raster-layers" title="Permalink to this headline"></a></h2>
+<p>For accessing raster files, GDAL library is used. It supports a wide range of
+file formats. In case you have troubles with opening some files, check whether
+your GDAL has support for the particular format (not all formats are available
+by default). To load a raster from a file, specify its filename and display name:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># get the path to a tif file  e.g. /home/project/data/srtm.tif</span>
+<span class="linenos">2</span><span class="n">path_to_tif</span> <span class="o">=</span> <span class="s2">&quot;qgis-projects/python_cookbook/data/srtm.tif&quot;</span>
+<span class="linenos">3</span><span class="n">rlayer</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="n">path_to_tif</span><span class="p">,</span> <span class="s2">&quot;SRTM layer name&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="ow">not</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To load a raster from a geopackage:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># get the path to a geopackage  e.g. /home/project/data/data.gpkg</span>
+<span class="linenos">2</span><span class="n">path_to_gpkg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">&quot;testdata&quot;</span><span class="p">,</span> <span class="s2">&quot;sublayers.gpkg&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="c1"># gpkg_raster_layer = &quot;GPKG:/home/project/data/data.gpkg:srtm&quot;</span>
+<span class="linenos">4</span><span class="n">gpkg_raster_layer</span> <span class="o">=</span> <span class="s2">&quot;GPKG:&quot;</span> <span class="o">+</span> <span class="n">path_to_gpkg</span> <span class="o">+</span> <span class="s2">&quot;:srtm&quot;</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="n">rlayer</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="n">gpkg_raster_layer</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;gdal&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="k">if</span> <span class="ow">not</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+<span class="linenos">9</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly to vector layers, raster layers can be loaded using the addRasterLayer
+function of the <a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgisInterface</span></code></a> object:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">iface</span><span class="o">.</span><span class="n">addRasterLayer</span><span class="p">(</span><span class="n">path_to_tif</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This creates a new layer and adds it to the current project (making it appear
+in the layer list) in one step.</p>
+<p>To load a PostGIS raster:</p>
+<p>PostGIS rasters, similar to PostGIS vectors, can be added to a project using a URI string.
+It is efficient to keep a reusable dictionary of strings for the database connection parameters.
+This makes it easy to edit the dictionary for the applicable connection.
+The dictionary is then encoded into a URI using the ‘postgresraster’ provider metadata object.
+After that the raster can be added to the project.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">uri_config</span> <span class="o">=</span> <span class="p">{</span>
+<span class="linenos"> 2</span>    <span class="c1"># database parameters</span>
+<span class="linenos"> 3</span>    <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="s1">&#39;gis_db&#39;</span><span class="p">,</span>      <span class="c1"># The PostgreSQL database to connect to.</span>
+<span class="linenos"> 4</span>    <span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>     <span class="c1"># The host IP address or localhost.</span>
+<span class="linenos"> 5</span>    <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="s1">&#39;5432&#39;</span><span class="p">,</span>          <span class="c1"># The port to connect on.</span>
+<span class="linenos"> 6</span>    <span class="s1">&#39;sslmode&#39;</span><span class="p">:</span><span class="n">QgsDataSourceUri</span><span class="o">.</span><span class="n">SslDisable</span><span class="p">,</span> <span class="c1"># SslAllow, SslPrefer, SslRequire, SslVerifyCa, SslVerifyFull</span>
+<span class="linenos"> 7</span>    <span class="c1"># user and password are not needed if stored in the authcfg or service</span>
+<span class="linenos"> 8</span>    <span class="s1">&#39;authcfg&#39;</span><span class="p">:</span><span class="s1">&#39;QconfigId&#39;</span><span class="p">,</span>  <span class="c1"># The QGIS athentication database ID holding connection details.</span>
+<span class="linenos"> 9</span>    <span class="s1">&#39;service&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>         <span class="c1"># The PostgreSQL service to be used for connection to the database.</span>
+<span class="linenos">10</span>    <span class="s1">&#39;username&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>        <span class="c1"># The PostgreSQL user name.</span>
+<span class="linenos">11</span>    <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>        <span class="c1"># The PostgreSQL password for the user.</span>
+<span class="linenos">12</span>    <span class="c1"># table and raster column details</span>
+<span class="linenos">13</span>    <span class="s1">&#39;schema&#39;</span><span class="p">:</span><span class="s1">&#39;public&#39;</span><span class="p">,</span>      <span class="c1"># The database schema that the table is located in.</span>
+<span class="linenos">14</span>    <span class="s1">&#39;table&#39;</span><span class="p">:</span><span class="s1">&#39;my_rasters&#39;</span><span class="p">,</span>   <span class="c1"># The database table to be loaded.</span>
+<span class="linenos">15</span>    <span class="s1">&#39;geometrycolumn&#39;</span><span class="p">:</span><span class="s1">&#39;rast&#39;</span><span class="p">,</span><span class="c1"># raster column in PostGIS table</span>
+<span class="linenos">16</span>    <span class="s1">&#39;sql&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>             <span class="c1"># An SQL WHERE clause. It should be placed at the end of the string.</span>
+<span class="linenos">17</span>    <span class="s1">&#39;key&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>             <span class="c1"># A key column from the table.</span>
+<span class="linenos">18</span>    <span class="s1">&#39;srid&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>            <span class="c1"># A string designating the SRID of the coordinate reference system.</span>
+<span class="linenos">19</span>    <span class="s1">&#39;estimatedmetadata&#39;</span><span class="p">:</span><span class="s1">&#39;False&#39;</span><span class="p">,</span> <span class="c1"># A boolean value telling if the metadata is estimated.</span>
+<span class="linenos">20</span>    <span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>            <span class="c1"># A WKT string designating the WKB Type.</span>
+<span class="linenos">21</span>    <span class="s1">&#39;selectatid&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>      <span class="c1"># Set to True to disable selection by feature ID.</span>
+<span class="linenos">22</span>    <span class="s1">&#39;options&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>         <span class="c1"># other PostgreSQL connection options not in this list.</span>
+<span class="linenos">23</span>    <span class="s1">&#39;enableTime&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">24</span>    <span class="s1">&#39;temporalDefaultTime&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="s1">&#39;temporalFieldIndex&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">26</span>    <span class="s1">&#39;mode&#39;</span><span class="p">:</span><span class="s1">&#39;2&#39;</span><span class="p">,</span>             <span class="c1"># GDAL &#39;mode&#39; parameter, 2 unions raster tiles, 1 adds tiles separately (may require user input)</span>
+<span class="linenos">27</span><span class="p">}</span>
+<span class="linenos">28</span><span class="c1"># remove any NULL parameters</span>
+<span class="linenos">29</span><span class="n">uri_config</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="n">val</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">uri_config</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">val</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
+<span class="linenos">30</span><span class="c1"># get the metadata for the raster provider and configure the URI</span>
+<span class="linenos">31</span><span class="n">md</span> <span class="o">=</span> <span class="n">QgsProviderRegistry</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">providerMetadata</span><span class="p">(</span><span class="s1">&#39;postgresraster&#39;</span><span class="p">)</span>
+<span class="linenos">32</span><span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">(</span><span class="n">md</span><span class="o">.</span><span class="n">encodeUri</span><span class="p">(</span><span class="n">uri_config</span><span class="p">))</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span><span class="c1"># the raster can then be loaded into the project</span>
+<span class="linenos">35</span><span class="n">rlayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addRasterLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(</span><span class="kc">False</span><span class="p">),</span> <span class="s2">&quot;raster layer name&quot;</span><span class="p">,</span> <span class="s2">&quot;postgresraster&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Raster layers can also be created from a WCS service:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layer_name</span> <span class="o">=</span> <span class="s1">&#39;modis&#39;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://demo.mapserver.org/cgi-bin/wcs?identifier=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span>
+<span class="n">rlayer</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s1">&#39;my wcs layer&#39;</span><span class="p">,</span> <span class="s1">&#39;wcs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is a description of the parameters that the WCS URI can contain:</p>
+<p>WCS URI is composed of <strong>key=value</strong> pairs separated by <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>. It is the same
+format like query string in URL, encoded the same way. <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsDataSourceUri.html#qgis.core.QgsDataSourceUri" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsDataSourceUri</span></code></a>
+should be used to construct the URI to ensure that special characters are
+encoded properly.</p>
+<ul class="simple">
+<li><p><strong>url</strong> (required) : WCS Server URL. Do not use VERSION in URL, because each
+version of WCS is using different parameter name for <strong>GetCapabilities</strong>
+version, see param version.</p></li>
+<li><p><strong>identifier</strong> (required) : Coverage name</p></li>
+<li><p><strong>time</strong> (optional) : time position or time period
+(beginPosition/endPosition[/timeResolution])</p></li>
+<li><p><strong>format</strong> (optional) : Supported format name. Default is the first supported
+format with tif in name or the first supported format.</p></li>
+<li><p><strong>crs</strong> (optional) : CRS in form AUTHORITY:ID, e.g. EPSG:4326. Default is
+EPSG:4326 if supported or the first supported CRS.</p></li>
+<li><p><strong>username</strong> (optional) : Username for basic authentication.</p></li>
+<li><p><strong>password</strong> (optional) : Password for basic authentication.</p></li>
+<li><p><strong>IgnoreGetMapUrl</strong> (optional, hack) : If specified (set to 1), ignore
+GetCoverage URL advertised by GetCapabilities. May be necessary if a server is
+not configured properly.</p></li>
+<li><p><strong>InvertAxisOrientation</strong> (optional, hack) : If specified (set to 1), switch
+axis in GetCoverage request. May be necessary for geographic CRS if a server
+is using wrong axis order.</p></li>
+<li><p><strong>IgnoreAxisOrientation</strong> (optional, hack) : If specified (set to 1), do not
+invert axis orientation according to WCS standard for geographic CRS.</p></li>
+<li><p><strong>cache</strong> (optional) : cache load control, as described in
+QNetworkRequest::CacheLoadControl, but request is resend as PreferCache if
+failed with AlwaysCache. Allowed values: AlwaysCache, PreferCache,
+PreferNetwork, AlwaysNetwork. Default is AlwaysCache.</p></li>
+</ul>
+<p id="index-9">Alternatively you can load a raster layer from WMS server. However currently
+it’s not possible to access GetCapabilities response from API — you have to
+know what layers you want:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">urlWithParams</span> <span class="o">=</span> <span class="s2">&quot;crs=EPSG:4326&amp;format=image/png&amp;layers=continents&amp;styles&amp;url=https://demo.mapserver.org/cgi-bin/wms&quot;</span>
+<span class="n">rlayer</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="n">urlWithParams</span><span class="p">,</span> <span class="s1">&#39;some layer name&#39;</span><span class="p">,</span> <span class="s1">&#39;wms&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">rlayer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="qgsproject-instance">
+<span id="index-10"></span><h2><a class="toc-backref" href="#id3"><span class="section-number">3.3. </span>QgsProject instance</a><a class="headerlink" href="#qgsproject-instance" title="Permalink to this headline"></a></h2>
+<p>If you would like to use the opened layers for rendering, do not forget to add
+them to the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> instance.
+The <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> instance takes ownership of layers
+and they can be later accessed from any part of the application by their unique
+ID. When the layer is removed from the project, it gets deleted, too. Layers can
+be removed by the user in the QGIS interface, or via Python using the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.removeMapLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">removeMapLayer()</span></code></a> method.</p>
+<p id="index-11">Adding a layer to the current project is done using the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.addMapLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addMapLayer()</span></code></a> method:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">rlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To add a layer at an absolute position:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># first add the layer without showing it</span>
+<span class="linenos">2</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">rlayer</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos">3</span><span class="c1"># obtain the layer tree of the top-level group in the project</span>
+<span class="linenos">4</span><span class="n">layerTree</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">layerTreeCanvasBridge</span><span class="p">()</span><span class="o">.</span><span class="n">rootGroup</span><span class="p">()</span>
+<span class="linenos">5</span><span class="c1"># the position is a number starting from 0, with -1 an alias for the end</span>
+<span class="linenos">6</span><span class="n">layerTree</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span><span class="p">(</span><span class="n">rlayer</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>If you want to delete the layer use the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.removeMapLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">removeMapLayer()</span></code></a> method:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># QgsProject.instance().removeMapLayer(layer_id)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">removeMapLayer</span><span class="p">(</span><span class="n">rlayer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>In the above code, the layer id is passed (you can get it calling the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapLayer.html#qgis.core.QgsMapLayer.id" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">id()</span></code></a> method of the layer),
+but you can also pass the layer object itself.</p>
+<p>For a list of loaded layers and layer ids, use the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.mapLayers" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mapLayers()</span></code></a> method:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="loadproject.html" class="btn btn-neutral float-left" title="2. Loading Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="legend.html" class="btn btn-neutral float-right" title="4. Accessing the Table Of Contents (TOC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/loadlayer.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/loadlayer.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/loadlayer.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/loadlayer.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/loadlayer.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/loadlayer.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/loadlayer.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/loadlayer.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/loadlayer.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

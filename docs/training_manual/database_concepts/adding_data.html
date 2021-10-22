@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.3. Lesson: Adding Data to the Model &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/adding_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="15.4. Lesson: Queries" href="queries.html" />
+    <link rel="prev" title="15.2. Lesson: Implementing the Data Model" href="data_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/adding_data.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. Module: Database Concepts with PostgreSQL</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="db_intro.html">15.1. Lesson: Introduction to Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_model.html">15.2. Lesson: Implementing the Data Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.3. Lesson: Adding Data to the Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#insert-statement">15.3.1. Insert statement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sequencing-data-addition-according-to-constraints">15.3.2. Sequencing Data Addition According to Constraints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-moderate">15.3.3. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-data">15.3.4. Select data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-data">15.3.5. Update data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-data">15.3.6. Delete Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-hard">15.3.7. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">15.3.8. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">15.3.9. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="queries.html">15.4. Lesson: Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views.html">15.5. Lesson: Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rules.html">15.6. Lesson: Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">15. </span>Module: Database Concepts with PostgreSQL</a> &raquo;</li>
+      <li><span class="section-number">15.3. </span>Lesson: Adding Data to the Model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/database_concepts/adding_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="data_model.html" class="btn btn-neutral float-left" title="15.2. Lesson: Implementing the Data Model" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="queries.html" class="btn btn-neutral float-right" title="15.4. Lesson: Queries" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-adding-data-to-the-model">
+<h1><span class="section-number">15.3. </span>Lesson: Adding Data to the Model<a class="headerlink" href="#ls-adding-data-to-the-model" title="Permalink to this headline"></a></h1>
+<p>The models we’ve created will now need to be populated with the data they’re
+intended to contain.</p>
+<p><strong>The goal for this lesson:</strong> To learn how to insert new data into the database
+models.</p>
+<section id="insert-statement">
+<h2><span class="section-number">15.3.1. </span>Insert statement<a class="headerlink" href="#insert-statement" title="Permalink to this headline"></a></h2>
+<p>How do you add data to a table? The sql <kbd class="kbd docutils literal notranslate">INSERT</kbd> statement provides the
+functionality for this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;High street&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>A couple of things to note:</p>
+<ul class="simple">
+<li><p>After the table name (<kbd class="kbd docutils literal notranslate">streets</kbd>), you list the column names that you
+will be populating (in this case only the <kbd class="kbd docutils literal notranslate">name</kbd> column).</p></li>
+<li><p>After the <kbd class="kbd docutils literal notranslate">values</kbd> keyword, place the list of field values.</p></li>
+<li><p>Strings should be quoted using single quotes.</p></li>
+<li><p>Note that we did not insert a value for the <kbd class="kbd docutils literal notranslate">id</kbd> column; this
+is because it is a sequence and will be auto-generated.</p></li>
+<li><p>If you do manually set the <kbd class="kbd docutils literal notranslate">id</kbd>, you may cause serious problems with
+the integrity of your database.</p></li>
+</ul>
+<p>You should see <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">INSERT</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd> if it is successful.</p>
+<p>You can see the result of your insert action by selecting all the data in the
+table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">streets</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">streets</span><span class="p">;</span>
+ <span class="n">id</span> <span class="o">|</span>    <span class="n">name</span>
+<span class="c1">----+-------------</span>
+  <span class="mi">1</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="ty-basic">
+<h3><span class="section-number">15.3.1.1. </span>Try Yourself <img alt="basic" src="../../../_images/basic.png" /><a class="headerlink" href="#ty-basic" title="Permalink to this headline"></a></h3>
+<p>Use the <kbd class="kbd docutils literal notranslate">INSERT</kbd> command to add a new street to the <kbd class="kbd docutils literal notranslate">streets</kbd> table.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The SQL command you should use looks like this (you can replace the street name
+with a name of your choice):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;Low Road&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="sequencing-data-addition-according-to-constraints">
+<h2><span class="section-number">15.3.2. </span>Sequencing Data Addition According to Constraints<a class="headerlink" href="#sequencing-data-addition-according-to-constraints" title="Permalink to this headline"></a></h2>
+</section>
+<section id="ty-moderate">
+<h2><span class="section-number">15.3.3. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h2>
+<p>Try to add a person object to the <kbd class="kbd docutils literal notranslate">people</kbd> table with the following details:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span><span class="p">:</span> <span class="n">Joe</span> <span class="n">Smith</span>
+<span class="n">House</span> <span class="n">Number</span><span class="p">:</span> <span class="mi">55</span>
+<span class="n">Street</span><span class="p">:</span> <span class="n">Main</span> <span class="n">Street</span>
+<span class="n">Phone</span><span class="p">:</span> <span class="mi">072</span> <span class="mi">882</span> <span class="mi">33</span> <span class="mi">21</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recall that in this example, we defined phone numbers as strings, not
+integers.</p>
+</div>
+<p>At this point, you should have an error report if you try to do this without
+first creating a record for Main Street in the <kbd class="kbd docutils literal notranslate">streets</kbd> table.</p>
+<p>You should have also noticed that:</p>
+<ul class="simple">
+<li><p>You can’t add the street using its name</p></li>
+<li><p>You can’t add a street using a street <kbd class="kbd docutils literal notranslate">id</kbd> before first creating the
+street record on the streets table</p></li>
+</ul>
+<p>Remember that our two tables are linked via a Primary/Foreign Key pair. This
+means that no valid person can be created without there also being a valid
+corresponding street record.</p>
+<p>Using the above knowledge, add the new person to the database.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Here is the correct SQL statement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="n">values</span><span class="p">(</span><span class="s1">&#39;Main Road&#39;</span><span class="p">);</span>
+<span class="n">insert</span> <span class="n">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">)</span>
+  <span class="n">values</span> <span class="p">(</span><span class="s1">&#39;Joe Smith&#39;</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;072 882 33 21&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If you look at the streets table again (using a select statement as before),
+you’ll see that the <span class="guilabel">id</span> for the <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Road</span></code> entry is <em>2</em>.</p>
+<p>That’s why we could merely enter the number <code class="docutils literal notranslate"><span class="pre">2</span></code> above. Even though we’re
+not seeing <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Road</span></code> written out fully in the entry above, the
+database will be able to associate that with the <span class="guilabel">street_id</span> value of <em>2</em>.</p>
+<p>If you have already added a new street object, you might find that the
+new <code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">Road</span></code> has an <span class="guilabel">id</span> of <em>3</em> not <em>2</em>.</p>
+</div>
+</section>
+<section id="select-data">
+<h2><span class="section-number">15.3.4. </span>Select data<a class="headerlink" href="#select-data" title="Permalink to this headline"></a></h2>
+<p>We have already shown you the syntax for selecting records. Let’s look at a few
+more examples:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">streets</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">streets</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">streets</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Main Road&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In later sessions we will go into more detail on how to select and filter data.</p>
+</section>
+<section id="update-data">
+<h2><span class="section-number">15.3.5. </span>Update data<a class="headerlink" href="#update-data" title="Permalink to this headline"></a></h2>
+<p>What if you want to make a change to some existing data? For example, a street
+name is changed:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">update</span> <span class="n">streets</span> <span class="k">set</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Main Road&#39;</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Main Road&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Be very careful using such update statements - if more than one record matches
+your <kbd class="kbd docutils literal notranslate">WHERE</kbd> clause, they will all be updated!</p>
+<p>A better solution is to use the primary key of the table to reference the
+record to be changed:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">update</span> <span class="n">streets</span> <span class="k">set</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Main Road&#39;</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It should return <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">UPDATE</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the <kbd class="kbd docutils literal notranslate">WHERE</kbd> statement criteria are case sensitive <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Main</kbd>
+<kbd class="kbd docutils literal notranslate">Road</kbd></kbd> is not the same as <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Main</kbd> <kbd class="kbd docutils literal notranslate">road</kbd></kbd></p>
+</div>
+</section>
+<section id="delete-data">
+<h2><span class="section-number">15.3.6. </span>Delete Data<a class="headerlink" href="#delete-data" title="Permalink to this headline"></a></h2>
+<p>In order to delete an object from a table, use the <kbd class="kbd docutils literal notranslate">DELETE</kbd> command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">delete</span> <span class="k">from</span> <span class="n">people</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Joe Smith&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Let’s look at our people table now:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">address</span><span class="o">=#</span> <span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">people</span><span class="p">;</span>
+
+  <span class="n">id</span> <span class="o">|</span> <span class="n">name</span> <span class="o">|</span> <span class="n">house_no</span> <span class="o">|</span> <span class="n">street_id</span> <span class="o">|</span> <span class="n">phone_no</span>
+ <span class="c1">----+------+----------+-----------+----------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ty-hard">
+<h2><span class="section-number">15.3.7. </span>Try Yourself <img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#ty-hard" title="Permalink to this headline"></a></h2>
+<p>Use the skills you have learned to add some new friends to your database:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>      <span class="n">name</span>       <span class="o">|</span> <span class="n">house_no</span> <span class="o">|</span> <span class="n">street_id</span> <span class="o">|</span>   <span class="n">phone_no</span>
+<span class="c1">-----------------+----------+-----------+--------------</span>
+<span class="n">Joe</span> <span class="n">Bloggs</span>       <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span>         <span class="mi">2</span> <span class="o">|</span> <span class="mi">072</span> <span class="mi">887</span> <span class="mi">23</span> <span class="mi">45</span>
+<span class="n">Jane</span> <span class="n">Smith</span>       <span class="o">|</span>       <span class="mi">55</span> <span class="o">|</span>         <span class="mi">3</span> <span class="o">|</span> <span class="mi">072</span> <span class="mi">837</span> <span class="mi">33</span> <span class="mi">35</span>
+<span class="n">Roger</span> <span class="n">Jones</span>      <span class="o">|</span>       <span class="mi">33</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span> <span class="mi">072</span> <span class="mi">832</span> <span class="mi">31</span> <span class="mi">38</span>
+<span class="n">Sally</span> <span class="n">Norman</span>     <span class="o">|</span>       <span class="mi">83</span> <span class="o">|</span>         <span class="mi">1</span> <span class="o">|</span> <span class="mi">072</span> <span class="mi">932</span> <span class="mi">31</span> <span class="mi">32</span>
+</pre></div>
+</div>
+</section>
+<section id="ic">
+<h2><span class="section-number">15.3.8. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Now you know how to add new data to the existing models you created previously.
+Remember that if you want to add new kinds of data, you may want to modify
+and/or create new models to contain that data.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">15.3.9. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now that you’ve added some data, you’ll learn how to use queries to access this
+data in various ways.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_model.html" class="btn btn-neutral float-left" title="15.2. Lesson: Implementing the Data Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="queries.html" class="btn btn-neutral float-right" title="15.4. Lesson: Queries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/adding_data.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/adding_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/adding_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/database_concepts/adding_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/database_concepts/adding_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/database_concepts/adding_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/database_concepts/adding_data.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/database_concepts/adding_data.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/database_concepts/adding_data.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/database_concepts/adding_data.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/database_concepts/adding_data.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/database_concepts/adding_data.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/database_concepts/adding_data.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/database_concepts/adding_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

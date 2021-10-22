@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>23.3. The Toolbox &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/toolbox.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="23.4. The history manager" href="history.html" />
+    <link rel="prev" title="23.2. Configuring the Processing Framework" href="configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/toolbox.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">15. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">23. QGIS processing framework</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">23.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">23.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">23.3. The Toolbox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-algorithm-dialog">23.3.1. The algorithm dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-objects-generated-by-algorithms">23.3.2. Data objects generated by algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">23.4. The history manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler.html">23.5. The graphical modeler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch.html">23.6. The batch processing interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">23.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">23.8. Using processing from the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scripts.html">23.9. Writing new Processing algorithms as Python scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">23.10. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">23. </span>QGIS processing framework</a> &raquo;</li>
+      <li><span class="section-number">23.3. </span>The Toolbox</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/toolbox.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="23.2. Configuring the Processing Framework" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="history.html" class="btn btn-neutral float-right" title="23.4. The history manager" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-toolbox">
+<span id="processing-toolbox"></span><h1><span class="section-number">23.3. </span>The Toolbox<a class="headerlink" href="#the-toolbox" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-algorithm-dialog" id="id10">The algorithm dialog</a></p>
+<ul>
+<li><p><a class="reference internal" href="#a-note-on-projections" id="id11">A note on projections</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#data-objects-generated-by-algorithms" id="id12">Data objects generated by algorithms</a></p></li>
+</ul>
+</div>
+<p>The <span class="guilabel">Processing Toolbox</span> is the main element of the processing GUI,
+and the one that you are more likely to use in your daily work. It shows the
+list of all available <strong>algorithms</strong> grouped in different blocks called
+<em>Providers</em>, and custom <strong>models</strong> and <strong>scripts</strong> you can add to extend the
+set of tools. Hence the toolbox is the access point to run them,
+whether as a single process or as a batch process involving several executions
+of the same algorithm on different sets of inputs.</p>
+<figure class="align-center" id="id1">
+<span id="figure-toolbox"></span><img alt="../../../_images/toolbox3.png" src="../../../_images/toolbox3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.6 </span><span class="caption-text">Processing Toolbox</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Providers can be (de)activated in the <a class="reference internal" href="configuration.html#processing-options"><span class="std std-ref">Processing settings dialog</span></a>.
+By default, only providers that do not rely on third-party applications (that is,
+those that only require QGIS elements to be run) are active. Algorithms requiring
+external applications might need additional configuration. Configuring providers
+is explained in a <a class="reference internal" href="3rdParty.html#processing-results"><span class="std std-ref">later chapter</span></a> in this manual.</p>
+<p>In the upper part of the toolbox dialog, you will find a set of tools to:</p>
+<ul class="simple">
+<li><p>work with <a class="reference internal" href="../../../_images/processingModel.png"><img alt="processingModel" src="../../../_images/processingModel.png" style="width: 1.5em;" /></a> <sup>Models</sup>: <span class="guilabel">Create New Model…</span>,
+<span class="guilabel">Open Existing Model…</span> and <span class="guilabel">Add Model to Toolbox…</span>;</p></li>
+<li><p>work with <a class="reference internal" href="../../../_images/mIconPythonFile.png"><img alt="pythonFile" src="../../../_images/mIconPythonFile.png" style="width: 1.5em;" /></a> <sup>Scripts</sup>: <span class="guilabel">Create New Script…</span>,
+<span class="guilabel">Create New Script from Template…</span>, <span class="guilabel">Open Existing
+Script…</span> and <span class="guilabel">Add Script to Toolbox…</span>;</p></li>
+<li><p>open the <a class="reference internal" href="../../../_images/history.png"><img alt="processingHistory" src="../../../_images/history.png" style="width: 1.5em;" /></a> <sup>History</sup> panel;</p></li>
+<li><p>open the <a class="reference internal" href="../../../_images/processingResult.png"><img alt="processingResult" src="../../../_images/processingResult.png" style="width: 1.5em;" /></a> <sup>Results Viewer</sup> panel;</p></li>
+<li><p>toggle the toolbox to the <a class="reference internal" href="../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">in-place modification mode</span></a>
+using the <a class="reference internal" href="../../../_images/mActionProcessSelected.png"><img alt="processSelected" src="../../../_images/mActionProcessSelected.png" style="width: 1.5em;" /></a> <sup>Edit Features In-Place</sup> button: only
+the algorithms that are suitable to be executed on the active layer without
+outputting a new layer are displayed;</p></li>
+<li><p>open the <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <sup>Options</sup> dialog.</p></li>
+</ul>
+<p>Below this toolbar is a <a class="reference internal" href="../../../_images/search.png"><img alt="search" src="../../../_images/search.png" style="width: 1.5em;" /></a> <span class="guilabel">Search…</span> box to help you easily find
+the tools you need.
+You can enter any word or phrase on the text box. Notice that, as you type, the
+number of algorithms, models or scripts in the toolbox is reduced to just those
+that contain the text you have entered in their names or keywords.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the top of the list of algorithms are displayed the most recent
+used tools; handy if you want to reexecute any.</p>
+</div>
+<figure class="align-center" id="id2">
+<span id="figure-toolbox-search"></span><img alt="../../../_images/toolbox_search.png" src="../../../_images/toolbox_search.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.7 </span><span class="caption-text">Processing Toolbox showing search results</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To execute a tool, just double-click on its name in the toolbox.</p>
+<section id="the-algorithm-dialog">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">23.3.1. </span>The algorithm dialog</a><a class="headerlink" href="#the-algorithm-dialog" title="Permalink to this headline"></a></h2>
+<p>Once you double-click on the name of the algorithm that you want to execute, a
+dialog similar to that in the <a class="reference internal" href="#figure-parameters-dialog"><span class="std std-numref">Fig. 23.8</span></a> below is shown
+(in this case, the dialog corresponds to the <code class="docutils literal notranslate"><span class="pre">Centroids</span></code> algorithm).</p>
+<figure class="align-center" id="id3">
+<span id="figure-parameters-dialog"></span><img alt="../../../_images/parameters_dialog.png" src="../../../_images/parameters_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.8 </span><span class="caption-text">Algorithm Dialog - Parameters</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The dialog shows two tabs (<span class="guilabel">Parameters</span> and <span class="guilabel">Log</span>)
+on the left part, the algorithm description on the right, and a set of
+buttons at the bottom.</p>
+<p>The <span class="guilabel">Parameters</span> tab is used to set the input values that the algorithm needs to be
+executed. It shows a list of input values and configuration parameters to
+be set. It of course has a different content, depending on the requirements of
+the algorithm to be executed, and is created automatically based on those
+requirements.</p>
+<p>Although the number and type of parameters depend on the characteristics of the
+algorithm, the structure is similar for all of them. The parameters found in the
+table can be of one of the following types.</p>
+<ul>
+<li><p>A <strong>raster layer</strong>, to select from a list of all such layers available
+(currently opened) in QGIS. The selector contains as well a button on its
+right-hand side, to let you select filenames that represent layers currently
+not loaded in QGIS.</p></li>
+<li><p>A <strong>vector layer</strong>, to select from a list of all vector layers available in
+QGIS. Layers not loaded in QGIS can be selected as well, as in the case of raster
+layers, but only if the algorithm does not require a table field selected from
+the attributes table of the layer. In that case, only opened layers can be
+selected, since they need to be open so as to retrieve the list of field names
+available.</p>
+<p>You will see an iterator button by each vector layer selector, as shown in the
+figure below.</p>
+<figure class="align-center" id="id4">
+<span id="figure-vector-iterator"></span><img alt="../../../_images/vector_iterator.png" src="../../../_images/vector_iterator.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.9 </span><span class="caption-text">Vector iterator button</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the algorithm contains several of them, you will be able to toggle just
+one of them. If the button corresponding to a vector input is toggled, the
+algorithm will be executed iteratively on each one of its features, instead
+of just once for the whole layer, producing as many outputs as times the
+algorithm is executed. This allows for automating the process when all
+features in a layer have to be processed separately.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the parameters dialog will show a description of the CRS of each layer along with
+its name. If you do not want to see this additional information, you can
+disable this functionality in the Processing Settings dialog, unchecking the
+<span class="menuselection">General ► Show layer CRS definition in selection boxes</span> option.</p>
+</div>
+<ul class="simple">
+<li><p>A <strong>table</strong>, to select from a list of all available in QGIS. Non-spatial
+tables are loaded into QGIS like vector layers, and in fact they are treated as
+such by the program. Currently, the list of available tables that you will see
+when executing an algorithm that needs one of them is restricted to
+tables coming from files in dBase (<code class="file docutils literal notranslate"><span class="pre">.dbf</span></code>) or Comma-Separated Values
+(<code class="file docutils literal notranslate"><span class="pre">.csv</span></code>) formats.</p></li>
+<li><p>An <strong>option</strong>, to choose from a selection list of possible options.</p></li>
+<li><p>A <strong>numerical value</strong>, to be introduced in a spin box. In some contexts (when
+the parameter applies at the feature level and not at the layer’s), you will
+find a <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>Data-defined override</sup> button by its side, allowing
+you to open the <a class="reference internal" href="../working_with_vector/expression.html#vector-expressions"><span class="std std-ref">expression builder</span></a> and enter a
+mathematical expression to generate variable values for the parameter. Some useful
+variables related to data loaded into QGIS can be added to your expression, so
+you can select a value derived from any of these variables, such as the cell size
+of a layer or the northernmost coordinate of another one.</p></li>
+</ul>
+<figure class="align-center" id="id5">
+<span id="figure-number-selector"></span><img alt="../../../_images/number_selector.png" src="../../../_images/number_selector.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.10 </span><span class="caption-text">Expression based input</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>A <strong>range</strong>, with min and max values to be introduced in two text boxes.</p></li>
+<li><p>A <strong>text string</strong>, to be introduced in a text box.</p></li>
+<li><p>A <strong>field</strong>, to choose from the attributes table of a vector layer or a single
+table selected in another parameter.</p></li>
+<li><p>A <strong>coordinate reference system</strong>. You can select it among the recently used
+ones from the drop-down list or from the <a class="reference internal" href="../working_with_projections/working_with_projections.html#crs-selector"><span class="std std-ref">CRS selection</span></a>
+dialog that appears when you click on the button on the right-hand side.</p></li>
+<li><p>An <strong>extent</strong>, a text box defining a rectangle through its corners coordinate
+in the format <code class="docutils literal notranslate"><span class="pre">xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax</span></code>. Clicking on the button on the
+right-hand side of the value selector, a pop-up menu will appear,
+giving you options to:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Calculate from layer</span>: fills the text box with the coordinates
+of the bounding box of a layer to select among the loaded ones</p></li>
+<li><p><span class="guilabel">Use map canvas extent</span></p></li>
+<li><p><span class="guilabel">Draw on canvas</span>: the parameters window will hide itself, so you
+can click and drag onto the canvas. Once you have defined the extent
+rectangle, the dialog will reappear, containing the values in the extent text
+box.</p></li>
+</ul>
+<figure class="align-center" id="id6">
+<span id="figure-extent"></span><img alt="../../../_images/extent.png" src="../../../_images/extent.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.11 </span><span class="caption-text">Extent selector</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>A <strong>list of elements</strong> (whether raster or vector layers, tables, fields) to
+select from. Click on the <span class="guilabel">…</span> button at the left of the option to
+see a dialog like the following one. Multiple selection is allowed and when
+the dialog is closed, number of selected items is displayed in the parameter
+text box widget.</p>
+<figure class="align-center" id="id7">
+<span id="figure-multiple-selection"></span><img alt="../../../_images/multiple_selection.png" src="../../../_images/multiple_selection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.12 </span><span class="caption-text">Multiple Selection</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>A <strong>small table</strong> to be edited by the user. These are used to define
+parameters like lookup tables or convolution kernels, among others.</p>
+<p>Click on the button on the right side to see the table and edit its values.</p>
+<figure class="align-center" id="id8">
+<span id="figure-fixed-table"></span><img alt="../../../_images/fixed_table.png" src="../../../_images/fixed_table.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.13 </span><span class="caption-text">Fixed Table</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Depending on the algorithm, the number of rows can be modified or not by using
+the buttons on the right side of the window.</p>
+</li>
+</ul>
+<div class="admonition note" id="reference-layer-param">
+<p class="admonition-title">Note</p>
+<p>Some algorithms require many parameters to run, e.g. in the
+<a class="reference internal" href="../processing_algs/qgis/rasteranalysis.html#qgisrastercalculator"><span class="std std-ref">Raster calculator</span></a> you have to specify manually the cell size, the
+extent and the CRS. You can avoid to choose all the parameters manually when
+the algorithm has the <code class="docutils literal notranslate"><span class="pre">Reference</span> <span class="pre">layers</span></code> parameter. With this parameter you
+can choose the reference layer and all its properties (cell size, extent, CRS)
+will be used.</p>
+</div>
+<p>Along with the <span class="guilabel">Parameters</span> tab, there is another tab named
+<span class="guilabel">Log</span> (see <a class="reference internal" href="#figure-alg-dialog-log"><span class="std std-numref">Fig. 23.14</span></a> below).
+Information provided by the algorithm during its execution is written
+in this tab, and allow you to track the execution and be aware and have
+more details about the algorithm as it runs.
+Information on algorithm execution is also output in the
+<span class="menuselection">View ► Panels ► Log Messages Panel</span>.</p>
+<p>Notice that not all algorithms write information to the <span class="guilabel">Log</span> tab,
+and many of them might run silently without
+producing any output other than the final files.
+Check the <span class="guilabel">Log Messages Panel</span> in that case.</p>
+<figure class="align-center" id="id9">
+<span id="figure-alg-dialog-log"></span><img alt="../../../_images/algdialoglog.png" src="../../../_images/algdialoglog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 23.14 </span><span class="caption-text">Algorithm Dialog - Log</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>At the bottom of the <span class="guilabel">Log</span> tab you will find buttons to
+<a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">Save Log to File</span>, <a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <span class="guilabel">Copy
+Log to Clipboard</span> and <a class="reference internal" href="../../../_images/iconClearConsole.png"><img alt="clearConsole" src="../../../_images/iconClearConsole.png" style="width: 1.5em;" /></a> <span class="guilabel">Clear Log</span>.
+These are particularly handy when you have checked the
+<span class="guilabel">Keep dialog open after running algorithm</span> in the
+<span class="guilabel">General</span> part of the Processing options.</p>
+<p>On the right hand side of the dialog you will find a short description of the
+algorithm, which will help you understand its purpose and its basic ideas.
+If such a description is not available, the description panel will not be shown.</p>
+<p>For a more detailed help file, which might include description of every
+parameter it uses, or examples, you will find a <span class="guilabel">Help</span> button at the
+bottom of the dialog bringing you to the <a class="reference internal" href="../processing_algs/index.html#processing-algs"><span class="std std-ref">Processing algorithms
+documentation</span></a> or to the provider documentation (for
+some third-party providers).</p>
+<p>The <span class="guilabel">Run as batch process</span> button triggers the <a class="reference internal" href="batch.html#processing-batch"><span class="std std-ref">batch processing
+mode</span></a> allowing to configure and run multiple instances of
+the algorithm with a variety of parameters.</p>
+<section id="a-note-on-projections">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">23.3.1.1. </span>A note on projections</a><a class="headerlink" href="#a-note-on-projections" title="Permalink to this headline"></a></h3>
+<p>Processing algorithm execution are always performed in the input layer
+coordinate reference system (CRS). Due to QGIS’s on-the-fly reprojecting
+capabilities, although two layers might seem to overlap and match, that
+might not be true if their original coordinates are used without reprojecting
+them onto a common coordinate system.
+Whenever you use more than one layer as input to a <a class="reference internal" href="../processing_algs/qgis/index.html#qgis-algorithms"><span class="std std-ref">QGIS native algorithm</span></a>, whether vector or raster, the layers will all be
+reprojected to match the coordinate reference system of the first input layer.</p>
+<p>This is however less true for most of the external applications whose algorithms
+are exposed through the processing framework as they assume that all of the
+layers are already in a common coordinate system and ready to be analyzed.</p>
+<p>By default, the parameters dialog will show a description of the CRS of each layer along with
+its name, making it easy to select layers that share the same CRS to be used as
+input layers. If you do not want to see this additional information, you can
+disable this functionality in the Processing settings dialog, unchecking the
+<span class="guilabel">Show layer CRS definition in selection boxes</span> option.</p>
+<p>If you try to execute an algorithm using as input two or more layers with
+unmatching CRSs, a warning dialog will be shown. This occurs thanks to the
+<span class="guilabel">Warn before executing if layer CRS’s do not match</span> option.</p>
+<p>You still can execute the algorithm, but be aware that in most cases that will
+produce wrong results, such as empty layers due to input layers not overlapping.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Use Processing algorithms to do intermediate reprojection</strong></p>
+<p>When an algorithm can not successfully perform on multiple input layers
+due to unmatching CRSs, use QGIS internal algorithm such as
+<a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisreprojectlayer"><span class="std std-ref">Reproject layer</span></a> to perform layers’ reprojection to the same CRS
+before executing the algorithm using these outputs.</p>
+</div>
+</section>
+</section>
+<section id="data-objects-generated-by-algorithms">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">23.3.2. </span>Data objects generated by algorithms</a><a class="headerlink" href="#data-objects-generated-by-algorithms" title="Permalink to this headline"></a></h2>
+<p>Data objects generated by an algorithm can be of any of the following types:</p>
+<ul class="simple">
+<li><p>A raster layer</p></li>
+<li><p>A vector layer</p></li>
+<li><p>A table</p></li>
+<li><p>An HTML file (used for text and graphical outputs)</p></li>
+</ul>
+<p>These are all saved to disk, and the parameters
+table will contain a text box corresponding to each one of these outputs, where
+you can type the output channel to use for saving it. An output channel contains
+the information needed to save the resulting object somewhere. In the most usual
+case, you will save it to a file, but in the case of vector layers, and when they
+are generated by native algorithms (algorithms not using external applications)
+you can also save to a PostGIS, GeoPackage or SpatiaLite database, or a memory layer.</p>
+<p>To select an output channel, just click on the button on the right side of the
+text box, and you will see a small context menu with the available options.</p>
+<p>In the most usual case, you will select saving to a file. If you select that option,
+you will be prompted with a save file dialog, where you can select the desired
+file path. Supported file extensions are shown in the file format selector of the
+dialog, depending on the kind of output and the algorithm.</p>
+<p>The format of the output is defined by the filename extension. The supported
+formats depend on what is supported by the algorithm itself. To select a format,
+just select the corresponding file extension (or add it, if you are directly typing
+the file path instead). If the extension of the file path you entered does not
+match any of the supported formats, a default extension will be
+appended to the file path, and the file format corresponding to that extension will
+be used to save the layer or table. Default extensions are <code class="file docutils literal notranslate"><span class="pre">.dbf</span></code> for
+tables, <code class="file docutils literal notranslate"><span class="pre">.tif</span></code> for raster layers and <code class="file docutils literal notranslate"><span class="pre">.gpkg</span></code> for vector layers. These
+can be modified in the setting dialog, selecting any other of the formats supported
+by QGIS.</p>
+<p>If you do not enter any filename in the output text box (or select the corresponding
+option in the context menu), the result will be saved as a <a class="reference internal" href="../managing_data_source/create_layers.html#vector-new-scratch-layer"><span class="std std-ref">temporary file</span></a>
+in the corresponding default file format, and it will be deleted once you exit
+QGIS (take care with that, in case you save your project and it contains temporary
+layers).</p>
+<p>You can set a default folder for output data objects. Go to the settings
+dialog (you can open it from the <span class="menuselection">Settings ► Options ► Processing</span>
+menu), and in the
+<span class="guilabel">General</span> group, you will find a parameter named <span class="guilabel">Output folder</span>.
+This output folder is used as the default path in case you type just a filename
+with no path (i.e., <code class="file docutils literal notranslate"><span class="pre">myfile.shp</span></code>) when executing an algorithm.</p>
+<p>When running an algorithm that uses a vector layer in iterative mode, the entered
+file path is used as the base path for all generated files, which are named using
+the base name and appending a number representing the index of the iteration.
+The file extension (and format) is used for all such generated files.</p>
+<p>Apart from raster layers and tables, algorithms also generate graphics and text
+as HTML files. These results are shown at the end of the algorithm execution in
+a new dialog. This dialog will keep the results produced by any algorithm during the
+current session, and can be shown at any time by selecting
+<span class="menuselection">Processing ► Results Viewer</span> from the QGIS main menu.</p>
+<p>Some external applications might have files (with no particular extension
+restrictions) as output, but they do not belong to any of the categories above.
+Those output files will not be processed by QGIS (opened or included into the
+current QGIS project), since most of the time they correspond to file formats or
+elements not supported by QGIS. This is, for instance, the case with LAS files
+used for LiDAR data. The files get created, but you won’t see anything new in
+your QGIS working session.</p>
+<p>For all the other types of output, you will find a checkbox that you can use
+to tell the algorithm whether to load the file once it is generated by the
+algorithm or not. By default, all files are opened.</p>
+<p>Optional outputs are not supported. That is, all outputs are created. However, you
+can uncheck the corresponding checkbox if you are not interested in a given
+output, which essentially makes it behave like an optional output (in other words, the
+layer is created anyway, but if you leave the text box empty, it will be saved
+to a temporary file and deleted once you exit QGIS).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="configuration.html" class="btn btn-neutral float-left" title="23.2. Configuring the Processing Framework" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="history.html" class="btn btn-neutral float-right" title="23.4. The history manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/toolbox.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/toolbox.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/toolbox.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing/toolbox.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing/toolbox.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing/toolbox.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing/toolbox.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing/toolbox.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing/toolbox.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing/toolbox.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing/toolbox.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing/toolbox.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing/toolbox.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/toolbox.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

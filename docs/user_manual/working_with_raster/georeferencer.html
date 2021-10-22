@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.3. Georeferencer &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/georeferencer.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16. Working with Mesh Data" href="../working_with_mesh/mesh_properties.html" />
+    <link rel="prev" title="15.2. Raster Analysis" href="raster_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/georeferencer.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">12. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">13. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">14. Working with Vector Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. Working with Raster Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="raster_properties.html">15.1. Raster Properties Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="raster_analysis.html">15.2. Raster Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.3. Georeferencer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usual-procedure">15.3.1. Usual procedure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">16. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">17. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">18. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">19. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">20. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">21. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">22. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">23. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">24. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">25. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">26. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">27. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">28. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">29. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">15. </span>Working with Raster Data</a> &raquo;</li>
+      <li><span class="section-number">15.3. </span>Georeferencer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_raster/georeferencer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="raster_analysis.html" class="btn btn-neutral float-left" title="15.2. Raster Analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_mesh/mesh_properties.html" class="btn btn-neutral float-right" title="16. Working with Mesh Data" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="georeferencer">
+<span id="georef"></span><span id="index-0"></span><h1><span class="section-number">15.3. </span>Georeferencer<a class="headerlink" href="#georeferencer" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#usual-procedure" id="id4">Usual procedure</a></p>
+<ul>
+<li><p><a class="reference internal" href="#entering-ground-control-points-gcps" id="id5">Entering ground control points (GCPs)</a></p></li>
+<li><p><a class="reference internal" href="#defining-the-transformation-settings" id="id6">Defining the transformation settings</a></p>
+<ul>
+<li><p><a class="reference internal" href="#available-transformation-algorithms" id="id7">Available Transformation algorithms</a></p></li>
+<li><p><a class="reference internal" href="#define-the-resampling-method" id="id8">Define the Resampling method</a></p></li>
+<li><p><a class="reference internal" href="#define-the-transformation-settings" id="id9">Define the transformation settings</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#show-and-adapt-raster-properties" id="id10">Show and adapt raster properties</a></p></li>
+<li><p><a class="reference internal" href="#configure-the-georeferencer" id="id11">Configure the georeferencer</a></p></li>
+<li><p><a class="reference internal" href="#running-the-transformation" id="id12">Running the transformation</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The <a class="reference internal" href="../../../_images/mGeorefRun.png"><img alt="georefRun" src="../../../_images/mGeorefRun.png" style="width: 1.5em;" /></a> Georeferencer is a tool for generating world files for rasters.
+It allows you to reference rasters to geographic or projected coordinate systems by
+creating a new GeoTiff or by adding a world file to the existing image. The basic
+approach to georeferencing a raster is to locate points on the raster for which
+you can accurately determine coordinates.</p>
+<p><strong>Features</strong></p>
+<span id="index-1"></span><table class="docutils align-default" id="table-georeferencer-tools">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 26%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Icon</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Icon</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddRasterLayer.png"><img alt="addRasterLayer" src="../../../_images/mActionAddRasterLayer.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Open raster</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionStart.png"><img alt="start" src="../../../_images/mActionStart.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Start georeferencing</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionGDALScript.png"><img alt="gdalScript" src="../../../_images/mActionGDALScript.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Generate GDAL Script</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionLoadGCPpoints.png"><img alt="loadGCPpoints" src="../../../_images/mActionLoadGCPpoints.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Load GCP Points</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveGCPpointsAs.png"><img alt="saveGCPPointsAs" src="../../../_images/mActionSaveGCPpointsAs.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Save GCP Points As</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionTransformSettings.png"><img alt="transformSettings" src="../../../_images/mActionTransformSettings.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Transformation settings</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddGCPPoint.png"><img alt="addGCPPoint" src="../../../_images/mActionAddGCPPoint.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Add Point</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionDeleteGCPPoint.png"><img alt="deleteGCPPoint" src="../../../_images/mActionDeleteGCPPoint.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Delete Point</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMoveGCPPoint.png"><img alt="moveGCPPoint" src="../../../_images/mActionMoveGCPPoint.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Move GCP Point</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionPan.png"><img alt="pan" src="../../../_images/mActionPan.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Pan</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Zoom In</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Zoom Out</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomToLayer.png"><img alt="zoomToLayer" src="../../../_images/mActionZoomToLayer.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Zoom To Layer</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionZoomLast.png"><img alt="zoomLast" src="../../../_images/mActionZoomLast.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Zoom Last</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomNext.png"><img alt="zoomNext" src="../../../_images/mActionZoomNext.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Zoom Next</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionLinkGeorefToQGis.png"><img alt="linkGeorefToQGis" src="../../../_images/mActionLinkGeorefToQGis.png" style="width: 2.5em;" /></a></p></td>
+<td><p>Link Georeferencer to QGIS</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionLinkQGisToGeoref.png"><img alt="linkQGisToGeoref" src="../../../_images/mActionLinkQGisToGeoref.png" style="width: 2.5em;" /></a></p></td>
+<td><p>Link QGIS to Georeferencer</p></td>
+<td><p><a class="reference internal" href="../../../_images/mActionFullHistogramStretch.png"><img alt="fullHistogramStretch" src="../../../_images/mActionFullHistogramStretch.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Full histogram stretch</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionLocalHistogramStretch.png"><img alt="localHistogramStretch" src="../../../_images/mActionLocalHistogramStretch.png" style="width: 1.5em;" /></a></p></td>
+<td><p>Local histogram stretch</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Table Georeferencer: Georeferencer Tools</p>
+<section id="usual-procedure">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">15.3.1. </span>Usual procedure</a><a class="headerlink" href="#usual-procedure" title="Permalink to this headline"></a></h2>
+<p>As X and Y coordinates (DMS (dd mm ss.ss), DD (dd.dd) or projected coordinates
+(mmmm.mm)), which correspond with the selected point on the image, two
+alternative procedures can be used:</p>
+<ul class="simple">
+<li><p>The raster itself sometimes provides crosses with coordinates “written” on the
+image. In this case, you can enter the coordinates manually.</p></li>
+<li><p>Using already georeferenced layers. This can be either vector or raster data
+that contain the same objects/features that you have on the image that you want
+to georeference and with the projection that you want for your image. In this case,
+you can enter the coordinates by clicking on the reference dataset loaded in the
+QGIS map canvas.</p></li>
+</ul>
+<p>The usual procedure for georeferencing an image involves selecting multiple
+points on the raster, specifying their coordinates, and choosing a relevant
+transformation type. Based on the input parameters and data, the Georeferencer will
+compute the world file parameters. The more coordinates you provide, the better
+the result will be.</p>
+<p>The first step is to start QGIS and click on <span class="menuselection">Raster ►</span> <a class="reference internal" href="../../../_images/mGeorefRun.png"><img alt="georefRun" src="../../../_images/mGeorefRun.png" style="width: 1.5em;" /></a>
+<span class="menuselection">Georeferencer</span>, which appears in the QGIS menu bar. The Georeferencer
+dialog appears as shown in <a class="reference internal" href="#figure-georeferencer-dialog"><span class="std std-numref">Fig. 15.22</span></a>.</p>
+<p>For this example, we are using a topo sheet of South Dakota from SDGS. It can
+later be visualized together with the data from the GRASS <code class="file docutils literal notranslate"><span class="pre">spearfish60</span></code>
+location. You can download the topo sheet here:
+<a class="reference external" href="https://grass.osgeo.org/sampledata/spearfish_toposheet.tar.gz">https://grass.osgeo.org/sampledata/spearfish_toposheet.tar.gz</a>.</p>
+<figure class="align-center" id="id1">
+<span id="figure-georeferencer-dialog"></span><img alt="../../../_images/georef.png" src="../../../_images/georef.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.22 </span><span class="caption-text">Georeferencer Dialog</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="entering-ground-control-points-gcps">
+<span id="georeferencer-entering"></span><h3><a class="toc-backref" href="#id5"><span class="section-number">15.3.1.1. </span>Entering ground control points (GCPs)</a><a class="headerlink" href="#entering-ground-control-points-gcps" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li><p>To start georeferencing an unreferenced raster, we must load it using the
+<a class="reference internal" href="../../../_images/mActionAddRasterLayer.png"><img alt="addRasterLayer" src="../../../_images/mActionAddRasterLayer.png" style="width: 1.5em;" /></a> button. The raster will show up in the main working
+area of the dialog. Once the raster is loaded, we can start to enter reference
+points.</p></li>
+<li><p>Using the <a class="reference internal" href="../../../_images/mActionAddGCPPoint.png"><img alt="addGCPPoint" src="../../../_images/mActionAddGCPPoint.png" style="width: 1.5em;" /></a> <sup>Add Point</sup> button, add points to the
+main working area and enter their coordinates (see Figure <a class="reference internal" href="#figure-georeferencer-add-points"><span class="std std-numref">Fig. 15.23</span></a>).
+For this procedure you have the following options:</p>
+<ul class="simple">
+<li><p>Click on a point in the raster image and enter the X and Y coordinates
+manually, along with the CRS of the point.</p></li>
+<li><p>Click on a point in the raster image and choose the <a class="reference internal" href="../../../_images/pencil.png"><img alt="pencil" src="../../../_images/pencil.png" style="width: 1.5em;" /></a>
+<sup>From map canvas</sup> button to add the X and Y coordinates with the help of a
+georeferenced map already loaded in the QGIS map canvas. The CRS will be set
+automatically.</p></li>
+</ul>
+</li>
+<li><p>Continue entering points. You should have at least four points, and the more
+coordinates you can provide, the better the result will be. There are
+additional tools for zooming and panning the working area in
+order to locate a relevant set of GCP points.</p></li>
+<li><p>With the <a class="reference internal" href="../../../_images/mActionMoveGCPPoint.png"><img alt="moveGCPPoint" src="../../../_images/mActionMoveGCPPoint.png" style="width: 1.5em;" /></a> tool, you can move the GCPs in both the canvas and the
+georeferencing window, if you need to correct them.</p></li>
+</ol>
+<figure class="align-center" id="id2">
+<span id="figure-georeferencer-add-points"></span><img alt="../../../_images/choose_points.png" src="../../../_images/choose_points.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.23 </span><span class="caption-text">Add points to the raster image</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The points that are added to the map will be stored in a separate text file
+(<code class="file docutils literal notranslate"><span class="pre">[filename].points</span></code>) usually together with the raster image. This allows
+us to reopen the Georeferencer at a later date and add new points or delete
+existing ones to optimize the result. The points file contains values of the
+form: <code class="docutils literal notranslate"><span class="pre">mapX,</span> <span class="pre">mapY,</span> <span class="pre">pixelX,</span> <span class="pre">pixelY</span></code>. You can use the <a class="reference internal" href="../../../_images/mActionLoadGCPpoints.png"><img alt="loadGCPpoints" src="../../../_images/mActionLoadGCPpoints.png" style="width: 1.5em;" /></a>
+<sup>Load GCP points</sup> and <a class="reference internal" href="../../../_images/mActionSaveGCPpointsAs.png"><img alt="saveGCPPointsAs" src="../../../_images/mActionSaveGCPpointsAs.png" style="width: 1.5em;" /></a> <sup>Save GCP points as</sup> buttons to
+manage the files.</p>
+</section>
+<section id="defining-the-transformation-settings">
+<span id="georeferencer-transformation"></span><h3><a class="toc-backref" href="#id6"><span class="section-number">15.3.1.2. </span>Defining the transformation settings</a><a class="headerlink" href="#defining-the-transformation-settings" title="Permalink to this headline"></a></h3>
+<p>After you have added your GCPs to the raster image, you need to define the
+transformation settings for the georeferencing process.</p>
+<figure class="align-center" id="id3">
+<span id="figure-georeferencer-transform"></span><img alt="../../../_images/transformation_settings.png" src="../../../_images/transformation_settings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 15.24 </span><span class="caption-text">Defining the georeferencer transformation settings</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="available-transformation-algorithms">
+<h4><a class="toc-backref" href="#id7"><span class="section-number">15.3.1.2.1. </span>Available Transformation algorithms</a><a class="headerlink" href="#available-transformation-algorithms" title="Permalink to this headline"></a></h4>
+<p>A number of transformation algorithms are available, dependent on the type and quality of input data, the
+nature and amount of geometric distortion that you are willing to introduce to the final
+result, and the number of ground control points (GCPs).</p>
+<p>Currently, the following <span class="guilabel">Transformation types</span> are available:</p>
+<ul class="simple">
+<li><p>The <strong>Linear</strong> algorithm is used to create a world file and is different
+from the other algorithms, as it does not actually transform the raster pixels.
+It allows positioning (translating) the image and uniform scaling, but no rotation or other transformations.
+It is the most suitable if your image is a good quality raster map, in a known CRS, but is just missing georeferencing information. At least 2 GCPs are needed.</p></li>
+<li><p>The <strong>Helmert</strong> transformation also allows rotation. It is particularly useful if your raster is a good quality local
+map or orthorectified aerial image, but not aligned with the grid bearing in your CRS. At least 2 GCPs are needed.</p></li>
+<li><p>The <strong>Polynomial 1</strong> algorithm allows a more general affine transformation, in particular also a uniform shear. Straight lines remain straight
+(i.e., collinear points stay collinear) and parallel lines remain parallel. This is particularly useful for georeferencing data cartograms,
+which may have been plotted (or data collected) with different ground pixel sizes in different directions. At least 3 GCP’s are required.</p></li>
+<li><p>The <strong>Polynomial</strong> algorithms 2-3 use more general 2nd or 3rd degree polynomials instead of just affine transformation. This allows them to account
+for curvature or other systematic warping of the image, for instance photographed maps with curving edges. At least 6 (respectively 10) GCP’s are required.
+Angles and local scale are not preserved or treated uniformly across the image. In particular, straight lines may become curved, and there may be significant
+distortion introduced at the edges or far from any GCPs arising from extrapolating the data-fitted polynomials too far.</p></li>
+<li><p>The <strong>Projective</strong> algorithm generalizes Polynomial 1 in a different way, allowing transformations representing a central projection between 2 non-parallel planes,
+the image and the map canvas. Straight lines stay straight, but parallelism is not preserved and scale across the image varies consistently with the
+change in perspective. This transformation type is most useful for georeferencing angled photographs (rather than flat scans) of good quality maps, or
+oblique aerial images. A minimum of 4 GCPs is required.</p></li>
+<li><p>Finally, the <strong>Thin Plate Spline</strong> (TPS) algorithm “rubber sheets” the raster using multiple local polynomials to match the GCPs specified, with overall
+surface curvature minimized. Areas away from GCPs will be moved around in the output to
+accommodate the GCP matching, but will otherwise be minimally locally deformed.  TPS is most useful for georeferencing damaged, deformed, or otherwise slightly
+inaccurate maps, or poorly orthorectified aerials.  It is also useful for approximately georeferencing and implicitly reprojecting maps with unknown projection type
+or parameters, but where a regular grid or dense set of ad-hoc GCPs can be matched with a reference map layer. It technically requires a minimum of
+10 GCPs, but usually more to be successful.</p></li>
+</ul>
+<p>In all of the algorithms except TPS, if more than the minimum GCPs are specified, parameters will be fitted so that the overall residual error is minimized.
+This is helpful to minimize the impact of registration errors, i.e. slight imprecisions in pointer clicks or typed coordinates, or other small local image deformations.
+Absent other GCPs to compensate, such errors or deformations could translate into significant distortions, especially
+near the edges of the georeferenced image.  However, if more than the minimum GCPs are specified, they will match only approximately in the output.
+In contrast, TPS will precisely match all specified GCPs, but may introduce significant deformations between nearby GCPs with registration errors.</p>
+</section>
+<section id="define-the-resampling-method">
+<h4><a class="toc-backref" href="#id8"><span class="section-number">15.3.1.2.2. </span>Define the Resampling method</a><a class="headerlink" href="#define-the-resampling-method" title="Permalink to this headline"></a></h4>
+<p>The type of resampling you choose will likely depend on your input data
+and the ultimate objective of the exercise. If you don’t want to change
+statistics of the raster (other than as implied by nonuniform geometric scaling if using other than the Linear, Helmert, or Polynomial 1 transformations),
+you might want to choose ‘Nearest neighbour’. In contrast,
+‘cubic resampling’, for instance, will usually generate a visually smoother result.</p>
+<p>It is possible to choose between five different resampling methods:</p>
+<ol class="arabic simple">
+<li><p>Nearest neighbour</p></li>
+<li><p>Linear</p></li>
+<li><p>Cubic</p></li>
+<li><p>Cubic Spline</p></li>
+<li><p>Lanczos</p></li>
+</ol>
+</section>
+<section id="define-the-transformation-settings">
+<h4><a class="toc-backref" href="#id9"><span class="section-number">15.3.1.2.3. </span>Define the transformation settings</a><a class="headerlink" href="#define-the-transformation-settings" title="Permalink to this headline"></a></h4>
+<p>There are several options that need to be defined for the georeferenced output
+raster.</p>
+<ul class="simple">
+<li><p>The <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Create world file</span> checkbox is only available if you
+decide to use the linear transformation type, because this means that the
+raster image actually won’t be transformed. In this case, the
+<span class="guilabel">Output raster</span> field is not activated, because only a new world file will
+be created.</p></li>
+<li><p>For all other transformation types, you have to define an <span class="guilabel">Output
+raster</span>. As default, a new file ([filename]_modified) will be created in the
+same folder together with the original raster image.</p></li>
+<li><p>As a next step, you have to define the <span class="guilabel">Target SRS</span> (Spatial Reference
+System) for the georeferenced raster (see <a class="reference internal" href="../working_with_projections/working_with_projections.html#label-projections"><span class="std std-ref">Working with Projections</span></a>).</p></li>
+<li><p>If you like, you can <strong>generate a pdf map</strong> and also <strong>a pdf report</strong>.
+The report includes information about the used transformation parameters,
+an image of the residuals and a list with all GCPs and their RMS errors.</p></li>
+<li><p>Furthermore, you can activate the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Set Target Resolution</span>
+checkbox and define the pixel resolution of the output raster. Default horizontal
+and vertical resolution is 1.</p></li>
+<li><p>The <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Use 0 for transparency when needed</span> can be activated,
+if pixels with the value 0 shall be visualized transparent. In our example
+toposheet, all white areas would be transparent.</p></li>
+<li><p>Finally, <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Load in QGIS when done</span> loads the output raster
+automatically into the QGIS map canvas when the transformation is done.</p></li>
+</ul>
+</section>
+</section>
+<section id="show-and-adapt-raster-properties">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">15.3.1.3. </span>Show and adapt raster properties</a><a class="headerlink" href="#show-and-adapt-raster-properties" title="Permalink to this headline"></a></h3>
+<p>Clicking on the <span class="guilabel">Raster properties</span> option in the <span class="guilabel">Settings</span>
+menu opens the <a class="reference internal" href="raster_properties.html#raster-properties-dialog"><span class="std std-ref">Layer properties</span></a> dialog of the
+raster file that you want to georeference.</p>
+</section>
+<section id="configure-the-georeferencer">
+<span id="configure-georeferencer"></span><h3><a class="toc-backref" href="#id11"><span class="section-number">15.3.1.4. </span>Configure the georeferencer</a><a class="headerlink" href="#configure-the-georeferencer" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>You can define whether you want to show GCP coordinates and/or IDs.</p></li>
+<li><p>As residual units, pixels and map units can be chosen.</p></li>
+<li><p>For the PDF report, a left and right margin can be defined and you can also
+set the paper size for the PDF map.</p></li>
+<li><p>Finally, you can activate to <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Georeferencer window docked</span>.</p></li>
+</ul>
+</section>
+<section id="running-the-transformation">
+<span id="georeferencer-running"></span><h3><a class="toc-backref" href="#id12"><span class="section-number">15.3.1.5. </span>Running the transformation</a><a class="headerlink" href="#running-the-transformation" title="Permalink to this headline"></a></h3>
+<p>After all GCPs have been collected and all transformation settings are defined,
+just press the <a class="reference internal" href="../../../_images/mActionStart.png"><img alt="start" src="../../../_images/mActionStart.png" style="width: 1.5em;" /></a> <sup>Start georeferencing</sup> button to create
+the new georeferenced raster.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="raster_analysis.html" class="btn btn-neutral float-left" title="15.2. Raster Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_mesh/mesh_properties.html" class="btn btn-neutral float-right" title="16. Working with Mesh Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_raster/georeferencer.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_raster/georeferencer.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_raster/georeferencer.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_raster/georeferencer.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_raster/georeferencer.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_raster/georeferencer.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_raster/georeferencer.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/working_with_raster/georeferencer.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_raster/georeferencer.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/working_with_raster/georeferencer.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/working_with_raster/georeferencer.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/working_with_raster/georeferencer.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/working_with_raster/georeferencer.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_raster/georeferencer.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

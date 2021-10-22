@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.4. Lesson: Updating Forest Stands &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/updating_stands.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14.5. Lesson: Systematic Sampling Design" href="systematic_sampling.html" />
+    <link rel="prev" title="14.3. Lesson: Digitizing Forest Stands" href="stands_digitazing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/updating_stands.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Module: Forestry Application</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forestry_intro.html">14.1. Lesson: Forestry Module Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_georeferencing.html">14.2. Lesson: Georeferencing a Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stands_digitazing.html">14.3. Lesson: Digitizing Forest Stands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.4. Lesson: Updating Forest Stands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-comparing-the-old-forest-stands-to-current-aerial-photographs">14.4.1.  Comparing the Old Forest Stands to Current Aerial Photographs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-interpreting-the-cir-image">14.4.2.  Interpreting the CIR Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-digitizing-forest-stands-from-cir-imagery">14.4.3.  Try Yourself Digitizing Forest Stands from CIR Imagery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-updating-forest-stands-with-conservation-information">14.4.4.  Follow Along: Updating Forest Stands with Conservation Information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-updating-forest-stands-with-distance-to-the-stream">14.4.5.  Try Yourself Updating Forest Stands with Distance to the Stream</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">14.4.6. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">14.4.7. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="systematic_sampling.html">14.5. Lesson: Systematic Sampling Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forest_maps.html">14.6. Lesson: Creating Detailed Maps with the Atlas Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameters_calculation.html">14.7. Lesson: Calculating the Forest Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_lidar.html">14.8. Lesson: DEM from LiDAR Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="results_map.html">14.9. Lesson: Map Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">14. </span>Module: Forestry Application</a> &raquo;</li>
+      <li><span class="section-number">14.4. </span>Lesson: Updating Forest Stands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/forestry/updating_stands.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="stands_digitazing.html" class="btn btn-neutral float-left" title="14.3. Lesson: Digitizing Forest Stands" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="systematic_sampling.html" class="btn btn-neutral float-right" title="14.5. Lesson: Systematic Sampling Design" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-updating-forest-stands">
+<h1><span class="section-number">14.4. </span>Lesson: Updating Forest Stands<a class="headerlink" href="#ls-updating-forest-stands" title="Permalink to this headline"></a></h1>
+<p>Now that you have digitized the information from the old inventory maps and
+added the corresponding information to the forest stands, the next step would
+be to create the inventory of the current state of the forest.</p>
+<p>You will digitize new forest stands from scratch following an aerial photo from
+that forest area. The forestry map you digitized in the previous lesson was
+created from an aerial Color Infrared (CIR) photograph. This type of imagery,
+where the infrared light is recorded instead of the blue light, are widely used
+to study vegetated areas. You will also use a CIR photograph in this lesson.</p>
+<p>After digitizing the forest stands, you will add information such as new
+constraints given by conservation regulations.</p>
+<p><strong>The goal for this lesson:</strong> To digitize a new set of forest stands from
+CIR aerial photographs and add information from other data-sets.</p>
+<section id="basic-comparing-the-old-forest-stands-to-current-aerial-photographs">
+<h2><span class="section-number">14.4.1. </span><img alt="basic" src="../../../_images/basic.png" /> Comparing the Old Forest Stands to Current Aerial Photographs<a class="headerlink" href="#basic-comparing-the-old-forest-stands-to-current-aerial-photographs" title="Permalink to this headline"></a></h2>
+<p>The National Land Survey of Finland has an open data policy that allows you
+downloading a variety of geographical data like aerial imagery, traditional
+topographic maps, DEM, LiDAR data, etc. The service can be accessed also in
+English <a class="reference external" href="https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta?lang=en">here</a>.
+The aerial image used in this exercise has been created from two orthorectified
+CIR images downloaded from that service (M4134F_21062012 and M4143E_21062012).</p>
+<ul class="simple">
+<li><p>Open QGIS and set the project’s CRS to <span class="guilabel">ETRS89 / ETRS-TM35FIN</span> in
+<span class="menuselection">Project ► Properties… ► CRS</span>.</p></li>
+<li><p>From the <code class="file docutils literal notranslate"><span class="pre">exercise_data\forestry\</span></code> folder, add the CIR image
+<code class="file docutils literal notranslate"><span class="pre">rautjarvi_aerial.tif</span></code> that is containing the digitized lakes.</p></li>
+<li><p>Then save the QGIS project as <code class="file docutils literal notranslate"><span class="pre">digitizing_2012.qgs</span></code>.</p></li>
+</ul>
+<p>The CIR images are from 2012. You can compare the stands that were created
+in 1994 with the situation almost 20 years later.</p>
+<ul class="simple">
+<li><p>Add your <kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd> layer.</p></li>
+<li><p>Set its styling so that you can see through your polygons.</p></li>
+<li><p>Review how the old forest stands follow (or not) what you might visually
+interpret as an homogeneous forest.</p></li>
+</ul>
+<p>Zoom and pan around the area. You probably will notice that some of the old
+forest stands might be still corresponding with the image but others are not.</p>
+<p>This is a normal situation, as some 20 years have passed by and different
+forest operations have been done (harvesting, thinning…). It is also
+possible that the forest stands looked homogeneous back in 1992 to the person
+who digitized them but as time has passed some forest has developed in different
+ways. Or simply the priorities for the forest inventory were different that they
+are today.</p>
+<p>Next, you will create new forest stands for this image without using the old
+ones. Later you can compare them to see the differences.</p>
+</section>
+<section id="basic-interpreting-the-cir-image">
+<h2><span class="section-number">14.4.2. </span><img alt="basic" src="../../../_images/basic.png" /> Interpreting the CIR Image<a class="headerlink" href="#basic-interpreting-the-cir-image" title="Permalink to this headline"></a></h2>
+<p>Let’s digitize the same area that was covered by the old inventory, limited by
+the roads and the lake. You don’t have to digitize the whole area, as in the
+previous exercise you can start with a vector file that already contains most
+of the forest stands.</p>
+<ul class="simple">
+<li><p>Remove the <kbd class="kbd docutils literal notranslate">forest_stands_1994.shp</kbd> layer.</p></li>
+<li><p>Add the <kbd class="kbd docutils literal notranslate">forest_stands_2012.shp</kbd> layer, located in the <kbd class="kbd docutils literal notranslate">exercise_data\forestry\</kbd> folder.</p></li>
+<li><p>Set the styling of this layer so that the polygons have no fill and the borders are visible.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/stands_2012_1.png" src="../../../_images/stands_2012_1.png" />
+</figure>
+<p>You can see that a region to the North of the inventory area is still missing.
+That will be your task, digitizing the missing forest stands.</p>
+<p>But before you start, spend some time reviewing the forest stands already
+digitized and the corresponding forest in the image. Try to get an idea about
+how the stands borders are decided, it helps if you have some forestry knowledge.</p>
+<p>Some ideas about what you could identify from the images:</p>
+<ul class="simple">
+<li><p>What forests are deciduous species (in Finland mostly birch forests) and
+which ones are conifers (in this region pine or spruce). In CIR images,
+deciduous species will often come as bright red color whereas conifers
+present dark green colors.</p></li>
+<li><p>When a forest stand age changes, by looking at the  sizes of the tree crowns
+that can be identified in the imagery.</p></li>
+<li><p>The different forest stands’ densities, for example forest stand were a
+thinning operation has recently been done would clearly show spaces between
+the tree crowns and should be easy to differentiate from other forest stands
+around it.</p></li>
+<li><p>Blueish areas indicate barren terrain, roads and urban areas, crops that have
+not started to grow etc.</p></li>
+<li><p>Don’t use zooms too close to the image when trying to identify forest stands.
+A scale between 1:3 000 and 1: 5 000 should be enough for this imagery.
+See the image below (1:4000 scale):</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/zoom_to_CIR_1-4000.png" src="../../../_images/zoom_to_CIR_1-4000.png" />
+</figure>
+</section>
+<section id="basic-ty-digitizing-forest-stands-from-cir-imagery">
+<h2><span class="section-number">14.4.3. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Digitizing Forest Stands from CIR Imagery<a class="headerlink" href="#basic-ty-digitizing-forest-stands-from-cir-imagery" title="Permalink to this headline"></a></h2>
+<p>When digitizing the forest stands, you should try to get forest areas that are
+as homogeneous as possible in terms of tree species, forest age, stand density…
+Don’t be too detailed though, or you will end up making hundreds of small forest
+stands that would not be useful at all. You should try to get stands that are
+meaningful in the context of forestry, not too small (at least 0.5 ha) but not
+too big either (no more than 3 ha).</p>
+<p>With this indications in mind, you can now digitize the missing forest stands.</p>
+<ul class="simple">
+<li><p>Enable editing for <kbd class="kbd docutils literal notranslate">forest_stands_2012.shp</kbd>.</p></li>
+<li><p>Set up the snapping and topology options as in the image.</p></li>
+<li><p>Remember to click <span class="guilabel">Apply</span> or <span class="guilabel">OK</span>.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/snapping_2012.png" src="../../../_images/snapping_2012.png" />
+</figure>
+<p>Start digitizing as you did in the previous lesson, with the only difference
+that you don’t have any point layer that you are snapping to. For this area you
+should get around 14 new forest stands. While digitizing, fill in the
+<kbd class="kbd docutils literal notranslate">Stand_id</kbd> field with numbers starting at <kbd class="kbd docutils literal notranslate">901</kbd>.</p>
+<p>When you are finished your layer should look something like:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_stands_ready.png" src="../../../_images/new_stands_ready.png" />
+</figure>
+<p>Now you have a  new set of polygons defining the different forest stands for
+the current situation as can interpreted from the CIR images. But you are
+obviously still missing the forest inventory data, right? For that you will
+still need to visit the forest and get some sample data that you will use to
+estimate the forest attributes for each of the forest stands. You will see how
+to do that in the next lesson.</p>
+<p>For the moment, you still can improve your vector layer with some extra
+information that you have about conservation regulation that should be taken
+into account for this area.</p>
+</section>
+<section id="basic-fa-updating-forest-stands-with-conservation-information">
+<h2><span class="section-number">14.4.4. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Updating Forest Stands with Conservation Information<a class="headerlink" href="#basic-fa-updating-forest-stands-with-conservation-information" title="Permalink to this headline"></a></h2>
+<p>For the area you are working with, it has been researched that the following
+conservation regulations must be taken into account while doing the forest planning:</p>
+<ul class="simple">
+<li><p>Two locations of a protected species of Siberian flying squirrel (Pteromys volans)
+have been identified. According to the regulation, an area of 15 meters around
+the spots must be left untouched.</p></li>
+<li><p>A riparian forest of special interest growing along a stream in the area must
+be protected. In a visit to the field, it was found that 20 meters to both
+sides of the stream must be protected.</p></li>
+</ul>
+<p>You have one vector file containing the information about the squirrel locations
+and another containing the digitized stream running in the North area towards
+the lake. From the <kbd class="kbd docutils literal notranslate">exercise_data\forestry\</kbd> folder, add the vector files
+<kbd class="kbd docutils literal notranslate">squirrel.shp</kbd> and <kbd class="kbd docutils literal notranslate">stream.shp</kbd>.</p>
+<p>For the protection of the squirrels locations, you are going to add a new
+attribute (column) to your new forest stands that will contain information
+about point locations that have to be protected. That information will later be
+available whenever a forest operation is planned, and the field team will be
+able to mark the area that has to be left untouched before the work starts.</p>
+<ul class="simple">
+<li><p>Open the attribute table for the <kbd class="kbd docutils literal notranslate">squirrel</kbd> layer.</p></li>
+<li><p>You can see that there are two locations that are defined as Siberian flying
+squirrel, and that the area to be protected is indicated by a distance of
+15 meters from the locations.</p></li>
+</ul>
+<p>To join the information about the squirrels to your forest stands, you can use
+the <span class="guilabel">Join attributes by location</span>:</p>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Vector ► Data Management Tools ► Join attributes by location</span>.</p></li>
+<li><p>Set the <kbd class="kbd docutils literal notranslate">forest_stands_2012.shp</kbd> layer as the <span class="guilabel">Target vector layer</span>.</p></li>
+<li><p>As <span class="guilabel">Join vector layer</span> select the <kbd class="kbd docutils literal notranslate">squirrel.shp</kbd> point layer.</p></li>
+<li><p>Name the output file as <kbd class="kbd docutils literal notranslate">stands_squirrel.shp</kbd>.</p></li>
+<li><p>In <span class="guilabel">Output table</span> select <span class="guilabel">Keep all records (including
+non-matching target records)</span>. So that you keep all the forest stands in the
+layer instead of only keeping those that are spatially related to the squirrel
+locations.</p></li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+<li><p>Select <span class="guilabel">Yes</span> when prompted to add the layer to the TOC.</p></li>
+<li><p>Close the dialogue box.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/join_squirrel_point.png" src="../../../_images/join_squirrel_point.png" />
+</figure>
+<p>Now you have a new forest stands layer, <kbd class="kbd docutils literal notranslate">stands_squirrel</kbd> where there are
+new attributes corresponding to the protection information related to the
+Siberian flying squirrel.</p>
+<p>Open the table of the new layer and order it so that the forest stands with
+information for the <span class="guilabel">Protection</span> attribute are on top. You should
+have now two forest stands where the squirrel has been located:</p>
+<figure class="align-center">
+<img alt="../../../_images/joined_squirrel_point.png" src="../../../_images/joined_squirrel_point.png" />
+</figure>
+<p>Although this information might be enough, look at what areas related to the
+squirrels should be protected. You know that you have to leave a buffer of
+15 meters around the squirrels location:</p>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Vector ► Geoprocessing Tools ► Buffer</span>.</p></li>
+<li><p>Make a buffer of 15 meters for the <kbd class="kbd docutils literal notranslate">squirrel</kbd> layer.</p></li>
+<li><p>Name the result <kbd class="kbd docutils literal notranslate">squirrel_15m.shp</kbd>.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/squirrel_15m.png" src="../../../_images/squirrel_15m.png" />
+</figure>
+<p>You will notice that if you zoom in to the location in the Northern part of the
+area, the buffer area extends to the neighbouring stand as well. This means that
+whenever a forest operation would take place in that stand, the protected
+location should also be taken into account.</p>
+<figure class="align-center">
+<img alt="../../../_images/north_squirrel_buffer.png" src="../../../_images/north_squirrel_buffer.png" />
+</figure>
+<p>From your previous analysis, you did not get that stand to register information
+about the protection status. To solve this problem:</p>
+<ul class="simple">
+<li><p>Run the <span class="guilabel">Join attributes by location</span> tool again.</p></li>
+<li><p>But this time use the <kbd class="kbd docutils literal notranslate">squirrel_15m</kbd> layer as join layer.</p></li>
+<li><p>Name the output file as <kbd class="kbd docutils literal notranslate">stands_squirrel_15m.shp</kbd>.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/joined_squirrel_buffer.png" src="../../../_images/joined_squirrel_buffer.png" />
+</figure>
+<p>Open the attribute table for the this new layer and note that now you have
+three forest stands that have the information about the protection locations.
+The information in the forest stands data will indicate to the forest manager
+that there are protection considerations to be taken into account. Then he or
+she can get the location from the <kbd class="kbd docutils literal notranslate">squirrel</kbd> dataset, and visit the area
+to mark the corresponding buffer around the location so that the operators in
+the field can avoid disturbing the squirrels environment.</p>
+</section>
+<section id="basic-ty-updating-forest-stands-with-distance-to-the-stream">
+<h2><span class="section-number">14.4.5. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Updating Forest Stands with Distance to the Stream<a class="headerlink" href="#basic-ty-updating-forest-stands-with-distance-to-the-stream" title="Permalink to this headline"></a></h2>
+<p>Following the same approach as indicated for the protected squirrel locations
+you can now update your forest stands with protection information related to
+the stream identified in the field:</p>
+<ul class="simple">
+<li><p>Remember that the buffer in this case is 20 meters around it.</p></li>
+<li><p>You want to have all the protection information in the same vector file,
+so use the <kbd class="kbd docutils literal notranslate">stands_squirrel_15m</kbd> layer as the target.</p></li>
+<li><p>Name your output as <kbd class="kbd docutils literal notranslate">forest_stands_2012_protect.shp</kbd>.</p></li>
+</ul>
+<p>Open the attributes table for the new vector layer and confirm that you now have
+all the protection information for the stands that are affected by the protection
+measures to protect the riparian forest associated with the stream.</p>
+<p>Save your QGIS project.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">14.4.6. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have seen how to interpret CIR images to digitize forest stands. Of course
+it would take some practice to make more accurate stands and usually using other
+information like soil maps would give better results, but you know now the basis
+for this type of task. And adding information from other datasets resulted to
+be quite a trivial task.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">14.4.7. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>The forest stands you digitized will be used for planning forestry operations
+in the future, but you still need to get more information about the forest.
+In the next lesson, you will see how to plan a set of sampling plots to
+inventory the forest area you just digitized, and get the overall estimate
+of forest parameters.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stands_digitazing.html" class="btn btn-neutral float-left" title="14.3. Lesson: Digitizing Forest Stands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="systematic_sampling.html" class="btn btn-neutral float-right" title="14.5. Lesson: Systematic Sampling Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 19, 2021 22:25.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/updating_stands.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/updating_stands.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/updating_stands.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/forestry/updating_stands.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/forestry/updating_stands.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/forestry/updating_stands.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/forestry/updating_stands.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/forestry/updating_stands.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/forestry/updating_stands.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/forestry/updating_stands.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/forestry/updating_stands.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/forestry/updating_stands.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/forestry/updating_stands.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/forestry/updating_stands.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
