@@ -415,23 +415,13 @@ the expression to execute.
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |3d| image:: /static/common/3d.png
-   :width: 1.5em
-.. |add| image:: /static/common/mActionAdd.png
-   :width: 1.5em
 .. |addMeshLayer| image:: /static/common/mActionAddMeshLayer.png
    :width: 1.5em
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |collapseTree| image:: /static/common/mActionCollapseTree.png
-   :width: 1.5em
 .. |editMetadata| image:: /static/common/editmetadata.png
    :width: 1.2em
-.. |expandTree| image:: /static/common/mActionExpandTree.png
-   :width: 1.5em
 .. |general| image:: /static/common/general.png
-   :width: 1.5em
-.. |meshaveraging| image:: /static/common/meshaveraging.png
    :width: 1.5em
 .. |meshcontours| image:: /static/common/meshcontours.png
    :width: 1.5em
@@ -445,18 +435,7 @@ the expression to execute.
    :width: 1.5em
 .. |refresh| image:: /static/common/mActionRefresh.png
    :width: 1.5em
-.. |rendering| image:: /static/common/rendering.png
-   :width: 1.5em
-.. |selectString| image:: /static/common/selectstring.png
-   :width: 2.5em
 .. |setProjection| image:: /static/common/mActionSetProjection.png
    :width: 1.5em
-.. |signMinus| image:: /static/common/symbologyRemove.png
-   :width: 1.5em
-.. |signPlus| image:: /static/common/symbologyAdd.png
-   :width: 1.5em
-.. |slider| image:: /static/common/slider.png
 .. |symbology| image:: /static/common/symbology.png
    :width: 2em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
-   :width: 1.3em

@@ -77,7 +77,7 @@ Please have a look into one of the documents below.
 
 .. toctree::
   :maxdepth: 2
-  :caption: For adventurous Wageningen Students
+  :caption: For Wageningen Students
 
   Land Degradation and Development <land_degradation_development/index>
 

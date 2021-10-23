@@ -1,3 +1,5 @@
+.. _interface_overview
+
 |LS| An Overview of the Interface
 ===============================================================================
 
