@@ -885,8 +885,6 @@ the expression to execute.
    :width: 1.5em
 .. |general| image:: /static/common/general.png
    :width: 1.5em
-.. |locked| image:: /static/common/locked.png
-   :width: 1.5em
 .. |meshDigitizing| image:: /static/common/mActionMeshDigitizing.png
    :width: 1.5em
 .. |meshEditForceByVectorLines| image:: /static/common/mActionMeshEditForceByVectorLines.png
