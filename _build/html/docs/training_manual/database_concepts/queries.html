@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.4. Lesson: Queries &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/queries.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="15.5. Lesson: Views" href="views.html" />
+    <link rel="prev" title="15.3. Lesson: Adding Data to the Model" href="adding_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/queries.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. Module: Database Concepts with PostgreSQL</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="db_intro.html">15.1. Lesson: Introduction to Databases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_model.html">15.2. Lesson: Implementing the Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="adding_data.html">15.3. Lesson: Adding Data to the Model</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.4. Lesson: Queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ordering-results">15.4.1. Ordering Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filtering">15.4.2. Filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#joins">15.4.3. Joins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sub-select">15.4.4. Sub-Select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aggregate-queries">15.4.5. Aggregate Queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">15.4.6. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">15.4.7. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="views.html">15.5. Lesson: Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rules.html">15.6. Lesson: Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">15. </span>Module: Database Concepts with PostgreSQL</a> &raquo;</li>
+      <li><span class="section-number">15.4. </span>Lesson: Queries</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/database_concepts/queries.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="adding_data.html" class="btn btn-neutral float-left" title="15.3. Lesson: Adding Data to the Model" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="views.html" class="btn btn-neutral float-right" title="15.5. Lesson: Views" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-queries">
+<h1><span class="section-number">15.4. </span>Lesson: Queries<a class="headerlink" href="#ls-queries" title="Permalink to this headline"></a></h1>
+<p>When you write a <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">SELECT</kbd> <kbd class="kbd docutils literal notranslate">...</kbd></kbd> command it is commonly known as a query -
+you are interrogating the database for information.</p>
+<p><strong>The goal of this lesson:</strong> To learn how to create queries that will return
+useful information.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you did not do so in the previous lesson, add the following people
+objects to your <kbd class="kbd docutils literal notranslate">people</kbd> table. If you receive any errors related to
+foreign key constraints, you will need to add the ‘Main Road’ object to your
+streets table first</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">)</span>
+          <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Joe Bloggs&#39;</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;072 887 23 45&#39;</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">)</span>
+          <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Jane Smith&#39;</span><span class="p">,</span><span class="mi">55</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s1">&#39;072 837 33 35&#39;</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">)</span>
+          <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Roger Jones&#39;</span><span class="p">,</span><span class="mi">33</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;072 832 31 38&#39;</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">)</span>
+          <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Sally Norman&#39;</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;072 932 31 32&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="ordering-results">
+<h2><span class="section-number">15.4.1. </span>Ordering Results<a class="headerlink" href="#ordering-results" title="Permalink to this headline"></a></h2>
+<p>Let’s retrieve a list of people ordered by their house numbers:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">order</span> <span class="k">by</span> <span class="n">house_no</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+<span class="c1">--------------+----------</span>
+ <span class="n">Joe</span> <span class="n">Bloggs</span>   <span class="o">|</span>        <span class="mi">3</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span>       <span class="mi">33</span>
+ <span class="n">Jane</span> <span class="n">Smith</span>   <span class="o">|</span>       <span class="mi">55</span>
+ <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span>       <span class="mi">83</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can sort the results by the values of more than one column:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">order</span> <span class="k">by</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+<span class="c1">--------------+----------</span>
+ <span class="n">Jane</span> <span class="n">Smith</span>   <span class="o">|</span>       <span class="mi">55</span>
+ <span class="n">Joe</span> <span class="n">Bloggs</span>   <span class="o">|</span>        <span class="mi">3</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span>       <span class="mi">33</span>
+ <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span>       <span class="mi">83</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="filtering">
+<h2><span class="section-number">15.4.2. </span>Filtering<a class="headerlink" href="#filtering" title="Permalink to this headline"></a></h2>
+<p>Often you won’t want to see every single record in the database - especially if
+there are thousands of records and you are only interested in seeing one or
+two.</p>
+<p>Here is an example of a numerical filter which only returns objects whose
+<code class="docutils literal notranslate"><span class="pre">house_no</span></code> is less than 50:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">where</span> <span class="n">house_no</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">;</span>
+
+      <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+  <span class="c1">-------------+----------</span>
+   <span class="n">Joe</span> <span class="n">Bloggs</span>  <span class="o">|</span>        <span class="mi">3</span>
+   <span class="n">Roger</span> <span class="n">Jones</span> <span class="o">|</span>       <span class="mi">33</span>
+  <span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can combine filters (defined using the <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause) with sorting
+(defined using the <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> clause):</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">where</span> <span class="n">house_no</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">order</span> <span class="k">by</span> <span class="n">house_no</span><span class="p">;</span>
+
+      <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+  <span class="c1">-------------+----------</span>
+   <span class="n">Joe</span> <span class="n">Bloggs</span>  <span class="o">|</span>        <span class="mi">3</span>
+   <span class="n">Roger</span> <span class="n">Jones</span> <span class="o">|</span>       <span class="mi">33</span>
+  <span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also filter based on text data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">where</span> <span class="n">name</span> <span class="k">like</span> <span class="s1">&#39;%s%&#39;</span><span class="p">;</span>
+
+      <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+  <span class="c1">-------------+----------</span>
+   <span class="n">Joe</span> <span class="n">Bloggs</span>  <span class="o">|</span>        <span class="mi">3</span>
+   <span class="n">Roger</span> <span class="n">Jones</span> <span class="o">|</span>       <span class="mi">33</span>
+  <span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here we used the <kbd class="kbd docutils literal notranslate">LIKE</kbd> clause to find all names with an <kbd class="kbd docutils literal notranslate">s</kbd> in them.
+You’ll notice that this query is case-sensitive, so the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Sally</kbd> <kbd class="kbd docutils literal notranslate">Norman</kbd></kbd> entry
+has not been returned.</p>
+<p>If you want to search for a string of letters regardless of case, you can do a
+case in-sensitive search using the <kbd class="kbd docutils literal notranslate">ILIKE</kbd> clause:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">name</span><span class="p">,</span> <span class="n">house_no</span> <span class="k">from</span> <span class="n">people</span> <span class="k">where</span> <span class="n">name</span> <span class="k">ilike</span> <span class="s1">&#39;%r%&#39;</span><span class="p">;</span>
+
+       <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span>
+  <span class="c1">--------------+----------</span>
+   <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span>       <span class="mi">33</span>
+   <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span>       <span class="mi">83</span>
+  <span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That query returned every <strong>people</strong> object with an <kbd class="kbd docutils literal notranslate">r</kbd> or <kbd class="kbd docutils literal notranslate">R</kbd> in their
+name.</p>
+</section>
+<section id="joins">
+<h2><span class="section-number">15.4.3. </span>Joins<a class="headerlink" href="#joins" title="Permalink to this headline"></a></h2>
+<p>What if you want to see the person’s details and their street’s name instead of
+the ID? In order to do that, you need to join the two tables together in a single
+query. Lets look at an example:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">people</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">house_no</span><span class="p">,</span> <span class="n">streets</span><span class="p">.</span><span class="n">name</span>
+<span class="k">from</span> <span class="n">people</span><span class="p">,</span><span class="n">streets</span>
+<span class="k">where</span> <span class="n">people</span><span class="p">.</span><span class="n">street_id</span><span class="o">=</span><span class="n">streets</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With joins, you will always state the two tables the information is
+coming from, in this case people and streets. You also need to specify
+which two keys must match (foreign key &amp; primary key). If you don’t specify
+that, you will get a list of all possible combinations of people and
+streets, but no way to know who actually lives on which street!</p>
+</div>
+<p>Here is what the correct output will look like:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span> <span class="o">|</span>    <span class="n">name</span>
+<span class="c1">--------------+----------+-------------</span>
+ <span class="n">Joe</span> <span class="n">Bloggs</span>   <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span> <span class="n">Low</span> <span class="n">Street</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span>       <span class="mi">33</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+ <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span>       <span class="mi">83</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+ <span class="n">Jane</span> <span class="n">Smith</span>   <span class="o">|</span>       <span class="mi">55</span> <span class="o">|</span> <span class="n">Main</span> <span class="n">Road</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will revisit joins as we create more complex queries later. Just remember
+they provide a simple way to combine the information from two or more tables.</p>
+</section>
+<section id="sub-select">
+<h2><span class="section-number">15.4.4. </span>Sub-Select<a class="headerlink" href="#sub-select" title="Permalink to this headline"></a></h2>
+<p>Sub-selections allow you to select objects from one table based on the data
+from another table which is linked via a foreign key relationship. In our case,
+we want to find people who live on a specific street.</p>
+<p>First, let’s do a little tweaking of our data:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;QGIS Road&#39;</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;OGR Corner&#39;</span><span class="p">);</span>
+<span class="k">insert</span> <span class="k">into</span> <span class="n">streets</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">values</span><span class="p">(</span><span class="s1">&#39;Goodle Square&#39;</span><span class="p">);</span>
+<span class="k">update</span> <span class="n">people</span> <span class="k">set</span> <span class="n">street_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+<span class="k">update</span> <span class="n">people</span> <span class="k">set</span> <span class="n">street_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Let’s take a quick look at our data after those changes: we can reuse our query
+from the previous section:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">people</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">house_no</span><span class="p">,</span> <span class="n">streets</span><span class="p">.</span><span class="n">name</span>
+<span class="k">from</span> <span class="n">people</span><span class="p">,</span><span class="n">streets</span>
+<span class="k">where</span> <span class="n">people</span><span class="p">.</span><span class="n">street_id</span><span class="o">=</span><span class="n">streets</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">house_no</span> <span class="o">|</span>    <span class="n">name</span>
+<span class="c1">--------------+----------+-------------</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span>       <span class="mi">33</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+ <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span>       <span class="mi">83</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+ <span class="n">Jane</span> <span class="n">Smith</span>   <span class="o">|</span>       <span class="mi">55</span> <span class="o">|</span> <span class="n">Main</span> <span class="n">Road</span>
+ <span class="n">Joe</span> <span class="n">Bloggs</span>   <span class="o">|</span>        <span class="mi">3</span> <span class="o">|</span> <span class="n">Low</span> <span class="n">Street</span>
+<span class="p">(</span><span class="mi">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let’s show you a sub-selection on this data. We want to show only people who
+live in <code class="docutils literal notranslate"><span class="pre">street_id</span></code> number <kbd class="kbd docutils literal notranslate">1</kbd>:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="n">people</span><span class="p">.</span><span class="n">name</span>
+<span class="k">from</span> <span class="n">people</span><span class="p">,</span> <span class="p">(</span>
+    <span class="k">select</span> <span class="o">*</span>
+    <span class="k">from</span> <span class="n">streets</span>
+    <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span>
+  <span class="p">)</span> <span class="k">as</span> <span class="n">streets_subset</span>
+<span class="k">where</span> <span class="n">people</span><span class="p">.</span><span class="n">street_id</span> <span class="o">=</span> <span class="n">streets_subset</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>
+<span class="c1">--------------</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>
+ <span class="n">Sally</span> <span class="n">Norman</span>
+<span class="p">(</span><span class="mi">2</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Although this is a very simple example and unnecessary with our small data-sets,
+it illustrates how useful and important sub-selections can be when querying
+large and complex data-sets.</p>
+</section>
+<section id="aggregate-queries">
+<h2><span class="section-number">15.4.5. </span>Aggregate Queries<a class="headerlink" href="#aggregate-queries" title="Permalink to this headline"></a></h2>
+<p>One of the powerful features of a database is its ability to summarise the data
+in its tables. These summaries are called aggregate queries. Here is a typical
+example which tells us how many people objects are in our people table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">people</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="k">count</span>
+<span class="c1">-------</span>
+     <span class="mi">4</span>
+<span class="p">(</span><span class="mi">1</span> <span class="k">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If we want the counts to be summarised by street name we can do this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">street_id</span>
+<span class="k">from</span> <span class="n">people</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">street_id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="k">count</span> <span class="o">|</span> <span class="n">street_id</span>
+<span class="c1">-------+-----------</span>
+     <span class="mi">2</span> <span class="o">|</span>         <span class="mi">1</span>
+     <span class="mi">1</span> <span class="o">|</span>         <span class="mi">3</span>
+     <span class="mi">1</span> <span class="o">|</span>         <span class="mi">2</span>
+<span class="p">(</span><span class="mi">3</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because we have not used an <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ORDER</kbd> <kbd class="kbd docutils literal notranslate">BY</kbd></kbd> clause, the order of your
+results may not match what is shown here.</p>
+</div>
+<section id="ty-moderate">
+<h3><span class="section-number">15.4.5.1. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h3>
+<p>Summarise the people by street name and show the actual street names instead
+of the street_ids.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Here is the correct SQL statement you should use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="n">people</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">streets</span><span class="o">.</span><span class="n">name</span>
+<span class="kn">from</span> <span class="nn">people</span><span class="p">,</span> <span class="n">streets</span>
+<span class="n">where</span> <span class="n">people</span><span class="o">.</span><span class="n">street_id</span><span class="o">=</span><span class="n">streets</span><span class="o">.</span><span class="n">id</span>
+<span class="n">group</span> <span class="n">by</span> <span class="n">streets</span><span class="o">.</span><span class="n">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">|</span>    <span class="n">name</span>
+<span class="o">------+-------------</span>
+    <span class="mi">1</span> <span class="o">|</span> <span class="n">Low</span> <span class="n">Street</span>
+    <span class="mi">2</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span>
+    <span class="mi">1</span> <span class="o">|</span> <span class="n">Main</span> <span class="n">Road</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will notice that we have prefixed field names with table names (e.g.
+people.name and streets.name). This needs to be done whenever the field name
+is ambiguous (i.e. not unique across all tables in the database).</p>
+</div>
+</section>
+</section>
+<section id="ic">
+<h2><span class="section-number">15.4.6. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You’ve seen how to use queries to return the data in your database in a way
+that allows you to extract useful information from it.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">15.4.7. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next you’ll see how to create views from the queries that you’ve written.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="adding_data.html" class="btn btn-neutral float-left" title="15.3. Lesson: Adding Data to the Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="views.html" class="btn btn-neutral float-right" title="15.5. Lesson: Views" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/queries.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/queries.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/queries.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/database_concepts/queries.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/database_concepts/queries.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/database_concepts/queries.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/database_concepts/queries.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/database_concepts/queries.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/database_concepts/queries.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/database_concepts/queries.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/database_concepts/queries.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/database_concepts/queries.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/database_concepts/queries.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/database_concepts/queries.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

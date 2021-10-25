@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.2. Lesson: Labels &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/label_tool.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.3. Lesson: Classification" href="classification.html" />
+    <link rel="prev" title="3.1. Lesson: Vector Attribute Data" href="attribute_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/label_tool.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3. Module: Classifying Vector Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="attribute_data.html">3.1. Lesson: Vector Attribute Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.2. Lesson: Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-using-labels">3.2.1.  Follow Along: Using Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-changing-label-options">3.2.2.  Follow Along: Changing Label Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-using-labels-instead-of-layer-symbology">3.2.3.  Follow Along: Using Labels Instead of Layer Symbology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-customize-the-labels">3.2.4.  Try Yourself Customize the Labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-labeling-lines">3.2.5.  Follow Along: Labeling Lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-data-defined-settings">3.2.6.  Follow Along: Data Defined Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-ty-using-data-defined-settings">3.2.7.  Try Yourself Using Data Defined Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-further-possibilities-with-labeling">3.2.8.  Further Possibilities With Labeling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">3.2.9. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">3.2.10. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html">3.3. Lesson: Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">3. </span>Module: Classifying Vector Data</a> &raquo;</li>
+      <li><span class="section-number">3.2. </span>Lesson: Labels</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/vector_classification/label_tool.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="attribute_data.html" class="btn btn-neutral float-left" title="3.1. Lesson: Vector Attribute Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classification.html" class="btn btn-neutral float-right" title="3.3. Lesson: Classification" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-labels">
+<h1><span class="section-number">3.2. </span>Lesson: Labels<a class="headerlink" href="#ls-labels" title="Permalink to this headline"></a></h1>
+<p>Labels can be added to a map to show any information about an object. Any
+vector layer can have labels associated with it. These labels rely on the
+attribute data of a layer for their content.</p>
+<p><strong>The goal for this lesson:</strong> To apply useful and good-looking labels to a
+layer.</p>
+<section id="basic-fa-using-labels">
+<h2><span class="section-number">3.2.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Using Labels<a class="headerlink" href="#basic-fa-using-labels" title="Permalink to this headline"></a></h2>
+<p>First, ensure that the <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> button is visible in the GUI:</p>
+<ol class="arabic">
+<li><p>Go to the menu item <span class="menuselection">View ► Toolbars</span></p></li>
+<li><p>Ensure that the <span class="guilabel">Label Toolbar</span> item has a check mark next to it.
+If it doesn’t, click on the <span class="guilabel">Label Toolbar</span> item to activate it.</p></li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">places</span></code> layer in the <span class="guilabel">Layers</span> panel so that
+it is highlighted</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> toolbar button to open the
+<span class="guilabel">Labels</span> tab of the <span class="guilabel">Layer Styling</span> panel</p></li>
+<li><p>Switch from <span class="guilabel">No Labels</span> to <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">Single Labels</span></p>
+<p>You’ll need to choose which field in the attributes will be used for the
+labels. In the previous lesson, you decided that the <code class="docutils literal notranslate"><span class="pre">name</span></code> field was the
+most suitable one for this purpose.</p>
+</li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">name</span></code> from the Value list:</p>
+<figure class="align-center">
+<img alt="../../../_images/select_label_with.png" src="../../../_images/select_label_with.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Apply</span></p></li>
+</ol>
+<p>The map should now have labels like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/first_place_names.png" src="../../../_images/first_place_names.png" />
+</figure>
+</section>
+<section id="basic-fa-changing-label-options">
+<h2><span class="section-number">3.2.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Changing Label Options<a class="headerlink" href="#basic-fa-changing-label-options" title="Permalink to this headline"></a></h2>
+<p>Depending on the styles you chose for your map in earlier lessons, you might
+find that the labels are not appropriately formatted and either overlap or
+are too far away from their point markers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Above, you used the <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> button in the
+<span class="guilabel">Label Toolbar</span> to open the <span class="guilabel">Layer Styling</span> panel. As
+with <span class="guilabel">Symbology</span>, the same label options are available via both
+the <span class="guilabel">Layer Styling</span> panel and the <span class="guilabel">Layer Properties</span>
+dialog. Here, you’ll use the <span class="guilabel">Layer Properties</span> dialog.</p>
+</div>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog by double-clicking on the
+<code class="docutils literal notranslate"><span class="pre">places</span></code> layer</p></li>
+<li><p>Select the <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">Labels</span> tab</p></li>
+<li><p>Make sure <span class="guilabel">Text</span> is selected in the left-hand options list, then
+update the text formatting options to match those shown here:</p>
+<figure class="align-center">
+<img alt="../../../_images/label_formatting_options.png" src="../../../_images/label_formatting_options.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Apply</span></p>
+<p>That font may be larger and more familiar to users, but its readability is
+still dependent on what layers are rendered beneath it. To solve this,
+let’s take a look at the <span class="guilabel">Buffer</span> option.</p>
+</li>
+<li><p>Select <span class="guilabel">Buffer</span> from the left-hand options list</p></li>
+<li><p>Select the checkbox next to <span class="guilabel">Draw text buffer</span>, then choose
+options to match those shown here:</p>
+<figure class="align-center">
+<img alt="../../../_images/buffer_options.png" src="../../../_images/buffer_options.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Apply</span></p>
+<p>You’ll see that this adds a colored buffer or border to the place labels,
+making them easier to pick out on the map:</p>
+<figure class="align-center">
+<img alt="../../../_images/buffer_results.png" src="../../../_images/buffer_results.png" />
+</figure>
+<p>Now we can address the positioning of the labels in relation to their point
+markers.</p>
+</li>
+<li><p>Select <span class="guilabel">Placement</span> from the left-hand options list</p></li>
+<li><p>Select <span class="guilabel">Around point</span> and change the value of
+<span class="guilabel">Distance</span> to <code class="docutils literal notranslate"><span class="pre">2.0</span></code> Millimeters:</p>
+<figure class="align-center">
+<img alt="../../../_images/offset_placement_settings.png" src="../../../_images/offset_placement_settings.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Apply</span></p>
+<p>You’ll see that the labels are no longer overlapping their point markers.</p>
+</li>
+</ol>
+</section>
+<section id="moderate-fa-using-labels-instead-of-layer-symbology">
+<h2><span class="section-number">3.2.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Using Labels Instead of Layer Symbology<a class="headerlink" href="#moderate-fa-using-labels-instead-of-layer-symbology" title="Permalink to this headline"></a></h2>
+<p>In many cases, the location of a point doesn’t need to be very specific. For
+example, most of the points in the <code class="docutils literal notranslate"><span class="pre">places</span></code> layer refer to entire
+towns or suburbs, and the specific point associated with such features is not
+that specific on a large scale. In fact, giving a point that is too specific is
+often confusing for someone reading a map.</p>
+<p>To name an example: on a map of the world, the point given for the European
+Union may be somewhere in Poland, for instance. To someone reading the map,
+seeing a point labeled <em>European Union</em> in Poland, it may seem that the capital
+of the European Union is therefore in Poland.</p>
+<p>So, to prevent this kind of misunderstanding, it’s often useful to deactivate
+the point symbols and replace them completely with labels.</p>
+<p>In QGIS, you can do this by changing the position of the labels to be rendered
+directly over the points they refer to.</p>
+<ol class="arabic">
+<li><p>Open the <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">Labels</span> tab of the
+<span class="guilabel">Layer Properties</span> dialog for the <code class="docutils literal notranslate"><span class="pre">places</span></code> layer</p></li>
+<li><p>Select the <span class="guilabel">Placement</span> option from the options list</p></li>
+<li><p>Click on the <span class="guilabel">Offset from point</span> button</p>
+<p>This will reveal the <span class="guilabel">Quadrant</span> options which you can use to set the
+position of the label in relation to the point marker. In this case, we want the
+label to be centered on the point, so choose the center quadrant:</p>
+<figure class="align-center">
+<img alt="../../../_images/quadrant_offset_options.png" src="../../../_images/quadrant_offset_options.png" />
+</figure>
+</li>
+<li><p>Hide the point symbols by editing the layer <span class="guilabel">Symbology</span> as usual,
+and setting the size of the <span class="guilabel">Marker</span> size to <code class="docutils literal notranslate"><span class="pre">0.0</span></code>:</p>
+<figure class="align-center">
+<img alt="../../../_images/hide_point_marker.png" src="../../../_images/hide_point_marker.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Apply</span> and you’ll see this result:</p>
+<figure class="align-center">
+<img alt="../../../_images/hide_point_marker_results.png" src="../../../_images/hide_point_marker_results.png" />
+</figure>
+</li>
+</ol>
+<p>If you were to zoom out on the map, you would see that some of the labels
+disappear at larger scales to avoid overlapping. Sometimes this is what you
+want when dealing with datasets that have many points, but at other times
+you will lose useful information this way. There is another possibility for
+handling cases like this, which we’ll cover in a later exercise in this lesson.
+For now, zoom out and click on the <a class="reference internal" href="../../../_images/mActionShowUnplacedLabel.png"><img alt="showUnplacedLabel" src="../../../_images/mActionShowUnplacedLabel.png" style="width: 1.5em;" /></a> button in the toolbar
+and see what happens.</p>
+</section>
+<section id="moderate-ty-customize-the-labels">
+<h2><span class="section-number">3.2.4. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Customize the Labels<a class="headerlink" href="#moderate-ty-customize-the-labels" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Reset the label and symbol settings to have a point marker and a label offset
+of <code class="docutils literal notranslate"><span class="pre">2.0</span></code> Millimeters.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>Your map should now show the marker points and the labels should be offset by
+2mm. The style of the markers and labels should allow both to be
+clearly visible on the map:</p>
+<figure class="align-center">
+<img alt="../../../_images/customised_labels_one.png" src="../../../_images/customised_labels_one.png" />
+</figure>
+</div>
+<ul class="simple">
+<li><p>Set the map to the scale <code class="docutils literal notranslate"><span class="pre">1:100000</span></code>. You can do this by typing it into
+the <span class="guilabel">Scale</span> box in the <span class="guilabel">Status Bar</span>. Modify your labels
+to be suitable for viewing at this scale.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>One possible solution has this final product:</p>
+<figure class="align-center">
+<img alt="../../../_images/possible_outcome_map.png" src="../../../_images/possible_outcome_map.png" />
+</figure>
+<p>To arrive at this result:</p>
+<ul>
+<li><p>Use a font size of <code class="docutils literal notranslate"><span class="pre">10</span></code></p></li>
+<li><p>Use an around point placement distance of <code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">mm</span></code></p></li>
+<li><p>Use a marker size of <code class="docutils literal notranslate"><span class="pre">3.0</span> <span class="pre">mm</span></code></p></li>
+<li><p>In addition, this example uses the <span class="guilabel">Wrap on character</span> option:</p>
+<figure class="align-center">
+<img alt="../../../_images/wrap_character_settings.png" src="../../../_images/wrap_character_settings.png" />
+</figure>
+</li>
+<li><p>Enter a <code class="docutils literal notranslate"><span class="pre">space</span></code> in this field and click <span class="guilabel">Apply</span> to achieve the
+same effect. In our case, some of the place names are very long, resulting in
+names with multiple lines which is not very user friendly. You might find this
+setting to be more appropriate for your map.</p></li>
+</ul>
+</div>
+</section>
+<section id="moderate-fa-labeling-lines">
+<h2><span class="section-number">3.2.5. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Labeling Lines<a class="headerlink" href="#moderate-fa-labeling-lines" title="Permalink to this headline"></a></h2>
+<p>Now that you know how labeling works, there’s an additional problem. Points and
+polygons are easy to label, but what about lines? If you label them the same
+way as the points, your results would look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/bad_street_labels.png" src="../../../_images/bad_street_labels.png" />
+</figure>
+<p>We will now reformat the <code class="docutils literal notranslate"><span class="pre">roads</span></code> layer labels so that they are easy to
+understand.</p>
+<ol class="arabic">
+<li><p>Hide the <code class="docutils literal notranslate"><span class="pre">places</span></code> layer so that it doesn’t distract you</p></li>
+<li><p>Activate <a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <span class="guilabel">Single Labels</span> for the <code class="docutils literal notranslate"><span class="pre">roads</span></code>
+layer as you did above for <code class="docutils literal notranslate"><span class="pre">places</span></code></p></li>
+<li><p>Set the font <span class="guilabel">Size</span> to <code class="docutils literal notranslate"><span class="pre">10</span></code> so that you can see more labels</p></li>
+<li><p>Zoom in on the Swellendam town area</p></li>
+<li><p>In the <span class="guilabel">Labels</span> tab’s <span class="guilabel">Placement</span> tab, choose the
+following settings:</p>
+<figure class="align-center">
+<img alt="../../../_images/street_label_settings.png" src="../../../_images/street_label_settings.png" />
+</figure>
+<p>You’ll probably find that the text styling has used default values and the
+labels are consequently very hard to read. Update the <span class="guilabel">Text</span>
+to use a dark-grey or black <span class="guilabel">Color</span> and the <span class="guilabel">Buffer</span>
+to use a light-yellow <span class="guilabel">Color</span>.</p>
+<p>The map will look somewhat like this, depending on scale:</p>
+<figure class="align-center">
+<img alt="../../../_images/street_label_formatted.png" src="../../../_images/street_label_formatted.png" />
+</figure>
+<p>You’ll see that some of the road names appear more than once and that’s not
+always necessary. To prevent this from happening:</p>
+</li>
+<li><p>In the <span class="guilabel">Labels</span> tab of the <span class="guilabel">Layer Properties</span> dialog,
+choose the <span class="guilabel">Rendering</span> option and select
+<span class="guilabel">Merge connected lines to avoid duplicate labels</span> as shown:</p>
+<figure class="align-center">
+<img alt="../../../_images/merge_lines_option.png" src="../../../_images/merge_lines_option.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p>
+<p>Another useful function is to prevent labels being drawn for features too short
+to be of notice.</p>
+</li>
+<li><p>In the same <span class="guilabel">Rendering</span> panel, set the value of
+<span class="guilabel">Suppress labeling of features smaller than …</span> to <code class="docutils literal notranslate"><span class="pre">5.00</span> <span class="pre">mm</span></code>
+and note the results when you click <span class="guilabel">Apply</span></p>
+<p>Try out different <span class="guilabel">Placement</span> settings as well. As we’ve seen before,
+the <span class="guilabel">Horizontal</span> option is not a good idea in this case, so let’s
+try the <span class="guilabel">Curved</span> option instead.</p>
+</li>
+<li><p>Select the <span class="guilabel">Curved</span> option in the <span class="guilabel">Placement</span> panel of
+the <span class="guilabel">Labels</span> tab</p></li>
+</ol>
+<p>Here’s the result:</p>
+<figure class="align-center">
+<img alt="../../../_images/final_street_labels.png" src="../../../_images/final_street_labels.png" />
+</figure>
+<p>As you can see, this hides some labels that were previously visible, because
+of the difficulty of making some of them follow twisting street lines while
+still being legible. It makes other labels much more useful since they track
+the roads rather than float in space between them. You can decide which of
+these options to use, depending on what you think seems more useful or what
+looks better.</p>
+</section>
+<section id="hard-fa-data-defined-settings">
+<h2><span class="section-number">3.2.6. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Data Defined Settings<a class="headerlink" href="#hard-fa-data-defined-settings" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Deactivate labeling for the <code class="docutils literal notranslate"><span class="pre">roads</span></code> layer</p></li>
+<li><p>Reactivate labeling for the <code class="docutils literal notranslate"><span class="pre">places</span></code> layer</p></li>
+<li><p>Open the attribute table for <code class="docutils literal notranslate"><span class="pre">places</span></code> via the <a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a> button</p>
+<p>It has one <em>field</em> which is of interest to us now: <code class="docutils literal notranslate"><span class="pre">place</span></code> which defines
+the type of urban area for each <em>record</em>. We can use this data to influence
+the label styles.</p>
+</li>
+<li><p>Navigate to the <span class="guilabel">Text</span> panel in the <code class="docutils literal notranslate"><span class="pre">places</span></code>
+<span class="guilabel">Labels</span> panel</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> button next to the Italic text button beneath
+<span class="guilabel">Style</span> and select <span class="menuselection">Edit…</span> to open the
+<span class="guilabel">Expression String Builder</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/expression_string_builder.png" src="../../../_images/expression_string_builder.png" />
+</figure>
+</li>
+<li><p>Under <span class="menuselection">Fields and Values</span>, double click on <code class="docutils literal notranslate"><span class="pre">place</span></code>
+and then click <span class="guilabel">All Unique</span>. This will list all unique values
+of the <code class="docutils literal notranslate"><span class="pre">place</span></code> field of this layer. Add a <code class="docutils literal notranslate"><span class="pre">=</span></code> in the text
+editor and then double click on <code class="docutils literal notranslate"><span class="pre">town</span></code>.</p>
+<p>Alternatively, you can type: <code class="docutils literal notranslate"><span class="pre">&quot;place&quot;</span> <span class="pre">=</span> <span class="pre">'town'</span></code> directly in the
+text editor.</p>
+</li>
+<li><p>Click <span class="guilabel">OK</span> twice:</p>
+<figure class="align-center">
+<img alt="../../../_images/expression_builder_settings.png" src="../../../_images/expression_builder_settings.png" />
+</figure>
+</li>
+</ol>
+<p>Notice that the labels for all places whose <code class="docutils literal notranslate"><span class="pre">place</span></code>
+field matches <code class="docutils literal notranslate"><span class="pre">town</span></code> are displayed in italics.</p>
+<figure class="align-center">
+<img alt="../../../_images/italic_label_result.png" src="../../../_images/italic_label_result.png" />
+</figure>
+</section>
+<section id="hard-ty-using-data-defined-settings">
+<h2><span class="section-number">3.2.7. </span><img alt="hard" src="../../../_images/hard.png" /> Try Yourself Using Data Defined Settings<a class="headerlink" href="#hard-ty-using-data-defined-settings" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We’re jumping ahead a bit here to demonstrate some advanced labeling
+settings. At the advanced level, it’s assumed that you’ll know what the
+following means. If you don’t, feel free to leave out this section and come
+back later when you’ve covered the requisite materials.</p>
+</div>
+<ol class="arabic">
+<li><p>Open the Attribute Table for <code class="docutils literal notranslate"><span class="pre">places</span></code></p></li>
+<li><p>Enter edit mode by clicking the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> button</p></li>
+<li><p>Add a new column with the <a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> button</p></li>
+<li><p>Configure it like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/font_size_column.png" src="../../../_images/font_size_column.png" />
+</figure>
+</li>
+<li><p>Use this to set custom font sizes for each different type of place
+(each key in the <code class="docutils literal notranslate"><span class="pre">place</span></code> field)</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<ol class="arabic">
+<li><p>Still in edit mode, set the <code class="docutils literal notranslate"><span class="pre">FONT_SIZE</span></code> values to whatever you prefer.
+The example uses <code class="docutils literal notranslate"><span class="pre">16</span></code> for towns, <code class="docutils literal notranslate"><span class="pre">14</span></code> for suburbs, <code class="docutils literal notranslate"><span class="pre">12</span></code> for
+localities, and <code class="docutils literal notranslate"><span class="pre">10</span></code> for hamlets.</p></li>
+<li><p>Remember to save changes and exit edit mode</p></li>
+<li><p>Return to the <span class="guilabel">Text</span> formatting options for the <code class="docutils literal notranslate"><span class="pre">places</span></code>
+layer and select <code class="docutils literal notranslate"><span class="pre">FONT_SIZE</span></code> in the <span class="guilabel">Attribute field</span> of the
+font size <a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> data defined override dropdown:</p>
+<figure class="align-center">
+<img alt="../../../_images/font_size_override.png" src="../../../_images/font_size_override.png" />
+</figure>
+</li>
+</ol>
+<p>Your results, if using the above values, should be this:</p>
+<blockquote>
+<div><figure class="align-center">
+<img alt="../../../_images/font_override_results.png" src="../../../_images/font_override_results.png" />
+</figure>
+</div></blockquote>
+</div>
+</section>
+<section id="hard-further-possibilities-with-labeling">
+<h2><span class="section-number">3.2.8. </span><img alt="hard" src="../../../_images/hard.png" /> Further Possibilities With Labeling<a class="headerlink" href="#hard-further-possibilities-with-labeling" title="Permalink to this headline"></a></h2>
+<p>We can’t cover every option in this course, but be aware that the
+<span class="guilabel">Label</span> tab has many other useful functions. You can set scale-based
+rendering, alter the rendering priority for labels in a layer, and set every
+label option using layer attributes. You can even set the rotation, XY
+position, and other properties of a label (if you have attribute fields
+allocated for the purpose), then edit these properties using the tools adjacent
+to the main <span class="guilabel">Layer Labeling Options</span> button:</p>
+<p><a class="reference internal" href="../../../_images/labelingSingle.png"><img alt="labeling" src="../../../_images/labelingSingle.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionShowPinnedLabels.png"><img alt="showPinnedLabels" src="../../../_images/mActionShowPinnedLabels.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionPinLabels.png"><img alt="pinLabels" src="../../../_images/mActionPinLabels.png" style="width: 1.5em;" /></a>
+<a class="reference internal" href="../../../_images/mActionShowHideLabels.png"><img alt="showHideLabels" src="../../../_images/mActionShowHideLabels.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionMoveLabel.png"><img alt="moveLabel" src="../../../_images/mActionMoveLabel.png" style="width: 1.5em;" /></a> <a class="reference internal" href="../../../_images/mActionRotateLabel.png"><img alt="rotateLabel" src="../../../_images/mActionRotateLabel.png" style="width: 1.5em;" /></a>
+<a class="reference internal" href="../../../_images/mActionChangeLabelProperties.png"><img alt="changeLabelProperties" src="../../../_images/mActionChangeLabelProperties.png" style="width: 1.5em;" /></a></p>
+<p>(These tools will be active if the required attribute fields exist and you are
+in edit mode.)</p>
+<p>Feel free to explore more possibilities of the labeling system.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">3.2.9. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You’ve learned how to use layer attributes to create dynamic labels. This can
+make your map a lot more informative and stylish!</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">3.2.10. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now that you know how attributes can make a visual difference for your map, how
+about using them to change the symbology of objects themselves? That’s the
+topic for the next lesson!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="attribute_data.html" class="btn btn-neutral float-left" title="3.1. Lesson: Vector Attribute Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classification.html" class="btn btn-neutral float-right" title="3.3. Lesson: Classification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/label_tool.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/label_tool.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/label_tool.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/vector_classification/label_tool.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/vector_classification/label_tool.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/vector_classification/label_tool.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/vector_classification/label_tool.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/vector_classification/label_tool.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/vector_classification/label_tool.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/vector_classification/label_tool.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/vector_classification/label_tool.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/vector_classification/label_tool.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/vector_classification/label_tool.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/vector_classification/label_tool.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

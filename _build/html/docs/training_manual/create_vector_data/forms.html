@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.3. Lesson: Forms &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/forms.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.4. Lesson: Actions" href="actions.html" />
+    <link rel="prev" title="5.2. Lesson: Feature Topology" href="topo_editing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/forms.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. Module: Creating Vector Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create_new_vector.html">5.1. Lesson: Creating a New Vector Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="topo_editing.html">5.2. Lesson: Feature Topology</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.3. Lesson: Forms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-using-qgis-form-design-functionality">5.3.1.  Follow Along: Using QGIS’ Form Design Functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-using-the-form-to-edit-values">5.3.2.  Try Yourself Using the Form to Edit Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-setting-form-field-types">5.3.3.  Follow Along: Setting Form Field Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-ty">5.3.4.  Try Yourself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-ty-creating-test-data">5.3.5.  Try Yourself Creating Test Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-creating-a-new-form">5.3.6.  Follow Along: Creating a New Form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-associating-the-form-with-your-layer">5.3.7.  Follow Along: Associating the Form with Your Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">5.3.8. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fr">5.3.9. Further Reading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">5.3.10. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="actions.html">5.4. Lesson: Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">5. </span>Module: Creating Vector Data</a> &raquo;</li>
+      <li><span class="section-number">5.3. </span>Lesson: Forms</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/create_vector_data/forms.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="topo_editing.html" class="btn btn-neutral float-left" title="5.2. Lesson: Feature Topology" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actions.html" class="btn btn-neutral float-right" title="5.4. Lesson: Actions" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-forms">
+<h1><span class="section-number">5.3. </span>Lesson: Forms<a class="headerlink" href="#ls-forms" title="Permalink to this headline"></a></h1>
+<p>When you add new data via digitizing, you’re presented with a dialog
+that lets you fill in the attributes for that feature.
+However, this dialog is not, by default, very nice to look at.
+This can cause a usability problem, especially if you have large
+datasets to create, or if you want other people to help you digitize
+and they find the default forms to be confusing.</p>
+<p>Fortunately, QGIS lets you create your own custom dialogs for a
+layer.
+This lesson shows you how.</p>
+<p><strong>The goal for this lesson:</strong> To create a form for a layer.</p>
+<section id="basic-fa-using-qgis-form-design-functionality">
+<h2><span class="section-number">5.3.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Using QGIS’ Form Design Functionality<a class="headerlink" href="#basic-fa-using-qgis-form-design-functionality" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Select the <code class="docutils literal notranslate"><span class="pre">roads</span></code> layer in the <span class="guilabel">Layers</span> panel</p></li>
+<li><p>Enter <em>Edit Mode</em> as before</p></li>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">roads</span></code> layer’s attribute table</p></li>
+<li><p>Right-click on any cell in the table. A short menu will appear,
+that includes the <span class="guilabel">Open form</span> entry.</p></li>
+<li><p>Click on it to see the form that QGIS generates for this layer</p></li>
+</ol>
+<p>Obviously it would be nice to be able to do this while looking at the
+map, rather than needing to search for a specific street in the
+<span class="guilabel">Attribute Table</span> all the time.</p>
+<ol class="arabic">
+<li><p>Select the <span class="guilabel">roads</span> layer in the <span class="guilabel">Layers</span> panel</p></li>
+<li><p>Using the <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> tool, click on any
+street in the map.</p></li>
+<li><p>The <span class="guilabel">Identify Results</span> panel opens and shows a tree view
+of the fields values and other general information about the
+clicked feature.</p></li>
+<li><p>At the top of the panel, check the <span class="guilabel">Auto open form for single feature results</span>
+checkbox in the <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> sup:<cite>Identify Settings</cite> menu.</p></li>
+<li><p>Now, click again on any street in the map. Along the previous
+<span class="guilabel">Identify Results</span> dialog, you’ll see the now-familiar
+form:</p>
+<figure class="align-center">
+<img alt="../../../_images/roads_form.png" src="../../../_images/roads_form.png" />
+</figure>
+</li>
+<li><p>Each time you click on a single feature with the <em>Identify</em> tool,
+its form pops up as long as the <span class="guilabel">Auto open form</span> is
+checked.</p></li>
+</ol>
+</section>
+<section id="basic-ty-using-the-form-to-edit-values">
+<h2><span class="section-number">5.3.2. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Using the Form to Edit Values<a class="headerlink" href="#basic-ty-using-the-form-to-edit-values" title="Permalink to this headline"></a></h2>
+<p>If you are in edit mode, you can use this form to edit a feature’s
+attributes.</p>
+<ol class="arabic">
+<li><p>Activate edit mode (if it isn’t already activated).</p></li>
+<li><p>Using the <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> tool, click on the
+main street running through Swellendam:</p>
+<figure class="align-center">
+<img alt="../../../_images/main_street_selected.png" src="../../../_images/main_street_selected.png" />
+</figure>
+</li>
+<li><p>Edit its <span class="guilabel">highway</span> value to be <code class="docutils literal notranslate"><span class="pre">secondary</span></code></p></li>
+<li><p>Exit edit mode and save your edits</p></li>
+<li><p>Open the <span class="guilabel">Attribute Table</span> and note that the value has
+been updated in the attributes table and therefore in the source
+data</p></li>
+</ol>
+</section>
+<section id="moderate-fa-setting-form-field-types">
+<h2><span class="section-number">5.3.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Setting Form Field Types<a class="headerlink" href="#moderate-fa-setting-form-field-types" title="Permalink to this headline"></a></h2>
+<p>It’s nice to edit things using a form, but you still have to enter
+everything by hand.
+Fortunately, forms have different kinds of so-called <em>widgets</em> that
+allow you to edit data in various different ways.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">roads</span> layer’s <span class="guilabel">Properties…</span></p></li>
+<li><p>Switch to the <span class="guilabel">Fields</span> tab. You’ll see this:</p>
+<figure class="align-center">
+<img alt="../../../_images/fields_panel.png" src="../../../_images/fields_panel.png" />
+</figure>
+</li>
+<li><p>Switch to the <span class="guilabel">Attributes Form</span> tab. You’ll see this:</p>
+<figure class="align-center">
+<img alt="../../../_images/attributes_form.png" src="../../../_images/attributes_form.png" />
+</figure>
+</li>
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">oneway</span></code> row and choose <span class="guilabel">Checkbox</span> as
+<span class="guilabel">Widget Type</span> in the list of options:</p>
+<figure class="align-center">
+<img alt="../../../_images/checkbox_selected.png" src="../../../_images/checkbox_selected.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+<li><p>Enter edit mode (if the <code class="docutils literal notranslate"><span class="pre">roads</span></code> layer is not already in edit mode)</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> tool</p></li>
+<li><p>Click on the same main road you chose earlier</p></li>
+</ol>
+<p>You will now see that the <span class="guilabel">oneway</span> attribute has a
+checkbox next to it denoting <code class="docutils literal notranslate"><span class="pre">True</span></code> (checked) or <code class="docutils literal notranslate"><span class="pre">False</span></code>
+(unchecked).</p>
+</section>
+<section id="hard-ty">
+<h2><span class="section-number">5.3.4. </span><img alt="hard" src="../../../_images/hard.png" /> Try Yourself<a class="headerlink" href="#hard-ty" title="Permalink to this headline"></a></h2>
+<p>Set a more appropriate form widget for the <span class="guilabel">highway</span> field.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>For the <span class="guilabel">TYPE</span>, there is obviously a limited amount of types that a
+road can be, and if you check the attribute table for this layer, you’ll see
+that they are predefined.</p>
+<ol class="arabic">
+<li><p>Set the widget to <span class="guilabel">Value Map</span> and click
+<span class="guilabel">Load Data from Layer</span>.</p></li>
+<li><p>Select <span class="guilabel">roads</span> in the <span class="guilabel">Label</span> dropdown and
+<span class="guilabel">highway</span> for both the <span class="guilabel">Value</span> and <span class="guilabel">Description</span>
+options:</p>
+<figure class="align-center">
+<img alt="../../../_images/value_map_settings.png" src="../../../_images/value_map_settings.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span> three times.</p></li>
+<li><p>If you use the <span class="guilabel">Identify</span> tool on a street now while edit mode is
+active, the dialog you get should look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/highway_as_value_map.png" src="../../../_images/highway_as_value_map.png" />
+</figure>
+</li>
+</ol>
+</div>
+</section>
+<section id="hard-ty-creating-test-data">
+<h2><span class="section-number">5.3.5. </span><img alt="hard" src="../../../_images/hard.png" /> Try Yourself Creating Test Data<a class="headerlink" href="#hard-ty-creating-test-data" title="Permalink to this headline"></a></h2>
+<p>You can also design your own custom form completely from scratch.</p>
+<ol class="arabic">
+<li><p>Create a simple point layer named <code class="docutils literal notranslate"><span class="pre">test-data</span></code> with two
+attributes:</p>
+<ul class="simple">
+<li><p>name (text)</p></li>
+<li><p>age (integer)</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/new_point_layer.png" src="../../../_images/new_point_layer.png" />
+</figure>
+</li>
+<li><p>Capture a few points on your new layer using the digitizing tools
+so that you have a little data to play with.
+You should be presented with the default QGIS generated attribute
+capture form each time you capture a new point.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to disable Snapping if still enabled from
+earlier tasks.</p>
+</div>
+<figure class="align-center">
+<img alt="../../../_images/new_point_entry.png" src="../../../_images/new_point_entry.png" />
+</figure>
+</li>
+</ol>
+</section>
+<section id="hard-fa-creating-a-new-form">
+<span id="creating-new-form"></span><h2><span class="section-number">5.3.6. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Creating a New Form<a class="headerlink" href="#hard-fa-creating-a-new-form" title="Permalink to this headline"></a></h2>
+<p>Now we want to create our own custom form for the attribute data
+capture phase.
+To do this, you need to have <em>QT Designer</em> installed (only needed for
+the person who creates the forms).</p>
+<ol class="arabic">
+<li><p>Start <em>QT Designer</em>.</p></li>
+<li><p>In the dialog that appears, create a new dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/qt_new_dialog.png" src="../../../_images/qt_new_dialog.png" />
+</figure>
+</li>
+<li><p>Look for the <span class="guilabel">Widget Box</span> along the left of your screen
+(default).
+It contains an item called <span class="guilabel">Line Edit</span>.</p></li>
+<li><p>Click and drag this item into your form. This creates a new
+<span class="guilabel">Line Edit</span> in the form.</p></li>
+<li><p>With the new line edit element selected, you’ll see its
+<em>properties</em> along the side of your screen (on the right by
+default):</p>
+<figure class="align-center">
+<img alt="../../../_images/qt_line_edit.png" src="../../../_images/qt_line_edit.png" />
+</figure>
+</li>
+<li><p>Set its name to <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p></li>
+<li><p>Using the same approach, create a new <span class="guilabel">Spin Box</span> and set its name to
+<code class="docutils literal notranslate"><span class="pre">age</span></code>.</p></li>
+<li><p>Add a <span class="guilabel">Label</span> with the text <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">a</span> <span class="pre">New</span> <span class="pre">Person</span></code> in a
+bold font (look in the object <em>properties</em> to find out how to set
+this).
+Alternatively, you may want to set the title of the dialog itself
+(rather than adding a label).</p></li>
+<li><p>Add a <span class="guilabel">Label</span> for your <span class="guilabel">Line Edit</span> and your <span class="guilabel">Spin Box</span>.</p></li>
+<li><p>Arrange the elements to your own desire.</p></li>
+<li><p>Click anywhere in your dialog.</p></li>
+<li><p>Find the <em>Lay Out in a Form Layout</em> button (in a toolbar along the top
+edge of the screen, by default). This lays out your dialog
+automatically.</p></li>
+<li><p>Set the dialog’s maximum size (in its properties) to <code class="docutils literal notranslate"><span class="pre">200</span></code>
+(width) by <code class="docutils literal notranslate"><span class="pre">150</span></code> (height).</p></li>
+<li><p>Your form should now look similar to this:</p>
+<figure class="align-center">
+<img alt="../../../_images/qt_example_form.png" src="../../../_images/qt_example_form.png" />
+</figure>
+</li>
+<li><p>Save your new form as <code class="file docutils literal notranslate"><span class="pre">exercise_data/forms/add_people.ui</span></code></p></li>
+<li><p>When it’s done saving, you can close <em>Qt Designer</em></p></li>
+</ol>
+</section>
+<section id="hard-fa-associating-the-form-with-your-layer">
+<h2><span class="section-number">5.3.7. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Associating the Form with Your Layer<a class="headerlink" href="#hard-fa-associating-the-form-with-your-layer" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Go back to QGIS</p></li>
+<li><p>Double click the <span class="guilabel">test-data</span> layer in the legend to
+access its properties.</p></li>
+<li><p>Click on the <span class="guilabel">Attributes Form</span> tab in the
+<span class="guilabel">Layer Properties</span> dialog</p></li>
+<li><p>In the <span class="guilabel">Attribute editor layout</span> dropdown, select
+<span class="guilabel">Provide ui-file</span>.</p></li>
+<li><p>Click the ellipsis button and choose the <code class="file docutils literal notranslate"><span class="pre">add_people.ui</span></code> file
+you just created:</p>
+<figure class="align-center">
+<img alt="../../../_images/provide_ui_file.png" src="../../../_images/provide_ui_file.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span> on the <span class="guilabel">Layer Properties</span> dialog</p></li>
+<li><p>Enter edit mode and capture a new point</p></li>
+<li><p>When you do so, you will be presented with your custom dialog
+(instead of the generic one that QGIS usually creates).</p></li>
+<li><p>If you click on one of your points using the
+<a class="reference internal" href="../../../_images/mActionIdentify.png"><img alt="identify" src="../../../_images/mActionIdentify.png" style="width: 1.5em;" /></a> <sup>Identify Features</sup> tool, you can now bring up the
+form by right clicking in the identify results window and choosing
+<span class="menuselection">View Feature Form</span> from the context menu.</p></li>
+<li><p>If you are in edit mode for this layer, that context menu will show
+<span class="menuselection">Edit Feature Form</span> instead, and you can then adjust
+the attributes in the new form even after initial capture.</p></li>
+</ol>
+</section>
+<section id="ic">
+<h2><span class="section-number">5.3.8. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Using forms, you can make life easier for yourself when editing or
+creating data.
+By editing widget types or creating an entirely new form from scratch,
+you can control the experience of someone who digitizes new data for
+that layer, thereby minimizing misunderstandings and unnecessary
+errors.</p>
+</section>
+<section id="fr">
+<h2><span class="section-number">5.3.9. </span>Further Reading<a class="headerlink" href="#fr" title="Permalink to this headline"></a></h2>
+<p>If you completed the advanced section above and have knowledge of
+Python, you may want to check out
+<a class="reference external" href="https://woostuff.wordpress.com/2011/09/05/qgis-tips-custom-feature-forms-with-python-logic/">this blog entry</a>
+about creating custom feature forms with Python logic, which allows
+advanced functions including data validation, autocompletion, etc.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">5.3.10. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Opening a form on identifying a feature is one of the standard actions
+that QGIS can perform.
+However, you can also direct it to perform custom actions that you
+define.
+This is the subject of the next lesson.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="topo_editing.html" class="btn btn-neutral float-left" title="5.2. Lesson: Feature Topology" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="actions.html" class="btn btn-neutral float-right" title="5.4. Lesson: Actions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/forms.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/forms.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/forms.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/create_vector_data/forms.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/create_vector_data/forms.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/create_vector_data/forms.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/create_vector_data/forms.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/create_vector_data/forms.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/create_vector_data/forms.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/create_vector_data/forms.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/create_vector_data/forms.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/create_vector_data/forms.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/create_vector_data/forms.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/create_vector_data/forms.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

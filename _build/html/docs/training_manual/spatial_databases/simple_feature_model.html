@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>16.2. Lesson: Simple Feature Model &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/simple_feature_model.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="16.3. Lesson: Import and Export" href="import_export.html" />
+    <link rel="prev" title="16.1. Lesson: PostGIS Setup" href="spatial_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/simple_feature_model.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">16. Module: Spatial Database Concepts with PostGIS</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="spatial_functions.html">16.1. Lesson: PostGIS Setup</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">16.2. Lesson: Simple Feature Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-ogc">16.2.1. What is OGC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-the-sfs-model">16.2.2. What is the SFS Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-geometry-field-to-table">16.2.3. Add a geometry field to table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-constraint-based-on-geometry-type">16.2.4. Add a constraint based on geometry type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ty-hard">16.2.5. Try Yourself </a></li>
+<li class="toctree-l4"><a class="reference internal" href="#populate-geometry-columns-table">16.2.6. Populate geometry_columns table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-geometry-record-to-table-using-sql">16.2.7. Add geometry record to table using SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">16.2.8. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">16.2.9. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="import_export.html">16.3. Lesson: Import and Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spatial_queries.html">16.4. Lesson: Spatial Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.html">16.5. Lesson: Geometry Construction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">16. </span>Module: Spatial Database Concepts with PostGIS</a> &raquo;</li>
+      <li><span class="section-number">16.2. </span>Lesson: Simple Feature Model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/spatial_databases/simple_feature_model.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="spatial_functions.html" class="btn btn-neutral float-left" title="16.1. Lesson: PostGIS Setup" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="import_export.html" class="btn btn-neutral float-right" title="16.3. Lesson: Import and Export" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-simple-feature-model">
+<h1><span class="section-number">16.2. </span>Lesson: Simple Feature Model<a class="headerlink" href="#ls-simple-feature-model" title="Permalink to this headline"></a></h1>
+<p>How can we store and represent geographic features in a database? In this
+lesson we’ll cover one approach, the Simple Feature Model as defined by the
+OGC.</p>
+<p><strong>The goal for this lesson:</strong> To learn what the SFS Model is and how to use it.</p>
+<section id="what-is-ogc">
+<h2><span class="section-number">16.2.1. </span>What is OGC<a class="headerlink" href="#what-is-ogc" title="Permalink to this headline"></a></h2>
+<p>The Open Geospatial Consortium (OGC), an international voluntary consensus
+standards organization, originated in 1994. In the OGC, more than 370+
+commercial, governmental, nonprofit and research organizations worldwide
+collaborate in an open consensus process encouraging development and
+implementation of standards for geospatial content and services, GIS data
+processing and data sharing. <em>- Wikipedia</em></p>
+</section>
+<section id="what-is-the-sfs-model">
+<h2><span class="section-number">16.2.2. </span>What is the SFS Model<a class="headerlink" href="#what-is-the-sfs-model" title="Permalink to this headline"></a></h2>
+<p>The Simple Feature for SQL (SFS) Model is a <em>non-topological</em> way to store
+geospatial data in a database and defines functions for accessing, operating,
+and constructing these data.</p>
+<figure class="align-center">
+<img alt="../../../_images/ogc_sfs.png" src="../../../_images/ogc_sfs.png" />
+</figure>
+<p>The model defines geospatial data from Point, Linestring, and Polygon types
+(and aggregations of them to Multi objects).</p>
+<p>For further information, have a look at the <a class="reference external" href="https://www.opengeospatial.org/standards/sfs">OGC Simple Feature for SQL</a> standard.</p>
+</section>
+<section id="add-a-geometry-field-to-table">
+<h2><span class="section-number">16.2.3. </span>Add a geometry field to table<a class="headerlink" href="#add-a-geometry-field-to-table" title="Permalink to this headline"></a></h2>
+<p>Let’s add a point field to our people table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span> <span class="k">add</span> <span class="k">column</span> <span class="n">the_geom</span> <span class="n">geometry</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="add-a-constraint-based-on-geometry-type">
+<h2><span class="section-number">16.2.4. </span>Add a constraint based on geometry type<a class="headerlink" href="#add-a-constraint-based-on-geometry-type" title="Permalink to this headline"></a></h2>
+<p>You will notice that the geometry field type does not implicitly specify what
+<em>type</em> of geometry for the field - for that we need a constraint:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span>
+<span class="k">add</span> <span class="k">constraint</span> <span class="n">people_geom_point_chk</span>
+    <span class="k">check</span><span class="p">(</span><span class="n">st_geometrytype</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;ST_Point&#39;</span><span class="p">::</span><span class="nb">text</span>
+          <span class="k">OR</span> <span class="n">the_geom</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This adds a constraint to the table so that it will only accept a point geometry
+or a null value.</p>
+</section>
+<section id="ty-hard">
+<h2><span class="section-number">16.2.5. </span>Try Yourself <img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#ty-hard" title="Permalink to this headline"></a></h2>
+<p>Create a new table called cities and give it some appropriate columns,
+including a geometry field for storing polygons (the city boundaries). Make
+sure it has a constraint enforcing geometries to be polygons.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">create</span> <span class="n">table</span> <span class="n">cities</span> <span class="p">(</span><span class="nb">id</span> <span class="n">serial</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
+                     <span class="n">name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+                     <span class="n">the_geom</span> <span class="n">geometry</span> <span class="ow">not</span> <span class="n">null</span><span class="p">);</span>
+ <span class="n">alter</span> <span class="n">table</span> <span class="n">cities</span>
+ <span class="n">add</span> <span class="n">constraint</span> <span class="n">cities_geom_point_chk</span>
+ <span class="n">check</span> <span class="p">(</span><span class="n">st_geometrytype</span><span class="p">(</span><span class="n">the_geom</span><span class="p">)</span> <span class="o">=</span> <span class="s1">&#39;ST_Polygon&#39;</span><span class="p">::</span><span class="n">text</span> <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="populate-geometry-columns-table">
+<h2><span class="section-number">16.2.6. </span>Populate geometry_columns table<a class="headerlink" href="#populate-geometry-columns-table" title="Permalink to this headline"></a></h2>
+<p>At this point you should also add an entry into the <code class="docutils literal notranslate"><span class="pre">geometry_columns</span></code> table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">geometry_columns</span> <span class="k">values</span>
+  <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;public&#39;</span><span class="p">,</span><span class="s1">&#39;people&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4326</span><span class="p">,</span><span class="s1">&#39;POINT&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Why? <kbd class="kbd docutils literal notranslate">geometry_columns</kbd> is used by certain applications to be aware of
+which tables in the database contain geometry data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the above <code class="docutils literal notranslate"><span class="pre">INSERT</span></code> statement causes an error, run this
+query first:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">geometry_columns</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If the column <kbd class="kbd docutils literal notranslate">f_table_name</kbd> contains the value <kbd class="kbd docutils literal notranslate">people</kbd>, then
+this table has already been registered and you don’t need to do anything
+more.</p>
+</div>
+<p>The value <code class="docutils literal notranslate"><span class="pre">2</span></code> refers to the number of dimensions; in this case, two: <strong>X</strong>
+and <strong>Y</strong>.</p>
+<p>The value <kbd class="kbd docutils literal notranslate">4326</kbd> refers to the projection we are using; in this case, WGS
+84, which is referred to by the number 4326 (refer to the earlier discussion
+about the EPSG).</p>
+<section id="ty-basic">
+<h3><span class="section-number">16.2.6.1. </span>Try Yourself <img alt="basic" src="../../../_images/basic.png" /><a class="headerlink" href="#ty-basic" title="Permalink to this headline"></a></h3>
+<p>Add an appropriate <cite>geometry_columns</cite> entry for your new cities layer</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insert</span> <span class="n">into</span> <span class="n">geometry_columns</span> <span class="n">values</span>
+      <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;public&#39;</span><span class="p">,</span><span class="s1">&#39;cities&#39;</span><span class="p">,</span><span class="s1">&#39;the_geom&#39;</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4326</span><span class="p">,</span><span class="s1">&#39;POLYGON&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="add-geometry-record-to-table-using-sql">
+<h2><span class="section-number">16.2.7. </span>Add geometry record to table using SQL<a class="headerlink" href="#add-geometry-record-to-table-using-sql" title="Permalink to this headline"></a></h2>
+<p>Now that our tables are geo-enabled, we can store geometries in them:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">insert</span> <span class="k">into</span> <span class="n">people</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">house_no</span><span class="p">,</span> <span class="n">street_id</span><span class="p">,</span> <span class="n">phone_no</span><span class="p">,</span> <span class="n">the_geom</span><span class="p">)</span>
+        <span class="k">values</span> <span class="p">(</span><span class="s1">&#39;Fault Towers&#39;</span><span class="p">,</span>
+                 <span class="mi">34</span><span class="p">,</span>
+                 <span class="mi">3</span><span class="p">,</span>
+                 <span class="s1">&#39;072 812 31 28&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;SRID=4326;POINT(33 -33)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the new entry above, you will need to specify which projection
+(SRID) you want to use. This is because you entered the geometry of the new
+point using a plain string of text, which does not automatically add the
+correct projection information. Obviously, the new point needs to use the
+same SRID as the data-set it is being added to, so you need to specify it.</p>
+<p>If at this point you were using a graphical interface, for example,
+specifying the projection for each point would be automatic. In other words,
+you usually won’t need to worry about using the correct projection for every
+point you want to add if you’ve already specified it for that data-set, as we
+did earlier.</p>
+</div>
+<p>Now is probably a good time to open QGIS and try to view your <kbd class="kbd docutils literal notranslate">people</kbd>
+table. Also, we should try editing / adding / deleting records and then
+performing select queries in the database to see how the data has changed.</p>
+<p>To load a PostGIS layer in QGIS, use the <span class="menuselection">Layer ► Add PostGIS
+Layers</span> menu option or toolbar button:</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/mActionAddPostgisLayer.png"><img alt="addPostgisLayer" src="../../../_images/mActionAddPostgisLayer.png" style="width: 1.5em;" /></a></p>
+</div></blockquote>
+<p>This will open the dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/add_postgis_layer_dialog.png" src="../../../_images/add_postgis_layer_dialog.png" />
+</figure>
+<p>Click on the <span class="guilabel">New</span> button to open this dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_postgis_connection.png" src="../../../_images/new_postgis_connection.png" />
+</figure>
+<p>Then define a new connection, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span><span class="p">:</span> <span class="n">myPG</span>
+<span class="n">Service</span><span class="p">:</span>
+<span class="n">Host</span><span class="p">:</span> <span class="n">localhost</span>
+<span class="n">Port</span><span class="p">:</span> <span class="mi">5432</span>
+<span class="n">Database</span><span class="p">:</span> <span class="n">address</span>
+<span class="n">User</span><span class="p">:</span>
+<span class="n">Password</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>To see whether QGIS has found the <kbd class="kbd docutils literal notranslate">address</kbd> database and that your
+username and password are correct, click <span class="guilabel">Test Connect</span>. If it works,
+check the boxes next to <span class="guilabel">Save Username</span> and <span class="guilabel">Save Password</span>.
+Then click <span class="guilabel">OK</span> to create this connection.</p>
+<p>Back in the <span class="guilabel">Add PostGIS Layers</span> dialog, click <span class="guilabel">Connect</span>
+and add layers to your project as usual.</p>
+<section id="ty-moderate">
+<h3><span class="section-number">16.2.7.1. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h3>
+<p>Formulate a query that shows a person’s name, street name and position (from the
+the_geom column) as plain text.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="n">people</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+       <span class="n">streets</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">street_name</span><span class="p">,</span>
+       <span class="n">st_astext</span><span class="p">(</span><span class="n">people</span><span class="o">.</span><span class="n">the_geom</span><span class="p">)</span> <span class="k">as</span> <span class="n">geometry</span>
+<span class="kn">from</span>   <span class="nn">streets</span><span class="p">,</span> <span class="n">people</span>
+<span class="n">where</span>  <span class="n">people</span><span class="o">.</span><span class="n">street_id</span><span class="o">=</span><span class="n">streets</span><span class="o">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">name</span>     <span class="o">|</span> <span class="n">street_name</span> <span class="o">|</span>   <span class="n">geometry</span>
+<span class="o">--------------+-------------+---------------</span>
+ <span class="n">Roger</span> <span class="n">Jones</span>  <span class="o">|</span> <span class="n">High</span> <span class="n">street</span> <span class="o">|</span>
+ <span class="n">Sally</span> <span class="n">Norman</span> <span class="o">|</span> <span class="n">High</span> <span class="n">street</span> <span class="o">|</span>
+ <span class="n">Jane</span> <span class="n">Smith</span>   <span class="o">|</span> <span class="n">Main</span> <span class="n">Road</span>   <span class="o">|</span>
+ <span class="n">Joe</span> <span class="n">Bloggs</span>   <span class="o">|</span> <span class="n">Low</span> <span class="n">Street</span>  <span class="o">|</span>
+ <span class="n">Fault</span> <span class="n">Towers</span> <span class="o">|</span> <span class="n">Main</span> <span class="n">Road</span>   <span class="o">|</span> <span class="n">POINT</span><span class="p">(</span><span class="mi">33</span> <span class="o">-</span><span class="mi">33</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">5</span> <span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, our constraint allows nulls to be added into the database.</p>
+</div>
+</section>
+</section>
+<section id="ic">
+<h2><span class="section-number">16.2.8. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have seen how to add spatial objects to your database and view them in GIS
+software.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">16.2.9. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next you’ll see how to import data into, and export data from, your database.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="spatial_functions.html" class="btn btn-neutral float-left" title="16.1. Lesson: PostGIS Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="import_export.html" class="btn btn-neutral float-right" title="16.3. Lesson: Import and Export" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/simple_feature_model.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/spatial_databases/simple_feature_model.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/spatial_databases/simple_feature_model.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/spatial_databases/simple_feature_model.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/spatial_databases/simple_feature_model.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/spatial_databases/simple_feature_model.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/spatial_databases/simple_feature_model.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/spatial_databases/simple_feature_model.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/spatial_databases/simple_feature_model.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

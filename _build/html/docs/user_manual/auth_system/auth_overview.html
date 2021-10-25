@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22.1. Authentication System Overview &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/auth_system/auth_overview.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="22.2. User Authentication Workflows" href="auth_workflows.html" />
+    <link rel="prev" title="22. Authentication System" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/auth_system/auth_overview.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">22. Authentication System</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">22.1. Authentication System Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-database">22.1.1. Authentication database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-password">22.1.2. Master password</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-configurations">22.1.3. Authentication Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#authentication-methods">22.1.4. Authentication Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-password-and-auth-config-utilities">22.1.5. Master Password and Auth Config Utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-authentication-configurations">22.1.6. Using authentication configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#python-bindings">22.1.7. Python bindings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="auth_workflows.html">22.2. User Authentication Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auth_considerations.html">22.3. Security Considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">22. </span>Authentication System</a> &raquo;</li>
+      <li><span class="section-number">22.1. </span>Authentication System Overview</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/auth_system/auth_overview.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="22. Authentication System" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auth_workflows.html" class="btn btn-neutral float-right" title="22.2. User Authentication Workflows" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="authentication-system-overview">
+<span id="authentication-overview"></span><h1><span class="section-number">22.1. </span>Authentication System Overview<a class="headerlink" href="#authentication-system-overview" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#authentication-database" id="id20">Authentication database</a></p></li>
+<li><p><a class="reference internal" href="#master-password" id="id21">Master password</a></p>
+<ul>
+<li><p><a class="reference internal" href="#managing-the-master-password" id="id22">Managing the master password</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#authentication-configurations" id="id23">Authentication Configurations</a></p></li>
+<li><p><a class="reference internal" href="#authentication-methods" id="id24">Authentication Methods</a></p></li>
+<li><p><a class="reference internal" href="#master-password-and-auth-config-utilities" id="id25">Master Password and Auth Config Utilities</a></p></li>
+<li><p><a class="reference internal" href="#using-authentication-configurations" id="id26">Using authentication configurations</a></p></li>
+<li><p><a class="reference internal" href="#python-bindings" id="id27">Python bindings</a></p></li>
+</ul>
+</div>
+<figure class="align-center" id="id2">
+<span id="figure-authsystem"></span><img alt="../../../_images/auth-system-overview.png" src="../../../_images/auth-system-overview.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.1 </span><span class="caption-text">Anatomy of authentication system</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="authentication-database">
+<h2><a class="toc-backref" href="#id20"><span class="section-number">22.1.1. </span>Authentication database</a><a class="headerlink" href="#authentication-database" title="Permalink to this headline"></a></h2>
+<p>The new authentication system stores authentication configurations in an SQLite
+database file located, by default, at <code class="file docutils literal notranslate"><span class="pre">&lt;profile</span> <span class="pre">directory&gt;/qgis-auth.db</span></code>.</p>
+<p>This authentication database can be moved between QGIS installations without
+affecting other current QGIS user preferences, as it is completely separate from
+normal QGIS settings. A configuration ID (a random 7-character alphanumeric
+string) is generated when initially storing a configuration to the database.
+This represents the configuration, thereby allowing the ID to be stored in plain
+text application components, (such as project, plugin, or settings files)
+without disclosure of its associated credentials.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The parent directory of the <cite>qgis-auth.db</cite> can be set using the following
+environment variable, <code class="docutils literal notranslate"><span class="pre">QGIS_AUTH_DB_DIR_PATH</span></code>, or set on the command line
+during launch with the <code class="docutils literal notranslate"><span class="pre">--authdbdirectory</span></code> option.</p>
+</div>
+</section>
+<section id="master-password">
+<h2><a class="toc-backref" href="#id21"><span class="section-number">22.1.2. </span>Master password</a><a class="headerlink" href="#master-password" title="Permalink to this headline"></a></h2>
+<p>To store or access sensitive information within the database, a user must define
+a <cite>master password</cite>. A new master password is requested and verified when
+initially storing any encrypted data to the database. When sensitive
+information is accessed, the user is prompted for the master password. The password is
+then cached for the remainder of the session (until application is quit), unless
+the user manually chooses an action to clear its cached value. Some instances of
+using the authentication system do not require input of the master password,
+such as when selecting an existing authentication configuration, or applying a
+configuration to a server configuration (such as when adding a WMS layer).</p>
+<p>You can choose to save the password in the <code class="docutils literal notranslate"><span class="pre">Wallet/Keyring</span></code> of your
+computer.</p>
+<figure class="align-center" id="id3">
+<span id="figure-masterpass"></span><img alt="../../../_images/auth-password-new_enter.png" src="../../../_images/auth-password-new_enter.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.2 </span><span class="caption-text">Input new master password</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A path to a file containing the master password can be set using the
+following environment variable, <code class="docutils literal notranslate"><span class="pre">QGIS_AUTH_PASSWORD_FILE</span></code>.</p>
+</div>
+<section id="managing-the-master-password">
+<h3><a class="toc-backref" href="#id22"><span class="section-number">22.1.2.1. </span>Managing the master password</a><a class="headerlink" href="#managing-the-master-password" title="Permalink to this headline"></a></h3>
+<p>Once set, the master password can be reset; the current master password will be
+needed prior to resetting. During this process, there is an option to generate a
+complete backup of the current database.</p>
+<figure class="align-center" id="id4">
+<span id="figure-masterpass-reset"></span><img alt="../../../_images/auth-password-reset.png" src="../../../_images/auth-password-reset.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.3 </span><span class="caption-text">Resetting master password</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the user forgets the master password, there is no way to retrieve or override
+it. There is also no means of retrieving encrypted information without knowing
+the master password.</p>
+<p>If a user inputs their existing password incorrectly three times, the dialog
+will offer to erase the database.</p>
+<figure class="align-center" id="id5">
+<span id="figure-masterpass-pwd"></span><img alt="../../../_images/auth-password-invalid-3times.png" src="../../../_images/auth-password-invalid-3times.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.4 </span><span class="caption-text">Password prompt after three invalid attempts</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="authentication-configurations">
+<h2><a class="toc-backref" href="#id23"><span class="section-number">22.1.3. </span>Authentication Configurations</a><a class="headerlink" href="#authentication-configurations" title="Permalink to this headline"></a></h2>
+<p>You can manage authentication configurations from <span class="guilabel">Configurations</span> in
+the <span class="guilabel">Authentication</span> tab of the QGIS Options dialog
+(<span class="menuselection">Settings ► Options</span>).</p>
+<figure class="align-center" id="id6">
+<span id="figure-authconfigeditor"></span><img alt="../../../_images/auth-editor-configs2.png" src="../../../_images/auth-editor-configs2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.5 </span><span class="caption-text">Configurations editor</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Use the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button to add a new configuration, the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> button
+to remove configurations, and the <a class="reference internal" href="../../../_images/symbologyEdit.png"><img alt="symbologyEdit" src="../../../_images/symbologyEdit.png" style="width: 1.5em;" /></a> button to modify existing ones.</p>
+<figure class="align-center" id="id7">
+<span id="figure-authconfigeditor-add"></span><img alt="../../../_images/auth-config-create_authcfg-id.png" src="../../../_images/auth-config-create_authcfg-id.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.6 </span><span class="caption-text">Adding config from within Configuration editor</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The same type of operations for authentication configuration management (Add,
+Edit and Remove) can be done when configuring a given service connection, such
+as configuring an OWS service connection. For that, there are action buttons
+within the configuration selector for fully managing configurations found
+within the authentication database. In this case, there is no need to go to the
+<span class="guilabel">configurations</span> in <span class="guilabel">Authentication</span> tab of QGIS options
+unless you need to do more comprehensive configuration management.</p>
+<figure class="align-center" id="id8">
+<span id="figure-authconfigeditor-wms"></span><img alt="../../../_images/auth-selector-wms-connection.png" src="../../../_images/auth-selector-wms-connection.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.7 </span><span class="caption-text">WMS connection dialog showing <span class="guilabel">Add</span>, <span class="guilabel">Edit</span>, and <span class="guilabel">Remove</span>
+authentication configuration buttons</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When creating or editing an authentication configuration, the info required is
+a name, an authentication method and any other info that the authentication
+method requires (see more about the available authentication types in
+<a class="reference internal" href="#authentication-methods"><span class="std std-ref">Authentication Methods</span></a>).</p>
+</section>
+<section id="authentication-methods">
+<span id="id1"></span><h2><a class="toc-backref" href="#id24"><span class="section-number">22.1.4. </span>Authentication Methods</a><a class="headerlink" href="#authentication-methods" title="Permalink to this headline"></a></h2>
+<p>Available authentications are provided by C++ plugins much in the same way data
+provider plugins are supported by QGIS. The method of authentication that can
+be selected is relative to the access needed for the resource/provider, e.g.
+HTTP(S) or database, and whether there is support in both QGIS code and a
+plugin. As such, some authentication method plugins may not be applicable
+everywhere an authentication configuration selector is shown. A list of
+available authentication method plugins and their compatible resource/providers
+can be accessed going to <span class="menuselection">Settings ► Options</span> and, in the
+<span class="guilabel">Authentication</span> tab, click the <a class="reference internal" href="../../../_images/mActionOptions.png"><img alt="options" src="../../../_images/mActionOptions.png" style="width: 1em;" /></a> <span class="guilabel">Installed Plugins</span>
+button.</p>
+<figure class="align-center" id="id9">
+<span id="figure-authmethod"></span><img alt="../../../_images/auth-method-listing.png" src="../../../_images/auth-method-listing.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.8 </span><span class="caption-text">Available method plugins list</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Plugins can be created for new authentication methods that do not require QGIS
+to be recompiled. Since the support for plugins is currently C++-only,
+QGIS will need to be restarted for the new dropped-in plugin to become
+available to the user. Ensure your plugin is compiled against the same target
+version of QGIS if you intend to add it to an existing target install.</p>
+<figure class="align-center" id="id10">
+<span id="figure-authmethod-http"></span><img alt="../../../_images/auth-config-create_basic-auth.png" src="../../../_images/auth-config-create_basic-auth.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.9 </span><span class="caption-text">Basic HTTP authentication configs</span><a class="headerlink" href="#id10" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
+<span id="figure-authmethod-esritoken"></span><img alt="../../../_images/auth-config-create_esritoken.png" src="../../../_images/auth-config-create_esritoken.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.10 </span><span class="caption-text">ESRI Token authentication configs</span><a class="headerlink" href="#id11" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
+<span id="figure-authmethod-oauth2"></span><img alt="../../../_images/auth-config-create_oauth2.png" src="../../../_images/auth-config-create_oauth2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.11 </span><span class="caption-text">OAuth2 authentication configs</span><a class="headerlink" href="#id12" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id13">
+<span id="figure-authmethod-pki"></span><img alt="../../../_images/auth-config-create_pem-der-paths.png" src="../../../_images/auth-config-create_pem-der-paths.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.12 </span><span class="caption-text">PKI paths authentication configs</span><a class="headerlink" href="#id13" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id14">
+<span id="figure-authmethod-pkcs"></span><img alt="../../../_images/auth-config-create_pkcs12-paths.png" src="../../../_images/auth-config-create_pkcs12-paths.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.13 </span><span class="caption-text">PKI PKCS#12 file paths authentication configs</span><a class="headerlink" href="#id14" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id15">
+<span id="figure-authmethod-stored"></span><img alt="../../../_images/auth-config-create_stored-identity2.png" src="../../../_images/auth-config-create_stored-identity2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.14 </span><span class="caption-text">Stored Identity authentication configs</span><a class="headerlink" href="#id15" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Resource URL is currently an <em>unimplemented</em> feature that will eventually
+allow a particular configuration to be auto-chosen when connecting to
+resources at a given URL.</p>
+</div>
+</section>
+<section id="master-password-and-auth-config-utilities">
+<h2><a class="toc-backref" href="#id25"><span class="section-number">22.1.5. </span>Master Password and Auth Config Utilities</a><a class="headerlink" href="#master-password-and-auth-config-utilities" title="Permalink to this headline"></a></h2>
+<p>Under the Options menu (<span class="menuselection">Settings ► Options</span>) in the
+<span class="guilabel">Authentication</span> tab, there are several utility actions to manage the
+authentication database and configurations:</p>
+<figure class="align-center" id="id16">
+<span id="figure-authconfiutils"></span><img alt="../../../_images/auth-editor-configs_utilities-menu.png" src="../../../_images/auth-editor-configs_utilities-menu.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.15 </span><span class="caption-text">Utilities menu</span><a class="headerlink" href="#id16" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><strong>Input master password</strong>: opens the master password input dialog, independent
+of performing any authentication database command</p></li>
+<li><p><strong>Clear cached master password</strong>: unsets the master password if it has been
+set</p></li>
+<li><p><strong>Reset master password</strong>: opens a dialog to change the master password (the
+current password must be known) and optionally back up the current database</p></li>
+<li><p><strong>Clear network authentication access cache</strong>: clears the authentication cache
+of all connections</p></li>
+<li><p><strong>Automatically clear network authentication access cache on SSL errors</strong>: the
+connection cache stores all authentication data for connections, also when the
+connection fails. If you change authentication configurations or certification authorities,
+you should clear the authentication cache
+or restart QGIS. When this option is checked, the authentication cache will be
+automatically cleared every time an SSL error occurs and you choose to abort
+the connection</p></li>
+<li><p><strong>Integrate master password with your Wallet/Keyring</strong>: adds the master
+password to your personal Wallet/Keyring</p></li>
+<li><p><strong>Store/update the master password in your Wallet/Keyring</strong>: updates the
+changed master password in your Wallet/Keyring</p></li>
+<li><p><strong>Clear the master password from your Wallet/Keyring</strong>: deletes the master
+password from your Wallet/Keyring</p></li>
+<li><p><strong>Enable password helper debug log</strong>: enables a debug tool that will contain
+all the log information of the authentication methods</p></li>
+<li><p><strong>Clear cached authentication configurations</strong>: clears the internal lookup cache
+for configurations, used to speed up network connections. This does not clear
+QGIS’s core network access manager’s cache, which requires a relaunch of QGIS.</p></li>
+<li><p><strong>Remove all authentication configurations</strong>: clears the database of all
+configuration records, without removing other stored records.</p></li>
+<li><p><strong>Erase authentication database</strong>: schedules a backup of the current database
+and complete rebuild of the database table structure. The actions are
+scheduled for a later time, to ensure that other operations, like project
+loading, do not interrupt the operation or cause errors due to a temporarily
+missing database.</p>
+<figure class="align-center" id="id17">
+<span id="figure-authconfiutilsdb"></span><img alt="../../../_images/auth-db-erase.png" src="../../../_images/auth-db-erase.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.16 </span><span class="caption-text">DB erase verification menu</span><a class="headerlink" href="#id17" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section id="using-authentication-configurations">
+<h2><a class="toc-backref" href="#id26"><span class="section-number">22.1.6. </span>Using authentication configurations</a><a class="headerlink" href="#using-authentication-configurations" title="Permalink to this headline"></a></h2>
+<p>Typically, an authentication configuration is selected in a configuration dialog
+for a network services (such as WMS). However, the selector widget can be
+embedded anywhere authentication is needed or in non-core functionality, like in
+third-party PyQGIS or C++ plugins.</p>
+<p>When using the selector, <span class="guilabel">No authentication</span> is displayed in the
+pop-up menu control when nothing is selected, when there are no configurations
+to choose from, or when a previously assigned configuration can no longer be
+found in the database. The <span class="guilabel">Type</span> and <span class="guilabel">Id</span> fields are
+read-only and provide a description of the authentication method and the
+config’s ID respectively.</p>
+<figure class="align-center" id="id18">
+<span id="figure-authconfigselector"></span><img alt="../../../_images/auth-selector-no-authentication.png" src="../../../_images/auth-selector-no-authentication.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.17 </span><span class="caption-text">Authentication configuration selector with no authentication</span><a class="headerlink" href="#id18" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
+<span id="figure-authconfigselector-pkcs"></span><img alt="../../../_images/auth-selector-pkcs12-authentication.png" src="../../../_images/auth-selector-pkcs12-authentication.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22.18 </span><span class="caption-text">Authentication configuration selector with selected config</span><a class="headerlink" href="#id19" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="python-bindings">
+<h2><a class="toc-backref" href="#id27"><span class="section-number">22.1.7. </span>Python bindings</a><a class="headerlink" href="#python-bindings" title="Permalink to this headline"></a></h2>
+<p>All classes and public functions have sip bindings, except <code class="docutils literal notranslate"><span class="pre">QgsAuthCrypto</span></code>,
+since management of the master password hashing and auth database encryption
+should be handled by the main app, and not via Python.
+See <a class="reference internal" href="auth_considerations.html#authentication-security-considerations"><span class="std std-ref">Security Considerations</span></a> concerning Python access.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="22. Authentication System" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auth_workflows.html" class="btn btn-neutral float-right" title="22.2. User Authentication Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/auth_system/auth_overview.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/auth_system/auth_overview.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/auth_system/auth_overview.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/auth_system/auth_overview.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/auth_system/auth_overview.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/auth_system/auth_overview.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/auth_system/auth_overview.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/auth_system/auth_overview.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/auth_system/auth_overview.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/auth_system/auth_overview.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/auth_system/auth_overview.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/auth_system/auth_overview.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/auth_system/auth_overview.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/auth_system/auth_overview.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

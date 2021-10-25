@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21. Cheat sheet for PyQGIS &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/cheat_sheet.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Developers Guide for QGIS" href="../developers_guide/index.html" />
+    <link rel="prev" title="20. QGIS Server and Python" href="server.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">21. Cheat sheet for PyQGIS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">21.1. User Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">21.2. Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#toolbars">21.3. Toolbars</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#menus">21.4. Menus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#canvas">21.5. Canvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#layers">21.6. Layers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#table-of-contents">21.7. Table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-toc">21.8. Advanced TOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-algorithms">21.9. Processing algorithms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decorators">21.10. Decorators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composer">21.11. Composer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sources">21.12. Sources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">21. </span>Cheat sheet for PyQGIS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/cheat_sheet.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="server.html" class="btn btn-neutral float-left" title="20. QGIS Server and Python" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../developers_guide/index.html" class="btn btn-neutral float-right" title="Developers Guide for QGIS" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cheat-sheet-for-pyqgis">
+<span id="cheat-sheet"></span><h1><span class="section-number">21. </span>Cheat sheet for PyQGIS<a class="headerlink" href="#cheat-sheet-for-pyqgis" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">QRectF</span><span class="p">,</span>
+<span class="linenos"> 3</span><span class="p">)</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 6</span>    <span class="n">QgsProject</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">QgsLayerTreeModel</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kn">from</span> <span class="nn">qgis.gui</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">11</span>    <span class="n">QgsLayerTreeView</span><span class="p">,</span>
+<span class="linenos">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#user-interface" id="id1">User Interface</a></p></li>
+<li><p><a class="reference internal" href="#settings" id="id2">Settings</a></p></li>
+<li><p><a class="reference internal" href="#toolbars" id="id3">Toolbars</a></p></li>
+<li><p><a class="reference internal" href="#menus" id="id4">Menus</a></p></li>
+<li><p><a class="reference internal" href="#canvas" id="id5">Canvas</a></p></li>
+<li><p><a class="reference internal" href="#layers" id="id6">Layers</a></p></li>
+<li><p><a class="reference internal" href="#table-of-contents" id="id7">Table of contents</a></p></li>
+<li><p><a class="reference internal" href="#advanced-toc" id="id8">Advanced TOC</a></p></li>
+<li><p><a class="reference internal" href="#processing-algorithms" id="id9">Processing algorithms</a></p></li>
+<li><p><a class="reference internal" href="#decorators" id="id10">Decorators</a></p></li>
+<li><p><a class="reference internal" href="#composer" id="id11">Composer</a></p></li>
+<li><p><a class="reference internal" href="#sources" id="id12">Sources</a></p></li>
+</ul>
+</div>
+<section id="user-interface">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">21.1. </span>User Interface</a><a class="headerlink" href="#user-interface" title="Permalink to this headline"></a></h2>
+<p><strong>Change Look &amp; Feel</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;.QWidget {color: blue; background-color: yellow;}&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="c1"># You can even read the stylesheet from a file</span>
+<span class="linenos">6</span><span class="k">with</span>  <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;testdata/file.qss&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">qss_file_content</span><span class="p">:</span>
+<span class="linenos">7</span>    <span class="n">app</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">qss_file_content</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Change icon and title</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">(</span><span class="s2">&quot;/path/to/logo/file.png&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span><span class="o">.</span><span class="n">setWindowIcon</span><span class="p">(</span><span class="n">icon</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">()</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;My QGIS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="settings">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">21.2. </span>Settings</a><a class="headerlink" href="#settings" title="Permalink to this headline"></a></h2>
+<p><strong>Get QgsSettings list</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsSettings</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">qs</span> <span class="o">=</span> <span class="n">QgsSettings</span><span class="p">()</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">qs</span><span class="o">.</span><span class="n">allKeys</span><span class="p">()):</span>
+<span class="linenos">6</span>    <span class="nb">print</span> <span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="toolbars">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">21.3. </span>Toolbars</a><a class="headerlink" href="#toolbars" title="Permalink to this headline"></a></h2>
+<p><strong>Remove toolbar</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">toolbar</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">helpToolBar</span><span class="p">()</span>
+<span class="linenos">2</span><span class="n">parent</span> <span class="o">=</span> <span class="n">toolbar</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">parent</span><span class="o">.</span><span class="n">removeToolBar</span><span class="p">(</span><span class="n">toolbar</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="c1"># and add again</span>
+<span class="linenos">6</span><span class="n">parent</span><span class="o">.</span><span class="n">addToolBar</span><span class="p">(</span><span class="n">toolbar</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Remove actions toolbar</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">actions</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">attributesToolBar</span><span class="p">()</span><span class="o">.</span><span class="n">actions</span><span class="p">()</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">attributesToolBar</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">attributesToolBar</span><span class="p">()</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">attributesToolBar</span><span class="p">()</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">actions</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="menus">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">21.4. </span>Menus</a><a class="headerlink" href="#menus" title="Permalink to this headline"></a></h2>
+<p><strong>Remove menu</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># for example Help Menu</span>
+<span class="linenos">2</span><span class="n">menu</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">helpMenu</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">menubar</span> <span class="o">=</span> <span class="n">menu</span><span class="o">.</span><span class="n">parentWidget</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">menubar</span><span class="o">.</span><span class="n">removeAction</span><span class="p">(</span><span class="n">menu</span><span class="o">.</span><span class="n">menuAction</span><span class="p">())</span>
+<span class="linenos">5</span>
+<span class="linenos">6</span><span class="c1"># and add again</span>
+<span class="linenos">7</span><span class="n">menubar</span><span class="o">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">menu</span><span class="o">.</span><span class="n">menuAction</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="canvas">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">21.5. </span>Canvas</a><a class="headerlink" href="#canvas" title="Permalink to this headline"></a></h2>
+<p><strong>Access canvas</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">canvas</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Change canvas color</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+
+<span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">setCanvasColor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">black</span><span class="p">)</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Map Update interval</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsSettings</span>
+<span class="c1"># Set milliseconds (150 milliseconds)</span>
+<span class="n">QgsSettings</span><span class="p">()</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="s2">&quot;/qgis/map_update_interval&quot;</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="layers">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">21.6. </span>Layers</a><a class="headerlink" href="#layers" title="Permalink to this headline"></a></h2>
+<p><strong>Add vector layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addVectorLayer</span><span class="p">(</span><span class="s2">&quot;testdata/airports.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">layer</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Get active layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>List all layers</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Obtain layers name</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span>
+<span class="linenos">2</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;Point?crs=EPSG:4326&quot;</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">layers_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="linenos">6</span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="linenos">7</span>    <span class="n">layers_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="linenos">8</span>
+<span class="linenos">9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;layers TOC = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layers_names</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>layers TOC = [&#39;layer name you like&#39;]
+</pre></div>
+</div>
+<p>Otherwise</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layers_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;layers TOC = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layers_names</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>layers TOC = [&#39;layer name you like&#39;]
+</pre></div>
+</div>
+<p><strong>Find layer by name</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;layer name you like&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>layer name you like
+</pre></div>
+</div>
+<p><strong>Set active layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;layer name you like&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">setActiveLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Refresh layer at interval</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;layer name you like&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">4</span><span class="c1"># Set seconds (5 seconds)</span>
+<span class="linenos">5</span><span class="n">layer</span><span class="o">.</span><span class="n">setAutoRefreshInterval</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+<span class="linenos">6</span><span class="c1"># Enable auto refresh</span>
+<span class="linenos">7</span><span class="n">layer</span><span class="o">.</span><span class="n">setAutoRefreshEnabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Show methods</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Adding new feature with feature form</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeature</span><span class="p">,</span> <span class="n">QgsGeometry</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">feat</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">feat</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">feat</span><span class="o">.</span><span class="n">setFields</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="n">iface</span><span class="o">.</span><span class="n">openFeatureForm</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">feat</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Adding new feature without feature form</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsGeometry</span><span class="p">,</span> <span class="n">QgsPointXY</span><span class="p">,</span> <span class="n">QgsFeature</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">pr</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">feat</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">feat</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromPointXY</span><span class="p">(</span><span class="n">QgsPointXY</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)))</span>
+<span class="linenos">6</span><span class="n">pr</span><span class="o">.</span><span class="n">addFeatures</span><span class="p">([</span><span class="n">feat</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Get features</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;qgis._core.QgsFeature object at 0x7f45cc64b678&gt;
+</pre></div>
+</div>
+<p><strong>Get selected features</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatures</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Get selected features Ids</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected_ids</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">selected_ids</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Create a memory layer from selected features Ids</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
+
+<span class="n">memory_layer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">materialize</span><span class="p">(</span><span class="n">QgsFeatureRequest</span><span class="p">()</span><span class="o">.</span><span class="n">setFilterFids</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()))</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">memory_layer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Get geometry</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Point layer</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
+    <span class="n">geom</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%f</span><span class="s1">, </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">geom</span><span class="o">.</span><span class="n">asPoint</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="n">geom</span><span class="o">.</span><span class="n">asPoint</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>10.000000, 10.000000
+</pre></div>
+</div>
+<p><strong>Move geometry</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeature</span><span class="p">,</span> <span class="n">QgsGeometry</span>
+<span class="linenos">2</span><span class="n">poly</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s2">&quot;POINT(7 45)&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">geom</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">poly</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsGeometry: Point (8 46)&gt;
+</pre></div>
+</div>
+<p><strong>Set the CRS</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsCoordinateReferenceSystem</span>
+
+<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">setCrs</span><span class="p">(</span><span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>See the CRS</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="linenos">4</span>    <span class="n">crs</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span>
+<span class="linenos">5</span>    <span class="n">layer</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">crs</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Hide a field column</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsEditorWidgetSetup</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">def</span> <span class="nf">fieldVisibility</span> <span class="p">(</span><span class="n">layer</span><span class="p">,</span><span class="n">fname</span><span class="p">):</span>
+<span class="linenos"> 4</span>    <span class="n">setup</span> <span class="o">=</span> <span class="n">QgsEditorWidgetSetup</span><span class="p">(</span><span class="s1">&#39;Hidden&#39;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="linenos"> 5</span>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()):</span>
+<span class="linenos"> 6</span>        <span class="k">if</span> <span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="o">==</span><span class="n">fname</span><span class="p">:</span>
+<span class="linenos"> 7</span>            <span class="n">layer</span><span class="o">.</span><span class="n">setEditorWidgetSetup</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">setup</span><span class="p">)</span>
+<span class="linenos"> 8</span>            <span class="k">break</span>
+<span class="linenos"> 9</span>        <span class="k">else</span><span class="p">:</span>
+<span class="linenos">10</span>            <span class="k">continue</span>
+</pre></div>
+</div>
+<p><strong>Layer from WKT</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">QgsFeature</span><span class="p">,</span> <span class="n">QgsGeometry</span><span class="p">,</span> <span class="n">QgsProject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;Polygon?crs=epsg:4326&#39;</span><span class="p">,</span> <span class="s1">&#39;Mississippi&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">pr</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span>
+<span class="linenos"> 5</span><span class="n">poly</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
+<span class="linenos"> 6</span><span class="n">geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromWkt</span><span class="p">(</span><span class="s2">&quot;POLYGON ((-88.82 34.99,-88.0934.89,-88.39 30.34,-89.57 30.18,-89.73 31,-91.63 30.99,-90.8732.37,-91.23 33.44,-90.93 34.23,-90.30 34.99,-88.82 34.99))&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">poly</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">pr</span><span class="o">.</span><span class="n">addFeatures</span><span class="p">([</span><span class="n">poly</span><span class="p">])</span>
+<span class="linenos"> 9</span><span class="n">layer</span><span class="o">.</span><span class="n">updateExtents</span><span class="p">()</span>
+<span class="linenos">10</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayers</span><span class="p">([</span><span class="n">layer</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Load all vector layers from GeoPackage</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsDataProvider</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;testdata/sublayers.gpkg&quot;</span>
+<span class="linenos"> 4</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">subLayers</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">subLayers</span><span class="p">()</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="k">for</span> <span class="n">subLayer</span> <span class="ow">in</span> <span class="n">subLayers</span><span class="p">:</span>
+<span class="linenos"> 8</span>    <span class="n">name</span> <span class="o">=</span> <span class="n">subLayer</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">QgsDataProvider</span><span class="o">.</span><span class="n">SUBLAYER_SEPARATOR</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos"> 9</span>    <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">|layername=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">name</span><span class="p">,)</span>
+<span class="linenos">10</span>    <span class="c1"># Create layer</span>
+<span class="linenos">11</span>    <span class="n">sub_vlayer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>    <span class="c1"># Add layer to map</span>
+<span class="linenos">13</span>    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">sub_vlayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Load tile layer (XYZ-Layer)</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsRasterLayer</span><span class="p">,</span> <span class="n">QgsProject</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">def</span> <span class="nf">loadXYZ</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="linenos">4</span>    <span class="n">rasterLyr</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="s2">&quot;type=xyz&amp;url=&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;wms&quot;</span><span class="p">)</span>
+<span class="linenos">5</span>    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">rasterLyr</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="n">urlWithParams</span> <span class="o">=</span> <span class="s1">&#39;https://tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png&amp;zmax=19&amp;zmin=0&amp;crs=EPSG3857&#39;</span>
+<span class="linenos">8</span><span class="n">loadXYZ</span><span class="p">(</span><span class="n">urlWithParams</span><span class="p">,</span> <span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Remove all layers</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">removeAllMapLayers</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Remove all</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="table-of-contents">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">21.7. </span>Table of contents</a><a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<p><strong>Access checked layers</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">layers</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Remove contextual menu</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">ltv</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">layerTreeView</span><span class="p">()</span>
+<span class="linenos">2</span><span class="n">mp</span> <span class="o">=</span> <span class="n">ltv</span><span class="o">.</span><span class="n">menuProvider</span><span class="p">()</span>
+<span class="linenos">3</span><span class="n">ltv</span><span class="o">.</span><span class="n">setMenuProvider</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="linenos">4</span><span class="c1"># Restore</span>
+<span class="linenos">5</span><span class="n">ltv</span><span class="o">.</span><span class="n">setMenuProvider</span><span class="p">(</span><span class="n">mp</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-toc">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">21.8. </span>Advanced TOC</a><a class="headerlink" href="#advanced-toc" title="Permalink to this headline"></a></h2>
+<p><strong>Root node</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">node_group</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">addGroup</span><span class="p">(</span><span class="s2">&quot;My Group&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;Point?crs=EPSG:4326&quot;</span><span class="p">,</span> <span class="s2">&quot;layer name you like&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">node_group</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="linenos">12</span><span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Access the first child node</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsLayerTreeGroup</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span><span class="p">,</span> <span class="n">QgsLayerTree</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">child0</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos">4</span><span class="nb">print</span> <span class="p">(</span><span class="n">child0</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="linenos">5</span><span class="nb">print</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">child0</span><span class="p">))</span>
+<span class="linenos">6</span><span class="nb">print</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">child0</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span><span class="p">))</span>
+<span class="linenos">7</span><span class="nb">print</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">child0</span><span class="o">.</span><span class="n">parent</span><span class="p">(),</span> <span class="n">QgsLayerTree</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>My Group
+&lt;class &#39;qgis._core.QgsLayerTreeGroup&#39;&gt;
+False
+True
+</pre></div>
+</div>
+<p><strong>Find groups and nodes</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsLayerTreeGroup</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="k">def</span> <span class="nf">get_group_layers</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<span class="linenos"> 4</span>   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;- group: &#39;</span> <span class="o">+</span> <span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="linenos"> 5</span>   <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
+<span class="linenos"> 6</span>      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">QgsLayerTreeGroup</span><span class="p">):</span>
+<span class="linenos"> 7</span>         <span class="c1"># Recursive call to get nested groups</span>
+<span class="linenos"> 8</span>         <span class="n">get_group_layers</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+<span class="linenos"> 9</span>      <span class="k">else</span><span class="p">:</span>
+<span class="linenos">10</span>         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  - layer: &#39;</span> <span class="o">+</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos">14</span><span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">():</span>
+<span class="linenos">15</span>   <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">QgsLayerTreeGroup</span><span class="p">):</span>
+<span class="linenos">16</span>      <span class="n">get_group_layers</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+<span class="linenos">17</span>   <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">QgsLayerTreeLayer</span><span class="p">):</span>
+<span class="linenos">18</span>      <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;- layer: &#39;</span> <span class="o">+</span> <span class="n">child</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- group: My Group
+  - layer: layer name you like
+</pre></div>
+</div>
+<p><strong>Find group by name</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span><span class="s2">&quot;My Group&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsLayerTreeGroup: My Group&gt;
+</pre></div>
+</div>
+<p><strong>Find layer by id</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsLayerTreeLayer: layer name you like&gt;
+</pre></div>
+</div>
+<p><strong>Add layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">QgsProject</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;Point?crs=EPSG:4326&quot;</span><span class="p">,</span> <span class="s2">&quot;layer name you like 2&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer1</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">node_layer1</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer1</span><span class="p">)</span>
+<span class="linenos">6</span><span class="c1"># Remove it</span>
+<span class="linenos">7</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">removeMapLayer</span><span class="p">(</span><span class="n">layer1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Add group</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsLayerTreeGroup</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">node_group2</span> <span class="o">=</span> <span class="n">QgsLayerTreeGroup</span><span class="p">(</span><span class="s2">&quot;Group 2&quot;</span><span class="p">)</span>
+<span class="linenos">4</span><span class="n">root</span><span class="o">.</span><span class="n">addChildNode</span><span class="p">(</span><span class="n">node_group2</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;layer name you like&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Move loaded layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;layer name you like&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 2</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">myLayer</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="n">myClone</span> <span class="o">=</span> <span class="n">myLayer</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="linenos"> 6</span><span class="n">parent</span> <span class="o">=</span> <span class="n">myLayer</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="n">myGroup</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span><span class="s2">&quot;My Group&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="c1"># Insert in first position</span>
+<span class="linenos">10</span><span class="n">myGroup</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">myClone</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">parent</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">myLayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Move loaded layer to a specific group</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">myGroup</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span><span class="s2">&quot;My Group&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">myOriginalLayer</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos">6</span><span class="n">myLayer</span> <span class="o">=</span> <span class="n">myOriginalLayer</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="linenos">7</span><span class="n">myGroup</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">myLayer</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">parent</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">myOriginalLayer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p id="index-0"><strong>Toggling active layer visibility</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="n">node</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="n">new_state</span> <span class="o">=</span> <span class="n">Qt</span><span class="o">.</span><span class="n">Checked</span> <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">isVisible</span><span class="p">()</span> <span class="o">==</span> <span class="n">Qt</span><span class="o">.</span><span class="n">Unchecked</span> <span class="k">else</span> <span class="n">Qt</span><span class="o">.</span><span class="n">Unchecked</span>
+<span class="n">node</span><span class="o">.</span><span class="n">setItemVisibilityChecked</span><span class="p">(</span><span class="n">new_state</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Is group selected</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">isMyGroupSelected</span><span class="p">(</span> <span class="n">groupName</span> <span class="p">):</span>
+<span class="linenos">2</span>    <span class="n">myGroup</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span> <span class="n">groupName</span> <span class="p">)</span>
+<span class="linenos">3</span>    <span class="k">return</span> <span class="n">myGroup</span> <span class="ow">in</span> <span class="n">iface</span><span class="o">.</span><span class="n">layerTreeView</span><span class="p">()</span><span class="o">.</span><span class="n">selectedNodes</span><span class="p">()</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">isMyGroupSelected</span><span class="p">(</span> <span class="s1">&#39;my group name&#39;</span> <span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+<p><strong>Expand node</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">myGroup</span><span class="o">.</span><span class="n">isExpanded</span><span class="p">())</span>
+<span class="n">myGroup</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Hidden node trick</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">model</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">layerTreeView</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeModel</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">ltv</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">layerTreeView</span><span class="p">()</span>
+<span class="linenos"> 5</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;layer name you like&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 8</span><span class="n">node</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">index</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">node2index</span><span class="p">(</span> <span class="n">node</span> <span class="p">)</span>
+<span class="linenos">11</span><span class="n">ltv</span><span class="o">.</span><span class="n">setRowHidden</span><span class="p">(</span> <span class="n">index</span><span class="o">.</span><span class="n">row</span><span class="p">(),</span> <span class="n">index</span><span class="o">.</span><span class="n">parent</span><span class="p">(),</span> <span class="kc">True</span> <span class="p">)</span>
+<span class="linenos">12</span><span class="n">node</span><span class="o">.</span><span class="n">setCustomProperty</span><span class="p">(</span> <span class="s1">&#39;nodeHidden&#39;</span><span class="p">,</span> <span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">ltv</span><span class="o">.</span><span class="n">setCurrentIndex</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">node2index</span><span class="p">(</span><span class="n">root</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Node signals</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">onWillAddChildren</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">indexFrom</span><span class="p">,</span> <span class="n">indexTo</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;WILL ADD&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">indexFrom</span><span class="p">,</span> <span class="n">indexTo</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">def</span> <span class="nf">onAddedChildren</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">indexFrom</span><span class="p">,</span> <span class="n">indexTo</span><span class="p">):</span>
+<span class="linenos">5</span>    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;ADDED&quot;</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">indexFrom</span><span class="p">,</span> <span class="n">indexTo</span><span class="p">)</span>
+<span class="linenos">6</span>
+<span class="linenos">7</span><span class="n">root</span><span class="o">.</span><span class="n">willAddChildren</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onWillAddChildren</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">root</span><span class="o">.</span><span class="n">addedChildren</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">onAddedChildren</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Remove layer</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">removeLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Remove group</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">node_group2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Create new table of contents (TOC)</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+<span class="linenos">2</span><span class="n">model</span> <span class="o">=</span> <span class="n">QgsLayerTreeModel</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">view</span> <span class="o">=</span> <span class="n">QgsLayerTreeView</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">view</span><span class="o">.</span><span class="n">setModel</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">view</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Move node</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloned_group1</span> <span class="o">=</span> <span class="n">node_group</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cloned_group1</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">node_group</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Rename node</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">cloned_group1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Group X&quot;</span><span class="p">)</span>
+<span class="n">node_layer1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Layer X&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="processing-algorithms">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">21.9. </span>Processing algorithms</a><a class="headerlink" href="#processing-algorithms" title="Permalink to this headline"></a></h2>
+<p><strong>Get algorithms list</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsApplication</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="k">for</span> <span class="n">alg</span> <span class="ow">in</span> <span class="n">QgsApplication</span><span class="o">.</span><span class="n">processingRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">algorithms</span><span class="p">():</span>
+<span class="linenos">4</span>    <span class="k">if</span> <span class="s1">&#39;buffer&#39;</span> <span class="o">==</span> <span class="n">alg</span><span class="o">.</span><span class="n">name</span><span class="p">():</span>
+<span class="linenos">5</span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2"> --&gt; </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alg</span><span class="o">.</span><span class="n">provider</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">alg</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span> <span class="n">alg</span><span class="o">.</span><span class="n">displayName</span><span class="p">()))</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>QGIS (native c++):buffer --&gt; Buffer
+</pre></div>
+</div>
+<p><strong>Get algorithms help</strong></p>
+<p>Random selection</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">algorithmHelp</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>...
+</pre></div>
+</div>
+<p><strong>Run the algorithm</strong></p>
+<p>For this example, the result is stored in a temporary memory layer
+which is added to the project.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;memory:&#39;</span><span class="p">})</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Processing(0): Results: {&#39;OUTPUT&#39;: &#39;output_d27a2008_970c_4687_b025_f057abbd7319&#39;}
+</pre></div>
+</div>
+<p><strong>How many algorithms are there?</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">processingRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">algorithms</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>How many providers are there?</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsApplication</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">QgsApplication</span><span class="o">.</span><span class="n">processingRegistry</span><span class="p">()</span><span class="o">.</span><span class="n">providers</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>How many expressions are there?</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsExpression</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">QgsExpression</span><span class="o">.</span><span class="n">Functions</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="decorators">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">21.10. </span>Decorators</a><a class="headerlink" href="#decorators" title="Permalink to this headline"></a></h2>
+<p><strong>CopyRight</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.PyQt.Qt</span> <span class="kn">import</span> <span class="n">QTextDocument</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QFont</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">mQFont</span> <span class="o">=</span> <span class="s2">&quot;Sans Serif&quot;</span>
+<span class="linenos"> 5</span><span class="n">mQFontsize</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="linenos"> 6</span><span class="n">mLabelQString</span> <span class="o">=</span> <span class="s2">&quot;© QGIS 2019&quot;</span>
+<span class="linenos"> 7</span><span class="n">mMarginHorizontal</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 8</span><span class="n">mMarginVertical</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="linenos"> 9</span><span class="n">mLabelQColor</span> <span class="o">=</span> <span class="s2">&quot;#FF0000&quot;</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="n">INCHES_TO_MM</span> <span class="o">=</span> <span class="mf">0.0393700787402</span> <span class="c1"># 1 millimeter = 0.0393700787402 inches</span>
+<span class="linenos">12</span><span class="n">case</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="k">def</span> <span class="nf">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
+<span class="linenos">15</span>    <span class="n">p</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span> <span class="n">xOffset</span> <span class="p">,</span> <span class="n">yOffset</span>  <span class="p">)</span>
+<span class="linenos">16</span>    <span class="n">text</span><span class="o">.</span><span class="n">drawContents</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="linenos">17</span>    <span class="n">p</span><span class="o">.</span><span class="n">setWorldTransform</span><span class="p">(</span> <span class="n">p</span><span class="o">.</span><span class="n">worldTransform</span><span class="p">()</span> <span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="k">def</span> <span class="nf">_on_render_complete</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="linenos">20</span>    <span class="n">deviceHeight</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">device</span><span class="p">()</span><span class="o">.</span><span class="n">height</span><span class="p">()</span> <span class="c1"># Get paint device height on which this painter is currently painting</span>
+<span class="linenos">21</span>    <span class="n">deviceWidth</span>  <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">device</span><span class="p">()</span><span class="o">.</span><span class="n">width</span><span class="p">()</span> <span class="c1"># Get paint device width on which this painter is currently painting</span>
+<span class="linenos">22</span>    <span class="c1"># Create new container for structured rich text</span>
+<span class="linenos">23</span>    <span class="n">text</span> <span class="o">=</span> <span class="n">QTextDocument</span><span class="p">()</span>
+<span class="linenos">24</span>    <span class="n">font</span> <span class="o">=</span> <span class="n">QFont</span><span class="p">()</span>
+<span class="linenos">25</span>    <span class="n">font</span><span class="o">.</span><span class="n">setFamily</span><span class="p">(</span><span class="n">mQFont</span><span class="p">)</span>
+<span class="linenos">26</span>    <span class="n">font</span><span class="o">.</span><span class="n">setPointSize</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">mQFontsize</span><span class="p">))</span>
+<span class="linenos">27</span>    <span class="n">text</span><span class="o">.</span><span class="n">setDefaultFont</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+<span class="linenos">28</span>    <span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;&lt;style type=</span><span class="se">\&quot;</span><span class="s2">text/css</span><span class="se">\&quot;</span><span class="s2">&gt; p {color: &quot;</span> <span class="o">+</span> <span class="n">mLabelQColor</span> <span class="o">+</span> <span class="s2">&quot;}&lt;/style&gt;&quot;</span>
+<span class="linenos">29</span>    <span class="n">text</span><span class="o">.</span><span class="n">setHtml</span><span class="p">(</span> <span class="n">style</span> <span class="o">+</span> <span class="s2">&quot;&lt;p&gt;&quot;</span> <span class="o">+</span> <span class="n">mLabelQString</span> <span class="o">+</span> <span class="s2">&quot;&lt;/p&gt;&quot;</span> <span class="p">)</span>
+<span class="linenos">30</span>    <span class="c1"># Text Size</span>
+<span class="linenos">31</span>    <span class="n">size</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span>    <span class="c1"># RenderMillimeters</span>
+<span class="linenos">34</span>    <span class="n">pixelsInchX</span>  <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">device</span><span class="p">()</span><span class="o">.</span><span class="n">logicalDpiX</span><span class="p">()</span>
+<span class="linenos">35</span>    <span class="n">pixelsInchY</span>  <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">device</span><span class="p">()</span><span class="o">.</span><span class="n">logicalDpiY</span><span class="p">()</span>
+<span class="linenos">36</span>    <span class="n">xOffset</span>  <span class="o">=</span> <span class="n">pixelsInchX</span>  <span class="o">*</span> <span class="n">INCHES_TO_MM</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">mMarginHorizontal</span><span class="p">)</span>
+<span class="linenos">37</span>    <span class="n">yOffset</span>  <span class="o">=</span> <span class="n">pixelsInchY</span>  <span class="o">*</span> <span class="n">INCHES_TO_MM</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">mMarginVertical</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>    <span class="c1"># Calculate positions</span>
+<span class="linenos">40</span>    <span class="k">if</span> <span class="n">case</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="linenos">41</span>        <span class="c1"># Top Left</span>
+<span class="linenos">42</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="linenos">45</span>        <span class="c1"># Bottom Left</span>
+<span class="linenos">46</span>        <span class="n">yOffset</span> <span class="o">=</span> <span class="n">deviceHeight</span> <span class="o">-</span> <span class="n">yOffset</span> <span class="o">-</span> <span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+<span class="linenos">47</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span>    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<span class="linenos">50</span>        <span class="c1"># Top Right</span>
+<span class="linenos">51</span>        <span class="n">xOffset</span>  <span class="o">=</span> <span class="n">deviceWidth</span>  <span class="o">-</span> <span class="n">xOffset</span> <span class="o">-</span> <span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
+<span class="linenos">52</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span>    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+<span class="linenos">55</span>        <span class="c1"># Bottom Right</span>
+<span class="linenos">56</span>        <span class="n">yOffset</span>  <span class="o">=</span> <span class="n">deviceHeight</span> <span class="o">-</span> <span class="n">yOffset</span> <span class="o">-</span> <span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+<span class="linenos">57</span>        <span class="n">xOffset</span>  <span class="o">=</span> <span class="n">deviceWidth</span>  <span class="o">-</span> <span class="n">xOffset</span> <span class="o">-</span> <span class="n">size</span><span class="o">.</span><span class="n">width</span><span class="p">()</span>
+<span class="linenos">58</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span>    <span class="k">elif</span> <span class="n">case</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+<span class="linenos">61</span>        <span class="c1"># Top Center</span>
+<span class="linenos">62</span>        <span class="n">xOffset</span> <span class="o">=</span> <span class="n">deviceWidth</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="linenos">63</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">64</span>
+<span class="linenos">65</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">66</span>        <span class="c1"># Bottom Center</span>
+<span class="linenos">67</span>        <span class="n">yOffset</span> <span class="o">=</span> <span class="n">deviceHeight</span> <span class="o">-</span> <span class="n">yOffset</span> <span class="o">-</span> <span class="n">size</span><span class="o">.</span><span class="n">height</span><span class="p">()</span>
+<span class="linenos">68</span>        <span class="n">xOffset</span> <span class="o">=</span> <span class="n">deviceWidth</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="linenos">69</span>        <span class="n">add_copyright</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">xOffset</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">)</span>
+<span class="linenos">70</span>
+<span class="linenos">71</span><span class="c1"># Emitted when the canvas has rendered</span>
+<span class="linenos">72</span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">renderComplete</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">_on_render_complete</span><span class="p">)</span>
+<span class="linenos">73</span><span class="c1"># Repaint the canvas map</span>
+<span class="linenos">74</span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="composer">
+<h2><a class="toc-backref" href="#id11"><span class="section-number">21.11. </span>Composer</a><a class="headerlink" href="#composer" title="Permalink to this headline"></a></h2>
+<p><strong>Get print layout by name</strong></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">composerTitle</span> <span class="o">=</span> <span class="s1">&#39;MyComposer&#39;</span> <span class="c1"># Name of the composer</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="linenos">4</span><span class="n">projectLayoutManager</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">layoutManager</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">layout</span> <span class="o">=</span> <span class="n">projectLayoutManager</span><span class="o">.</span><span class="n">layoutByName</span><span class="p">(</span><span class="n">composerTitle</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="sources">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">21.12. </span>Sources</a><a class="headerlink" href="#sources" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/">QGIS Python (PyQGIS) API</a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/api/">QGIS C++ API</a></p></li>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/tagged/qgis">StackOverFlow QGIS questions</a></p></li>
+<li><p><a class="reference external" href="https://raw.githubusercontent.com/klakar/QGIS_resources/master/collections/Geosupportsystem/python/qgis_basemaps.py">Script by Klas Karlsson</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="server.html" class="btn btn-neutral float-left" title="20. QGIS Server and Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../developers_guide/index.html" class="btn btn-neutral float-right" title="Developers Guide for QGIS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/cheat_sheet.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/cheat_sheet.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

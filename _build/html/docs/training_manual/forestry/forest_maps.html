@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>14.6. Lesson: Creating Detailed Maps with the Atlas Tool &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/forest_maps.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14.7. Lesson: Calculating the Forest Parameters" href="parameters_calculation.html" />
+    <link rel="prev" title="14.5. Lesson: Systematic Sampling Design" href="systematic_sampling.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/forest_maps.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">14. Module: Forestry Application</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="forestry_intro.html">14.1. Lesson: Forestry Module Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="map_georeferencing.html">14.2. Lesson: Georeferencing a Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stands_digitazing.html">14.3. Lesson: Digitizing Forest Stands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="updating_stands.html">14.4. Lesson: Updating Forest Stands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systematic_sampling.html">14.5. Lesson: Systematic Sampling Design</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">14.6. Lesson: Creating Detailed Maps with the Atlas Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-preparing-the-print-layout">14.6.1.  Follow Along: Preparing the Print Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-adding-background-map">14.6.2.  Follow Along: Adding Background Map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-changing-the-symbology-of-the-layers">14.6.3.  Try Yourself Changing the Symbology of the Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-create-a-basic-map-template">14.6.4.  Try Yourself Create a Basic Map Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-adding-more-elements-to-the-print-layout">14.6.5.  Follow Along: Adding More Elements to the Print Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-creating-an-atlas-coverage">14.6.6.  Follow Along: Creating an Atlas Coverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-setting-up-the-atlas-tool">14.6.7.  Follow Along: Setting Up the Atlas Tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-editing-the-coverage-layer">14.6.8.  Follow Along: Editing the Coverage Layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-printing-the-maps">14.6.9.  Follow Along: Printing the Maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">14.6.10. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">14.6.11. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="parameters_calculation.html">14.7. Lesson: Calculating the Forest Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basic_lidar.html">14.8. Lesson: DEM from LiDAR Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="results_map.html">14.9. Lesson: Map Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">14. </span>Module: Forestry Application</a> &raquo;</li>
+      <li><span class="section-number">14.6. </span>Lesson: Creating Detailed Maps with the Atlas Tool</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/forestry/forest_maps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="systematic_sampling.html" class="btn btn-neutral float-left" title="14.5. Lesson: Systematic Sampling Design" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parameters_calculation.html" class="btn btn-neutral float-right" title="14.7. Lesson: Calculating the Forest Parameters" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-creating-detailed-maps-with-the-atlas-tool">
+<h1><span class="section-number">14.6. </span>Lesson: Creating Detailed Maps with the Atlas Tool<a class="headerlink" href="#ls-creating-detailed-maps-with-the-atlas-tool" title="Permalink to this headline"></a></h1>
+<p>The systematic sampling design is ready and the field teams have loaded the GPS
+coordinates in their navigation devices. They also have a field data form where
+they will collect the information measured at every sample plot. To easier find
+their way to every sample plot, they have requested a number of detail maps
+where some ground information can be clearly seen along with a smaller subset
+of sample plots and some information about the map area. You can use the Atlas
+tool to automatically generate a number of maps with a common format.</p>
+<p><strong>The goal for this lesson:</strong> Learn to use the Atlas tool in QGIS to generate
+detailed printable maps to assist in the field inventory work.</p>
+<section id="basic-fa-preparing-the-print-layout">
+<h2><span class="section-number">14.6.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Preparing the Print Layout<a class="headerlink" href="#basic-fa-preparing-the-print-layout" title="Permalink to this headline"></a></h2>
+<p>Before we can automate the detailed maps of the forest area and our sampling
+plots, we need to create a map template with all the elements we consider
+useful for the field work. Of course the most important will be a properly
+styled but, as you have seen before, you will also need to add lots of other
+elements that complete the printed map.</p>
+<p>Open the QGIS project from the previous lesson <kbd class="kbd docutils literal notranslate">forest_inventory.qgs</kbd>.
+You should have at least the following layers:</p>
+<ul class="simple">
+<li><p><kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> (with a 50% transparency, green fill and darker
+green border lines).</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">systematic_plots_clip</kbd>.</p></li>
+<li><p><kbd class="kbd docutils literal notranslate">rautjarvi_aerial</kbd>.</p></li>
+</ul>
+<p>Save the project with a new name, <kbd class="kbd docutils literal notranslate">map_creation.qgs</kbd>.</p>
+<p>To create a printable map, remember that you use the <span class="guilabel">Layout Manager</span>:</p>
+<ul class="simple">
+<li><p>Open <span class="menuselection">Project ► Layout Manager…</span>.</p></li>
+<li><p>In the <span class="guilabel">Layout manager</span> dialog.</p></li>
+<li><p>Click the <span class="guilabel">Add</span> button and name your print layout <kbd class="kbd docutils literal notranslate">forest_map</kbd>.</p></li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+<li><p>Click the <span class="guilabel">Show</span> button.</p></li>
+</ul>
+<p>Set up the printer options so that your maps will suit your paper and margins,
+for an A4 paper:</p>
+<ul class="simple">
+<li><p>Open menuselection:<cite>Layout –&gt; Page Setup…</cite>.</p></li>
+<li><p><span class="guilabel">Size</span> is <span class="guilabel">A4 (217 x 297 mm)</span>.</p></li>
+<li><p><span class="guilabel">Orientation</span> is <span class="guilabel">Landscape</span>.</p></li>
+<li><p><span class="guilabel">Margins (millimeters)</span> are all set to <kbd class="kbd docutils literal notranslate">5</kbd>.</p></li>
+</ul>
+<p>In the <span class="guilabel">Print Layout</span> window, go to the <span class="guilabel">Composition</span> tab
+(on the right panel) and make sure that these settings for <span class="guilabel">Paper and
+quality</span> are the same you defined for the printer:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Size</span>: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">A4</kbd> <kbd class="kbd docutils literal notranslate">(210x297mm)</kbd></kbd>.</p></li>
+<li><p><span class="guilabel">Orientation</span>: <kbd class="kbd docutils literal notranslate">Landscape</kbd>.</p></li>
+<li><p><span class="guilabel">Quality</span>: <kbd class="kbd docutils literal notranslate">300dpi</kbd>.</p></li>
+</ul>
+<p>Composing a map is easier if you make use of the canvas grid to position the
+different elements. Review the settings for the layout grid:</p>
+<ul class="simple">
+<li><p>In the <span class="guilabel">Composition</span> tab expand the <span class="guilabel">Grid</span> region.</p></li>
+<li><p>Check that <span class="guilabel">Spacing</span> is set to <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">10</kbd> <kbd class="kbd docutils literal notranslate">mm</kbd></kbd>.</p></li>
+<li><p>And that <span class="guilabel">Tolerance</span> is set to <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">2</kbd> <kbd class="kbd docutils literal notranslate">mm</kbd></kbd>.</p></li>
+</ul>
+<p>You need to activate the use of the grid:</p>
+<ul class="simple">
+<li><p>Open the <span class="menuselection">View</span> menu.</p></li>
+<li><p>Check <span class="guilabel">Show grid</span>.</p></li>
+<li><p>Check <span class="guilabel">Snap to grid</span>.</p></li>
+<li><p>Notice that options for using <span class="guilabel">guides</span> are checked by default, which
+allows you to see red guiding lines when you are moving elements in the layout.</p></li>
+</ul>
+<p>Now you can start to add elements to your layout. Add first a map element so
+you can review how the map canvas looks as you will be making changes in the layers symbology:</p>
+<ul class="simple">
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionAddMap.png"><img alt="addMap" src="../../../_images/mActionAddMap.png" style="width: 1.5em;" /></a> <sup>Add Map</sup> button.</p></li>
+<li><p>Click and drag a box on the canvas so that the map occupies most of it.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/composer_1.png" src="../../../_images/composer_1.png" />
+</figure>
+<p>Notice how the mouse cursor snaps to the canvas grid. Use this function when
+you add other elements. If you want to have more accuracy, change the grid
+<span class="guilabel">Spacing</span> setting. If for some reason you don’t want to snap to the
+grid at some point, you can always check or uncheck it in the
+<span class="menuselection">View</span> menu.</p>
+</section>
+<section id="basic-fa-adding-background-map">
+<h2><span class="section-number">14.6.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Adding Background Map<a class="headerlink" href="#basic-fa-adding-background-map" title="Permalink to this headline"></a></h2>
+<p>Leave the layout open but go back to the map. Lets add some background data and
+create some styling so that the map content is as clear as possible.</p>
+<ul class="simple">
+<li><p>Add the background raster <code class="file docutils literal notranslate"><span class="pre">basic_map.tif</span></code> that you can find in the
+<code class="file docutils literal notranslate"><span class="pre">exercise_data\forestry\</span></code> folder.</p></li>
+<li><p>When prompted select the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">ETRS89</kbd> <kbd class="kbd docutils literal notranslate">/</kbd> <kbd class="kbd docutils literal notranslate">ETRS</kbd>-<kbd class="kbd docutils literal notranslate">TM35FIN</kbd></kbd> CRS for the raster.</p></li>
+</ul>
+<p>As you can see the background map is already styled. This type of ready to use
+cartography raster is very common. It is created from vector data, styled in a
+standard format and stored as a raster so that you don’t have to bother styling
+several vector layers and worrying about getting a good result.</p>
+<ul class="simple">
+<li><p>Now zoom to your sample plots, so that you can see only about four or five
+lines of plots.</p></li>
+</ul>
+<p>The current styling of the sample plots is not the best, but how does it look
+in the print layout?:</p>
+<figure class="align-center">
+<img alt="../../../_images/plots_zoom1-2.png" src="../../../_images/plots_zoom1-2.png" />
+</figure>
+<p>While during the last exercises, the white buffer was OK on top of the aerial
+image, now that the background image is mostly white you barely can see the
+labels. You can also check how it looks like on the layout:</p>
+<ul class="simple">
+<li><p>Go to the <span class="guilabel">Print Layout</span> window.</p></li>
+<li><p>Use the <a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> button to select the map element in the layout.</p></li>
+<li><p>Go to the <span class="guilabel">Item properties</span> tab.</p></li>
+<li><p>Under <span class="guilabel">Extents</span> click on <span class="guilabel">Set to map canvas extent</span>.</p></li>
+<li><p>If you need to refresh the element, under <span class="guilabel">Main properties</span> click
+on the <span class="guilabel">Update preview</span>.</p></li>
+</ul>
+<p>Obviously this is not good enough, you want to make the plot numbers as clearly visible as possible for the field teams.</p>
+</section>
+<section id="basic-ty-changing-the-symbology-of-the-layers">
+<h2><span class="section-number">14.6.3. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Changing the Symbology of the Layers<a class="headerlink" href="#basic-ty-changing-the-symbology-of-the-layers" title="Permalink to this headline"></a></h2>
+<p>You have been working in <a class="reference internal" href="../basic_map/index.html"><span class="doc">Module: Creating and Exploring a Basic Map</span></a> with symbology and in
+<a class="reference internal" href="../vector_classification/index.html"><span class="doc">Module: Classifying Vector Data</span></a> with labeling. Go back to those modules
+if you need to refresh about some of the available options and tools. Your goal
+is to get the plots locations and their name to be as clearly visible as
+possible but always allowing to see the background map elements. You can take
+some guidance from this image:</p>
+<figure class="align-center">
+<img alt="../../../_images/plots_zoom2_symbology.png" src="../../../_images/plots_zoom2_symbology.png" />
+</figure>
+<p>You will use later the the green styling of the <kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> layer.
+In order to keep it, and have a visualization of it that shows only the stand borders:</p>
+<ul class="simple">
+<li><p>Right click on <kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> and select <span class="guilabel">Duplicate</span></p></li>
+<li><p>you get a new layer named <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> <kbd class="kbd docutils literal notranslate">copy</kbd></kbd> that you can use to
+define a different style, for example with no filling and red borders.</p></li>
+</ul>
+<p>Now you have two different visualizations of the forest stands and you can decide
+which one to display for your detail map.</p>
+<p>Go back to the <span class="guilabel">Print Layout</span> window often to see what the map would
+look like. For the purposes of creating detailed maps, you are looking for a
+symbology that looks good not at the scale of the whole forest area (left image
+below) but at a closer scale (right image below). Remember to use
+<span class="guilabel">Update preview</span> and <span class="guilabel">Set to map canvas extent</span> whenever
+you change the zoom in your map or the layout.</p>
+<figure class="align-center">
+<img alt="../../../_images/composer_2-3.png" src="../../../_images/composer_2-3.png" />
+</figure>
+</section>
+<section id="basic-ty-create-a-basic-map-template">
+<h2><span class="section-number">14.6.4. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Create a Basic Map Template<a class="headerlink" href="#basic-ty-create-a-basic-map-template" title="Permalink to this headline"></a></h2>
+<p>Once you have a symbology your happy with, you are ready to add some more information
+to your printed map. Add at least the following elements:</p>
+<ul class="simple">
+<li><p>Title.</p></li>
+<li><p>A scale bar.</p></li>
+<li><p>Grid frame for your map.</p></li>
+<li><p>Coordinates on the sides of the grid.</p></li>
+</ul>
+<p>You have created a similar composition already in <a class="reference internal" href="../map_composer/index.html"><span class="doc">Module: Laying out the Maps</span></a>.
+Go back to that module as you need. You can look at this example image for reference:</p>
+<figure class="align-center">
+<img alt="../../../_images/map_template1.png" src="../../../_images/map_template1.png" />
+</figure>
+<p>Export your map as an image and look at it.</p>
+<ul class="simple">
+<li><p><span class="menuselection">Layout ► Export as Image…</span>.</p></li>
+<li><p>Use for example the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">JPG</kbd> <kbd class="kbd docutils literal notranslate">format</kbd></kbd>.</p></li>
+</ul>
+<p>That is what it will look like when printed.</p>
+</section>
+<section id="basic-fa-adding-more-elements-to-the-print-layout">
+<h2><span class="section-number">14.6.5. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Adding More Elements to the Print Layout<a class="headerlink" href="#basic-fa-adding-more-elements-to-the-print-layout" title="Permalink to this headline"></a></h2>
+<p>As you probably noticed in the suggested map template images, there are plenty
+of room on the right side of the canvas. Lets see what else could go in there.
+For the purposes of our map, a legend is not really necessary, but an overview
+map and some text boxes could add value to the map.</p>
+<p>The overview map will help the field teams place the detail map inside the
+general forest area:</p>
+<ul class="simple">
+<li><p>Add another map element to the canvas, right under the title text.</p></li>
+<li><p>In the <span class="guilabel">Item properties</span> tab, open the <span class="guilabel">Overview</span> dropdown.</p></li>
+<li><p>Set the <span class="guilabel">Overview frame</span> to <span class="guilabel">Map 0</span>. This creates a
+shadowed rectangle over the smaller map representing the extent visible in
+the bigger map.</p></li>
+<li><p>Check also the <span class="guilabel">Frame</span> option with a black color and a
+<span class="guilabel">Thickness</span> of <kbd class="kbd docutils literal notranslate">0.30</kbd>.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/more_elements1.png" src="../../../_images/more_elements1.png" />
+</figure>
+<p>Notice that your overview map is not really giving an overview of the forest
+area which is what you want. You want this map to represent the whole forest
+area and you want it to show only the background map and the
+<code class="file docutils literal notranslate"><span class="pre">forest_stands_2012</span></code> layer, and not display the sample plots. And also
+you want to lock its view so it does not change anymore whenever you change
+the visibility or order of the layers.</p>
+<ul class="simple">
+<li><p>Go back to the map, but don’t close the <span class="guilabel">Print Layout</span>.</p></li>
+<li><p>Right click the <kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> layer and click on <span class="guilabel">Zoom
+to Layer Extent</span>.</p></li>
+<li><p>Deactivate all layers except for <kbd class="kbd docutils literal notranslate">basic_map</kbd> and <kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd>.</p></li>
+<li><p>Go back to the <span class="guilabel">Print Layout</span>.</p></li>
+<li><p>With the small map selected, click the <span class="guilabel">Set to map canvas extent</span>
+to set its extents to what you can see in the map window.</p></li>
+<li><p>Lock the view for the overview map by checking <span class="guilabel">Lock layers for
+map item</span> under <span class="guilabel">Main properties</span>.</p></li>
+</ul>
+<p>Now your overview map is more what you expected and its view will not change
+anymore. But, of course, now your detail map is not showing anymore the stand
+borders nor the sample plots. Lets fix that:</p>
+<ul class="simple">
+<li><p>Go to the map window again and select the layers you want to be visible
+(<kbd class="kbd docutils literal notranslate">systematic_plots_clip</kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">forest_stands_2012</kbd> <kbd class="kbd docutils literal notranslate">copy</kbd></kbd> and <kbd class="kbd docutils literal notranslate">Basic_map</kbd>).</p></li>
+<li><p>Zoom again to have only a few lines of sample plots visible.</p></li>
+<li><p>Go back to the <span class="guilabel">Print Layout</span> window.</p></li>
+<li><p>Select the bigger map in your layout (<a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a>).</p></li>
+<li><p>In <span class="guilabel">Item properties</span> click on <span class="guilabel">Update preview</span> and
+<span class="guilabel">Set to map canvas extent</span>.</p></li>
+</ul>
+<p>Notice that only the bigger map is displaying the current map view, and the
+small overview map is keeping the same view you had when you locked it.</p>
+<p>Note also that the overview is showing a shaded frame for the extent shown in the detail map.</p>
+<figure class="align-center">
+<img alt="../../../_images/more_elements2.png" src="../../../_images/more_elements2.png" />
+</figure>
+<p>Your template map is almost ready. Add now two text boxes below the map, one
+containing the text ‘Detailed map zone: ‘ and the other one ‘Remarks: ‘. Place
+them as you can see in the image above.</p>
+<p>You can also add a North arrow to the overview map:</p>
+<ul class="simple">
+<li><p>Use the <span class="guilabel">Add image</span> tool, <a class="reference internal" href="../../../_images/mActionAddImage.png"><img alt="addImage" src="../../../_images/mActionAddImage.png" style="width: 1.5em;" /></a>.</p></li>
+<li><p>Click at the upper right corner of the overview map.</p></li>
+<li><p>In <span class="guilabel">Item properties</span> open <span class="guilabel">Search directories</span> and browse
+for an arrow image.</p></li>
+<li><p>Under <span class="guilabel">Image rotation</span>, check the <span class="guilabel">Sync with map</span> and
+select <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Map</kbd> <kbd class="kbd docutils literal notranslate">1</kbd></kbd> (the overview map).</p></li>
+<li><p>Uncheck <span class="guilabel">Background</span>.</p></li>
+<li><p>Resize the arrow image to a size that looks good on the small map.</p></li>
+</ul>
+<p>The basic map layout is ready, now you want to make use of the Atlas tool to
+generate as many detail maps in this format as you consider necessary.</p>
+</section>
+<section id="basic-fa-creating-an-atlas-coverage">
+<h2><span class="section-number">14.6.6. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Creating an Atlas Coverage<a class="headerlink" href="#basic-fa-creating-an-atlas-coverage" title="Permalink to this headline"></a></h2>
+<p>The Atlas coverage is just a vector layer that will be used to generate the
+detail maps, one map for every feature in the coverage. To get an idea of what
+you will do next, here is a full set of detail maps for the forest area:</p>
+<figure class="align-center">
+<img alt="../../../_images/preview_atlas_results.png" src="../../../_images/preview_atlas_results.png" />
+</figure>
+<p>The coverage could be any existing layer, but usually it makes more sense to
+create one for the specific purpose. Let’s create a grid of polygons covering
+the forest area:</p>
+<ul class="simple">
+<li><p>In the QGIS map view, open <span class="menuselection">Vector ► Research Tools ► Vector grid</span>.</p></li>
+<li><p>Set the tool as shown in this image:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/coverage_polygons.png" src="../../../_images/coverage_polygons.png" />
+</figure>
+<ul class="simple">
+<li><p>Save the output as <kbd class="kbd docutils literal notranslate">atlas_coverage.shp</kbd>.</p></li>
+<li><p>Style the new <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd> layer so that the polygons have no filling.</p></li>
+</ul>
+<p>The new polygons are covering the whole forest area and they give you an idea
+of what each map (created from each polygon) will contain.</p>
+<figure class="align-center">
+<img alt="../../../_images/atlas_coverage.png" src="../../../_images/atlas_coverage.png" />
+</figure>
+</section>
+<section id="basic-fa-setting-up-the-atlas-tool">
+<h2><span class="section-number">14.6.7. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Setting Up the Atlas Tool<a class="headerlink" href="#basic-fa-setting-up-the-atlas-tool" title="Permalink to this headline"></a></h2>
+<p>The last step is to set up the Atlas tool:</p>
+<ul class="simple">
+<li><p>Go back to the <span class="guilabel">Print Layout</span>.</p></li>
+<li><p>In the panel on the right, go to the <span class="guilabel">Atlas generation</span> tab.</p></li>
+<li><p>Set the options as follows:</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/atlas_settings.png" src="../../../_images/atlas_settings.png" />
+</figure>
+<p>That tells the Atlas tool to use the features (polygons) inside
+<code class="file docutils literal notranslate"><span class="pre">atlas_coverage</span></code> as the focus for every detail map. It will output one
+map for every feature in the layer. The <span class="guilabel">Hidden coverage layer</span> tells
+the Atlas to not show the polygons in the output maps.</p>
+<p>One more thing needs to be done. You need to tell the Atlas tool what map
+element is going to be updated for every output map. By now, you probably can
+guess that the map to be changed for every feature is the one you have prepared
+to contain detail views of the sample plots, that is the bigger map element in
+your canvas:</p>
+<ul class="simple">
+<li><p>Select the bigger map element.</p></li>
+<li><p>Go to the <span class="guilabel">Item properties</span> tab.</p></li>
+<li><p>In the list, check <span class="guilabel">Controlled by atlas</span>.</p></li>
+<li><p>And set the <span class="guilabel">Marging around feature</span> to <kbd class="kbd docutils literal notranslate">10%</kbd>. The view extent
+will be 10% bigger than the polygons, which means that your detail maps will
+have a 10% overlap.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/controlled_by_atlas.png" src="../../../_images/controlled_by_atlas.png" />
+</figure>
+<p>Now you can use the preview tool for Atlas maps to review what your maps will look like:</p>
+<ul class="simple">
+<li><p>Activate the Atlas previews using the button <a class="reference internal" href="../../../_images/mIconAtlas.png"><img alt="atlas" src="../../../_images/mIconAtlas.png" style="width: 1.5em;" /></a> or if your Atlas toolbar
+is not visible, via <span class="menuselection">Atlas ► Preview Atlas</span>.</p></li>
+<li><p>You can use the arrows in the Atlas tool bar or in the <span class="menuselection">Atlas</span>
+menu to move through maps that will be created.</p></li>
+</ul>
+<p>Note that some of them cover areas that are not interesting. Lets do something
+about it and save some trees by not printing those useless maps.</p>
+</section>
+<section id="basic-fa-editing-the-coverage-layer">
+<h2><span class="section-number">14.6.8. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Editing the Coverage Layer<a class="headerlink" href="#basic-fa-editing-the-coverage-layer" title="Permalink to this headline"></a></h2>
+<p>Besides removing the polygons for those areas that are not interesting, you can
+also customize the text labels in your map to be generated with content from the
+<span class="guilabel">Attribute table</span> of your coverage layer:</p>
+<ul class="simple">
+<li><p>Go back to the map view.</p></li>
+<li><p>Enable editing for the <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd> layer.</p></li>
+<li><p>Select the polygons that are selected (in yellow) in the image below.</p></li>
+<li><p>Remove the selected polygons.</p></li>
+<li><p>Disable editing and save the edits.</p></li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/remove_polygons.png" src="../../../_images/remove_polygons.png" />
+</figure>
+<p>You can go back to the <span class="guilabel">Print Layout</span> and check that the previews of
+the Atlas use only the polygons you left in the layer.</p>
+<p>The coverage layer you are using does not yet have useful information that you
+could use to customize the content of the labels in your map. The first step is
+to create them, you can add for example a zone code for the polygon areas and a
+field with some remarks for the field teams to have into account:</p>
+<ul class="simple">
+<li><p>Open the <span class="guilabel">Attribute table</span> for the <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd> layer.</p></li>
+<li><p>Enable editing.</p></li>
+<li><p>Use the <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> calculator to create and populate the following two fields.</p></li>
+<li><p>Create a field named <kbd class="kbd docutils literal notranslate">Zone</kbd> and type <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Whole</kbd> <kbd class="kbd docutils literal notranslate">number</kbd> <kbd class="kbd docutils literal notranslate">(integer)</kbd></kbd>.</p></li>
+<li><p>In the <span class="guilabel">Expression</span> box write/copy/construct <kbd class="kbd docutils literal notranslate">$rownum</kbd>.</p></li>
+<li><p>Create another field named <kbd class="kbd docutils literal notranslate">Remarks</kbd>, of type <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Text</kbd> <kbd class="kbd docutils literal notranslate">(string)</kbd></kbd> and
+a width of <kbd class="kbd docutils literal notranslate">255</kbd>.</p></li>
+<li><p>In the <span class="guilabel">Expression</span> box write <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">'No</kbd> <kbd class="kbd docutils literal notranslate">remarks.'</kbd></kbd>. This will set
+all the default value for all the polygons.</p></li>
+</ul>
+<p>The forest manager will have some information about the area that might be useful
+when visiting the area. For example, the existence of a bridge, a swamp or the
+location of a protected species. The <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd> layer is probably in
+edit mode still, add the following text in the <kbd class="kbd docutils literal notranslate">Remarks</kbd> field to the
+corresponding polygons (double click the cell to edit it):</p>
+<ul class="simple">
+<li><p>For the <kbd class="kbd docutils literal notranslate">Zone</kbd> 2: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Bridge</kbd> <kbd class="kbd docutils literal notranslate">to</kbd> <kbd class="kbd docutils literal notranslate">the</kbd> <kbd class="kbd docutils literal notranslate">North</kbd> <kbd class="kbd docutils literal notranslate">of</kbd> <kbd class="kbd docutils literal notranslate">plot</kbd> <kbd class="kbd docutils literal notranslate">19.</kbd> <kbd class="kbd docutils literal notranslate">Siberian</kbd> <kbd class="kbd docutils literal notranslate">squirrel</kbd>
+<kbd class="kbd docutils literal notranslate">between</kbd> <kbd class="kbd docutils literal notranslate">p_13</kbd> <kbd class="kbd docutils literal notranslate">and</kbd> <kbd class="kbd docutils literal notranslate">p_14.</kbd></kbd>.</p></li>
+<li><p>For the <kbd class="kbd docutils literal notranslate">Zone</kbd> 6: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Difficult</kbd> <kbd class="kbd docutils literal notranslate">to</kbd> <kbd class="kbd docutils literal notranslate">transit</kbd> <kbd class="kbd docutils literal notranslate">in</kbd> <kbd class="kbd docutils literal notranslate">swamp</kbd> <kbd class="kbd docutils literal notranslate">to</kbd> <kbd class="kbd docutils literal notranslate">the</kbd> <kbd class="kbd docutils literal notranslate">North</kbd> <kbd class="kbd docutils literal notranslate">of</kbd> <kbd class="kbd docutils literal notranslate">the</kbd> <kbd class="kbd docutils literal notranslate">lake.</kbd></kbd>.</p></li>
+<li><p>For the <kbd class="kbd docutils literal notranslate">Zone</kbd> 7: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Siberian</kbd> <kbd class="kbd docutils literal notranslate">squirrel</kbd> <kbd class="kbd docutils literal notranslate">to</kbd> <kbd class="kbd docutils literal notranslate">the</kbd> <kbd class="kbd docutils literal notranslate">South</kbd> <kbd class="kbd docutils literal notranslate">East</kbd> <kbd class="kbd docutils literal notranslate">of</kbd> <kbd class="kbd docutils literal notranslate">p_94.</kbd></kbd>.</p></li>
+<li><p>Disable editing and save your edits.</p></li>
+</ul>
+<p>Almost ready, now you have to tell the Atlas tool that you want some of the text
+labels to use the information from the <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd> layer’s attribute table.</p>
+<ul class="simple">
+<li><p>Go back to the <span class="guilabel">Print Layout</span>.</p></li>
+<li><p>Select the text label containing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Detailed</kbd> <kbd class="kbd docutils literal notranslate">map...</kbd></kbd>.</p></li>
+<li><p>Set the <span class="guilabel">Font</span> size to <kbd class="kbd docutils literal notranslate">12</kbd>.</p></li>
+<li><p>Set the cursor at the end of the text in the label.</p></li>
+<li><p>In  the <span class="guilabel">Item properties</span> tab, inside the <span class="guilabel">Main properties</span>
+click on <span class="guilabel">Insert or Edit an Expression…</span>.</p></li>
+<li><p>In the <span class="guilabel">Function list</span> double click on the field <kbd class="kbd docutils literal notranslate">Zone</kbd> under
+<span class="guilabel">Field and Values</span>.</p></li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+<li><p>The text inside the box in the <span class="guilabel">Item properties</span> should show
+<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Detail</kbd> <kbd class="kbd docutils literal notranslate">map</kbd> <kbd class="kbd docutils literal notranslate">inventory</kbd> <kbd class="kbd docutils literal notranslate">zone:</kbd> <kbd class="kbd docutils literal notranslate">[%</kbd> <kbd class="kbd docutils literal notranslate">&quot;Zone&quot;</kbd> <kbd class="kbd docutils literal notranslate">%]</kbd></kbd>. Note that the <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">[%</kbd> <kbd class="kbd docutils literal notranslate">&quot;Zone&quot;</kbd> <kbd class="kbd docutils literal notranslate">%]</kbd></kbd>
+will be substituted by the value of the field <kbd class="kbd docutils literal notranslate">Zone</kbd> for the corresponding
+feature from the layer <kbd class="kbd docutils literal notranslate">atlas_coverage</kbd>.</p></li>
+</ul>
+<p>Test the contents of the label by looking at the different Atlas preview maps.</p>
+<p>Do the same for the labels with the text <kbd class="kbd docutils literal notranslate">Remarks:</kbd> using the field with
+the zone information. You can leave a break line before you enter the expression.
+You can see the result for the preview of zone 2 in the image below:</p>
+<figure class="align-center">
+<img alt="../../../_images/preview_zone2.png" src="../../../_images/preview_zone2.png" />
+</figure>
+<p>Use the Atlas preview to browse through all the maps you will be creating soon
+and enjoy!</p>
+</section>
+<section id="basic-fa-printing-the-maps">
+<h2><span class="section-number">14.6.9. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Printing the Maps<a class="headerlink" href="#basic-fa-printing-the-maps" title="Permalink to this headline"></a></h2>
+<p>Last but not least, printing or exporting your maps to image files or PDF files.
+You can use the <span class="menuselection">Atlas ► Export Atlas as Images…</span> or
+<span class="menuselection">Atlas ► Export Atlas as PDF…</span>. Currently the SVG export
+format is not working properly and will give a poor result.</p>
+<p>Lets print the maps as a single PDF that you can send to the field office for printing:</p>
+<ul class="simple">
+<li><p>Go to the <span class="guilabel">Atlas generation</span> tab on the right panel.</p></li>
+<li><p>Under the <span class="guilabel">Output</span> check the <span class="guilabel">Single file export when
+possible</span>. This will put all the maps together into a PDF file, if this option
+is not checked you will get one file for every map.</p></li>
+<li><p>Open <span class="menuselection">Layout ► Export as PDF…</span>.</p></li>
+<li><p>Save the PDF file as <kbd class="kbd docutils literal notranslate">inventory_2012_maps.pdf</kbd> in your
+<kbd class="kbd docutils literal notranslate">exercise_data\forestry\samplig\map_creation\</kbd> folder.</p></li>
+</ul>
+<p>Open the PDF file to check that everything went as expected.</p>
+<p>You could just as easily create separate images for every map (remember to
+uncheck the single file creation), here you can see the thumbnails of the
+images that would be created:</p>
+<figure class="align-center">
+<img alt="../../../_images/maps_as_images.png" src="../../../_images/maps_as_images.png" />
+</figure>
+<p>In the <span class="guilabel">Print Layout</span>, save your map as a layout template as
+<kbd class="kbd docutils literal notranslate">forestry_atlas.qpt</kbd> in your <kbd class="kbd docutils literal notranslate">exercise_data\forestry\map_creation\</kbd>
+folder. Use <span class="menuselection">Layout ► Save as Template</span>. You will be able to
+use this template again and again.</p>
+<p>Close the <span class="guilabel">Print Layout</span> and save your QGIS project.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">14.6.10. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have managed to create a template map that can be used to automatically
+generate detail maps to be used in the field to help navigate to the different
+plots. As you noticed, this was not an easy task but the benefit will come when
+you need to create similar maps for other regions and you can use the template
+you just saved.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">14.6.11. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>In the next lesson, you will see how you can use LiDAR data to create a DEM and
+then use it to your enhance your data and maps visibility.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="systematic_sampling.html" class="btn btn-neutral float-left" title="14.5. Lesson: Systematic Sampling Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="parameters_calculation.html" class="btn btn-neutral float-right" title="14.7. Lesson: Calculating the Forest Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/forest_maps.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/forestry/forest_maps.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/forestry/forest_maps.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/forestry/forest_maps.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/forestry/forest_maps.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/forestry/forest_maps.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/forestry/forest_maps.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/forestry/forest_maps.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/forestry/forest_maps.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/forestry/forest_maps.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/forestry/forest_maps.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/forestry/forest_maps.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/forestry/forest_maps.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/forestry/forest_maps.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.1. QGIS algorithm provider &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/index.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.1.1. Cartography" href="cartography.html" />
+    <link rel="prev" title="25. Processing providers and algorithms" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/index.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">25.1. QGIS algorithm provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">25.1.1. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">25.1.2. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">25.1.3. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">25.1.4. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">25.1.5. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">25.1.6. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">25.1.7. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">25.1.8. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">25.1.9. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">25.1.10. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">25.1.11. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">25.1.12. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">25.1.13. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">25.1.14. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">25.1.15. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">25.1.16. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">25.1.17. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">25.1.18. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">25.1.19. Vector table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">25.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+      <li><span class="section-number">25.1. </span>QGIS algorithm provider</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="25. Processing providers and algorithms" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cartography.html" class="btn btn-neutral float-right" title="25.1.1. Cartography" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qgis-algorithm-provider">
+<span id="qgis-algorithms"></span><h1><span class="section-number">25.1. </span>QGIS algorithm provider<a class="headerlink" href="#qgis-algorithm-provider" title="Permalink to this headline"></a></h1>
+<p>QGIS algorithm provider implements various analysis and geoprocessing operations
+using mostly only QGIS API. So almost all algorithms from this provider will work
+“out of the box” without any additional configuration.</p>
+<p>This provider incorporates some algorithms from plugins and also adds its own
+algorithms.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cartography.html">25.1.1. Cartography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#align-points-to-features">25.1.1.1. Align points to features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#combine-style-databases">25.1.1.2. Combine style databases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#create-categorized-renderer-from-styles">25.1.1.3. Create categorized renderer from styles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#create-style-database-from-project">25.1.1.4. Create style database from project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-atlas-layout-as-image">25.1.1.5. Export atlas layout as image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-atlas-layout-as-pdf">25.1.1.6. Export atlas layout as PDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-print-layout-as-image">25.1.1.7. Export print layout as image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#export-print-layout-as-pdf">25.1.1.8. Export print layout as pdf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#print-layout-map-extent-to-layer">25.1.1.9. Print layout map extent to layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#set-layer-style">25.1.1.10. Set layer style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cartography.html#topological-coloring">25.1.1.11. Topological coloring</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">25.1.2. Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.html#export-to-postgresql">25.1.2.1. Export to PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#export-to-spatialite">25.1.2.2. Export to SpatiaLite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#package-layers">25.1.2.3. Package layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#postgresql-execute-and-load-sql">25.1.2.4. PostgreSQL execute and load SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#postgresql-execute-sql">25.1.2.5. PostgreSQL execute SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#spatialite-execute-sql">25.1.2.6. SpatiaLite execute SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#spatialite-execute-sql-registered-db">25.1.2.7. SpatiaLite execute SQL (registered DB)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filetools.html">25.1.3. File tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filetools.html#download-file">25.1.3.1. Download file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interpolation.html">25.1.4. Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#heatmap-kernel-density-estimation">25.1.4.1. Heatmap (kernel density estimation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#qgisidwinterpolation">25.1.4.2. IDW Interpolation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#line-density">25.1.4.3. Line Density</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolation.html#tin-interpolation">25.1.4.4. TIN Interpolation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="layertools.html">25.1.5. Layer tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#export-layer-s-information">25.1.5.1. Export layer(s) information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#export-to-spreadsheet">25.1.5.2. Export to spreadsheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="layertools.html#extract-layer-extent">25.1.5.3. Extract layer extent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modelertools.html">25.1.6. Modeler tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#conditional-branch">25.1.6.1. Conditional branch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#create-directory">25.1.6.2. Create directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#feature-filter">25.1.6.3. Feature filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#filter-by-geometry-type">25.1.6.4. Filter by geometry type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#filter-layers-by-type">25.1.6.5. Filter layers by type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#load-layer-into-project">25.1.6.6. Load layer into project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#raise-exception">25.1.6.7. Raise exception</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#raise-warning">25.1.6.8. Raise warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#rename-layer">25.1.6.9. Rename layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#save-log-to-file">25.1.6.10. Save log to file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#set-project-variable">25.1.6.11. Set project variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#string-concatenation">25.1.6.12. String concatenation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelertools.html#variable-distance-buffer">25.1.6.13. Variable distance buffer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="networkanalysis.html">25.1.7. Network analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#service-area-from-layer">25.1.7.1. Service area (from layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#service-area-from-point">25.1.7.2. Service area (from point)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-layer-to-point">25.1.7.3. Shortest path (layer to point)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-point-to-layer">25.1.7.4. Shortest path (point to layer)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="networkanalysis.html#shortest-path-point-to-point">25.1.7.5. Shortest path (point to point)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">25.1.8. Plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#bar-plot">25.1.8.1. Bar plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#box-plot">25.1.8.2. Box plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#mean-and-standard-deviation-plot">25.1.8.3. Mean and standard deviation plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#polar-plot">25.1.8.4. Polar plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#raster-layer-histogram">25.1.8.5. Raster layer histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-histogram">25.1.8.6. Vector layer histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-scatterplot">25.1.8.7. Vector layer scatterplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plots.html#vector-layer-scatterplot-3d">25.1.8.8. Vector layer scatterplot 3D</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rasteranalysis.html">25.1.9. Raster analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percent-rank-from-value">25.1.9.1. Cell stack percent rank from value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percentile">25.1.9.2. Cell stack percentile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-stack-percentrank-from-raster-layer">25.1.9.3. cell stack percentrank from raster layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#cell-statistics">25.1.9.4. Cell statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#equal-to-frequency">25.1.9.5. Equal to frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-gaussian-membership">25.1.9.6. Fuzzify raster (gaussian membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-large-membership">25.1.9.7. Fuzzify raster (large membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-linear-membership">25.1.9.8. Fuzzify raster (linear membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-near-membership">25.1.9.9. Fuzzify raster (near membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-power-membership">25.1.9.10. Fuzzify raster (power membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#fuzzify-raster-small-membership">25.1.9.11. Fuzzify raster (small membership)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#greater-than-frequency">25.1.9.12. Greater than frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#highest-position-in-raster-stack">25.1.9.13. Highest position in raster stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#less-than-frequency">25.1.9.14. Less than frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#lowest-position-in-raster-stack">25.1.9.15. Lowest position in raster stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-boolean-and">25.1.9.16. Raster boolean AND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-boolean-or">25.1.9.17. Raster boolean OR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-calculator">25.1.9.18. Raster calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-properties">25.1.9.19. Raster layer properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-statistics">25.1.9.20. Raster layer statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-unique-values-report">25.1.9.21. Raster layer unique values report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-layer-zonal-statistics">25.1.9.22. Raster layer zonal statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#raster-surface-volume">25.1.9.23. Raster surface volume</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#reclassify-by-layer">25.1.9.24. Reclassify by layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#reclassify-by-table">25.1.9.25. Reclassify by table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#rescale-raster">25.1.9.26. Rescale raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#round-raster">25.1.9.27. Round raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#sample-raster-values">25.1.9.28. Sample raster values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#zonal-histogram">25.1.9.29. Zonal histogram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasteranalysis.html#zonal-statistics">25.1.9.30. Zonal statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rastercreation.html">25.1.10. Raster Creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-constant-raster-layer">25.1.10.1. Create constant raster layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-binomial-distribution">25.1.10.2. Create random raster layer (binomial distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-exponential-distribution">25.1.10.3. Create random raster layer (exponential distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-gamma-distribution">25.1.10.4. Create random raster layer (gamma distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-geometric-distribution">25.1.10.5. Create random raster layer (geometric distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-negative-binomial-distribution">25.1.10.6. Create random raster layer (negative binomial distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-normal-distribution">25.1.10.7. Create random raster layer (normal distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-poisson-distribution">25.1.10.8. Create random raster layer (poisson distribution)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastercreation.html#create-random-raster-layer-uniform-distribution">25.1.10.9. Create random raster layer (uniform distribution)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rasterterrainanalysis.html">25.1.11. Raster terrain analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#aspect">25.1.11.1. Aspect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#hillshade">25.1.11.2. Hillshade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#hypsometric-curves">25.1.11.3. Hypsometric curves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#relief">25.1.11.4. Relief</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#ruggedness-index">25.1.11.5. Ruggedness index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasterterrainanalysis.html#slope">25.1.11.6. Slope</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rastertools.html">25.1.12. Raster tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#convert-map-to-raster">25.1.12.1. Convert map to raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#fill-nodata-cells">25.1.12.2. Fill NoData cells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#generate-xyz-tiles-directory">25.1.12.3. Generate XYZ tiles (Directory)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rastertools.html#generate-xyz-tiles-mbtiles">25.1.12.4. Generate XYZ tiles (MBTiles)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectoranalysis.html">25.1.13. Vector analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#basic-statistics-for-fields">25.1.13.1. Basic statistics for fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#climb-along-line">25.1.13.2. Climb along line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#count-points-in-polygon">25.1.13.3. Count points in polygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#dbscan-clustering">25.1.13.4. DBSCAN clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-matrix">25.1.13.5. Distance matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-to-nearest-hub-line-to-hub">25.1.13.6. Distance to nearest hub (line to hub)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#distance-to-nearest-hub-points">25.1.13.7. Distance to nearest hub (points)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#join-by-lines-hub-lines">25.1.13.8. Join by lines (hub lines)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#k-means-clustering">25.1.13.9. K-means clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#list-unique-values">25.1.13.10. List unique values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#mean-coordinate-s">25.1.13.11. Mean coordinate(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#nearest-neighbour-analysis">25.1.13.12. Nearest neighbour analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#overlap-analysis">25.1.13.13. Overlap analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#st-dbscan-clustering">25.1.13.14. ST-DBSCAN clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#statistics-by-categories">25.1.13.15. Statistics by categories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoranalysis.html#sum-line-lengths">25.1.13.16. Sum line lengths</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorcreation.html">25.1.14. Vector creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#array-of-offset-parallel-lines">25.1.14.1. Array of offset (parallel) lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#array-of-translated-features">25.1.14.2. Array of translated features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#create-grid">25.1.14.3. Create grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#create-points-layer-from-table">25.1.14.4. Create points layer from table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#generate-points-pixel-centroids-along-line">25.1.14.5. Generate points (pixel centroids) along line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#generate-points-pixel-centroids-inside-polygon">25.1.14.6. Generate points (pixel centroids) inside polygon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#import-geotagged-photos">25.1.14.7. Import geotagged photos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#points-to-path">25.1.14.8. Points to path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-along-line">25.1.14.9. Random points along line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-extent">25.1.14.10. Random points in extent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-layer-bounds">25.1.14.11. Random points in layer bounds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-in-polygons">25.1.14.12. Random points in polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-inside-polygons">25.1.14.13. Random points inside polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#random-points-on-lines">25.1.14.14. Random points on lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#raster-pixels-to-points">25.1.14.15. Raster pixels to points</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#raster-pixels-to-polygons">25.1.14.16. Raster pixels to polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorcreation.html#regular-points">25.1.14.17. Regular points</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorgeneral.html">25.1.15. Vector general</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#assign-projection">25.1.15.1. Assign projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#batch-nominatim-geocoder">25.1.15.2. Batch Nominatim geocoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#convert-layer-to-spatial-bookmarks">25.1.15.3. Convert layer to spatial bookmarks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#convert-spatial-bookmarks-to-layer">25.1.15.4. Convert spatial bookmarks to layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#create-attribute-index">25.1.15.5. Create attribute index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#create-spatial-index">25.1.15.6. Create spatial index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#define-shapefile-projection">25.1.15.7. Define Shapefile projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#delete-duplicate-geometries">25.1.15.8. Delete duplicate geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#delete-duplicates-by-attribute">25.1.15.9. Delete duplicates by attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#detect-dataset-changes">25.1.15.10. Detect dataset changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#drop-geometries">25.1.15.11. Drop geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#execute-sql">25.1.15.12. Execute SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#export-layers-to-dxf">25.1.15.13. Export layers to DXF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#extract-selected-features">25.1.15.14. Extract selected features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#extract-shapefile-encoding">25.1.15.15. Extract Shapefile encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#find-projection">25.1.15.16. Find projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#flatten-relationship">25.1.15.17. Flatten relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-field-value">25.1.15.18. Join attributes by field value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-location">25.1.15.19. Join attributes by location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-location-summary">25.1.15.20. Join attributes by location (summary)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#join-attributes-by-nearest">25.1.15.21. Join attributes by nearest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#merge-vector-layers">25.1.15.22. Merge vector layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#order-by-expression">25.1.15.23. Order by expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#repair-shapefile">25.1.15.24. Repair Shapefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#reproject-layer">25.1.15.25. Reproject layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#save-vector-features-to-file">25.1.15.26. Save vector features to file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#set-layer-encoding">25.1.15.27. Set layer encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#split-features-by-character">25.1.15.28. Split features by character</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#split-vector-layer">25.1.15.29. Split vector layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeneral.html#truncate-table">25.1.15.30. Truncate table</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorgeometry.html">25.1.16. Vector geometry</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#add-geometry-attributes">25.1.16.1. Add geometry attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#affine-transform">25.1.16.2. Affine transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#aggregate">25.1.16.3. Aggregate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#boundary">25.1.16.4. Boundary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#bounding-boxes">25.1.16.5. Bounding boxes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#buffer">25.1.16.6. Buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#centroids">25.1.16.7. Centroids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#check-validity">25.1.16.8. Check validity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#collect-geometries">25.1.16.9. Collect geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#concave-hull-alpha-shapes">25.1.16.10. Concave hull (alpha shapes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#concave-hull-k-nearest-neighbor">25.1.16.11. Concave hull (k-nearest neighbor)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convert-geometry-type">25.1.16.12. Convert geometry type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convert-to-curved-geometries">25.1.16.13. Convert to curved geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#convex-hull">25.1.16.14. Convex hull</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-layer-from-extent">25.1.16.15. Create layer from extent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-layer-from-point">25.1.16.16. Create layer from point</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#create-wedge-buffers">25.1.16.17. Create wedge buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#delaunay-triangulation">25.1.16.18. Delaunay triangulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#delete-holes">25.1.16.19. Delete holes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#densify-by-count">25.1.16.20. Densify by count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#densify-by-interval">25.1.16.21. Densify by interval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#dissolve">25.1.16.22. Dissolve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#drape-set-z-value-from-raster">25.1.16.23. Drape (set Z value from raster)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#drop-m-z-values">25.1.16.24. Drop M/Z values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#eliminate-selected-polygons">25.1.16.25. Eliminate selected polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#explode-lines">25.1.16.26. Explode lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extend-lines">25.1.16.27. Extend lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-m-values">25.1.16.28. Extract M values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-specific-vertices">25.1.16.29. Extract specific vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-vertices">25.1.16.30. Extract vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#extract-z-values">25.1.16.31. Extract Z values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#filter-vertices-by-m-value">25.1.16.32. Filter vertices by M value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#filter-vertices-by-z-value">25.1.16.33. Filter vertices by Z value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#fix-geometries">25.1.16.34. Fix geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#force-right-hand-rule">25.1.16.35. Force right-hand-rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#geodesic-line-split-at-antimeridian">25.1.16.36. Geodesic line split at antimeridian</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#geometry-by-expression">25.1.16.37. Geometry by expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#interpolate-point-on-line">25.1.16.38. Interpolate point on line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#keep-n-biggest-parts">25.1.16.39. Keep N biggest parts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#line-substring">25.1.16.40. Line substring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#lines-to-polygons">25.1.16.41. Lines to polygons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#merge-lines">25.1.16.42. Merge lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#minimum-bounding-geometry">25.1.16.43. Minimum bounding geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#minimum-enclosing-circles">25.1.16.44. Minimum enclosing circles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#multi-ring-buffer-constant-distance">25.1.16.45. Multi-ring buffer (constant distance)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#multipart-to-singleparts">25.1.16.46. Multipart to singleparts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#offset-lines">25.1.16.47. Offset lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#oriented-minimum-bounding-box">25.1.16.48. Oriented minimum bounding box</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#orthogonalize">25.1.16.49. Orthogonalize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#point-on-surface">25.1.16.50. Point on Surface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#points-along-geometry">25.1.16.51. Points along geometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#points-displacement">25.1.16.52. Points displacement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#pole-of-inaccessibility">25.1.16.53. Pole of inaccessibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#polygonize">25.1.16.54. Polygonize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#polygons-to-lines">25.1.16.55. Polygons to lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#project-points-cartesian">25.1.16.56. Project points (Cartesian)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#promote-to-multipart">25.1.16.57. Promote to multipart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#rectangles-ovals-diamonds">25.1.16.58. Rectangles, ovals, diamonds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#remove-duplicate-vertices">25.1.16.59. Remove duplicate vertices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#remove-null-geometries">25.1.16.60. Remove null geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#reverse-line-direction">25.1.16.61. Reverse line direction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#rotate">25.1.16.62. Rotate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#segmentize-by-maximum-angle">25.1.16.63. Segmentize by maximum angle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#segmentize-by-maximum-distance">25.1.16.64. Segmentize by maximum distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-m-value">25.1.16.65. Set M value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-m-value-from-raster">25.1.16.66. Set M value from raster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#set-z-value">25.1.16.67. Set Z value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#simplify">25.1.16.68. Simplify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#single-sided-buffer">25.1.16.69. Single sided buffer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#smooth">25.1.16.70. Smooth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#snap-geometries-to-layer">25.1.16.71. Snap geometries to layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#snap-points-to-grid">25.1.16.72. Snap points to grid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#split-lines-by-maximum-length">25.1.16.73. Split lines by maximum length</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#subdivide">25.1.16.74. Subdivide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#swap-x-and-y-coordinates">25.1.16.75. Swap X and Y coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#tapered-buffers">25.1.16.76. Tapered buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#tessellate">25.1.16.77. Tessellate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#transect">25.1.16.78. Transect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#translate">25.1.16.79. Translate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#variable-width-buffer-by-m-value">25.1.16.80. Variable width buffer (by M value)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorgeometry.html#voronoi-polygons">25.1.16.81. Voronoi polygons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectoroverlay.html">25.1.17. Vector overlay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#clip">25.1.17.1. Clip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#difference">25.1.17.2. Difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#extract-clip-by-extent">25.1.17.3. Extract/clip by extent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#intersection">25.1.17.4. Intersection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#line-intersections">25.1.17.5. Line intersections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#split-with-lines">25.1.17.6. Split with lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#symmetrical-difference">25.1.17.7. Symmetrical difference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectoroverlay.html#union">25.1.17.8. Union</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectorselection.html">25.1.18. Vector selection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-attribute">25.1.18.1. Extract by attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-expression">25.1.18.2. Extract by expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-by-location">25.1.18.3. Extract by location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#extract-within-distance">25.1.18.4. Extract within distance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-extract">25.1.18.5. Random extract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-extract-within-subsets">25.1.18.6. Random extract within subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-selection">25.1.18.7. Random selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#random-selection-within-subsets">25.1.18.8. Random selection within subsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-attribute">25.1.18.9. Select by attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-expression">25.1.18.10. Select by expression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-by-location">25.1.18.11. Select by location</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectorselection.html#select-within-distance">25.1.18.12. Select within distance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vectortable.html">25.1.19. Vector table</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-autoincremental-field">25.1.19.1. Add autoincremental field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-field-to-attributes-table">25.1.19.2. Add field to attributes table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-unique-value-index-field">25.1.19.3. Add unique value index field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#add-x-y-fields-to-layer">25.1.19.4. Add X/Y fields to layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#advanced-python-field-calculator">25.1.19.5. Advanced Python field calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#drop-field-s">25.1.19.6. Drop field(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#explode-hstore-field">25.1.19.7. Explode HStore Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#extract-binary-field">25.1.19.8. Extract binary field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#field-calculator">25.1.19.9. Field calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#refactor-fields">25.1.19.10. Refactor fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#rename-field">25.1.19.11. Rename field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#retain-fields">25.1.19.12. Retain fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectortable.html#text-to-float">25.1.19.13. Text to float</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="25. Processing providers and algorithms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cartography.html" class="btn btn-neutral float-right" title="25.1.1. Cartography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/index.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/index.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/index.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/index.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/index.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/index.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/index.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/qgis/index.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/index.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/qgis/index.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/qgis/index.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/qgis/index.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/qgis/index.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/index.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

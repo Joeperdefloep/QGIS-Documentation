@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.2.5. Raster projections &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasterprojections.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.2.6. Vector conversion" href="vectorconversion.html" />
+    <link rel="prev" title="25.2.4. Raster miscellaneous" href="rastermiscellaneous.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">25.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.2. GDAL algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">25.2.1. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterconversion.html">25.2.2. Raster conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterextraction.html">25.2.3. Raster extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastermiscellaneous.html">25.2.4. Raster miscellaneous</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.2.5. Raster projections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorconversion.html">25.2.6. Vector conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeoprocessing.html">25.2.7. Vector geoprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectormiscellaneous.html">25.2.8. Vector miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">25.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.2. </span>GDAL algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.2.5. </span>Raster projections</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/gdal/rasterprojections.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="rastermiscellaneous.html" class="btn btn-neutral float-left" title="25.2.4. Raster miscellaneous" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorconversion.html" class="btn btn-neutral float-right" title="25.2.6. Vector conversion" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raster-projections">
+<h1><span class="section-number">25.2.5. </span>Raster projections<a class="headerlink" href="#raster-projections" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#assign-projection" id="id7">Assign projection</a></p></li>
+<li><p><a class="reference internal" href="#extract-projection" id="id8">Extract projection</a></p></li>
+<li><p><a class="reference internal" href="#warp-reproject" id="id9">Warp (reproject)</a></p></li>
+</ul>
+</div>
+<section id="assign-projection">
+<span id="gdalassignprojection"></span><h2><a class="toc-backref" href="#id7"><span class="section-number">25.2.5.1. </span>Assign projection</a><a class="headerlink" href="#assign-projection" title="Permalink to this headline"></a></h2>
+<p>Applies a coordinate system to a raster dataset.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdal_edit.html">GDAL edit utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Projections</span></p>
+<section id="parameters">
+<h3><span class="section-number">25.2.5.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LAYER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Desired CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>The projection (CRS) of the output layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.2.5.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Layer with projection</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>The output raster layer (with the new projection information)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.2.5.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:assignprojection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="extract-projection">
+<span id="gdalextractprojection"></span><h2><a class="toc-backref" href="#id8"><span class="section-number">25.2.5.2. </span>Extract projection</a><a class="headerlink" href="#extract-projection" title="Permalink to this headline"></a></h2>
+<p>Extracts the projection of a raster file and writes it into a <em>world</em>
+file with extension <code class="file docutils literal notranslate"><span class="pre">.wld</span></code>.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdalsrsinfo.html">GDAL srsinfo utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Projections</span></p>
+<section id="id1">
+<h3><span class="section-number">25.2.5.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_LAYER</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input raster
+The raster layer has to be file based, as the algorithm
+uses the path to the raster file as the location of the
+generated <code class="file docutils literal notranslate"><span class="pre">.wld</span></code> file.
+Using a non-file raster layer will lead to an error.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Create also .prj file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PRJ_FILE_CREATE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If this is activated a <code class="file docutils literal notranslate"><span class="pre">.prj</span></code> file containing the
+projection information is also created.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">25.2.5.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>World file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">WORLD_FILE</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>Text file with extension <code class="file docutils literal notranslate"><span class="pre">.wld</span></code> containing
+transformation parameters for the raster file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>ESRI Shapefile prj file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PRJ_FILE</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>Text file with <code class="file docutils literal notranslate"><span class="pre">.prj</span></code> extension that describes the CRS.
+Will be <code class="docutils literal notranslate"><span class="pre">None</span></code> if <span class="guilabel">Create also .prj file</span> is
+False.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">25.2.5.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:extractprojection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="warp-reproject">
+<span id="gdalwarpreproject"></span><h2><a class="toc-backref" href="#id9"><span class="section-number">25.2.5.3. </span>Warp (reproject)</a><a class="headerlink" href="#warp-reproject" title="Permalink to this headline"></a></h2>
+<p>Reprojects a raster layer into another Coordinate Reference System
+(CRS).
+The output file resolution and the resampling method can be chosen.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/gdalwarp.html">GDAL warp utility</a>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Raster ► Projections</span></p>
+<section id="id4">
+<h3><span class="section-number">25.2.5.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<section id="basic-parameters">
+<h4><span class="section-number">25.2.5.3.1.1. </span>Basic parameters<a class="headerlink" href="#basic-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input raster layer to reproject</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Source CRS</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SOURCE_CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>Defines the CRS of the input raster layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Target CRS</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_CRS</span></code></p></td>
+<td><p>[crs]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span></code></p>
+</td>
+<td><p>The CRS of the output layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Resampling method to use</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RESAMPLING</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Pixel value resampling method to use.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Nearest neighbour</p></li>
+<li><p>1 — Bilinear</p></li>
+<li><p>2 — Cubic</p></li>
+<li><p>3 — Cubic spline</p></li>
+<li><p>4 — Lanczos windowed sinc</p></li>
+<li><p>5 — Average</p></li>
+<li><p>6 — Mode</p></li>
+<li><p>7 — Maximum</p></li>
+<li><p>8 — Minimum</p></li>
+<li><p>9 — Median</p></li>
+<li><p>10 — First quartile</p></li>
+<li><p>11 — Third quartile</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Nodata value for output bands</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NODATA</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: None</p>
+</td>
+<td><p>Sets nodata value for output bands.
+If not provided, then nodata values will be copied from
+the source dataset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output file resolution in target georeferenced units</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_RESOLUTION</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: None</p>
+</td>
+<td><p>Defines the output file resolution of reprojection result</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reprojected</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output raster layer.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="advanced-parameters">
+<h4><span class="section-number">25.2.5.3.1.2. </span>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’</p>
+</td>
+<td><p>For adding one or more creation options that control the
+raster to be created (colors, block size, file
+compression…).
+For convenience, you can rely on predefined profiles (see
+<a class="reference internal" href="../../introduction/qgis_configuration.html#gdal-createoptions"><span class="std std-ref">GDAL driver options section</span></a>).</p>
+<p>For Batch Process: separate multiple options with a pipe
+character (<code class="docutils literal notranslate"><span class="pre">|</span></code>).</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output data type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATA_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Defines the format of the output raster file.
+Options:</p>
+<ul class="simple">
+<li><p>0 — Use input layer data type</p></li>
+<li><p>1 — Byte</p></li>
+<li><p>2 — Int16</p></li>
+<li><p>3 — UInt16</p></li>
+<li><p>4 — UInt32</p></li>
+<li><p>5 — Int32</p></li>
+<li><p>6 — Float32</p></li>
+<li><p>7 — Float64</p></li>
+<li><p>8 — CInt16</p></li>
+<li><p>9 — CInt32</p></li>
+<li><p>10 — CFloat32</p></li>
+<li><p>11 — CFloat64</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Georeferenced extents of output file to be created</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_EXTENT</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>Sets the georeferenced extent of the output file to be
+created (in the <span class="guilabel">Target CRS</span> by default.
+In the <span class="guilabel">CRS of the target raster extent</span>, if
+specified).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CRS of the target raster extent</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_EXTENT_CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>Specifies the CRS in which to interpret the coordinates given
+for the extent of the output file.
+This must not be confused with the target CRS of the output
+dataset.
+It is instead a convenience e.g. when knowing the output
+coordinates in a geodetic long/lat CRS, but wanting a result
+in a projected coordinate system.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Use multithreaded warping implementation</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MULTITHREADING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Two threads will be used to process chunks of the image and
+perform input/output operations simultaneously.
+Note that the computation itself is not multithreaded.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional command-line parameters</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTRA</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: None</p>
+</td>
+<td><p>Add extra GDAL command line options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.2.5.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Reprojected</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[raster]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Reprojected output raster layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">25.2.5.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:warpreproject</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rastermiscellaneous.html" class="btn btn-neutral float-left" title="25.2.4. Raster miscellaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorconversion.html" class="btn btn-neutral float-right" title="25.2.6. Vector conversion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/gdal/rasterprojections.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/gdal/rasterprojections.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

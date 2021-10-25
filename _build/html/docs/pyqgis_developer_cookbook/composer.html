@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. Map Rendering and Printing &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/composer.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. Expressions, Filtering and Calculating Values" href="expressions.html" />
+    <link rel="prev" title="9. Using the Map Canvas" href="canvas.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/composer.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">10. Map Rendering and Printing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-rendering">10.1. Simple Rendering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rendering-layers-with-different-crs">10.2. Rendering layers with different CRS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-using-print-layout">10.3. Output using print layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-the-layout">10.3.1. Exporting the layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exporting-a-layout-atlas">10.3.2. Exporting a layout atlas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">10. </span>Map Rendering and Printing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/composer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="canvas.html" class="btn btn-neutral float-left" title="9. Using the Map Canvas" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expressions.html" class="btn btn-neutral float-right" title="11. Expressions, Filtering and Calculating Values" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="map-rendering-and-printing">
+<span id="layout"></span><h1><span class="section-number">10. </span>Map Rendering and Printing<a class="headerlink" href="#map-rendering-and-printing" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 4</span>    <span class="n">QgsGeometry</span><span class="p">,</span>
+<span class="linenos"> 5</span>    <span class="n">QgsMapSettings</span><span class="p">,</span>
+<span class="linenos"> 6</span>    <span class="n">QgsPrintLayout</span><span class="p">,</span>
+<span class="linenos"> 7</span>    <span class="n">QgsMapSettings</span><span class="p">,</span>
+<span class="linenos"> 8</span>    <span class="n">QgsMapRendererParallelJob</span><span class="p">,</span>
+<span class="linenos"> 9</span>    <span class="n">QgsLayoutItemLabel</span><span class="p">,</span>
+<span class="linenos">10</span>    <span class="n">QgsLayoutItemLegend</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">QgsLayoutItemMap</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">QgsLayoutItemPolygon</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="n">QgsLayoutItemScaleBar</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">QgsLayoutExporter</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">QgsLayoutItem</span><span class="p">,</span>
+<span class="linenos">16</span>    <span class="n">QgsLayoutPoint</span><span class="p">,</span>
+<span class="linenos">17</span>    <span class="n">QgsLayoutSize</span><span class="p">,</span>
+<span class="linenos">18</span>    <span class="n">QgsUnitTypes</span><span class="p">,</span>
+<span class="linenos">19</span>    <span class="n">QgsProject</span><span class="p">,</span>
+<span class="linenos">20</span>    <span class="n">QgsFillSymbol</span><span class="p">,</span>
+<span class="linenos">21</span><span class="p">)</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">24</span>    <span class="n">QPolygonF</span><span class="p">,</span>
+<span class="linenos">25</span>    <span class="n">QColor</span><span class="p">,</span>
+<span class="linenos">26</span><span class="p">)</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">29</span>    <span class="n">QPointF</span><span class="p">,</span>
+<span class="linenos">30</span>    <span class="n">QRectF</span><span class="p">,</span>
+<span class="linenos">31</span>    <span class="n">QSize</span><span class="p">,</span>
+<span class="linenos">32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#simple-rendering" id="id1">Simple Rendering</a></p></li>
+<li><p><a class="reference internal" href="#rendering-layers-with-different-crs" id="id2">Rendering layers with different CRS</a></p></li>
+<li><p><a class="reference internal" href="#output-using-print-layout" id="id3">Output using print layout</a></p>
+<ul>
+<li><p><a class="reference internal" href="#exporting-the-layout" id="id4">Exporting the layout</a></p></li>
+<li><p><a class="reference internal" href="#exporting-a-layout-atlas" id="id5">Exporting a layout atlas</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>There are generally two approaches when input data should be rendered as a map:
+either do it quick way using <cite>QgsMapRendererJob</cite> or produce more fine-tuned
+output by composing the map with the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayout.html#qgis.core.QgsLayout" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayout</span></code></a> class.</p>
+<section id="simple-rendering">
+<span id="index-1"></span><h2><a class="toc-backref" href="#id1"><span class="section-number">10.1. </span>Simple Rendering</a><a class="headerlink" href="#simple-rendering" title="Permalink to this headline"></a></h2>
+<p>The rendering is done creating a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapSettings.html#qgis.core.QgsMapSettings" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapSettings</span></code></a> object to define the rendering settings,
+and then constructing a <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMapRendererJob.html#qgis.core.QgsMapRendererJob" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMapRendererJob</span></code></a> with those settings. The latter is then
+used to create the resulting image.</p>
+<p>Here’s an example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">image_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">(),</span> <span class="s2">&quot;render.png&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">settings</span> <span class="o">=</span> <span class="n">QgsMapSettings</span><span class="p">()</span>
+<span class="linenos"> 5</span><span class="n">settings</span><span class="o">.</span><span class="n">setLayers</span><span class="p">([</span><span class="n">vlayer</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">settings</span><span class="o">.</span><span class="n">setBackgroundColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+<span class="linenos"> 7</span><span class="n">settings</span><span class="o">.</span><span class="n">setOutputSize</span><span class="p">(</span><span class="n">QSize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">))</span>
+<span class="linenos"> 8</span><span class="n">settings</span><span class="o">.</span><span class="n">setExtent</span><span class="p">(</span><span class="n">vlayer</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">render</span> <span class="o">=</span> <span class="n">QgsMapRendererParallelJob</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="k">def</span> <span class="nf">finished</span><span class="p">():</span>
+<span class="linenos">13</span>    <span class="n">img</span> <span class="o">=</span> <span class="n">render</span><span class="o">.</span><span class="n">renderedImage</span><span class="p">()</span>
+<span class="linenos">14</span>    <span class="c1"># save the image; e.g. img.save(&quot;/Users/myuser/render.png&quot;,&quot;png&quot;)</span>
+<span class="linenos">15</span>    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">image_location</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">render</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">finished</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># Start the rendering</span>
+<span class="linenos">20</span><span class="n">render</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="c1"># The following loop is not normally required, we</span>
+<span class="linenos">23</span><span class="c1"># are using it here because this is a standalone example.</span>
+<span class="linenos">24</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QEventLoop</span>
+<span class="linenos">25</span><span class="n">loop</span> <span class="o">=</span> <span class="n">QEventLoop</span><span class="p">()</span>
+<span class="linenos">26</span><span class="n">render</span><span class="o">.</span><span class="n">finished</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+<span class="linenos">27</span><span class="n">loop</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="rendering-layers-with-different-crs">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">10.2. </span>Rendering layers with different CRS</a><a class="headerlink" href="#rendering-layers-with-different-crs" title="Permalink to this headline"></a></h2>
+<p>If you have more than one layer and they have a different CRS, the simple
+example above will probably not work: to get the right values from the
+extent calculations you have to explicitly set the destination CRS</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()]</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">QgsMapSettings</span><span class="p">()</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">setLayers</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">setDestinationCrs</span><span class="p">(</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">crs</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="output-using-print-layout">
+<span id="index-2"></span><h2><a class="toc-backref" href="#id3"><span class="section-number">10.3. </span>Output using print layout</a><a class="headerlink" href="#output-using-print-layout" title="Permalink to this headline"></a></h2>
+<p>Print layout is a very handy tool if you would like to do a more sophisticated
+output than the simple rendering shown above. It is possible
+to create complex map layouts consisting of map views, labels, legend, tables
+and other elements that are usually present on paper maps. The layouts can be
+then exported to PDF, raster images or directly printed on a printer.</p>
+<p>The layout consists of a bunch of classes. They all belong to the core
+library. QGIS application has a convenient GUI for placement of the elements,
+though it is not available in the GUI library. If you are not familiar with
+<a class="reference external" href="https://doc.qt.io/qt-5/graphicsview.html">Qt Graphics View framework</a>,
+then you are encouraged to check the documentation now, because the layout
+is based on it.</p>
+<p>The central class of the layout is the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayout.html#qgis.core.QgsLayout" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayout</span></code></a>
+class, which is derived from the Qt <a class="reference external" href="https://doc.qt.io/qt-5/qgraphicsscene.html">QGraphicsScene</a>
+class. Let us create an instance of it:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QgsPrintLayout</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">initializeDefaults</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This initializes the layout with some default settings, specifically by adding
+an empty A4 page to the layout. You can create layouts without calling the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayout.html#qgis.core.QgsLayout.initializeDefaults" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">initializeDefaults()</span></code></a> method,
+but you’ll need to take care of adding pages to the layout yourself.</p>
+<p>The previous code creates a “temporary” layout that is not visible in the GUI.
+It can be handy to e.g. quickly add some items and export without modifying
+the project itself nor expose these changes to the user.
+If you want the layout to be saved/restored along with the project and
+available in the layout manager, then add:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layout</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;MyLayout&quot;</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">layoutManager</span><span class="p">()</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we can add various elements (map, label, …) to the layout. All these objects
+are represented by classes that inherit from the base <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayoutItem.html#qgis.core.QgsLayoutItem" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutItem</span></code></a> class.</p>
+<p>Here’s a description of some of the main layout items that can be added to a layout.</p>
+<ul>
+<li><p>map — Here we create a map of a custom size and render the current map canvas</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">map</span> <span class="o">=</span> <span class="n">QgsLayoutItemMap</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="linenos">2</span><span class="c1"># Set map item position and size (by default, it is a 0 width/0 height item placed at 0,0)</span>
+<span class="linenos">3</span><span class="nb">map</span><span class="o">.</span><span class="n">attemptMove</span><span class="p">(</span><span class="n">QgsLayoutPoint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutMillimeters</span><span class="p">))</span>
+<span class="linenos">4</span><span class="nb">map</span><span class="o">.</span><span class="n">attemptResize</span><span class="p">(</span><span class="n">QgsLayoutSize</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutMillimeters</span><span class="p">))</span>
+<span class="linenos">5</span><span class="c1"># Provide an extent to render</span>
+<span class="linenos">6</span><span class="nb">map</span><span class="o">.</span><span class="n">zoomToExtent</span><span class="p">(</span><span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
+<span class="linenos">7</span><span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>label — allows displaying labels. It is possible to modify its font, color,
+alignment and margin</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">QgsLayoutItemLabel</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">adjustSizeToText</span><span class="p">()</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>legend</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">legend</span> <span class="o">=</span> <span class="n">QgsLayoutItemLegend</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">legend</span><span class="o">.</span><span class="n">setLinkedMap</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span> <span class="c1"># map is an instance of QgsLayoutItemMap</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>scale bar</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">item</span> <span class="o">=</span> <span class="n">QgsLayoutItemScaleBar</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">item</span><span class="o">.</span><span class="n">setStyle</span><span class="p">(</span><span class="s1">&#39;Numeric&#39;</span><span class="p">)</span> <span class="c1"># optionally modify the style</span>
+<span class="linenos">3</span><span class="n">item</span><span class="o">.</span><span class="n">setLinkedMap</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span> <span class="c1"># map is an instance of QgsLayoutItemMap</span>
+<span class="linenos">4</span><span class="n">item</span><span class="o">.</span><span class="n">applyDefaultSize</span><span class="p">()</span>
+<span class="linenos">5</span><span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>arrow</p></li>
+<li><p>picture</p></li>
+<li><p>basic shape</p></li>
+<li><p>nodes based shape</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">polygon</span> <span class="o">=</span> <span class="n">QPolygonF</span><span class="p">()</span>
+<span class="linenos"> 2</span><span class="n">polygon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QPointF</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="linenos"> 3</span><span class="n">polygon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QPointF</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="linenos"> 4</span><span class="n">polygon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QPointF</span><span class="p">(</span><span class="mf">200.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">))</span>
+<span class="linenos"> 5</span><span class="n">polygon</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QPointF</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">))</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="n">polygonItem</span> <span class="o">=</span> <span class="n">QgsLayoutItemPolygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">,</span> <span class="n">layout</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="n">polygonItem</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="n">props</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">11</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span>
+<span class="linenos">12</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;style&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;solid&quot;</span>
+<span class="linenos">13</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;style_border&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;solid&quot;</span>
+<span class="linenos">14</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;color_border&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span>
+<span class="linenos">15</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;width_border&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;10.0&quot;</span>
+<span class="linenos">16</span><span class="n">props</span><span class="p">[</span><span class="s2">&quot;joinstyle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;miter&quot;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="n">symbol</span> <span class="o">=</span> <span class="n">QgsFillSymbol</span><span class="o">.</span><span class="n">createSimple</span><span class="p">(</span><span class="n">props</span><span class="p">)</span>
+<span class="linenos">19</span><span class="n">polygonItem</span><span class="o">.</span><span class="n">setSymbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>table</p></li>
+</ul>
+<p>Once an item is added to the layout, it can be moved and resized:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">item</span><span class="o">.</span><span class="n">attemptMove</span><span class="p">(</span><span class="n">QgsLayoutPoint</span><span class="p">(</span><span class="mf">1.4</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutCentimeters</span><span class="p">))</span>
+<span class="n">item</span><span class="o">.</span><span class="n">attemptResize</span><span class="p">(</span><span class="n">QgsLayoutSize</span><span class="p">(</span><span class="mf">2.8</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutCentimeters</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A frame is drawn around each item by default. You can remove it as follows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for a composer label</span>
+<span class="n">label</span><span class="o">.</span><span class="n">setFrameEnabled</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Besides creating the layout items by hand, QGIS has support for layout
+templates which are essentially compositions with all their items saved to a
+.qpt file (with XML syntax).</p>
+<p>Once the composition is ready (the layout items have been created and added
+to the composition), we can proceed to produce a raster and/or vector output.</p>
+<section id="exporting-the-layout">
+<span id="index-3"></span><h3><a class="toc-backref" href="#id4"><span class="section-number">10.3.1. </span>Exporting the layout</a><a class="headerlink" href="#exporting-the-layout" title="Permalink to this headline"></a></h3>
+<p>To export a layout, the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayoutExporter.html#qgis.core.QgsLayoutExporter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutExporter</span></code></a> class must be used.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">base_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">())</span>
+<span class="linenos">2</span><span class="n">pdf_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">base_path</span><span class="p">,</span> <span class="s2">&quot;output.pdf&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">exporter</span> <span class="o">=</span> <span class="n">QgsLayoutExporter</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">exporter</span><span class="o">.</span><span class="n">exportToPdf</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">,</span> <span class="n">QgsLayoutExporter</span><span class="o">.</span><span class="n">PdfExportSettings</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Use the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayoutExporter.html#qgis.core.QgsLayoutExporter.exportToImage" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exportToImage()</span></code></a>
+in case you want to export to an image instead of a PDF file.</p>
+</section>
+<section id="exporting-a-layout-atlas">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">10.3.2. </span>Exporting a layout atlas</a><a class="headerlink" href="#exporting-a-layout-atlas" title="Permalink to this headline"></a></h3>
+<p>If you want to export all pages from a layout that has the atlas option
+configured and enabled, you need to use the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsPrintLayout.html#qgis.core.QgsPrintLayout.atlas" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">atlas()</span></code></a> method in the exporter (<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayoutExporter.html#qgis.core.QgsLayoutExporter" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayoutExporter</span></code></a>) with small adjustments. In the following
+example, the pages are exported to PNG images:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">exporter</span><span class="o">.</span><span class="n">exportToImage</span><span class="p">(</span><span class="n">layout</span><span class="o">.</span><span class="n">atlas</span><span class="p">(),</span> <span class="n">base_path</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">QgsLayoutExporter</span><span class="o">.</span><span class="n">ImageExportSettings</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Notice that the outputs will be saved in the base path folder, using the output
+filename expression configured on atlas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="canvas.html" class="btn btn-neutral float-left" title="9. Using the Map Canvas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="expressions.html" class="btn btn-neutral float-right" title="11. Expressions, Filtering and Calculating Values" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/composer.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/composer.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/composer.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/composer.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/composer.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/composer.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/composer.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/composer.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/composer.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/composer.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/composer.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/composer.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/composer.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/composer.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

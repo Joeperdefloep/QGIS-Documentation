@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Algorithms Include &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/algs_include.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/algs_include.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Algorithms Include</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/algs_include.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="algorithms-include">
+<span id="algs-include"></span><h1>Algorithms Include<a class="headerlink" href="#algorithms-include" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#python-code-sample" id="id2">Python Code Sample</a></p></li>
+<li><p><a class="reference internal" href="#output-types" id="id3">Output Types</a></p></li>
+<li><p><a class="reference internal" href="#geometric-predicates" id="id4">Geometric predicates</a></p></li>
+</ul>
+</div>
+<section id="python-code-sample">
+<h2><a class="toc-backref" href="#id2">Python Code Sample</a><a class="headerlink" href="#python-code-sample" title="Permalink to this headline"></a></h2>
+<p>The following section is used to load python code sample in algs help</p>
+<p><strong>algorithm_code_section</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+<p><strong>end_algorithm_code_section</strong></p>
+</section>
+<section id="output-types">
+<h2><a class="toc-backref" href="#id3">Output Types</a><a class="headerlink" href="#output-types" title="Permalink to this headline"></a></h2>
+<p>The following describes the different options for algorithm outputs,
+with variants including the “skip output” and the “append” options</p>
+<section id="directory">
+<h3>Directory<a class="headerlink" href="#directory" title="Permalink to this headline"></a></h3>
+<p><strong>directory_output_types</strong></p>
+<ul class="simple">
+<li><p>Save to a Temporary Directory</p></li>
+<li><p>Save to Directory</p></li>
+</ul>
+<p><strong>end_directory_output_types</strong></p>
+<p><strong>directory_output_types_skip</strong></p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary Directory</p></li>
+<li><p>Save to Directory</p></li>
+</ul>
+<p><strong>end_directory_output_types_skip</strong></p>
+</section>
+<section id="file">
+<h3>File<a class="headerlink" href="#file" title="Permalink to this headline"></a></h3>
+<p><strong>file_output_types</strong></p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p><strong>end_file_output_types</strong></p>
+<p><strong>file_output_types_skip</strong></p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+<p><strong>end_file_output_types_skip</strong></p>
+</section>
+<section id="layer">
+<h3>Layer<a class="headerlink" href="#layer" title="Permalink to this headline"></a></h3>
+<p><strong>layer_output_types</strong></p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+<p><strong>end_layer_output_types</strong></p>
+<p><strong>layer_output_types_append</strong></p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+<li><p>Append to Layer…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+<p><strong>end_layer_output_types_append</strong></p>
+<p><strong>layer_output_types_skip</strong></p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+<p><strong>end_layer_output_types_skip</strong></p>
+</section>
+</section>
+<section id="geometric-predicates">
+<h2><a class="toc-backref" href="#id4">Geometric predicates</a><a class="headerlink" href="#geometric-predicates" title="Permalink to this headline"></a></h2>
+<p><strong>geometric_predicates</strong></p>
+<figure class="align-center" id="id1">
+<img alt="../../../_images/selectbylocation.png" src="../../../_images/selectbylocation.png" />
+<figcaption>
+<p><span class="caption-text">In this example, the dataset from which we want to select (the <em>source
+vector layer</em>) consists of the green circles, the orange rectangle is the
+dataset that it is being compared to (the <em>intersection vector layer</em>).</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Available geometric predicates are:</p>
+<dl class="simple">
+<dt><em>Intersect</em></dt><dd><p>Tests whether a geometry intersects another. Returns 1 (true) if the
+geometries spatially intersect (share any portion of space - overlap or touch) and 0 if they
+don’t. In the picture above, this will select circles 1, 2 and 3.</p>
+</dd>
+<dt><em>Contain</em></dt><dd><p>Returns 1 (true) if and only if no points of b lie in the exterior of a,
+and at least one point of the interior of b lies in the interior of a.
+In the picture, no circle is selected, but the rectangle would be if you
+would select it the other way around, as it contains a circle completely.
+This is the opposite of <em>are within</em>.</p>
+</dd>
+<dt><em>Disjoint</em></dt><dd><p>Returns 1 (true) if the geometries do not share any portion of space (no overlap, not touching).
+Only circle 4 is selected.</p>
+</dd>
+<dt><em>Equal</em></dt><dd><p>Returns 1 (true) if and only if geometries are exactly the same.
+No circles will be selected.</p>
+</dd>
+<dt><em>Touch</em></dt><dd><p>Tests whether a geometry touches another. Returns 1 (true) if the geometries
+have at least one point in common, but their interiors do not intersect.
+Only circle 3 is selected.</p>
+</dd>
+<dt><em>Overlap</em></dt><dd><p>Tests whether a geometry overlaps another. Returns 1 (true) if the geometries
+share space, are of the same dimension, but are not completely contained by
+each other. Only circle 2 is selected.</p>
+</dd>
+<dt><em>Are within</em></dt><dd><p>Tests whether a geometry is within another. Returns 1 (true) if geometry a
+is completely inside geometry b. Only circle 1 is selected.</p>
+</dd>
+<dt><em>Cross</em></dt><dd><p>Returns 1 (true) if the supplied geometries have some, but not all, interior
+points in common and the actual crossing is of a lower dimension than the
+highest supplied geometry. For example, a line crossing a polygon will cross
+as a line (selected). Two lines crossing will cross as a point (selected).
+Two polygons cross as a polygon (not selected).</p>
+</dd>
+</dl>
+<p><strong>end_geometric_predicates</strong></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/algs_include.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/algs_include.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/algs_include.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/algs_include.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/algs_include.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/algs_include.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/algs_include.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/algs_include.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/algs_include.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/algs_include.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/algs_include.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/algs_include.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/algs_include.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/algs_include.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

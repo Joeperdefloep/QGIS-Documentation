@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. A Step By Step Contribution &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/documentation_guidelines/first_contribution.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. Writing Guidelines" href="writing.html" />
+    <link rel="prev" title="Documentation Guidelines" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/documentation_guidelines/first_contribution.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation Guidelines</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. A Step By Step Contribution</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-github-web-interface">1.1. Using the GitHub web interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fork-qgis-documentation">1.1.1. Fork QGIS-Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-changes">1.1.2. Make changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modify-files">1.1.3. Modify files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-your-changes-via-pull-request">1.1.4. Share your changes via Pull Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-your-merged-branch">1.1.5. Delete your merged branch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-git-command-line-tools">1.2. Using Git command line tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local-repository">1.2.1. Local repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-another-remote-repository">1.2.2. Add another remote repository</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-your-base-branch">1.2.3. Update your base branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contribute-to-your-production-branch">1.2.4. Contribute to your production branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-your-changes">1.2.5. Share your Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clean-up-your-local-and-remote-repository">1.2.6. Clean-up your local and remote repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">1.3. Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="writing.html">2. Writing Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cookbook_guidelines.html">3. Writing code in the PyQGIS Cookbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="do_translations.html">4. Translation Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="substitutions.html">5. Substitutions</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Documentation Guidelines</a> &raquo;</li>
+      <li><span class="section-number">1. </span>A Step By Step Contribution</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/documentation_guidelines/first_contribution.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation Guidelines" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="writing.html" class="btn btn-neutral float-right" title="2. Writing Guidelines" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="a-step-by-step-contribution">
+<span id="step-by-step"></span><h1><span class="section-number">1. </span>A Step By Step Contribution<a class="headerlink" href="#a-step-by-step-contribution" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#using-the-github-web-interface" id="id9">Using the GitHub web interface</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fork-qgis-documentation" id="id10">Fork QGIS-Documentation</a></p></li>
+<li><p><a class="reference internal" href="#make-changes" id="id11">Make changes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#alternative-1-use-the-edit-on-github-shortcut" id="id12">Alternative 1: Use the <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">on</span> <span class="pre">GitHub</span></code> shortcut</a></p></li>
+<li><p><a class="reference internal" href="#alternative-2-create-an-ad-hoc-branch-in-your-documentation-repository" id="id13">Alternative 2: Create an ad hoc branch in your documentation repository</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#modify-files" id="id14">Modify files</a></p></li>
+<li><p><a class="reference internal" href="#share-your-changes-via-pull-request" id="id15">Share your changes via Pull Request</a></p>
+<ul>
+<li><p><a class="reference internal" href="#start-a-new-pull-request" id="id16">Start a new pull request</a></p></li>
+<li><p><a class="reference internal" href="#compare-changes" id="id17">Compare changes</a></p></li>
+<li><p><a class="reference internal" href="#describe-your-pull-request" id="id18">Describe your pull request</a></p></li>
+<li><p><a class="reference internal" href="#review-and-comment-pull-request" id="id19">Review and comment pull request</a></p></li>
+<li><p><a class="reference internal" href="#make-corrections" id="id20">Make corrections</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#delete-your-merged-branch" id="id21">Delete your merged branch</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#using-git-command-line-tools" id="id22">Using Git command line tools</a></p>
+<ul>
+<li><p><a class="reference internal" href="#local-repository" id="id23">Local repository</a></p></li>
+<li><p><a class="reference internal" href="#add-another-remote-repository" id="id24">Add another remote repository</a></p></li>
+<li><p><a class="reference internal" href="#update-your-base-branch" id="id25">Update your base branch</a></p></li>
+<li><p><a class="reference internal" href="#contribute-to-your-production-branch" id="id26">Contribute to your production branch</a></p></li>
+<li><p><a class="reference internal" href="#share-your-changes" id="id27">Share your Changes</a></p></li>
+<li><p><a class="reference internal" href="#clean-up-your-local-and-remote-repository" id="id28">Clean-up your local and remote repository</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#further-reading" id="id29">Further reading</a></p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Though QGIS-Documentation is used to demonstrate the process, all
+commands and steps shown below also apply to QGIS-Website.</p>
+</div>
+<p>If you are reading these lines, it is certainly because you are willing
+to contribute to writing QGIS documentation and are looking for a how-to.
+You have come to the right place! The current document will guide you through
+the different ways to achieve this objective, showing you the main steps to
+follow, the tricks you can use and the traps you should be aware of.</p>
+<p>For any help, do not hesitate to either ask in a comment on the issue report you
+are trying to fix or write to the <a class="reference external" href="https://lists.osgeo.org/mailman/listinfo/qgis-community-team">QGIS-community-team list</a>. More details at
+<a class="reference external" href="https://qgis.org/en/site/getinvolved/document.html">Get involved in documentation</a>.</p>
+<p>Let’s now dive into the process.</p>
+<p>Documentation sources are stored using the git version control system and are
+available on GitHub at <a class="reference external" href="https://github.com/qgis/QGIS-Documentation">https://github.com/qgis/QGIS-Documentation</a>.
+A list of issues to fix and features to explain can be found at
+<a class="reference external" href="https://github.com/qgis/QGIS-Documentation/issues">https://github.com/qgis/QGIS-Documentation/issues</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are a first-time contributor and do not know where to start from,
+you may be interested in tackling our <a class="reference external" href="https://github.com/qgis/QGIS-Documentation/issues?q=is%3Aissue+is%3Aopen+label%3AEasy">welcoming reports</a>.</p>
+</div>
+<p>There are two main ways, not mutually exclusive, to modify the files:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#github-interface"><span class="std std-ref">Using the GitHub web interface</span></a></p></li>
+<li><p><a class="reference internal" href="#git-command-line-tools"><span class="std std-ref">Using Git command line tools</span></a>.</p></li>
+</ol>
+<section id="using-the-github-web-interface">
+<span id="github-interface"></span><h2><a class="toc-backref" href="#id9"><span class="section-number">1.1. </span>Using the GitHub web interface</a><a class="headerlink" href="#using-the-github-web-interface" title="Permalink to this headline"></a></h2>
+<p>The GitHub web interface allows you to do the following:</p>
+<ul class="simple">
+<li><p>edit files</p></li>
+<li><p>preview and commit your changes</p></li>
+<li><p>make a pull request to have your changes inserted into the main repository</p></li>
+<li><p>create, update, or delete branches</p></li>
+</ul>
+<p>If you are not yet familiar with git and GitHub vocabulary, you may want to
+read the GitHub <a class="reference external" href="https://guides.github.com/activities/hello-world/">Hello-world</a>
+project to learn some basic vocabulary and actions that will be used below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>If you are fixing a reported issue</strong></p>
+<p>If you are making changes to fix an <a class="reference external" href="https://github.com/qgis/QGIS-Documentation/issues">issue</a>, add a comment to the issue report to assign it to
+yourself. This will prevent more than one person from working on the same
+issue.</p>
+</div>
+<section id="fork-qgis-documentation">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">1.1.1. </span>Fork QGIS-Documentation</a><a class="headerlink" href="#fork-qgis-documentation" title="Permalink to this headline"></a></h3>
+<p>Assuming you already have a <a class="reference external" href="https://github.com/join">GitHub account</a>,
+you first need to fork the source files of the documentation.</p>
+<p>Navigate to the <a class="reference external" href="https://github.com/qgis/QGIS-Documentation">QGIS-Documentation repository</a> page and click on the
+<a class="reference internal" href="../../_images/githubFork.png"><img alt="githubFork" src="../../_images/githubFork.png" style="width: 4em;" /></a> button in the upper right corner.</p>
+<p>In your GitHub account you will find a QGIS-Documentation repository
+(<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;YourName&gt;/QGIS-Documentation</span></code>).
+This repository is a copy of the official QGIS-Documentation repository where
+you have full write access and you can make changes without affecting the
+official documentation.</p>
+</section>
+<section id="make-changes">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">1.1.2. </span>Make changes</a><a class="headerlink" href="#make-changes" title="Permalink to this headline"></a></h3>
+<p>There are different ways to contribute to QGIS documentation. We show
+them separately below, but you can switch from one process to the other
+without any harm.</p>
+<section id="alternative-1-use-the-edit-on-github-shortcut">
+<h4><a class="toc-backref" href="#id12"><span class="section-number">1.1.2.1. </span>Alternative 1: Use the <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">on</span> <span class="pre">GitHub</span></code> shortcut</a><a class="headerlink" href="#alternative-1-use-the-edit-on-github-shortcut" title="Permalink to this headline"></a></h4>
+<p>Pages on the QGIS documentation website can be edited quickly and easily by clicking on the
+<code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">on</span> <span class="pre">GitHub</span></code> link at the top right of each page.</p>
+<ol class="arabic simple">
+<li><p>This will open the file in the <code class="docutils literal notranslate"><span class="pre">qgis:master</span></code> branch with a message at the
+top of the page telling you that you don’t have write access to this repo
+and your changes will be applied to a new branch of your repository.</p></li>
+<li><p>Do your changes. Since the documentation is written using the reStructureText
+syntax, depending on your changes, you may need to rely on the <a class="reference internal" href="index.html#qgis-documentation-guidelines"><span class="std std-ref">writing
+guidelines</span></a>.</p></li>
+<li><p>When you finish, make a short comment about your changes and click on
+<span class="guilabel">Propose changes</span>. This will generate a
+new <a class="reference external" href="https://help.github.com/articles/about-branches/">branch</a> (<code class="docutils literal notranslate"><span class="pre">patch-xxx</span></code>) in your repository.</p></li>
+<li><p>After you click on <span class="guilabel">Propose changes</span>, github will navigate to
+the <span class="guilabel">Comparing changes</span> page.</p>
+<ul class="simple">
+<li><p>If you’re done making changes, skip to <a class="reference internal" href="#compare-changes"><span class="std std-ref">Compare changes</span></a>
+in the <a class="reference internal" href="#sharing-changes"><span class="std std-ref">Share your changes via Pull Request</span></a> section below.</p></li>
+<li><p>If there are additional changes that you want to make before submitting
+them to QGIS, follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Navigate to your fork of QGIS-Documentation (<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;YourName&gt;/QGIS-Documentation</span></code>)</p></li>
+<li><p>Click on <a class="reference internal" href="../../_images/githubBranch.png"><img alt="githubBranch" src="../../_images/githubBranch.png" style="width: 8em;" /></a> and search for the <code class="docutils literal notranslate"><span class="pre">patch-xxx</span></code> branch. Select
+this patch branch. The <a class="reference internal" href="../../_images/githubBranch.png"><img alt="githubBranch" src="../../_images/githubBranch.png" style="width: 8em;" /></a> button will now say
+<span class="guilabel">Branch: patch-xxx</span></p></li>
+<li><p>Jump down to <a class="reference internal" href="#modify-files"><span class="std std-ref">Modify files</span></a> below.</p></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">on</span> <span class="pre">GitHub</span></code> shortcut is also available in the drop-down
+menu at the bottom of the left sidebar.</p>
+</div>
+</section>
+<section id="alternative-2-create-an-ad-hoc-branch-in-your-documentation-repository">
+<h4><a class="toc-backref" href="#id13"><span class="section-number">1.1.2.2. </span>Alternative 2: Create an ad hoc branch in your documentation repository</a><a class="headerlink" href="#alternative-2-create-an-ad-hoc-branch-in-your-documentation-repository" title="Permalink to this headline"></a></h4>
+<p>You can edit files directly from your fork of the QGIS Documentation.</p>
+<p>Click on <a class="reference internal" href="../../_images/githubBranch.png"><img alt="githubBranch" src="../../_images/githubBranch.png" style="width: 8em;" /></a> in the upper left corner of your forked QGIS-
+Documentation repository and enter a unique name in the text field to create a
+new <a class="reference external" href="https://help.github.com/articles/about-branches/">branch</a> .
+The name of the new branch should relate to the problem you intend to fix. The
+<a class="reference internal" href="../../_images/githubBranch.png"><img alt="githubBranch" src="../../_images/githubBranch.png" style="width: 8em;" /></a> button should now say <span class="guilabel">Branch: branch_name</span></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Do your changes in an ad hoc branch, never in the</strong> <code class="docutils literal notranslate"><span class="pre">master</span></code> <strong>branch</strong></p>
+<p>By convention, avoid making changes in your <code class="docutils literal notranslate"><span class="pre">master</span></code> branch except when
+you merge the modifications from the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of <code class="docutils literal notranslate"><span class="pre">qgis/QGIS-Documentation</span></code>
+into your copy of the QGIS-Documentation repository.
+Separate branches allow you to work on multiple problems at the same time
+without interfering with other branches. If you make a mistake you can
+always delete a branch and start over by creating a new one from the master
+branch.</p>
+</div>
+</section>
+</section>
+<section id="modify-files">
+<span id="id2"></span><h3><a class="toc-backref" href="#id14"><span class="section-number">1.1.3. </span>Modify files</a><a class="headerlink" href="#modify-files" title="Permalink to this headline"></a></h3>
+<ol class="arabic simple">
+<li><p>Browse the source files of your fork of QGIS-Documentation to the file that
+needs to be modified</p></li>
+<li><p>Make your modifications following the <a class="reference internal" href="index.html#qgis-documentation-guidelines"><span class="std std-ref">writing guidelines</span></a></p></li>
+<li><p>When you finish, navigate to the <strong>Commit Changes</strong> frame at the bottom of
+the page, make a short comment about your changes, and click on
+<span class="guilabel">Commit Changes</span> to commit the changes directly to your branch.
+Make sure <span class="guilabel">Commit directly to the branch_name branch.</span> is selected.</p></li>
+<li><p>Repeat the previous steps for any other file that needs to be updated to
+fix the issue</p></li>
+</ol>
+</section>
+<section id="share-your-changes-via-pull-request">
+<span id="sharing-changes"></span><h3><a class="toc-backref" href="#id15"><span class="section-number">1.1.4. </span>Share your changes via Pull Request</a><a class="headerlink" href="#share-your-changes-via-pull-request" title="Permalink to this headline"></a></h3>
+<p>You need to make a pull request to integrate your changes into the official documentation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>If you used an</strong> <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">on</span> <span class="pre">GitHub</span></code> <strong>link</strong></p>
+<p>After you commit your changes GitHub will automatically open a new page
+comparing the changes you made in your <code class="docutils literal notranslate"><span class="pre">patch-xxx</span></code> branch to the <code class="docutils literal notranslate"><span class="pre">qgis/QGIS-Documentation</span></code>
+master branch.</p>
+<p>Skip to <a class="reference internal" href="#compare-changes"><span class="std std-ref">Step 2</span></a> below.</p>
+</div>
+<section id="start-a-new-pull-request">
+<h4><a class="toc-backref" href="#id16"><span class="section-number">1.1.4.1. </span>Start a new pull request</a><a class="headerlink" href="#start-a-new-pull-request" title="Permalink to this headline"></a></h4>
+<p>Navigate to the main page of the <a class="reference external" href="https://github.com/qgis/QGIS-Documentation">QGIS-Documentation</a>
+repository and click on <span class="guilabel">New pull request</span>.</p>
+</section>
+<section id="compare-changes">
+<span id="id3"></span><h4><a class="toc-backref" href="#id17"><span class="section-number">1.1.4.2. </span>Compare changes</a><a class="headerlink" href="#compare-changes" title="Permalink to this headline"></a></h4>
+<p>If you see two dialog boxes, one that says <code class="docutils literal notranslate"><span class="pre">base:master</span></code> and the other
+<code class="docutils literal notranslate"><span class="pre">compare:branch_name</span></code> (see figure), this will only merge your changes from
+one of your branches to your master branch. To fix this click on the
+<span class="guilabel">compare across forks</span> link.</p>
+<figure class="align-center" id="id6">
+<img alt="../../_images/githubCompareAcrossForks.png" src="../../_images/githubCompareAcrossForks.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">If your <span class="guilabel">Comparing changes</span> page looks like this, click on the
+<span class="guilabel">compare across forks</span> link.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>You should see four drop-down menus. These will allow you to compare the
+changes that you have made in your branch with the master branch that you want
+to merge into. They are:</p>
+<ul class="simple">
+<li><p><strong>base fork</strong>: the fork that you want to merge your changes into</p></li>
+<li><p><strong>base</strong>: the branch of the base fork that you want to merge your changes into</p></li>
+<li><p><strong>head fork</strong>: the fork that has changes that you want to incorporate into the base fork</p></li>
+<li><p><strong>compare</strong>: the branch with those changes</p></li>
+</ul>
+<p>Select <code class="docutils literal notranslate"><span class="pre">qgis/QGIS-Documentation</span></code> as the base fork with <code class="docutils literal notranslate"><span class="pre">master</span></code> as base,
+set the head fork to your repository <code class="docutils literal notranslate"><span class="pre">&lt;YourName&gt;/QGIS-Documentation</span></code>,
+and set compare to your modified branch.</p>
+<figure class="align-center" id="id7">
+<img alt="../../_images/githubCreatePullRequestComparison.png" src="../../_images/githubCreatePullRequestComparison.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">Comparing changes between <code class="docutils literal notranslate"><span class="pre">qgis/QGIS-Documentation</span></code> and your repository</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>A green check with the words <strong>Able to merge</strong> shows that your changes can
+be merged into the official documentation without conflicts.</p>
+<p>Click the <span class="guilabel">Create pull request</span> button.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>If you see</strong> <a class="reference internal" href="../../_images/githubCantMerge.png"><img alt="githubCantMerge" src="../../_images/githubCantMerge.png" style="width: 12em;" /></a></p>
+<p>This means that there are <a class="reference external" href="https://help.github.com/articles/addressing-merge-conflicts/">conflicts</a>.
+The files that you are modifying are not up to date with the branch you are
+targeting because someone else has made a commit that conflicts with your
+changes. You can still create the pull request but you’ll need to fix any
+<a class="reference internal" href="#fix-conflicts"><span class="std std-ref">conflicts</span></a> to complete the merge.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Though being translated, the <a class="reference external" href="https://docs.qgis.org/latest">latest version</a>
+of QGIS documentation is still maintained and existing issues are fixed. If you are
+fixing issues for a different release, change <strong>base</strong> from <code class="docutils literal notranslate"><span class="pre">master</span></code>
+to the appropriate <code class="docutils literal notranslate"><span class="pre">release_...</span></code> branch in the steps above.</p>
+</div>
+</section>
+<section id="describe-your-pull-request">
+<h4><a class="toc-backref" href="#id18"><span class="section-number">1.1.4.3. </span>Describe your pull request</a><a class="headerlink" href="#describe-your-pull-request" title="Permalink to this headline"></a></h4>
+<p>A text box will open: fill in any relevant comments for the issue you are
+addressing.</p>
+<p>If this relates to a particular <a class="reference external" href="https://github.com/qgis/QGIS-Documentation/issues">issue</a>,
+add the issue number to your comments. This is done by entering # and the issue
+number (<em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">#1234</span></code>). If preceded by terms like <code class="docutils literal notranslate"><span class="pre">fix</span></code> or <code class="docutils literal notranslate"><span class="pre">close</span></code>, the
+concerned issue will be closed as soon as the pull request is merged.</p>
+<p>Add links to any documentation pages that you are changing.</p>
+<p>Click on <span class="guilabel">Create pull request</span>.</p>
+</section>
+<section id="review-and-comment-pull-request">
+<h4><a class="toc-backref" href="#id19"><span class="section-number">1.1.4.4. </span>Review and comment pull request</a><a class="headerlink" href="#review-and-comment-pull-request" title="Permalink to this headline"></a></h4>
+<p>As seen above, anyone can submit modifications to the documentation through pull
+requests. Likewise anyone can review pull requests with questions and <a class="reference external" href="https://help.github.com/articles/commenting-on-a-pull-request/">comments</a>. Perhaps the
+writing style doesn’t match the project guidelines, the change is missing some major
+details or screenshots, or maybe everything looks great and is in order.
+Reviewing helps to improve the quality of the contribution, both in form and
+substance.</p>
+<p>To review a pull request:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <a class="reference external" href="https://github.com/qgis/QGIS-Documentation/pulls">pull requests page</a>
+and click on the pull request that you want to comment on.</p></li>
+<li><p>At the bottom of the page you will find a text box where you can leave general
+comments about the pull request.</p></li>
+<li><p>To add comments about specific lines,</p>
+<ol class="arabic simple">
+<li><p>Click on <a class="reference internal" href="../../_images/githubFilesChanged.png"><img alt="githubFilesChanged" src="../../_images/githubFilesChanged.png" style="width: 8em;" /></a> and find the file you want to comment on.
+You may have to click on <span class="guilabel">Display the source diff</span> to see the
+changes.</p></li>
+<li><p>Scroll to the line you want to comment on and click on the <a class="reference internal" href="../../_images/githubBluePlus.png"><img alt="githubBluePlus" src="../../_images/githubBluePlus.png" style="width: 1.5em;" /></a>.
+That will open a text box allowing you to leave a comment.</p></li>
+</ol>
+</li>
+</ol>
+<p>Specific line comments can be published either:</p>
+<ul class="simple">
+<li><p>as single comments, using the <span class="guilabel">Add single comment</span> button. They are
+published as you go. Use this only if you have few comments to add or when
+replying to another comment.</p></li>
+<li><p>or as part of a review, pressing the <span class="guilabel">Start a review</span> button.
+Your comments are not automatically sent after validation, allowing you to
+edit or cancel them afterwards, to add a summary of the main points of the
+review or global instructions regarding the pull request and whether you
+approve it or not. This is the convenient way since it’s more flexible and
+allows you to structure your review, edit the comments, publish when you are
+ready and send a single notification to the repository followers and not one
+notification for each comment. Get <a class="reference external" href="https://help.github.com/en/articles/reviewing-proposed-changes-in-a-pull-request">more details</a>.</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<img alt="../../_images/githubAddLineComment.png" src="../../_images/githubAddLineComment.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">Commenting a line with a change suggestion</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Line comments can embed suggestions that the pull request
+writer can apply to the pull request. To add a suggestion,
+click the <a class="reference internal" href="../../_images/githubSuggestions.png"><img alt="githubSuggestions" src="../../_images/githubSuggestions.png" style="width: 1.5em;" /></a> <sup>Insert a suggestion</sup> button on top of the
+comment text box and modify the text within the suggestion block.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Prefer committing suggestions to your pull request as a batch</strong></p>
+<p>As a pull request author, when directly incorporating reviewers’ feedback
+in your pull request, avoid using the <span class="guilabel">Commit suggestion</span> button
+at the bottom of the comment when you have many suggestions to address and
+prefer adding them as a batch commit, that is:</p>
+<ol class="arabic simple">
+<li><p>Switch to the <a class="reference internal" href="../../_images/githubFilesChanged.png"><img alt="githubFilesChanged" src="../../_images/githubFilesChanged.png" style="width: 8em;" /></a> tab</p></li>
+<li><p>Press <span class="guilabel">Add suggestion to batch</span> for each rewording you’d like to
+include. You will see a counter increasing as you go.</p></li>
+<li><p>Press any of the <span class="guilabel">Commit suggestions</span> button when you are ready to
+apply the suggestions to your pull request, and enter a message describing
+the changes.</p></li>
+</ol>
+<p>This will add all the modifications to your branch as a single commit, resulting in a
+more legible history of changes and less notifications for the repository
+followers. Incidentally, proceeding as this will also save you many clicks.</p>
+</div>
+</section>
+<section id="make-corrections">
+<h4><a class="toc-backref" href="#id20"><span class="section-number">1.1.4.5. </span>Make corrections</a><a class="headerlink" href="#make-corrections" title="Permalink to this headline"></a></h4>
+<p>A new pull request will automatically be added to the <a class="reference external" href="https://github.com/qgis/QGIS-Documentation/pulls">Pull requests list</a>.
+Other editors and administrators will review your pull request and they may make
+suggestions or ask for corrections.</p>
+<p>A pull request will also trigger automated build checks (eg, for rst formatting,
+python code syntaxes), and reports are displayed at the bottom of the page.
+If an error is found, a red cross will appear next to your commit.
+Click on the red cross or on <code class="docutils literal notranslate"><span class="pre">Details</span></code> in the summary section at the bottom
+of the pull request page to see the details of the error. You’ll have to fix
+any reported errors or warnings before your changes are committed to the
+<code class="docutils literal notranslate"><span class="pre">qgis/QGIS-Documentation</span></code> repository.</p>
+<p>You can make modifications to your pull request until it is merged with the
+main repository, either to improve your request, to address requested
+modifications, or to fix a build error.</p>
+<p>To make changes click on the <a class="reference internal" href="../../_images/githubFilesChanged.png"><img alt="githubFilesChanged" src="../../_images/githubFilesChanged.png" style="width: 8em;" /></a> tab in your pull request
+page and click the pencil button <a class="reference internal" href="../../_images/githubEditPencil.png"><img alt="githubEditPencil" src="../../_images/githubEditPencil.png" style="width: 2em;" /></a> next to the filename that
+you want to modify.</p>
+<p>Any additional changes will be automatically added to your pull request if you
+make those changes to the same branch that you submitted in your pull request.
+For this reason, you should only make additional changes if those changes
+relate to the issue that you intend to fix with that pull request.</p>
+<p>If you want to fix another issue, create a new branch for
+those changes and repeat the steps above.</p>
+<p>An administrator will merge your contribution after any build errors are
+corrected, and after you and the administrators are satisfied with your changes.</p>
+</section>
+</section>
+<section id="delete-your-merged-branch">
+<h3><a class="toc-backref" href="#id21"><span class="section-number">1.1.5. </span>Delete your merged branch</a><a class="headerlink" href="#delete-your-merged-branch" title="Permalink to this headline"></a></h3>
+<p>You can delete the branch after your changes have been merged.
+Deleting old branches saves you from having unused and outdated branches in
+your repository.</p>
+<ol class="arabic simple">
+<li><p>Navigate to your fork of the QGIS-Documentation repository
+(<code class="docutils literal notranslate"><span class="pre">https://github.com/&lt;YourName&gt;/QGIS-Documentation</span></code>).</p></li>
+<li><p>Click on the <span class="guilabel">Branches</span> tab. Below <span class="guilabel">Your branches</span> you’ll
+see a list of your branches.</p></li>
+<li><p>Click on the <a class="reference internal" href="../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <sup>Delete this branch</sup> icon to delete any
+unwanted branches.</p></li>
+</ol>
+</section>
+</section>
+<section id="using-git-command-line-tools">
+<span id="git-command-line-tools"></span><h2><a class="toc-backref" href="#id22"><span class="section-number">1.2. </span>Using Git command line tools</a><a class="headerlink" href="#using-git-command-line-tools" title="Permalink to this headline"></a></h2>
+<p>The GitHub web interface is an easy way to update the QGIS-documentation
+repo with your contributions, but it doesn’t offer tools to:</p>
+<ul class="simple">
+<li><p>group your commits and clean your change history</p></li>
+<li><p>fix possible conflicts with the main repo</p></li>
+<li><p>build the documentation to test your changes</p></li>
+</ul>
+<p>You need to <a class="reference external" href="https://git-scm.com/downloads">install git</a> on your hard
+drive in order to get access to more advanced and powerful tools and have a
+local copy of the repository. Some basics you may often need are exposed below.
+You’ll also find rules to care about even if you opt for the web interface.</p>
+<p>In the code samples below, lines beginning with <code class="docutils literal notranslate"><span class="pre">$</span></code> show commands you should
+type while <code class="docutils literal notranslate"><span class="pre">#</span></code> are comments.</p>
+<section id="local-repository">
+<span id="id5"></span><h3><a class="toc-backref" href="#id23"><span class="section-number">1.2.1. </span>Local repository</a><a class="headerlink" href="#local-repository" title="Permalink to this headline"></a></h3>
+<p>Now you are ready to get a local clone of <strong>your</strong> QGIS-Documentation repository.</p>
+<p>You can clone  your QGIS repository using the web URL as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># move to the folder in which you intend to store the local repository</span>
+$ <span class="nb">cd</span> ~/Documents/Development/QGIS/
+$ git clone https://github.com/&lt;YourName&gt;/QGIS-Documentation.git
+</pre></div>
+</div>
+<p>The former command line is simply an example.
+You should adapt both the path and the repository URL, replacing <code class="docutils literal notranslate"><span class="pre">&lt;YourName&gt;</span></code>
+with your github user name.</p>
+<p>Check the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enter the local repository</span>
+$ <span class="nb">cd</span> ./QGIS-Documentation
+$ git remote -v
+origin  https://github.com/&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+$ git branch
+* master
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><em>origin</em> is the name of the remote repository of your QGIS-Documentation
+repository.</p></li>
+<li><p><em>master</em> is the default main branch. You should never use it to contribute!
+<strong>Never!</strong></p></li>
+</ul>
+<p>Alternatively you can clone your QGIS repository using the SSH protocol:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># move to the folder in which you intend to store the local repository</span>
+$ <span class="nb">cd</span> ~/Documents/Development/QGIS/
+$ git clone git@github.com:&lt;YourName&gt;/QGIS-Documentation.git
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Permission denied (publickey) error?</strong></p>
+<p>If you get a Permission denied (publickey) error with the former command,
+there may be a problem with your SSH key. See <a class="reference external" href="https://help.github.com/articles/error-permission-denied-publickey/">GitHub help</a> for details.</p>
+</div>
+<p>Check the following if you used the SSH protocol:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enter the local repository</span>
+$ <span class="nb">cd</span> ./QGIS-Documentation
+$ git remote -v
+origin  git@github.com:&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+$ git branch
+* master
+</pre></div>
+</div>
+<p>You can start to work here but in the long term process you will get a lot of
+issues when you will push your contribution (called Pull Request in github
+process) as the master branch of the qgis/QGIS-Documentation repository will diverge
+from your local/remote repository.
+You then need to keep track of the main remote repository and work with branches.</p>
+</section>
+<section id="add-another-remote-repository">
+<h3><a class="toc-backref" href="#id24"><span class="section-number">1.2.2. </span>Add another remote repository</a><a class="headerlink" href="#add-another-remote-repository" title="Permalink to this headline"></a></h3>
+<p>To be able to follow the work in the main project, add a new remote repository
+in your local repository. This new remote repository is the QGIS-Documentation
+repository from QGIS project:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add upstream https://github.com/qgis/QGIS-Documentation.git
+$ git remote -v
+origin  https://github.com/&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+upstream        https://github.com/qgis/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+upstream        https://github.com/qgis/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+</pre></div>
+</div>
+<p>Similarly, you can use the SSH protocol to add a remote repository in your local
+repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add upstream git@github.com:qgis/QGIS-Documentation.git
+$ git remote -v
+origin  git@github.com:&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  git@github.com:&lt;YourName&gt;/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+upstream        git@github.com:qgis/QGIS-Documentation.git <span class="o">(</span>fetch<span class="o">)</span>
+upstream        git@github.com:qgis/QGIS-Documentation.git <span class="o">(</span>push<span class="o">)</span>
+</pre></div>
+</div>
+<p>So now you have the choice between two remote repository:</p>
+<ul class="simple">
+<li><p><em>origin</em> to push your local branch in <strong>your</strong> remote repository</p></li>
+<li><p><em>upstream</em> to merge (if you have right to do so) your contribution to the
+official one OR to update your master branch of local repository from the
+master branch of the official repository.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>upstream</em> is just a label, a kind of standard name but you can call
+it as you want.</p>
+</div>
+</section>
+<section id="update-your-base-branch">
+<h3><a class="toc-backref" href="#id25"><span class="section-number">1.2.3. </span>Update your base branch</a><a class="headerlink" href="#update-your-base-branch" title="Permalink to this headline"></a></h3>
+<p>Before working on a new contribution, you should always update your
+master branch in your local repository. Assuming you are willing to push changes
+to the testing documentation, run the following command lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># switch to master branch (it is easy to forget this step!)</span>
+$ git checkout master
+<span class="c1"># get &quot;information&quot; from the master branch in the upstream repository</span>
+<span class="c1"># (aka qgis/QGIS-Documentation&#39;s repository)</span>
+$ git fetch upstream master
+<span class="c1"># merge update from upstream/master to the current local branch</span>
+<span class="c1"># (which should be master, see step 1)</span>
+$ git merge upstream/master
+<span class="c1"># update **your** remote repository (aka &lt;YourName&gt;/QGIS-Documentation)</span>
+$ git push origin master
+</pre></div>
+</div>
+<p>Now you have your local and remote repositories which both have their <code class="docutils literal notranslate"><span class="pre">master</span></code>
+branch up to date with the official <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of QGIS-Documentation.
+You can start to work on your contribution.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Switch the branch if you wish to contribute to released doc</p>
+<p>Along with the testing documentation, we continue to fix issues in the
+<a class="reference external" href="https://docs.qgis.org/latest">latest release</a>, meaning
+that you can also contribute to it. Follow the previous section sample code,
+replacing <code class="docutils literal notranslate"><span class="pre">master</span></code> with the corresponding branch of the latest documentation.</p>
+</div>
+</section>
+<section id="contribute-to-your-production-branch">
+<span id="contribute"></span><h3><a class="toc-backref" href="#id26"><span class="section-number">1.2.4. </span>Contribute to your production branch</a><a class="headerlink" href="#contribute-to-your-production-branch" title="Permalink to this headline"></a></h3>
+<p>Now that your base branch is updated, you need to create a dedicated branch
+in which you add your contribution. Always work on a branch other than the
+base branch! Always!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new branch</span>
+$ git checkout -b myNewBranch
+<span class="c1"># checkout means go to the branch</span>
+<span class="c1"># and -b flag creates a new branch if needed, based on current branch</span>
+<span class="c1"># Let&#39;s check the list of existing branches (* indicates the current branch)</span>
+$ git branch
+master
+release_2.18
+...
+* myNewBranch
+<span class="c1"># You can now add your contribution, by editing the concerned file(s)</span>
+<span class="c1"># with any application (in this case, vim is used)</span>
+$ vim myFile
+<span class="c1"># once done</span>
+$ git add myFile
+$ git commit
+</pre></div>
+</div>
+<p>Few words about commit/push commands:</p>
+<ul class="simple">
+<li><p>try to commit only one contribution (atomic change) i.e. address only one issue</p></li>
+<li><p>try to explain carefully what you change in the title of your commit and in
+the description. The first line is a title and should start by an upper case
+letter and have 80 characters length, don’t end with a <code class="docutils literal notranslate"><span class="pre">.</span></code>. Be concise.
+Your description can be longer, end with a <code class="docutils literal notranslate"><span class="pre">.</span></code> and you can give much more details.</p></li>
+<li><p>use a <code class="docutils literal notranslate"><span class="pre">#</span></code> with a number to refer to an issue. Prefix with <code class="docutils literal notranslate"><span class="pre">Fix</span></code> if you fix the
+ticket: your commit will close the ticket.</p></li>
+</ul>
+<p>Now that your changes are saved and committed in your local branch,
+you need to send them to your remote repository in order to create pull request:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push origin myNewBranch
+</pre></div>
+</div>
+</section>
+<section id="share-your-changes">
+<h3><a class="toc-backref" href="#id27"><span class="section-number">1.2.5. </span>Share your Changes</a><a class="headerlink" href="#share-your-changes" title="Permalink to this headline"></a></h3>
+<p>Now you can go to your github repository and <a class="reference internal" href="#sharing-changes"><span class="std std-ref">create a Pull Request</span></a> as exposed in a previous section.
+Ensure you create a PR from your branch to the remote branch you are targetting
+in the official QGIS-Documentation repository.</p>
+</section>
+<section id="clean-up-your-local-and-remote-repository">
+<span id="clean-up"></span><h3><a class="toc-backref" href="#id28"><span class="section-number">1.2.6. </span>Clean-up your local and remote repository</a><a class="headerlink" href="#clean-up-your-local-and-remote-repository" title="Permalink to this headline"></a></h3>
+<p>After your PR has been merged into the official QGIS-Documentation, you can
+delete your branch. If you work a lot this way, in few weeks you will get a lot
+of unuseful branches. So keep your repository clean this way:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># delete local branch</span>
+$ git branch -d myNewBranch
+<span class="c1"># Remove your remote myNewBranch by pushing nothing to it</span>
+$ git push origin :myNewBranch
+</pre></div>
+</div>
+<p>And do not forget to update the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch in your local repository!</p>
+</section>
+</section>
+<section id="further-reading">
+<h2><a class="toc-backref" href="#id29"><span class="section-number">1.3. </span>Further reading</a><a class="headerlink" href="#further-reading" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Other than the Github web interface and the git command line tools exposed
+above, there are also <a class="reference external" href="https://git-scm.com/downloads/guis">GUI applications</a>
+you can use to create and manage your contributions to the documentation.</p></li>
+</ul>
+<ul class="simple" id="fix-conflicts">
+<li><p>When the changes in the pull request are conflicting with recent changes
+pushed to the target branch, the conflicts need to be resolved before a
+merge is possible:</p>
+<ul>
+<li><p>if the conflict relates to few competing lines, a <span class="guilabel">Resolve conflicts</span>
+button is available in the Github pull request page. Press the button
+and resolve the issue as explained at
+<a class="reference external" href="https://help.github.com/articles/resolving-a-merge-conflict-on-github/">https://help.github.com/articles/resolving-a-merge-conflict-on-github/</a></p></li>
+<li><p>if the conflict involves files renaming or removal, then you’d need to
+resolve the conflict using git command lines. Typically, you have to first
+rebase your branch over the target branch using <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">targetBranch</span></code>
+call and fix the conflicts that are reported. Read more at
+<a class="reference external" href="https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/">https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/</a></p></li>
+</ul>
+</li>
+<li><p>Sometimes, at the end of the proofreading process, you may end up with changes
+split into multiple commits that are not necessarily worth it. Git command
+lines help you squash these commits to a smaller number and more meaningful
+commit messages. Some details at
+<a class="reference external" href="https://help.github.com/articles/using-git-rebase-on-the-command-line/">https://help.github.com/articles/using-git-rebase-on-the-command-line/</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Documentation Guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="writing.html" class="btn btn-neutral float-right" title="2. Writing Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/documentation_guidelines/first_contribution.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/documentation_guidelines/first_contribution.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/documentation_guidelines/first_contribution.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/documentation_guidelines/first_contribution.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/documentation_guidelines/first_contribution.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/documentation_guidelines/first_contribution.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/documentation_guidelines/first_contribution.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/documentation_guidelines/first_contribution.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/documentation_guidelines/first_contribution.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/documentation_guidelines/first_contribution.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/documentation_guidelines/first_contribution.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/documentation_guidelines/first_contribution.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/documentation_guidelines/first_contribution.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/documentation_guidelines/first_contribution.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

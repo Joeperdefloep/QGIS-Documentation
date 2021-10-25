@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. Module: Assessment &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/assessment/index.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="14. Module: Forestry Application" href="../forestry/index.html" />
+    <link rel="prev" title="12.2. Lesson: GRASS Tools" href="../grass/grass_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/assessment/index.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13. Module: Assessment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-base-map">13.1. Create a base map</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-point-layer">13.1.1. Add the point layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-line-layer">13.1.2. Add the line layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-polygon-layer">13.1.3. Add the polygon layer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-raster-backdrop">13.1.4. Create the raster backdrop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finalize-the-base-map">13.1.5. Finalize the base map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#analyze-the-data">13.2. Analyze the data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-hard">13.2.1.  / </a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#final-map">13.3. Final Map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+      <li><span class="section-number">13. </span>Module: Assessment</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/assessment/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../grass/grass_tools.html" class="btn btn-neutral float-left" title="12.2. Lesson: GRASS Tools" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../forestry/index.html" class="btn btn-neutral float-right" title="14. Module: Forestry Application" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mod-assessment">
+<h1><span class="section-number">13. </span>Module: Assessment<a class="headerlink" href="#mod-assessment" title="Permalink to this headline"></a></h1>
+<p>Use your own data for this section. You will need:</p>
+<ul class="simple">
+<li><p>a point vector dataset of points of interest, with point names and multiple
+categories</p></li>
+<li><p>a line vector dataset of roads</p></li>
+<li><p>a polygon vector dataset of land use (using property boundaries)</p></li>
+<li><p>a visual-spectrum image (such as an aerial photograph)</p></li>
+<li><p>a DEM (downloadable from <a class="reference external" href="http://srtm.csi.cgiar.org/">the CGIAR-CSI</a> if you
+don’t have your own)</p></li>
+</ul>
+<section id="create-a-base-map">
+<h2><span class="section-number">13.1. </span>Create a base map<a class="headerlink" href="#create-a-base-map" title="Permalink to this headline"></a></h2>
+<p>Before doing any data analysis, you will need a base map, which will provide
+your analysis result with context.</p>
+<section id="add-the-point-layer">
+<h3><span class="section-number">13.1.1. </span>Add the point layer<a class="headerlink" href="#add-the-point-layer" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Add in the point layer. Based on the level that you’re doing the course at,
+do only what is listed in the appropriate section below:</p></li>
+</ul>
+<section id="basic">
+<h4><span class="section-number">13.1.1.1. </span><img alt="basic" src="../../../_images/basic.png" /><a class="headerlink" href="#basic" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Label the points according to a unique attribute, such as place names.  Use a
+small font and keep the labels inconspicuous. The information should be
+available, but shouldn’t be a main feature of the map.</p></li>
+<li><p>Classify the points themselves into different colors based on a category.
+For example, categories could include “tourist destination”, “police
+station”, and “town center”.</p></li>
+</ul>
+</section>
+<section id="moderate">
+<h4><span class="section-number">13.1.1.2. </span><img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#moderate" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Do the same as the <img alt="basic" src="../../../_images/basic.png" /> section.</p></li>
+<li><p>Classify the point size by importance: the more significant a feature, the
+larger its point. However, don’t exceed the point size of <kbd class="kbd docutils literal notranslate">2.00</kbd>.</p></li>
+<li><p>For features that aren’t located at a single point (for example,
+provincial/regional names, or town names at a large scale), don’t assign any
+point at all.</p></li>
+</ul>
+</section>
+<section id="hard">
+<h4><span class="section-number">13.1.1.3. </span><img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#hard" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Don’t use point symbols to symbolize the layer at all. Instead, use labels
+centered over the points; the point symbols themselves should have no size.</p></li>
+<li><p>Use <span class="guilabel">Data defined settings</span> to style the labels into meaningful
+categories.</p></li>
+<li><p>Add appropriate columns to the attribute data if necessary. When doing so,
+don’t create fictional data - rather, use the <span class="guilabel">Field Calculator</span> to
+populate the new columns, based on appropriate existing values in the
+dataset.</p></li>
+</ul>
+</section>
+</section>
+<section id="add-the-line-layer">
+<h3><span class="section-number">13.1.2. </span>Add the line layer<a class="headerlink" href="#add-the-line-layer" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Add the road layer and then change its symbology. Don’t label the roads.</p></li>
+</ul>
+<section id="id1">
+<h4><span class="section-number">13.1.2.1. </span><img alt="basic" src="../../../_images/basic.png" /><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Change the road symbology to a light color with a broad line. Make it
+somewhat transparent as well.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h4><span class="section-number">13.1.2.2. </span><img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Create a symbol with multiple symbol layers. The resulting symbol should look
+like a real road. You can use a simple symbol for this; for example, a black
+line with a thin white solid line running down the center. It can be more
+elaborate as well, but the resulting map should not look too busy.</p></li>
+<li><p>If your dataset has a high density of roads at the scale you want to show the
+map at, you should have two road layers: the elaborate road-like symbol, and
+a simpler symbol at smaller scales. (Use scale-based visibility to make them
+switch out at appropriate scales.)</p></li>
+<li><p>All symbols should have multiple symbol layers. Use symbols to make them
+display correctly.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h4><span class="section-number">13.1.2.3. </span><img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Do the same as in the <img alt="moderate" src="../../../_images/moderate.png" /> section above.</p></li>
+<li><p>In addition, roads should be classified. When using realistic road-like
+symbols, each type of road should have an appropriate symbol; for example, a
+highway should appear to have two lanes in either direction.</p></li>
+</ul>
+</section>
+</section>
+<section id="add-the-polygon-layer">
+<h3><span class="section-number">13.1.3. </span>Add the polygon layer<a class="headerlink" href="#add-the-polygon-layer" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Add the land use layer and change its symbology.</p></li>
+</ul>
+<section id="id4">
+<h4><span class="section-number">13.1.3.1. </span><img alt="basic" src="../../../_images/basic.png" /><a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Classify the layer according to land use. Use solid colors.</p></li>
+</ul>
+</section>
+<section id="id5">
+<h4><span class="section-number">13.1.3.2. </span><img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Classify the layer according to land use. Where appropriate, incorporate
+symbol layers, different symbol types, etc. Keep the results looking subdued
+and uniform, however. Keep in mind that this will be part of a backdrop!</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4><span class="section-number">13.1.3.3. </span><img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<ul class="simple">
+<li><p>Use rule-based classification to classify the land use into general
+categories, such as “urban”, “rural”, “nature reserve”, etc.</p></li>
+</ul>
+</section>
+</section>
+<section id="create-the-raster-backdrop">
+<h3><span class="section-number">13.1.4. </span>Create the raster backdrop<a class="headerlink" href="#create-the-raster-backdrop" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Create a hillshade from the DEM, and use it as an overlay for a classified
+version of the DEM itself. You could also use the <span class="guilabel">Relief</span> plugin
+(as shown in the lesson on plugins).</p></li>
+</ul>
+</section>
+<section id="finalize-the-base-map">
+<h3><span class="section-number">13.1.5. </span>Finalize the base map<a class="headerlink" href="#finalize-the-base-map" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Using the resources above, create a base map using some or all of the
+layers. This map should include all the basic information needed to orient
+the user, as well as being visually unified / “simple”.</p></li>
+</ul>
+</section>
+</section>
+<section id="analyze-the-data">
+<h2><span class="section-number">13.2. </span>Analyze the data<a class="headerlink" href="#analyze-the-data" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>You are looking for a property that satisfies certain criteria.</p></li>
+<li><p>You can decide on your own criteria, which you must document.</p></li>
+<li><p>There are some guidelines for these criteria:</p>
+<ul>
+<li><p>the target property should be of (a) certain type(s) of land use</p></li>
+<li><p>it should be within a given distance from roads, or be crossed by a road</p></li>
+<li><p>it should be within a given distance from some category of points, like a
+hospital for example</p></li>
+</ul>
+</li>
+</ul>
+<section id="moderate-hard">
+<h3><span class="section-number">13.2.1. </span><img alt="moderate" src="../../../_images/moderate.png" /> / <img alt="hard" src="../../../_images/hard.png" /><a class="headerlink" href="#moderate-hard" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Include raster analysis in your results. Consider at least one derived
+property of the raster, such as its aspect or slope.</p></li>
+</ul>
+</section>
+</section>
+<section id="final-map">
+<h2><span class="section-number">13.3. </span>Final Map<a class="headerlink" href="#final-map" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Use the <span class="guilabel">Print Layout</span> to create a final map, which incorporates
+your analysis results.</p></li>
+<li><p>Include this map in a document along with your documented criteria. If the
+map has become too visually busy due to the added layer(s), deselect the
+layers which you feel are the least necessary.</p></li>
+<li><p>Your map must include a title and a legend.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../grass/grass_tools.html" class="btn btn-neutral float-left" title="12.2. Lesson: GRASS Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../forestry/index.html" class="btn btn-neutral float-right" title="14. Module: Forestry Application" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/assessment/index.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/assessment/index.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/assessment/index.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/assessment/index.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/assessment/index.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/assessment/index.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/assessment/index.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/assessment/index.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/assessment/index.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/assessment/index.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/assessment/index.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/assessment/index.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/assessment/index.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/assessment/index.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

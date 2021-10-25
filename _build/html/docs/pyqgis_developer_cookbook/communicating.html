@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>13. Communicating with the user &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/communicating.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14. Authentication infrastructure" href="authentication.html" />
+    <link rel="prev" title="12. Reading And Storing Settings" href="settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/communicating.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legend.html">4. Accessing the Table Of Contents (TOC)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">13. Communicating with the user</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#showing-messages-the-qgsmessagebar-class">13.1. Showing messages. The QgsMessageBar class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#showing-progress">13.2. Showing progress</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">13.3. Logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qgsmessagelog">13.3.1. QgsMessageLog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-python-built-in-logging-module">13.3.2. The python built in logging module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">13. </span>Communicating with the user</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/communicating.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="settings.html" class="btn btn-neutral float-left" title="12. Reading And Storing Settings" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication.html" class="btn btn-neutral float-right" title="14. Authentication infrastructure" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="communicating-with-the-user">
+<h1><span class="section-number">13. </span>Communicating with the user<a class="headerlink" href="#communicating-with-the-user" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 2</span>    <span class="n">QgsMessageLog</span><span class="p">,</span>
+<span class="linenos"> 3</span>    <span class="n">QgsGeometry</span><span class="p">,</span>
+<span class="linenos"> 4</span><span class="p">)</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">qgis.gui</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos"> 7</span>    <span class="n">QgsMessageBar</span><span class="p">,</span>
+<span class="linenos"> 8</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="p">(</span>
+<span class="linenos">11</span>    <span class="n">QSizePolicy</span><span class="p">,</span>
+<span class="linenos">12</span>    <span class="n">QPushButton</span><span class="p">,</span>
+<span class="linenos">13</span>    <span class="n">QDialog</span><span class="p">,</span>
+<span class="linenos">14</span>    <span class="n">QGridLayout</span><span class="p">,</span>
+<span class="linenos">15</span>    <span class="n">QDialogButtonBox</span><span class="p">,</span>
+<span class="linenos">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#showing-messages-the-qgsmessagebar-class" id="id6">Showing messages. The QgsMessageBar class</a></p></li>
+<li><p><a class="reference internal" href="#showing-progress" id="id7">Showing progress</a></p></li>
+<li><p><a class="reference internal" href="#logging" id="id8">Logging</a></p>
+<ul>
+<li><p><a class="reference internal" href="#qgsmessagelog" id="id9">QgsMessageLog</a></p></li>
+<li><p><a class="reference internal" href="#the-python-built-in-logging-module" id="id10">The python built in logging module</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This section shows some methods and elements that should be used to communicate
+with the user, in order to keep consistency in the User Interface.</p>
+<section id="showing-messages-the-qgsmessagebar-class">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">13.1. </span>Showing messages. The QgsMessageBar class</a><a class="headerlink" href="#showing-messages-the-qgsmessagebar-class" title="Permalink to this headline"></a></h2>
+<p>Using message boxes can be a bad idea from a user experience point of view. For
+showing a small info line or a warning/error messages, the QGIS message bar is
+usually a better option.</p>
+<p>Using the reference to the QGIS interface object, you can show a message in the
+message bar with the following code</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">,</span> <span class="s2">&quot;I&#39;m sorry Dave, I&#39;m afraid I can&#39;t do that&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Messages(2): Error : I&#39;m sorry Dave, I&#39;m afraid I can&#39;t do that
+</pre></div>
+</div>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../_images/errorbar.png"><img alt="../../_images/errorbar.png" src="../../_images/errorbar.png" style="width: 40em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.30 </span><span class="caption-text">QGIS Message bar</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can set a duration to show it for a limited time</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s2">&quot;Ooops&quot;</span><span class="p">,</span> <span class="s2">&quot;The plugin is not working as it should&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Messages(2): Ooops : The plugin is not working as it should
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../../_images/errorbar-timed.png"><img alt="../../_images/errorbar-timed.png" src="../../_images/errorbar-timed.png" style="width: 40em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.31 </span><span class="caption-text">QGIS Message bar with timer</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The examples above show an error bar, but the <code class="docutils literal notranslate"><span class="pre">level</span></code> parameter can be used
+to creating warning messages or info messages, using the
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/Qgis.html#qgis.core.Qgis.MessageLevel" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qgis.MessageLevel</span></code></a> enumeration. You can use up to 4 different levels:</p>
+<ol class="arabic simple" start="0">
+<li><p>Info</p></li>
+<li><p>Warning</p></li>
+<li><p>Critical</p></li>
+<li><p>Success</p></li>
+</ol>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/infobar.png"><img alt="../../_images/infobar.png" src="../../_images/infobar.png" style="width: 40em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.32 </span><span class="caption-text">QGIS Message bar (info)</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Widgets can be added to the message bar, like for instance a button to show
+more info</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">showError</span><span class="p">():</span>
+<span class="linenos">2</span>    <span class="k">pass</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="n">widget</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">createMessage</span><span class="p">(</span><span class="s2">&quot;Missing Layers&quot;</span><span class="p">,</span> <span class="s2">&quot;Show Me&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="n">widget</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">button</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Show Me&quot;</span><span class="p">)</span>
+<span class="linenos">7</span><span class="n">button</span><span class="o">.</span><span class="n">pressed</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">showError</span><span class="p">)</span>
+<span class="linenos">8</span><span class="n">widget</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="linenos">9</span><span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushWidget</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Messages(1): Missing Layers : Show Me
+</pre></div>
+</div>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../../_images/bar-button.png"><img alt="../../_images/bar-button.png" src="../../_images/bar-button.png" style="width: 40em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.33 </span><span class="caption-text">QGIS Message bar with a button</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>You can even use a message bar in your own dialog so you don’t have to show a
+message box, or if it doesn’t make sense to show it in the main QGIS window</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">class</span> <span class="nc">MyDialog</span><span class="p">(</span><span class="n">QDialog</span><span class="p">):</span>
+<span class="linenos"> 2</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 3</span>        <span class="n">QDialog</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="linenos"> 4</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">QgsMessageBar</span><span class="p">()</span>
+<span class="linenos"> 5</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">setSizePolicy</span><span class="p">(</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Minimum</span><span class="p">,</span> <span class="n">QSizePolicy</span><span class="o">.</span><span class="n">Fixed</span> <span class="p">)</span>
+<span class="linenos"> 6</span>        <span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">QGridLayout</span><span class="p">())</span>
+<span class="linenos"> 7</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">setContentsMargins</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="linenos"> 8</span>        <span class="bp">self</span><span class="o">.</span><span class="n">buttonbox</span> <span class="o">=</span> <span class="n">QDialogButtonBox</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
+<span class="linenos"> 9</span>        <span class="bp">self</span><span class="o">.</span><span class="n">buttonbox</span><span class="o">.</span><span class="n">accepted</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
+<span class="linenos">10</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">buttonbox</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">11</span>        <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">12</span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos">13</span>        <span class="bp">self</span><span class="o">.</span><span class="n">bar</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">myDlg</span> <span class="o">=</span> <span class="n">MyDialog</span><span class="p">()</span>
+<span class="linenos">16</span><span class="n">myDlg</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../../_images/dialog-with-bar.png"><img alt="../../_images/dialog-with-bar.png" src="../../_images/dialog-with-bar.png" style="width: 40em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13.34 </span><span class="caption-text">QGIS Message bar in custom dialog</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="showing-progress">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">13.2. </span>Showing progress</a><a class="headerlink" href="#showing-progress" title="Permalink to this headline"></a></h2>
+<p>Progress bars can also be put in the QGIS message bar, since, as we have seen,
+it accepts widgets. Here is an example that you can try in the console.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos"> 2</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QProgressBar</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos"> 4</span><span class="n">progressMessageBar</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">createMessage</span><span class="p">(</span><span class="s2">&quot;Doing something boring...&quot;</span><span class="p">)</span>
+<span class="linenos"> 5</span><span class="n">progress</span> <span class="o">=</span> <span class="n">QProgressBar</span><span class="p">()</span>
+<span class="linenos"> 6</span><span class="n">progress</span><span class="o">.</span><span class="n">setMaximum</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">progress</span><span class="o">.</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignLeft</span><span class="o">|</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignVCenter</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">progressMessageBar</span><span class="o">.</span><span class="n">layout</span><span class="p">()</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">progress</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushWidget</span><span class="p">(</span><span class="n">progressMessageBar</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="linenos">12</span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">13</span>    <span class="n">progress</span><span class="o">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">clearWidgets</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Messages(0): Doing something boring...
+</pre></div>
+</div>
+<p>Also, you can use the built-in status bar to report progress, as in the next
+example:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">vlayer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="n">count</span> <span class="o">=</span> <span class="n">vlayer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">()</span>
+<span class="linenos"> 4</span><span class="n">features</span> <span class="o">=</span> <span class="n">vlayer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">()</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+<span class="linenos"> 7</span>    <span class="c1"># do something time-consuming here</span>
+<span class="linenos"> 8</span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="c1"># printing should give enough time to present the progress</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>    <span class="n">percent</span> <span class="o">=</span> <span class="n">i</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="linenos">11</span>    <span class="c1"># iface.mainWindow().statusBar().showMessage(&quot;Processed {} %&quot;.format(int(percent)))</span>
+<span class="linenos">12</span>    <span class="n">iface</span><span class="o">.</span><span class="n">statusBarIface</span><span class="p">()</span><span class="o">.</span><span class="n">showMessage</span><span class="p">(</span><span class="s2">&quot;Processed </span><span class="si">{}</span><span class="s2"> %&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">percent</span><span class="p">)))</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">iface</span><span class="o">.</span><span class="n">statusBarIface</span><span class="p">()</span><span class="o">.</span><span class="n">clearMessage</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="logging">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">13.3. </span>Logging</a><a class="headerlink" href="#logging" title="Permalink to this headline"></a></h2>
+<p>There are three different types of logging available in QGIS to log and save all
+the information about the execution of your code. Each has its specific output
+location. Please consider to use the correct way of logging for your purpose:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMessageLog.html#qgis.core.QgsMessageLog" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLog</span></code></a> is for messages to communicate
+issues to the user.
+The output of the QgsMessageLog is shown in the Log Messages Panel.</p></li>
+<li><p>The python built in <strong>logging</strong> module is for debugging on the level of the QGIS
+Python API (PyQGIS). It is recommended for Python script developers that need to
+debug their python code, e.g. feature ids or geometries</p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLogger.html#qgis.core.QgsLogger" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLogger</span></code></a> is for messages for <em>QGIS internal</em>
+debugging / developers (i.e. you suspect something is triggered by some broken code).
+Messages are only visible with developer versions of QGIS.</p></li>
+</ul>
+<p>Examples for the different logging types are shown in the following sections below.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Use of the Python <code class="docutils literal notranslate"><span class="pre">print</span></code> statement is unsafe to do in any code which may be
+multithreaded and <strong>extremely slows down the algorithm</strong>. This includes <strong>expression
+functions</strong>, <strong>renderers</strong>,
+<strong>symbol layers</strong> and <strong>Processing algorithms</strong> (amongst others). In these
+cases you should always use the python <strong>logging</strong> module or thread safe classes
+(<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLogger.html#qgis.core.QgsLogger" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLogger</span></code></a>
+or <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMessageLog.html#qgis.core.QgsMessageLog" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLog</span></code></a>) instead.</p>
+</div>
+<section id="qgsmessagelog">
+<h3><a class="toc-backref" href="#id9"><span class="section-number">13.3.1. </span>QgsMessageLog</a><a class="headerlink" href="#qgsmessagelog" title="Permalink to this headline"></a></h3>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You can optionally pass a &#39;tag&#39; and a &#39;level&#39; parameters</span>
+<span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;Your plugin code has been executed correctly&quot;</span><span class="p">,</span> <span class="s1">&#39;MyPlugin&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Info</span><span class="p">)</span>
+<span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;Your plugin code might have some problems&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+<span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s2">&quot;Your plugin code has crashed!&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyPlugin(0): Your plugin code has been executed correctly
+(1): Your plugin code might have some problems
+(2): Your plugin code has crashed!
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can see the output of the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsMessageLog.html#qgis.core.QgsMessageLog" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsMessageLog</span></code></a>
+in the <a class="reference internal" href="../user_manual/introduction/general_tools.html#log-message-panel"><span class="std std-ref">Log Messages Panel</span></a></p>
+</div>
+</section>
+<section id="the-python-built-in-logging-module">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">13.3.2. </span>The python built in logging module</a><a class="headerlink" href="#the-python-built-in-logging-module" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="linenos">2</span><span class="n">formatter</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
+<span class="linenos">3</span><span class="n">logfilename</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;c:\temp\example.log&#39;</span>
+<span class="linenos">4</span><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">logfilename</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">formatter</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;This logging info text goes into the file&quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;This logging debug text goes into the file as well&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The basicConfig method configures the basic setup of the logging.
+In the above code the filename, logging level and the format are defined.
+The filename refers to where to write the logfile to, the logging level defines what
+levels to output and the format defines the format in which each message is output.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2020</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">998</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">This</span> <span class="n">logging</span> <span class="n">text</span> <span class="n">goes</span> <span class="n">into</span> <span class="n">the</span> <span class="n">file</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">13</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span><span class="mi">998</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">This</span> <span class="n">logging</span> <span class="n">debug</span> <span class="n">text</span> <span class="n">goes</span> <span class="n">into</span> <span class="n">the</span> <span class="n">file</span> <span class="k">as</span> <span class="n">well</span>
+</pre></div>
+</div>
+<p>If you want to erase the log file every time you execute your script you can do something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">logfilename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfilename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Further resources on how to use the python logging facility are available at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/logging.html">https://docs.python.org/3/library/logging.html</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/howto/logging.html">https://docs.python.org/3/howto/logging.html</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/howto/logging-cookbook.html">https://docs.python.org/3/howto/logging-cookbook.html</a></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please note that without logging to a file by setting a filename the logging may be
+multithreaded which heavily slows down the output.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="settings.html" class="btn btn-neutral float-left" title="12. Reading And Storing Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authentication.html" class="btn btn-neutral float-right" title="14. Authentication infrastructure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/communicating.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/communicating.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/communicating.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/communicating.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/communicating.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/communicating.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/communicating.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/communicating.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/communicating.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/communicating.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/communicating.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/communicating.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/communicating.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/communicating.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.1.8. Plots &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/plots.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.1.9. Raster analysis" href="rasteranalysis.html" />
+    <link rel="prev" title="25.1.7. Network analysis" href="networkanalysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/plots.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">25.1.1. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">25.1.2. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">25.1.3. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">25.1.4. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">25.1.5. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">25.1.6. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">25.1.7. Network analysis</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.1.8. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">25.1.9. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">25.1.10. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">25.1.11. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">25.1.12. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">25.1.13. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">25.1.14. Vector creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeneral.html">25.1.15. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">25.1.16. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">25.1.17. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">25.1.18. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">25.1.19. Vector table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">25.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.1. </span>QGIS algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.1.8. </span>Plots</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/plots.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="networkanalysis.html" class="btn btn-neutral float-left" title="25.1.7. Network analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rasteranalysis.html" class="btn btn-neutral float-right" title="25.1.9. Raster analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plots">
+<h1><span class="section-number">25.1.8. </span>Plots<a class="headerlink" href="#plots" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#bar-plot" id="id22">Bar plot</a></p></li>
+<li><p><a class="reference internal" href="#box-plot" id="id23">Box plot</a></p></li>
+<li><p><a class="reference internal" href="#mean-and-standard-deviation-plot" id="id24">Mean and standard deviation plot</a></p></li>
+<li><p><a class="reference internal" href="#polar-plot" id="id25">Polar plot</a></p></li>
+<li><p><a class="reference internal" href="#raster-layer-histogram" id="id26">Raster layer histogram</a></p></li>
+<li><p><a class="reference internal" href="#vector-layer-histogram" id="id27">Vector layer histogram</a></p></li>
+<li><p><a class="reference internal" href="#vector-layer-scatterplot" id="id28">Vector layer scatterplot</a></p></li>
+<li><p><a class="reference internal" href="#vector-layer-scatterplot-3d" id="id29">Vector layer scatterplot 3D</a></p></li>
+</ul>
+</div>
+<section id="bar-plot">
+<span id="qgisbarplot"></span><h2><a class="toc-backref" href="#id22"><span class="section-number">25.1.8.1. </span>Bar plot</a><a class="headerlink" href="#bar-plot" title="Permalink to this headline"></a></h2>
+<p>Creates a bar plot from a category and a layer field.</p>
+<section id="parameters">
+<h3><span class="section-number">25.1.8.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Category field name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NAME_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Categorical field to use for grouping the bars (X axis)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Value field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUE_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Value to use for the plot (Y axis).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bar plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.1.8.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bar plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.1.8.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:barplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="box-plot">
+<span id="qgisboxplot"></span><h2><a class="toc-backref" href="#id23"><span class="section-number">25.1.8.2. </span>Box plot</a><a class="headerlink" href="#box-plot" title="Permalink to this headline"></a></h2>
+<p>Creates a box plot from a category field and a numerical layer field.</p>
+<section id="id1">
+<h3><span class="section-number">25.1.8.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Category name field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NAME_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Categorical field to use for grouping the boxes (X axis)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Value field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUE_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Value to use for the plot (Y axis).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Additional statistic lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MSD</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Additional statistics information to add to the plot.
+One of:</p>
+<ul class="simple">
+<li><p>0 — Show Mean</p></li>
+<li><p>1 — Show Standard Deviation</p></li>
+<li><p>2 — Don’t show mean and standard deviation</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Box plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">25.1.8.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Box plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">25.1.8.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:boxplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="mean-and-standard-deviation-plot">
+<span id="qgismeanandstandarddeviationplot"></span><h2><a class="toc-backref" href="#id24"><span class="section-number">25.1.8.3. </span>Mean and standard deviation plot</a><a class="headerlink" href="#mean-and-standard-deviation-plot" title="Permalink to this headline"></a></h2>
+<p>Creates a box plot with mean and standard deviation values.</p>
+<section id="id4">
+<h3><span class="section-number">25.1.8.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input table</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Category name field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NAME_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Categorical field to use for grouping the boxes (X axis)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Value field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUE_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Value to use for the plot (Y axis).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.1.8.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">25.1.8.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:meanandstandarddeviationplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="polar-plot">
+<span id="qgispolarplot"></span><h2><a class="toc-backref" href="#id25"><span class="section-number">25.1.8.4. </span>Polar plot</a><a class="headerlink" href="#polar-plot" title="Permalink to this headline"></a></h2>
+<p>Generates a polar plot based on the value of an input vector layer.</p>
+<p>Two fields must be entered as parameters: one that defines the category each feature
+(to group features) and another one with the variable to plot (this has to be
+a numeric one).</p>
+<section id="id7">
+<h3><span class="section-number">25.1.8.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Category name field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NAME_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Categorical field to use for grouping the features (X axis)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Value field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">VALUE_FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Value to use for the plot (Y axis).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Polar plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">25.1.8.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Polar plot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">25.1.8.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:polarplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="raster-layer-histogram">
+<span id="qgisrasterlayerhistogram"></span><h2><a class="toc-backref" href="#id26"><span class="section-number">25.1.8.5. </span>Raster layer histogram</a><a class="headerlink" href="#raster-layer-histogram" title="Permalink to this headline"></a></h2>
+<p>Generates a histogram with the values of a raster layer.</p>
+<section id="id10">
+<h3><span class="section-number">25.1.8.5.1. </span>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>Input raster layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Band number</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BAND</span></code></p></td>
+<td><p>[raster band]</p></td>
+<td><p>Raster band to use for the histogram</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>number of bins</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BINS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>The number of bins to use in the histogram (X axis).
+Minimum 2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">25.1.8.5.2. </span>Outputs<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">25.1.8.5.3. </span>Python code<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:rasterlayerhistogram</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="vector-layer-histogram">
+<span id="qgisvectorlayerhistogram"></span><h2><a class="toc-backref" href="#id27"><span class="section-number">25.1.8.6. </span>Vector layer histogram</a><a class="headerlink" href="#vector-layer-histogram" title="Permalink to this headline"></a></h2>
+<p>Generates a histogram with the values of the attribute of a vector layer.</p>
+<p>The attribute to use for computing the histogram must be numeric.</p>
+<section id="id13">
+<h3><span class="section-number">25.1.8.6.1. </span>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Value to use for the plot (Y axis).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>number of bins</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BINS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>The number of bins to use in the histogram (X axis).
+Minimum 2.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">25.1.8.6.2. </span>Outputs<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">25.1.8.6.3. </span>Python code<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:vectorlayerhistogram</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="vector-layer-scatterplot">
+<span id="qgisvectorlayerscatterplot"></span><h2><a class="toc-backref" href="#id28"><span class="section-number">25.1.8.7. </span>Vector layer scatterplot</a><a class="headerlink" href="#vector-layer-scatterplot" title="Permalink to this headline"></a></h2>
+<p>Creates a simple <code class="docutils literal notranslate"><span class="pre">X</span></code> - <code class="docutils literal notranslate"><span class="pre">Y</span></code> scatter plot for a vector layer.</p>
+<section id="id16">
+<h3><span class="section-number">25.1.8.7.1. </span>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>X attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">XFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for the X axis</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Y attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">YFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for the Y axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Scatterplot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3><span class="section-number">25.1.8.7.2. </span>Outputs<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Scatterplot</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3><span class="section-number">25.1.8.7.3. </span>Python code<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:vectorlayerscatterplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="vector-layer-scatterplot-3d">
+<span id="qgisscatter3dplot"></span><h2><a class="toc-backref" href="#id29"><span class="section-number">25.1.8.8. </span>Vector layer scatterplot 3D</a><a class="headerlink" href="#vector-layer-scatterplot-3d" title="Permalink to this headline"></a></h2>
+<p>Creates a 3D scatter plot for a vector layer.</p>
+<section id="id19">
+<h3><span class="section-number">25.1.8.8.1. </span>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>X attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">XFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for the X axis</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Y attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">YFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for the Y axis</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Z attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZFIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for the Z axis</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the HTML file for the plot. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><span class="section-number">25.1.8.8.2. </span>Outputs<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Histogram</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[html]</p></td>
+<td><p>HTML file with the plot.
+Available in the <span class="menuselection">Processing ► Result Viewer</span>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h3><span class="section-number">25.1.8.8.3. </span>Python code<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:scatter3dplot</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="networkanalysis.html" class="btn btn-neutral float-left" title="25.1.7. Network analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="rasteranalysis.html" class="btn btn-neutral float-right" title="25.1.9. Raster analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/plots.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/plots.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/plots.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/plots.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/plots.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/plots.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/plots.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/qgis/plots.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/plots.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/qgis/plots.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/qgis/plots.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/qgis/plots.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/qgis/plots.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/plots.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

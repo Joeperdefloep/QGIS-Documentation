@@ -1,4 +1,4 @@
-.. _interface_overview
+.. _interface_overview:
 
 |LS| An Overview of the Interface
 ===============================================================================

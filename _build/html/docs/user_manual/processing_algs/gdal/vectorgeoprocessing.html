@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.2.7. Vector geoprocessing &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.2.8. Vector miscellaneous" href="vectormiscellaneous.html" />
+    <link rel="prev" title="25.2.6. Vector conversion" href="vectorconversion.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">25.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.2. GDAL algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">25.2.1. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterconversion.html">25.2.2. Raster conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterextraction.html">25.2.3. Raster extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastermiscellaneous.html">25.2.4. Raster miscellaneous</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterprojections.html">25.2.5. Raster projections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorconversion.html">25.2.6. Vector conversion</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.2.7. Vector geoprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectormiscellaneous.html">25.2.8. Vector miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">25.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.2. </span>GDAL algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.2.7. </span>Vector geoprocessing</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="vectorconversion.html" class="btn btn-neutral float-left" title="25.2.6. Vector conversion" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectormiscellaneous.html" class="btn btn-neutral float-right" title="25.2.8. Vector miscellaneous" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector-geoprocessing">
+<h1><span class="section-number">25.2.7. </span>Vector geoprocessing<a class="headerlink" href="#vector-geoprocessing" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#buffer-vectors" id="id32">Buffer vectors</a></p></li>
+<li><p><a class="reference internal" href="#clip-vector-by-extent" id="id33">Clip vector by extent</a></p></li>
+<li><p><a class="reference internal" href="#clip-vector-by-mask-layer" id="id34">Clip vector by mask layer</a></p></li>
+<li><p><a class="reference internal" href="#dissolve" id="id35">Dissolve</a></p></li>
+<li><p><a class="reference internal" href="#offset-curve" id="id36">Offset curve</a></p></li>
+<li><p><a class="reference internal" href="#one-side-buffer" id="id37">One side buffer</a></p></li>
+<li><p><a class="reference internal" href="#points-along-lines" id="id38">Points along lines</a></p></li>
+</ul>
+</div>
+<section id="buffer-vectors">
+<span id="gdalbuffervectors"></span><h2><a class="toc-backref" href="#id32"><span class="section-number">25.2.7.1. </span>Buffer vectors</a><a class="headerlink" href="#buffer-vectors" title="Permalink to this headline"></a></h2>
+<p>Create buffers around the features of a vector layer.</p>
+<section id="parameters">
+<h3><span class="section-number">25.2.7.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<section id="basic-parameters">
+<h4><span class="section-number">25.2.7.1.1.1. </span>Basic parameters<a class="headerlink" href="#basic-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry column name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘geometry’</p>
+</td>
+<td><p>The name of the input layer geometry column to use</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Buffer distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10.0</p>
+</td>
+<td><p>Minimum: 0.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dissolve by attribute</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field to use for dissolving</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Dissolve results</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISSOLVE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><dl class="simple">
+<dt>If set, the result is dissolved.</dt><dd><p>If no field is set for dissolving, all the buffers are
+dissolved into one feature.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Produce one feature for each geometry in any kind of
+geometry collection in the source file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXPLODE_COLLECTIONS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Buffer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output buffer layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="advanced-parameters">
+<h4><span class="section-number">25.2.7.1.1.2. </span>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.2.7.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Buffer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>The output buffer layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.2.7.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:buffervectors</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="clip-vector-by-extent">
+<span id="gdalclipvectorbyextent"></span><h2><a class="toc-backref" href="#id33"><span class="section-number">25.2.7.2. </span>Clip vector by extent</a><a class="headerlink" href="#clip-vector-by-extent" title="Permalink to this headline"></a></h2>
+<p>Clips any OGR-supported vector file to a given extent.</p>
+<p>This algorithm is derived from the
+<a class="reference external" href="https://gdal.org/programs/ogr2ogr.html">GDAL ogr2ogr utility</a>.</p>
+<section id="id1">
+<h3><span class="section-number">25.2.7.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<section id="id2">
+<h4><span class="section-number">25.2.7.2.1.1. </span>Basic parameters<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Clip extent</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXTENT</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>Defines the bounding box that should be used for the
+output vector file.
+It has to be defined in target CRS coordinates.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Clipped (extent)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output (clipped) layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h4><span class="section-number">25.2.7.2.1.2. </span>Advanced parameters<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id4">
+<h3><span class="section-number">25.2.7.2.2. </span>Outputs<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clipped (extent)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output (clipped) layer.
+The default format is “ESRI Shapefile”.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.2.7.2.3. </span>Python code<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:clipvectorbyextent</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="clip-vector-by-mask-layer">
+<span id="gdalclipvectorbypolygon"></span><h2><a class="toc-backref" href="#id34"><span class="section-number">25.2.7.3. </span>Clip vector by mask layer</a><a class="headerlink" href="#clip-vector-by-mask-layer" title="Permalink to this headline"></a></h2>
+<p>Clips any OGR-supported vector layer by a mask polygon layer.</p>
+<p>This algorithm is derived from the <a class="reference external" href="https://gdal.org/programs/ogr2ogr.html">GDAL ogr2ogr utility</a>.</p>
+<section id="id7">
+<h3><span class="section-number">25.2.7.3.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<section id="id8">
+<h4><span class="section-number">25.2.7.3.1.1. </span>Basic parameters<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mask layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MASK</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>Layer to be used as clipping extent for the input vector layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Clipped (mask)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>The output (masked) layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h4><span class="section-number">25.2.7.3.1.2. </span>Advanced parameters<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id10">
+<h3><span class="section-number">25.2.7.3.2. </span>Outputs<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Clipped (mask)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output (masked) layer.
+The default format is “ESRI Shapefile”.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">25.2.7.3.3. </span>Python code<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:clipvectorbypolygon</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="dissolve">
+<span id="gdaldissolve"></span><h2><a class="toc-backref" href="#id35"><span class="section-number">25.2.7.4. </span>Dissolve</a><a class="headerlink" href="#dissolve" title="Permalink to this headline"></a></h2>
+<p>Dissolve (combine) geometries that have the same value for
+a given attribute / field.
+The output geometries are multipart.</p>
+<section id="id12">
+<h3><span class="section-number">25.2.7.4.1. </span>Parameters<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<section id="id13">
+<h4><span class="section-number">25.2.7.4.1.1. </span>Basic parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input layer to dissolve</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dissolve field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>The field of the input layer to use for dissolving</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Geometry column name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘geometry’</p>
+</td>
+<td><p>The name of the input layer geometry column to use
+for dissolving.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dissolved</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h4><span class="section-number">25.2.7.4.1.2. </span>Advanced parameters<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Produce one feature for each geometry in any kind of
+geometry collection in the source file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXPLODE_COLLECTIONS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Produce one feature for each geometry in any kind of geometry
+collection in the source file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Keep input attributes</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KEEP_ATTRIBUTES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Keep all attributes from the input layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Count dissolved features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COUNT_FEATURES</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Count the dissolved features and include it in the output
+layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Compute area and perimeter of dissolved features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_AREA</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><dl class="simple">
+<dt>Compute the area and perimeter of dissolved features and</dt><dd><p>include them in the output layer</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Compute min/max/sum/mean for attribute</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPUTE_STATISTICS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Calculate statistics (min, max, sum and mean) for the numeric
+attribute specified and include them in the output layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Numeric attribute to calculate statistics on</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">STATISTICS_ATTRIBUTE</span></code></p></td>
+<td><p>[tablefield: numeric]</p></td>
+<td><p>The numeric attribute to calculate statistics on</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id15">
+<h3><span class="section-number">25.2.7.4.2. </span>Outputs<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dissolved</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><dl class="simple">
+<dt>The output multipart geometry layer (with dissolved</dt><dd><p>geometries)</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id16">
+<h3><span class="section-number">25.2.7.4.3. </span>Python code<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:dissolve</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="offset-curve">
+<span id="gdaloffsetcurve"></span><h2><a class="toc-backref" href="#id36"><span class="section-number">25.2.7.5. </span>Offset curve</a><a class="headerlink" href="#offset-curve" title="Permalink to this headline"></a></h2>
+<p>Offsets lines by a specified distance.
+Positive distances will offset lines to the left, and negative
+distances will offset them to the right.</p>
+<section id="id17">
+<h3><span class="section-number">25.2.7.5.1. </span>Parameters<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<section id="id18">
+<h4><span class="section-number">25.2.7.5.1.1. </span>Basic parameters<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The input line layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry column name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘geometry’</p>
+</td>
+<td><p>The name of the input layer geometry column to use</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Offset distance (left-sided: positive, right-sided: negative)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10.0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Offset curve</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output line layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id19">
+<h4><span class="section-number">25.2.7.5.1.2. </span>Advanced parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id20">
+<h3><span class="section-number">25.2.7.5.2. </span>Outputs<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Offset curve</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The output offset curve layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h3><span class="section-number">25.2.7.5.3. </span>Python code<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:offsetcurve</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="one-side-buffer">
+<span id="gdalonesidebuffer"></span><h2><a class="toc-backref" href="#id37"><span class="section-number">25.2.7.6. </span>One side buffer</a><a class="headerlink" href="#one-side-buffer" title="Permalink to this headline"></a></h2>
+<p>Creates a buffer on one side (right or left) of the lines in a line
+vector layer.</p>
+<section id="id22">
+<h3><span class="section-number">25.2.7.6.1. </span>Parameters<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<section id="id23">
+<h4><span class="section-number">25.2.7.6.1.1. </span>Basic parameters<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The input line layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry column name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘geometry’</p>
+</td>
+<td><p>The name of the input layer geometry column to use</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Buffer distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 10.0</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Buffer side</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BUFFER_SIDE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>One of:</p>
+<ul class="simple">
+<li><p>0 — Right</p></li>
+<li><p>1 — Left</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Dissolve by attribute</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p>
+<p>Default: None</p>
+</td>
+<td><p>Field to use for dissolving</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dissolve all results</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISSOLVE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><dl class="simple">
+<dt>If set, the result is dissolved.</dt><dd><p>If no field is set for dissolving, all the buffers are
+dissolved into one feature.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Produce one feature for each geometry in any kind of
+geometry collection in the source file</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXPLODE_COLLECTIONS</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>One-sided buffer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output buffer layer. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h4><span class="section-number">25.2.7.6.1.2. </span>Advanced parameters<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id25">
+<h3><span class="section-number">25.2.7.6.2. </span>Outputs<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>One-sided buffer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>The output buffer layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3><span class="section-number">25.2.7.6.3. </span>Python code<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:onesidebuffer</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="points-along-lines">
+<span id="gdalpointsalonglines"></span><h2><a class="toc-backref" href="#id38"><span class="section-number">25.2.7.7. </span>Points along lines</a><a class="headerlink" href="#points-along-lines" title="Permalink to this headline"></a></h2>
+<p>Generates a point on each line of a line vector layer at a distance
+from start.
+The distance is provided as a fraction of the line length.</p>
+<section id="id27">
+<h3><span class="section-number">25.2.7.7.1. </span>Parameters<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<section id="id28">
+<h4><span class="section-number">25.2.7.7.1.1. </span>Basic parameters<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line]</p></td>
+<td><p>The input line layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry column name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘geometry’</p>
+</td>
+<td><p>The name of the input layer geometry column to use</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Distance from line start represented as a fraction of line length</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISTANCE</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 0.5 (middle of the line)</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Points along lines</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the output point layer.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id29">
+<h4><span class="section-number">25.2.7.7.1.2. </span>Advanced parameters<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional creation options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code></p></td>
+<td><p>[string]</p>
+<p>Default: ‘’ (no additional options)</p>
+</td>
+<td><p>Additional GDAL creation options.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id30">
+<h3><span class="section-number">25.2.7.7.2. </span>Outputs<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Points along line</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>The output point layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id31">
+<h3><span class="section-number">25.2.7.7.3. </span>Python code<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">gdal:pointsalonglines</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vectorconversion.html" class="btn btn-neutral float-left" title="25.2.6. Vector conversion" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectormiscellaneous.html" class="btn btn-neutral float-right" title="25.2.8. Vector miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/gdal/vectorgeoprocessing.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

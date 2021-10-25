@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15.2. Lesson: Implementing the Data Model &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/data_model.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="15.3. Lesson: Adding Data to the Model" href="adding_data.html" />
+    <link rel="prev" title="15.1. Lesson: Introduction to Databases" href="db_intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/data_model.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">15. Module: Database Concepts with PostgreSQL</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="db_intro.html">15.1. Lesson: Introduction to Databases</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">15.2. Lesson: Implementing the Data Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-postgresql">15.2.1. Install PostgreSQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#help">15.2.2. Help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-database-user">15.2.3. Create a database user</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verify-the-new-account">15.2.4. Verify the new account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-database">15.2.5. Create a database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starting-a-database-shell-session">15.2.6. Starting a database shell session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#make-tables-in-sql">15.2.7. Make Tables in SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-keys-in-sql">15.2.8. Create Keys in SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-indexes-in-sql">15.2.9. Create Indexes in SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dropping-tables-in-sql">15.2.10. Dropping Tables in SQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-word-on-pgadmin-iii">15.2.11. A word on pgAdmin III</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">15.2.12. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">15.2.13. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="adding_data.html">15.3. Lesson: Adding Data to the Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="queries.html">15.4. Lesson: Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="views.html">15.5. Lesson: Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rules.html">15.6. Lesson: Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">15. </span>Module: Database Concepts with PostgreSQL</a> &raquo;</li>
+      <li><span class="section-number">15.2. </span>Lesson: Implementing the Data Model</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/database_concepts/data_model.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="db_intro.html" class="btn btn-neutral float-left" title="15.1. Lesson: Introduction to Databases" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adding_data.html" class="btn btn-neutral float-right" title="15.3. Lesson: Adding Data to the Model" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-implementing-the-data-model">
+<h1><span class="section-number">15.2. </span>Lesson: Implementing the Data Model<a class="headerlink" href="#ls-implementing-the-data-model" title="Permalink to this headline"></a></h1>
+<p>Now that we’ve covered all the theory, let’s create a new database. This
+database will be used for our exercises for the lessons that will follow
+afterwards.</p>
+<p><strong>The goal for this lesson:</strong> To install the required software and use it to
+implement our example database.</p>
+<section id="install-postgresql">
+<h2><span class="section-number">15.2.1. </span>Install PostgreSQL<a class="headerlink" href="#install-postgresql" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find PostgreSQL packages and installation instructions for
+your operating system at <a class="reference external" href="https://www.postgresql.org/download/">https://www.postgresql.org/download/</a>.
+Please note that the documentation will assume users are running QGIS under
+Ubuntu.</p>
+</div>
+<p>Under Ubuntu:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install postgresql-9.1
+</pre></div>
+</div>
+<p>You should get a message like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> qgis:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following extra packages will be installed:
+postgresql-client-9.1 postgresql-client-common postgresql-common
+Suggested packages:
+oidentd ident-server postgresql-doc-9.1
+The following NEW packages will be installed:
+postgresql-9.1 postgresql-client-9.1 postgresql-client-common postgresql-common
+<span class="m">0</span> upgraded, <span class="m">4</span> newly installed, <span class="m">0</span> to remove and <span class="m">5</span> not upgraded.
+Need to get <span class="m">5</span>,012kB of archives.
+After this operation, <span class="m">19</span>.0MB of additional disk space will be used.
+Do you want to <span class="k">continue</span> <span class="o">[</span>Y/n<span class="o">]</span>?
+</pre></div>
+</div>
+<p>Press <kbd class="kbd docutils literal notranslate">Y</kbd> and <kbd class="kbd docutils literal notranslate">Enter</kbd> and wait for the download and installation to
+finish.</p>
+</section>
+<section id="help">
+<h2><span class="section-number">15.2.2. </span>Help<a class="headerlink" href="#help" title="Permalink to this headline"></a></h2>
+<p>PostgreSQL has very good <a class="reference external" href="https://www.postgresql.org/docs/9.1/index.html">online</a> documentation.</p>
+</section>
+<section id="create-a-database-user">
+<h2><span class="section-number">15.2.3. </span>Create a database user<a class="headerlink" href="#create-a-database-user" title="Permalink to this headline"></a></h2>
+<p>Under Ubuntu:</p>
+<p>After the installation is complete, run this command to become the postgres
+user and then create a new database user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su - postgres
+</pre></div>
+</div>
+<p>Type in your normal log in password when prompted (you need to have sudo rights).</p>
+<p>Now, at the postgres user’s bash prompt, create the database user. Make sure
+the user name matches your unix login name: it will make your life much easier,
+as postgres will automatically authenticate you when you are logged in as that
+user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>createuser -d -E -i -l -P -r -s qgis
+</pre></div>
+</div>
+<p>Enter a password when prompted. You should use a different password to your login
+password.</p>
+<p>What do those options mean?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-d, --createdb     role can create new databases
+-E, --encrypted    encrypt stored password
+-i, --inherit      role inherits privileges of roles it is a member of <span class="o">(</span>default<span class="o">)</span>
+-l, --login        role can login <span class="o">(</span>default<span class="o">)</span>
+-P, --pwprompt     assign a password to new role
+-r, --createrole   role can create new roles
+-s, --superuser    role will be superuser
+</pre></div>
+</div>
+<p>Now you should leave the postgres user’s bash shell environment by
+typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
+</section>
+<section id="verify-the-new-account">
+<h2><span class="section-number">15.2.4. </span>Verify the new account<a class="headerlink" href="#verify-the-new-account" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>Should return something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>      <span class="o">|</span>  <span class="n">Owner</span>   <span class="o">|</span> <span class="n">Encoding</span> <span class="o">|</span> <span class="n">Collation</span>  <span class="o">|</span>   <span class="n">Ctype</span>    <span class="o">|</span>
+<span class="o">----------+----------+----------+------------+------------+</span>
+<span class="n">postgres</span>  <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span>
+<span class="n">template0</span> <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span>
+<span class="n">template1</span> <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="o">.</span><span class="n">utf8</span> <span class="o">|</span>
+<span class="p">(</span><span class="mi">3</span> <span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Type <kbd class="kbd docutils literal notranslate">Q</kbd> to exit.</p>
+</section>
+<section id="create-a-database">
+<h2><span class="section-number">15.2.5. </span>Create a database<a class="headerlink" href="#create-a-database" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">createdb</span></code> command is used to create a new database. It should be run
+from the bash shell prompt:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="n">createdb</span> <span class="n">address</span> <span class="o">-</span><span class="n">O</span> <span class="n">qgis</span>
+</pre></div>
+</div>
+<p>You can verify the existence of your new database by using this command:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>Which should return something like this:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="k">Name</span>      <span class="o">|</span>  <span class="k">Owner</span>   <span class="o">|</span> <span class="k">Encoding</span> <span class="o">|</span> <span class="k">Collation</span>  <span class="o">|</span>   <span class="n">Ctype</span>    <span class="o">|</span>   <span class="k">Access</span> <span class="k">privileges</span>
+<span class="c1">----------+----------+----------+------------+------------+-----------------------</span>
+<span class="n">address</span>   <span class="o">|</span> <span class="n">qgis</span>     <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span>
+<span class="n">postgres</span>  <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span>
+<span class="n">template0</span> <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="o">=</span><span class="n">c</span><span class="o">/</span><span class="n">postgres</span><span class="p">:</span> <span class="n">postgres</span><span class="o">=</span><span class="n">CTc</span><span class="o">/</span><span class="n">postgres</span>
+<span class="n">template1</span> <span class="o">|</span> <span class="n">postgres</span> <span class="o">|</span> <span class="n">UTF8</span>     <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="n">en_ZA</span><span class="mf">.</span><span class="n">utf8</span> <span class="o">|</span> <span class="o">=</span><span class="n">c</span><span class="o">/</span><span class="n">postgres</span><span class="p">:</span> <span class="n">postgres</span><span class="o">=</span><span class="n">CTc</span><span class="o">/</span><span class="n">postgres</span>
+<span class="p">(</span><span class="mf">4</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Type <kbd class="kbd docutils literal notranslate">Q</kbd> to exit.</p>
+</section>
+<section id="starting-a-database-shell-session">
+<h2><span class="section-number">15.2.6. </span>Starting a database shell session<a class="headerlink" href="#starting-a-database-shell-session" title="Permalink to this headline"></a></h2>
+<p>You can connect to your database easily like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="n">address</span>
+</pre></div>
+</div>
+<p>To exit out of the psql database shell, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">q</span>
+</pre></div>
+</div>
+<p>For help in using the shell, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\?
+</pre></div>
+</div>
+<p>For help in using sql commands, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">help</span>
+</pre></div>
+</div>
+<p>To get help on a specific command, type (for example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">help</span> <span class="n">create</span> <span class="n">table</span>
+</pre></div>
+</div>
+<p>See also the <a class="reference external" href="http://www.postgresonline.com/downloads/special_feature/postgresql90_cheatsheet_A4.pdf">Psql cheat sheet</a>.</p>
+</section>
+<section id="make-tables-in-sql">
+<h2><span class="section-number">15.2.7. </span>Make Tables in SQL<a class="headerlink" href="#make-tables-in-sql" title="Permalink to this headline"></a></h2>
+<p>Let’s start making some tables! We will use our ER Diagram as a guide. First,
+connect to the address db:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="n">address</span>
+</pre></div>
+</div>
+<p>Then create a <code class="file docutils literal notranslate"><span class="pre">streets</span></code> table:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">table</span> <span class="n">streets</span> <span class="p">(</span><span class="n">id</span> <span class="nb">serial</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span> <span class="n">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+</pre></div>
+</div>
+<p><kbd class="kbd docutils literal notranslate">serial</kbd> and <kbd class="kbd docutils literal notranslate">varchar</kbd> are <strong>data types</strong>. <kbd class="kbd docutils literal notranslate">serial</kbd> tells
+PostgreSQL to start an integer sequence (auto-number) to populate the <kbd class="kbd docutils literal notranslate">id</kbd>
+automatically for every new record. <kbd class="kbd docutils literal notranslate">varchar(50)</kbd> tells PostgreSQL to
+create a character field of 50 characters in length.</p>
+<p>You will notice that the command ends with a <kbd class="kbd docutils literal notranslate">;</kbd> - all SQL commands should
+be terminated this way. When you press <kbd class="kbd docutils literal notranslate">Enter</kbd>, psql will report something
+like this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">NOTICE</span><span class="p">:</span>  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">will</span> <span class="k">create</span> <span class="k">implicit</span> <span class="n">sequence</span> <span class="ss">&quot;streets_id_seq&quot;</span>
+         <span class="k">for</span> <span class="nb">serial</span> <span class="k">column</span> <span class="ss">&quot;streets.id&quot;</span>
+<span class="n">NOTICE</span><span class="p">:</span>  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">/</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">will</span> <span class="k">create</span> <span class="k">implicit</span> <span class="k">index</span>
+         <span class="ss">&quot;streets_pkey&quot;</span> <span class="k">for</span> <span class="k">table</span> <span class="ss">&quot;streets&quot;</span>
+<span class="k">CREATE</span> <span class="k">TABLE</span>
+</pre></div>
+</div>
+<p>That means your table was created successfully, with a primary key <kbd class="kbd docutils literal notranslate">streets_pkey</kbd>
+using <kbd class="kbd docutils literal notranslate">streets.id</kbd>.</p>
+<p>Note: If you hit return without entering a <kbd class="kbd docutils literal notranslate">;</kbd>, then you will get a prompt like
+this: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">address</kbd>-<kbd class="kbd docutils literal notranslate">#</kbd></kbd>. This is because PG is expecting you to enter more. Enter
+<kbd class="kbd docutils literal notranslate">;</kbd> to run your command.</p>
+<p>To view your table schema, you can do this:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="kp">\d</span> <span class="ss">streets</span>
+</pre></div>
+</div>
+<p>Which should show something like this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Table</span> <span class="ss">&quot;public.streets&quot;</span>
+<span class="k">Column</span>  <span class="o">|</span>         <span class="k">Type</span>          <span class="o">|</span>            <span class="n">Modifiers</span>
+<span class="c1">--------+-----------------------+--------------------------------------</span>
+ <span class="n">id</span>     <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span>
+        <span class="o">|</span>                       <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;streets_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="n">name</span>   <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span>
+<span class="n">Indexes</span><span class="p">:</span>
+  <span class="ss">&quot;streets_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To view your table contents, you can do this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">streets</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Which should show something like this:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">id</span> <span class="o">|</span> <span class="n">name</span>
+<span class="c1">---+------</span>
+<span class="p">(</span><span class="mi">0</span> <span class="k">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, our table is currently empty.</p>
+<section id="ty-moderate">
+<h3><span class="section-number">15.2.7.1. </span>Try Yourself <img alt="moderate" src="../../../_images/moderate.png" /><a class="headerlink" href="#ty-moderate" title="Permalink to this headline"></a></h3>
+<p>Use the approach shown above to make a table called people:</p>
+<p>Add fields such as phone number, home address, name, etc. (these aren’t all
+valid names: change them to make them valid). Make sure you give the table an
+ID column with the same data-type as above.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The SQL required to create the correct people table is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">create</span> <span class="n">table</span> <span class="n">people</span> <span class="p">(</span><span class="nb">id</span> <span class="n">serial</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">primary</span> <span class="n">key</span><span class="p">,</span>
+                     <span class="n">name</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+                     <span class="n">house_no</span> <span class="nb">int</span> <span class="ow">not</span> <span class="n">null</span><span class="p">,</span>
+                     <span class="n">street_id</span> <span class="nb">int</span> <span class="ow">not</span> <span class="n">null</span><span class="p">,</span>
+                     <span class="n">phone_no</span> <span class="n">varchar</span> <span class="n">null</span> <span class="p">);</span>
+</pre></div>
+</div>
+<p>The schema for the table (enter <code class="docutils literal notranslate"><span class="pre">\\d</span> <span class="pre">people</span></code>) looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Table</span> <span class="s2">&quot;public.people&quot;</span>
+
+<span class="n">Column</span>     <span class="o">|</span>         <span class="n">Type</span>          <span class="o">|</span>                      <span class="n">Modifiers</span>
+<span class="o">-----------+-----------------------+-------------------------------------</span>
+<span class="nb">id</span>         <span class="o">|</span> <span class="n">integer</span>               <span class="o">|</span> <span class="ow">not</span> <span class="n">null</span> <span class="n">default</span>
+           <span class="o">|</span>                       <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;people_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+<span class="n">name</span>       <span class="o">|</span> <span class="n">character</span> <span class="n">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span>
+<span class="n">house_no</span>   <span class="o">|</span> <span class="n">integer</span>               <span class="o">|</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="n">street_id</span>  <span class="o">|</span> <span class="n">integer</span>               <span class="o">|</span> <span class="ow">not</span> <span class="n">null</span>
+<span class="n">phone_no</span>   <span class="o">|</span> <span class="n">character</span> <span class="n">varying</span>     <span class="o">|</span>
+<span class="n">Indexes</span><span class="p">:</span>
+  <span class="s2">&quot;people_pkey&quot;</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For illustration purposes, we have purposely omitted the fkey constraint.</p>
+</div>
+</section>
+</section>
+<section id="create-keys-in-sql">
+<h2><span class="section-number">15.2.8. </span>Create Keys in SQL<a class="headerlink" href="#create-keys-in-sql" title="Permalink to this headline"></a></h2>
+<p>The problem with our solution above is that the database doesn’t know that
+people and streets have a logical relationship. To express this relationship,
+we have to define a foreign key that points to the primary key of the streets
+table.</p>
+<figure class="align-center">
+<img alt="../../../_images/er-people-streets.png" src="../../../_images/er-people-streets.png" />
+</figure>
+<p>There are two ways to do this:</p>
+<ul class="simple">
+<li><p>Add the key after the table has been created</p></li>
+<li><p>Define the key at time of table creation</p></li>
+</ul>
+<p>Our table has already been created, so let’s do it the first way:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">alter</span> <span class="k">table</span> <span class="n">people</span>
+  <span class="k">add</span> <span class="k">constraint</span> <span class="n">people_streets_fk</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">street_id</span><span class="p">)</span> <span class="k">references</span> <span class="n">streets</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>That tells the <kbd class="kbd docutils literal notranslate">people</kbd> table that its <kbd class="kbd docutils literal notranslate">street_id</kbd> fields must match
+a valid street <kbd class="kbd docutils literal notranslate">id</kbd> from the <kbd class="kbd docutils literal notranslate">streets</kbd> table.</p>
+<p>The more usual way to create a constraint is to do it when you create the table:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">table</span> <span class="n">people</span> <span class="p">(</span><span class="n">id</span> <span class="nb">serial</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">,</span>
+                     <span class="k">name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mf">50</span><span class="p">),</span>
+                     <span class="n">house_no</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+                     <span class="n">street_id</span> <span class="nb">int</span> <span class="k">references</span> <span class="n">streets</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+                     <span class="n">phone_no</span> <span class="nb">varchar</span> <span class="k">null</span><span class="p">);</span>
+
+<span class="go">\d people</span>
+</pre></div>
+</div>
+<p>After adding the constraint, our table schema looks like this now:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Table</span> <span class="ss">&quot;public.people&quot;</span>
+
+  <span class="k">Column</span>   <span class="o">|</span>         <span class="k">Type</span>          <span class="o">|</span>            <span class="n">Modifiers</span>
+<span class="c1">-----------+-----------------------+---------------------------------</span>
+ <span class="n">id</span>        <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span>
+           <span class="o">|</span>                       <span class="o">|</span> <span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;people_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="n">name</span>      <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span>
+ <span class="n">house_no</span>  <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+ <span class="n">street_id</span> <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+ <span class="n">phone_no</span>  <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span>     <span class="o">|</span>
+<span class="n">Indexes</span><span class="p">:</span>
+  <span class="ss">&quot;people_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="k">Foreign</span><span class="o">-</span><span class="k">key</span> <span class="k">constraints</span><span class="p">:</span>
+  <span class="ss">&quot;people_streets_fk&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">streets</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="create-indexes-in-sql">
+<h2><span class="section-number">15.2.9. </span>Create Indexes in SQL<a class="headerlink" href="#create-indexes-in-sql" title="Permalink to this headline"></a></h2>
+<p>We want lightning fast searches on peoples names. To provide for this, we can
+create an index on the name column of our people table:</p>
+<div class="highlight-psql notranslate"><div class="highlight"><pre><span></span><span class="k">create</span> <span class="k">index</span> <span class="n">people_name_idx</span> <span class="k">on</span> <span class="n">people</span><span class="p">(</span><span class="k">name</span><span class="p">);</span>
+
+<span class="go">\d people</span>
+</pre></div>
+</div>
+<p>Which results in:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Table</span> <span class="ss">&quot;public.people&quot;</span>
+
+  <span class="k">Column</span>   <span class="o">|</span>         <span class="k">Type</span>          <span class="o">|</span>                      <span class="n">Modifiers</span>
+<span class="c1">-----------+-----------------------+-----------------------------------</span>
+ <span class="n">id</span>        <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span> <span class="k">default</span> <span class="n">nextval</span>
+           <span class="o">|</span>                       <span class="o">|</span> <span class="p">(</span><span class="s1">&#39;people_id_seq&#39;</span><span class="p">::</span><span class="n">regclass</span><span class="p">)</span>
+ <span class="n">name</span>      <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">|</span>
+ <span class="n">house_no</span>  <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+ <span class="n">street_id</span> <span class="o">|</span> <span class="nb">integer</span>               <span class="o">|</span> <span class="k">not</span> <span class="k">null</span>
+ <span class="n">phone_no</span>  <span class="o">|</span> <span class="nb">character</span> <span class="nb">varying</span>     <span class="o">|</span>
+<span class="n">Indexes</span><span class="p">:</span>
+ <span class="ss">&quot;people_pkey&quot;</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span> <span class="n">btree</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+ <span class="ss">&quot;people_name_idx&quot;</span> <span class="n">btree</span> <span class="p">(</span><span class="n">name</span><span class="p">)</span>    <span class="o">&lt;</span><span class="c1">-- new index added!</span>
+<span class="k">Foreign</span><span class="o">-</span><span class="k">key</span> <span class="k">constraints</span><span class="p">:</span>
+ <span class="ss">&quot;people_streets_fk&quot;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">streets</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dropping-tables-in-sql">
+<h2><span class="section-number">15.2.10. </span>Dropping Tables in SQL<a class="headerlink" href="#dropping-tables-in-sql" title="Permalink to this headline"></a></h2>
+<p>If you want to get rid of a table you can use the <kbd class="kbd docutils literal notranslate">drop</kbd> command:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">drop</span> <span class="k">table</span> <span class="n">streets</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In our current example, the above command would not work. Why not?</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The reason the DROP command would not work in this case is because the
+<em>people</em> table has a Foreign Key constraint to the <em>streets</em> table. This means
+that dropping (or deleting) the <em>streets</em> table would leave the <em>people</em> table
+with references to non-existent <em>streets</em> data.</p>
+<p>It is possible to ‘force’ the <em>streets</em> table to be deleted by using the
+<code class="docutils literal notranslate"><span class="pre">CASCADE</span></code> command, but this would also delete the <em>people</em> and any other table
+which had a relationship to the <em>streets</em> table. Use with caution!</p>
+</div>
+<p>If you used the same <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">drop</kbd> <kbd class="kbd docutils literal notranslate">table</kbd></kbd> command on the <cite>people</cite> table, it would
+be successful:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">drop</span> <span class="k">table</span> <span class="n">people</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you actually did enter that command and dropped the <kbd class="kbd docutils literal notranslate">people</kbd>
+table, now would be a good time to rebuild it, as you will need it in the
+next exercises.</p>
+</div>
+</section>
+<section id="a-word-on-pgadmin-iii">
+<h2><span class="section-number">15.2.11. </span>A word on pgAdmin III<a class="headerlink" href="#a-word-on-pgadmin-iii" title="Permalink to this headline"></a></h2>
+<p>We are showing you the SQL commands from the <cite>psql</cite> prompt because it’s a very
+useful way to learn about databases. However, there are quicker and easier ways
+to do a lot of what we are showing you. Install pgAdmin III and you can create,
+drop, alter etc tables using ‘point and click’ operations in a GUI.</p>
+<p>Under Ubuntu, you can install it like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install pgadmin3
+</pre></div>
+</div>
+<p>pgAdmin III will be covered in more detail in another module.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">15.2.12. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You have now seen how to create a brand new database, starting completely from
+scratch.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">15.2.13. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Next you’ll learn how to use the DBMS to add new data.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="db_intro.html" class="btn btn-neutral float-left" title="15.1. Lesson: Introduction to Databases" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adding_data.html" class="btn btn-neutral float-right" title="15.3. Lesson: Adding Data to the Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/data_model.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/database_concepts/data_model.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/database_concepts/data_model.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/database_concepts/data_model.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/database_concepts/data_model.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/database_concepts/data_model.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/database_concepts/data_model.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/database_concepts/data_model.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/database_concepts/data_model.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/database_concepts/data_model.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/database_concepts/data_model.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/database_concepts/data_model.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/database_concepts/data_model.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/database_concepts/data_model.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

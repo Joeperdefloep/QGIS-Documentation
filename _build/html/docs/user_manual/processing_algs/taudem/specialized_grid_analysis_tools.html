@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.4.2. Specialized Grid Analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.4.3. Stream Network Analysis" href="stream_network_analysis_tools.html" />
+    <link rel="prev" title="25.4.1. Basic Grid Analysis" href="basic_grid_analysis_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">25.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.4. TauDEM algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="basic_grid_analysis_tools.html">25.4.1. Basic Grid Analysis</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.4.2. Specialized Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stream_network_analysis_tools.html">25.4.3. Stream Network Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.4. </span>TauDEM algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.4.2. </span>Specialized Grid Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="basic_grid_analysis_tools.html" class="btn btn-neutral float-left" title="25.4.1. Basic Grid Analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stream_network_analysis_tools.html" class="btn btn-neutral float-right" title="25.4.3. Stream Network Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="specialized-grid-analysis">
+<h1><span class="section-number">25.4.2. </span>Specialized Grid Analysis<a class="headerlink" href="#specialized-grid-analysis" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#d8-distance-to-streams" id="id37">D8 Distance To Streams</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-avalanche-runout" id="id38">D-Infinity Avalanche Runout</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-concentration-limited-accumulation" id="id39">D-Infinity Concentration Limited Accumulation</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-decaying-accumulation" id="id40">D-Infinity Decaying Accumulation</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-distance-down" id="id41">D-Infinity Distance Down</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-distance-up" id="id42">D-Infinity Distance Up</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-reverse-accumulation" id="id43">D-Infinity Reverse Accumulation</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-transport-limited-accumulation-2" id="id44">D-Infinity Transport Limited Accumulation - 2</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-transport-limited-accumulation" id="id45">D-Infinity Transport Limited Accumulation</a></p></li>
+<li><p><a class="reference internal" href="#d-infinity-upslope-dependence" id="id46">D-Infinity Upslope Dependence</a></p></li>
+<li><p><a class="reference internal" href="#slope-average-down" id="id47">Slope Average Down</a></p></li>
+<li><p><a class="reference internal" href="#slope-over-area-ratio" id="id48">Slope Over Area Ratio</a></p></li>
+<li><p><a class="reference internal" href="#topographic-wetness-index" id="id49">Topographic wetness index</a></p></li>
+</ul>
+</div>
+<section id="d8-distance-to-streams">
+<span id="taudemd8hdisttostrm"></span><h2><a class="toc-backref" href="#id37"><span class="section-number">25.4.2.1. </span>D8 Distance To Streams</a><a class="headerlink" href="#d8-distance-to-streams" title="Permalink to this headline"></a></h2>
+<p>Computes the horizontal distance to stream for each grid cell, moving downslope
+according to the D8 flow model, until a stream grid cell is encountered.</p>
+<section id="parameters">
+<h3><span class="section-number">25.4.2.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of flow directions that are encoded using the D8 method
+where all flow from a cells goes to a single neighboring cell in the direction
+of steepest descent. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stream Raster Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid indicating streams. Such a grid can be created by several of the tools
+in the <strong>“Stream Network Analysis”</strong> toolset. However, the tools in the
+<strong>“Stream Network Analysis”</strong> toolset only create grids with a value of 0 for
+no stream, or 1 for stream cells. This tool can also accept grids with values
+greater than 1, which can be used in conjunction with the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code>
+parameter to determine the location of streams. This allows Contributing Area
+grids to be used to define streams as well as the normal Stream Raster grids.
+This grid expects integer (long integer) values and any non-integer values
+will be truncated to an integer before being evaluated.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 50</p>
+</td>
+<td><p>This value acts as threshold on the <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Raster</span> <span class="pre">Grid</span></code> to determine the
+location of streams. Cells with a <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Raster</span> <span class="pre">Grid</span></code> value  greater than
+or equal to the <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> value are interpreted as streams.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.4.2.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output Distance to Streams</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the horizontal distance along the flow path as defined by the
+D8 Flow Directions Grid to the streams in the Stream Raster Grid.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.4.2.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:d8hdisttostrm</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-avalanche-runout">
+<span id="taudemdinfavalanche"></span><h2><a class="toc-backref" href="#id38"><span class="section-number">25.4.2.2. </span>D-Infinity Avalanche Runout</a><a class="headerlink" href="#d-infinity-avalanche-runout" title="Permalink to this headline"></a></h2>
+<p>Identifies an avalanche’s affected area and the flow path length to each cell in
+that affacted area. All cells downslope from each source area cell, up to the
+point where the slope from the source to the affected area is less than a
+threshold angle called the Alpha Angle can be in the affected area. This tool
+uses the D-infinity multiple flow direction method for determining flow direction.
+This will likely cause very small amounts of flow to be dispersed to some
+downslope cells that might overstate the affected area, so a threshold proportion
+can be set to avoid this excess dispersion. The flow path length is the distance
+from the cell in question to the source cell that has the highest angle.</p>
+<p>All points downslope from the source area are potentially in the affected area,
+but not beyond a point where the slope from the source to the affected area is
+less than a threshold angle called the Alpha Angle.</p>
+<figure class="align-center">
+<img alt="../../../../_images/arexample.png" src="../../../../_images/arexample.png" />
+</figure>
+<p>Slope is to be measured using the straight line distance from source point to
+evaluation point.</p>
+<p>It makes more physical sense to me for the angle to be measured along the flow
+path. Nevertheless it is equally easy to code straight line angles as angles
+along the flow path, so an option that allows switching will be provided. The
+most practical way to evaluate avalanche runout is to keep track of the source
+point with the greatest angle to each point. Then the recursive upslope flow
+algebra approach will look at a grid cell and all its upslope neighbors that flow
+to it. Information from the upslope neighbors will be used to calculate the angle
+to the grid cell in question and retain it in the runout zone if the angle exceeds
+the alpha angle. This procedure makes the assumption that the maximum angle at a
+grid cell will be from the set of cells that have maximum angles to the inflowing
+neighbors. This will always be true of angle is calculated along a flow path, but
+I can conceive of cases where flow paths bend back on themselves where this would
+not be the case for straight line angles.</p>
+<p>The D-infinity multiple flow direction field assigns flow from each grid cell to
+multiple downslope neighbors using proportions (<code class="docutils literal notranslate"><span class="pre">Pik</span></code>) that vary between 0 and
+1 and sum to 1 for all flows out of a grid cell. It may be desirable to specify
+a threshold <code class="docutils literal notranslate"><span class="pre">T</span></code> that this proportion has to exceed before a grid cell is counted
+as flowing to a downslope grid cell, e.g. <code class="docutils literal notranslate"><span class="pre">Pik</span> <span class="pre">&gt;</span> <span class="pre">T</span></code> (=0.2 say) to avoid
+dispersion to grid cells that get very little flow. <code class="docutils literal notranslate"><span class="pre">T</span></code> will be specified as a
+user input. If all upslope grid cells are to be used <code class="docutils literal notranslate"><span class="pre">T</span></code> may be input as 0.</p>
+<p>Avalanche source sites are to be input as a short integer grid (name suffix
+<code class="file docutils literal notranslate"><span class="pre">*ass</span></code>, e.g. <code class="file docutils literal notranslate"><span class="pre">demass</span></code>) comprised of positive values where avalanches
+may be triggered and 0 values elsewhere.</p>
+<p>The following grids are output:</p>
+<ul class="simple">
+<li><p>rz — A runout zone indicator with value 0 to indicate that this grid cell is
+not in the runout zone and value &gt; 0 to indicate that this grid cell is in the
+runout zone. Since there may be information in the angle to the associated
+source site, this variable will be assigned the angle to the source site (in
+degrees)</p></li>
+<li><p>dm — Along flow distance from the source site that has the highest angle to
+the point in question</p></li>
+</ul>
+<section id="id1">
+<h3><span class="section-number">25.4.2.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created  by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of elevation values. As a general rule, it is recommended
+that you use a grid of elevation values that have had the pits removed for
+this input. Pits are generally taken to be artifacts that interfere with the
+analysis of flow across them. This grid can be obtained as the output of the
+<strong>“Pit Remove”</strong> tool, in which case it contains elevation values where the
+pits have been filled to the point where they just drain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Avalanche Source Site Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This is a grid of source areas for snow avalanches that are commonly
+identified manually using a mix of experience and visual interpretation of
+maps. Avalanche source sites are to be input as a short integer grid (name
+suffix <code class="file docutils literal notranslate"><span class="pre">*ass</span></code>, e.g. <code class="file docutils literal notranslate"><span class="pre">demass</span></code>) comprised of positive values where
+avalanches may be triggered and 0 values elsewhere.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Proportion Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.2</p>
+</td>
+<td><p>This value is a threshold proportion that is used to limit the dispersion of
+flow caused by using the D-infinity multiple flow direction method for
+determining flow direction. The D-infinity multiple flow direction method
+often causes very small amounts of flow to be dispersed to some downslope
+cells that might overstate the affected area, so a threshold proportion can
+be set to avoid this excess dispersion.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Alpha Angle Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 18</p>
+</td>
+<td><p>This value is the threshold angle, called the Alpha Angle, that is used to
+determine which of the cells downslope from the source cells are in the
+affected area. Only the cells downslope from each source area cell, up to the
+point where the slope from the source to the affected area is less than a
+threshold angle are in the affected area.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Measure distance along flow path</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option selects the method used to measure the distance used to calculate
+the slope angle. If option is <em>True</em> then measure it along the flow path,
+where the <em>False</em> option causes the slope to be measure along the straight
+line distance from the source cell to the evaluation cell.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">25.4.2.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Runout Zone Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This grid Identifies the avalanche’s runout zone (affected area) using a
+runout zone indicator with value 0 to indicate that this grid cell is not in
+the runout zone and value &gt; 0 to indicate that this grid cell is in the
+runout zone. Since there may be information in the angle to the associated
+source site, this variable will be assigned the angle to the source site
+(in degrees).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Path Distance Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This is a grid of the flow distance from the source site that has the highest
+angle to each cell.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">25.4.2.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfavalanche</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-concentration-limited-accumulation">
+<span id="taudemdinfconclimaccum"></span><h2><a class="toc-backref" href="#id39"><span class="section-number">25.4.2.3. </span>D-Infinity Concentration Limited Accumulation</a><a class="headerlink" href="#d-infinity-concentration-limited-accumulation" title="Permalink to this headline"></a></h2>
+<p>This function applies to the situation where an unlimited supply of a substance
+is loaded into flow at a concentration or solubility threshold Csol over a region
+indicated by an indicator grid (dg). It a grid of the concentration of a substance
+at each location in the domain, where the supply of substance from a supply area
+is loaded into the flow at a concentration or solubility threshold. The flow is
+first calculated as a D-infinity weighted contributing area of an input Effective
+Runoff Weight Grid (notionally excess precipitation). The concentration of
+substance over the supply area (indicator grid) is at the concentration threshold.
+As the substance moves downslope with the D-infinity flow field, it is subject
+to first order decay in moving from cell to cell as well as dilution due to
+changes in flow. The decay multiplier grid gives the fractional (first order)
+reduction in quantity in moving from grid cell <code class="docutils literal notranslate"><span class="pre">x</span></code> to the next downslope cell.
+If the outlets shapefile is used, the tool only evaluates the part of the domain
+that contributes flow to the locations given by the shapefile. This is useful for
+a tracking a contaminant or compound from an area with unlimited supply of that
+compound that is loaded into a flow at a concentration or solubility threshold
+over a zone and flow from the zone may be subject to decay or attenuation.</p>
+<p>The indicator grid (<code class="docutils literal notranslate"><span class="pre">dg</span></code>) is used to delineate the area of the substance supply
+using the (0, 1) indicator function <code class="docutils literal notranslate"><span class="pre">i(x)</span></code>. <code class="docutils literal notranslate"><span class="pre">A[]</span></code> denotes the weighted
+accumulation operator evaluated using the D-Infinity Contributing Area function.
+The Effective Runoff Weight Grid gives the supply to the flow (e.g. the excess
+rainfall if this is overland flow) denoted as <code class="docutils literal notranslate"><span class="pre">w(x)</span></code>. The specific discharge
+is then given by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">w</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+</pre></div>
+</div>
+<p>This weighted accumulation <code class="docutils literal notranslate"><span class="pre">Q(x)</span></code> is output as the Overland Flow Specific
+Discharge Grid. Over the substance supply area concentration is at the threshold
+(the threshold is a saturation or solubility limit). If <code class="docutils literal notranslate"><span class="pre">i(x)</span> <span class="pre">=</span> <span class="pre">1</span></code>, then</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">Csol</span><span class="p">,</span> <span class="ow">and</span> <span class="n">L</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">Csol</span> <span class="n">Q</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">L(x)</span></code> denotes the load being carried by the flow. At remaining locations,
+the load is determined by load accumulation and the concentration by dilution:</p>
+<figure class="align-center">
+<img alt="../../../../_images/claeqn.png" src="../../../../_images/claeqn.png" />
+</figure>
+<p>Here <code class="docutils literal notranslate"><span class="pre">d(x)</span> <span class="pre">=</span> <span class="pre">d(i,</span> <span class="pre">j)</span></code> is a decay multiplier giving the fractional (first order)
+reduction in mass in moving from grid cell <code class="docutils literal notranslate"><span class="pre">x</span></code> to the next downslope cell. If
+travel (or residence) times <code class="docutils literal notranslate"><span class="pre">t(x)</span></code> associated with flow between cells are
+available <code class="docutils literal notranslate"><span class="pre">d(x)</span></code> may be evaluated as <code class="docutils literal notranslate"><span class="pre">exp(-k</span> <span class="pre">t(x))</span></code> where <code class="docutils literal notranslate"><span class="pre">k</span></code> is a first
+order decay parameter. The Concentration grid output is <code class="docutils literal notranslate"><span class="pre">C(x)</span></code>. If the outlets
+shapefile is used, the tool only evaluates the part of the domain that contributes
+flow to the locations given by the shapefile.</p>
+<figure class="align-center">
+<img alt="../../../../_images/clafig.png" src="../../../../_images/clafig.png" />
+</figure>
+<p>Useful for a tracking a contaminant released or partitioned to flow at a fixed
+threshold concentration.</p>
+<section id="id4">
+<h3><span class="section-number">25.4.2.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This grid can be created by
+the function <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Disturbance Indicator Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid that indicates the source zone of the area of substance supply and
+must be 1 inside the zone and 0 or NODATA over the rest of the domain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Decay Multiplier Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the factor by which flow leaving each grid cell is multiplied
+before accumulation on downslope grid cells. This may be used to simulate the
+movement of an attenuating or decaying substance. If travel (or residence)
+times <code class="docutils literal notranslate"><span class="pre">t(x)</span></code> associated with flow between cells are available <code class="docutils literal notranslate"><span class="pre">d(x)</span></code> may
+be evaluated as <code class="docutils literal notranslate"><span class="pre">exp(-k</span> <span class="pre">t(x))</span></code> where <code class="docutils literal notranslate"><span class="pre">k</span></code> is a first order decay parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Effective Runoff Weight Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the input quantity (notionally effective runoff or excess
+precipitation) to be used in the D-infinity weighted contributing area
+evaluation of Overland Flow Specific Discharge.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets shapefile</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>This optional input is a point shapefile defining outlets of interest. If this
+file is used, the tool will only evaluate the area upslope of these outlets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Concentration Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 1.0</p>
+</td>
+<td><p>The concentration or solubility threshold. Over the substance supply area,
+concentration is at this threshold.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option determines whether the tool should check for edge contamination.
+Edge contamination is defined as the possibility that a value may be
+underestimated due to grid cells outside of the domain not being considered
+when determining contributing area.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.4.2.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Concentration Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the resulting concentration of the compound of interest in
+the flow.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">25.4.2.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfconclimaccum</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-decaying-accumulation">
+<span id="taudemdinfdecayaccum"></span><h2><a class="toc-backref" href="#id40"><span class="section-number">25.4.2.4. </span>D-Infinity Decaying Accumulation</a><a class="headerlink" href="#d-infinity-decaying-accumulation" title="Permalink to this headline"></a></h2>
+<p>The D-Infinity Decaying Accumulation tool creates a grid of the accumulated
+quantity at each location in the domain where the quantity accumulates with the
+D-infinity flow field, but is subject to first order decay in moving from cell
+to cell. By default, the quantity contribution of each grid cell is the cell
+length to give a per unit width accumulation, but can optionally be expressed
+with a weight grid. The decay multiplier grid gives the fractional (first order)
+reduction in quantity in accumulating from grid cell <code class="docutils literal notranslate"><span class="pre">x</span></code> to the next downslope
+cell.</p>
+<p>A decayed accumulation operator <code class="docutils literal notranslate"><span class="pre">DA[.]</span></code> takes as input a mass loading field
+<code class="docutils literal notranslate"><span class="pre">m(x)</span></code> expressed at each grid location as <code class="docutils literal notranslate"><span class="pre">m(i,</span> <span class="pre">j)</span></code> that is assumed to move
+with the flow field but is subject to first order decay in moving from cell to
+cell. The output is the accumulated mass at each location <code class="docutils literal notranslate"><span class="pre">DA(x)</span></code>. The
+accumulation of <code class="docutils literal notranslate"><span class="pre">m</span></code> at each grid cell can be numerically evaluated.</p>
+<figure class="align-center">
+<img alt="../../../../_images/decayeqn.png" src="../../../../_images/decayeqn.png" />
+</figure>
+<p>Here <code class="docutils literal notranslate"><span class="pre">d(x)</span> <span class="pre">=</span> <span class="pre">d(i</span> <span class="pre">,j)</span></code> is a decay multiplier giving the fractional (first order)
+reduction in mass in moving from grid cell <code class="docutils literal notranslate"><span class="pre">x</span></code> to the next downslope cell. If
+travel (or residence) times <code class="docutils literal notranslate"><span class="pre">t(x)</span></code> associated with flow between cells are
+available <code class="docutils literal notranslate"><span class="pre">d(x)</span></code> may be evaluated as <code class="docutils literal notranslate"><span class="pre">exp(-k</span> <span class="pre">t(x))</span></code> where <code class="docutils literal notranslate"><span class="pre">k</span></code> is a first
+order decay parameter. The weight grid is used to represent the mass loading
+<code class="docutils literal notranslate"><span class="pre">m(x)</span></code>. If not specified this is taken as 1. If the outlets shapefile is used
+the function is only evaluated on that part of the domain that contributes flow
+to the locations given by the shapefile.</p>
+<figure class="align-center">
+<img alt="../../../../_images/decay.png" src="../../../../_images/decay.png" />
+</figure>
+<p>Useful for a tracking contaminant or compound subject to decay or attenuation.</p>
+<section id="id7">
+<h3><span class="section-number">25.4.2.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This grid can be created by
+the function <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Decay Multiplier Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the factor by which flow leaving each grid cell is multiplied
+before accumulation on downslope grid cells. This may be used to simulate the
+movement of an attenuating substance.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Weight Grid</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving weights (loadings) to be used in the accumulation. If this
+optional grid is not specified, weights are taken as the linear grid cell
+size to give a per unit width accumulation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlets Shapefile</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>This optional input is a point shapefile defining outlets of interest. If
+this file is used, the tool will only evaluate the area upslope of these
+outlets.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option determines whether the tool should check for edge contamination.
+Edge contamination is defined as the possibility that a value may be
+underestimated due to grid cells outside of the domain not being considered
+when determining contributing area.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">25.4.2.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Decayed Specific Catchment Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>The D-Infinity Decaying Accumulation tool creates a grid of the accumulated
+mass at each location in the domain where mass moves with the D-infinity flow
+field, but is subject to first order decay in moving from cell to cell.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">25.4.2.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfdecayaccum</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-distance-down">
+<span id="taudemdinfdistdown"></span><h2><a class="toc-backref" href="#id41"><span class="section-number">25.4.2.5. </span>D-Infinity Distance Down</a><a class="headerlink" href="#d-infinity-distance-down" title="Permalink to this headline"></a></h2>
+<p>Calculates the distance downslope to a stream using the D-infinity flow model.
+The D-infinity flow model is a multiple flow direction model, because the outflow
+from each grid cell is proportioned between up to 2 downslope grid cells. As such,
+the distance from any grid cell to a stream is not uniquely defined. Flow that
+originates at a particular grid cell may enter the stream at a number of different
+cells. The statistical method may be selected as the longest, shortest or weighted
+average of the flow path distance to the stream. Also one of several ways of
+measuring distance may be selected: the total straight line path (Pythagoras),
+the horizontal component of the straight line path, the vertical component of
+the straight line path, or the total surface flow path.</p>
+<section id="id10">
+<h3><span class="section-number">25.4.2.5.1. </span>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of elevation values. As a general rule, it is
+recommended that you use a grid of elevation values that have had the pits
+removed for this input. Pits are generally taken to be artifacts that
+interfere with the analysis of flow across them. This grid can be obtained as
+the output of the <strong>“Pit Remove”</strong> tool, in which case it contains elevation
+values where the pits have been filled to the point where they just drain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Raster Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid indicating streams, by using a grid cell value of 1 on streams and 0
+off streams. This is usually the output of one of the tools in the
+<strong>“Stream Network Analysis”</strong> toolset.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weight Path Grid</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving weights (loadings) to be used in the distance calculation. This
+might be used for example where only flow distance through a buffer is to be
+calculated. The weight is then 1 in the buffer and 0 outside it. Alternatively
+the weight may reflect some sort of cost function for travel over the surface,
+perhaps representing travel time or attenuation of a process. If this input
+file is not used, the loadings will assumed to be one for each grid cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Statistical Method</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 2</p>
+</td>
+<td><p>Statistical method used to calculate the distance down to the stream. In the
+D-Infinity flow model, the outflow from each grid cell is proportioned between
+two downslope grid cells. Therefore, the distance from any grid cell to a
+stream is not uniquely defined. Flow that originates at a particular grid cell
+may enter the stream at a number of cells. The distance to the stream may be
+defined as the longest (maximum), shortest (minimum) or weighted average of
+the distance down to the stream.</p>
+<p>Options:</p>
+<ul class="simple">
+<li><p>0 — Minimum</p></li>
+<li><p>1 — Maximum</p></li>
+<li><p>2 — Average</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Distance Method</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Distance method used to calculate the distance down to the stream. One of
+several ways of measuring distance may be selected: the total straight line
+path (Pythagoras), the horizontal component of the straight line path
+(horizontal), the vertical component of the straight line path (vertical),
+or the total surface flow path (surface).</p>
+<p>Options:</p>
+<ul class="simple">
+<li><p>0 — Pythagoras</p></li>
+<li><p>1 — Horizontal</p></li>
+<li><p>2 — Vertical</p></li>
+<li><p>3 — Surface</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag that determines whether the tool should check for edge contamination.
+This is defined as the possibility that a value may be underestimated due to
+grid cells outside of the domain not being counted. In the context of Distance
+Down this occurs when part of a flow path traced downslope from a grid cell
+leaves the domain without reaching a stream grid cell. With edge contamination
+checking selected, the algorithm recognizes this and reports no data for the
+result. This is the desired effect and indicates that values for these grid
+cells is unknown due to it being dependent on terrain outside of the domain
+of data available. Edge contamination checking may be overridden in cases
+where you know this is not an issue or want to evaluate the distance using
+only the fraction of flow paths that terminate at a stream.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">25.4.2.5.2. </span>Outputs<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Drop to Stream Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>Grid containing the distance to stream calculated using the D-infinity flow
+model and the statistical and path methods chosen.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">25.4.2.5.3. </span>Python code<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfdistdown</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-distance-up">
+<span id="taudemdinfdistup"></span><h2><a class="toc-backref" href="#id42"><span class="section-number">25.4.2.6. </span>D-Infinity Distance Up</a><a class="headerlink" href="#d-infinity-distance-up" title="Permalink to this headline"></a></h2>
+<p>This tool calculates the distance from each grid cell up to the ridge cells along
+the reverse D-infinity flow directions. Ridge cells are defined to be grid cells
+that have no contribution from grid cells further upslope. Given the convergence
+of multiple flow paths at any grid cell, any given grid cell can have multiple
+upslope ridge cells. There are three statistical methods that this tool can use:
+maximum distance, minimum distance and waited flow average over these flow paths.
+A variant on the above is to consider only grid cells that contribute flow with
+a proportion greater than a user specified threshold (t) to be considered as
+upslope of any given grid cell. Setting t=0.5 would result in only one flow path
+from any grid cell and would give the result equivalent to a D8 flow model,
+rather than D-infinity flow model, where flow is proportioned between two
+downslope grid cells. Finally there are several different optional paths that can
+be measured: the total straight line path (Pythagoras), the horizontal component
+of the straight line path, the vertical component of the straight line path, or
+the total surface flow path.</p>
+<section id="id13">
+<h3><span class="section-number">25.4.2.6.1. </span>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of elevation values. As a general rule, it is recommended
+that you use a grid of elevation values that have had the pits removed for
+this input. Pits are generally taken to be artifacts that interfere with the
+analysis of flow across them. This grid can be obtained as the output of the
+<strong>“Pit Remove”</strong> tool, in which case it contains elevation values where the
+pits have been filled to the point where they just drain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of slope values. This is measured as drop/distance and
+it is most often obtained as the output of the <strong>“D-Infinity Flow Directions”</strong>
+tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Statistical Method</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 2</p>
+</td>
+<td><p>Statistical method used to calculate the distance down to the stream. In the
+D-Infinity flow model, the outflow from each grid cell is proportioned between
+two downslope grid cells. Therefore, the distance from any grid cell to a
+stream is not uniquely defined. Flow that originates at a particular grid cell
+may enter the stream at a number of cells. The distance to the stream may be
+defined as the longest (maximum), shortest (minimum) or weighted average of
+the distance down to the stream.</p>
+<p>Options:</p>
+<ul class="simple">
+<li><p>0 — Minimum</p></li>
+<li><p>1 — Maximum</p></li>
+<li><p>2 — Average</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Distance Method</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Distance method used to calculate the distance down to the stream. One of
+several ways of measuring distance may be selected: the total straight line
+path (Pythagoras), the horizontal component of the straight line path
+(horizontal), the vertical component of the straight line path (vertical),
+or the total surface flow path (surface).</p>
+<p>Options:</p>
+<ul class="simple">
+<li><p>0 — Pythagoras</p></li>
+<li><p>1 — Horizontal</p></li>
+<li><p>2 — Vertical</p></li>
+<li><p>3 — Surface</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Proportion Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.5</p>
+</td>
+<td><p>The proportion threshold parameter where only grid cells that contribute flow
+with a proportion greater than this user specified threshold (<code class="docutils literal notranslate"><span class="pre">t</span></code>) is
+considered to be upslope of any given grid cell. Setting <code class="docutils literal notranslate"><span class="pre">t=0.5</span></code> would
+result in only one flow path from any grid cell and would give the result
+equivalent to a D8 flow model, rather than D-Infinity flow model, where flow
+is proportioned between two downslope grid cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag that determines whether the tool should check for edge contamination.
+This is defined as the possibility that a value may be underestimated due to
+grid cells outside of the domain not being counted.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">25.4.2.6.2. </span>Outputs<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Distance Up</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>Grid containing the distances up to the ridge calculated using the D-Infinity
+flow model and the statistical and path methods chosen.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">25.4.2.6.3. </span>Python code<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfdistup</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-reverse-accumulation">
+<span id="taudemdinfrevaccum"></span><h2><a class="toc-backref" href="#id43"><span class="section-number">25.4.2.7. </span>D-Infinity Reverse Accumulation</a><a class="headerlink" href="#d-infinity-reverse-accumulation" title="Permalink to this headline"></a></h2>
+<p>This works in a similar way to evaluation of weighted Contributing area, except
+that the accumulation is by propagating the weight loadings upslope along the
+reverse of the flow directions to accumulate the quantity of weight loading
+downslope from each grid cell. The function also reports the maximum value of
+the weight loading downslope from each grid cell in the Maximum Downslope grid.</p>
+<figure class="align-center">
+<img alt="../../../../_images/raccfig.png" src="../../../../_images/raccfig.png" />
+</figure>
+<p>This function is designed to evaluate and map the hazard due to activities that
+may have an effect downslope. The example is land management activities that
+increase runoff. Runoff is sometimes a trigger for landslides or debris flows,
+so the weight grid here could be taken as a terrain stability map. Then the
+reverse accumulation provides a measure of the amount of unstable terrain
+downslope from each grid cell, as an indicator of the danger of activities that
+may increase runoff, even though there may be no potential for any local impact.</p>
+<section id="id16">
+<h3><span class="section-number">25.4.2.7.1. </span>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Weight Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving weights (loadings) to be used in the accumulation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3><span class="section-number">25.4.2.7.2. </span>Outputs<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Reverse Accumulation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>The grid giving the result of the <strong>“Reverse Accumulation”</strong> function. This
+works in a similar way to evaluation of weighted Contributing area, except
+that the accumulation is by propagating the weight loadings upslope along the
+reverse of the flow directions to accumulate the quantity of loading downslope
+from each grid cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum Downslope Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>The grid giving the maximum of the weight loading grid downslope from each
+grid cell.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3><span class="section-number">25.4.2.7.3. </span>Python code<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfrevaccum</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-transport-limited-accumulation-2">
+<h2><a class="toc-backref" href="#id44"><span class="section-number">25.4.2.8. </span>D-Infinity Transport Limited Accumulation - 2</a><a class="headerlink" href="#d-infinity-transport-limited-accumulation-2" title="Permalink to this headline"></a></h2>
+<p>This function is designed to calculate the transport and deposition of a
+substance (e.g. sediment) that may be limited by both supply and the capacity of
+the flow field to transport it. This function accumulates substance flux (e.g.
+sediment transport) subject to the rule that transport out of any grid cell is
+the minimum between supply and transport capacity, <code class="docutils literal notranslate"><span class="pre">Tcap</span></code>. The total supply at
+a grid cell is calculated as the sum of the transport in from upslope grid cells,
+<code class="docutils literal notranslate"><span class="pre">Tin</span></code>, plus the local supply contribution, <code class="docutils literal notranslate"><span class="pre">E</span></code> (e.g. erosion). This function
+also outputs deposition, <code class="docutils literal notranslate"><span class="pre">D</span></code>, calculated as total supply minus actual transport.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaeqn.png" src="../../../../_images/tlaeqn.png" />
+</figure>
+<p>Here <code class="docutils literal notranslate"><span class="pre">E</span></code> is the supply. <code class="docutils literal notranslate"><span class="pre">Tout</span></code> at each grid cell becomes <code class="docutils literal notranslate"><span class="pre">Tin</span></code> for downslope
+grid cells and is reported as Transport limited accumulation (<code class="docutils literal notranslate"><span class="pre">tla</span></code>). <code class="docutils literal notranslate"><span class="pre">D</span></code>
+is deposition (<code class="docutils literal notranslate"><span class="pre">tdep</span></code>). The function provides the option to evaluate
+concentration of a compound (contaminant) adhered to the transported substance.
+This is evaluated as follows:</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn1.png" src="../../../../_images/tlaceqn1.png" />
+</figure>
+<p>Where <code class="docutils literal notranslate"><span class="pre">Lin</span></code> is the total incoming compound loading and <code class="docutils literal notranslate"><span class="pre">Cin</span></code> and <code class="docutils literal notranslate"><span class="pre">Tin</span></code>
+refer to the Concentration and Transport entering from each upslope grid cell.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn2.png" src="../../../../_images/tlaceqn2.png" />
+</figure>
+<p>If</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn3.png" src="../../../../_images/tlaceqn3.png" />
+</figure>
+<p>else</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn4.png" src="../../../../_images/tlaceqn4.png" />
+</figure>
+<p>where <code class="docutils literal notranslate"><span class="pre">Cs</span></code> is the concentration supplied locally and the difference in the
+second term on the right represents the additional supply from the local grid
+cell. Then,</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn5.png" src="../../../../_images/tlaceqn5.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Cout</span></code> at each grid cell comprises is the concentration grid output from this
+function.</p>
+<p>If the outlets shapefile is used the tool only evaluates that part of the domain
+that contributes flow to the locations given by the shapefile.</p>
+<p>Transport limited accumulation is useful for modeling erosion and sediment
+delivery, including the spatial dependence of sediment delivery ratio and
+contaminant that adheres to sediment.</p>
+<section id="id19">
+<h3><span class="section-number">25.4.2.8.1. </span>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Supply Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the supply (loading) of material to a transport limited
+accumulation function. In the application to erosion, this grid would give
+the erosion detachment, or sediment supplied at each grid cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transport Capacity Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the transport capacity at each grid cell for the transport
+limited accumulation function. In the application to erosion this grid would
+give the transport capacity of the carrying flow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input Concentration Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the concentration of a compound of interest in the supply to
+the transport limited accumulation function. In the application to erosion,
+this grid would give the concentration of say phosphorous adhered to the
+eroded sediment.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets Shapefile</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>This optional input is a point shapefile defining outlets of interest. If
+this file is used, the tool will only evaluate the area upslope of these
+outlets.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option determines whether the tool should check for edge contamination.
+Edge contamination is defined as the possibility that a value may be
+underestimated due to grid cells outside of the domain not being considered
+when determining the result.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><span class="section-number">25.4.2.8.2. </span>Outputs<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transport Limited Accumulation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This grid is the weighted accumulation of supply accumulated respecting the
+limitations in transport capacity and reports the transport rate calculated
+by accumulating the substance flux subject to the rule that the transport out
+of any grid cell is the minimum of the total supply (local supply plus
+transport in) to that grid cell and the transport capacity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Deposition Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the deposition resulting from the transport limited
+accumulation. This is the residual from the transport in to each grid cell
+minus the transport capacity out of the grid cell. The deposition grid is
+calculated as the transport in + the local supply - the transport out.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output Concentration Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>If an input concentration in supply grid is given, then this grid is also
+output and gives the concentration of a compound (contaminant) adhered or
+bound to the transported substance (e.g. sediment) is calculated.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h3><span class="section-number">25.4.2.8.3. </span>Python code<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: unknown</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-transport-limited-accumulation">
+<span id="taudemdinftranslimaccum"></span><h2><a class="toc-backref" href="#id45"><span class="section-number">25.4.2.9. </span>D-Infinity Transport Limited Accumulation</a><a class="headerlink" href="#d-infinity-transport-limited-accumulation" title="Permalink to this headline"></a></h2>
+<p>This function is designed to calculate the transport and deposition of a
+substance (e.g. sediment) that may be limited by both supply and the capacity of
+the flow field to transport it. This function accumulates substance flux (e.g.
+sediment transport) subject to the rule that transport out of any grid cell is
+the minimum between supply and transport capacity, <code class="docutils literal notranslate"><span class="pre">Tcap</span></code>. The total supply at
+a grid cell is calculated as the sum of the transport in from upslope grid cells,
+<code class="docutils literal notranslate"><span class="pre">Tin</span></code>, plus the local supply contribution, <code class="docutils literal notranslate"><span class="pre">E</span></code> (e.g. erosion). This function
+also outputs deposition, <code class="docutils literal notranslate"><span class="pre">D</span></code>, calculated as total supply minus actual transport.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaeqn.png" src="../../../../_images/tlaeqn.png" />
+</figure>
+<p>Here <code class="docutils literal notranslate"><span class="pre">E</span></code> is the supply. <code class="docutils literal notranslate"><span class="pre">Tout</span></code> at each grid cell becomes <code class="docutils literal notranslate"><span class="pre">Tin</span></code> for downslope
+grid cells and is reported as Transport limited accumulation (<code class="docutils literal notranslate"><span class="pre">tla</span></code>). <code class="docutils literal notranslate"><span class="pre">D</span></code>
+is deposition (<code class="docutils literal notranslate"><span class="pre">tdep</span></code>). The function provides the option to evaluate
+concentration of a compound (contaminant) adhered to the transported substance.
+This is evaluated as follows:</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn1.png" src="../../../../_images/tlaceqn1.png" />
+</figure>
+<p>Where <code class="docutils literal notranslate"><span class="pre">Lin</span></code> is the total incoming compound loading and <code class="docutils literal notranslate"><span class="pre">Cin</span></code> and <code class="docutils literal notranslate"><span class="pre">Tin</span></code>
+refer to the Concentration and Transport entering from each upslope grid cell.</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn2.png" src="../../../../_images/tlaceqn2.png" />
+</figure>
+<p>If</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn3.png" src="../../../../_images/tlaceqn3.png" />
+</figure>
+<p>else</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn4.png" src="../../../../_images/tlaceqn4.png" />
+</figure>
+<p>where <code class="docutils literal notranslate"><span class="pre">Cs</span></code> is the concentration supplied locally and the difference in the
+second term on the right represents the additional supply from the local grid
+cell. Then,</p>
+<figure class="align-center">
+<img alt="../../../../_images/tlaceqn5.png" src="../../../../_images/tlaceqn5.png" />
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">Cout</span></code> at each grid cell comprises is the concentration grid output from this
+function.</p>
+<p>If the outlets shapefile is used the tool only evaluates that part of the domain
+that contributes flow to the locations given by the shapefile.</p>
+<p>Transport limited accumulation is useful for modeling erosion and sediment
+delivery, including the spatial dependence of sediment delivery ratio and
+contaminant that adheres to sediment.</p>
+<section id="id22">
+<h3><span class="section-number">25.4.2.9.1. </span>Parameters<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-infinity method. Flow direction is
+measured in radians, counter clockwise from east. This can be created by the
+tool <strong>“D-Infinity Flow Directions”</strong>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Supply Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the supply (loading) of material to a transport limited
+accumulation function. In the application to erosion, this grid would give
+the erosion detachment, or sediment supplied at each grid cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transport Capacity Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the transport capacity at each grid cell for the transport
+limited accumulation function. In the application to erosion this grid would
+give the transport capacity of the carrying flow.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Outlets Shapefile</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>This optional input is a point shapefile defining outlets of interest. If
+this file is used, the tool will only evaluate the area upslope of these
+outlets.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option determines whether the tool should check for edge contamination.
+Edge contamination is defined as the possibility that a value may be
+underestimated due to grid cells outside of the domain not being considered
+when determining the result.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3><span class="section-number">25.4.2.9.2. </span>Outputs<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Transport Limited Accumulation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This grid is the weighted accumulation of supply accumulated respecting the
+limitations in transport capacity and reports the transport rate calculated
+by accumulating the substance flux subject to the rule that the transport out
+of any grid cell is the minimum of the total supply (local supply plus
+transport in) to that grid cell and the transport capacity.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Deposition Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the deposition resulting from the transport limited
+accumulation. This is the residual from the transport in to each grid cell
+minus the transport capacity out of the grid cell. The deposition grid is
+calculated as the transport in + the local supply - the tranport out.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h3><span class="section-number">25.4.2.9.3. </span>Python code<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinftranslimaccum</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d-infinity-upslope-dependence">
+<span id="taudemdinfupdependence"></span><h2><a class="toc-backref" href="#id46"><span class="section-number">25.4.2.10. </span>D-Infinity Upslope Dependence</a><a class="headerlink" href="#d-infinity-upslope-dependence" title="Permalink to this headline"></a></h2>
+<p>The D-Infinity Upslope Dependence tool quantifies the amount each grid cell in
+the domain contributes to a destination set of grid cells. D-Infinity flow
+directions proportion flow from each grid cell between multiple downslope grid
+cells. Following this flow field downslope the amount of flow originating at
+each grid cell that reaches the destination zone is defined. Upslope influence
+is evaluated using a downslope recursion, examining grid cells downslope from
+each grid cell, so that the map produced identifies the area upslope where flow
+through the destination zone originates, or the area it depends on, for its flow.</p>
+<p>The figures below illustrate the amount each source point in the domain <code class="docutils literal notranslate"><span class="pre">x</span></code>
+(blue) contributes to the destination point or zone <code class="docutils literal notranslate"><span class="pre">y</span></code> (red). If the indicator
+weighted contributing area function is denoted <code class="docutils literal notranslate"><span class="pre">I(y;</span> <span class="pre">x)</span></code> giving the weighted
+contribution using a unit value (1) from specific grid cells <code class="docutils literal notranslate"><span class="pre">y</span></code> to grid cells
+<code class="docutils literal notranslate"><span class="pre">x</span></code>, then the upslope dependence is: <code class="docutils literal notranslate"><span class="pre">D(x;</span> <span class="pre">y)</span> <span class="pre">=</span> <span class="pre">I(y;</span> <span class="pre">x)</span></code>.</p>
+<figure class="align-center">
+<img alt="../../../../_images/dependence.png" src="../../../../_images/dependence.png" />
+</figure>
+<p>This is useful for example to track where flow or a flow related substance or
+contaminant that enters a destination area may come from.</p>
+<section id="id25">
+<h3><span class="section-number">25.4.2.10.1. </span>Parameters<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving flow direction by the D-Infinity method where the flow
+direction angle is determined as the direction of the steepest downward slope
+on the eight triangular facets formed in a 3x3 grid cell window centered on
+the grid cell of interest. This grid can be produced using the
+<strong>“D-Infinity Flow Direction”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Destination Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid that encodes the destination zone that may receive flow from upslope.
+This grid must be 1 inside the zone y and 0 over the rest of the domain.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3><span class="section-number">25.4.2.10.2. </span>Outputs<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output Upslope Dependence Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid quantifing the amount each source point in the domain contributes to
+the zone defined by the destination grid.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3><span class="section-number">25.4.2.10.3. </span>Python code<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dinfupdependence</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope-average-down">
+<span id="taudemslopeavedown"></span><h2><a class="toc-backref" href="#id47"><span class="section-number">25.4.2.11. </span>Slope Average Down</a><a class="headerlink" href="#slope-average-down" title="Permalink to this headline"></a></h2>
+<p>This tool computes slope in a D8 downslope direction averaged over a user selected
+distance. Distance should be specified in horizontal map units.</p>
+<section id="id28">
+<h3><span class="section-number">25.4.2.11.1. </span>Parameters<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of flow directions that are encoded using the D8 method
+where all flow from a cells goes to a single neighboring cell in the direction
+of steepest descent. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of elevation values. As a general rule, it is recommended
+that you use a grid of elevation values that have had the pits removed for
+this input. Pits are generally taken to be artifacts that interfere with the
+analysis of flow across them. This grid can be obtained as the output of the
+<strong>“Pit Remove”</strong> tool, in which case it contains elevation values where the
+pits have been filled to the point where they just drain.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Downslope Distance</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 50</p>
+</td>
+<td><p>Input parameter of downslope distance over which to calculate the slope (in
+horizontal map units).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id29">
+<h3><span class="section-number">25.4.2.11.2. </span>Outputs<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Average Down Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This output is a grid of slopes calculated in the D8 downslope direction,
+averaged over the selected distance.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h3><span class="section-number">25.4.2.11.3. </span>Python code<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:slopeavedown</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope-over-area-ratio">
+<span id="taudemslopearearatio"></span><h2><a class="toc-backref" href="#id48"><span class="section-number">25.4.2.12. </span>Slope Over Area Ratio</a><a class="headerlink" href="#slope-over-area-ratio" title="Permalink to this headline"></a></h2>
+<p>Calculates the ratio of the slope to the specific catchment area (contributing
+area). This is algebraically related to the more common ln(a/tan beta) wetness
+index, but contributing area is in the denominator to avoid divide by 0 errors
+when slope is 0.</p>
+<section id="id31">
+<h3><span class="section-number">25.4.2.12.1. </span>Parameters<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of slope. This grid can be generated using ether the
+<strong>“D8 Flow Directions”</strong> tool or the <strong>“D-Infinity Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Specific Catchment Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the contributing area value for each cell taken as its own
+contribution plus the contribution from upslope neighbors that drain in to it.
+Contributing area is counted in terms of the number of grid cells (or
+summation of weights). This grid can be generated using either the
+<strong>“D8 Contributing Area”</strong> tool or the <strong>“D-Infinity Contributing Area”</strong> tool.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><span class="section-number">25.4.2.12.2. </span>Outputs<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Divided By Area Ratio Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of the ratio of slope to specific catchment area (contributing area).
+This is algebraically related to the more common <code class="docutils literal notranslate"><span class="pre">ln(a/tan</span> <span class="pre">beta)</span></code> wetness
+index, but contributing area is in the denominator to avoid divide by 0
+errors when slope is 0.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id33">
+<h3><span class="section-number">25.4.2.12.3. </span>Python code<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:slopearearatio</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="topographic-wetness-index">
+<span id="taudemtwi"></span><h2><a class="toc-backref" href="#id49"><span class="section-number">25.4.2.13. </span>Topographic wetness index</a><a class="headerlink" href="#topographic-wetness-index" title="Permalink to this headline"></a></h2>
+<p>Calculates the topographic wetness index (TWI).</p>
+<section id="id34">
+<h3><span class="section-number">25.4.2.13.1. </span>Parameters<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of slope. This grid can be generated using ether the
+<strong>“D8 Flow Directions”</strong> tool or the <strong>“D-Infinity Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Specific catchment area</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the contributing area value for each cell taken as its own
+contribution plus the contribution from upslope neighbors that drain in to it.
+Contributing area is counted in terms of the number of grid cells (or
+summation of weights). This grid can be generated using either the
+<strong>“D8 Contributing Area”</strong> tool or the <strong>“D-Infinity Contributing Area”</strong> tool.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id35">
+<h3><span class="section-number">25.4.2.13.2. </span>Outputs<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Wetness index</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of the wetness index (TWI).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id36">
+<h3><span class="section-number">25.4.2.13.3. </span>Python code<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:twi</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="basic_grid_analysis_tools.html" class="btn btn-neutral float-left" title="25.4.1. Basic Grid Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="stream_network_analysis_tools.html" class="btn btn-neutral float-right" title="25.4.3. Stream Network Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/taudem/specialized_grid_analysis_tools.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

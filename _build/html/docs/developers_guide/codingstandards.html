@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. QGIS Coding Standards &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/developers_guide/codingstandards.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. HIG (Human Interface Guidelines)" href="hig.html" />
+    <link rel="prev" title="Developers Guide for QGIS" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/developers_guide/codingstandards.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Developers Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. QGIS Coding Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes">1.1. Classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#names">1.1.1. Names</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#members">1.1.2. Members</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessor-functions">1.1.3. Accessor Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">1.1.4. Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-arguments">1.1.5. Function Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#function-return-values">1.1.6. Function Return Values</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-documentation">1.2. API Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#methods">1.2.1. Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#members-variables">1.2.2. Members Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-designer">1.3. Qt Designer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generated-classes">1.3.1. Generated Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dialogs">1.3.2. Dialogs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#c-files">1.4. C++ Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.4.1. Names</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#standard-header-and-license">1.4.2. Standard Header and License</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#variable-names">1.5. Variable Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enumerated-types">1.6. Enumerated Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-constants-macros">1.7. Global Constants &amp; Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">1.8. Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qt-signals-and-slots">1.9. Qt Signals and Slots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing">1.10. Editing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tabs">1.10.1. Tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indentation">1.10.2. Indentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#braces">1.10.3. Braces</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api-compatibility">1.11. API Compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sip-bindings">1.12. SIP Bindings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#header-pre-processing">1.12.1. Header pre-processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-the-sip-file">1.12.2. Generating the SIP file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#improving-sipify-script">1.12.3. Improving sipify script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#coding-style">1.13. Coding Style</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#where-ever-possible-generalize-code">1.13.1. Where-ever Possible Generalize Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefer-having-constants-first-in-predicates">1.13.2. Prefer Having Constants First in Predicates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#whitespace-can-be-your-friend">1.13.3. Whitespace Can Be Your Friend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put-commands-on-separate-lines">1.13.4. Put commands on separate lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#indent-access-modifiers">1.13.5. Indent access modifiers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#book-recommendations">1.13.6. Book recommendations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#credits-for-contributions">1.14. Credits for contributions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hig.html">2. HIG (Human Interface Guidelines)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html">3. Development Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qtcreator.html">4. Getting up and running with QtCreator and QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="localization.html">5. Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unittesting.html">6. Unit Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processingtesting.html">7. Processing Algorithms Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ogcconformancetesting.html">8. OGC Conformance Testing</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Developers Guide for QGIS</a> &raquo;</li>
+      <li><span class="section-number">1. </span>QGIS Coding Standards</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/developers_guide/codingstandards.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Developers Guide for QGIS" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hig.html" class="btn btn-neutral float-right" title="2. HIG (Human Interface Guidelines)" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qgis-coding-standards">
+<span id="coding-standards"></span><h1><span class="section-number">1. </span>QGIS Coding Standards<a class="headerlink" href="#qgis-coding-standards" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#classes" id="id2">Classes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#names" id="id3">Names</a></p></li>
+<li><p><a class="reference internal" href="#members" id="id4">Members</a></p></li>
+<li><p><a class="reference internal" href="#accessor-functions" id="id5">Accessor Functions</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id6">Functions</a></p></li>
+<li><p><a class="reference internal" href="#function-arguments" id="id7">Function Arguments</a></p></li>
+<li><p><a class="reference internal" href="#function-return-values" id="id8">Function Return Values</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#api-documentation" id="id9">API Documentation</a></p>
+<ul>
+<li><p><a class="reference internal" href="#methods" id="id10">Methods</a></p></li>
+<li><p><a class="reference internal" href="#members-variables" id="id11">Members Variables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#qt-designer" id="id12">Qt Designer</a></p>
+<ul>
+<li><p><a class="reference internal" href="#generated-classes" id="id13">Generated Classes</a></p></li>
+<li><p><a class="reference internal" href="#dialogs" id="id14">Dialogs</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#c-files" id="id15">C++ Files</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id16">Names</a></p></li>
+<li><p><a class="reference internal" href="#standard-header-and-license" id="id17">Standard Header and License</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#variable-names" id="id18">Variable Names</a></p></li>
+<li><p><a class="reference internal" href="#enumerated-types" id="id19">Enumerated Types</a></p></li>
+<li><p><a class="reference internal" href="#global-constants-macros" id="id20">Global Constants &amp; Macros</a></p></li>
+<li><p><a class="reference internal" href="#comments" id="id21">Comments</a></p></li>
+<li><p><a class="reference internal" href="#qt-signals-and-slots" id="id22">Qt Signals and Slots</a></p></li>
+<li><p><a class="reference internal" href="#editing" id="id23">Editing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#tabs" id="id24">Tabs</a></p></li>
+<li><p><a class="reference internal" href="#indentation" id="id25">Indentation</a></p></li>
+<li><p><a class="reference internal" href="#braces" id="id26">Braces</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#api-compatibility" id="id27">API Compatibility</a></p></li>
+<li><p><a class="reference internal" href="#sip-bindings" id="id28">SIP Bindings</a></p>
+<ul>
+<li><p><a class="reference internal" href="#header-pre-processing" id="id29">Header pre-processing</a></p></li>
+<li><p><a class="reference internal" href="#generating-the-sip-file" id="id30">Generating the SIP file</a></p></li>
+<li><p><a class="reference internal" href="#improving-sipify-script" id="id31">Improving sipify script</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#coding-style" id="id32">Coding Style</a></p>
+<ul>
+<li><p><a class="reference internal" href="#where-ever-possible-generalize-code" id="id33">Where-ever Possible Generalize Code</a></p></li>
+<li><p><a class="reference internal" href="#prefer-having-constants-first-in-predicates" id="id34">Prefer Having Constants First in Predicates</a></p></li>
+<li><p><a class="reference internal" href="#whitespace-can-be-your-friend" id="id35">Whitespace Can Be Your Friend</a></p></li>
+<li><p><a class="reference internal" href="#put-commands-on-separate-lines" id="id36">Put commands on separate lines</a></p></li>
+<li><p><a class="reference internal" href="#indent-access-modifiers" id="id37">Indent access modifiers</a></p></li>
+<li><p><a class="reference internal" href="#book-recommendations" id="id38">Book recommendations</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#credits-for-contributions" id="id39">Credits for contributions</a></p></li>
+</ul>
+</div>
+<p>These standards should be followed by all QGIS developers.</p>
+<section id="classes">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">1.1. </span>Classes</a><a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<section id="names">
+<h3><a class="toc-backref" href="#id3"><span class="section-number">1.1.1. </span>Names</a><a class="headerlink" href="#names" title="Permalink to this headline"></a></h3>
+<p>Class in QGIS begin with Qgs and are formed using camel case.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsPoint</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsMapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsRasterLayer</span></code></p></li>
+</ul>
+</section>
+<section id="members">
+<h3><a class="toc-backref" href="#id4"><span class="section-number">1.1.2. </span>Members</a><a class="headerlink" href="#members" title="Permalink to this headline"></a></h3>
+<p>Class member names begin with a lower case m and are formed using mixed
+case.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mMapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mCurrentExtent</span></code></p></li>
+</ul>
+<p>All class members should be private.
+Public class members are STRONGLY discouraged. Protected members should
+be avoided when the member may need to be accessed from Python subclasses,
+since protected members cannot be used from the Python bindings.</p>
+<p>Mutable static class member names should begin with a lower case <code class="docutils literal notranslate"><span class="pre">s</span></code>,
+but constant static class member names should be all caps:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sRefCounter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT_QUEUE_SIZE</span></code></p></li>
+</ul>
+</section>
+<section id="accessor-functions">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">1.1.3. </span>Accessor Functions</a><a class="headerlink" href="#accessor-functions" title="Permalink to this headline"></a></h3>
+<p>Class member values should be obtained through accesssor functions. The
+function should be named without a get prefix. Accessor functions for the
+two private members above would be:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapCanvas()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currentExtent()</span></code></p></li>
+</ul>
+<p>Ensure that accessors are correctly marked with <code class="docutils literal notranslate"><span class="pre">const</span></code>. Where appropriate,
+this may require that cached value type member variables are marked with
+<code class="docutils literal notranslate"><span class="pre">mutable</span></code>.</p>
+</section>
+<section id="functions">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">1.1.4. </span>Functions</a><a class="headerlink" href="#functions" title="Permalink to this headline"></a></h3>
+<p>Function names begin with a lowercase letter and are formed using mixed case.
+The function name should convey something about the purpose of the function.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">updateMapExtent()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setUserOptions()</span></code></p></li>
+</ul>
+<p>For consistency with the existing QGIS API and with the Qt API, abbreviations
+should be avoided. E.g. <code class="docutils literal notranslate"><span class="pre">setDestinationSize</span></code> instead of <code class="docutils literal notranslate"><span class="pre">setDestSize</span></code>,
+<code class="docutils literal notranslate"><span class="pre">setMaximumValue</span></code> instead of <code class="docutils literal notranslate"><span class="pre">setMaxVal</span></code>.</p>
+<p>Acronyms should also be camel cased for consistency. E.g. <code class="docutils literal notranslate"><span class="pre">setXml</span></code> instead
+of <code class="docutils literal notranslate"><span class="pre">setXML</span></code>.</p>
+</section>
+<section id="function-arguments">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">1.1.5. </span>Function Arguments</a><a class="headerlink" href="#function-arguments" title="Permalink to this headline"></a></h3>
+<p>Function arguments should use descriptive names. Do not use single letter
+arguments (e.g. <code class="docutils literal notranslate"><span class="pre">setColor(</span> <span class="pre">const</span> <span class="pre">QColor&amp;</span> <span class="pre">color</span> <span class="pre">)</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">setColor(</span> <span class="pre">const</span> <span class="pre">QColor&amp;</span> <span class="pre">c</span> <span class="pre">)</span></code>).</p>
+<p>Pay careful attention to when arguments should be passed by reference.
+Unless argument objects are small and trivially copied (such as QPoint
+objects), they should be passed by const reference. For consistency
+with the Qt API, even implicitly shared objects are passed by const
+reference (e.g. <code class="docutils literal notranslate"><span class="pre">setTitle(</span> <span class="pre">const</span> <span class="pre">QString&amp;</span> <span class="pre">title</span> <span class="pre">)</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">setTitle(</span> <span class="pre">QString</span> <span class="pre">title</span> <span class="pre">)</span></code>.</p>
+</section>
+<section id="function-return-values">
+<h3><a class="toc-backref" href="#id8"><span class="section-number">1.1.6. </span>Function Return Values</a><a class="headerlink" href="#function-return-values" title="Permalink to this headline"></a></h3>
+<p>Return small and trivially copied objects as values. Larger objects
+should be returned by const reference. The one exception to this
+is implicitly shared objects, which are always returned by value. Return
+<code class="docutils literal notranslate"><span class="pre">QObject</span></code> or subclassed objects as pointers.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">maximumValue()</span> <span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">LayerSet&amp;</span> <span class="pre">layers()</span> <span class="pre">const</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QString</span> <span class="pre">title()</span> <span class="pre">const</span></code> (<code class="docutils literal notranslate"><span class="pre">QString</span></code> is implicitly shared)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QList&lt;</span> <span class="pre">QgsMapLayer*</span> <span class="pre">&gt;</span> <span class="pre">layers()</span> <span class="pre">const</span></code> (<code class="docutils literal notranslate"><span class="pre">QList</span></code> is implicitly shared)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsVectorLayer</span> <span class="pre">*layer()</span> <span class="pre">const;</span></code> (<code class="docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code> inherits <code class="docutils literal notranslate"><span class="pre">QObject</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span> <span class="pre">*geometry()</span> <span class="pre">const;</span></code> (<code class="docutils literal notranslate"><span class="pre">QgsAbstractGeometry</span></code> is
+abstract and will probably need to be casted)</p></li>
+</ul>
+</section>
+</section>
+<section id="api-documentation">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">1.2. </span>API Documentation</a><a class="headerlink" href="#api-documentation" title="Permalink to this headline"></a></h2>
+<p>It is required to write API documentation for every class, method, enum and
+other code that is available in the public API.</p>
+<p>QGIS uses Doxygen for documentation. Write descriptive and meaningful comments
+that give a reader information about what to expect, what happens in edge cases
+and give hints about other interfaces he could be looking for, best
+practices and code samples.</p>
+<section id="methods">
+<h3><a class="toc-backref" href="#id10"><span class="section-number">1.2.1. </span>Methods</a><a class="headerlink" href="#methods" title="Permalink to this headline"></a></h3>
+<p>Method descriptions should be written in a descriptive form, using the 3rd
+person. Methods require a <code class="docutils literal notranslate"><span class="pre">\since</span></code> tag that defines when they have been
+introduced. You should add additional <code class="docutils literal notranslate"><span class="pre">\since</span></code> tags for important changes
+that were introduced later on.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Cleans the laundry by using water and fast rotation.</span>
+<span class="cm"> * It will use the provided \a detergent during the washing programme.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \returns True if everything was successful. If false is returned, use</span>
+<span class="cm"> * \link error() \endlink to get more information.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \note Make sure to manually call dry() after this method.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \since QGIS 3.0</span>
+<span class="cm"> * \see dry()</span>
+<span class="cm"> */</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="members-variables">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">1.2.2. </span>Members Variables</a><a class="headerlink" href="#members-variables" title="Permalink to this headline"></a></h3>
+<p>Member variables should normally be in the <code class="docutils literal notranslate"><span class="pre">private</span></code> section and made
+available via getters and setters. One exception to this is for data
+containers like for error reporting. In such cases do not prefix the member
+with an <code class="docutils literal notranslate"><span class="pre">m</span></code>.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \ingroup core</span>
+<span class="cm"> * Represents points on the way along the journey to a destination.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \since QGIS 2.20</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">class</span> <span class="nc">QgsWaypoint</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Holds information about results of an operation on a QgsWaypoint.</span>
+<span class="cm">   *</span>
+<span class="cm">   * \since QGIS 3.0</span>
+<span class="cm">   */</span><span class="w"></span>
+<span class="w">  </span><span class="k">struct</span> <span class="nc">OperationResult</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">QgsWaypoint</span><span class="o">::</span><span class="n">ResultCode</span><span class="w"> </span><span class="n">resultCode</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; Indicates if the operation completed successfully.</span>
+<span class="w">    </span><span class="n">QString</span><span class="w"> </span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; A human readable localized error message. Only set if the resultCode is not QgsWaypoint::Success.</span>
+<span class="w">    </span><span class="n">QVariant</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"> </span><span class="c1">//!&lt; The result of the operation. The content depends on the method that returned it. \since QGIS 3.2</span>
+<span class="w">  </span><span class="p">};</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="qt-designer">
+<h2><a class="toc-backref" href="#id12"><span class="section-number">1.3. </span>Qt Designer</a><a class="headerlink" href="#qt-designer" title="Permalink to this headline"></a></h2>
+<section id="generated-classes">
+<h3><a class="toc-backref" href="#id13"><span class="section-number">1.3.1. </span>Generated Classes</a><a class="headerlink" href="#generated-classes" title="Permalink to this headline"></a></h3>
+<p>QGIS classes that are generated from Qt Designer (ui) files should have a
+Base suffix. This identifies the class as a generated base class.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsPluginManagerBase</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QgsUserOptionsBase</span></code></p></li>
+</ul>
+</section>
+<section id="dialogs">
+<h3><a class="toc-backref" href="#id14"><span class="section-number">1.3.2. </span>Dialogs</a><a class="headerlink" href="#dialogs" title="Permalink to this headline"></a></h3>
+<p>All dialogs should implement tooltip help for all toolbar icons and other
+relevant widgets. Tooltips add greatly to feature discoverability
+for both new and experienced users.</p>
+<p>Ensure that the tab order for widgets is updated whenever the layout
+of a dialog changes.</p>
+</section>
+</section>
+<section id="c-files">
+<h2><a class="toc-backref" href="#id15"><span class="section-number">1.4. </span>C++ Files</a><a class="headerlink" href="#c-files" title="Permalink to this headline"></a></h2>
+<section id="id1">
+<h3><a class="toc-backref" href="#id16"><span class="section-number">1.4.1. </span>Names</a><a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<p>C++ implementation and header files should have a .cpp and .h extension
+respectively. Filename should be all lowercase and, in the case of classes,
+match the class name.</p>
+<p>Example:
+Class <code class="docutils literal notranslate"><span class="pre">QgsFeatureAttribute</span></code> source files are
+<code class="file docutils literal notranslate"><span class="pre">qgsfeatureattribute.cpp</span></code> and <code class="file docutils literal notranslate"><span class="pre">qgsfeatureattribute.h</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case it is not clear from the statement above, for a filename
+to match a class name it implicitly means that each class should be declared
+and implemented in its own file. This makes it much easier for newcomers to
+identify where the code is relating to specific class.</p>
+</div>
+</section>
+<section id="standard-header-and-license">
+<h3><a class="toc-backref" href="#id17"><span class="section-number">1.4.2. </span>Standard Header and License</a><a class="headerlink" href="#standard-header-and-license" title="Permalink to this headline"></a></h3>
+<p>Each source file should contain a header section patterned after the following
+example:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/***************************************************************************</span>
+<span class="cm">  qgsfield.cpp - Describes a field in a layer or table</span>
+<span class="cm">  --------------------------------------</span>
+<span class="cm">  Date : 01-Jan-2004</span>
+<span class="cm">  Copyright: (C) 2004 by Gary E.Sherman</span>
+<span class="cm">  Email: sherman at mrcc.com</span>
+<span class="cm">/***************************************************************************</span>
+<span class="cm"> *</span>
+<span class="cm"> * This program is free software; you can redistribute it and/or modify</span>
+<span class="cm"> * it under the terms of the GNU General Public License as published by</span>
+<span class="cm"> * the Free Software Foundation; either version 2 of the License, or</span>
+<span class="cm"> * (at your option) any later version.</span>
+<span class="cm"> *</span>
+<span class="cm"> ***************************************************************************/</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is a template for Qt Creator in git. To use it, copy it from
+<code class="file docutils literal notranslate"><span class="pre">doc/qt_creator_license_template</span></code> to a local location, adjust the
+mail address and - if required - the name and configure QtCreator to use it:
+<span class="menuselection">Tools ► Options ► C++ ► File Naming</span>.</p>
+</div>
+</section>
+</section>
+<section id="variable-names">
+<h2><a class="toc-backref" href="#id18"><span class="section-number">1.5. </span>Variable Names</a><a class="headerlink" href="#variable-names" title="Permalink to this headline"></a></h2>
+<p>Local variable names begin with a lower case letter and are formed using mixed
+case. Do not use prefixes like <code class="docutils literal notranslate"><span class="pre">my</span></code> or <code class="docutils literal notranslate"><span class="pre">the</span></code>.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mapCanvas</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">currentExtent</span></code></p></li>
+</ul>
+</section>
+<section id="enumerated-types">
+<h2><a class="toc-backref" href="#id19"><span class="section-number">1.6. </span>Enumerated Types</a><a class="headerlink" href="#enumerated-types" title="Permalink to this headline"></a></h2>
+<p>Enumerated types should be named in CamelCase with a leading capital e.g.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="nc">UnitType</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Meters</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">Feet</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">Degrees</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">UnknownUnit</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Do not use generic type names that will conflict with other types. e.g. use
+<code class="docutils literal notranslate"><span class="pre">UnkownUnit</span></code> rather than <code class="docutils literal notranslate"><span class="pre">Unknown</span></code></p>
+</section>
+<section id="global-constants-macros">
+<h2><a class="toc-backref" href="#id20"><span class="section-number">1.7. </span>Global Constants &amp; Macros</a><a class="headerlink" href="#global-constants-macros" title="Permalink to this headline"></a></h2>
+<p>Global constants and macros should be written in upper case underscore separated
+e.g.:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">GEOCRS_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3344</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="comments">
+<h2><a class="toc-backref" href="#id21"><span class="section-number">1.8. </span>Comments</a><a class="headerlink" href="#comments" title="Permalink to this headline"></a></h2>
+<p>Comments to class methods should use a third person indicative style instead
+of the imperative style:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * Creates a new QgsFeatureFilterModel, optionally specifying a \a parent.</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="k">explicit</span><span class="w"> </span><span class="n">QgsFeatureFilterModel</span><span class="p">(</span><span class="w"> </span><span class="n">QObject</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="o">~</span><span class="n">QgsFeatureFilterModel</span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="qt-signals-and-slots">
+<h2><a class="toc-backref" href="#id22"><span class="section-number">1.9. </span>Qt Signals and Slots</a><a class="headerlink" href="#qt-signals-and-slots" title="Permalink to this headline"></a></h2>
+<p>All signal/slot connects should be made using the “new style” connects available
+in Qt5. Futher information on this requirement is available in
+<a class="reference external" href="https://github.com/qgis/QGIS-Enhancement-Proposals/issues/77">QEP #77</a>.</p>
+<p>Avoid use of Qt auto connect slots (i.e. those named
+<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">on_mSpinBox_valueChanged</span></code>). Auto connect slots are fragile and
+prone to breakage without warning if dialogs are refactored.</p>
+</section>
+<section id="editing">
+<h2><a class="toc-backref" href="#id23"><span class="section-number">1.10. </span>Editing</a><a class="headerlink" href="#editing" title="Permalink to this headline"></a></h2>
+<p>Any text editor/IDE can be used to edit QGIS code, providing the following
+requirements are met.</p>
+<section id="tabs">
+<h3><a class="toc-backref" href="#id24"><span class="section-number">1.10.1. </span>Tabs</a><a class="headerlink" href="#tabs" title="Permalink to this headline"></a></h3>
+<p>Set your editor to emulate tabs with spaces. Tab spacing should be set to 2
+spaces.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In vim this is done with <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">expandtab</span> <span class="pre">ts=2</span></code></p>
+</div>
+</section>
+<section id="indentation">
+<h3><a class="toc-backref" href="#id25"><span class="section-number">1.10.2. </span>Indentation</a><a class="headerlink" href="#indentation" title="Permalink to this headline"></a></h3>
+<p>Source code should be indented to improve readability. There is a
+<code class="file docutils literal notranslate"><span class="pre">scripts/prepare-commit.sh</span></code> that looks up the changed files and reindents
+them using astyle. This should be run before committing. You can also use
+<code class="file docutils literal notranslate"><span class="pre">scripts/astyle.sh</span></code> to indent individual files.</p>
+<p>As newer versions of astyle indent differently than the version used to do a
+complete reindentation of the source, the script uses an old astyle version,
+that we include in our repository (enable <code class="docutils literal notranslate"><span class="pre">WITH_ASTYLE</span></code> in cmake to include
+it in the build).</p>
+</section>
+<section id="braces">
+<h3><a class="toc-backref" href="#id26"><span class="section-number">1.10.3. </span>Braces</a><a class="headerlink" href="#braces" title="Permalink to this headline"></a></h3>
+<p>Braces should start on the line following the expression:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// do stuff</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// do something else</span>
+<span class="w">  </span><span class="p">...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="api-compatibility">
+<h2><a class="toc-backref" href="#id27"><span class="section-number">1.11. </span>API Compatibility</a><a class="headerlink" href="#api-compatibility" title="Permalink to this headline"></a></h2>
+<p>There is <a class="reference external" href="https://qgis.org/api/">API documentation</a> for C++.</p>
+<p>We try to keep the API stable and backwards compatible. Cleanups to the API
+should be done in a manner similar to the Qt sourcecode e.g.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Foo</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * This method will be deprecated, you are encouraged to use</span>
+<span class="cm">     * doSomethingBetter() rather.</span>
+<span class="cm">     * \deprecated use doSomethingBetter()</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="n">Q_DECL_DEPRECATED</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">doSomething</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Does something a better way.</span>
+<span class="cm">     * \note added in 1.1</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">doSomethingBetter</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">  </span><span class="nl">signals</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * This signal will be deprecated, you are encouraged to</span>
+<span class="cm">     * connect to somethingHappenedBetter() rather.</span>
+<span class="cm">     * \deprecated use somethingHappenedBetter()</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="cp">#ifndef Q_MOC_RUN</span>
+<span class="w">    </span><span class="n">Q_DECL_DEPRECATED</span><span class="w"></span>
+<span class="cp">#endif</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">somethingHappened</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Something happened</span>
+<span class="cm">     * \note added in 1.1</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">somethingHappenedBetter</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="sip-bindings">
+<h2><a class="toc-backref" href="#id28"><span class="section-number">1.12. </span>SIP Bindings</a><a class="headerlink" href="#sip-bindings" title="Permalink to this headline"></a></h2>
+<p>Some of the SIP files are automatically generated using a dedicated script.</p>
+<section id="header-pre-processing">
+<h3><a class="toc-backref" href="#id29"><span class="section-number">1.12.1. </span>Header pre-processing</a><a class="headerlink" href="#header-pre-processing" title="Permalink to this headline"></a></h3>
+<p>All the information to properly build the SIP file must be found in the C++
+header file. Some macros are available for such definition:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">SIP_RUN</span></code> to generate code only in SIP files or
+<code class="docutils literal notranslate"><span class="pre">#ifndef</span> <span class="pre">SIP_RUN</span></code> for C++ code only. <code class="docutils literal notranslate"><span class="pre">#else</span></code> statements are handled in
+both cases.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">SIP_SKIP</span></code> to discard a line</p></li>
+<li><p>The following annotations are handled:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_FACTORY</span></code>: <code class="docutils literal notranslate"><span class="pre">/Factory/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_OUT</span></code>: <code class="docutils literal notranslate"><span class="pre">/Out/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_INOUT</span></code>: <code class="docutils literal notranslate"><span class="pre">/In,Out/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFER</span></code>: <code class="docutils literal notranslate"><span class="pre">/Transfer/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYNAME(name)</span></code>: <code class="docutils literal notranslate"><span class="pre">/PyName=name/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_KEEPREFERENCE</span></code>: <code class="docutils literal notranslate"><span class="pre">/KeepReference/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFERTHIS</span></code>: <code class="docutils literal notranslate"><span class="pre">/TransferThis/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_TRANSFERBACK</span></code>: <code class="docutils literal notranslate"><span class="pre">/TransferBack/</span></code></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">private</span></code> sections are not displayed, except if you use a <code class="docutils literal notranslate"><span class="pre">#ifdef</span> <span class="pre">SIP_RUN</span></code>
+statement in this block.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYDEFAULTVALUE(value)</span></code> can be used to define an alternative default
+value of the python method. If the default value contains a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>,
+the value should be surrounded by single quotes <code class="docutils literal notranslate"><span class="pre">'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SIP_PYTYPE(type)</span></code> can be used to define an alternative type for an argument
+of the python method. If the type contains a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>, the type should be
+surrounded by single quotes <code class="docutils literal notranslate"><span class="pre">'</span></code></p></li>
+</ul>
+<p>A demo file can be found in <code class="file docutils literal notranslate"><span class="pre">tests/code_layout/sipifyheader.h</span></code>.</p>
+</section>
+<section id="generating-the-sip-file">
+<h3><a class="toc-backref" href="#id30"><span class="section-number">1.12.2. </span>Generating the SIP file</a><a class="headerlink" href="#generating-the-sip-file" title="Permalink to this headline"></a></h3>
+<p>The SIP file can be generated using a dedicated script. For instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scripts</span><span class="o">/</span><span class="n">sipify</span><span class="o">.</span><span class="n">pl</span> <span class="n">src</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">qgsvectorlayer</span><span class="o">.</span><span class="n">h</span> <span class="o">&gt;</span> <span class="n">python</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">qgsvectorlayer</span><span class="o">.</span><span class="n">sip</span>
+</pre></div>
+</div>
+<p>To automatically generate the SIP file of a newly added C++ file <code class="file docutils literal notranslate"><span class="pre">scripts/sip_include.sh</span></code>
+needs to be executed.</p>
+<p>As soon as a SIP file is added to one of the source file
+(<code class="file docutils literal notranslate"><span class="pre">python/core/core.sip</span></code>, <code class="file docutils literal notranslate"><span class="pre">python/gui/gui.sip</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">python/analysis/analysis.sip</span></code>), it will be considered as generated
+automatically. A test on Travis will ensure that this file is up to date with
+its corresponding header.</p>
+<p>To force recreation of SIP files, <code class="file docutils literal notranslate"><span class="pre">scripts/sipify_all.sh</span></code> shall be executed.</p>
+</section>
+<section id="improving-sipify-script">
+<h3><a class="toc-backref" href="#id31"><span class="section-number">1.12.3. </span>Improving sipify script</a><a class="headerlink" href="#improving-sipify-script" title="Permalink to this headline"></a></h3>
+<p>If some improvements are required for sipify script, please add the missing bits
+to the demo file <code class="file docutils literal notranslate"><span class="pre">tests/code_layout/sipifyheader.h</span></code> and create the expected
+header <code class="file docutils literal notranslate"><span class="pre">tests/code_layout/sipifyheader.expected.sip</span></code>. This will also be
+automatically tested on Travis as a unit test of the script itself.</p>
+</section>
+</section>
+<section id="coding-style">
+<h2><a class="toc-backref" href="#id32"><span class="section-number">1.13. </span>Coding Style</a><a class="headerlink" href="#coding-style" title="Permalink to this headline"></a></h2>
+<p>Here are described some programming hints and tips that will hopefully reduce
+errors, development time and maintenance.</p>
+<section id="where-ever-possible-generalize-code">
+<h3><a class="toc-backref" href="#id33"><span class="section-number">1.13.1. </span>Where-ever Possible Generalize Code</a><a class="headerlink" href="#where-ever-possible-generalize-code" title="Permalink to this headline"></a></h3>
+<p>If you are cut-n-pasting code, or otherwise writing the same thing more than
+once, consider consolidating the code into a single function.</p>
+<p>This will:</p>
+<ul class="simple">
+<li><p>allow changes to be made in one location instead of in multiple places</p></li>
+<li><p>help prevent code bloat</p></li>
+<li><p>make it more difficult for multiple copies to evolve differences over time,
+thus making it harder to understand and maintain for others</p></li>
+</ul>
+</section>
+<section id="prefer-having-constants-first-in-predicates">
+<h3><a class="toc-backref" href="#id34"><span class="section-number">1.13.2. </span>Prefer Having Constants First in Predicates</a><a class="headerlink" href="#prefer-having-constants-first-in-predicates" title="Permalink to this headline"></a></h3>
+<p>Prefer to put constants first in predicates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">==</span> <span class="pre">value</span></code> instead of <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">==</span> <span class="pre">0</span></code></p>
+<p>This will help prevent programmers from accidentally using <code class="docutils literal notranslate"><span class="pre">=</span></code> when they meant
+to use <code class="docutils literal notranslate"><span class="pre">==</span></code>, which can introduce very subtle logic bugs. The compiler will
+generate an error if you accidentally use <code class="docutils literal notranslate"><span class="pre">=</span></code> instead of <code class="docutils literal notranslate"><span class="pre">==</span></code> for comparisons
+since constants inherently cannot be assigned values.</p>
+</section>
+<section id="whitespace-can-be-your-friend">
+<h3><a class="toc-backref" href="#id35"><span class="section-number">1.13.3. </span>Whitespace Can Be Your Friend</a><a class="headerlink" href="#whitespace-can-be-your-friend" title="Permalink to this headline"></a></h3>
+<p>Adding spaces between operators, statements, and functions makes it easier for
+humans to parse code.</p>
+<p>Which is easier to read, this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">a</span><span class="o">&amp;&amp;</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<p>or this:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="o">!</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="file docutils literal notranslate"><span class="pre">scripts/prepare-commit.sh</span></code> will take care of this.</p>
+</div>
+</section>
+<section id="put-commands-on-separate-lines">
+<h3><a class="toc-backref" href="#id36"><span class="section-number">1.13.4. </span>Put commands on separate lines</a><a class="headerlink" href="#put-commands-on-separate-lines" title="Permalink to this headline"></a></h3>
+<p>When reading code it’s easy to miss commands, if they are not at the beginning
+of the line. When quickly reading through code, it’s common to skip lines
+if they don’t look like what you are looking for in the first few characters.
+It’s also common to expect a command after a conditional like <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p>
+<p>Consider:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span><span class="w"></span>
+
+<span class="n">baz</span><span class="p">();</span><span class="w"> </span><span class="n">bar</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+<p>It’s very easy to miss part of what the flow of control.
+Instead use</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">bar</span><span class="p">();</span><span class="w"></span>
+
+<span class="n">baz</span><span class="p">();</span><span class="w"></span>
+<span class="n">bar</span><span class="p">();</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="indent-access-modifiers">
+<h3><a class="toc-backref" href="#id37"><span class="section-number">1.13.5. </span>Indent access modifiers</a><a class="headerlink" href="#indent-access-modifiers" title="Permalink to this headline"></a></h3>
+<p>Access modifiers structure a class into sections of public API, protected API
+and private API. Access modifiers themselves group the code into this structure.
+Indent the access modifier and declarations.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">QgsStructure</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/**</span>
+<span class="cm">     * Constructor</span>
+<span class="cm">     */</span><span class="w"></span>
+<span class="w">     </span><span class="k">explicit</span><span class="w"> </span><span class="n">QgsStructure</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="book-recommendations">
+<h3><a class="toc-backref" href="#id38"><span class="section-number">1.13.6. </span>Book recommendations</a><a class="headerlink" href="#book-recommendations" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://shop.oreilly.com/product/0636920033707.do">Effective Modern C++</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.informit.com/store/more-effective-c-plus-plus-35-new-ways-to-improve-your-9780201633719">More Effective C++</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.informit.com/store/effective-stl-50-specific-ways-to-improve-your-use-9780201749625">Effective STL</a>, Scott Meyers</p></li>
+<li><p><a class="reference external" href="https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612">Design Patterns</a>, GoF</p></li>
+</ul>
+<p>You should also really read this article from Qt Quarterly on
+<a class="reference external" href="https://doc.qt.io/archives/qq/qq13-apis.html">designing Qt style (APIs)</a></p>
+</section>
+</section>
+<section id="credits-for-contributions">
+<h2><a class="toc-backref" href="#id39"><span class="section-number">1.14. </span>Credits for contributions</a><a class="headerlink" href="#credits-for-contributions" title="Permalink to this headline"></a></h2>
+<p>Contributors of new functions are encouraged to let people know about their
+contribution by:</p>
+<ul>
+<li><p>adding a note to the changelog for the first version where
+the code has been incorporated, of the type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">feature</span> <span class="n">was</span> <span class="n">funded</span> <span class="n">by</span><span class="p">:</span> <span class="n">Olmiomland</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">olmiomland</span><span class="o">.</span><span class="n">ol</span>
+<span class="n">This</span> <span class="n">feature</span> <span class="n">was</span> <span class="n">developed</span> <span class="n">by</span><span class="p">:</span> <span class="n">Chuck</span> <span class="n">Norris</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">chucknorris</span><span class="o">.</span><span class="n">kr</span>
+</pre></div>
+</div>
+</li>
+<li><p>writing an article about the new feature on a blog,
+and add it to the QGIS planet <a class="reference external" href="https://plugins.qgis.org/planet/">https://plugins.qgis.org/planet/</a></p></li>
+<li><p>adding their name to:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/qgis/QGIS/blob/master/doc/CONTRIBUTORS">https://github.com/qgis/QGIS/blob/master/doc/CONTRIBUTORS</a></p></li>
+<li><p><a class="reference external" href="https://github.com/qgis/QGIS/blob/master/doc/AUTHORS">https://github.com/qgis/QGIS/blob/master/doc/AUTHORS</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Developers Guide for QGIS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hig.html" class="btn btn-neutral float-right" title="2. HIG (Human Interface Guidelines)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/developers_guide/codingstandards.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/developers_guide/codingstandards.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/developers_guide/codingstandards.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/developers_guide/codingstandards.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/developers_guide/codingstandards.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/developers_guide/codingstandards.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/developers_guide/codingstandards.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/developers_guide/codingstandards.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/developers_guide/codingstandards.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/developers_guide/codingstandards.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/developers_guide/codingstandards.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/developers_guide/codingstandards.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/developers_guide/codingstandards.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/developers_guide/codingstandards.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
