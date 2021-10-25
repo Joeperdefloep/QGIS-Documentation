@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.1. Lesson: Creating a New Vector Dataset &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/create_new_vector.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5.2. Lesson: Feature Topology" href="topo_editing.html" />
+    <link rel="prev" title="5. Module: Creating Vector Data" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/create_new_vector.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. Module: Creating Vector Data</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.1. Lesson: Creating a New Vector Dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-the-layer-creation-dialog">5.1.1.  Follow Along: The Layer Creation Dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-data-sources">5.1.2.  Follow Along: Data Sources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-digitizing-polygons">5.1.3.  Try Yourself Digitizing Polygons</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-using-vertex-editor-table">5.1.4.  Follow Along: Using Vertex Editor Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-digitizing-lines">5.1.5.  Try Yourself Digitizing Lines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">5.1.6. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">5.1.7. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="topo_editing.html">5.2. Lesson: Feature Topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forms.html">5.3. Lesson: Forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actions.html">5.4. Lesson: Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">5. </span>Module: Creating Vector Data</a> &raquo;</li>
+      <li><span class="section-number">5.1. </span>Lesson: Creating a New Vector Dataset</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/create_vector_data/create_new_vector.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="5. Module: Creating Vector Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topo_editing.html" class="btn btn-neutral float-right" title="5.2. Lesson: Feature Topology" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-creating-a-new-vector-dataset">
+<h1><span class="section-number">5.1. </span>Lesson: Creating a New Vector Dataset<a class="headerlink" href="#ls-creating-a-new-vector-dataset" title="Permalink to this headline"></a></h1>
+<p>The data that you use has to come from somewhere. For most common applications,
+the data exists already; but the more particular and specialized the project,
+the less likely it is that the data will already be available. In such cases,
+you’ll need to create your own new data.</p>
+<p><strong>The goal for this lesson:</strong> To create a new vector dataset.</p>
+<section id="basic-fa-the-layer-creation-dialog">
+<h2><span class="section-number">5.1.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: The Layer Creation Dialog<a class="headerlink" href="#basic-fa-the-layer-creation-dialog" title="Permalink to this headline"></a></h2>
+<p>Before you can add new vector data, you need a vector dataset to add it to. In
+our case, you’ll begin by creating new data entirely, rather than editing an
+existing dataset. Therefore, you’ll need to define your own new dataset first.</p>
+<ol class="arabic">
+<li><p>Open QGIS and create a new blank project.</p></li>
+<li><p>Navigate to and click on the menu entry
+<span class="menuselection">Layer ► Create Layer ► New Shapefile Layer</span>.
+You’ll be presented with the <span class="guilabel">New Shapefile Layer</span> dialog, which will
+allow you to define a new layer.</p>
+<figure class="align-center">
+<img alt="../../../_images/create_vector_layer.png" src="../../../_images/create_vector_layer.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">…</span> for the <span class="guilabel">File name</span> field.
+A save dialog will appear.</p></li>
+<li><p>Navigate to the <code class="file docutils literal notranslate"><span class="pre">exercise_data</span></code> directory.</p></li>
+<li><p>Save your new layer as <code class="file docutils literal notranslate"><span class="pre">school_property.shp</span></code>.</p>
+<p>It’s important to decide which kind of dataset you want at this stage. Each
+different vector layer type is “built differently” in the background, so once
+you’ve created the layer, you can’t change its type.</p>
+<p>For the next exercise, we’re going to create new features which describe
+areas. For such features, you’ll need to create a polygon dataset.</p>
+</li>
+<li><p>For <span class="guilabel">Geometry Type</span>, select <span class="guilabel">Polygon</span> from the drop down menu:</p>
+<figure class="align-center">
+<img alt="../../../_images/polygon_selected.png" src="../../../_images/polygon_selected.png" />
+</figure>
+<p>This has no impact on the rest of the dialog, but it will cause the correct
+type of geometry to be used when the vector dataset is created.</p>
+<p>The next field allows you to specify the Coordinate Reference System,
+or CRS. CRS is a method of associating numerical coordinates with a
+position on the surface of the Earth.
+See the User Manual on <a class="reference internal" href="../../user_manual/working_with_projections/working_with_projections.html#label-projections"><span class="std std-ref">Working with Projections</span></a>
+to learn more.</p>
+<p>For this example we will use the default CRS associated with this
+project, which is WGS84.</p>
+<figure class="align-center">
+<img alt="../../../_images/default_crs.png" src="../../../_images/default_crs.png" />
+</figure>
+<p>Next there is a collection of fields grouped under <span class="guilabel">New Field</span>.
+By default, a new layer has only one attribute, the <code class="docutils literal notranslate"><span class="pre">id</span></code> field (which you
+should see in the <span class="guilabel">Fields list</span>) below. However, in order for the
+data you create to be useful, you actually need to say something about the
+features you’ll be creating in this new layer. For our current purposes, it
+will be enough to add one field called <code class="docutils literal notranslate"><span class="pre">name</span></code> that will hold <code class="docutils literal notranslate"><span class="pre">Text</span> <span class="pre">data</span></code>
+and will be limited to text length of <code class="docutils literal notranslate"><span class="pre">80</span></code> characters.</p>
+</li>
+<li><p>Replicate the setup below, then click the <span class="guilabel">Add to Fields List</span> button:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_attribute.png" src="../../../_images/new_attribute.png" />
+</figure>
+</li>
+<li><p>Check that your dialog now looks like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/new_attribute_added.png" src="../../../_images/new_attribute_added.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+</ol>
+<p>The new layer should appear in your <span class="guilabel">Layers</span> panel.</p>
+</section>
+<section id="basic-fa-data-sources">
+<span id="tm-datasources"></span><h2><span class="section-number">5.1.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Data Sources<a class="headerlink" href="#basic-fa-data-sources" title="Permalink to this headline"></a></h2>
+<p>When you create new data, it obviously has to be about objects that really
+exist on the ground. Therefore, you’ll need to get your information from
+somewhere.</p>
+<p>There are many different ways to obtain data about objects. For example, you
+could use a GPS to capture points in the real world, then import the data into
+QGIS afterwards. Or you could survey points using a theodolite, and enter the
+coordinates manually to create new features. Or you could use the digitizing
+process to trace objects from remote sensing data, such as satellite imagery
+or aerial photography.</p>
+<p>For our example, you’ll be using the digitizing approach. Sample raster datasets
+are provided, so you’ll need to import them as necessary.</p>
+<ol class="arabic">
+<li><p>Click on <a class="reference internal" href="../../../_images/mActionDataSourceManager.png"><img alt="dataSourceManager" src="../../../_images/mActionDataSourceManager.png" style="width: 1.5em;" /></a> <sup>Data Source Manager</sup> button.</p></li>
+<li><p>Select <a class="reference internal" href="../../../_images/mIconRaster.png"><img alt="raster" src="../../../_images/mIconRaster.png" style="width: 1.5em;" /></a> <span class="guilabel">Raster</span> on the left side.</p></li>
+<li><p>In the <span class="guilabel">Source</span> panel, click on the <span class="guilabel">…</span> button:</p></li>
+<li><p>Navigate to <code class="file docutils literal notranslate"><span class="pre">exercise_data/raster/</span></code>.</p></li>
+<li><p>Select the file <code class="file docutils literal notranslate"><span class="pre">3420C_2010_327_RGB_LATLNG.tif</span></code>.</p></li>
+<li><p>Click <span class="guilabel">Open</span> to close the dialogue window.</p>
+<figure class="align-center">
+<img alt="../../../_images/add_raster.png" src="../../../_images/add_raster.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">Add</span> and <span class="guilabel">Close</span>. An image will load into your map.</p>
+<figure class="align-center">
+<img alt="../../../_images/raster_added.png" src="../../../_images/raster_added.png" />
+</figure>
+</li>
+<li><p>If you don’t see an aerial image appear, select the new layer, right click,
+and choose <span class="guilabel">Zoom to Layer</span> in the context menu.</p>
+<figure class="align-center">
+<img alt="../../../_images/zoom_to_raster.png" src="../../../_images/zoom_to_raster.png" />
+</figure>
+</li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <sup>Zoom In</sup> button, and zoom to the area highlighted in blue below:</p>
+<figure class="align-center">
+<img alt="../../../_images/map_area_zoom.png" src="../../../_images/map_area_zoom.png" />
+</figure>
+</li>
+</ol>
+<p>Now you are ready to digitize these three fields:</p>
+<blockquote>
+<div><figure class="align-center">
+<img alt="../../../_images/field_outlines1.png" src="../../../_images/field_outlines1.png" />
+</figure>
+</div></blockquote>
+<p>Before starting to digitize, let’s move the <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer above the aerial image.</p>
+<ol class="arabic simple">
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer in the <span class="guilabel">Layers</span> pane and drag it to the top.</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/move_school_layer.png" src="../../../_images/move_school_layer.png" />
+</figure>
+<p>In order to begin digitizing, you’ll need to enter <strong>edit mode</strong>. GIS software
+commonly requires this to prevent you from accidentally editing or deleting
+important data. Edit mode is switched on or off individually for each layer.</p>
+<p>To enter edit mode for the <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer:</p>
+<ol class="arabic">
+<li><p>Click on the <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer in the <span class="guilabel">Layers</span> panel to select it.</p></li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle Editing</sup> button.</p>
+<p>If you can’t find this button, check that the <span class="guilabel">Digitizing</span> toolbar is
+enabled. There should be a check mark next to the <span class="menuselection">View ►
+Toolbars ► Digitizing</span> menu entry.</p>
+<p>As soon as you are in edit mode, you’ll see that some digitizing tools have become
+active:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionCapturePolygon.png"><img alt="capturePolygon" src="../../../_images/mActionCapturePolygon.png" style="width: 1.5em;" /></a> <sup>Capture Polygon</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionVertexToolActiveLayer.png"><img alt="vertexToolActiveLayer" src="../../../_images/mActionVertexToolActiveLayer.png" style="width: 1.5em;" /></a> <sup>Vertex Tool</sup></p></li>
+</ul>
+</div></blockquote>
+<p>Other relevant buttons are still inactive, but will become active when
+we start interacting with our new data.</p>
+<p>Notice that the layer <code class="docutils literal notranslate"><span class="pre">school_property</span></code> in the <span class="guilabel">Layers</span> panel now
+has the pencil icon, indicating that it is in edit mode.</p>
+</li>
+<li><p>Click on the <a class="reference internal" href="../../../_images/mActionCapturePolygon.png"><img alt="capturePolygon" src="../../../_images/mActionCapturePolygon.png" style="width: 1.5em;" /></a> <sup>Capture Polygon</sup> button to begin digitizing
+our school fields.</p>
+<p>You’ll notice that your mouse cursor has become a crosshair. This allows you to
+more accurately place the points you’ll be digitizing. Remember that even when
+you’re using the digitizing tool, you can zoom in and out on your map by
+rolling the mouse wheel, and you can pan around by holding down the mouse wheel
+and dragging around in the map.</p>
+<p>The first feature you’ll be digitizing is the athletics field:</p>
+<figure class="align-center">
+<img alt="../../../_images/school_area_one.png" src="../../../_images/school_area_one.png" />
+</figure>
+</li>
+<li><p>Start digitizing by clicking on a point somewhere along the edge of the field.</p></li>
+<li><p>Place more points by clicking further along the edge, until the shape you’re
+drawing completely covers the field.</p>
+<figure class="align-center">
+<img alt="../../../_images/school_field_outline.png" src="../../../_images/school_field_outline.png" />
+</figure>
+</li>
+<li><p>After placing your last point, right click to finish drawing the polygon.
+This will finalize the feature and show you the <span class="guilabel">Attributes</span> dialog.</p></li>
+<li><p>Fill in the values as below:</p>
+<figure class="align-center">
+<img alt="../../../_images/school_area_one_attributes.png" src="../../../_images/school_area_one_attributes.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span>, and you have created a new feature!</p>
+<figure class="align-center">
+<img alt="../../../_images/new_feature.png" src="../../../_images/new_feature.png" />
+</figure>
+</li>
+<li><p>In the <span class="guilabel">Layers</span> panel select the <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer.</p></li>
+<li><p>Right click and choose <span class="guilabel">Open Attribute Table</span> in the context menu.</p>
+<figure class="align-center">
+<img alt="../../../_images/open_attribute_table.png" src="../../../_images/open_attribute_table.png" />
+</figure>
+<p>In the table you will see the feature you just added.
+While in edit mode you can update the attributes data by double click on the cell
+you want to update.</p>
+<figure class="align-center">
+<img alt="../../../_images/feature_table.png" src="../../../_images/feature_table.png" />
+</figure>
+</li>
+<li><p>Close the attribute table.</p></li>
+<li><p>To save the new feature we just created, click on <a class="reference internal" href="../../../_images/mActionSaveEdits.png"><img alt="saveEdits" src="../../../_images/mActionSaveEdits.png" style="width: 1.5em;" /></a> <sup>Save Edits</sup> button.</p></li>
+</ol>
+<p>Remember, if you’ve made a mistake while digitizing a feature, you can always
+edit it after you’re done creating it. If you’ve made a mistake, continue
+digitizing until you’re done creating the feature as above. Then:</p>
+<ol class="arabic">
+<li><p>Click on <a class="reference internal" href="../../../_images/mActionVertexToolActiveLayer.png"><img alt="vertexToolActiveLayer" src="../../../_images/mActionVertexToolActiveLayer.png" style="width: 1.5em;" /></a> <sup>Vertex Tool</sup> button.</p></li>
+<li><p>Hover the mouse over a vertex you want to move and left click on the vertex.</p></li>
+<li><p>Move the mouse to the correct location of the vertex, and left click.
+This will move the vertex to the new location.</p>
+<figure class="align-center">
+<img alt="../../../_images/select_vertex.png" src="../../../_images/select_vertex.png" />
+</figure>
+<figure class="align-center">
+<img alt="../../../_images/moved_vertex.png" src="../../../_images/moved_vertex.png" />
+</figure>
+<p>The same procedure can be used to move a line segment, but you will need to
+hover over the midpoint of the line segment.</p>
+<p>If you want to undo a change, you can press the <a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <sup>Undo</sup> button or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd>.</p>
+</li>
+<li><p>Remember to save your changes by clicking the <a class="reference internal" href="../../../_images/mActionSaveEdits.png"><img alt="saveEdits" src="../../../_images/mActionSaveEdits.png" style="width: 1.5em;" /></a> <sup>Save Edits</sup> button.</p></li>
+<li><p>When done editing, click the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle Editing</sup> button
+to get out of edit mode.</p></li>
+</ol>
+</section>
+<section id="basic-ty-digitizing-polygons">
+<h2><span class="section-number">5.1.3. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Digitizing Polygons<a class="headerlink" href="#basic-ty-digitizing-polygons" title="Permalink to this headline"></a></h2>
+<p>Digitize the school itself and the upper field. Use this image to assist you:</p>
+<figure class="align-center">
+<img alt="../../../_images/field_outlines1.png" src="../../../_images/field_outlines1.png" />
+</figure>
+<p>Remember that each new feature needs to have a unique <code class="docutils literal notranslate"><span class="pre">id</span></code> value!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you’re done adding features to a layer, remember to save your
+edits and then exit edit mode.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can style the fill, outline and label placement and formatting
+of the <code class="docutils literal notranslate"><span class="pre">school_property</span></code> using techniques learnt in earlier
+lessons.</p>
+</div>
+</section>
+<section id="moderate-fa-using-vertex-editor-table">
+<h2><span class="section-number">5.1.4. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Using Vertex Editor Table<a class="headerlink" href="#moderate-fa-using-vertex-editor-table" title="Permalink to this headline"></a></h2>
+<p>Another way to edit a feature is to manually enter the actual
+coordinate values for each vertex using the <span class="guilabel">Vertex Editor</span>
+table.</p>
+<ol class="arabic">
+<li><p>Make sure you are in edit mode on layer <code class="docutils literal notranslate"><span class="pre">school_property</span></code>.</p></li>
+<li><p>If not already activated, click on <a class="reference internal" href="../../../_images/mActionVertexToolActiveLayer.png"><img alt="vertexToolActiveLayer" src="../../../_images/mActionVertexToolActiveLayer.png" style="width: 1.5em;" /></a>
+<sup>Vertex Tool</sup> button.</p></li>
+<li><p>Move the mouse over one of the polygon features you created in the
+<code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer and right click on it.
+This will select the feature and a <span class="guilabel">Vertex Editor</span> pane will appear.</p>
+<figure class="align-center">
+<img alt="../../../_images/vertex_editor_table.png" src="../../../_images/vertex_editor_table.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This table contains the coordinates for the vertices of the feature.
+Notice there are seven vertices for this feature, but only six are
+visually identified in the map area.
+Upon closer inspection, one will notice that row 0 and 6 have
+identical coordinates.
+These are the start and end vertices of the feature geometry,
+and are required in order to create a closed polygon feature.</p>
+</div>
+</li>
+<li><p>Click and drag a box over a vertex, or multiple vertices, of the selected feature.</p>
+<figure class="align-center">
+<img alt="../../../_images/vertex_select.png" src="../../../_images/vertex_select.png" />
+</figure>
+<p>The selected vertices will change to a color blue and the
+<span class="guilabel">Vertex Editor</span> table will have the corresponding rows
+highlighted, which contain the coordinates of the vertices.</p>
+<figure class="align-center">
+<img alt="../../../_images/vertex_selected.png" src="../../../_images/vertex_selected.png" />
+</figure>
+</li>
+<li><p>To update a coordinate, double left click on the cell in the table
+that you want to edit and enter the updated value.
+In this example, the x coordinate of row <code class="docutils literal notranslate"><span class="pre">4</span></code> is updated from
+<code class="docutils literal notranslate"><span class="pre">20.4450</span></code> to <code class="docutils literal notranslate"><span class="pre">20.4444</span></code>.</p>
+<figure class="align-center">
+<img alt="../../../_images/edit_vertex_in_vertex_editor.png" src="../../../_images/edit_vertex_in_vertex_editor.png" />
+</figure>
+</li>
+<li><p>After entering the updated value, hit the enter key to apply the change.
+You will see the vertex move to the new location in the map window.</p></li>
+<li><p>When done editing, click the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle Editing</sup>
+button to get out of edit mode, and save your edits.</p></li>
+</ol>
+</section>
+<section id="basic-ty-digitizing-lines">
+<h2><span class="section-number">5.1.5. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Digitizing Lines<a class="headerlink" href="#basic-ty-digitizing-lines" title="Permalink to this headline"></a></h2>
+<p>We are going to digitize two routes which are not already marked on the roads layer;
+one is a path, the other is a track.
+Our path runs along the southern edge of the suburb of Railton, starting and
+ending at marked roads:</p>
+<figure class="align-center">
+<img alt="../../../_images/path_start_end.png" src="../../../_images/path_start_end.png" />
+</figure>
+<p>Our track is a little further to the south:</p>
+<figure class="align-center">
+<img alt="../../../_images/track_start_end.png" src="../../../_images/track_start_end.png" />
+</figure>
+<ol class="arabic simple">
+<li><p>If the <em>roads</em> layer is not yet in your map, then add the <code class="file docutils literal notranslate"><span class="pre">roads</span></code>
+layer from the GeoPackage file <code class="file docutils literal notranslate"><span class="pre">training-data.gpkg</span></code> included in the
+<code class="file docutils literal notranslate"><span class="pre">exercise_data</span></code> folder of the training data you downloaded.
+You can read <a class="reference internal" href="../basic_map/preparation.html#load-geopackage"><span class="std std-ref"> Follow Along: Loading vector data from a GeoPackage Database</span></a> for a how-to.</p></li>
+<li><p>Create a new ESRI Shapefile line dataset called <code class="docutils literal notranslate"><span class="pre">routes.shp</span></code> in the
+<code class="file docutils literal notranslate"><span class="pre">exercise_data</span></code> directory, with attributes <code class="docutils literal notranslate"><span class="pre">id</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code>
+(use the approach above to guide you.)</p></li>
+<li><p>Activate edit mode on the <span class="guilabel">routes</span> layer.</p></li>
+<li><p>Since you are working with a line feature, click on the
+<a class="reference internal" href="../../../_images/mActionCaptureLine.png"><img alt="captureLine" src="../../../_images/mActionCaptureLine.png" style="width: 1.5em;" /></a> <sup>Add Line</sup> button to initiate line
+digitizing mode.</p></li>
+<li><p>One at a time, digitize the path and the track on the <code class="docutils literal notranslate"><span class="pre">routes</span></code> layer.
+Try to follow the routes as accurately as possible, adding additional points along
+corners or turns.</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">type</span></code> attribute value to <code class="docutils literal notranslate"><span class="pre">path</span></code> or <code class="docutils literal notranslate"><span class="pre">track</span></code>.</p></li>
+<li><p>Use the <span class="guilabel">Layer Properties</span> dialog to add styling to your routes.
+Feel free to use different styles for paths and tracks.</p></li>
+<li><p>Save your edits and toggle off editing mode by pressing the
+<a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle Editing</sup> button.</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The symbology doesn’t matter, but the results should look more or less like
+this:</p>
+<figure class="align-center">
+<img alt="../../../_images/routes_layer_result.png" src="../../../_images/routes_layer_result.png" />
+</figure>
+</div>
+</section>
+<section id="ic">
+<h2><span class="section-number">5.1.6. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Now you know how to create features! This course doesn’t cover adding point
+features, because that’s not really necessary once you’ve worked with more
+complicated features (lines and polygons). It works exactly the same, except
+that you only click once where you want the point to be, give it attributes as
+usual, and then the feature is created.</p>
+<p>Knowing how to digitize is important because it’s a very common activity in GIS
+programs.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">5.1.7. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Features in a GIS layer aren’t just pictures, but objects in space. For
+example, adjacent polygons know where they are in relation to one another. This
+is called <strong>topology</strong>. In the next lesson you’ll see an example of why this can
+be useful.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="5. Module: Creating Vector Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="topo_editing.html" class="btn btn-neutral float-right" title="5.2. Lesson: Feature Topology" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/create_new_vector.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/create_new_vector.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/create_new_vector.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/create_vector_data/create_new_vector.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/create_vector_data/create_new_vector.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/create_vector_data/create_new_vector.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/create_vector_data/create_new_vector.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/create_vector_data/create_new_vector.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/create_vector_data/create_new_vector.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/create_vector_data/create_new_vector.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/create_vector_data/create_new_vector.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/create_vector_data/create_new_vector.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/create_vector_data/create_new_vector.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/create_vector_data/create_new_vector.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

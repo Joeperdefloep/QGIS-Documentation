@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11. Spatial Analysis (Interpolation) &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="12. About the authors &amp; contributors" href="authors_and_contributors.html" />
+    <link rel="prev" title="10. Vector Spatial Analysis (Buffers)" href="vector_spatial_analysis_buffers.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">A Gentle Introduction to GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introducing_gis.html">2. Introducing GIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data.html">3. Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_attribute_data.html">4. Vector Attribute Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_capture.html">5. Data Capture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data.html">6. Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">7. Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_reference_systems.html">8. Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_production.html">9. Map Production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_spatial_analysis_buffers.html">10. Vector Spatial Analysis (Buffers)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">11. Spatial Analysis (Interpolation)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">11.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-interpolation-in-detail">11.2. Spatial interpolation in detail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse-distance-weighted-idw">11.3. Inverse Distance Weighted (IDW)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#triangulated-irregular-network-tin">11.4. Triangulated Irregular Network (TIN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems-things-to-be-aware-of">11.5. Common problems / things to be aware of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-interpolation-methods">11.6. Other interpolation methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-have-we-learned">11.7. What have we learned?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#now-you-try">11.8. Now you try!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#something-to-think-about">11.9. Something to think about</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">11.10. Further reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">11.11. What’s next?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="authors_and_contributors.html">12. About the authors &amp; contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_free_documentation_license.html">13. GNU Free Documentation License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">A Gentle Introduction to GIS</a> &raquo;</li>
+      <li><span class="section-number">11. </span>Spatial Analysis (Interpolation)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/gentle_gis_introduction/spatial_analysis_interpolation.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="vector_spatial_analysis_buffers.html" class="btn btn-neutral float-left" title="10. Vector Spatial Analysis (Buffers)" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authors_and_contributors.html" class="btn btn-neutral float-right" title="12. About the authors &amp; contributors" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spatial-analysis-interpolation">
+<span id="spatial-analysys"></span><h1><span class="section-number">11. </span>Spatial Analysis (Interpolation)<a class="headerlink" href="#spatial-analysis-interpolation" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 10%" />
+<col style="width: 74%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="../../_images/gentlelogo.png"><img alt="gentleLogo" src="../../_images/gentlelogo.png" style="width: 3em;" /></a></p></td>
+<td><p>Objectives:</p></td>
+<td><p>Understanding of interpolation as part of spatial analysis</p></td>
+</tr>
+<tr class="row-even"><td><p>Keywords:</p></td>
+<td><p>Point data, interpolation method, Inverse Distance Weighted, Triangulated Irregular Network</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview">
+<h2><span class="section-number">11.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p><strong>Spatial analysis</strong> is the process of manipulating spatial information to extract
+new information and meaning from the original data. Usually spatial analysis is
+carried out with a Geographic Information System (GIS). A GIS usually provides
+spatial analysis tools for calculating feature statistics and carrying out
+geoprocessing activities as data interpolation. In hydrology, users will likely
+emphasize the importance of terrain analysis and hydrological modelling (modelling
+the movement of water over and in the earth). In wildlife management, users are
+interested in analytical functions dealing with wildlife point locations and their
+relationship to the environment. Each user will have different things they are
+interested in depending on the kind of work they do.</p>
+</section>
+<section id="spatial-interpolation-in-detail">
+<h2><span class="section-number">11.2. </span>Spatial interpolation in detail<a class="headerlink" href="#spatial-interpolation-in-detail" title="Permalink to this headline"></a></h2>
+<p>Spatial interpolation is the process of using points with known values to estimate
+values at other unknown points. For example, to make a precipitation (rainfall)
+map for your country, you will not find enough evenly spread weather stations to
+cover the entire region. Spatial interpolation can estimate the temperatures at
+locations without recorded data by using known temperature readings at nearby
+weather stations (see <a class="reference internal" href="#figure-temperature-map"><span class="std std-numref">Fig. 11.41</span></a>). This type of interpolated surface
+is often called a <strong>statistical surface</strong>. Elevation data, precipitation, snow
+accumulation, water table and population density are other types of data that can
+be computed using interpolation.</p>
+<figure class="align-center" id="id1">
+<span id="figure-temperature-map"></span><a class="reference internal image-reference" href="../../_images/temperature_map.png"><img alt="../../_images/temperature_map.png" src="../../_images/temperature_map.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.41 </span><span class="caption-text">Temperature map interpolated from South African Weather Stations.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Because of high cost and limited resources, data collection is usually conducted
+only in a limited number of selected point locations. In GIS, spatial
+interpolation of these points can be applied to create a raster surface with
+estimates made for all raster cells.</p>
+<p>In order to generate a continuous map, for example, a digital elevation map from
+elevation points measured with a GPS device, a suitable interpolation method has
+to be used to optimally estimate the values at those locations where no samples
+or measurements were taken. The results of the interpolation analysis can then be
+used for analyses that cover the whole area and for modelling.</p>
+<p>There are many interpolation methods. In this introduction we will present two
+widely used interpolation methods called <strong>Inverse Distance Weighting</strong> (IDW) and
+<strong>Triangulated Irregular Networks</strong> (TIN). If you are looking for additional
+interpolation methods, please refer to the ‘Further Reading’ section at the end
+of this topic.</p>
+</section>
+<section id="inverse-distance-weighted-idw">
+<h2><span class="section-number">11.3. </span>Inverse Distance Weighted (IDW)<a class="headerlink" href="#inverse-distance-weighted-idw" title="Permalink to this headline"></a></h2>
+<p>In the IDW interpolation method, the sample points are weighted during
+interpolation such that the influence of one point relative to another declines
+with distance from the unknown point you want to create (see
+<a class="reference internal" href="#figure-idw-interpolation"><span class="std std-numref">Fig. 11.42</span></a>).</p>
+<figure class="align-center" id="id2">
+<span id="figure-idw-interpolation"></span><a class="reference internal image-reference" href="../../_images/idw_interpolation.png"><img alt="../../_images/idw_interpolation.png" src="../../_images/idw_interpolation.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.42 </span><span class="caption-text">Inverse Distance Weighted interpolation based on weighted sample point distance
+(left). Interpolated IDW surface from elevation vector points (right). Image
+Source: Mitas, L., Mitasova, H. (1999).</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Weighting is assigned to sample points through the use of a weighting coefficient
+that controls how the weighting influence will drop off as the distance from new
+point increases. The greater the weighting coefficient, the less the effect points
+will have if they are far from the unknown point during the interpolation process.
+As the coefficient increases, the value of the unknown point approaches the value
+of the nearest observational point.</p>
+<p>It is important to notice that the IDW interpolation method also has some
+disadvantages: the quality of the interpolation result can decrease, if the
+distribution of sample data points is uneven. Furthermore, maximum and minimum
+values in the interpolated surface can only occur at sample data points. This
+often results in small peaks and pits around the sample data points as shown in
+<a class="reference internal" href="#figure-idw-interpolation"><span class="std std-numref">Fig. 11.42</span></a>.</p>
+<p>In GIS, interpolation results are usually shown as a 2 dimensional raster layer.
+In <a class="reference internal" href="#figure-idw-result"><span class="std std-numref">Fig. 11.43</span></a>, you can see a typical IDW interpolation result, based on
+elevation sample points collected in the field with a GPS device.</p>
+<figure class="align-center" id="id3">
+<span id="figure-idw-result"></span><a class="reference internal image-reference" href="../../_images/idw_result.png"><img alt="../../_images/idw_result.png" src="../../_images/idw_result.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.43 </span><span class="caption-text">IDW interpolation result from irregularly collected elevation sample points
+(shown as black crosses).</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="triangulated-irregular-network-tin">
+<h2><span class="section-number">11.4. </span>Triangulated Irregular Network (TIN)<a class="headerlink" href="#triangulated-irregular-network-tin" title="Permalink to this headline"></a></h2>
+<p>TIN interpolation is another popular tool in GIS. A common TIN algorithm is called
+<strong>Delaunay triangulation</strong>. It tries to create a surface formed by triangles of
+nearest neighbour points. To do this, circumcircles around selected sample points
+are created and their intersections are connected to a network of non overlapping
+and as compact as possible triangles (see <a class="reference internal" href="#figure-tin-interpolation"><span class="std std-numref">Fig. 11.44</span></a>).</p>
+<figure class="align-center" id="id4">
+<span id="figure-tin-interpolation"></span><a class="reference internal image-reference" href="../../_images/tin_interpolation.png"><img alt="../../_images/tin_interpolation.png" src="../../_images/tin_interpolation.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.44 </span><span class="caption-text">Delaunay triangulation with circumcircles around the red sample data. The
+resulting interpolated TIN surface created from elevation vector points is
+shown on the right. Image Source: Mitas, L., Mitasova, H. (1999).</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The main disadvantage of the TIN interpolation is that the surfaces are not smooth
+and may give a jagged appearance. This is caused by discontinuous slopes at the
+triangle edges and sample data points. In addition, triangulation is generally
+not suitable for extrapolation beyond the area with collected sample data points
+(see <a class="reference internal" href="#figure-tin-result"><span class="std std-numref">Fig. 11.45</span></a> ).</p>
+<figure class="align-center" id="id5">
+<span id="figure-tin-result"></span><a class="reference internal image-reference" href="../../_images/tin_result.png"><img alt="../../_images/tin_result.png" src="../../_images/tin_result.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11.45 </span><span class="caption-text">Delaunay TIN interpolation result from irregularly collected rainfall sample
+points (blue circles)</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="common-problems-things-to-be-aware-of">
+<h2><span class="section-number">11.5. </span>Common problems / things to be aware of<a class="headerlink" href="#common-problems-things-to-be-aware-of" title="Permalink to this headline"></a></h2>
+<p>It is important to remember that there is no single interpolation method that can
+be applied to all situations. Some are more exact and useful than others but take
+longer to calculate. They all have advantages and disadvantages. In practice,
+selection of a particular interpolation method should depend upon the sample data,
+the type of surfaces to be generated and tolerance of estimation errors.
+Generally, a three step procedure is recommended:</p>
+<ol class="arabic simple">
+<li><p>Evaluate the sample data. Do this to get an idea on how data are distributed
+in the area, as this may provide hints on which interpolation method to use.</p></li>
+<li><p>Apply an interpolation method which is most suitable to both the sample data
+and the study objectives. When you are in doubt, try several methods, if
+available.</p></li>
+<li><p>Compare the results and find the best result and the most suitable method.
+This may look like a time consuming process at the beginning. However, as you
+gain experience and knowledge of different interpolation methods, the time
+required for generating the most suitable surface will be greatly reduced.</p></li>
+</ol>
+</section>
+<section id="other-interpolation-methods">
+<h2><span class="section-number">11.6. </span>Other interpolation methods<a class="headerlink" href="#other-interpolation-methods" title="Permalink to this headline"></a></h2>
+<p>Although we concentrated on IDW and TIN interpolation methods in this worksheet,
+there are more spatial interpolation methods provided in GIS, such as Regularized
+Splines with Tension (RST), Kriging or Trend Surface interpolation. See the
+additional reading section below for a web link.</p>
+</section>
+<section id="what-have-we-learned">
+<h2><span class="section-number">11.7. </span>What have we learned?<a class="headerlink" href="#what-have-we-learned" title="Permalink to this headline"></a></h2>
+<p>Let’s wrap up what we covered in this worksheet:</p>
+<ul class="simple">
+<li><p><strong>Interpolation</strong> uses vector points with known values to estimate values at
+unknown locations to create a raster surface covering an entire area.</p></li>
+<li><p>The interpolation result is typically a <strong>raster</strong> layer.</p></li>
+<li><p>It is important to <strong>find a suitable interpolation method</strong> to optimally
+estimate values for unknown locations.</p></li>
+<li><p><strong>IDW interpolation</strong> gives weights to sample points, such that the influence
+of one point on another declines with distance from the new point being
+estimated.</p></li>
+<li><p><strong>TIN interpolation</strong> uses sample points to create a surface formed by triangles
+based on nearest neighbour point information.</p></li>
+</ul>
+</section>
+<section id="now-you-try">
+<h2><span class="section-number">11.8. </span>Now you try!<a class="headerlink" href="#now-you-try" title="Permalink to this headline"></a></h2>
+<p>Here are some ideas for you to try with your learners:</p>
+<ul class="simple">
+<li><p>The Department of Agriculture plans to cultivate new land in your area but apart
+from the character of the soils, they want to know if the rainfall is sufficient
+for a good harvest. All the information they have available comes from a few
+weather stations around the area. Create an interpolated surface with your
+learners that shows which areas are likely to receive the highest rainfall.</p></li>
+<li><p>The tourist office wants to publish information about the weather conditions
+in January and February. They have temperature, rainfall and wind strength data
+and ask you to interpolate their data to estimate places where tourists will
+probably have optimal weather conditions with mild temperatures, no rainfall
+and little wind strength. Can you identify the areas in your region that meet
+these criteria?</p></li>
+</ul>
+</section>
+<section id="something-to-think-about">
+<h2><span class="section-number">11.9. </span>Something to think about<a class="headerlink" href="#something-to-think-about" title="Permalink to this headline"></a></h2>
+<p>If you don’t have a computer available, you can use a toposheet and a ruler to
+estimate elevation values between contour lines or rainfall values between
+fictional weather stations. For example, if rainfall at weather station A is 50
+mm per month and at weather station B it is 90 mm, you can estimate, that the
+rainfall at half the distance between weather station A and B is 70 mm.</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">11.10. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline"></a></h2>
+<p><strong>Books</strong>:</p>
+<ul class="simple">
+<li><p>Chang, Kang-Tsung (2006). Introduction to Geographic Information Systems. 3rd
+Edition. McGraw Hill. ISBN: 0070658986</p></li>
+<li><p>DeMers, Michael N. (2005): Fundamentals of Geographic Information Systems. 3rd
+Edition. Wiley. ISBN: 9814126195</p></li>
+<li><p>Mitas, L., Mitasova, H. (1999). Spatial Interpolation. In: P.Longley, M.F.
+Goodchild, D.J. Maguire, D.W.Rhind (Eds.), Geographical Information Systems:
+Principles, Techniques, Management and Applications, Wiley.</p></li>
+</ul>
+<p><strong>Websites</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Interpolation">https://en.wikipedia.org/wiki/Interpolation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Delaunay_triangulation">https://en.wikipedia.org/wiki/Delaunay_triangulation</a></p></li>
+</ul>
+<p>The QGIS User Guide also has more detailed information on interpolation tools
+provided in QGIS.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">11.11. </span>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>This is the final worksheet in this series. We encourage you to explore QGIS and
+use the accompanying QGIS manual to discover all the other things you can do with
+GIS software!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vector_spatial_analysis_buffers.html" class="btn btn-neutral float-left" title="10. Vector Spatial Analysis (Buffers)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authors_and_contributors.html" class="btn btn-neutral float-right" title="12. About the authors &amp; contributors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/gentle_gis_introduction/spatial_analysis_interpolation.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

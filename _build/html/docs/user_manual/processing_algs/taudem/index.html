@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.4. TauDEM algorithm provider &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/index.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.4.1. Basic Grid Analysis" href="basic_grid_analysis_tools.html" />
+    <link rel="prev" title="25.3. LAStools algorithm provider" href="../lidartools/lastools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/index.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">25.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">25.4. TauDEM algorithm provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic_grid_analysis_tools.html">25.4.1. Basic Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="specialized_grid_analysis_tools.html">25.4.2. Specialized Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stream_network_analysis_tools.html">25.4.3. Stream Network Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+      <li><span class="section-number">25.4. </span>TauDEM algorithm provider</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/taudem/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../lidartools/lastools.html" class="btn btn-neutral float-left" title="25.3. LAStools algorithm provider" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_grid_analysis_tools.html" class="btn btn-neutral float-right" title="25.4.1. Basic Grid Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="taudem-algorithm-provider">
+<h1><span class="section-number">25.4. </span>TauDEM algorithm provider<a class="headerlink" href="#taudem-algorithm-provider" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="http://hydrology.usu.edu/taudem/taudem5/index.html">TauDEM</a>
+(Terrain Analysis Using Digital Elevation Models) is a set of Digital Elevation
+Model (DEM) tools for the extraction and analysis of hydrologic information
+from topography as represented by a DEM. This is software developed at Utah
+State University (USU) for hydrologic digital elevation model analysis and
+watershed delineation.</p>
+<p>TauDEM is distributed as a set of standalone command line executable programs
+for a Windows and source code for compiling and use on other systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please remember that Processing contains only the interface description, so
+you need to install TauDEM 5.0.6 by yourself and configure Processing
+properly.</p>
+</div>
+<p>Documentation for TauDEM algorithms derived from official <a class="reference external" href="http://hydrology.usu.edu/taudem/taudem5/documentation.html">TauDEM
+documentation</a></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basic_grid_analysis_tools.html">25.4.1. Basic Grid Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#d-infinity-contributing-area">25.4.1.1. D-Infinity Contributing Area</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#d-infinity-flow-directions">25.4.1.2. D-Infinity Flow Directions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#d8-contributing-area">25.4.1.3. D8 Contributing Area</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#d8-flow-directions">25.4.1.4. D8 Flow Directions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#grid-network">25.4.1.5. Grid Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_grid_analysis_tools.html#pit-remove">25.4.1.6. Pit Remove</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="specialized_grid_analysis_tools.html">25.4.2. Specialized Grid Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d8-distance-to-streams">25.4.2.1. D8 Distance To Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-avalanche-runout">25.4.2.2. D-Infinity Avalanche Runout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-concentration-limited-accumulation">25.4.2.3. D-Infinity Concentration Limited Accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-decaying-accumulation">25.4.2.4. D-Infinity Decaying Accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-distance-down">25.4.2.5. D-Infinity Distance Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-distance-up">25.4.2.6. D-Infinity Distance Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-reverse-accumulation">25.4.2.7. D-Infinity Reverse Accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-transport-limited-accumulation-2">25.4.2.8. D-Infinity Transport Limited Accumulation - 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-transport-limited-accumulation">25.4.2.9. D-Infinity Transport Limited Accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#d-infinity-upslope-dependence">25.4.2.10. D-Infinity Upslope Dependence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#slope-average-down">25.4.2.11. Slope Average Down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#slope-over-area-ratio">25.4.2.12. Slope Over Area Ratio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="specialized_grid_analysis_tools.html#topographic-wetness-index">25.4.2.13. Topographic wetness index</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stream_network_analysis_tools.html">25.4.3. Stream Network Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#connect-down">25.4.3.1. Connect down</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#d8-extreme-upslope-value">25.4.3.2. D8 Extreme Upslope Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#gage-watershed">25.4.3.3. Gage Watershed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#length-area-stream-source">25.4.3.4. Length Area Stream Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#move-outlets-to-streams">25.4.3.5. Move Outlets To Streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#peuker-douglas">25.4.3.6. Peuker Douglas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#peuker-douglas-stream">25.4.3.7. Peuker Douglas stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#slope-area-combination">25.4.3.8. Slope Area Combination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#slope-area-stream-definition">25.4.3.9. Slope area stream definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#stream-definition-by-threshold">25.4.3.10. Stream Definition By Threshold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#stream-definition-with-drop-analysis">25.4.3.11. Stream definition with drop analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#stream-drop-analysis">25.4.3.12. Stream Drop Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stream_network_analysis_tools.html#stream-reach-and-watershed">25.4.3.13. Stream Reach and Watershed</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lidartools/lastools.html" class="btn btn-neutral float-left" title="25.3. LAStools algorithm provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basic_grid_analysis_tools.html" class="btn btn-neutral float-right" title="25.4.1. Basic Grid Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/index.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/index.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/index.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/taudem/index.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/taudem/index.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/taudem/index.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/taudem/index.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/taudem/index.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/taudem/index.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/taudem/index.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/taudem/index.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/taudem/index.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/taudem/index.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/taudem/index.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

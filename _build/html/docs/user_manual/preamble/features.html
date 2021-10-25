@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Features &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/preamble/features.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="5. Getting Started" href="../introduction/getting_started.html" />
+    <link rel="prev" title="3. Conventions" href="conventions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/preamble/features.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">3. Conventions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#view-data">4.1. View data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explore-data-and-compose-maps">4.2. Explore data and compose maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-edit-manage-and-export-data">4.3. Create, edit, manage and export data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analyze-data">4.4. Analyze data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#publish-maps-on-the-internet">4.5. Publish maps on the Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extend-qgis-functionality-through-plugins">4.6. Extend QGIS functionality through plugins</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#core-plugins">4.6.1. Core Plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-python-plugins">4.6.2. External Python Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-console">4.7. Python Console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">4.8. Known Issues</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#number-of-open-files-limitation">4.8.1. Number of open files limitation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+      <li><span class="section-number">4. </span>Features</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/preamble/features.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="conventions.html" class="btn btn-neutral float-left" title="3. Conventions" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../introduction/getting_started.html" class="btn btn-neutral float-right" title="5. Getting Started" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="features">
+<span id="qgis-documentation-features"></span><h1><span class="section-number">4. </span>Features<a class="headerlink" href="#features" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#view-data" id="id1">View data</a></p></li>
+<li><p><a class="reference internal" href="#explore-data-and-compose-maps" id="id2">Explore data and compose maps</a></p></li>
+<li><p><a class="reference internal" href="#create-edit-manage-and-export-data" id="id3">Create, edit, manage and export data</a></p></li>
+<li><p><a class="reference internal" href="#analyze-data" id="id4">Analyze data</a></p></li>
+<li><p><a class="reference internal" href="#publish-maps-on-the-internet" id="id5">Publish maps on the Internet</a></p></li>
+<li><p><a class="reference internal" href="#extend-qgis-functionality-through-plugins" id="id6">Extend QGIS functionality through plugins</a></p>
+<ul>
+<li><p><a class="reference internal" href="#core-plugins" id="id7">Core Plugins</a></p></li>
+<li><p><a class="reference internal" href="#external-python-plugins" id="id8">External Python Plugins</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#python-console" id="id9">Python Console</a></p></li>
+<li><p><a class="reference internal" href="#known-issues" id="id10">Known Issues</a></p>
+<ul>
+<li><p><a class="reference internal" href="#number-of-open-files-limitation" id="id11">Number of open files limitation</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>QGIS offers a wealth of GIS functions, provided by core features
+and plugins.
+The locator bar makes it easy to search for functions, datasets and
+more.</p>
+<p>A short summary of six general categories of features and
+plugins is presented below, followed by first insights into the
+integrated Python console.</p>
+<section id="view-data">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">4.1. </span>View data</a><a class="headerlink" href="#view-data" title="Permalink to this headline"></a></h2>
+<p>You can view combinations of vector and raster data (in 2D or 3D) in
+different formats and projections without conversion to an internal
+or common format.
+Supported formats include:</p>
+<ul>
+<li><p>Spatially-enabled tables and views using PostGIS, SpatiaLite and MS SQL
+Spatial, Oracle Spatial, vector formats supported by the installed OGR
+library, including GeoPackage, ESRI Shapefile, MapInfo, SDTS, GML and
+many more.
+See section <a class="reference internal" href="../working_with_vector/index.html#label-workingvector"><span class="std std-ref">Working with Vector Data</span></a>.</p></li>
+<li><p>Raster and imagery formats supported by the installed GDAL (Geospatial
+Data Abstraction Library) library, such as GeoTIFF, ERDAS IMG, ArcInfo
+ASCII GRID, JPEG, PNG and many more. See section <a class="reference internal" href="../working_with_raster/index.html#working-with-raster"><span class="std std-ref">Working with Raster Data</span></a>.</p></li>
+<li><p>Mesh data (TINs and regular grids are supported). See <a class="reference internal" href="../working_with_mesh/mesh_properties.html#label-meshdata"><span class="std std-ref">Working with Mesh Data</span></a>.</p></li>
+<li><p>Vector tiles</p></li>
+<li><p>GRASS raster and vector data from GRASS databases (location/mapset).
+See section <a class="reference internal" href="../grass_integration/grass_integration.html#sec-grass"><span class="std std-ref">GRASS GIS Integration</span></a>.</p></li>
+<li><p>Online spatial data served as OGC Web Services, including WMS,
+WMTS, WCS, WFS, and WFS-T. See section <a class="reference internal" href="../working_with_ogc/ogc_client_support.html#working-with-ogc"><span class="std std-ref">Working with OGC / ISO protocols</span></a>.</p>
+<p>The QGIS authentication infrastructure helps you manage
+user/password, certificates and keys for web services and other
+resources.</p>
+</li>
+<li><p>Spreadsheets (ODS / XLSX)</p></li>
+</ul>
+<p>Temporal data are supported.</p>
+</section>
+<section id="explore-data-and-compose-maps">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">4.2. </span>Explore data and compose maps</a><a class="headerlink" href="#explore-data-and-compose-maps" title="Permalink to this headline"></a></h2>
+<p>You can compose maps and interactively explore spatial data with a
+friendly GUI. The many helpful tools available in the GUI include:</p>
+<ul class="simple">
+<li><p>QGIS browser</p></li>
+<li><p>On-the-fly reprojection</p></li>
+<li><p>DB Manager</p></li>
+<li><p>Print layout</p></li>
+<li><p>Report</p></li>
+<li><p>Overview panel</p></li>
+<li><p>Spatial bookmarks</p></li>
+<li><p>Annotation tools</p></li>
+<li><p>Identify/select features</p></li>
+<li><p>Edit/view/search attributes</p></li>
+<li><p>Data-defined feature labeling</p></li>
+<li><p>Data-defined vector and raster symbology tools</p></li>
+<li><p>Atlas map composition with graticule layers</p></li>
+<li><p>North arrow, scale bar and copyright label for maps</p></li>
+<li><p>Support for saving and restoring projects</p></li>
+</ul>
+</section>
+<section id="create-edit-manage-and-export-data">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">4.3. </span>Create, edit, manage and export data</a><a class="headerlink" href="#create-edit-manage-and-export-data" title="Permalink to this headline"></a></h2>
+<p>You can create, edit, manage and export vector and raster layers in
+several formats. QGIS offers the following:</p>
+<ul class="simple">
+<li><p>Vector digitizing tools</p></li>
+<li><p>Ability to create and edit multiple file formats and GRASS vector layers</p></li>
+<li><p>Georeferencer plugin to geocode images</p></li>
+<li><p>GPS tools to import and export GPX format, and convert other GPS
+formats to GPX or down/upload directly to a GPS unit (on Linux,
+usb: has been added to list of GPS devices)</p></li>
+<li><p>Support for visualizing and editing OpenStreetMap data</p></li>
+<li><p>Ability to create spatial database tables from files with the DB
+Manager plugin</p></li>
+<li><p>Improved handling of spatial database tables</p></li>
+<li><p>Tools for managing vector attribute tables</p></li>
+<li><p>Option to save screenshots as georeferenced images</p></li>
+<li><p>DXF-Export tool with enhanced capabilities to export styles and plugins
+to perform CAD-like functions</p></li>
+</ul>
+</section>
+<section id="analyze-data">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">4.4. </span>Analyze data</a><a class="headerlink" href="#analyze-data" title="Permalink to this headline"></a></h2>
+<p>You can perform spatial data analysis on spatial databases and other
+OGR-supported formats. QGIS currently offers vector analysis, raster
+analysis, sampling, geoprocessing, geometry and database management
+tools.
+You can also use the integrated GRASS tools, which include the
+complete GRASS functionality of more than 400 modules (see section
+<a class="reference internal" href="../grass_integration/grass_integration.html#sec-grass"><span class="std std-ref">GRASS GIS Integration</span></a>). Or, you can work with the Processing plugin, which
+provides a powerful geospatial analysis framework to call native and
+third-party algorithms from QGIS, such as GDAL, SAGA, GRASS, R, and
+more (see section <a class="reference internal" href="../processing/intro.html#sec-processing-intro"><span class="std std-ref">Introduction</span></a>).
+All analysis functions are run in the background, allowing you to
+continue your work before the processing has finished.</p>
+<p>The graphical modeller allows you to combine / chain functions into a
+complete workflow in an intuitive graphical environment.</p>
+</section>
+<section id="publish-maps-on-the-internet">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">4.5. </span>Publish maps on the Internet</a><a class="headerlink" href="#publish-maps-on-the-internet" title="Permalink to this headline"></a></h2>
+<p>QGIS can be used as a WMS, WMTS, WMS-C or WFS and WFS-T client (see
+section <a class="reference internal" href="../working_with_ogc/ogc_client_support.html#working-with-ogc"><span class="std std-ref">Working with OGC / ISO protocols</span></a>), and QGIS Server (see the <a class="reference internal" href="../../server_manual/index.html#qgis-server-manual"><span class="std std-ref">QGIS Server Guide/Manual</span></a>)
+allows you to publish your data through the WMS, WCS and WFS protocols on the Internet
+using a webserver.</p>
+</section>
+<section id="extend-qgis-functionality-through-plugins">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">4.6. </span>Extend QGIS functionality through plugins</a><a class="headerlink" href="#extend-qgis-functionality-through-plugins" title="Permalink to this headline"></a></h2>
+<p>QGIS can be adapted to your special needs with the extensible plugin
+architecture and libraries that can be used to create plugins. You can
+even create new applications with C++ or Python!</p>
+<section id="core-plugins">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">4.6.1. </span>Core Plugins</a><a class="headerlink" href="#core-plugins" title="Permalink to this headline"></a></h3>
+<p>Core plugins include:</p>
+<ol class="arabic simple">
+<li><p>DB Manager (exchange, edit and view layers and tables from/to databases; execute SQL queries)</p></li>
+<li><p>Geometry Checker (check geometries for errors)</p></li>
+<li><p>Georeferencer GDAL (add projection information to rasters using GDAL)</p></li>
+<li><p>GPS Tools (load and import GPS data)</p></li>
+<li><p>GRASS 7 (integrate GRASS GIS)</p></li>
+<li><p>MetaSearch Catalogue Client (interacting with metadata catalog services
+supporting the OGC Catalog Service for the Web (CSW) standard)</p></li>
+<li><p>Offline Editing (allow offline editing and synchronizing with databases)</p></li>
+<li><p>Processing (the spatial data processing framework for QGIS)</p></li>
+<li><p>Topology Checker (find topological errors in vector layers)</p></li>
+</ol>
+</section>
+<section id="external-python-plugins">
+<h3><a class="toc-backref" href="#id8"><span class="section-number">4.6.2. </span>External Python Plugins</a><a class="headerlink" href="#external-python-plugins" title="Permalink to this headline"></a></h3>
+<p>QGIS offers a growing number of external Python plugins that are
+provided by the community. These plugins reside in the official
+Plugins Repository and can be easily installed using the Python Plugin
+Installer. See Section <a class="reference internal" href="../plugins/plugins.html#managing-plugins"><span class="std std-ref">The Plugins Dialog</span></a>.</p>
+</section>
+</section>
+<section id="python-console">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">4.7. </span>Python Console</a><a class="headerlink" href="#python-console" title="Permalink to this headline"></a></h2>
+<p>For scripting, it is possible to take advantage of an integrated
+Python console, which can be opened with: <span class="menuselection">Plugins
+► Python Console</span>. The console opens as a non-modal utility
+window. For interaction with the QGIS environment, there is the
+<code class="xref py py-data docutils literal notranslate"><span class="pre">qgis.utils.iface</span></code> variable, which is an instance of
+<a class="reference external" href="https://qgis.org/pyqgis/master/gui/QgisInterface.html#qgis.gui.QgisInterface" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgisInterface</span></code></a>. This interface provides access to the map canvas,
+menus, toolbars and other parts of the QGIS application. You can create
+a script, then drag and drop it into the QGIS window and it will be
+executed automatically.</p>
+<p>For further information about working with the Python console and
+programming QGIS plugins and applications, please refer to
+<a class="reference internal" href="../plugins/python_console.html#console"><span class="std std-ref">QGIS Python console</span></a> and <a class="reference internal" href="../../pyqgis_developer_cookbook/index.html#pyqgis-developer-cookbook"><span class="std std-ref">PyQGIS Developer Cookbook</span></a>.</p>
+</section>
+<section id="known-issues">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">4.8. </span>Known Issues</a><a class="headerlink" href="#known-issues" title="Permalink to this headline"></a></h2>
+<section id="number-of-open-files-limitation">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">4.8.1. </span>Number of open files limitation</a><a class="headerlink" href="#number-of-open-files-limitation" title="Permalink to this headline"></a></h3>
+<p>If you are opening a large QGIS project and you are sure that all
+layers are valid, but some layers are flagged as bad, you are probably
+faced with this issue. Linux (and other OSs, likewise) has a limit of
+opened files by process. Resource limits are per-process and
+inherited. The <code class="docutils literal notranslate"><span class="pre">ulimit</span></code> command, which is a shell built-in, changes
+the limits only for the current shell process; the new limit will be
+inherited by any child processes.</p>
+<p>You can see all current ulimit info by typing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">ulimit</span> -aS
+</pre></div>
+</div>
+<p>You can see the current allowed number of opened files per process
+with the following command on a console:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">ulimit</span> -Sn
+</pre></div>
+</div>
+<p>To change the limits for an <strong>existing session</strong>, you may be able to
+use something like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">ulimit</span> -Sn <span class="c1">#number_of_allowed_open_files</span>
+$ <span class="nb">ulimit</span> -Sn
+$ qgis
+</pre></div>
+</div>
+<p><strong>To fix it forever</strong></p>
+<p>On most Linux systems, resource limits are set
+on login by the <code class="docutils literal notranslate"><span class="pre">pam_limits</span></code> module according to the settings
+contained in <code class="file docutils literal notranslate"><span class="pre">/etc/security/limits.conf</span></code> or
+<code class="file docutils literal notranslate"><span class="pre">/etc/security/limits.d/*.conf</span></code>. You should be able to edit
+those files if you have root privilege (also via sudo), but you will
+need to log in again before any changes take effect.</p>
+<p>More info:</p>
+<p><a class="reference external" href="https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/">https://www.cyberciti.biz/faq/linux-increase-the-maximum-number-of-open-files/</a>
+<a class="reference external" href="https://linuxaria.com/article/open-files-in-linux">https://linuxaria.com/article/open-files-in-linux</a></p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conventions.html" class="btn btn-neutral float-left" title="3. Conventions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../introduction/getting_started.html" class="btn btn-neutral float-right" title="5. Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/preamble/features.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/preamble/features.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/preamble/features.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/preamble/features.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/preamble/features.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/preamble/features.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/preamble/features.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/preamble/features.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/preamble/features.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/preamble/features.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/preamble/features.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/preamble/features.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/preamble/features.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/preamble/features.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

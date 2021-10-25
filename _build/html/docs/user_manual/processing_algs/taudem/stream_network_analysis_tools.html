@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.4.3. Stream Network Analysis &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.5. OTB applications provider" href="../otb.html" />
+    <link rel="prev" title="25.4.2. Specialized Grid Analysis" href="specialized_grid_analysis_tools.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../qgis/index.html">25.1. QGIS algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.4. TauDEM algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="basic_grid_analysis_tools.html">25.4.1. Basic Grid Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="specialized_grid_analysis_tools.html">25.4.2. Specialized Grid Analysis</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.4.3. Stream Network Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.4. </span>TauDEM algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.4.3. </span>Stream Network Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="specialized_grid_analysis_tools.html" class="btn btn-neutral float-left" title="25.4.2. Specialized Grid Analysis" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../otb.html" class="btn btn-neutral float-right" title="25.5. OTB applications provider" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stream-network-analysis">
+<h1><span class="section-number">25.4.3. </span>Stream Network Analysis<a class="headerlink" href="#stream-network-analysis" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#connect-down" id="id38">Connect down</a></p></li>
+<li><p><a class="reference internal" href="#d8-extreme-upslope-value" id="id39">D8 Extreme Upslope Value</a></p></li>
+<li><p><a class="reference internal" href="#gage-watershed" id="id40">Gage Watershed</a></p></li>
+<li><p><a class="reference internal" href="#length-area-stream-source" id="id41">Length Area Stream Source</a></p></li>
+<li><p><a class="reference internal" href="#move-outlets-to-streams" id="id42">Move Outlets To Streams</a></p></li>
+<li><p><a class="reference internal" href="#peuker-douglas" id="id43">Peuker Douglas</a></p></li>
+<li><p><a class="reference internal" href="#peuker-douglas-stream" id="id44">Peuker Douglas stream</a></p></li>
+<li><p><a class="reference internal" href="#slope-area-combination" id="id45">Slope Area Combination</a></p></li>
+<li><p><a class="reference internal" href="#slope-area-stream-definition" id="id46">Slope area stream definition</a></p></li>
+<li><p><a class="reference internal" href="#stream-definition-by-threshold" id="id47">Stream Definition By Threshold</a></p></li>
+<li><p><a class="reference internal" href="#stream-definition-with-drop-analysis" id="id48">Stream definition with drop analysis</a></p></li>
+<li><p><a class="reference internal" href="#stream-drop-analysis" id="id49">Stream Drop Analysis</a></p></li>
+<li><p><a class="reference internal" href="#stream-reach-and-watershed" id="id50">Stream Reach and Watershed</a></p></li>
+</ul>
+</div>
+<section id="connect-down">
+<span id="taudemconnectdown"></span><h2><a class="toc-backref" href="#id38"><span class="section-number">25.4.3.1. </span>Connect down</a><a class="headerlink" href="#connect-down" title="Permalink to this headline"></a></h2>
+<p>For each zone in a raster entered (e.g. HUC converted to grid) it identifies
+the point with largest AreaD8. This is taken to be the outlet. A OGR file is created.
+Using flow directions each outlet is moved downflow a specified number of
+grid cells which is user controllable (Default is 1). The ID of the location
+the point has moved to is taken as iddown. Two OGR files are created one with
+the initial points and one with the moved points. Both contain id, iddown and AreaD8.</p>
+<section id="parameters">
+<h3><span class="section-number">25.4.3.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 flow directions</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of flow directions that are encoded using the D8 method where all
+flow from a cells goes to a single neighboring cell in the direction of
+steepest descent</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 contribution area</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the contributing area value in terms of the number of grid
+cells (or the summation of weights) for each cell taken as its own
+contribution plus the contribution from upslope neighbors that drain in
+to it using the D8 algorithm.
+This is usually the output of the <strong>“D8 Contributing Area”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Watershed</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>Watershed grid delineated from gage watershed function or streamreachwatershed function.
+Other watershed (e.g. HUC) raster also can be used as watershed grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Grid cells move to downstream</strong></p></td>
+<td></td>
+<td><p>[number]</p></td>
+<td><p>Number of grid cells move to downstream based on flow directions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.4.3.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point OGR file where each point is created from watershed grid having the largest
+contributing area for each zone.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Moved Outlets</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point OGR file defining moved outlets of interest. where each outlet is moved
+downflow a specified number of grid cells using flow directions.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.4.3.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:connectdown</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="d8-extreme-upslope-value">
+<span id="taudemd8flowpathextremeup"></span><h2><a class="toc-backref" href="#id39"><span class="section-number">25.4.3.2. </span>D8 Extreme Upslope Value</a><a class="headerlink" href="#d8-extreme-upslope-value" title="Permalink to this headline"></a></h2>
+<p>Evaluates the extreme (either maximum or minimum) upslope value from an input
+grid based on the D8 flow model. This is intended initially for use in stream
+raster generation to identify a threshold of the slope times area product that
+results in an optimum (according to drop analysis) stream network.</p>
+<p>If the optional outlet point shapefile is used, only the outlet cells and the
+cells upslope (by the D8 flow model) of them are in the domain to be evaluated.</p>
+<p>By default, the tool checks for edge contamination. This is defined as the
+possibility that a result may be underestimated due to grid cells outside of the
+domain not being counted. This occurs when drainage is inwards from the boundaries
+or areas with “no data” values for elevation. The algorithm recognizes this and
+reports “no data” for the result for these grid cells. It is common to see streaks
+of “no data” values extending inwards from boundaries along flow paths that enter
+the domain at a boundary. This is the desired effect and indicates that the result
+for these grid cells is unknown due to it being dependent on terrain outside of
+the domain of data available. Edge contamination checking may be turned off in
+cases where you know this is not an issue or want to ignore these problems, if
+for example, the DEM has been clipped along a watershed outline.</p>
+<section id="id1">
+<h3><span class="section-number">25.4.3.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Flow Directions Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each cell, as the
+direction of the one of its eight adjacent or diagonal neighbors with the
+steepest downward slope. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Upslope Values Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This is the grid of values of which the maximum or minimum upslope value is
+selected. The values most commonly used are the slope times area product
+needed when generating stream rasters according to drop analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets Shapefile</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shape file defining outlets of interest. If this input file is used,
+only the area upslope of these outlets will be evaluated by the tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag that indicates whether the tool should check for edge contamination.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Use max upslope value</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>A flag to indicate whether the maximum or minimum upslope value is to be
+calculated.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">25.4.3.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Extreme Upslope Values Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of the maximum/minimum upslope values.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">25.4.3.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:d8flowpathextremeup</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="gage-watershed">
+<span id="taudemgagewatershed"></span><h2><a class="toc-backref" href="#id40"><span class="section-number">25.4.3.3. </span>Gage Watershed</a><a class="headerlink" href="#gage-watershed" title="Permalink to this headline"></a></h2>
+<p>Calculates Gage Watersheds Grid. Each grid cell is labeled with the identifier
+(from column <code class="docutils literal notranslate"><span class="pre">id</span></code>) of the gage to which it drains directly without passing
+through any other gages.</p>
+<section id="id4">
+<h3><span class="section-number">25.4.3.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p>A suppr <strong>D-infinity flow directions</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DINF_FLOWDIR</span></code></p></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of flow directions based on the D-infinity flow method</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 Flow Directions Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each cell, as the
+direction of the one of its eight adjacent or diagonal neighbors with the
+steepest downward slope. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gages Shapefile</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shapefile defining the gages to which watersheds will be delineated.
+This shapefile should have a colmun <code class="docutils literal notranslate"><span class="pre">id</span></code>. Grid cells draining directly to
+each point in this shapefile will be labeled with this id.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.4.3.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Gage Watershed Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid identifies each gage watershed. Each grid cell is labeled with the
+identifier (from column <code class="docutils literal notranslate"><span class="pre">id</span></code>) of the gage to which it drains directly
+without passing through any other gages.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Downstream Identifiers File</strong></p></td>
+<td></td>
+<td><p>[file]</p></td>
+<td><p>Text file giving watershed downslope connectivity</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">25.4.3.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:gagewatershed</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="length-area-stream-source">
+<span id="taudemlengtharea"></span><h2><a class="toc-backref" href="#id41"><span class="section-number">25.4.3.4. </span>Length Area Stream Source</a><a class="headerlink" href="#length-area-stream-source" title="Permalink to this headline"></a></h2>
+<p>Creates an indicator grid (1, 0) that evaluates <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;=</span> <span class="pre">(M)(Ly)</span></code> based on upslope
+path length, D8 contributing area grid inputs, and parameters <code class="docutils literal notranslate"><span class="pre">M</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.
+This grid indicates likely stream source grid cells. This is an experimental
+method with theoretical basis in Hack’s law which states that for streams
+<code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">~</span> <span class="pre">A</span> <span class="pre">0.6</span></code>. However for hillslopes with parallel flow <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">~</span> <span class="pre">A</span></code>. So a transition
+from hillslopes to streams may be represented by <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">~</span> <span class="pre">A</span> <span class="pre">0.8</span></code> suggesting
+identifying grid cells as stream cells if <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">M</span> <span class="pre">(L</span> <span class="pre">(1/0.8))</span></code>.</p>
+<section id="id7">
+<h3><span class="section-number">25.4.3.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Length Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of the maximum upslope length for each cell. This is calculated as the
+length of the flow path from the furthest cell that drains to each cell.
+Length is measured between cell centers taking into account cell size and
+whether the direction is adjacent or diagonal. It is this length (<code class="docutils literal notranslate"><span class="pre">L</span></code>) that
+is used in the formula, <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;(M)(Ly)</span></code>, to determine which cells are
+considered stream cells. This grid can be obtained as an output from the
+<strong>“Grid Network”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Contributing Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of contributing area values for each cell that were calculated using
+the D8 algorithm. The contributing area for a cell is the sum of its own
+contribution plus the contribution from all upslope neighbors that drain to
+it, measured as a number of cells. This grid is typically obtained as the
+output of the <strong>“D8 Contributing Area”</strong> tool. In this tool, it is the
+contributing area (<code class="docutils literal notranslate"><span class="pre">A</span></code>) that is compared in the formula <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">(M)(Ly)</span></code> to
+determine the transition to a stream.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.03</p>
+</td>
+<td><p>The multiplier threshold (<code class="docutils literal notranslate"><span class="pre">M</span></code>) parameter which is used in the formula:
+<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">(M)(Ly)</span></code>, to identify the beginning of streams.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Exponent</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 1.3</p>
+</td>
+<td><p>The exponent (<code class="docutils literal notranslate"><span class="pre">y</span></code>) parameter which is used in the formula: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">(M)(Ly)</span></code>,
+to identify the beginning of streams. In branching systems, Hack’s law
+suggests that <code class="docutils literal notranslate"><span class="pre">L</span> <span class="pre">=</span> <span class="pre">1/M</span> <span class="pre">A(1/y)</span></code> with <code class="docutils literal notranslate"><span class="pre">1/y</span> <span class="pre">=</span> <span class="pre">0.6</span></code> (or 0.56) (<code class="docutils literal notranslate"><span class="pre">y</span></code> about 1.7).
+In parallel flow systems <code class="docutils literal notranslate"><span class="pre">L</span></code> is proportional to <code class="docutils literal notranslate"><span class="pre">A</span></code> (<code class="docutils literal notranslate"><span class="pre">y</span></code> about 1). This
+method tries to identify the transition between these two paradigms by using
+an exponent <code class="docutils literal notranslate"><span class="pre">y</span></code> somewhere in between (<code class="docutils literal notranslate"><span class="pre">y</span></code> about 1.3).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">25.4.3.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Source Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>An indicator grid (1,0) that evaluates A &gt;= (M)(L^y), based on the maximum
+upslope path length, the D8 contributing area grid inputs, and parameters <code class="docutils literal notranslate"><span class="pre">M</span></code>
+and <code class="docutils literal notranslate"><span class="pre">y</span></code>. This grid indicates likely stream source grid cells.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">25.4.3.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:lengtharea</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="move-outlets-to-streams">
+<span id="taudemmoveoutletstostreams"></span><h2><a class="toc-backref" href="#id42"><span class="section-number">25.4.3.5. </span>Move Outlets To Streams</a><a class="headerlink" href="#move-outlets-to-streams" title="Permalink to this headline"></a></h2>
+<p>Moves outlet points that are not aligned with a stream cell from a stream raster
+grid, downslope along the D8 flow direction until a stream raster cell is
+encountered, the “max_dist” number of grid cells are examined, or the flow path
+exits the domain (i.e. a “no data” value is encountered for the D8 flow direction).
+The output file is a new outlets shapefile where each point has been moved to
+coincide with the stream raster grid, if possible. A field “dist_moved” is added
+to the new outlets shapefile to indicate the changes made to each point. Points
+that are already on a stream cell are not moved and their “dist_moved” field is
+assigned a value 0. Points that are initially not on a stream cell are moved by
+sliding them downslope along the D8 flow direction until one of the following
+occurs: a) A stream raster grid cell is encountered before traversing the
+“max_dist” number of grid cells. In which case, the point is moved and the
+“dist_moved” field is assigned a value indicating how many grid cells the point
+was moved. b) More than the “max_number” of grid cells are traversed, or c) the
+traversal ends up going out of the domain (i.e., a “no data” D8 flow direction
+value is encountered). In which case, the point is not moved and the
+“dist_moved” field is assigned a value of -1.</p>
+<section id="id10">
+<h3><span class="section-number">25.4.3.5.1. </span>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each cell, as the
+direction of the one of its eight adjacent or diagonal neighbors with the
+steepest downward slope. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stream Raster Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This output is an indicator grid (1, 0) that indicates the location of
+streams, with a value of 1 for each of the stream cells and 0 for the
+remainder of the cells. This file is produced by several different tools in
+the <strong>“Stream Network Analysis”</strong> toolset.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets Shapefile</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shape file defining points of interest or outlets that should ideally
+be located on a stream, but may not be exactly on the stream due to the fact
+that the shapefile point locations may not have been accurately registered
+with respect to the stream raster grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum Number of Grid Cells to traverse</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 50</p>
+</td>
+<td><p>This input parameter is the maximum number of grid cells that the points in
+the input outlet shapefile will be moved before they are saved to the output
+outlet shapefile.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">25.4.3.5.2. </span>Outputs<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output Outlet Shapefile</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shape file defining points of interest or outlets. This file has one
+point in it for each point in the input outlet shapefile. If the original
+point was located on a stream, then the point was not moved. If the original
+point was not on a stream, the point was moved downslope according to the D8
+flow direction until it reached a stream or the maximum distance had been
+reached. This file has an additional field “dist_moved” added to it which is
+the number of cells that the point was moved. This field is 0 if the cell was
+originally on a stream, -1 if it was not moved because there was not a stream
+within the maximum distance, or some positive value if it was moved.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">25.4.3.5.3. </span>Python code<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:moveoutletstostreams</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="peuker-douglas">
+<span id="taudempeukerdouglas"></span><h2><a class="toc-backref" href="#id43"><span class="section-number">25.4.3.6. </span>Peuker Douglas</a><a class="headerlink" href="#peuker-douglas" title="Permalink to this headline"></a></h2>
+<p>Creates an indicator grid (1, 0) of upward curved grid cells according to the
+Peuker and Douglas algorithm.</p>
+<p>With this tool, the DEM is first smoothed by a kernel with weights at the center,
+sides, and diagonals. The Peuker and Douglas (1975) method (also explained in
+Band, 1986), is then used to identify upwardly curving grid cells. This technique
+flags the entire grid, then examines in a single pass each quadrant of 4 grid
+cells, and unflags the highest. The remaining flagged cells are deemed “upwardly
+curved”, and when viewed, resemble a channel network. This proto-channel network
+generally lacks connectivity and requires thinning, issues that were discussed
+in detail by Band (1986).</p>
+<section id="id13">
+<h3><span class="section-number">25.4.3.6.1. </span>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values. This is usually the output of the
+<strong>“Pit Remove”</strong> tool, in which case it is elevations with pits removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Center Smoothing Weight</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.4</p>
+</td>
+<td><p>The center weight parameter used by a kernel to smooth the DEM before the tool
+identifies upwardly curved grid cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Side Smoothing Weight</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.1</p>
+</td>
+<td><p>The side weight parameter used by a kernel to smooth the DEM before the tool
+identifies upwardly curved grid cells.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Diagonal Smoothing Weight</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 0.05</p>
+</td>
+<td><p>The diagonal weight parameter used by a kernel to smooth the DEM before the
+tool identifies upwardly curved grid cells.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">25.4.3.6.2. </span>Outputs<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Source Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>An indicator grid (1, 0) of upward curved grid cells according to the Peuker
+and Douglas algorithm, and if viewed, resembles a channel network. This
+proto-channel network generally lacks connectivity and requires thinning,
+issues that were discussed in detail by Band (1986).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">25.4.3.6.3. </span>Python code<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:peukerdouglas</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+<section id="see-also">
+<h3><span class="section-number">25.4.3.6.4. </span>See also<a class="headerlink" href="#see-also" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Band, L. E., (1986), “Topographic partition of watersheds with digital elevation
+models”, Water Resources Research, 22(1): 15-24.</p></li>
+<li><p>Peuker, T. K. and D. H. Douglas, (1975), “Detection of surface-specific points
+by local parallel processing of discrete terrain elevation data”, Comput.
+Graphics Image Process., 4: 375-387.</p></li>
+</ul>
+</section>
+</section>
+<section id="peuker-douglas-stream">
+<span id="taudempeukerdouglasstreamdef"></span><h2><a class="toc-backref" href="#id44"><span class="section-number">25.4.3.7. </span>Peuker Douglas stream</a><a class="headerlink" href="#peuker-douglas-stream" title="Permalink to this headline"></a></h2>
+<p>Combines the functionality of the “Peuker Douglas”, “D8 Contributing Area”,
+“Stream Drop Analysis” and “Stream Definition by Threshold” tools in order
+to generate a stream indicator grid (1,0) where the streams are located using
+a DEM curvature-based method. With this method, the DEM is first smoothed by
+a kernel with weights at the center, sides, and diagonals.
+The Peuker and Douglas (1975) method (also explained in Band, 1986), is then used
+to identify upwardly curving grid cells. This technique flags the entire grid,
+then examines in a single pass each quadrant of 4 grid cells, and unflags the highest.
+The remaining flagged cells are deemed ‘upwardly curved’, and when viewed,
+resemble a channel network. This proto-channel network sometimes lacks connectivity,
+and/or requires thinning, issues that were discussed in detail by Band (1986).
+The thinning and connecting of these grid cells is achieved here by computing the D8
+contributing area using only these upwardly curving cells. An accumulation threshold
+on the number of these cells is then used to map the channel network where
+this threshold is optionally set by the user, or determined via drop analysis.</p>
+<p>If drop analysis is used, then instead of providing a value for the accumulation threshold,
+the accumulation threshold value is determined by searching the range between
+the Drop Analysis Parameters “Lowest” and “Highest”, using the number of steps in the parameter “Number”.
+For the science behind drop analysis, see Tarboton, et al. (1991, 1992), and Tarboton and Ames (2001).
+The value of accumulation threshold that is selected is the smallest value
+where the absolute value of the t-statistic is less than 2.
+This is written to the drop analysis table text file. Drop analysis is only possible
+when outlets have been specified, because if an entire grid domain is analyzed,
+as the threshold varies, shorter streams draining off the edge may not meet the threshold criterion
+and be excluded from the analysis. This makes defining drainage density problematic
+and it is somewhat inconsistent to compare statistics evaluated over differing domains.</p>
+<section id="id16">
+<h3><span class="section-number">25.4.3.7.1. </span>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id17">
+<h3><span class="section-number">25.4.3.7.2. </span>Outputs<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream source</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>An indicator grid (1, 0) of upward curved grid cells according to the Peuker
+and Douglas algorithm, and if viewed, resembles a channel network. This
+proto-channel network generally lacks connectivity and requires thinning,
+issues that were discussed in detail by Band (1986).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3><span class="section-number">25.4.3.7.3. </span>Python code<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:peukerdouglasstreamdef</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope-area-combination">
+<span id="taudemslopearea"></span><h2><a class="toc-backref" href="#id45"><span class="section-number">25.4.3.8. </span>Slope Area Combination</a><a class="headerlink" href="#slope-area-combination" title="Permalink to this headline"></a></h2>
+<p>Creates a grid of slope-area values = <code class="docutils literal notranslate"><span class="pre">(Sm)</span> <span class="pre">(An)</span></code> based on slope and specific
+catchment area grid inputs, and parameters <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code>. This tool is intended
+for use as part of the slope-area stream raster delineation method.</p>
+<section id="id19">
+<h3><span class="section-number">25.4.3.8.1. </span>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of slope values. This grid can be obtained from the
+<strong>“D-Infinity Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Contributing Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the specific catchment area for each cell taken as its own
+contribution (grid cell length or summation of weights) plus the proportional
+contribution from upslope neighbors that drain in to it. This grid is
+typically obtained from the <strong>“D-Infinity Contributing Area”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Exponent</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 2</p>
+</td>
+<td><p>The slope exponent (<code class="docutils literal notranslate"><span class="pre">m</span></code>) parameter which will be used in the formula:
+<code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code>, that is used to create the slope-area grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Area Exponent</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The area exponent (<code class="docutils literal notranslate"><span class="pre">n</span></code>) parameter which will be used in the formula:
+<code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code>, that is used to create the slope-area grid.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><span class="section-number">25.4.3.8.2. </span>Outputs<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of slope-area values = <code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code> calculated from the slope grid,
+specific catchment area grid, <code class="docutils literal notranslate"><span class="pre">m</span></code> slope exponent parameter, and <code class="docutils literal notranslate"><span class="pre">n</span></code> area
+exponent parameter.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h3><span class="section-number">25.4.3.8.3. </span>Python code<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:slopearea</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="slope-area-stream-definition">
+<span id="taudemslopeareastreamdef"></span><h2><a class="toc-backref" href="#id46"><span class="section-number">25.4.3.9. </span>Slope area stream definition</a><a class="headerlink" href="#slope-area-stream-definition" title="Permalink to this headline"></a></h2>
+<p>Creates a grid of slope-area values = <code class="docutils literal notranslate"><span class="pre">(Sm)</span> <span class="pre">(An)</span></code> based on slope and specific
+catchment area grid inputs, and parameters <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">n</span></code>. This tool is intended
+for use as part of the slope-area stream raster delineation method.</p>
+<section id="id22">
+<h3><span class="section-number">25.4.3.9.1. </span>Parameters<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 flow directions</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D-infinity Contributing Area</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the specific catchment area for each cell taken as its own
+contribution (grid cell length or summation of weights) plus the proportional
+contribution from upslope neighbors that drain in to it. This grid is
+typically obtained from the <strong>“D-Infinity Contributing Area”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Slope</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This input is a grid of slope values. This grid can be obtained from the
+<strong>“D-Infinity Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mask grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Pit-filled grid for drop analysis</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 contributing area for drop analysis</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slope Exponent</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 2</p>
+</td>
+<td><p>The slope exponent (<code class="docutils literal notranslate"><span class="pre">m</span></code>) parameter which will be used in the formula:
+<code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code>, that is used to create the slope-area grid.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Area Exponent</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The area exponent (<code class="docutils literal notranslate"><span class="pre">n</span></code>) parameter which will be used in the formula:
+<code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code>, that is used to create the slope-area grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Accumulation threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minimum threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of drop thresholds</strong></p></td>
+<td></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Type of threshold step</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Options:</p>
+<ul class="simple">
+<li><p>0 — Logarithmic</p></li>
+<li><p>1 — Linear</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Check for edge contamination</strong></p></td>
+<td></td>
+<td><p>[boolean]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Select threshold by drop analysis</strong></p></td>
+<td></td>
+<td><p>[boolean]</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3><span class="section-number">25.4.3.9.2. </span>Outputs<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream raster</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slope area</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of slope-area values = <code class="docutils literal notranslate"><span class="pre">(Sm)(An)</span></code> calculated from the slope grid,
+specific catchment area grid, <code class="docutils literal notranslate"><span class="pre">m</span></code> slope exponent parameter, and <code class="docutils literal notranslate"><span class="pre">n</span></code> area
+exponent parameter.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum upslope</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Drop analysis</strong></p></td>
+<td></td>
+<td><p>[file]</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h3><span class="section-number">25.4.3.9.3. </span>Python code<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:slopeareastreamdef</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="stream-definition-by-threshold">
+<span id="taudemthreshold"></span><h2><a class="toc-backref" href="#id47"><span class="section-number">25.4.3.10. </span>Stream Definition By Threshold</a><a class="headerlink" href="#stream-definition-by-threshold" title="Permalink to this headline"></a></h2>
+<p>Operates on any grid and outputs an indicator (1, 0) grid identifying cells with
+input values &gt;= the threshold value. The standard use is to use an accumulated
+source area grid to as the input grid to generate a stream raster grid as the
+output. If you use the optional input mask grid, it limits the domain being
+evaluated to cells with mask values &gt;= 0. When you use a D-infinity contributing
+area grid (<code class="file docutils literal notranslate"><span class="pre">*sca</span></code>) as the mask grid, it functions as an edge contamination
+mask. The threshold logic is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>src = ((ssa &gt;= thresh) &amp; (mask &gt;= s0)) ? 1:0
+</pre></div>
+</div>
+<section id="id25">
+<h3><span class="section-number">25.4.3.10.1. </span>Parameters<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Accumulated Stream Source Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This grid nominally accumulates some characteristic or combination of
+characteristics of the watershed. The exact characteristic(s) varies depending
+on the stream network raster algorithm being used. This grid needs to have
+the property that grid cell values are monotonically increasing downslope
+along D8 flow directions, so that the resulting stream network is continuous.
+While this grid is often from an accumulation, other sources such as a maximum
+upslope function will also produce a suitable grid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 100</p>
+</td>
+<td><p>This parameter is compared to the value in the Accumulated Stream Source grid
+(<code class="file docutils literal notranslate"><span class="pre">*ssa</span></code>) to determine if the cell should be considered a stream cell.
+Streams are identified as grid cells for which ssa value is &gt;= this threshold.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mask Grid</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This optional input is a grid that is used to mask the domain of interest and
+output is only provided where this grid is &gt;= 0. A common use of this input
+is to use a D-Infinity contributing area grid as the mask so that the
+delineated stream network is constrained to areas where D-infinity
+contributing area is available, replicating the functionality of an edge
+contamination mask.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3><span class="section-number">25.4.3.10.2. </span>Outputs<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Raster Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This is an indicator grid (1, 0) that indicates the location of streams, with
+a value of 1 for each of the stream cells and 0 for the remainder of the cells.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3><span class="section-number">25.4.3.10.3. </span>Python code<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:threshold</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="stream-definition-with-drop-analysis">
+<span id="taudemstreamdefdropanalysis"></span><h2><a class="toc-backref" href="#id48"><span class="section-number">25.4.3.11. </span>Stream definition with drop analysis</a><a class="headerlink" href="#stream-definition-with-drop-analysis" title="Permalink to this headline"></a></h2>
+<p>Combines the function of the “Stream Drop Analysis” tool and the “Stream Definition by Threshold” tools.
+It applies a series of thresholds (determined from the input parameters) to
+the input accumulated stream source grid (<code class="docutils literal notranslate"><span class="pre">ssa</span></code>) grid and outputs the results
+in the stream drop statistics table (<code class="docutils literal notranslate"><span class="pre">drp.txt</span></code>). Then it outputs a stream raster grid,
+which is an indicator (1,0) grid of stream cells. Stream cells are defined as those cells
+where the accumulated stream source value is &gt;= the optimal threshold as determined
+from the stream drop statistics.
+There is an option to include a mask input to replicate the functionality for using
+the <code class="docutils literal notranslate"><span class="pre">*sca</span></code> file as an edge contamination mask.
+The threshold logic should be: <code class="docutils literal notranslate"><span class="pre">src</span> <span class="pre">=</span> <span class="pre">((ssa</span> <span class="pre">&gt;=</span> <span class="pre">thresh)</span> <span class="pre">&amp;</span> <span class="pre">(mask</span> <span class="pre">&gt;=0))</span> <span class="pre">?</span> <span class="pre">1:0</span></code></p>
+<section id="id28">
+<h3><span class="section-number">25.4.3.11.1. </span>Parameters<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id29">
+<h3><span class="section-number">25.4.3.11.2. </span>Outputs<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+</section>
+<section id="id30">
+<h3><span class="section-number">25.4.3.11.3. </span>Python code<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:streamdefdropanalysis</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="stream-drop-analysis">
+<span id="taudemdropanalysis"></span><h2><a class="toc-backref" href="#id49"><span class="section-number">25.4.3.12. </span>Stream Drop Analysis</a><a class="headerlink" href="#stream-drop-analysis" title="Permalink to this headline"></a></h2>
+<p>Applies a series of thresholds (determined from the input parameters) to the
+input accumulated stream source grid (<code class="file docutils literal notranslate"><span class="pre">*ssa</span></code>) grid and outputs the results
+in the <code class="file docutils literal notranslate"><span class="pre">*drp.txt</span></code> file the stream drop statistics table. This function is
+designed to aid in the determination of a geomorphologically objective threshold
+to be used to delineate streams. Drop Analysis attempts to select the right
+threshold automatically by evaluating a stream network for a range of thresholds
+and examining the constant drop property of the resulting Strahler streams.
+Basically it asks the question: Is the mean stream drop for first order streams
+statistically different from the mean stream drop for higher order streams, using
+a T-test. Stream drop is the difference in elevation from the beginning to the
+end of a stream defined as the sequence of links of the same stream order. If the
+T-test shows a significant difference then the stream network does not obey this
+“law” so a larger threshold needs to be chosen. The smallest threshold for which
+the T-test does not show a significant difference gives the highest resolution
+stream network that obeys the constant stream drop “law” from geomorphology, and
+is the threshold chosen for the “objective” or automatic mapping of streams from
+the DEM. This function can be used in the development of stream network rasters,
+where the exact watershed characteristic(s) that were accumulated in the
+accumulated stream source grid vary based on the method being used to determine
+the stream network raster.</p>
+<figure class="align-center">
+<img alt="../../../../_images/streamdrops.jpg" src="../../../../_images/streamdrops.jpg" />
+</figure>
+<p>The constant stream drop “law” was identified by Broscoe (1959). For the science
+behind using this to determine a stream delineation threshold, see Tarboton et
+al. (1991, 1992), Tarboton and Ames (2001).</p>
+<section id="id31">
+<h3><span class="section-number">25.4.3.12.1. </span>Parameters<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Contributing Area Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of contributing area values for each cell that were calculated using
+the D8 algorithm. The contributing area for a cell is the sum of its own
+contribution plus the contribution from all upslope neighbors that drain to
+it, measured as a number of cells or the sum of weight loadings. This grid
+can be obtained as the output of the <strong>“D8 Contributing Area”</strong> tool. This
+grid is used in the evaluation of drainage density reported in the stream
+drop table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each cell, as the
+direction of the one of its eight adjacent or diagonal neighbors with the
+steepest downward slope. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values. This is usually the output of the
+<strong>“Pit Remove”</strong> tool, in which case it is elevations with pits removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Accumulated Stream Source Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This grid must be monotonically increasing along the downslope D8 flow
+directions. It it compared to a series of thresholds to determine the
+beginning of the streams. It is often generated by accumulating some
+characteristic or combination of characteristics of the watershed with the
+<strong>“D8 Contributing Area”</strong> tool, or using the maximum option of the
+<strong>“D8 Flow Path Extreme”</strong> tool. The exact method varies depending on the
+algorithm being used.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets Shapefile</strong></p></td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shapefile defining the outlets upstream of which drop analysis
+is performed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Minimum Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 5</p>
+</td>
+<td><p>This parameter is the lowest end of the range searched for possible threshold
+values using drop analysis. This technique looks for the smallest threshold
+in the range where the absolute value of the t-statistic is less than 2. For
+the science behind the drop analysis see Tarboton et al. (1991, 1992),
+Tarboton and Ames (2001).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum Threshold</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 500</p>
+</td>
+<td><p>This parameter is the highest end of the range searched for possible threshold
+values using drop analysis. This technique looks for the smallest threshold
+in the range where the absolute value of the t-statistic is less than 2. For
+the science behind the drop analysis see Tarboton et al. (1991, 1992),
+Tarboton and Ames (2001).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of Threshold Values</strong></p></td>
+<td></td>
+<td><p>[number]</p>
+<p>Default: 10</p>
+</td>
+<td><p>The parameter is the number of steps to divide the search range into when
+looking for possible threshold values using drop analysis. This technique
+looks for the smallest threshold in the range where the absolute value of the
+t-statistic is less than 2. For the science behind the drop analysis see
+Tarboton et al. (1991, 1992), Tarboton and Ames (2001).</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Spacing for Threshold Values</strong></p></td>
+<td></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>This parameter indicates whether logarithmic or linear spacing should be used
+when looking for possible threshold values using drop analysis.</p>
+<p>Options:</p>
+<ul class="simple">
+<li><p>0 — Logarithmic</p></li>
+<li><p>1 — Linear</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><span class="section-number">25.4.3.12.2. </span>Outputs<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D-Infinity Drop to Stream Grid</strong></p></td>
+<td></td>
+<td><p>[file]</p></td>
+<td><p>This is a comma delimited text file
+with the following header line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Threshold</span><span class="p">,</span><span class="n">DrainDen</span><span class="p">,</span><span class="n">NoFirstOrd</span><span class="p">,</span><span class="n">NoHighOrd</span><span class="p">,</span><span class="n">MeanDFirstOrd</span><span class="p">,</span><span class="n">MeanDHighOrd</span><span class="p">,</span><span class="n">StdDevFirstOrd</span><span class="p">,</span><span class="n">StdDevHighOrd</span><span class="p">,</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>The file then contains one line of data for each threshold value examined, and
+then a summary line that indicates the optimum threshold value. This technique
+looks for the smallest threshold in the range where the absolute value of the
+t-statistic is less than 2. For the science behind the drop analysis, see
+Tarboton et al. (1991, 1992), Tarboton and Ames (2001).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id33">
+<h3><span class="section-number">25.4.3.12.3. </span>Python code<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:dropanalysis</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+<section id="id34">
+<h3><span class="section-number">25.4.3.12.4. </span>See also<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>Broscoe, A. J., (1959), “Quantitative analysis of longitudinal stream profiles
+of small watersheds”, Office of Naval Research, Project NR 389-042, Technical
+Report No. 18, Department of Geology, Columbia University, New York.</p></li>
+<li><p>Tarboton, D. G., R. L. Bras and I. Rodriguez-Iturbe, (1991), “On the Extraction
+of Channel Networks from Digital Elevation Data”, Hydrologic Processes, 5(1):
+81-100.</p></li>
+<li><p>Tarboton, D. G., R. L. Bras and I. Rodriguez-Iturbe, (1992), “A Physical Basis
+for Drainage Density”, Geomorphology, 5(1/2): 59-76.</p></li>
+<li><p>Tarboton, D. G. and D. P. Ames, (2001), “Advances in the mapping of flow
+networks from digital elevation data”, World Water and Environmental Resources
+Congress, Orlando, Florida, May 20-24, ASCE,
+<a class="reference external" href="https://www.researchgate.net/publication/2329568_Advances_in_the_Mapping_of_Flow_Networks_From_Digital_Elevation_Data">https://www.researchgate.net/publication/2329568_Advances_in_the_Mapping_of_Flow_Networks_From_Digital_Elevation_Data</a>.</p></li>
+</ul>
+</section>
+</section>
+<section id="stream-reach-and-watershed">
+<h2><a class="toc-backref" href="#id50"><span class="section-number">25.4.3.13. </span>Stream Reach and Watershed</a><a class="headerlink" href="#stream-reach-and-watershed" title="Permalink to this headline"></a></h2>
+<p>This tool produces a vector network and shapefile from the stream raster grid.
+The flow direction grid is used to connect flow paths along the stream raster.
+The Strahler order of each stream segment is computed. The subwatershed draining
+to each stream segment (reach) is also delineated and labeled with the value
+identifier that corresponds to the WSNO (watershed number) attribute in the
+Stream Reach Shapefile.</p>
+<p>This tool orders the stream network according to the Strahler ordering system.
+Streams that don’t have any other streams draining in to them are order 1. When
+two stream reaches of different order join the order of the downstream reach is
+the order of the highest incoming reach. When two reaches of equal order join
+the downstream reach order is increased by 1. When more than two reaches join
+the downstream reach order is calculated as the maximum of the highest incoming
+reach order or the second highest incoming reach order + 1. This generalizes the
+common definition to cases where more than two reaches join at a point. The
+network topological connectivity is stored in the Stream Network Tree file, and
+coordinates and attributes from each grid cell along the network are stored in
+the Network Coordinates file.</p>
+<p>The stream raster grid is used as the source for the stream network, and the flow
+direction grid is used to trace connections within the stream network. Elevations
+and contributing area are used to determine the elevation and contributing area
+attributes in the network coordinate file. Points in the outlets shapefile are
+used to logically split stream reaches to facilitate representing watersheds
+upstream and downstream of monitoring points. The program uses the attribute field
+“id” in the outlets shapefile as identifiers in the Network Tree file. This tool
+then translates the text file vector network representation in the Network Tree
+and Coordinates files into a shapefile. Further attributes are also evaluated.
+The program has an option to delineate a single watershed by representing the
+entire area draining to the Stream Network as a single value in the output
+watershed grid.</p>
+<section id="id35">
+<h3><span class="section-number">25.4.3.13.1. </span>Parameters<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Pit Filled Elevation Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of elevation values. This is usually the output of the
+<strong>“Pit Remove”</strong> tool, in which case it is elevations with pits removed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>D8 Flow Direction Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid of D8 flow directions which are defined, for each cell, as the
+direction of the one of its eight adjacent or diagonal neighbors with the
+steepest downward slope. This grid can be obtained as the output of the
+<strong>“D8 Flow Directions”</strong> tool.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>D8 Drainage Area</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>A grid giving the contributing area value in terms of the number of grid
+cells (or the summation of weights) for each cell taken as its own
+contribution plus the contribution from upslope neighbors that drain in to it
+using the D8 algorithm. This is usually the output of the
+<strong>“D8 Contributing Area”</strong> tool and is used to determine the contributing area
+attribute in the Network Coordinate file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Stream Raster Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>An indicator grid indicating streams, by using a grid cell value of 1 on
+streams and 0 off streams. Several of the <strong>“Stream Network Analysis”</strong> tools
+produce this type of grid. The Stream Raster Grid is used as the source for
+the stream network.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Outlets Shapefile as Network Nodes</strong></p>
+<p>Optional</p>
+</td>
+<td></td>
+<td><p>[vector: point]</p></td>
+<td><p>A point shape file defining points of interest. If this file is used, the
+tool will only deliniate the stream network upstream of these outlets.
+Additionally, points in the Outlets Shapefile are used to logically split
+stream reaches to facilitate representing watersheds upstream and downstream
+of monitoring points. This tool REQUIRES THAT THERE BE an integer attribute
+field “id” in the Outlets Shapefile, because the “id” values are used as
+identifiers in the Network Tree file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Delineate Single Watershed</strong></p></td>
+<td></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>This option causes the tool to delineate a single watershed by representing
+the entire area draining to the Stream Network as a single value in the output
+watershed grid. Otherwise a seperate watershed is delineated for each stream
+reach. Default is <em>False</em> (seperate watershed).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id36">
+<h3><span class="section-number">25.4.3.13.2. </span>Outputs<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Label</p></td>
+<td><p>Name</p></td>
+<td><p>Type</p></td>
+<td><p>Description</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Order Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>The Stream Order Grid has cells values of streams ordered according to the
+Strahler order system. The Strahler ordering system defines order 1 streams
+as stream reaches that don’t have any other reaches draining in to them. When
+two stream reaches of different order join the order of the downstream reach
+is the order of the highest incoming reach. When two reaches of equal order
+join the downstream reach order is increased by 1. When more than two reaches
+join the downstream reach order is calculated as the maximum of the highest
+incoming reach order or the second highest incoming reach order + 1. This
+generalizes the common definition to cases where more than two flow paths
+reaches join at a point.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Watershed Grid</strong></p></td>
+<td></td>
+<td><p>[raster]</p></td>
+<td><p>This output grid identified each reach watershed with a unique ID number, or
+in the case where the delineate single watershed option was checked, the
+entire area draining to the stream network is identified with a single ID.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stream Reach Shapefile</strong></p></td>
+<td></td>
+<td><p>[vector: line]</p></td>
+<td><p>This output is a polyline shapefile giving the links in a stream network.
+The columns in the attribute table are:</p>
+<ul class="simple">
+<li><p>LINKNO — Link Number. A unique number associated with each link (segment
+of channel between junctions). This is arbitrary and will vary depending on
+number of processes used</p></li>
+<li><p>DSLINKNO — Link Number of the downstream link. -1 indicates that this does
+not exist</p></li>
+<li><p>USLINKNO1 — Link Number of first upstream link. (-1 indicates no link
+upstream, i.e. for a source link)</p></li>
+<li><p>USLINKNO2 — Link Number of second upstream link. (-1 indicates no second
+link upstream, i.e. for a source link or an internal monitoring point where
+the reach is logically split but the network does not bifurcate)</p></li>
+<li><p>DSNODEID — Node identifier for node at downstream end of stream reach. This
+identifier corresponds to the “id” attribute from the Outlets shapefile used
+to designate nodes</p></li>
+<li><p>Order — Strahler Stream Order</p></li>
+<li><p>Length — Length of the link. The units are the horizontal map units of the
+underlying DEM grid</p></li>
+<li><p>Magnitude — Shreve Magnitude of the link. This is the total number of
+sources upstream</p></li>
+<li><p>DS_Cont_Ar — Drainage area at the downstream end of the link. Generally
+this is one grid cell upstream of the downstream end because the drainage
+area at the downstream end grid cell includes the area of the stream being
+joined</p></li>
+<li><p>Drop — Drop in elevation from the start to the end of the link</p></li>
+<li><p>Slope — Average slope of the link (computed as drop/length)</p></li>
+<li><p>Straight_L — Straight line distance from the start to the end of the link</p></li>
+<li><p>US_Cont_Ar — Drainage area at the upstream end of the link</p></li>
+<li><p>WSNO — Watershed number. Cross reference to the <code class="file docutils literal notranslate"><span class="pre">*w.shp</span></code> and
+<code class="file docutils literal notranslate"><span class="pre">*w</span></code> grid files giving the identification number of the watershed
+draining directly to the link</p></li>
+<li><p>DOUT_END — Distance to the eventual outlet (i.e. the most downstream point
+in the stream network) from the downstream end of the link</p></li>
+<li><p>DOUT_START — Distance to the eventual outlet from the upstream end of the
+link</p></li>
+<li><p>DOUT_MID — Distance to the eventual outlet from the midpoint of the link</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Network Connectivity Tree</strong></p></td>
+<td></td>
+<td><p>[file]</p></td>
+<td><p>This output is a text file that details the network topological connectivity
+is stored in the Stream Network Tree file. Columns are as follows:</p>
+<ul class="simple">
+<li><p>Link Number (Arbitrary — will vary depending on number of processes used)</p></li>
+<li><p>Start Point Number in Network coordinates (<code class="file docutils literal notranslate"><span class="pre">*coord.dat)</span></code> file
+(Indexed from 0)</p></li>
+<li><p>End Point Number in Network coordinates (<code class="file docutils literal notranslate"><span class="pre">*coord.dat</span></code>) file
+(Indexed from 0)</p></li>
+<li><p>Next (Downstream) Link Number. Points to Link Number. -1 indicates no links
+downstream, i.e. a terminal link</p></li>
+<li><p>First Previous (Upstream) Link Number. Points to Link Number. -1 indicates
+no upstream links</p></li>
+<li><p>Second Previous (Upstream) Link Numbers. Points to Link Number. -1 indicates
+no upstream links. Where only one previous link is -1, it indicates an
+internal monitoring point where the reach is logically split, but the network
+does not bifurcate</p></li>
+<li><p>Strahler Order of Link</p></li>
+<li><p>Monitoring point identifier at downstream end of link. -1 indicates
+downstream end is not a monitoring point</p></li>
+<li><p>Network magnitude of the link, calculated as the number of upstream sources
+(following Shreve)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Network Coordinates</strong></p></td>
+<td></td>
+<td><p>[file]</p></td>
+<td><p>This output is a text file that contains the coordinates and attributes of
+points along the stream network. Columns are as follows:</p>
+<ul class="simple">
+<li><p>X coordinate</p></li>
+<li><p>Y Coordinate</p></li>
+<li><p>Distance along channels to the downstream end of a terminal link</p></li>
+<li><p>Elevation</p></li>
+<li><p>Contributing area</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id37">
+<h3><span class="section-number">25.4.3.13.3. </span>Python code<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">taudem:streamnet</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="specialized_grid_analysis_tools.html" class="btn btn-neutral float-left" title="25.4.2. Specialized Grid Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../otb.html" class="btn btn-neutral float-right" title="25.5. OTB applications provider" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/taudem/stream_network_analysis_tools.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

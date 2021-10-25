@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.1. Lesson: Vector Attribute Data &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/attribute_data.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="3.2. Lesson: Labels" href="label_tool.html" />
+    <link rel="prev" title="3. Module: Classifying Vector Data" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/attribute_data.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3. Module: Classifying Vector Data</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.1. Lesson: Vector Attribute Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-viewing-layer-attributes">3.1.1.  Follow Along: Viewing Layer Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-exploring-vector-data-attributes">3.1.2.  Try Yourself Exploring Vector Data Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">3.1.3. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">3.1.4. What’s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="label_tool.html">3.2. Lesson: Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html">3.3. Lesson: Classification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">3. </span>Module: Classifying Vector Data</a> &raquo;</li>
+      <li><span class="section-number">3.1. </span>Lesson: Vector Attribute Data</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/vector_classification/attribute_data.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="3. Module: Classifying Vector Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="label_tool.html" class="btn btn-neutral float-right" title="3.2. Lesson: Labels" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-vector-attribute-data">
+<span id="tm-working-vector-data"></span><h1><span class="section-number">3.1. </span>Lesson: Vector Attribute Data<a class="headerlink" href="#ls-vector-attribute-data" title="Permalink to this headline"></a></h1>
+<p>Vector data is arguably the most common kind of data in the daily
+use of GIS. The vector model represents the location and shape of geographic
+features using points, lines and polygons (and for 3D data also surfaces and
+volumes), while their other properties are included as attributes (often presented
+as a table in QGIS).</p>
+<p>Up to now, none of the changes we have made to the map have been influenced by
+the objects that are being shown. In other words, all the land use areas look
+alike, and all the roads look alike. When looking at the map, the viewers don’t
+know anything about the roads they are seeing; only that there is a road of a
+certain shape in a certain area.</p>
+<p>But the whole strength of GIS is that all the objects that are visible on the
+map also have attributes. Maps in a GIS aren’t just pictures. They represent
+not only objects in locations, but also information about those objects.</p>
+<p><strong>The goal for this lesson:</strong> To learn about the structure of vector data and
+explore the attribute data of an object</p>
+<section id="basic-fa-viewing-layer-attributes">
+<h2><span class="section-number">3.1.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Viewing Layer Attributes<a class="headerlink" href="#basic-fa-viewing-layer-attributes" title="Permalink to this headline"></a></h2>
+<p>It’s important to know that the data you will be working with does not only
+represent <strong>where</strong> objects are in space, but also tells you <strong>what</strong> those
+objects are.</p>
+<p>From the previous exercise, you should have the <code class="docutils literal notranslate"><span class="pre">protected_areas</span></code> layer
+loaded in your map. If it is not loaded, then you can find the
+<code class="file docutils literal notranslate"><span class="pre">protected_areas.shp</span></code> <em>ESRI Shapefile</em> format dataset in directory
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/shapefile</span></code>.</p>
+<p>The polygons representing the protected areas constitute the <strong>spatial data</strong>,
+but we can learn more about the protected areas by exploring the
+<strong>attribute table</strong>.</p>
+<ol class="arabic">
+<li><p>In the <span class="guilabel">Layers</span> panel, click on the <code class="docutils literal notranslate"><span class="pre">protected_areas</span></code> layer to
+select it.</p></li>
+<li><p>In the <span class="guilabel">Attributes Toolbar</span> click the <a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a>
+<sup>Open Attribute Table</sup> button. This will open a new window showing
+the attribute table of the <code class="docutils literal notranslate"><span class="pre">protected_areas</span></code> layer.</p>
+<figure class="align-center">
+<img alt="../../../_images/attribute_data_preview.png" src="../../../_images/attribute_data_preview.png" />
+</figure>
+<p>A row is called a <strong>record</strong> and is associated with a <strong>feature</strong>
+in the Canvas Map, such as a polygon.
+A column is called a <strong>field</strong> (or an <strong>attribute</strong>), and has a name that helps
+describe it, such as <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">id</span></code>.
+Values in the cells are known as <strong>attribute values</strong>.
+These definitions are commonly used in GIS, so it is good to become
+familiar with them.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">protected_areas</span></code> layer, there are two <strong>features</strong>, which are
+represented by the two polygons we see on the Map Canvas.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to understand what the <strong>fields</strong> and <strong>attribute values</strong>
+represent, one may need to find documentation (or metadata) describing
+the meaning of the attribute values.
+This is usually available from the creator of the data set.</p>
+</div>
+</li>
+</ol>
+<p>Next, let’s see how a record in the attribute table is linked to a polygon
+feature that we see on the Map Canvas.</p>
+<ol class="arabic">
+<li><p>Go back to the main QGIS window.</p></li>
+<li><p>In the <span class="guilabel">Attributes Toolbar</span>, click on the <a class="reference internal" href="../../../_images/mActionSelectRectangle.png"><img alt="selectRectangle" src="../../../_images/mActionSelectRectangle.png" style="width: 1.5em;" /></a>
+<sup>Select Feature</sup> button.</p></li>
+<li><p>Make sure the <code class="docutils literal notranslate"><span class="pre">protected_areas</span></code> layer is still selected in the
+<span class="guilabel">Layers</span> panel.</p></li>
+<li><p>Move your mouse to the Map Canvas and left click on the smaller
+of the two polygons.  The polygon will turn yellow indicating it is selected.</p>
+<figure class="align-center">
+<img alt="../../../_images/select_polygon.png" src="../../../_images/select_polygon.png" />
+</figure>
+</li>
+<li><p>Go back to the <span class="guilabel">Attribute Table</span> window, and you should see a
+record (row) highlighted.  These are the attribute values of the
+selected polygon.</p>
+<figure class="align-center">
+<img alt="../../../_images/select_record.png" src="../../../_images/select_record.png" />
+</figure>
+</li>
+</ol>
+<p>You can also select a feature using the Attribute Table.</p>
+<ol class="arabic">
+<li><p>In the <span class="guilabel">Attribute Table</span> window, on the far left, click on the
+row number of the record that is currently not selected.</p>
+<figure class="align-center">
+<img alt="../../../_images/select_record2.png" src="../../../_images/select_record2.png" />
+</figure>
+</li>
+<li><p>Go back to the main QGIS window and look at the Map Canvas. You should
+see the larger of the two polygons colored yellow.</p></li>
+<li><p>To deselect the feature, go to the <span class="guilabel">Attribute Table</span> window
+and click on <a class="reference internal" href="../../../_images/mActionDeselectActiveLayer.png"><img alt="deselectActiveLayer" src="../../../_images/mActionDeselectActiveLayer.png" style="width: 1.5em;" /></a> <sup>Deselect all features from the layer</sup> button.</p></li>
+</ol>
+<p>Sometimes there are many features shown on the Map Canvas and it might be difficult
+to see which feature is selected from the Attribute Table.  Another way to
+identify the location of a feature is to use the <span class="guilabel">Flash Feature</span>
+tool.</p>
+<ol class="arabic">
+<li><p>In the <span class="guilabel">Attribute Table</span>, right-click on any cell in the
+row that has the attribute value <code class="docutils literal notranslate"><span class="pre">r2855697</span></code> for the field <code class="docutils literal notranslate"><span class="pre">full_id</span></code>.</p></li>
+<li><p>In the context menu, click on <span class="guilabel">Flash Feature</span> and watch the
+Map Canvas.</p>
+<figure class="align-center">
+<img alt="../../../_images/flash_feature.png" src="../../../_images/flash_feature.png" />
+</figure>
+<p>You should see the polygon flash red a few times.  If you missed it,
+try it again.</p>
+</li>
+</ol>
+<p>Another useful tool is the <span class="guilabel">Zoom to Feature</span> tool, that tells QGIS to
+zoom to the feature of interest.</p>
+<ol class="arabic">
+<li><p>In the <span class="guilabel">Attribute Table</span>, right-click on  any cell in the
+row that has the attribute value <code class="docutils literal notranslate"><span class="pre">r2855697</span></code> for the field <code class="docutils literal notranslate"><span class="pre">full_id</span></code>.</p></li>
+<li><p>In the context menu, click on <span class="guilabel">Zoom to Feature</span></p>
+<figure class="align-center">
+<img alt="../../../_images/zoom_to_feature.png" src="../../../_images/zoom_to_feature.png" />
+</figure>
+<p>Look at the Map Canvas.  The polygon should now occupy the extent
+of the Map Canvas area.</p>
+</li>
+</ol>
+<p>You may now close the attribute table.</p>
+</section>
+<section id="basic-ty-exploring-vector-data-attributes">
+<span id="backlink-vector-explore-attribute-data"></span><h2><span class="section-number">3.1.2. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself Exploring Vector Data Attributes<a class="headerlink" href="#basic-ty-exploring-vector-data-attributes" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>How many fields are available in the <span class="guilabel">rivers</span> layer?</p></li>
+<li><p>Tell us a bit about the <code class="docutils literal notranslate"><span class="pre">town</span></code> places in your dataset.</p></li>
+<li><p>Open the attribute table for the <span class="guilabel">places</span> layer.
+Which field would be the most useful to represent in label form, and why?</p></li>
+</ol>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<ul>
+<li><p>There should be 9 fields in the <span class="guilabel">rivers</span> layer:</p>
+<ol class="arabic simple">
+<li><p>Select the layer in the <span class="guilabel">Layers</span> panel.</p></li>
+<li><p>Right-click and choose <span class="guilabel">Open Attribute Table</span>, or press the <a class="reference internal" href="../../../_images/mActionOpenTable.png"><img alt="openTable" src="../../../_images/mActionOpenTable.png" style="width: 1.5em;" /></a>
+button on the <span class="guilabel">Attributes Toolbar</span>.</p></li>
+<li><p>Count the number of columns.</p></li>
+</ol>
+<p>A quicker approach could be to double-click the <span class="guilabel">rivers</span> layer,
+open the <span class="menuselection">Layer properties ► Fields</span> tab, where you will
+find a numbered list of the table’s fields.</p>
+</li>
+<li><p>Information about towns is available in the <span class="guilabel">places</span> layer. Open its
+attribute table as you did with the <span class="guilabel">rivers</span> layer:
+there are two features whose <span class="guilabel">place</span>
+attribute is set to <code class="docutils literal notranslate"><span class="pre">town</span></code>: <em>Swellendam</em> and <em>Buffeljagsrivier</em>.
+You can add comment on other fields from these two records, if you like.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> field is the most useful to show as labels. This is because all its
+values are unique for every object and are very unlikely to contain <em>NULL</em>
+values. If your data contains some <em>NULL</em> values, do not worry as long as most
+of your places have names.</p></li>
+</ul>
+</div>
+</section>
+<section id="ic">
+<h2><span class="section-number">3.1.3. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>You now know how to use the attribute table to see what is actually in the data
+you’re using. Any dataset will only be useful to you if it has the attributes
+that you care about. If you know which attributes you need, you can quickly
+decide if you’re able to use a given dataset, or if you need to look for
+another one that has the required attribute data.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">3.1.4. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Different attributes are useful for different purposes. Some of them can be
+represented directly as text for the map user to see. You’ll learn how to do
+this in the next lesson.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="3. Module: Classifying Vector Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="label_tool.html" class="btn btn-neutral float-right" title="3.2. Lesson: Labels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/attribute_data.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/attribute_data.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/attribute_data.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/vector_classification/attribute_data.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/vector_classification/attribute_data.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/vector_classification/attribute_data.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/vector_classification/attribute_data.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/vector_classification/attribute_data.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/vector_classification/attribute_data.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/vector_classification/attribute_data.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/vector_classification/attribute_data.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/vector_classification/attribute_data.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/vector_classification/attribute_data.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/vector_classification/attribute_data.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

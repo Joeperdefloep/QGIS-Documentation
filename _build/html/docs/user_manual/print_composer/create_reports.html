@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19.4. Creating a Report &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/create_reports.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="20. Working with OGC / ISO protocols" href="../working_with_ogc/ogc_client_support.html" />
+    <link rel="prev" title="19.3. Creating an Output" href="create_output.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/create_reports.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">19. Laying out the maps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="overview_composer.html">19.1. Overview of the Print Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composer_items/index.html">19.2. Layout Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_output.html">19.3. Creating an Output</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19.4. Creating a Report</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-it">19.4.1. What is it?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-started">19.4.2. Get started</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#layout-report-workspace">19.4.3. Layout Report Workspace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#export-settings">19.4.4. Export settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">19. </span>Laying out the maps</a> &raquo;</li>
+      <li><span class="section-number">19.4. </span>Creating a Report</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/print_composer/create_reports.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="create_output.html" class="btn btn-neutral float-left" title="19.3. Creating an Output" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_ogc/ogc_client_support.html" class="btn btn-neutral float-right" title="20. Working with OGC / ISO protocols" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="creating-a-report">
+<span id="create-reports"></span><span id="index-0"></span><h1><span class="section-number">19.4. </span>Creating a Report<a class="headerlink" href="#creating-a-report" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-is-it" id="id2">What is it?</a></p></li>
+<li><p><a class="reference internal" href="#get-started" id="id3">Get started</a></p></li>
+<li><p><a class="reference internal" href="#layout-report-workspace" id="id4">Layout Report Workspace</a></p>
+<ul>
+<li><p><a class="reference internal" href="#including-pictures-in-a-report" id="id5">Including pictures in a report</a></p></li>
+<li><p><a class="reference internal" href="#highlighting-the-current-report-feature-in-a-map" id="id6">Highlighting the current report feature in a map</a></p></li>
+<li><p><a class="reference internal" href="#more-level-1-groups" id="id7">More level 1 groups</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#export-settings" id="id8">Export settings</a></p></li>
+</ul>
+</div>
+<p>This section will help you set up a report in QGIS.</p>
+<section id="what-is-it">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">19.4.1. </span>What is it?</a><a class="headerlink" href="#what-is-it" title="Permalink to this headline"></a></h2>
+<p>By definition, a GIS report is a document containing information
+organized in a narrative way, containing maps, text, graphics,
+tables, etc.
+A report can be prepared ad hoc, periodic, recurring, regular, or
+as required.
+Reports may refer to specific periods, events, occurrences,
+subjects or locations.</p>
+<p>In QGIS, a <span class="guilabel">Report</span> is an extension of a
+<a class="reference internal" href="index.html#label-printlayout"><span class="std std-ref">Layouts</span></a>.</p>
+<p>Reports allow users to output their GIS projects in a simple, quick
+and structured way.</p>
+<p>A report can be created with <span class="menuselection">Project ► New Report</span>
+or inside the <span class="menuselection">Project ► Layout Manager</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The maps in QGIS reports behave in the same way as maps in
+print layouts and atlases.
+We will concentrate on the specifics of QGIS reports.
+For details on map handling, see the sections on
+<a class="reference internal" href="overview_composer.html#overview-layout"><span class="std std-ref">print layouts</span></a> and
+<a class="reference internal" href="create_output.html#atlas-generation"><span class="std std-ref">atlases</span></a>.</p>
+</div>
+</section>
+<section id="get-started">
+<h2><a class="toc-backref" href="#id3"><span class="section-number">19.4.2. </span>Get started</a><a class="headerlink" href="#get-started" title="Permalink to this headline"></a></h2>
+<p>In the <span class="guilabel">Layout Manager</span> dialog a report can be created
+through <span class="guilabel">New from template</span> by selecting the dropdown
+option <span class="guilabel">Empty Report</span> and hitting the
+<span class="guilabel">Create…</span> button.</p>
+<p>For this example, we use some administrative boundaries, populated
+places, ports and airports from the
+<a class="reference external" href="https://www.naturalearthdata.com/downloads/">Natural Earth dataset</a> (1:10M).</p>
+<figure class="align-center">
+<img alt="../../../_images/project-1.png" src="../../../_images/project-1.png" />
+</figure>
+<p>Using the <span class="menuselection">Project ► New Report</span> command, we create a
+blank report.
+Initially, there is not much to look at – the dialog which is displayed
+looks much like the print layout designer, except for the
+<span class="guilabel">Report Organizer</span> panel to the left:</p>
+<figure class="align-center">
+<img alt="../../../_images/report-2.png" src="../../../_images/report-2.png" />
+</figure>
+</section>
+<section id="layout-report-workspace">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">19.4.3. </span>Layout Report Workspace</a><a class="headerlink" href="#layout-report-workspace" title="Permalink to this headline"></a></h2>
+<p>QGIS reports can consist of multiple, nested sections.
+In our new blank report we initially only have the main report
+section.
+The only options for this report section is
+<span class="guilabel">Include report header</span> and
+<span class="guilabel">Include report footer</span>.
+If we enable these options, a header will be included as the first
+page(s) (individual parts of reports can be multi-page if desired) in
+the report, and a footer will constitute the last page(s).
+Enable the header (<span class="guilabel">Include report header</span>), and hit the
+<span class="guilabel">Edit</span> button next to it:</p>
+<figure class="align-center">
+<img alt="../../../_images/report_header.png" src="../../../_images/report_header.png" />
+</figure>
+<p>A few things happen as a result. Firstly, an edit pencil is shown
+next to <span class="guilabel">Report</span> in the <span class="guilabel">Report Organizer</span>,
+indicating that the report section is currently being edited in
+the designer.
+We also see a new page with a small <span class="guilabel">Report Header</span> title.
+The page has <em>landscape</em> orientation by default, but this (and
+other properties of the page) can be changed by right-clicking on
+the page and choosing <span class="menuselection">Page properties</span>.
+This will bring up the <span class="guilabel">Item properties</span> tab for the page,
+and page <span class="guilabel">Size</span>, <span class="guilabel">Width</span>, <span class="guilabel">Height</span>, and
+more can be specified.</p>
+<p>In QGIS reports, every component of the report is made up of
+individual layouts.
+They can be created and modified using the same tools
+as for standard print layouts – so you can use any desired
+combination of labels, pictures, maps, tables, etc.
+Let us add some items to our report header to demonstrate:</p>
+<figure class="align-center">
+<img alt="../../../_images/header.png" src="../../../_images/header.png" />
+</figure>
+<p>We will also create a simple footer for the report by checking the
+<span class="guilabel">Include report footer</span> option and hitting <span class="guilabel">Edit</span>.</p>
+<figure class="align-center">
+<img alt="../../../_images/footer.png" src="../../../_images/footer.png" />
+</figure>
+<p>Before proceeding further, let us export this report and see what
+we get.
+Exporting is done from the <span class="menuselection">Report</span> menu – in this case
+we select <span class="menuselection">Export Report as PDF…</span> to render the whole
+report to a PDF file.
+Here is the not-very-impressive result – a two page PDF consisting of
+our header and footer:</p>
+<figure class="align-center">
+<img alt="../../../_images/headerfooter.png" src="../../../_images/headerfooter.png" />
+</figure>
+<p>Let us make things more interesting.
+By hitting the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add Section</sup> button in the
+<span class="guilabel">Report Organizer</span>, we are given a choice of new sections to
+add to our report.</p>
+<figure class="align-center">
+<img alt="../../../_images/add_section.png" src="../../../_images/add_section.png" />
+</figure>
+<p>There are two options: <span class="guilabel">Static Layout Section</span> and
+<span class="guilabel">Field Group Section</span>.</p>
+<p>The <span class="guilabel">Add Static Layout Section</span> is a single, static body
+layout.
+This can be used to embed static layouts mid-way through a report.</p>
+<p>The <span class="guilabel">Field Group Section</span> repeats its body layout for every
+feature of a layer.
+The features are sorted by the selected grouping feature (with an
+option for ascending/descending sort).
+If a field group section has child sections (e.g. another field group
+section with a different field), then only features with unique values
+for the group feature are iterated over.
+This allows nested reports.</p>
+<p>For now we will add a <span class="guilabel">Field Group Section</span> to our report.
+At its most basic level, you can think of a
+<span class="guilabel">Field Group Section</span> as the equivalent of a
+<a class="reference internal" href="create_output.html#atlas-generation"><span class="std std-ref">print atlas</span></a>:
+you select a layer to iterate over, and the report will insert a
+section for each feature found.
+Selecting the new <span class="guilabel">Field Group Section</span> reveals a number of
+new related settings:</p>
+<figure class="align-center">
+<img alt="../../../_images/field_group.png" src="../../../_images/field_group.png" />
+</figure>
+<p>In this case we’ve setup our Field Group so that we iterate over all
+the states from the <cite>Admin Level 1</cite> layer, using the values
+from the <span class="guilabel">adm1name</span> field.
+The same options to include header and footer are present, together
+with a new option to include a <span class="guilabel">body</span> for this section.
+We’ll do that, and edit the body:</p>
+<figure class="align-center">
+<img alt="../../../_images/edit_group_body.png" src="../../../_images/edit_group_body.png" />
+</figure>
+<p>Our body now consists of a map and a label showing the name of the
+state.
+To include the name of the state, we selected
+<span class="menuselection">Add Item ► Add Label</span> and data defined the text under <span class="guilabel">Main Properties</span> with the help of
+<span class="guilabel">Insert or Edit an Expression…</span>.</p>
+<p>The result was the following expression (<cite>name</cite> is the name
+of the attribute in the <cite>Admin Level 1</cite> layer that contains the
+name of the state):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">%</span> <span class="s2">&quot;name&quot;</span> <span class="o">%</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The map is set to follow the current report feature (enabled by
+checking <span class="guilabel">Controlled by Report</span> – just like a map item in
+an atlas will follow the current atlas feature when
+<a class="reference internal" href="composer_items/composer_map.html#controlled-atlas"><span class="std std-ref">Controlled by Atlas</span></a> is checked):</p>
+<figure class="align-center">
+<img alt="../../../_images/controlledbyreport.png" src="../../../_images/controlledbyreport.png" />
+</figure>
+<p>If we went ahead and exported our report now, we’d get something like
+this:</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../../../_images/report1.png"><img alt="../../../_images/report1.png" src="../../../_images/report1.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.64 </span><span class="caption-text">The report header, a page for each state, and the report footer.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>So more or less an atlas, but with a header and footer page.</p>
+<p>Let us make things more interesting by adding a subsection to our
+state group.
+We do this by first selecting the <em>Admin Level 1</em> field group in the
+organizer, then hitting the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add Field</sup> button
+and adding a new <span class="guilabel">Field Group Section</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/subsection.png" src="../../../_images/subsection.png" />
+</figure>
+<p>When iterating over the features of a <span class="guilabel">Field Group Section</span>,
+the features will be filtered to match the defining field of its parent
+group (<code class="docutils literal notranslate"><span class="pre">adm1name</span></code> in this case).
+Here, the subsection we added will iterate over a
+<span class="guilabel">Populated Places</span> layer, including a body section for each
+place encountered.
+The magic here is that the <span class="guilabel">Populated Places</span> layer has an
+attribute with the same name as the defining field in the parent layer,
+<span class="guilabel">adm1name</span>, tagging each place with the state it is contained
+within (if you’re lucky your data will already be structured like this
+– if not, run the
+<a class="reference internal" href="../processing_algs/qgis/vectorgeneral.html#qgisjoinattributesbylocation"><span class="std std-ref">Join Attributes by Location</span></a>
+Processing algorithm and create your own field).
+When we export this report, QGIS will grab the first state from the
+<span class="guilabel">Admin Level 1</span> layer, and then iterate over all the
+<span class="guilabel">Populated Places</span> with a matching <span class="guilabel">adm1name</span> value.
+Here’s what we get:</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/report3.png"><img alt="../../../_images/report3.png" src="../../../_images/report3.png" style="width: 100%;" /></a>
+</figure>
+<p>Here we created a basic body for the Populated Places group,
+including a map of the place and a table of some place attributes.
+So our report is now a report header, a page for the first state,
+followed by a page for every populated place within that state, then
+the rest of the states with their populated places, and finally the
+report footer.
+If we were to add a header for the Populated Places group, it would be
+included just before listing the populated places for each state,
+as shown in the illustration below.</p>
+<p>Similarly, a footer for the Populated Places group would be inserted
+after the final place for each state is included.</p>
+<p>In addition to nested subsections, subsections in a report can also
+be included consecutively.
+If we add a second subsection to the <cite>Admin Level 1 group</cite> for
+<span class="guilabel">Airports</span>, then (if the <span class="guilabel">Airports</span> layer has an
+attribute <span class="guilabel">adm1name</span> that can link it to the parent group)
+our report will first list ALL the populated places for each state,
+followed by all the airports within that state, before proceeding to
+the next state.</p>
+<figure class="align-center">
+<img alt="../../../_images/report_consec.png" src="../../../_images/report_consec.png" />
+</figure>
+<p>The key point here is that our <span class="guilabel">Airports group</span> is a
+subsection of the <span class="guilabel">Admin Level 1 group</span> – not the
+<span class="guilabel">Populated Places group</span>.</p>
+<p>In this case our report would be structured like this (note that
+state flags have also been included - the procedure for adding
+feature specific pictures in this way is described below):</p>
+<figure class="align-center">
+<img alt="../../../_images/report_all_img.png" src="../../../_images/report_all_img.png" />
+</figure>
+<section id="including-pictures-in-a-report">
+<h3><a class="toc-backref" href="#id5"><span class="section-number">19.4.3.1. </span>Including pictures in a report</a><a class="headerlink" href="#including-pictures-in-a-report" title="Permalink to this headline"></a></h3>
+<p>Pictures can be quite useful in reports, and QGIS allows
+pictures in both the static and dynamic parts of a report.
+Pictures are added in the same way as for standard print layouts,
+and for the static report parts (and static pictures in dynamic
+parts) there is not more to it.</p>
+<p>But if you want illustrations that are tailored to the report
+features, your layer must have an attribute that can be used
+to define the picture to include.</p>
+<p>QGIS depends on absolute file names for images in reports.</p>
+<p>For dynamic pictures, you first add a picture to the body part
+of the group, as usual.
+In the <span class="guilabel">Item properties</span> of the picture, you set the
+<span class="guilabel">Image Source</span> using the
+<a class="reference internal" href="../../../_images/mIconDataDefine.png"><img alt="dataDefined" src="../../../_images/mIconDataDefine.png" style="width: 1.5em;" /></a> <sup>Data defined override</sup> button, and either
+select an attribute that contains the absolute path of the
+images or <span class="guilabel">Edit…</span> (to enter an expression that
+generates the absolute image path).</p>
+<p>Below is an example expression that uses string concatenation to
+specify the absolute path to the pictures, using the directory
+where the project file is located <code class="docutils literal notranslate"><span class="pre">&#64;project_path</span></code>) and an
+attribute (<code class="docutils literal notranslate"><span class="pre">adm1name</span></code>) from which the file name is generated
+(in this case by transforming the string in the <code class="docutils literal notranslate"><span class="pre">adm1name</span></code>
+attribute to uppercase, and appending ‘_flag.png’):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">concat</span><span class="p">(</span><span class="nd">@project_folder</span><span class="p">,</span> <span class="s1">&#39;/naturalearth/pictures/&#39;</span> <span class="p">,</span>
+       <span class="n">upper</span><span class="p">(</span><span class="s2">&quot;adm1name&quot;</span><span class="p">),</span> <span class="s1">&#39;_flag.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This means that the pictures are located in the
+<code class="docutils literal notranslate"><span class="pre">naturalearth/pictures</span></code> subdirectory of the project file directory.</p>
+<figure class="align-center">
+<img alt="../../../_images/report_dynamic_picture.png" src="../../../_images/report_dynamic_picture.png" />
+</figure>
+</section>
+<section id="highlighting-the-current-report-feature-in-a-map">
+<h3><a class="toc-backref" href="#id6"><span class="section-number">19.4.3.2. </span>Highlighting the current report feature in a map</a><a class="headerlink" href="#highlighting-the-current-report-feature-in-a-map" title="Permalink to this headline"></a></h3>
+<p>In the above report, the report features are emphasized in the
+maps using highlighting (state) and circles (populated places).
+To emphasize the report features in the maps (apart from placing
+them at the centre of the maps), you must data define the style using
+a comparison between its <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code> and the <code class="docutils literal notranslate"><span class="pre">&#64;atlas_featureid</span></code>, as
+for atlases.</p>
+<p>For instance, if you would like to use a thicker line / border
+for the report feature than the other features you can data define
+the line width:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if($id=@atlas_featureid, 2.0, 0.1)
+</pre></div>
+</div>
+<p>The report feature will get a 2 units wide polygon outline, while
+all other features will get a 0.1 units wide line.
+It is also possible to data define the colour (non-transparent dark
+magenta for the report feature and semi-transparent light gray for
+the other features):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if($id=@atlas_featureid, &#39;#FF880088&#39;, &#39;#88CCCCCC&#39;)
+</pre></div>
+</div>
+</section>
+<section id="more-level-1-groups">
+<h3><a class="toc-backref" href="#id7"><span class="section-number">19.4.3.3. </span>More level 1 groups</a><a class="headerlink" href="#more-level-1-groups" title="Permalink to this headline"></a></h3>
+<p>Combining nested and consecutive sections, together with section
+headers and footers allows for tons of flexibility.
+For instance, in the below report we add another field group as a
+child of the main report for the :guilabel`Ports` layer.
+Now, after listing the states together with their populated places
+and airports, we’ll get a summary list of all the ports in the
+region:</p>
+<figure class="align-center">
+<img alt="../../../_images/report_flex.png" src="../../../_images/report_flex.png" />
+</figure>
+<p>This results in the last part of our report exporting as:</p>
+<figure class="align-center">
+<img alt="../../../_images/ports.png" src="../../../_images/ports.png" />
+</figure>
+</section>
+</section>
+<section id="export-settings">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">19.4.4. </span>Export settings</a><a class="headerlink" href="#export-settings" title="Permalink to this headline"></a></h2>
+<p>When you export a report
+(<span class="menuselection">Report ► Export Report as Images… / SVG… / PDF…</span>),
+you will be asked for a file name, and then you get the opportunity
+to tune the export settings to get the most appropriate output.</p>
+<p>As you see, reports in QGIS are extremely powerful and flexible!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The current information was adapted from a North Road blog,
+<a class="reference external" href="https://north-road.com/2018/01/23/exploring-reports-in-qgis-3-0-the-ultimate-guide">Exploring Reports in QGIS 3.0 - the Ultimate Guide!</a></p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="create_output.html" class="btn btn-neutral float-left" title="19.3. Creating an Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../working_with_ogc/ogc_client_support.html" class="btn btn-neutral float-right" title="20. Working with OGC / ISO protocols" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/create_reports.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/create_reports.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/create_reports.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/print_composer/create_reports.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/create_reports.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/print_composer/create_reports.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/print_composer/create_reports.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/print_composer/create_reports.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/print_composer/create_reports.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/print_composer/create_reports.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/print_composer/create_reports.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/print_composer/create_reports.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/print_composer/create_reports.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/print_composer/create_reports.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

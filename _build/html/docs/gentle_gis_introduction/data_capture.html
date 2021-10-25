@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. Data Capture &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/data_capture.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Raster Data" href="raster_data.html" />
+    <link rel="prev" title="4. Vector Attribute Data" href="vector_attribute_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/data_capture.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">A Gentle Introduction to GIS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introducing_gis.html">2. Introducing GIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_data.html">3. Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_attribute_data.html">4. Vector Attribute Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Data Capture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-does-gis-digital-data-get-stored">5.2. How does GIS digital data get stored?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planning-before-you-begin">5.3. Planning before you begin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-creating-a-tourism-map">5.3.1. Example 1: Creating a tourism map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-creating-a-map-of-pollution-levels-along-a-river">5.3.2. Example 2: Creating a map of pollution levels along a river</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-an-empty-shapefile">5.4. Creating an empty shapefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-data-to-your-shapefile">5.5. Adding data to your shapefile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heads-up-digitising">5.6. Heads-up digitising</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#digitising-using-a-digitising-table">5.7. Digitising using a digitising table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#after-your-features-are-digitised">5.8. After your features are digitised…</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-problems-things-to-be-aware-of">5.9. Common problems / things to be aware of</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-have-we-learned">5.10. What have we learned?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#now-you-try">5.11. Now you try!</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#something-to-think-about">5.12. Something to think about</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">5.13. Further reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-next">5.14. What’s next?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raster_data.html">6. Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topology.html">7. Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coordinate_reference_systems.html">8. Coordinate Reference Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_production.html">9. Map Production</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector_spatial_analysis_buffers.html">10. Vector Spatial Analysis (Buffers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spatial_analysis_interpolation.html">11. Spatial Analysis (Interpolation)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors_and_contributors.html">12. About the authors &amp; contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gnu_free_documentation_license.html">13. GNU Free Documentation License</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">A Gentle Introduction to GIS</a> &raquo;</li>
+      <li><span class="section-number">5. </span>Data Capture</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/gentle_gis_introduction/data_capture.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="vector_attribute_data.html" class="btn btn-neutral float-left" title="4. Vector Attribute Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster_data.html" class="btn btn-neutral float-right" title="6. Raster Data" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-capture">
+<h1><span class="section-number">5. </span>Data Capture<a class="headerlink" href="#data-capture" title="Permalink to this headline"></a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 64%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p><a class="reference internal" href="../../_images/gentlelogo.png"><img alt="gentleLogo" src="../../_images/gentlelogo.png" style="width: 3em;" /></a></p></td>
+<td><p>Objectives:</p></td>
+<td><p>Learn how to create and edit vector and attribute data.</p></td>
+</tr>
+<tr class="row-even"><td><p>Keywords:</p></td>
+<td><p>Editing, data capture, heads-up, table, database.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="overview">
+<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>In the previous two topics we looked at vector data. We saw that there are two
+key concepts to vector data, namely: <strong>geometry</strong> and <strong>attributes</strong>. The geometry
+of a vector feature describes its <strong>shape</strong> and <strong>position</strong>, while the
+<strong>attributes</strong> of a vector feature describe its <strong>properties</strong> (colour, size, age
+etc.).</p>
+<p>In this section we will look more closely at the process of creating and editing
+vector data –– both the geometry and attributes of vector features.</p>
+</section>
+<section id="how-does-gis-digital-data-get-stored">
+<h2><span class="section-number">5.2. </span>How does GIS digital data get stored?<a class="headerlink" href="#how-does-gis-digital-data-get-stored" title="Permalink to this headline"></a></h2>
+<p>Word processors, spreadsheets and graphics packages are all programs that let you
+create and edit digital data. Each type of application saves its data into a
+particular file format. For example, a graphics program will let you save your
+drawing as a <code class="file docutils literal notranslate"><span class="pre">.jpg</span></code> JPEG image, word processors let you save your document
+as an <code class="file docutils literal notranslate"><span class="pre">.odt</span></code> OpenDocument or <code class="file docutils literal notranslate"><span class="pre">.doc</span></code> Word Document, and so on.</p>
+<p>Just like these other applications, GIS Applications can store their data in files
+on the computer hard disk. There are a number of different file formats for GIS
+data, but the most common one is probably the ‘shape file’. The name is a little
+odd in that although we call it a shape file (singular), it actually consists of
+at least three different files that work together to store your digital vector
+data, as shown in <a class="reference internal" href="#table-shapefile">table_shapefile</a>.</p>
+<table class="docutils align-default" id="table-shapefile">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Extension</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="file docutils literal notranslate"><span class="pre">.shp</span></code></p></td>
+<td><p>The geometry of vector features are stored in this file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="file docutils literal notranslate"><span class="pre">.dbf</span></code></p></td>
+<td><p>The attributes of vector features are stored in this file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="file docutils literal notranslate"><span class="pre">.shx</span></code></p></td>
+<td><p>This file is an index that helps the GIS Application to find features more quickly.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table Shapefile 1: The basic files that together make up a ‘shapefile’.</p>
+<p>When you look at the files that make up a shapefile on the computer hard disk,
+you will see something like <a class="reference internal" href="#figure-shapefile"><span class="std std-numref">Fig. 5.6</span></a>. If you want to share vector data
+stored in shapefiles with another person, it is important to give them all of
+the files for that layer. So in the case of the trees layer shown in <a class="reference internal" href="#figure-shapefile"><span class="std std-numref">Fig. 5.6</span></a>,
+you would need to give the person <code class="file docutils literal notranslate"><span class="pre">trees.shp</span></code>, <code class="file docutils literal notranslate"><span class="pre">trees.shx</span></code>,
+<code class="file docutils literal notranslate"><span class="pre">trees.dbf</span></code>, <code class="file docutils literal notranslate"><span class="pre">trees.prj</span></code> and <code class="file docutils literal notranslate"><span class="pre">trees.qml</span></code>.</p>
+<figure class="align-center" id="id1">
+<span id="figure-shapefile"></span><a class="reference internal image-reference" href="../../_images/shapefile_on_disk.png"><img alt="../../_images/shapefile_on_disk.png" src="../../_images/shapefile_on_disk.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.6 </span><span class="caption-text">The files that make up a ’trees’ shapefile as seen in the computer’s file
+manager.</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Many GIS Applications are also able to store digital data inside a <strong>database</strong>.
+In general storing GIS data in a database is a good solution because the database
+can store <strong>large amounts</strong> of data <strong>efficiently</strong> and can provide data to the
+GIS Application quickly. Using a database also allows many people to work with
+the same vector data layers at the same time. Setting up a database to store GIS
+data is more complicated than using shapefiles, so for this topic we will focus
+on creating and editing shapefiles.</p>
+</section>
+<section id="planning-before-you-begin">
+<h2><span class="section-number">5.3. </span>Planning before you begin<a class="headerlink" href="#planning-before-you-begin" title="Permalink to this headline"></a></h2>
+<p>Before you can create a new vector layer (which will be stored in a shapefile),
+you need know what the geometry of that layer will be (point, polyline or
+polygon), and you need to know what the attributes of that layer will be. Let’s
+look at a few examples and it will become clearer how to go about doing this.</p>
+<section id="example-1-creating-a-tourism-map">
+<h3><span class="section-number">5.3.1. </span>Example 1: Creating a tourism map<a class="headerlink" href="#example-1-creating-a-tourism-map" title="Permalink to this headline"></a></h3>
+<p>Imagine that you want to create a nice tourism map for your local area. Your
+vision of the final map is a 1:50 000 toposheet with markers overlaid for sites
+of interest to tourists. First, let’s think about the geometry. We know that we
+can represent a vector layer using point, polyline or polygon features. Which one
+makes the most sense for our tourism map? We could use points if we wanted to
+mark specific locations such as look out points, memorials, battle sites and so
+on. If we wanted to take tourists along a route, such as a scenic route through
+a mountain pass, it might make sense to use polylines. If we have whole areas
+that are of tourism interest, such as a nature reserve or a cultural village,
+polygons might make a good choice.</p>
+<p>As you can see it’s often not easy to know what type of geometry you will need.
+One common approach to this problem is to make one layer for each geometry type
+you need. So, for example, if you look at digital data provided by the Chief
+Directorate: Surveys and Mapping, South Africa, they provide a river areas
+(polygons) layer and a rivers polyline layer. They use the river areas (polygons)
+to represent river stretches that are wide, and they use river polylines to
+represent narrow stretches of river. In <a class="reference internal" href="#figure-tourism"><span class="std std-numref">Fig. 5.7</span></a> we can see how our tourism
+layers might look on a map if we used all three geometry types.</p>
+<figure class="align-center" id="id2">
+<span id="figure-tourism"></span><a class="reference internal image-reference" href="../../_images/tourism_map.png"><img alt="../../_images/tourism_map.png" src="../../_images/tourism_map.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.7 </span><span class="caption-text">A map with tourism layers. We have used three different geometry types for
+tourism data so that we can properly represent the different kinds of features
+needed for our visitors, giving them all the information they need.</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="example-2-creating-a-map-of-pollution-levels-along-a-river">
+<h3><span class="section-number">5.3.2. </span>Example 2: Creating a map of pollution levels along a river<a class="headerlink" href="#example-2-creating-a-map-of-pollution-levels-along-a-river" title="Permalink to this headline"></a></h3>
+<p>If you wanted to measure pollution levels along the course of a river you would
+typically travel along the river in a boat or walk along its banks. At regular
+intervals you would stop and take various measurements such as Dissolved Oxygen
+(DO) levels, Coliform Bacteria (CB) counts, Turbidity levels and pH. You would
+also need to make a map reading of your position or obtain your position using
+a GPS receiver.</p>
+<p>To store the data collected from an exercise like this in a GIS Application, you
+would probably create a GIS layer with a point geometry. Using point geometry
+makes sense here because each sample taken represents the conditions at a very
+specific place.</p>
+<p>For the attributes we would want a <strong>field</strong> for each thing that describes the
+sample site. So we may end up with an attribute table that looks something like
+<a class="reference internal" href="#table-river-attributes">table_river_attributes</a>.</p>
+<table class="docutils align-default" id="table-river-attributes">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>SampleNo</p></th>
+<th class="head"><p>pH</p></th>
+<th class="head"><p>DO</p></th>
+<th class="head"><p>CB</p></th>
+<th class="head"><p>Turbidity</p></th>
+<th class="head"><p>Collector</p></th>
+<th class="head"><p>Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>6</p></td>
+<td><p>N</p></td>
+<td><p>Low</p></td>
+<td><p>Patience</p></td>
+<td><p>12/01/2009</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>6.8</p></td>
+<td><p>5</p></td>
+<td><p>Y</p></td>
+<td><p>Medium</p></td>
+<td><p>Thabo</p></td>
+<td><p>12/01/2009</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>6.9</p></td>
+<td><p>6</p></td>
+<td><p>Y</p></td>
+<td><p>High</p></td>
+<td><p>Victor</p></td>
+<td><p>12/01/2009</p></td>
+</tr>
+</tbody>
+</table>
+<p>Table River Attributes 1: Drawing a table like this before you create your vector
+layer will let you decide what attribute fields (columns) you will need. Note
+that the geometry (positions where samples were taken) is not shown in the
+attribute table –– the GIS Application stores it separately!</p>
+</section>
+</section>
+<section id="creating-an-empty-shapefile">
+<h2><span class="section-number">5.4. </span>Creating an empty shapefile<a class="headerlink" href="#creating-an-empty-shapefile" title="Permalink to this headline"></a></h2>
+<p>Once you have planned what features you want to capture into the GIS, and the
+geometry type and attributes that each feature should have, you can move on to
+the next step of creating an empty shapefile.</p>
+<p>The process usually starts with choosing the ‘new vector layer’ option in your
+GIS Application and then selecting a geometry type (see <a class="reference internal" href="#figure-new-shapefile"><span class="std std-numref">Fig. 5.8</span></a>).
+As we covered in an earlier topic, this means choosing either point, polyline or
+polygon for the geometry.</p>
+<figure class="align-center" id="id3">
+<span id="figure-new-shapefile"></span><a class="reference internal image-reference" href="../../_images/new_shapefile.png"><img alt="../../_images/new_shapefile.png" src="../../_images/new_shapefile.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.8 </span><span class="caption-text">Creating a new vector layer is as simple as filling in a few details in a form.
+First you choose the geometry type, and then you add the attribute fields.</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Next you will add fields to the attribute table. Normally we give field names that
+are short, have no spaces and indicate what type of information is being stored
+in that field. Example field names may be ‘pH’, ‘RoofColour’, ‘RoadType’ and so
+on. As well as choosing a name for each field, you need to indicate how the
+information should be stored in that field –– i.e. is it a number, a word or a
+sentence, or a date?</p>
+<p>Computer programs usually call information that is made up of words or sentences
+‘<strong>strings</strong>’, so if you need to store something like a street name or the name
+of a river, you should use ‘String’ for the field type.</p>
+<p>The shapefile format allows you to store the numeric field information as either
+a whole number (<strong>integer</strong>) or a decimal number (<strong>floating point</strong>) –– so you
+need to think before hand whether the numeric data you are going to capture will
+have decimal places or not.</p>
+<p>The final step (as shown in <a class="reference internal" href="#figure-save-shapefile"><span class="std std-numref">Fig. 5.9</span></a>) for creating a shapefile is
+to give it a name and a place on the computer hard disk where it should be
+created. Once again it is a good idea to give the shapefile a short and meaningful
+name. Good examples are ‘rivers’, ‘watersamples’ and so on.</p>
+<figure class="align-center" id="id4">
+<span id="figure-save-shapefile"></span><a class="reference internal image-reference" href="../../_images/save_shapefile.png"><img alt="../../_images/save_shapefile.png" src="../../_images/save_shapefile.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.9 </span><span class="caption-text">After defining our new layer’s geometry and attributes, we need to save it to
+disk. It is important to give a short but meaningful name to your shapefile.</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Let’s recap the process again quickly. To create a shapefile you first say what
+kind of geometry it will hold, then you create one or more fields for the
+attribute table, and then you save the shapefile to the hard disk using an easy
+to recognise name. Easy as 1-2-3!</p>
+</section>
+<section id="adding-data-to-your-shapefile">
+<h2><span class="section-number">5.5. </span>Adding data to your shapefile<a class="headerlink" href="#adding-data-to-your-shapefile" title="Permalink to this headline"></a></h2>
+<p>So far we have only created an empty shapefile. Now we need to enable editing in
+the shapefile using the ‘enable editing’ menu option or tool bar icon in the GIS
+Application. Shapefiles are not enabled for editing by default to prevent
+accidentally changing or deleting the data they contain. Next we need to start
+adding data. There are two steps we need to complete for each record we add to
+the shapefile:</p>
+<ol class="arabic simple">
+<li><p>Capturing geometry</p></li>
+<li><p>Entering attributes</p></li>
+</ol>
+<p>The process of capturing geometry is different for points, polylines and polygons.</p>
+<p>To <strong>capture a point</strong>, you first use the map pan and zoom tools to get to the
+correct geographical area that you are going to be recording data for. Next you
+will need to enable the point capture tool. Having done that, the next place you
+click with the <strong>left mouse button</strong> in the map view, is where you want your new
+point <strong>geometry</strong> to appear. After you click on the map, a window will appear
+and you can enter all of the <strong>attribute data</strong> for that point (see <a class="reference internal" href="#figure-attribute-dialog"><span class="std std-numref">Fig. 5.10</span></a>).
+If you are unsure of the data for a given field you can usually leave it blank,
+but be aware that if you leave a lot of fields blank it will be hard to make a
+useful map from your data!</p>
+<figure class="align-center" id="id5">
+<span id="figure-attribute-dialog"></span><a class="reference internal image-reference" href="../../_images/attribute_dialog.png"><img alt="../../_images/attribute_dialog.png" src="../../_images/attribute_dialog.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.10 </span><span class="caption-text">After you have captured the point geometry, you will be asked to describe its
+attributes. The attribute form is based on the fields you specified when you
+created the vector layer.</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>To <strong>capture a polyline</strong> the process is similar to that of a point, in that you
+need to first use the pan and zoom tools to move the map in the map view to the
+correct geographical area. You should be zoomed in enough so that your new vector
+polyline feature will have an appropriate scale (see <a class="reference internal" href="vector_data.html#gentle-gis-vector-data"><span class="std std-ref">Vector Data</span></a>
+for more details on scale issues). When you are ready, you can click the polyline
+capture icon in the tool bar and then start drawing your line by clicking on the
+map. After you make your first click, you will notice that the line stretches
+like an elastic band to follow the mouse cursor around as you move it. Each time
+you click with the <strong>left mouse button</strong>, a new vertex will be added to the map.
+This process is shown in <a class="reference internal" href="#figure-capture-polyline"><span class="std std-numref">Fig. 5.11</span></a>.</p>
+<figure class="align-center" id="id6">
+<span id="figure-capture-polyline"></span><a class="reference internal image-reference" href="../../_images/capture_polyline.png"><img alt="../../_images/capture_polyline.png" src="../../_images/capture_polyline.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.11 </span><span class="caption-text">Capturing lines for a tourism map. When editing a line layer, the vertices are
+shown with circular markers which you can move about with the mouse to adjust
+the line’s geometry. When adding a new line (shown in red), each click of the
+mouse will add a new vertex.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>When you have finished defining your line, use the <strong>right mouse button</strong> to tell
+the GIS Application that you have completed your edits. As with the procedure for
+capturing a point feature, you will then be asked to enter in the attribute data
+for your new polyline feature.</p>
+<p>The process for <strong>capturing a polygon</strong> is almost the same as capturing a polyline
+except that you need to use the polygon capture tool in the toolbar. Also, you
+will notice that when you draw your geometry on the screen, the GIS Application
+always creates an enclosed area.</p>
+<p>To add a new feature after you have created your first one, you can simply click
+again on the map with the point, polyline or polygon capture tool active and start
+to draw your next feature.</p>
+<p>When you have no more features to add, always be sure to click the ‘allow editing’
+icon to toggle it off. The GIS Application will then save your newly created layer
+to the hard disk.</p>
+</section>
+<section id="heads-up-digitising">
+<h2><span class="section-number">5.6. </span>Heads-up digitising<a class="headerlink" href="#heads-up-digitising" title="Permalink to this headline"></a></h2>
+<p>As you have probably discovered by now if you followed the steps above, it is
+pretty hard to draw the features so that they are <strong>spatially correct</strong> if you
+do not have other features that you can use as a point of reference. One common
+solution to this problem is to use a raster layer (such as an aerial photograph
+or a satellite image) as a backdrop layer. You can then use this layer as a
+reference map, or even trace the features off the raster layer into your vector
+layer if they are visible. This process is known as ‘heads-up digitising’ and is
+shown in <a class="reference internal" href="#figure-headsup-digitizing"><span class="std std-numref">Fig. 5.12</span></a>.</p>
+<figure class="align-center" id="id7">
+<span id="figure-headsup-digitizing"></span><a class="reference internal image-reference" href="../../_images/headsup_digitizing.png"><img alt="../../_images/headsup_digitizing.png" src="../../_images/headsup_digitizing.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.12 </span><span class="caption-text">Heads-up digitising using a satellite image as a backdrop. The image is used
+as a reference for capturing polyline features by tracing over them.</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="digitising-using-a-digitising-table">
+<h2><span class="section-number">5.7. </span>Digitising using a digitising table<a class="headerlink" href="#digitising-using-a-digitising-table" title="Permalink to this headline"></a></h2>
+<p>Another method of capturing vector data is to use a digitising table. This
+approach is less commonly used except by GIS professionals, and it requires
+expensive equipment. The process of using a digitising table, is to place a paper
+map on the table. The paper map is held securely in place using clips. Then a
+special device called a ‘puck’ is used to trace features from the map. Tiny
+cross-hairs in the puck are used to ensure that lines and points are drawn
+accurately. The puck is connected to a computer and each feature that is captured
+using the puck gets stored in the computer’s memory. You can see what a digitising
+puck looks like in <a class="reference internal" href="#figure-digitizing-table"><span class="std std-numref">Fig. 5.13</span></a>.</p>
+<figure class="align-center" id="id8">
+<span id="figure-digitizing-table"></span><a class="reference internal image-reference" href="../../_images/digitizing_table.jpg"><img alt="../../_images/digitizing_table.jpg" src="../../_images/digitizing_table.jpg" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.13 </span><span class="caption-text">A digitising table and puck are used by GIS professionals when they want to
+digitise features from existing maps.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="after-your-features-are-digitised">
+<h2><span class="section-number">5.8. </span>After your features are digitised…<a class="headerlink" href="#after-your-features-are-digitised" title="Permalink to this headline"></a></h2>
+<p>Once your features are digitised, you can use the techniques you learned in the
+previous topic to set the symbology for your layer. Choosing an appropriate
+symbology will allow you to better understand the data you have captured when
+you look at the map.</p>
+</section>
+<section id="common-problems-things-to-be-aware-of">
+<h2><span class="section-number">5.9. </span>Common problems / things to be aware of<a class="headerlink" href="#common-problems-things-to-be-aware-of" title="Permalink to this headline"></a></h2>
+<p>If you are digitising using a backdrop raster layer such as an aerial photograph
+or satellite image, it is very important that the raster layer is properly
+georeferenced. A layer that is georeferenced properly displays in the correct
+position in the map view based on the GIS Application’s internal model of the
+Earth. We can see the effect of a poorly georeferenced image in
+<a class="reference internal" href="#figure-georeference-issue"><span class="std std-numref">Fig. 5.14</span></a>.</p>
+<figure class="align-center" id="id9">
+<span id="figure-georeference-issue"></span><a class="reference internal image-reference" href="../../_images/georeferencing_issue.png"><img alt="../../_images/georeferencing_issue.png" src="../../_images/georeferencing_issue.png" style="width: 30em;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5.14 </span><span class="caption-text">The importance of using properly georeferenced raster images for heads-up
+digitising. On the left we can see the image is properly georegistered and the
+road features (in orange) overlap perfectly. If the image is poorly
+georeferenced (as shown on the right) the features will not be well aligned.
+Worse still, if the image on the right is used as a reference when capturing
+new features, the newly captured data will be inaccurate!</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Also remember that it is important that you are zoomed in to an appropriate scale
+so that the vector features you create are useful. As we saw in the previous topic
+on vector geometry, it is a bad idea to digitise your data when you are zoomed
+out to a scale of 1:1000 000 if you intend to use the data you capture at a scale
+of 1:50 000 later.</p>
+</section>
+<section id="what-have-we-learned">
+<h2><span class="section-number">5.10. </span>What have we learned?<a class="headerlink" href="#what-have-we-learned" title="Permalink to this headline"></a></h2>
+<p>Let’s wrap up what we covered in this worksheet:</p>
+<ul class="simple">
+<li><p><strong>Digitising</strong> is the process of capturing knowledge of a feature’s <strong>geometry</strong>
+and <strong>attributes</strong> into a <strong>digital format</strong> stored on the computer’s disk.</p></li>
+<li><p>GIS Data can be stored in a <strong>database</strong> or as <strong>files</strong>.</p></li>
+<li><p>One commonly used file format is the <strong>shapefile</strong> which is actually a group
+of three or more files (<code class="file docutils literal notranslate"><span class="pre">.shp</span></code>, <code class="file docutils literal notranslate"><span class="pre">.dbf</span></code> and <code class="file docutils literal notranslate"><span class="pre">.shx</span></code>).</p></li>
+<li><p>Before you create a new vector layer you need to plan both what <strong>geometry</strong>
+type and <strong>attribute</strong> fields it will contain.</p></li>
+<li><p>Geometry can be point, polyline or polygon.</p></li>
+<li><p>Attributes can be <strong>integers</strong> (whole numbers), <strong>floating points</strong> (decimal
+numbers), <strong>strings</strong> (words) or <strong>dates</strong>.</p></li>
+<li><p>The digitising process consists of <strong>drawing</strong> the geometry in the map view
+and then entering its attributes. This is repeated for each feature.</p></li>
+<li><p><strong>Heads-up digitising</strong> is often used to provide orientation during digitising
+by using a raster image in the background.</p></li>
+<li><p>Professional GIS users sometimes use a <strong>digitising table</strong> to capture
+information from paper maps.</p></li>
+</ul>
+</section>
+<section id="now-you-try">
+<h2><span class="section-number">5.11. </span>Now you try!<a class="headerlink" href="#now-you-try" title="Permalink to this headline"></a></h2>
+<p>Here are some ideas for you to try with your learners:</p>
+<ul class="simple">
+<li><p>Draw up a list of features in and around your school that you think would be
+interesting to capture. For example: the school boundary, the position of fire
+assembly points, the layout of each class room, and so on. Try to use a mix of
+different geometry types. Now split your learners into groups and assign each
+group a few features to capture. Have them symbolise their layers so that they
+are more meaningful to look at. Combine the layers from all the groups to create
+a nice map of your school and its surroundings!</p></li>
+<li><p>Find a local river and take water samples along its length. Make a careful note
+of the position of each sample using a GPS or by marking it on a toposheet. For
+each sample take measurements such as pH, dissolved oxygen etc. Capture the data
+using the GIS application and make maps that show the samples with a suitable
+symbology. Could you identify any areas of concern? Was the GIS Application able
+to help you to identify these areas?</p></li>
+</ul>
+</section>
+<section id="something-to-think-about">
+<h2><span class="section-number">5.12. </span>Something to think about<a class="headerlink" href="#something-to-think-about" title="Permalink to this headline"></a></h2>
+<p>If you don’t have a computer available, you can follow the same process by using
+transparency sheets and a notebook. Use an aerial photo, orthosheet or satellite
+image printout as your background layer. Draw columns down the page in your
+notebook and write in the column headings for each attribute field you want to
+store information about. Now trace the geometry of features onto the transparency
+sheet, writing a number next to each feature so that it can be identified. Now
+write the same number in the first column in your table in your notebook, and
+then fill in all the additional information you want to record.</p>
+</section>
+<section id="further-reading">
+<h2><span class="section-number">5.13. </span>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline"></a></h2>
+<p>The QGIS User Guide has more detailed information on <a class="reference internal" href="../user_manual/working_with_vector/editing_geometry_attributes.html#editingvector"><span class="std std-ref">digitising vector data</span></a> in QGIS.</p>
+</section>
+<section id="what-s-next">
+<h2><span class="section-number">5.14. </span>What’s next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline"></a></h2>
+<p>In the section that follows we will take a closer look at <strong>raster data</strong> to learn
+all about how image data can be used in a GIS.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vector_attribute_data.html" class="btn btn-neutral float-left" title="4. Vector Attribute Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster_data.html" class="btn btn-neutral float-right" title="6. Raster Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/data_capture.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/data_capture.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/gentle_gis_introduction/data_capture.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/data_capture.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/gentle_gis_introduction/data_capture.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/gentle_gis_introduction/data_capture.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/gentle_gis_introduction/data_capture.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/gentle_gis_introduction/data_capture.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/data_capture.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/gentle_gis_introduction/data_capture.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/gentle_gis_introduction/data_capture.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/gentle_gis_introduction/data_capture.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/gentle_gis_introduction/data_capture.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/gentle_gis_introduction/data_capture.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

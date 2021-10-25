@@ -1,0 +1,3764 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>25.1.15. Vector general &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="25.1.16. Vector geometry" href="vectorgeometry.html" />
+    <link rel="prev" title="25.1.14. Vector creation" href="vectorcreation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">25. Processing providers and algorithms</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">25.1. QGIS algorithm provider</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="cartography.html">25.1.1. Cartography</a></li>
+<li class="toctree-l4"><a class="reference internal" href="database.html">25.1.2. Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="filetools.html">25.1.3. File tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interpolation.html">25.1.4. Interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="layertools.html">25.1.5. Layer tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modelertools.html">25.1.6. Modeler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="networkanalysis.html">25.1.7. Network analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="plots.html">25.1.8. Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasteranalysis.html">25.1.9. Raster analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastercreation.html">25.1.10. Raster Creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rasterterrainanalysis.html">25.1.11. Raster terrain analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rastertools.html">25.1.12. Raster tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoranalysis.html">25.1.13. Vector analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorcreation.html">25.1.14. Vector creation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">25.1.15. Vector general</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorgeometry.html">25.1.16. Vector geometry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectoroverlay.html">25.1.17. Vector overlay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectorselection.html">25.1.18. Vector selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vectortable.html">25.1.19. Vector table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../gdal/index.html">25.2. GDAL algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lidartools/lastools.html">25.3. LAStools algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../taudem/index.html">25.4. TauDEM algorithm provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../otb.html">25.5. OTB applications provider</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">25. </span>Processing providers and algorithms</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">25.1. </span>QGIS algorithm provider</a> &raquo;</li>
+      <li><span class="section-number">25.1.15. </span>Vector general</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing_algs/qgis/vectorgeneral.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="vectorcreation.html" class="btn btn-neutral float-left" title="25.1.14. Vector creation" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorgeometry.html" class="btn btn-neutral float-right" title="25.1.16. Vector geometry" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vector-general">
+<h1><span class="section-number">25.1.15. </span>Vector general<a class="headerlink" href="#vector-general" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#assign-projection" id="id92">Assign projection</a></p></li>
+<li><p><a class="reference internal" href="#batch-nominatim-geocoder" id="id93">Batch Nominatim geocoder</a></p></li>
+<li><p><a class="reference internal" href="#convert-layer-to-spatial-bookmarks" id="id94">Convert layer to spatial bookmarks</a></p></li>
+<li><p><a class="reference internal" href="#convert-spatial-bookmarks-to-layer" id="id95">Convert spatial bookmarks to layer</a></p></li>
+<li><p><a class="reference internal" href="#create-attribute-index" id="id96">Create attribute index</a></p></li>
+<li><p><a class="reference internal" href="#create-spatial-index" id="id97">Create spatial index</a></p></li>
+<li><p><a class="reference internal" href="#define-shapefile-projection" id="id98">Define Shapefile projection</a></p></li>
+<li><p><a class="reference internal" href="#delete-duplicate-geometries" id="id99">Delete duplicate geometries</a></p></li>
+<li><p><a class="reference internal" href="#delete-duplicates-by-attribute" id="id100">Delete duplicates by attribute</a></p></li>
+<li><p><a class="reference internal" href="#detect-dataset-changes" id="id101">Detect dataset changes</a></p></li>
+<li><p><a class="reference internal" href="#drop-geometries" id="id102">Drop geometries</a></p></li>
+<li><p><a class="reference internal" href="#execute-sql" id="id103">Execute SQL</a></p></li>
+<li><p><a class="reference internal" href="#export-layers-to-dxf" id="id104">Export layers to DXF</a></p></li>
+<li><p><a class="reference internal" href="#extract-selected-features" id="id105">Extract selected features</a></p></li>
+<li><p><a class="reference internal" href="#extract-shapefile-encoding" id="id106">Extract Shapefile encoding</a></p></li>
+<li><p><a class="reference internal" href="#find-projection" id="id107">Find projection</a></p></li>
+<li><p><a class="reference internal" href="#flatten-relationship" id="id108">Flatten relationship</a></p></li>
+<li><p><a class="reference internal" href="#join-attributes-by-field-value" id="id109">Join attributes by field value</a></p></li>
+<li><p><a class="reference internal" href="#join-attributes-by-location" id="id110">Join attributes by location</a></p></li>
+<li><p><a class="reference internal" href="#join-attributes-by-location-summary" id="id111">Join attributes by location (summary)</a></p></li>
+<li><p><a class="reference internal" href="#join-attributes-by-nearest" id="id112">Join attributes by nearest</a></p></li>
+<li><p><a class="reference internal" href="#merge-vector-layers" id="id113">Merge vector layers</a></p></li>
+<li><p><a class="reference internal" href="#order-by-expression" id="id114">Order by expression</a></p></li>
+<li><p><a class="reference internal" href="#repair-shapefile" id="id115">Repair Shapefile</a></p></li>
+<li><p><a class="reference internal" href="#reproject-layer" id="id116">Reproject layer</a></p></li>
+<li><p><a class="reference internal" href="#save-vector-features-to-file" id="id117">Save vector features to file</a></p></li>
+<li><p><a class="reference internal" href="#set-layer-encoding" id="id118">Set layer encoding</a></p></li>
+<li><p><a class="reference internal" href="#split-features-by-character" id="id119">Split features by character</a></p></li>
+<li><p><a class="reference internal" href="#split-vector-layer" id="id120">Split vector layer</a></p></li>
+<li><p><a class="reference internal" href="#truncate-table" id="id121">Truncate table</a></p></li>
+</ul>
+</div>
+<section id="assign-projection">
+<span id="qgisassignprojection"></span><h2><a class="toc-backref" href="#id92"><span class="section-number">25.1.15.1. </span>Assign projection</a><a class="headerlink" href="#assign-projection" title="Permalink to this headline"></a></h2>
+<p>Assigns a new projection to a vector layer.</p>
+<p>It creates a new layer with the exact same features and geometries as
+the input one, but assigned to a new CRS. The geometries are <strong>not</strong>
+reprojected, they are just assigned to a different CRS.</p>
+<p>This algorithm can be used to repair layers which have been assigned
+an incorrect projection.</p>
+<p>Attributes are not modified by this algorithm.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdefinecurrentprojection"><span class="std std-ref">Define Shapefile projection</span></a>,
+<a class="reference internal" href="#qgisfindprojection"><span class="std std-ref">Find projection</span></a>, <a class="reference internal" href="#qgisreprojectlayer"><span class="std std-ref">Reproject layer</span></a></p>
+</div>
+<section id="parameters">
+<h3><span class="section-number">25.1.15.1.1. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer with wrong or missing CRS</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Assigned CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span> <span class="pre">-</span> <span class="pre">WGS84</span></code></p>
+</td>
+<td><p>Select the new CRS to assign to the vector layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Assigned CRS</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer containing only the duplicates.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="outputs">
+<h3><span class="section-number">25.1.15.1.2. </span>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Assigned CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer with assigned projection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="python-code">
+<h3><span class="section-number">25.1.15.1.3. </span>Python code<a class="headerlink" href="#python-code" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:assignprojection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="batch-nominatim-geocoder">
+<span id="qgisbatchnominatimgeocoder"></span><h2><a class="toc-backref" href="#id93"><span class="section-number">25.1.15.2. </span>Batch Nominatim geocoder</a><a class="headerlink" href="#batch-nominatim-geocoder" title="Permalink to this headline"></a></h2>
+<p>Performs batch geocoding using the Nominatim service against an input
+layer string field.
+The output layer will have a point geometry reflecting the geocoded location
+as well as a number of attributes associated to the geocoded location.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This algorithm is compliant with the <a class="reference external" href="https://operations.osmfoundation.org/policies/nominatim/">usage policy</a> of the
+Nominatim geocoding service provided by the OpenStreetMap Foundation.</p>
+</div>
+<section id="id1">
+<h3><span class="section-number">25.1.15.2.1. </span>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer to geocode the features</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Address field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: string]</p></td>
+<td><p>Field containing the addresses to geocode</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Geocoded</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer containing only the geocoded addresses.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+<li><p>Append to Layer…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id2">
+<h3><span class="section-number">25.1.15.2.2. </span>Outputs<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Geocoded</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: point]</p></td>
+<td><p>Vector layer with point features corresponding to the geocoded addresses</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id3">
+<h3><span class="section-number">25.1.15.2.3. </span>Python code<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:batchnominatimgeocoder</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="convert-layer-to-spatial-bookmarks">
+<span id="qgislayertobookmarks"></span><h2><a class="toc-backref" href="#id94"><span class="section-number">25.1.15.3. </span>Convert layer to spatial bookmarks</a><a class="headerlink" href="#convert-layer-to-spatial-bookmarks" title="Permalink to this headline"></a></h2>
+<p>Creates spatial bookmarks corresponding to the extent of features
+contained in a layer.</p>
+<section id="id4">
+<h3><span class="section-number">25.1.15.3.1. </span>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: line, polygon]</p></td>
+<td><p>The input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bookmark destination</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Select the destination for the bookmarks.
+One of:</p>
+<ul class="simple">
+<li><p>0 — Project bookmarks</p></li>
+<li><p>1 — User bookmarks</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Name field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NAME_EXPRESSION</span></code></p></td>
+<td><p>[expression]</p></td>
+<td><p>Field or expression that will give names to the generated
+bookmarks</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Group field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GROUP_EXPRESSION</span></code></p></td>
+<td><p>[expression]</p></td>
+<td><p>Field or expression that will provide groups for the generated
+bookmarks</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id5">
+<h3><span class="section-number">25.1.15.3.2. </span>Outputs<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Count of bookmarks added</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id6">
+<h3><span class="section-number">25.1.15.3.3. </span>Python code<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:layertobookmarks</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="convert-spatial-bookmarks-to-layer">
+<span id="qgisbookmarkstolayer"></span><h2><a class="toc-backref" href="#id95"><span class="section-number">25.1.15.4. </span>Convert spatial bookmarks to layer</a><a class="headerlink" href="#convert-spatial-bookmarks-to-layer" title="Permalink to this headline"></a></h2>
+<p>Creates a new layer containing polygon features for stored spatial
+bookmarks.
+The export can be filtered to only bookmarks belonging to the current
+project, to all user bookmarks, or a combination of both.</p>
+<section id="id7">
+<h3><span class="section-number">25.1.15.4.1. </span>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bookmark source</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SOURCE</span></code></p></td>
+<td><p>[enumeration] [list]</p>
+<p>Default: [0,1]</p>
+</td>
+<td><p>Select the source(s) of the bookmarks.
+One or more of:</p>
+<ul class="simple">
+<li><p>0 — Project bookmarks</p></li>
+<li><p>1 — User bookmarks</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span> <span class="pre">-</span> <span class="pre">WGS</span> <span class="pre">84</span></code></p>
+</td>
+<td><p>The CRS of the output layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3><span class="section-number">25.1.15.4.2. </span>Outputs<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: polygon]</p></td>
+<td><p>The output (bookmarks) vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id9">
+<h3><span class="section-number">25.1.15.4.3. </span>Python code<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:bookmarkstolayer</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="create-attribute-index">
+<span id="qgiscreateattributeindex"></span><h2><a class="toc-backref" href="#id96"><span class="section-number">25.1.15.5. </span>Create attribute index</a><a class="headerlink" href="#create-attribute-index" title="Permalink to this headline"></a></h2>
+<p>Creates an index against a field of the attribute table to speed up
+queries.
+The support for index creation depends on both the layer’s data
+provider and the field type.</p>
+<p>No outputs are created: the index is stored on the layer itself.</p>
+<section id="id10">
+<h3><span class="section-number">25.1.15.5.1. </span>Parameters<a class="headerlink" href="#id10" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Select the vector layer you want to create an attribute index
+for</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Attribute to index</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field of the vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id11">
+<h3><span class="section-number">25.1.15.5.2. </span>Outputs<a class="headerlink" href="#id11" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Indexed layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>A copy of the input vector layer with an index for the
+specified field</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id12">
+<h3><span class="section-number">25.1.15.5.3. </span>Python code<a class="headerlink" href="#id12" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:createattributeindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="create-spatial-index">
+<span id="qgiscreatespatialindex"></span><h2><a class="toc-backref" href="#id97"><span class="section-number">25.1.15.6. </span>Create spatial index</a><a class="headerlink" href="#create-spatial-index" title="Permalink to this headline"></a></h2>
+<p>Creates an index to speed up access to the features in a layer based
+on their spatial location.
+Support for spatial index creation is dependent on the layer’s data
+provider.</p>
+<p>No new output layers are created.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Data Management Tools</span></p>
+<section id="id13">
+<h3><span class="section-number">25.1.15.6.1. </span>Parameters<a class="headerlink" href="#id13" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id14">
+<h3><span class="section-number">25.1.15.6.2. </span>Outputs<a class="headerlink" href="#id14" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Indexed layer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>A copy of the input vector layer with a spatial index</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id15">
+<h3><span class="section-number">25.1.15.6.3. </span>Python code<a class="headerlink" href="#id15" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:createspatialindex</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="define-shapefile-projection">
+<span id="qgisdefinecurrentprojection"></span><h2><a class="toc-backref" href="#id98"><span class="section-number">25.1.15.7. </span>Define Shapefile projection</a><a class="headerlink" href="#define-shapefile-projection" title="Permalink to this headline"></a></h2>
+<p>Sets the CRS (projection) of an existing Shapefile format dataset to
+the provided CRS.
+It is very useful when a Shapefile format dataset is missing the
+<code class="docutils literal notranslate"><span class="pre">prj</span></code> file and you know the correct projection.</p>
+<p>Contrary to the <a class="reference internal" href="#qgisassignprojection"><span class="std std-ref">Assign projection</span></a> algorithm, it modifies the
+current layer and will not output a new layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For Shapefile datasets, the <code class="docutils literal notranslate"><span class="pre">.prj</span></code> and <code class="docutils literal notranslate"><span class="pre">.qpj</span></code> files will
+be overwritten - or created if missing - to match the provided CRS.</p>
+</div>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Data Management Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisassignprojection"><span class="std std-ref">Assign projection</span></a>, <a class="reference internal" href="#qgisfindprojection"><span class="std std-ref">Find projection</span></a>,
+<a class="reference internal" href="#qgisreprojectlayer"><span class="std std-ref">Reproject layer</span></a></p>
+</div>
+<section id="id16">
+<h3><span class="section-number">25.1.15.7.1. </span>Parameters<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer with missing projection information</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>Select the CRS to assign to the vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id17">
+<h3><span class="section-number">25.1.15.7.2. </span>Outputs<a class="headerlink" href="#id17" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The input vector layer with the defined projection</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id18">
+<h3><span class="section-number">25.1.15.7.3. </span>Python code<a class="headerlink" href="#id18" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:definecurrentprojection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="delete-duplicate-geometries">
+<span id="qgisdeleteduplicategeometries"></span><h2><a class="toc-backref" href="#id99"><span class="section-number">25.1.15.8. </span>Delete duplicate geometries</a><a class="headerlink" href="#delete-duplicate-geometries" title="Permalink to this headline"></a></h2>
+<p>Finds and removes duplicated geometries.</p>
+<p>Attributes are not checked, so in case two features have identical
+geometries but different attributes, only one of them will be added to
+the result layer.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdropgeometries"><span class="std std-ref">Drop geometries</span></a>,
+<a class="reference internal" href="vectorgeometry.html#qgisremovenullgeometries"><span class="std std-ref">Remove null geometries</span></a>,
+<a class="reference internal" href="#qgisdeleteduplicatesbyattribute"><span class="std std-ref">Delete duplicates by attribute</span></a></p>
+</div>
+<section id="id19">
+<h3><span class="section-number">25.1.15.8.1. </span>Parameters<a class="headerlink" href="#id19" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The layer with duplicate geometries you want to clean</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cleaned</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id20">
+<h3><span class="section-number">25.1.15.8.2. </span>Outputs<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Count of discarded duplicate records</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DUPLICATE_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of discarded duplicate records</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cleaned</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output layer without any duplicated geometries</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Count of retained records</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RETAINED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of unique records</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id21">
+<h3><span class="section-number">25.1.15.8.3. </span>Python code<a class="headerlink" href="#id21" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:deleteduplicategeometries</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="delete-duplicates-by-attribute">
+<span id="qgisdeleteduplicatesbyattribute"></span><h2><a class="toc-backref" href="#id100"><span class="section-number">25.1.15.9. </span>Delete duplicates by attribute</a><a class="headerlink" href="#delete-duplicates-by-attribute" title="Permalink to this headline"></a></h2>
+<p>Deletes duplicate rows by only considering the specified field
+/ fields.
+The first matching row will be retained, and duplicates will be
+discarded.</p>
+<p>Optionally, these duplicate records can be saved to a separate
+output for analysis.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdeleteduplicategeometries"><span class="std std-ref">Delete duplicate geometries</span></a></p>
+</div>
+<section id="id22">
+<h3><span class="section-number">25.1.15.9.1. </span>Parameters<a class="headerlink" href="#id22" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fields to match duplicates by</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Fields defining duplicates.
+Features with identical values for all these fields are
+considered duplicates.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Filtered (no duplicates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer containing the unique features.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Filtered (duplicates)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DUPLICATES</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the output layer containing only the duplicates.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id23">
+<h3><span class="section-number">25.1.15.9.2. </span>Outputs<a class="headerlink" href="#id23" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Filtered (duplicates)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DUPLICATES</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Vector layer containing the removed features.
+Will not be produced if not specified (left as
+<code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count of discarded duplicate records</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DUPLICATE_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of discarded duplicate records</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Filtered (no duplicates)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer containing the unique features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count of retained records</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RETAINED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of unique records</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id24">
+<h3><span class="section-number">25.1.15.9.3. </span>Python code<a class="headerlink" href="#id24" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:deleteduplicatesbyattribute</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="detect-dataset-changes">
+<span id="qgisdetectdatasetchanges"></span><h2><a class="toc-backref" href="#id101"><span class="section-number">25.1.15.10. </span>Detect dataset changes</a><a class="headerlink" href="#detect-dataset-changes" title="Permalink to this headline"></a></h2>
+<p>Compares two vector layers, and determines which features are
+unchanged, added or deleted between the two.
+It is designed for comparing two different versions of the same
+dataset.</p>
+<figure class="align-center" id="id90">
+<img alt="../../../../_images/detect_change.png" src="../../../../_images/detect_change.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 25.43 </span><span class="caption-text">Detect dataset change example</span><a class="headerlink" href="#id90" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id25">
+<h3><span class="section-number">25.1.15.10.1. </span>Parameters<a class="headerlink" href="#id25" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Original layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ORIGINAL</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The vector layer considered as the original version</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Revised layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REVISED</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The revised or modified vector layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Attributes to consider for match</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">COMPARE_ATTRIBUTES</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Attributes to consider for match. By default, all attributes
+are compared.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry comparison behavior</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MATCH_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Defines the criteria for comparison. Options:</p>
+<ul class="simple">
+<li><p>0 — Exact Match: includes the order and vertices count of
+geometries</p></li>
+<li><p>1 — Tolerant Match (Topological Equality): geometries are
+considered equal</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Unchanged features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNCHANGED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Specify the output vector layer containing the unchanged
+features. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Added features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Specify the output vector layer containing the added features.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Deleted features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Specify the output vector layer containing the deleted
+features. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id26">
+<h3><span class="section-number">25.1.15.10.2. </span>Outputs<a class="headerlink" href="#id26" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Unchanged features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNCHANGED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Vector layer containing the unchanged features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Added features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Vector layer containing the added features.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Deleted features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DELETED</span></code></p></td>
+<td><p>[vector: same as Original layer]</p></td>
+<td><p>Vector layer containing the deleted features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count of unchanged features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNCHANGED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of unchanged features.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Count of features added in revised layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ADDED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of features added in revised layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Count of features deleted from original layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DELETED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Count of features deleted from original layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id27">
+<h3><span class="section-number">25.1.15.10.3. </span>Python code<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:detectdatasetchanges</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="drop-geometries">
+<span id="qgisdropgeometries"></span><h2><a class="toc-backref" href="#id102"><span class="section-number">25.1.15.11. </span>Drop geometries</a><a class="headerlink" href="#drop-geometries" title="Permalink to this headline"></a></h2>
+<p>Creates a simple <em>geometryless</em> copy of the input layer attribute
+table.
+It keeps the attribute table of the source layer.</p>
+<p>If the file is saved in a local folder, you can choose between many
+file formats.</p>
+<p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> Allows <a class="reference internal" href="../../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">features in-place modification</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisdeleteduplicategeometries"><span class="std std-ref">Delete duplicate geometries</span></a>,
+<a class="reference internal" href="vectorgeometry.html#qgisremovenullgeometries"><span class="std std-ref">Remove null geometries</span></a></p>
+</div>
+<section id="id28">
+<h3><span class="section-number">25.1.15.11.1. </span>Parameters<a class="headerlink" href="#id28" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Dropped geometries</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>Specify the output geometryless layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id29">
+<h3><span class="section-number">25.1.15.11.2. </span>Outputs<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Dropped geometries</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>The output geometryless layer.
+A copy of the original attribute table.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id30">
+<h3><span class="section-number">25.1.15.11.3. </span>Python code<a class="headerlink" href="#id30" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:dropgeometries</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="execute-sql">
+<span id="qgisexecutesql"></span><h2><a class="toc-backref" href="#id103"><span class="section-number">25.1.15.12. </span>Execute SQL</a><a class="headerlink" href="#execute-sql" title="Permalink to this headline"></a></h2>
+<p>Runs a simple or complex query with <code class="docutils literal notranslate"><span class="pre">SQL</span></code> syntax on the source
+layer.</p>
+<p>Input datasources are identified with <code class="docutils literal notranslate"><span class="pre">input1</span></code>, <code class="docutils literal notranslate"><span class="pre">input2</span></code>… <code class="docutils literal notranslate"><span class="pre">inputN</span></code> and
+a simple query will look like <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">input1</span></code>.</p>
+<p>Beside a simple query, you can add expressions or variables within the
+<code class="docutils literal notranslate"><span class="pre">SQL</span> <span class="pre">query</span></code> parameter itself. This is particulary useful if this algorithm is
+executed within a Processing model and you want to use a model input as a
+parameter of the query. An example of a query will then be <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span>
+<span class="pre">[%</span> <span class="pre">&#64;table</span> <span class="pre">%]</span></code> where <code class="docutils literal notranslate"><span class="pre">&#64;table</span></code> is the variable that identifies the model input.</p>
+<p>The result of the query will be added as a new layer.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="database.html#qgisspatialiteexecutesql"><span class="std std-ref">SpatiaLite execute SQL</span></a>,
+<a class="reference internal" href="database.html#qgispostgisexecutesql"><span class="std std-ref">PostgreSQL execute SQL</span></a></p>
+</div>
+<section id="id31">
+<h3><span class="section-number">25.1.15.12.1. </span>Parameters<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Additional input datasources (called input1, .., inputN in the query)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_DATASOURCES</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>List of layers to query. In the SQL editor you can
+refer these layers with their <strong>real</strong> name or also
+with <strong>input1</strong>, <strong>input2</strong>, <strong>inputN</strong> depending
+on how many layers have been chosen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SQL query</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_QUERY</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Type the string of your SQL query, e.g.
+<code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">input1</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Unique identifier field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_UID_FIELD</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Specify the column with unique ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Geometry field</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_GEOMETRY_FIELD</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Specify the geometry field</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Geometry type</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_GEOMETRY_TYPE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Choose the geometry of the result.
+By default the algorithm will autodetect it.
+One of:</p>
+<ul class="simple">
+<li><p>0 — Autodetect</p></li>
+<li><p>1 — No geometry</p></li>
+<li><p>2 — Point</p></li>
+<li><p>3 — LineString</p></li>
+<li><p>4 — Polygon</p></li>
+<li><p>5 — MultiPoint</p></li>
+<li><p>6 — MultiLineString</p></li>
+<li><p>7 — MultiPolygon</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>CRS</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_GEOMETRY_CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>The CRS to assign to the output layer</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SQL Output</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: any]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output layer created by the query. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id32">
+<h3><span class="section-number">25.1.15.12.2. </span>Outputs<a class="headerlink" href="#id32" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SQL Output</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer created by the query</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id33">
+<h3><span class="section-number">25.1.15.12.3. </span>Python code<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:executesql</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="export-layers-to-dxf">
+<span id="qgisdxfexport"></span><h2><a class="toc-backref" href="#id104"><span class="section-number">25.1.15.13. </span>Export layers to DXF</a><a class="headerlink" href="#export-layers-to-dxf" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">in</span> <span class="pre">3.18</span></code></p>
+<p>Exports layers to DXF file. For each layer, you can choose a field whose values
+are used to split features in generated destination layers in DXF output.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../../managing_data_source/create_layers.html#create-dxf-files"><span class="std std-ref">Creating new DXF files</span></a></p>
+</div>
+<section id="id34">
+<h3><span class="section-number">25.1.15.13.1. </span>Parameters<a class="headerlink" href="#id34" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYERS</span></code></p></td>
+<td><p>[vector: any][list]</p></td>
+<td><p>Input vector layers to export</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Symbology mode</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SYMBOLOGY_MODE</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 0</p>
+</td>
+<td><p>Type of symbology to apply to output layers. You can choose between:</p>
+<ul class="simple">
+<li><p>0 — No Symbology</p></li>
+<li><p>1 — Feature Symbology</p></li>
+<li><p>2 — Symbol Layer Symbology</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Symbology scale</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SYMBOLOGY_SCALE</span></code></p></td>
+<td><p>[scale]</p>
+<p>Default: 1:1 000 000</p>
+</td>
+<td><p>Default scale of data export.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Encoding</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></p></td>
+<td><p>[enumeration]</p></td>
+<td><p>Encoding to apply to layers.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>Choose the CRS for the output layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use layer title as name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">USE_LAYER_TITLE</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Name the output layer with the layer title (as set in QGIS) instead
+of the layer name.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Force 2D</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FORCE_2D</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Export labels as MTEXT elements</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MTEXT</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Exports labels as MTEXT or TEXT elements</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>DXF</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[file]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specification of the output DXF file.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id35">
+<h3><span class="section-number">25.1.15.13.2. </span>Outputs<a class="headerlink" href="#id35" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DXF</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p><code class="file docutils literal notranslate"><span class="pre">.DXF</span></code> file containing the input layers</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id36">
+<h3><span class="section-number">25.1.15.13.3. </span>Python code<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:dxfexport</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="extract-selected-features">
+<span id="qgissaveselectedfeatures"></span><h2><a class="toc-backref" href="#id105"><span class="section-number">25.1.15.14. </span>Extract selected features</a><a class="headerlink" href="#extract-selected-features" title="Permalink to this headline"></a></h2>
+<p>Saves the selected features as a new layer.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the selected layer has no selected features, the newly
+created layer will be empty.</p>
+</div>
+<section id="id37">
+<h3><span class="section-number">25.1.15.14.1. </span>Parameters<a class="headerlink" href="#id37" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer to save the selection from</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Selected features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the vector layer for the selected features.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id38">
+<h3><span class="section-number">25.1.15.14.2. </span>Outputs<a class="headerlink" href="#id38" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Selected features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer with only the selected features,
+or no feature if none was selected.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id39">
+<h3><span class="section-number">25.1.15.14.3. </span>Python code<a class="headerlink" href="#id39" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:saveselectedfeatures</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="extract-shapefile-encoding">
+<span id="qgisshpencodinginfo"></span><h2><a class="toc-backref" href="#id106"><span class="section-number">25.1.15.15. </span>Extract Shapefile encoding</a><a class="headerlink" href="#extract-shapefile-encoding" title="Permalink to this headline"></a></h2>
+<p>Extracts the attribute encoding information embedded in a Shapefile.
+Both the encoding specified by an optional <code class="file docutils literal notranslate"><span class="pre">.cpg</span></code> file and
+any encoding details present in the <code class="file docutils literal notranslate"><span class="pre">.dbf</span></code> LDID header block are considered.</p>
+<section id="id40">
+<h3><span class="section-number">25.1.15.15.1. </span>Parameters<a class="headerlink" href="#id40" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>ESRI Shapefile (<code class="file docutils literal notranslate"><span class="pre">.SHP</span></code>) Layer to extract the encoding information.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id41">
+<h3><span class="section-number">25.1.15.15.2. </span>Outputs<a class="headerlink" href="#id41" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Shapefile encoding</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Encoding information specified in the input file</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CPG encoding</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CPG_ENCODING</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Encoding information specified in any optional <code class="file docutils literal notranslate"><span class="pre">.CPG</span></code> file</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>LDID encoding</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LDID_ENCODING</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Encoding information specified in <code class="file docutils literal notranslate"><span class="pre">.dbf</span></code> LDID header block</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id42">
+<h3><span class="section-number">25.1.15.15.3. </span>Python code<a class="headerlink" href="#id42" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:shpencodinginfo</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="find-projection">
+<span id="qgisfindprojection"></span><h2><a class="toc-backref" href="#id107"><span class="section-number">25.1.15.16. </span>Find projection</a><a class="headerlink" href="#find-projection" title="Permalink to this headline"></a></h2>
+<p>Creates a shortlist of candidate coordinate reference systems, for
+instance for a layer with an unknown projection.</p>
+<p>The area that the layer is expected to cover must be specified via the
+target area parameter.
+The coordinate reference system for this target area must be known to
+QGIS.</p>
+<p>The algorithm operates by testing the layer’s extent in every known
+reference system and then listing any for which the bounds would be
+near the target area if the layer was in this projection.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisassignprojection"><span class="std std-ref">Assign projection</span></a>,
+<a class="reference internal" href="#qgisdefinecurrentprojection"><span class="std std-ref">Define Shapefile projection</span></a>, <a class="reference internal" href="#qgisreprojectlayer"><span class="std std-ref">Reproject layer</span></a></p>
+</div>
+<section id="id43">
+<h3><span class="section-number">25.1.15.16.1. </span>Parameters<a class="headerlink" href="#id43" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer with unknown projection</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Target area for layer (xmin, xmax, ymin, ymax)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_AREA</span></code></p></td>
+<td><p>[extent]</p></td>
+<td><p>The area that the layer covers.
+The options for specifying the extent are:</p>
+<ul class="simple">
+<li><p>Use Canvas Extent</p></li>
+<li><p>Select Extent on Canvas</p></li>
+<li><p>Use Layer Extent</p></li>
+</ul>
+<p>It is also possible to provide the extent
+coordinates directly (xmin, xmax, ymin, ymax).</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>CRS candidates</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the table (geometryless layer) for the CRS
+suggestions (EPSG codes). One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id44">
+<h3><span class="section-number">25.1.15.16.2. </span>Outputs<a class="headerlink" href="#id44" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CRS candidates</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[table]</p></td>
+<td><p>A table with all the
+CRS (EPSG codes) of the matching criteria.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id45">
+<h3><span class="section-number">25.1.15.16.3. </span>Python code<a class="headerlink" href="#id45" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:findprojection</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="flatten-relationship">
+<span id="qgisflattenrelationships"></span><h2><a class="toc-backref" href="#id108"><span class="section-number">25.1.15.17. </span>Flatten relationship</a><a class="headerlink" href="#flatten-relationship" title="Permalink to this headline"></a></h2>
+<p>Flattens a <a class="reference internal" href="../../working_with_vector/attribute_table.html#vector-relations"><span class="std std-ref">relationship</span></a> for a vector layer,
+exporting a single layer containing one parent feature per
+related child feature. This master feature contains all the
+attributes for the related features.
+This allows to have the relation as a plain table that can be e.g. exported to CSV.</p>
+<figure class="align-center" id="id91">
+<a class="reference internal image-reference" href="../../../../_images/flatten_relationship.png"><img alt="../../../../_images/flatten_relationship.png" src="../../../../_images/flatten_relationship.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25.44 </span><span class="caption-text">Form of a region with related children (left) - A duplicate region feature for each related child, with joined attributes (right)</span><a class="headerlink" href="#id91" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="id46">
+<h3><span class="section-number">25.1.15.17.1. </span>Parameters<a class="headerlink" href="#id46" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer with the relationship that should be de-normalized</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Flattened Layer</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output (flattened) layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id47">
+<h3><span class="section-number">25.1.15.17.2. </span>Outputs<a class="headerlink" href="#id47" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Flattened layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>A layer containing master features
+with all the attributes for the related features</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id48">
+<h3><span class="section-number">25.1.15.17.3. </span>Python code<a class="headerlink" href="#id48" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:flattenrelationships</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="join-attributes-by-field-value">
+<span id="qgisjoinattributestable"></span><h2><a class="toc-backref" href="#id109"><span class="section-number">25.1.15.18. </span>Join attributes by field value</a><a class="headerlink" href="#join-attributes-by-field-value" title="Permalink to this headline"></a></h2>
+<p>Takes an input vector layer and creates a new vector layer that is an
+extended version of the input one, with additional attributes in its
+attribute table.</p>
+<p>The additional attributes and their values are taken from a second
+vector layer.
+An attribute is selected in each of them to define the join criteria.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a>,
+<a class="reference internal" href="#qgisjoinattributesbylocation"><span class="std std-ref">Join attributes by location</span></a></p>
+</div>
+<section id="id49">
+<h3><span class="section-number">25.1.15.18.1. </span>Parameters<a class="headerlink" href="#id49" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer. The output layer will consist of
+the features of this layer with attributes from
+matching features in the second layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Table field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field of the source layer to use for the join</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Input layer 2</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_2</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Layer with the attribute table to join</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Table field 2</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD_2</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field of the second (join) layer to use for the join
+The type of the field must be equal to (or compatible with)
+the input table field type.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Layer 2 fields to copy</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELDS_TO_COPY</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Select the specific fields you want to add.
+By default all the fields are added.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Join type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METHOD</span></code></p></td>
+<td><p>[enumeration]</p>
+<p>Default: 1</p>
+</td>
+<td><p>The type of the final joined layer. One of:</p>
+<ul class="simple">
+<li><p>0 — Create separate feature for each matching feature
+(one-to-many)</p></li>
+<li><p>1 — Take attributes of the first matching feature only
+(one-to-one)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Discard records which could not be joined</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISCARD_NONMATCHING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>Check if you don’t want to keep the features that could not be
+joined</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Joined field prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to joined fields in order to easily identify
+them and avoid field name collision</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for the join.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unjoinable features from first layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for unjoinable
+features from first layer.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id50">
+<h3><span class="section-number">25.1.15.18.2. </span>Outputs<a class="headerlink" href="#id50" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Number of joined features from input table</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOINED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unjoinable features from first layer</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer with the non-matched features</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output vector layer with added attributes from the join</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of unjoinable features from input table</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNJOINABLE_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id51">
+<h3><span class="section-number">25.1.15.18.3. </span>Python code<a class="headerlink" href="#id51" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:joinattributestable</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="join-attributes-by-location">
+<span id="qgisjoinattributesbylocation"></span><h2><a class="toc-backref" href="#id110"><span class="section-number">25.1.15.19. </span>Join attributes by location</a><a class="headerlink" href="#join-attributes-by-location" title="Permalink to this headline"></a></h2>
+<p>Takes an input vector layer and creates a new vector layer that is an
+extended version of the input one, with additional attributes in its
+attribute table.</p>
+<p>The additional attributes and their values are taken from a second
+vector layer.
+A spatial criteria is applied to select the values from the second
+layer that are added to each feature from the first layer.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Data Management Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisjoinbynearest"><span class="std std-ref">Join attributes by nearest</span></a>,
+<a class="reference internal" href="#qgisjoinattributestable"><span class="std std-ref">Join attributes by field value</span></a>, <a class="reference internal" href="#qgisjoinbylocationsummary"><span class="std std-ref">Join attributes by location (summary)</span></a></p>
+</div>
+<section id="id52">
+<h3><span class="section-number">25.1.15.19.1. </span>Parameters<a class="headerlink" href="#id52" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer. The output layer will consist of
+the features of this layer with attributes from
+matching features in the second layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Join layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The attributes of this vector layer will be <strong>added</strong>
+to the source layer attribute table.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Geometric predicate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PREDICATE</span></code></p></td>
+<td><p>[enumeration] [list]</p>
+<p>Default: [0]</p>
+</td>
+<td><p>Select the geometric criteria. One or more of:</p>
+<ul class="simple">
+<li><p>0 — intersects</p></li>
+<li><p>1 — contains</p></li>
+<li><p>2 — equals</p></li>
+<li><p>3 — touches</p></li>
+<li><p>4 — overlaps</p></li>
+<li><p>5 — within</p></li>
+<li><p>6 — crosses</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fields to add (leave empty to use all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOIN_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Select the specific fields you want to add.
+By default all the fields are added.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Join type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">METHOD</span></code></p></td>
+<td><p>[enumeration]</p></td>
+<td><p>The type of the final joined layer. One of:</p>
+<ul class="simple">
+<li><p>0 — Create separate feature for each matching feature
+(one-to-many)</p></li>
+<li><p>1 — Take attributes of the first matching feature only
+(one-to-one)</p></li>
+<li><p>2 — Take attributes of the feature with largest overlap
+only (one-to-one)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Discard records which could not be joined</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISCARD_NONMATCHING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Remove from the output the input layer records which could not
+be joined</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined field prefix</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Add a prefix to joined fields in order to easily identify
+them and avoid field name collision</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for the join.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Unjoinable features from first layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for unjoinable
+features from first layer.
+One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id53">
+<h3><span class="section-number">25.1.15.19.2. </span>Outputs<a class="headerlink" href="#id53" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Number of joined features from input table</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOINED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unjoinable features from first layer</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer of the non-matched features</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output vector layer with added attributes from the join</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id54">
+<h3><span class="section-number">25.1.15.19.3. </span>Python code<a class="headerlink" href="#id54" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:joinattributesbylocation</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="join-attributes-by-location-summary">
+<span id="qgisjoinbylocationsummary"></span><h2><a class="toc-backref" href="#id111"><span class="section-number">25.1.15.20. </span>Join attributes by location (summary)</a><a class="headerlink" href="#join-attributes-by-location-summary" title="Permalink to this headline"></a></h2>
+<p>Takes an input vector layer and creates a new vector layer that is an
+extended version of the input one, with additional attributes in its
+attribute table.</p>
+<p>The additional attributes and their values are taken from a second
+vector layer.
+A spatial criteria is applied to select the values from the second
+layer that are added to each feature from the first layer.</p>
+<p>The algorithm calculates a statistical summary for the values from
+matching features in the second layer (e.g. maximum value, mean value,
+etc).</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisjoinattributesbylocation"><span class="std std-ref">Join attributes by location</span></a></p>
+</div>
+<section id="id55">
+<h3><span class="section-number">25.1.15.20.1. </span>Parameters<a class="headerlink" href="#id55" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer. The output layer will consist of
+the features of this layer with attributes from
+matching features in the second layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Join layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The attributes of this vector layer will be <strong>added</strong>
+to the source layer attribute table.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Geometric predicate</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PREDICATE</span></code></p></td>
+<td><p>[enumeration] [list]</p>
+<p>Default: [0]</p>
+</td>
+<td><p>Select the geometric criteria. One or more of:</p>
+<ul class="simple">
+<li><p>0 — intersects</p></li>
+<li><p>1 — contains</p></li>
+<li><p>2 — equals</p></li>
+<li><p>3 — touches</p></li>
+<li><p>4 — overlaps</p></li>
+<li><p>5 — within</p></li>
+<li><p>6 — crosses</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fields to summarize (leave empty to use all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOIN_FIELDS</span></code></p></td>
+<td><p>[tablefield: any] [list]</p></td>
+<td><p>Select the specific fields you want to add and summarize.
+By default all the fields are added.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Summaries to calculate (leave empty to use all fields)</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SUMMARIES</span></code></p></td>
+<td><p>[enumeration] [list]</p>
+<p>Default: []</p>
+</td>
+<td><p>Choose which type of summary you want to add to
+each field and for each feature. One or more of:</p>
+<ul class="simple">
+<li><p>0 — count</p></li>
+<li><p>1 — unique</p></li>
+<li><p>2 — min</p></li>
+<li><p>3 — max</p></li>
+<li><p>4 — range</p></li>
+<li><p>5 — sum</p></li>
+<li><p>6 — mean</p></li>
+<li><p>7 — median</p></li>
+<li><p>8 — stddev</p></li>
+<li><p>9 — minority</p></li>
+<li><p>10 — majority</p></li>
+<li><p>11 — q1</p></li>
+<li><p>12 — q3</p></li>
+<li><p>13 — iqr</p></li>
+<li><p>14 — empty</p></li>
+<li><p>15 — filled</p></li>
+<li><p>16 — min_length</p></li>
+<li><p>17 — max_length</p></li>
+<li><p>18 — mean_length</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Discard records which could not be joined</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISCARD_NONMATCHING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Remove from the output the input layer records which could not be joined</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer for the join.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id56">
+<h3><span class="section-number">25.1.15.20.2. </span>Outputs<a class="headerlink" href="#id56" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output vector layer with summarized attributes from the join</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id57">
+<h3><span class="section-number">25.1.15.20.3. </span>Python code<a class="headerlink" href="#id57" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">qgis:joinbylocationsummary</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="join-attributes-by-nearest">
+<span id="qgisjoinbynearest"></span><h2><a class="toc-backref" href="#id112"><span class="section-number">25.1.15.21. </span>Join attributes by nearest</a><a class="headerlink" href="#join-attributes-by-nearest" title="Permalink to this headline"></a></h2>
+<p>Takes an input vector layer and creates a new vector
+layer with additional fields in its attribute table.
+The additional attributes and their values are taken from a second
+vector layer.
+Features are joined by finding the closest features from each layer.</p>
+<p>By default only the nearest feature is joined, but the join can also
+join to the k-nearest neighboring features.</p>
+<p>If a maximum distance is specified, only features which are closer
+than this distance will be matched.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="vectoranalysis.html#qgisnearestneighbouranalysis"><span class="std std-ref">Nearest neighbour analysis</span></a>,
+<a class="reference internal" href="#qgisjoinattributestable"><span class="std std-ref">Join attributes by field value</span></a>,
+<a class="reference internal" href="#qgisjoinattributesbylocation"><span class="std std-ref">Join attributes by location</span></a>, <a class="reference internal" href="vectoranalysis.html#qgisdistancematrix"><span class="std std-ref">Distance matrix</span></a></p>
+</div>
+<section id="id58">
+<h3><span class="section-number">25.1.15.21.1. </span>Parameters<a class="headerlink" href="#id58" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Input layer 2</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT_2</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The join layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Layer 2 fields to copy (leave empty to copy all fields)</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELDS_TO_COPY</span></code></p></td>
+<td><p>[fields]</p></td>
+<td><p>Join layer fields to copy (if empty, all fields will be
+copied).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Discard records which could not be joined</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DISCARD_NONMATCHING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>Remove from the output the input layer records which could not
+be joined</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Joined field prefix</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Joined field prefix</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Maximum nearest neighbors</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NEIGHBORS</span></code></p></td>
+<td><p>[number]</p>
+<p>Default: 1</p>
+</td>
+<td><p>Maximum number of nearest neighbors</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Maximum distance</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MAX_DISTANCE</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Maximum search distance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the vector layer containing the joined features.
+One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><strong>Unjoinable features from first layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Skip</span> <span class="pre">output]</span></code></p>
+</td>
+<td><p>Specify the vector layer containing the features that could
+not be joined. One of:</p>
+<ul class="simple">
+<li><p>Skip Output</p></li>
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id59">
+<h3><span class="section-number">25.1.15.21.2. </span>Outputs<a class="headerlink" href="#id59" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Joined layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output joined layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unjoinable features from first layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NON_MATCHING</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Layer containing the features from first layer that
+could not be joined to any features in the join layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Number of joined features from input table</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">JOINED_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Number of features from the input table that have been
+joined.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Number of unjoinable features from input table</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UNJOINABLE_COUNT</span></code></p></td>
+<td><p>[number]</p></td>
+<td><p>Number of features from the input table that could not
+be joined.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id60">
+<h3><span class="section-number">25.1.15.21.3. </span>Python code<a class="headerlink" href="#id60" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:joinbynearest</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="merge-vector-layers">
+<span id="qgismergevectorlayers"></span><h2><a class="toc-backref" href="#id113"><span class="section-number">25.1.15.22. </span>Merge vector layers</a><a class="headerlink" href="#merge-vector-layers" title="Permalink to this headline"></a></h2>
+<p>Combines multiple vector layers of the <strong>same geometry</strong> type into a
+single one.</p>
+<p>The attribute table of the resulting layer will contain the fields from all
+input layers. If fields with the same name but different types are found then
+the exported field will be automatically converted into a string type field.
+New fields storing the original layer name and source are also added.</p>
+<p>If any input layers contain Z or M values, then the output layer will
+also contain these values.
+Similarly, if any of the input layers are multi-part, the output layer
+will also be a multi-part layer.</p>
+<p>Optionally, the destination coordinate reference system (CRS) for the
+merged layer can be set. If it is not set, the CRS will be taken from
+the first input layer.
+All layers will be reprojected to match this CRS.</p>
+<figure class="align-center">
+<img alt="../../../../_images/merge_vector_layers.png" src="../../../../_images/merge_vector_layers.png" />
+</figure>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Data Management Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgissplitvectorlayer"><span class="std std-ref">Split vector layer</span></a></p>
+</div>
+<section id="id61">
+<h3><span class="section-number">25.1.15.22.1. </span>Parameters<a class="headerlink" href="#id61" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYERS</span></code></p></td>
+<td><p>[vector: any] [list]</p></td>
+<td><p>The layers that are to be merged into a
+single layer.
+Layers should be of the same geometry type.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Destination CRS</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CRS</span></code></p></td>
+<td><p>[crs]</p></td>
+<td><p>Choose the CRS for the output layer.
+If not specified, the CRS of the first input
+layer is used.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Merged</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id62">
+<h3><span class="section-number">25.1.15.22.2. </span>Outputs<a class="headerlink" href="#id62" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Merged</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output vector layer containing all the
+features and attributes from the input layers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id63">
+<h3><span class="section-number">25.1.15.22.3. </span>Python code<a class="headerlink" href="#id63" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:mergevectorlayers</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="order-by-expression">
+<span id="qgisorderbyexpression"></span><h2><a class="toc-backref" href="#id114"><span class="section-number">25.1.15.23. </span>Order by expression</a><a class="headerlink" href="#order-by-expression" title="Permalink to this headline"></a></h2>
+<p>Sorts a vector layer according to an expression: changes the feature
+index according to an expression.</p>
+<p>Be careful, it might not work as expected with some providers, the
+order might not be kept every time.</p>
+<section id="id64">
+<h3><span class="section-number">25.1.15.23.1. </span>Parameters<a class="headerlink" href="#id64" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer to sort</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Expression</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EXPRESSION</span></code></p></td>
+<td><p>[expression]</p></td>
+<td><p>Expression to use for the sorting</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Sort ascending</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ASCENDING</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: True</p>
+</td>
+<td><p>If checked the vector layer will be sorted from
+small to large values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Sort nulls first</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NULLS_FIRST</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td><p>If checked, Null values are placed first</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Ordered</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id65">
+<h3><span class="section-number">25.1.15.23.2. </span>Outputs<a class="headerlink" href="#id65" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Ordered</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output (sorted) vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id66">
+<h3><span class="section-number">25.1.15.23.3. </span>Python code<a class="headerlink" href="#id66" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:orderbyexpression</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="repair-shapefile">
+<span id="qgisrepairshapefile"></span><h2><a class="toc-backref" href="#id115"><span class="section-number">25.1.15.24. </span>Repair Shapefile</a><a class="headerlink" href="#repair-shapefile" title="Permalink to this headline"></a></h2>
+<p>Repairs a broken ESRI Shapefile dataset by (re)creating the SHX file.</p>
+<section id="id67">
+<h3><span class="section-number">25.1.15.24.1. </span>Parameters<a class="headerlink" href="#id67" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Shapefile</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[file]</p></td>
+<td><p>Full path to the ESRI Shapefile dataset with a missing or
+broken SHX file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id68">
+<h3><span class="section-number">25.1.15.24.2. </span>Outputs<a class="headerlink" href="#id68" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Repaired layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>The input vector layer with the SHX file repaired</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id69">
+<h3><span class="section-number">25.1.15.24.3. </span>Python code<a class="headerlink" href="#id69" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:repairshapefile</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="reproject-layer">
+<span id="qgisreprojectlayer"></span><h2><a class="toc-backref" href="#id116"><span class="section-number">25.1.15.25. </span>Reproject layer</a><a class="headerlink" href="#reproject-layer" title="Permalink to this headline"></a></h2>
+<p>Reprojects a vector layer in a different CRS. The reprojected layer
+will have the same features and attributes of the input layer.</p>
+<p><a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a> Allows <a class="reference internal" href="../../working_with_vector/editing_geometry_attributes.html#processing-inplace-edit"><span class="std std-ref">features in-place modification</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgisassignprojection"><span class="std std-ref">Assign projection</span></a>,
+<a class="reference internal" href="#qgisdefinecurrentprojection"><span class="std std-ref">Define Shapefile projection</span></a>, <a class="reference internal" href="#qgisfindprojection"><span class="std std-ref">Find projection</span></a></p>
+</div>
+<section id="id70">
+<h3><span class="section-number">25.1.15.25.1. </span>Parameters<a class="headerlink" href="#id70" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer to reproject</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Target CRS</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TARGET_CRS</span></code></p></td>
+<td><p>[crs]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">EPSG:4326</span> <span class="pre">-</span> <span class="pre">WGS</span> <span class="pre">84</span></code></p>
+</td>
+<td><p>Destination coordinate reference system</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Coordinate Operation</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OPERATION</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Specific operation to use for a particular reprojection task, instead
+of always forcing use of the current project’s transformation settings.
+Useful when reprojecting a particular layer and control over the exact
+transformation pipeline is required. Requires proj version &gt;= 6.</p>
+<p>Read more at <a class="reference internal" href="../../working_with_projections/working_with_projections.html#datum-transformation"><span class="std std-ref">Datum Transformations</span></a>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><strong>Reprojected</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Create</span> <span class="pre">temporary</span> <span class="pre">layer]</span></code></p>
+</td>
+<td><p>Specify the output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id71">
+<h3><span class="section-number">25.1.15.25.2. </span>Outputs<a class="headerlink" href="#id71" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Reprojected</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Output (reprojected) vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id72">
+<h3><span class="section-number">25.1.15.25.3. </span>Python code<a class="headerlink" href="#id72" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:reprojectlayer</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="save-vector-features-to-file">
+<span id="qgissavefeatures"></span><h2><a class="toc-backref" href="#id117"><span class="section-number">25.1.15.26. </span>Save vector features to file</a><a class="headerlink" href="#save-vector-features-to-file" title="Permalink to this headline"></a></h2>
+<p>Saves vector features to a specified file dataset.</p>
+<p>For dataset formats supporting layers, an optional layer name parameter
+can be used to specify a custom string. Optional GDAL-defined dataset and
+layer options can be specified. For more information on this, read the online
+<a class="reference external" href="https://gdal.org/drivers/vector/index.html">GDAL documentation</a> on the format.</p>
+<section id="id73">
+<h3><span class="section-number">25.1.15.26.1. </span>Parameters<a class="headerlink" href="#id73" title="Permalink to this headline"></a></h3>
+<section id="basic-parameters">
+<h4><span class="section-number">25.1.15.26.1.1. </span>Basic parameters<a class="headerlink" href="#basic-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Vector features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Saved features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">file]</span></code></p>
+</td>
+<td><p>Specify the file to save the features to. One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary File</p></li>
+<li><p>Save to File…</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="advanced-parameters">
+<h4><span class="section-number">25.1.15.26.1.2. </span>Advanced parameters<a class="headerlink" href="#advanced-parameters" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Layer name</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYER_NAME</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Name to use for the output layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GDAL dataset options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DATASOURCE_OPTIONS</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>GDAL dataset creation options of the output format.
+Separate individual options with semicolons.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GDAL layer options</strong></p>
+<p>Optional</p>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYER_OPTIONS</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>GDAL layer creation options of the output format.
+Separate individual options with semicolons.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id74">
+<h3><span class="section-number">25.1.15.26.2. </span>Outputs<a class="headerlink" href="#id74" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Saved features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Vector layer with the saved features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>File name and path</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE_PATH</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Output file name and path.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Layer name</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LAYER_NAME</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Name of the layer, if any.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id75">
+<h3><span class="section-number">25.1.15.26.3. </span>Python code<a class="headerlink" href="#id75" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:savefeatures</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="set-layer-encoding">
+<span id="qgissetlayerencoding"></span><h2><a class="toc-backref" href="#id118"><span class="section-number">25.1.15.27. </span>Set layer encoding</a><a class="headerlink" href="#set-layer-encoding" title="Permalink to this headline"></a></h2>
+<p>Sets the encoding used for reading a layer’s attributes.
+No permanent changes are made to the layer, rather it affects only
+how the layer is read during the current session.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing the encoding is only supported for some vector layer data sources.</p>
+</div>
+<section id="id76">
+<h3><span class="section-number">25.1.15.27.1. </span>Parameters<a class="headerlink" href="#id76" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Saved features</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Vector layer to set the encoding.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Encoding</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Text encoding to assign to the layer in the current QGIS session.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id77">
+<h3><span class="section-number">25.1.15.27.2. </span>Outputs<a class="headerlink" href="#id77" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>Input vector layer with the set encoding.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id78">
+<h3><span class="section-number">25.1.15.27.3. </span>Python code<a class="headerlink" href="#id78" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:setlayerencoding</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="split-features-by-character">
+<span id="qgissplitfeaturesbycharacter"></span><h2><a class="toc-backref" href="#id119"><span class="section-number">25.1.15.28. </span>Split features by character</a><a class="headerlink" href="#split-features-by-character" title="Permalink to this headline"></a></h2>
+<p>Features are split into multiple output features by splitting
+a field’s value at a specified character.
+For instance, if a layer contains features with multiple
+comma separated values contained in a single field, this
+algorithm can be used to split these values up across multiple
+output features.
+Geometries and other attributes remain unchanged in the output.
+Optionally, the separator string can be a regular expression
+for added flexibility.</p>
+<section id="id79">
+<h3><span class="section-number">25.1.15.28.1. </span>Parameters<a class="headerlink" href="#id79" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given longtable docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Split using values in the field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for splitting</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Split value using character</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CHAR</span></code></p></td>
+<td><p>[string]</p></td>
+<td><p>Character to use for splitting</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Use regular expression separator</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">REGEX</span></code></p></td>
+<td><p>[boolean]</p>
+<p>Default: False</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>Split</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">temporary</span> <span class="pre">layer</span></code></p>
+</td>
+<td><p>Specify output vector layer. One of:</p>
+<ul class="simple">
+<li><p>Create Temporary Layer (<code class="docutils literal notranslate"><span class="pre">TEMPORARY_OUTPUT</span></code>)</p></li>
+<li><p>Save to File…</p></li>
+<li><p>Save to Geopackage…</p></li>
+<li><p>Save to Database Table…</p></li>
+</ul>
+<p>The file encoding can also be changed here.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id80">
+<h3><span class="section-number">25.1.15.28.2. </span>Outputs<a class="headerlink" href="#id80" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Split</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[same as input]</p></td>
+<td><p>The output vector layer.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id81">
+<h3><span class="section-number">25.1.15.28.3. </span>Python code<a class="headerlink" href="#id81" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:splitfeaturesbycharacter</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="split-vector-layer">
+<span id="qgissplitvectorlayer"></span><h2><a class="toc-backref" href="#id120"><span class="section-number">25.1.15.29. </span>Split vector layer</a><a class="headerlink" href="#split-vector-layer" title="Permalink to this headline"></a></h2>
+<p>Creates a set of vectors in an output folder based on an input layer
+and an attribute.
+The output folder will contain as many layers as the unique values
+found in the desired field.</p>
+<p>The number of files generated is equal to the number of different
+values found for the specified attribute.</p>
+<p>It is the opposite operation of <em>merging</em>.</p>
+<p><strong>Default menu</strong>: <span class="menuselection">Vector ► Data Management Tools</span></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#qgismergevectorlayers"><span class="std std-ref">Merge vector layers</span></a></p>
+</div>
+<section id="id82">
+<h3><span class="section-number">25.1.15.29.1. </span>Parameters<a class="headerlink" href="#id82" title="Permalink to this headline"></a></h3>
+<section id="id83">
+<h4><span class="section-number">25.1.15.29.1.1. </span>Basic parameters<a class="headerlink" href="#id83" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Unique ID field</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FIELD</span></code></p></td>
+<td><p>[tablefield: any]</p></td>
+<td><p>Field to use for splitting</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Output directory</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[folder]</p>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">[Save</span> <span class="pre">to</span> <span class="pre">temporary</span> <span class="pre">folder]</span></code></p>
+</td>
+<td><p>Specify the directory for the output layers.
+One of:</p>
+<ul class="simple">
+<li><p>Save to a Temporary Directory</p></li>
+<li><p>Save to Directory</p></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id84">
+<h4><span class="section-number">25.1.15.29.1.2. </span>Advanced parameters<a class="headerlink" href="#id84" title="Permalink to this headline"></a></h4>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output file type</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FILE_TYPE</span></code></p></td>
+<td><p>[enumeration]</p></td>
+<td><p>Select the extension of the output files</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="id85">
+<h3><span class="section-number">25.1.15.29.2. </span>Outputs<a class="headerlink" href="#id85" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Output directory</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[folder]</p></td>
+<td><p>The directory for the output layers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Output layers</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT_LAYERS</span></code></p></td>
+<td><p>[same as input] [list]</p></td>
+<td><p>The output vector layers resulting from the split.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id86">
+<h3><span class="section-number">25.1.15.29.3. </span>Python code<a class="headerlink" href="#id86" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:splitvectorlayer</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+<section id="truncate-table">
+<span id="qgistruncatetable"></span><h2><a class="toc-backref" href="#id121"><span class="section-number">25.1.15.30. </span>Truncate table</a><a class="headerlink" href="#truncate-table" title="Permalink to this headline"></a></h2>
+<p>Truncates a layer, by deleting all features from within the layer.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This algorithm modifies the layer in place, and deleted
+features cannot be restored!</p>
+</div>
+<section id="id87">
+<h3><span class="section-number">25.1.15.30.1. </span>Parameters<a class="headerlink" href="#id87" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Input Layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">INPUT</span></code></p></td>
+<td><p>[vector: any]</p></td>
+<td><p>Input vector layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id88">
+<h3><span class="section-number">25.1.15.30.2. </span>Outputs<a class="headerlink" href="#id88" title="Permalink to this headline"></a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Label</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Truncated layer</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code></p></td>
+<td><p>[folder]</p></td>
+<td><p>The truncated (empty) layer</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id89">
+<h3><span class="section-number">25.1.15.30.3. </span>Python code<a class="headerlink" href="#id89" title="Permalink to this headline"></a></h3>
+<p><strong>Algorithm ID</strong>: <code class="docutils literal notranslate"><span class="pre">native:truncatetable</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">processing</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;algorithm_id&quot;</span><span class="p">,</span> <span class="p">{</span><span class="n">parameter_dictionary</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>The <em>algorithm id</em> is displayed when you hover over the algorithm in
+the Processing Toolbox.
+The <em>parameter dictionary</em> provides the parameter NAMEs and values.
+See <a class="reference internal" href="../../processing/console.html#processing-console"><span class="std std-ref">Using processing algorithms from the console</span></a> for details on how to run processing algorithms
+from the Python console.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vectorcreation.html" class="btn btn-neutral float-left" title="25.1.14. Vector creation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vectorgeometry.html" class="btn btn-neutral float-right" title="25.1.16. Vector geometry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing_algs/qgis/vectorgeneral.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing_algs/qgis/vectorgeneral.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

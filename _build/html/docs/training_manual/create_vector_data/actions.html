@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.4. Lesson: Actions &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/actions.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6. Module: Vector Analysis" href="../vector_analysis/index.html" />
+    <link rel="prev" title="5.3. Lesson: Forms" href="forms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/actions.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_classification/index.html">3. Module: Classifying Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">5. Module: Creating Vector Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="create_new_vector.html">5.1. Lesson: Creating a New Vector Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="topo_editing.html">5.2. Lesson: Feature Topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forms.html">5.3. Lesson: Forms</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">5.4. Lesson: Actions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-add-a-field-for-images">5.4.1.  Follow Along: Add a Field for Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-creating-an-action">5.4.2.  Follow Along: Creating an Action</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-searching-the-internet">5.4.3.  Follow Along: Searching the Internet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-open-a-webpage-directly-in-qgis">5.4.4.  Follow Along: Open a Webpage Directly in QGIS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">5.4.5. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">5.4.6. What’s Next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">5. </span>Module: Creating Vector Data</a> &raquo;</li>
+      <li><span class="section-number">5.4. </span>Lesson: Actions</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/create_vector_data/actions.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="forms.html" class="btn btn-neutral float-left" title="5.3. Lesson: Forms" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../vector_analysis/index.html" class="btn btn-neutral float-right" title="6. Module: Vector Analysis" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-actions">
+<h1><span class="section-number">5.4. </span>Lesson: Actions<a class="headerlink" href="#ls-actions" title="Permalink to this headline"></a></h1>
+<p>Now that you have seen a default action in the previous lesson, it is
+time to define your own actions.</p>
+<p>An action is something that happens when you click on a feature.
+It can add a lot of extra functionality to your map, allowing you to
+retrieve additional information about an object, for example.
+Assigning actions can add a whole new dimension to your map!</p>
+<p><strong>The goal for this lesson:</strong> To learn how to add custom actions.</p>
+<p>In this lesson you will use the <span class="guilabel">school_property</span> layer you
+created previously.
+The sample data include photos of each of the three properties you
+digitized.
+What we are going to do is to associate each property with its image.
+Then we will create an action that will open the image for a property
+when clicking on the property.</p>
+<section id="basic-fa-add-a-field-for-images">
+<h2><span class="section-number">5.4.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Add a Field for Images<a class="headerlink" href="#basic-fa-add-a-field-for-images" title="Permalink to this headline"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">school_property</span></code> layer has no way to associate an image with a
+property yet. First we will create a field for this purpose.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog.</p></li>
+<li><p>Click on the <span class="guilabel">Fields</span> tab.</p></li>
+<li><p>Toggle editing mode:</p>
+<figure class="align-center">
+<img alt="../../../_images/toggle_editing_mode.png" src="../../../_images/toggle_editing_mode.png" />
+</figure>
+</li>
+<li><p>Add a new column:</p>
+<figure class="align-center">
+<img alt="../../../_images/add_new_column.png" src="../../../_images/add_new_column.png" />
+</figure>
+</li>
+<li><p>Enter the values below:</p>
+<figure class="align-center">
+<img alt="../../../_images/column_settings.png" src="../../../_images/column_settings.png" />
+</figure>
+</li>
+<li><p>After the field has been created, move to the
+<span class="guilabel">Attributes Form</span> tab and select the <code class="docutils literal notranslate"><span class="pre">image</span></code> field.</p></li>
+<li><p>Set <span class="guilabel">Widget Type</span> to <span class="guilabel">Attachment</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/select_file_name.png" src="../../../_images/select_file_name.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span> in the <span class="guilabel">Layer Properties</span> dialog.</p></li>
+<li><p>Use the <span class="guilabel">Identify</span> tool to click on one of the three
+features in the <span class="guilabel">school_property</span> layer.</p>
+<p>Since you are still in edit mode, the dialog should be active and
+look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/school_property_no_image.png" src="../../../_images/school_property_no_image.png" />
+</figure>
+</li>
+<li><p>Click on the browse button (the <span class="guilabel">…</span> next to the
+<span class="guilabel">image</span> field).</p></li>
+<li><p>Select the path for your image. The images are in
+<code class="file docutils literal notranslate"><span class="pre">exercise_data/school_property_photos/</span></code> and are named the
+same as the features they should be associated with.</p></li>
+<li><p>Click <span class="guilabel">OK</span>.</p></li>
+<li><p>Associate all of the images with the correct features using this
+method.</p></li>
+<li><p>Save your edits and exit edit mode.</p></li>
+</ol>
+</section>
+<section id="basic-fa-creating-an-action">
+<h2><span class="section-number">5.4.2. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Creating an Action<a class="headerlink" href="#basic-fa-creating-an-action" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Actions</span> tab for the
+<span class="guilabel">school_property</span> layer, and click on the
+<a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add a new action</sup> button.</p>
+<figure class="align-center">
+<img alt="../../../_images/layer_actions.png" src="../../../_images/layer_actions.png" />
+</figure>
+</li>
+<li><p>In the <span class="guilabel">Add New Action</span> dialog, enter the words
+<code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Image</span></code> into the <span class="guilabel">Description</span> field:</p>
+<figure class="align-center">
+<img alt="../../../_images/show_image_action.png" src="../../../_images/show_image_action.png" />
+</figure>
+<p>What to do next varies according to your operating system, so
+choose the appropriate course to follow:</p>
+<ul>
+<li><p>Windows</p>
+<p>Click on the <span class="guilabel">Type</span> dropdown and choose
+<span class="guilabel">Open</span>.</p>
+</li>
+<li><p>Ubuntu Linux</p>
+<p>Under <span class="guilabel">Action</span>, write <code class="docutils literal notranslate"><span class="pre">eog</span></code> for the
+<em>Gnome Image Viewer</em>, or write <code class="docutils literal notranslate"><span class="pre">display</span></code> to use
+<em>ImageMagick</em>.
+Remember to put a space after the command!</p>
+</li>
+<li><p>MacOS</p>
+<ol class="arabic simple">
+<li><p>Click on the <span class="guilabel">Type</span> dropdown and choose
+<span class="guilabel">Mac</span>.</p></li>
+<li><p>Under <span class="guilabel">Action</span>, write <code class="docutils literal notranslate"><span class="pre">open</span></code>.
+Remember to put a space after the command!</p></li>
+</ol>
+</li>
+</ul>
+<p>Now you can continue writing the command.</p>
+<p>You want to open the image, and QGIS knows where the image is.
+All it needs to do is to tell the <span class="guilabel">Action</span> where the
+image is.</p>
+</li>
+<li><p>Select <span class="guilabel">image</span> from the list:</p>
+<figure class="align-center">
+<img alt="../../../_images/select_image.png" src="../../../_images/select_image.png" />
+</figure>
+</li>
+<li><p>Click the <span class="guilabel">Insert field</span> button.
+QGIS will add the phrase <code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">&quot;image&quot;</span> <span class="pre">%]</span></code> in the
+<span class="guilabel">Action Text</span> field.</p></li>
+<li><p>Click the <span class="guilabel">OK</span> button to close the
+<span class="guilabel">Add New Action</span> dialog</p></li>
+<li><p>Click <span class="guilabel">OK</span> to close the <span class="guilabel">Layer Properties</span>
+dialog</p></li>
+</ol>
+<p>Now it is time to test the new action:</p>
+<ol class="arabic">
+<li><p>Click on the <span class="guilabel">school_property</span> layer in the
+<span class="guilabel">Layers</span> panel so that it is highlighted.</p></li>
+<li><p>Find the <a class="reference internal" href="../../../_images/mAction.png"><img alt="actionRun" src="../../../_images/mAction.png" style="width: 1.5em;" /></a> <sup>Run feature action</sup> button (in the
+<span class="guilabel">Attributes Toolbar</span>).</p></li>
+<li><p>Click on the down arrow to the right of this button.
+There is only one action defined for this layer so far, which is
+the one you just created.</p>
+<figure class="align-center">
+<img alt="../../../_images/run_feature_action_select.png" src="../../../_images/run_feature_action_select.png" />
+</figure>
+</li>
+<li><p>Click the button itself to activate the tool.</p></li>
+<li><p>Using this tool, click on any of the three school properties.</p>
+<p>The image for that property should open.</p>
+</li>
+</ol>
+</section>
+<section id="moderate-fa-searching-the-internet">
+<h2><span class="section-number">5.4.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Searching the Internet<a class="headerlink" href="#moderate-fa-searching-the-internet" title="Permalink to this headline"></a></h2>
+<p>Let’s say we are looking at the map and want to know more about the area that a
+farm is in. Suppose you know nothing of the area in question and want to find
+general information about it. Your first impulse, considering that you’re using
+a computer right now, would probably be to Google the name of the area. So
+let’s tell QGIS to do that automatically for us!</p>
+<ol class="arabic">
+<li><p>Open the attribute table for the <span class="guilabel">landuse</span> layer.</p>
+<p>We will be using the <code class="docutils literal notranslate"><span class="pre">name</span></code> field for each of our landuse
+areas to search Google.</p>
+</li>
+<li><p>Close the attribute table.</p></li>
+<li><p>Go back to <span class="guilabel">Actions</span> in <span class="guilabel">Layer Properties</span>.</p></li>
+<li><p>Click on the <span class="guilabel">Create Default Actions</span> button to add a
+number of pre-defined actions.</p></li>
+<li><p>Remove all the actions but the <span class="guilabel">Open URL</span> action with
+the short name <span class="guilabel">Search Web</span> using the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a>
+<sup>Remove the selected action</sup> button below.</p></li>
+<li><p>Double-click on the remaining action to edit it</p></li>
+<li><p>Change the <span class="guilabel">Description</span> to <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Search</span></code>, and
+remove the content of the <span class="guilabel">Short Name</span> field.</p></li>
+<li><p>Make sure that <span class="guilabel">Canvas</span> is among the
+checked <span class="guilabel">Action scopes</span>.</p>
+<p>What to do next varies according to your operating system, so
+choose the appropriate course to follow:</p>
+<ul>
+<li><p>Windows</p>
+<p>Under <span class="guilabel">Type</span>, choose <span class="guilabel">Open</span>.
+This will tell Windows to open an Internet address in your
+default browser, such as Internet Explorer.</p>
+</li>
+<li><p>Ubuntu Linux</p>
+<p>Under <span class="guilabel">Action</span>, write <code class="docutils literal notranslate"><span class="pre">xdg-open</span></code>.
+This will tell Ubuntu to open an Internet address in your
+default browser, such as Chrome or Firefox.</p>
+</li>
+<li><p>MacOS</p>
+<p>Under <span class="guilabel">Action</span>, write <code class="docutils literal notranslate"><span class="pre">open</span></code>.
+This will tell MacOS to open an Internet address in your default
+browser, such as Safari.</p>
+</li>
+</ul>
+<p>Now you can continue writing the command</p>
+<p>Whichever command you used above, you need to tell it which
+Internet address to open next.
+You want it to visit Google, and to search for a phrase
+automatically.</p>
+<p>Usually when you use Google, you enter your search phrase into the
+Google Search bar.
+But in this case, you want your computer to do this for you.
+The way you tell Google to search for something (if you don’t want
+to use its search bar directly) is by giving your Internet browser
+the address
+<code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=SEARCH_PHRASE</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">SEARCH_PHRASE`</span></code> is what you want to search for.
+Since we don’t know what phrase to search for yet, we will just
+enter the first part (without the search phrase).</p>
+</li>
+<li><p>In the <span class="guilabel">Action</span> field, write
+<code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=</span></code>.
+Remember to add a space after your initial command before writing
+this in!</p>
+<p>Now you want QGIS to tell the browser to tell Google to search for
+the value of <code class="docutils literal notranslate"><span class="pre">name</span></code> for any feature that you could click on.</p>
+</li>
+<li><p>Select the <span class="guilabel">name</span> field.</p></li>
+<li><p>Click <span class="guilabel">Insert</span> button:</p>
+<figure class="align-center">
+<img alt="../../../_images/google_search_action.png" src="../../../_images/google_search_action.png" />
+</figure>
+<p>What this means is that QGIS is going to open the browser and send
+it to the address
+<code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=[%</span> <span class="pre">&quot;name&quot;</span> <span class="pre">%]</span></code>.
+<code class="docutils literal notranslate"><span class="pre">[%</span> <span class="pre">&quot;name&quot;</span> <span class="pre">%]</span></code> tells QGIS to use the contents of the <code class="docutils literal notranslate"><span class="pre">name</span></code>
+field as the phrase to search for.</p>
+<p>So if, for example, the landuse area you click on is named
+<code class="docutils literal notranslate"><span class="pre">Marloth</span> <span class="pre">Nature</span> <span class="pre">Reserve</span></code>, QGIS is going to send the browser
+to <code class="docutils literal notranslate"><span class="pre">https://www.google.com/search?q=Marloth%20Nature%20Reserve</span></code>,
+which will cause your browser to visit Google, which will in turn
+search for “Marloth Nature Reserve”.</p>
+</li>
+<li><p>If you have not done so already, set everything up as explained
+above.</p></li>
+<li><p>Click the <span class="guilabel">OK</span> button to close the
+<span class="guilabel">Add New Action</span> dialog</p></li>
+<li><p>Click <span class="guilabel">OK</span> to close the <span class="guilabel">Layer Properties</span>
+dialog</p></li>
+</ol>
+<p>Now to test the new action.</p>
+<ol class="arabic simple">
+<li><p>With the <span class="guilabel">landuse</span> layer active in the
+<span class="guilabel">Layers</span> panel, click on the down arrow to the right of
+the <a class="reference internal" href="../../../_images/mAction.png"><img alt="actionRun" src="../../../_images/mAction.png" style="width: 1.5em;" /></a> <sup>Run feature action</sup> button, and select the
+only action (<code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Search</span></code>) defined for this layer.</p></li>
+<li><p>Click on any landuse area you can see on the map.
+Your browser will now open, and will start a Google search for the
+place that is recorded as that area’s <code class="docutils literal notranslate"><span class="pre">name</span></code> value.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your action doesn’t work, check that everything was
+entered correctly; typos are common with this kind of work!</p>
+</div>
+</section>
+<section id="hard-fa-open-a-webpage-directly-in-qgis">
+<h2><span class="section-number">5.4.4. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Open a Webpage Directly in QGIS<a class="headerlink" href="#hard-fa-open-a-webpage-directly-in-qgis" title="Permalink to this headline"></a></h2>
+<p>Above, you’ve seen how to open a webpage in an external browser. There are some
+shortcomings with this approach in that it adds an unknowable dependency – will
+the end-user have the software required to execute the action on their system?
+As you’ve seen, they don’t necessarily even have the same kind of base command
+for the same kind of action, if you don’t know which OS they will be using. With
+some OS versions, the above commands to open the browser might not work at all.
+This could be an insurmountable problem.</p>
+<p>However, QGIS sits on top of the incredibly powerful and versatile Qt library.
+Also, QGIS actions can be arbitrary, tokenized (i.e. using variable information
+based on the contents of a field attribute) Python commands!</p>
+<p>Now you will see how to use a python action to show a web page.
+It is the same general idea as opening a site in an external browser,
+but it requires no browser on the user’s system since it uses the Qt
+QWebView class (which is a webkit based html widget) to display the
+content in a pop-up window.</p>
+<p>Let us use Wikipedia this time.
+So the URL you request will look like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://wikipedia.org/wiki/SEARCH_PHRASE</span></code></p>
+<p>To create the layer action:</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog and head over to the
+<span class="guilabel">Actions</span> tab.</p></li>
+<li><p>Set up a new action using the following properties for the action:</p>
+<ul>
+<li><p><span class="guilabel">Type</span>: <code class="docutils literal notranslate"><span class="pre">Python</span></code></p></li>
+<li><p><span class="guilabel">Description</span>: <code class="docutils literal notranslate"><span class="pre">Wikipedia</span></code></p></li>
+<li><p><span class="guilabel">Action Text</span> (all on one line):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span><span class="p">;</span> <span class="kn">from</span> <span class="nn">qgis.PyQt.QtWebKitWidgets</span> <span class="kn">import</span> <span class="n">QWebView</span><span class="p">;</span> <span class="n">myWV</span> <span class="o">=</span> <span class="n">QWebView</span><span class="p">(</span><span class="kc">None</span><span class="p">);</span> <span class="n">myWV</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s1">&#39;https://wikipedia.org/wiki/[%name%]&#39;</span><span class="p">));</span> <span class="n">myWV</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<figure class="align-center">
+<img alt="../../../_images/python_action_example.png" src="../../../_images/python_action_example.png" />
+</figure>
+<p>There are a couple of things going on here:</p>
+<ul class="simple">
+<li><p>All the python code is in a single line with semi-colons
+separating commands (instead of newlines, the usual way of
+separating Python commands).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[%name%]</span></code> will be replaced by the actual attribute value
+when the action is invoked (as before).</p></li>
+<li><p>The code simply creates a new <code class="docutils literal notranslate"><span class="pre">QWebView</span></code> instance, sets its
+URL, and then calls <code class="docutils literal notranslate"><span class="pre">show()</span></code> on it to make it visible as a
+window on the user’s desktop.</p></li>
+</ul>
+<p>Note that this is a somewhat contrived example.
+Python works with semantically significant indentation, so
+separating things with semicolons isn’t the best way to write it.
+So, in the real world, you’d be more likely to import your logic
+from a Python module and then call a function with a field
+attribute as parameter.</p>
+<p>You could also use this approach to display an image without
+requiring that the users have a particular image viewer on their
+system.</p>
+</li>
+<li><p>Try to use the methods described above to load a Wikipedia page
+using the Wikipedia action you just created.</p></li>
+</ol>
+</section>
+<section id="ic">
+<h2><span class="section-number">5.4.5. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Actions allow you to give your map extra functionality, useful to the
+end-user who views the same map in QGIS.
+Due to the fact that you can use shell commands for any operating
+system, as well as Python, the sky is the limit in terms of the
+functions you could incorporate!</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">5.4.6. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now that you’ve done all kinds of vector data creation, you will
+learn how to analyze the data to solve problems.
+That is the topic of the next module.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="forms.html" class="btn btn-neutral float-left" title="5.3. Lesson: Forms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../vector_analysis/index.html" class="btn btn-neutral float-right" title="6. Module: Vector Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/actions.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/create_vector_data/actions.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/create_vector_data/actions.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/create_vector_data/actions.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/create_vector_data/actions.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/create_vector_data/actions.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/create_vector_data/actions.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/create_vector_data/actions.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/create_vector_data/actions.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/create_vector_data/actions.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/create_vector_data/actions.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/create_vector_data/actions.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/create_vector_data/actions.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/create_vector_data/actions.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19.1. Overview of the Print Layout &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/overview_composer.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="19.2. Layout Items" href="composer_items/index.html" />
+    <link rel="prev" title="19. Laying out the maps" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/overview_composer.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">19. Laying out the maps</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">19.1. Overview of the Print Layout</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sample-session-for-beginners">19.1.1. Sample Session for beginners</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-layout-manager">19.1.2. The Layout Manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#menus-tools-and-panels-of-the-print-layout">19.1.3. Menus, tools and panels of the print layout</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="composer_items/index.html">19.2. Layout Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_output.html">19.3. Creating an Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="create_reports.html">19.4. Creating a Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">19. </span>Laying out the maps</a> &raquo;</li>
+      <li><span class="section-number">19.1. </span>Overview of the Print Layout</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/print_composer/overview_composer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="19. Laying out the maps" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_items/index.html" class="btn btn-neutral float-right" title="19.2. Layout Items" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview-of-the-print-layout">
+<span id="overview-layout"></span><h1><span class="section-number">19.1. </span>Overview of the Print Layout<a class="headerlink" href="#overview-of-the-print-layout" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#sample-session-for-beginners" id="id10">Sample Session for beginners</a></p></li>
+<li><p><a class="reference internal" href="#the-layout-manager" id="id11">The Layout Manager</a></p></li>
+<li><p><a class="reference internal" href="#menus-tools-and-panels-of-the-print-layout" id="id12">Menus, tools and panels of the print layout</a></p>
+<ul>
+<li><p><a class="reference internal" href="#menus-and-tools" id="id13">Menus and Tools</a></p>
+<ul>
+<li><p><a class="reference internal" href="#layout-menu" id="id14">Layout menu</a></p></li>
+<li><p><a class="reference internal" href="#edit-menu" id="id15">Edit menu</a></p></li>
+<li><p><a class="reference internal" href="#view-menu" id="id16">View menu</a></p></li>
+<li><p><a class="reference internal" href="#items-menu" id="id17">Items menu</a></p></li>
+<li><p><a class="reference internal" href="#add-item-menu" id="id18">Add Item menu</a></p></li>
+<li><p><a class="reference internal" href="#atlas-menu" id="id19">Atlas menu</a></p></li>
+<li><p><a class="reference internal" href="#settings-menu" id="id20">Settings Menu</a></p></li>
+<li><p><a class="reference internal" href="#contextual-menus" id="id21">Contextual menus</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-layout-panel" id="id22">The Layout Panel</a></p>
+<ul>
+<li><p><a class="reference internal" href="#general-settings" id="id23">General settings</a></p></li>
+<li><p><a class="reference internal" href="#guides-and-grid" id="id24">Guides and Grid</a></p></li>
+<li><p><a class="reference internal" href="#export-settings" id="id25">Export settings</a></p></li>
+<li><p><a class="reference internal" href="#resize-layout-to-content" id="id26">Resize layout to content</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id27">Variables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#working-with-the-page-properties" id="id28">Working with the page properties</a></p>
+<ul>
+<li><p><a class="reference internal" href="#adding-a-new-page" id="id29">Adding a new page</a></p></li>
+<li><p><a class="reference internal" href="#updating-page-properties" id="id30">Updating page properties</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-guides-panel" id="id31">The Guides Panel</a></p></li>
+<li><p><a class="reference internal" href="#the-items-panel" id="id32">The Items Panel</a></p></li>
+<li><p><a class="reference internal" href="#the-undo-history-panel-revert-and-restore-actions" id="id33">The Undo History Panel: Revert and Restore actions</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>The print layout provides growing layout and printing capabilities. It allows
+you to add elements such as the QGIS map canvas, text labels, images, legends,
+scale bars, basic shapes, arrows, attribute tables and HTML frames. You can size,
+group, align, position and rotate each element and adjust their properties to
+create your layout. The layout can be printed or exported to image formats,
+PostScript, PDF or to SVG.
+You can save the layout as a template and load it again in another session.
+Finally, generating several maps based on a template can be done through the
+atlas generator.</p>
+<section id="sample-session-for-beginners">
+<span id="index-0"></span><h2><a class="toc-backref" href="#id10"><span class="section-number">19.1.1. </span>Sample Session for beginners</a><a class="headerlink" href="#sample-session-for-beginners" title="Permalink to this headline"></a></h2>
+<p>Before you start to work with the print layout, you need to load some raster
+or vector layers in the QGIS map canvas and adapt their properties to suit your
+own convenience. After everything is rendered and symbolized to your liking,
+click the <a class="reference internal" href="../../../_images/mActionNewLayout.png"><img alt="newLayout" src="../../../_images/mActionNewLayout.png" style="width: 1.5em;" /></a> <sup>New Print Layout</sup> icon in the toolbar or
+choose <span class="menuselection">File ► New Print Layout</span>. You will be prompted to
+choose a title for the new layout.</p>
+<p>To demonstrate how to create a map please follow the next instructions.</p>
+<ol class="arabic simple">
+<li><p>On the left side, select the <a class="reference internal" href="../../../_images/mActionAddMap.png"><img alt="addMap" src="../../../_images/mActionAddMap.png" style="width: 1.5em;" /></a> <sup>Add map</sup> toolbar button
+and draw a rectangle on the canvas holding down the left mouse button.
+Inside the drawn rectangle the QGIS map view to the canvas.</p></li>
+<li><p>Select the <a class="reference internal" href="../../../_images/mActionScaleBar.png"><img alt="scaleBar" src="../../../_images/mActionScaleBar.png" style="width: 1.5em;" /></a> <sup>Add scalebar</sup> toolbar button and click
+with the left mouse button on the print layout canvas. A scalebar will be
+added to the canvas.</p></li>
+<li><p>Select the <a class="reference internal" href="../../../_images/mActionAddLegend.png"><img alt="addLegend" src="../../../_images/mActionAddLegend.png" style="width: 1.5em;" /></a> <sup>Add legend</sup> toolbar button and draw a
+rectangle on the canvas holding down the left mouse button.
+Inside the drawn rectangle the legend will be drawn.</p></li>
+<li><p>Select the <a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move item</sup> icon to select the map on
+the canvas and move it a bit.</p></li>
+<li><p>While the map item is still selected you can also change the size of the map
+item. Click while holding down the left mouse button, in a white little
+rectangle in one of the corners of the map item and drag it to a new location
+to change its size.</p></li>
+<li><p>Click the <span class="guilabel">Item Properties</span> panel on the left down side and find
+the setting for the orientation. Change the value of the setting
+<span class="guilabel">Map orientation</span> to ‘15.00° ‘. You should see the
+orientation of the map item change.</p></li>
+<li><p>Now, you can print or export your print layout to image formats, PDF or
+to SVG with the export tools in <span class="menuselection">Layout</span> menu.</p></li>
+<li><p>Finally, you can save your print layout within the project file with the
+<a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <sup>Save Project</sup> button.</p></li>
+</ol>
+<p>You can add multiple elements to the print layout. It is also possible to have more
+than one map view or legend or scale bar in the print layout canvas, on one or
+several pages. Each element has its own properties and, in the case of the map,
+its own extent. If you want to remove any elements from the layout canvas you
+can do that with the <kbd class="kbd docutils literal notranslate">Delete</kbd> or the <kbd class="kbd docutils literal notranslate">Backspace</kbd> key.</p>
+</section>
+<section id="the-layout-manager">
+<span id="layout-manager"></span><span id="index-1"></span><h2><a class="toc-backref" href="#id11"><span class="section-number">19.1.2. </span>The Layout Manager</a><a class="headerlink" href="#the-layout-manager" title="Permalink to this headline"></a></h2>
+<p>The <span class="guilabel">Layout Manager</span> is the main window to manage print layouts in the
+project. It gives you an overview of existing print layouts and reports in the
+project and offers tools to:</p>
+<ul class="simple">
+<li><p>search for a layout;</p></li>
+<li><p>add new print layout or new report from scratch, template or duplicating an
+existing one;</p></li>
+<li><p>rename or delete any of them;</p></li>
+<li><p>open them in the project.</p></li>
+</ul>
+<p>To open the layout manager dialog:</p>
+<ul class="simple">
+<li><p>from the main QGIS dialog, select <span class="menuselection">Project ► Layout Manager…</span>
+menu or click on the <a class="reference internal" href="../../../_images/mActionLayoutManager.png"><img alt="layoutManager" src="../../../_images/mActionLayoutManager.png" style="width: 1.5em;" /></a> <sup>Layout Manager</sup> button in
+the <span class="guilabel">Project Toolbar</span>;</p></li>
+<li><p>from a print layout or report dialog, select <span class="menuselection">Layout ► Layout
+Manager…</span> menu or click on the <a class="reference internal" href="../../../_images/mActionLayoutManager.png"><img alt="layoutManager" src="../../../_images/mActionLayoutManager.png" style="width: 1.5em;" /></a> <sup>Layout Manager</sup> button
+in the <span class="guilabel">Layout Toolbar</span>.</p></li>
+</ul>
+<figure class="align-center" id="id1">
+<span id="figure-layout-manager"></span><img alt="../../../_images/print_composer_manager.png" src="../../../_images/print_composer_manager.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.1 </span><span class="caption-text">The Print Layout Manager</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The layout manager lists in its upper part all the available print layouts
+or reports in the project with tools to:</p>
+<ul class="simple">
+<li><p>show the selection: you can select multiple reports and/or print layout(s)
+and open them in one-click. Double-click a name also opens it;</p></li>
+<li><p>duplicate the selected print layout or report (available only if one item is
+selected): it creates a new dialog using the selected one as template.
+You’ll be prompted to choose a new title for the new layout;</p></li>
+<li><p>rename the report or layout (available only if one item is selected):
+you’ll be prompted to choose a new title for the layout;</p></li>
+<li><p>remove the layout: the selected print layout(s) will be deleted from the
+project.</p></li>
+</ul>
+<p>In the lower part, it’s possible to create new print layouts or reports from
+scratch or a template. By default, QGIS will look for templates in the user
+profile and the application template directories (accessible with the two
+buttons at the bottom of the frame) but also in any folder declared
+as <span class="guilabel">Path(s) to search for extra print templates</span> in
+<span class="menuselection">Settings ► Options ► Layouts</span>. Found templates are listed
+in the combobox. Select an item and press the <span class="guilabel">Create</span> button to generate
+a new report or print layout.</p>
+<p>You can also use layout templates from a custom folder; in that case, select
+<em>specific</em> in the templates drop-down list, browse to the template and press
+<span class="guilabel">Create</span>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Creating template-based print layouts from Browser panel</strong></p>
+<p>Drag-and-drop a print layout template <code class="file docutils literal notranslate"><span class="pre">.qpt</span></code> file from any file browser
+onto the map canvas or double-click it in the <a class="reference internal" href="../managing_data_source/opening_data.html#browser-panel"><span class="std std-ref">Browser panel</span></a>
+generates a new print layout from the template.</p>
+</div>
+</section>
+<section id="menus-tools-and-panels-of-the-print-layout">
+<span id="print-composer-menus"></span><h2><a class="toc-backref" href="#id12"><span class="section-number">19.1.3. </span>Menus, tools and panels of the print layout</a><a class="headerlink" href="#menus-tools-and-panels-of-the-print-layout" title="Permalink to this headline"></a></h2>
+<p>Opening the print layout provides you with a blank canvas that represents the
+paper surface when using the print option. Initially you find buttons on the
+left beside the canvas to add print layout items: the current QGIS map canvas,
+text labels, images, legends, scale bars, basic shapes, arrows, attribute tables
+and HTML frames. In this toolbar you also find buttons to navigate,
+zoom in on an area and pan the view on the layout a well as buttons to
+select any layout item and to move the contents of the map item.</p>
+<p><a class="reference internal" href="#figure-layout-overview"><span class="std std-numref">Fig. 19.2</span></a> shows the initial view of the print layout before
+any elements are added.</p>
+<figure class="align-center" id="id2">
+<span id="figure-layout-overview"></span><a class="reference internal image-reference" href="../../../_images/print_composer_blank.png"><img alt="../../../_images/print_composer_blank.png" src="../../../_images/print_composer_blank.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19.2 </span><span class="caption-text">Print Layout</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>On the right beside the canvas you find two set of panels. The upper one holds
+the panels <span class="guilabel">Items</span> and <span class="guilabel">Undo History</span> and the lower holds
+the panels <span class="guilabel">Layout</span>, <span class="guilabel">Item properties</span>
+and <span class="guilabel">Atlas generation</span>.</p>
+<ul class="simple">
+<li><p>The <span class="guilabel">Items</span> panel provides a list of all the print layout items
+added to the canvas and ways to globally interact with them
+(see <a class="reference internal" href="#layout-items-panel"><span class="std std-ref">The Items Panel</span></a> for more information).</p></li>
+<li><p>The <span class="guilabel">Undo History</span> panel displays a history of all changes applied
+to the layout. With a mouse click, it is possible to undo and
+redo layout steps back and forth to a certain status.</p></li>
+<li><p>The <span class="guilabel">Layout</span> panel allows you to set general parameters to apply to
+the layout when exporting or working within (see <a class="reference internal" href="#layout-panel"><span class="std std-ref">The Layout Panel</span></a> for more
+details);</p></li>
+<li><p>The <span class="guilabel">Item Properties</span> panel displays the properties for the selected
+item. Click the <a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <sup>Select/Move item</sup> icon to select
+an item (e.g., legend, scale bar or label) on the canvas. Then click the
+<span class="guilabel">Item Properties</span> panel and customize the settings for the selected
+item (see <a class="reference internal" href="composer_items/index.html#layout-items"><span class="std std-ref">Layout Items</span></a> for detailed information on each item
+settings).</p></li>
+<li><p>The <span class="guilabel">Atlas</span> panel allows you to enable the generation of an
+atlas for the current layout and gives access to its parameters
+(see <a class="reference internal" href="create_output.html#atlas-generation"><span class="std std-ref">Generate an Atlas</span></a> for detailed information on atlas
+generation usage).</p></li>
+</ul>
+<p>In the bottom part of the print layout window, you can find a status bar with
+mouse position, current page number, a combo box to set the zoom level,
+the number of selected items if applicable and, in the case of atlas generation,
+the number of features.</p>
+<p>In the upper part of the print layout window, you can find menus and other
+toolbars. All print layout tools are available in menus and as icons in a
+toolbar.</p>
+<p>The toolbars and the panels can be switched off and on using the right mouse
+button over any toolbar or through <span class="menuselection">View ► Toolbars ►</span> or
+<span class="menuselection">View ► Panels ►</span>.</p>
+<section id="menus-and-tools">
+<span id="layout-tools"></span><span id="index-2"></span><h3><a class="toc-backref" href="#id13"><span class="section-number">19.1.3.1. </span>Menus and Tools</a><a class="headerlink" href="#menus-and-tools" title="Permalink to this headline"></a></h3>
+<section id="layout-menu">
+<h4><a class="toc-backref" href="#id14"><span class="section-number">19.1.3.1.1. </span>Layout menu</a><a class="headerlink" href="#layout-menu" title="Permalink to this headline"></a></h4>
+<p>The <span class="menuselection">Layout</span> provides action to manage the layout:</p>
+<ul class="simple">
+<li><p>Save the project file directly from the print layout window.</p></li>
+<li><p>Create a new and blank print layout with <a class="reference internal" href="../../../_images/mActionNewLayout.png"><img alt="newLayout" src="../../../_images/mActionNewLayout.png" style="width: 1.5em;" /></a> <span class="guilabel">New Layout…</span>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionDuplicateLayout.png"><img alt="duplicateLayout" src="../../../_images/mActionDuplicateLayout.png" style="width: 1.5em;" /></a> <span class="guilabel">Duplicate Layout…</span> : Create a new print layout
+by duplicating the current one.</p></li>
+<li><p>Remove the current layout with <a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete Layout…</span>.</p></li>
+<li><p>Open the <a class="reference internal" href="../../../_images/mActionLayoutManager.png"><img alt="layoutManager" src="../../../_images/mActionLayoutManager.png" style="width: 1.5em;" /></a> <span class="guilabel">Layout Manager…</span>.</p></li>
+<li><p><span class="menuselection">Layouts ►</span> : Open an existing print layout.</p></li>
+</ul>
+<p>Once the layout is designed, with <a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <span class="guilabel">Save as Template</span>
+and <a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Items from Template</span> icons, you can save
+the current state of a print layout session as a <code class="file docutils literal notranslate"><span class="pre">.qpt</span></code> template file
+and load its items again in another session/print layout.</p>
+<p>In the <span class="menuselection">Layout</span> menu, there are also powerful ways to share
+geographical information produced with QGIS that can be included in reports or
+published. These tools are <a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as Image…</span>,
+<a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as PDF…</span>, <a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as
+SVG…</span> and <a class="reference internal" href="../../../_images/mActionFilePrint.png"><img alt="filePrint" src="../../../_images/mActionFilePrint.png" style="width: 1.5em;" /></a> <span class="guilabel">Print…</span>.</p>
+<p>Below is a list of all the available tools in this menu with some convenient
+information.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileSave.png"><img alt="fileSave" src="../../../_images/mActionFileSave.png" style="width: 1.5em;" /></a> <span class="guilabel">Save Project</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">S</kbd></kbd></p></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="../introduction/project_files.html#sec-projects"><span class="std std-ref">Introducing QGIS projects</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionNewLayout.png"><img alt="newLayout" src="../../../_images/mActionNewLayout.png" style="width: 1.5em;" /></a> <span class="guilabel">New Layout</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">N</kbd></kbd></p></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-manager"><span class="std std-ref">The Layout Manager</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionDuplicateLayout.png"><img alt="duplicateLayout" src="../../../_images/mActionDuplicateLayout.png" style="width: 1.5em;" /></a> <span class="guilabel">Duplicate Layout</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-manager"><span class="std std-ref">The Layout Manager</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete Layout</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionLayoutManager.png"><img alt="layoutManager" src="../../../_images/mActionLayoutManager.png" style="width: 1.5em;" /></a> <span class="guilabel">Layout Manager…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-manager"><span class="std std-ref">The Layout Manager</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">Layouts ►</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Layout Properties…</span></p></td>
+<td></td>
+<td></td>
+<td><p><a class="reference internal" href="#layout-panel"><span class="std std-ref">The Layout Panel</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Rename Layout…</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionNewPage.png"><img alt="newPage" src="../../../_images/mActionNewPage.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Pages…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#page-properties"><span class="std std-ref">Working with the page properties</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFileOpen.png"><img alt="fileOpen" src="../../../_images/mActionFileOpen.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Items from Template</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#create-layout-item"><span class="std std-ref">Creating a layout item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionFileSaveAs.png"><img alt="fileSaveAs" src="../../../_images/mActionFileSaveAs.png" style="width: 1.5em;" /></a> <span class="guilabel">Save as Template…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-manager"><span class="std std-ref">The Layout Manager</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as Image…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#export-layout-image"><span class="std std-ref">Export as Image</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as SVG…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#export-layout-svg"><span class="std std-ref">Export as SVG</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <span class="guilabel">Export as PDF…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#export-layout-pdf"><span class="std std-ref">Export as PDF</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Page Setup…</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFilePrint.png"><img alt="filePrint" src="../../../_images/mActionFilePrint.png" style="width: 1.5em;" /></a> <span class="guilabel">Print…</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">P</kbd></kbd></p></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#create-output"><span class="std std-ref">Creating an Output</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Close</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Q</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="edit-menu">
+<h4><a class="toc-backref" href="#id15"><span class="section-number">19.1.3.1.2. </span>Edit menu</a><a class="headerlink" href="#edit-menu" title="Permalink to this headline"></a></h4>
+<p>The <span class="menuselection">Edit</span> menu offers tools to manipulate print layout items.
+It includes common actions like selection tools, Copy/Cut/Paste and undo/redo
+(see <a class="reference internal" href="#layout-undo-panel"><span class="std std-ref">The Undo History Panel: Revert and Restore actions</span></a>) functionality for the items in the layout.</p>
+<p>When using the Paste action, the elements will be pasted according to the current
+mouse position. Using the <span class="menuselection">Edit ► Paste in Place</span> action or
+pressing <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd> will paste the items into the current page, at the
+same position they were in their initial page. It ensures to copy/paste items at
+the same place, from page to page.</p>
+<p>Below is a list of all the available tools in this menu with some convenient
+information.</p>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-number">Table 19.1 </span><span class="caption-text">Available Tools</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 19%" />
+<col style="width: 11%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <span class="guilabel">Undo (last change)</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Z</kbd></kbd></p></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-undo-panel"><span class="std std-ref">The Undo History Panel: Revert and Restore actions</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <span class="guilabel">Redo (last reverted change)</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Y</kbd></kbd></p></td>
+<td><p><span class="guilabel">Layout</span></p></td>
+<td><p><a class="reference internal" href="#layout-undo-panel"><span class="std std-ref">The Undo History Panel: Revert and Restore actions</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionDeleteSelected.png"><img alt="deleteSelected" src="../../../_images/mActionDeleteSelected.png" style="width: 1.5em;" /></a> <span class="guilabel">Delete</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">Del</kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionEditCut.png"><img alt="editCut" src="../../../_images/mActionEditCut.png" style="width: 1.5em;" /></a> <span class="guilabel">Cut</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">X</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditCopy.png"><img alt="editCopy" src="../../../_images/mActionEditCopy.png" style="width: 1.5em;" /></a> <span class="guilabel">Copy</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionEditPaste.png"><img alt="editPaste" src="../../../_images/mActionEditPaste.png" style="width: 1.5em;" /></a> <span class="guilabel">Paste</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Paste in place</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">V</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSelectAll.png"><img alt="selectAll" src="../../../_images/mActionSelectAll.png" style="width: 1.5em;" /></a> <span class="guilabel">Select All</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionDeselectAll.png"><img alt="deselectAll" src="../../../_images/mActionDeselectAll.png" style="width: 1.5em;" /></a> <span class="guilabel">Deselect all</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">A</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionInvertSelection.png"><img alt="invertSelection" src="../../../_images/mActionInvertSelection.png" style="width: 1.5em;" /></a> <span class="guilabel">Invert Selection</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Select Next Item Below</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Select Next Item above</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">]</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionPan.png"><img alt="pan" src="../../../_images/mActionPan.png" style="width: 1.5em;" /></a> <span class="guilabel">Pan Layout</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">P</kbd></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomToArea.png"><img alt="zoomToArea" src="../../../_images/mActionZoomToArea.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">Z</kbd></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSelect.png"><img alt="select" src="../../../_images/mActionSelect.png" style="width: 1.5em;" /></a> <span class="guilabel">Select/Move Item</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">V</kbd></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#interact-layout-item"><span class="std std-ref">Interacting with layout items</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMoveItemContent.png"><img alt="moveItemContent" src="../../../_images/mActionMoveItemContent.png" style="width: 1.5em;" /></a> <span class="guilabel">Move Content</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">C</kbd></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_map.html#layout-map-item"><span class="std std-ref">The Map Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionEditNodesShape.png"><img alt="editNodesShape" src="../../../_images/mActionEditNodesShape.png" style="width: 1.5em;" /></a> <span class="guilabel">Edit Nodes Item</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-node-based-shape-item"><span class="std std-ref">The Node-Based Shape Items</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="view-menu">
+<h4><a class="toc-backref" href="#id16"><span class="section-number">19.1.3.1.3. </span>View menu</a><a class="headerlink" href="#view-menu" title="Permalink to this headline"></a></h4>
+<p>The <span class="menuselection">View</span> menu  gives access to navigation tools and helps
+to configure general behavior of the print layout. Beside the common zoom
+tools, you have means to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <sup>Refresh view</sup> (if you find the view in an inconsistent state);</p></li>
+<li><p>enable a <a class="reference internal" href="#grid-guides"><span class="std std-ref">grid</span></a> you could snap items to when moving or
+creating them. Grids setting is done in <span class="menuselection">Settings ► Layout
+Options…</span> or in the <a class="reference internal" href="#layout-panel"><span class="std std-ref">Layout Panel</span></a>;</p></li>
+<li><p>enable <a class="reference internal" href="#grid-guides"><span class="std std-ref">guides</span></a> you could snap items to when moving or
+creating them. Guides are red lines that you can create by clicking in the
+ruler (above or at the left side of the layout) and drag and drop to the
+desired location;</p></li>
+<li><p><span class="guilabel">Smart Guides</span>: uses other layout items as guides to dynamically
+snap to as you move or reshape an item;</p></li>
+<li><p><span class="guilabel">Clear Guides</span> to remove all current guides;</p></li>
+<li><p><span class="guilabel">Show Bounding box</span> around the items to better identify your
+selection;</p></li>
+<li><p><span class="guilabel">Show Rules</span> around the layout;</p></li>
+<li><p><span class="guilabel">Show Pages</span> or set up pages to transparent. Often layout is used
+to create non-print layouts, e.g. for inclusion in presentations or other
+documents, and it’s desirable to export the composition using a totally
+transparent background. It’s sometimes referred to as “infinite canvas” in
+other editing packages.</p></li>
+</ul>
+<p>In the print layout, you can change the zoom level using the mouse wheel or
+the slider and combo box in
+the status bar. If you need to switch to pan mode while working in the layout
+area, you can hold the <kbd class="kbd docutils literal notranslate">Spacebar</kbd> or the mouse wheel.
+With <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Spacebar</kbd></kbd>, you can temporarily switch to Zoom In mode,
+and with <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">Spacebar</kbd></kbd>, to Zoom Out mode.</p>
+<p>Panels and toolbars can be enabled from the <span class="menuselection">View ►</span> menu.
+To maximise the space available to interact with a composition you can check
+the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="menuselection">View ► Toggle Panel Visibility</span> option or
+press <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Tab</kbd></kbd>; all panels are hidden and only previously visible
+panels are restored when unchecked.</p>
+<p>It’s also possible to switch to a full screen mode to have more space to
+interact with by pressing <kbd class="kbd docutils literal notranslate">F11</kbd> or using <span class="menuselection">View ►</span>
+<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Toggle Full Screen</span>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRefresh.png"><img alt="refresh" src="../../../_images/mActionRefresh.png" style="width: 1.5em;" /></a> <span class="guilabel">Refresh</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">F5</kbd></p></td>
+<td><p><span class="guilabel">Navigation</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">Preview ►</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomIn.png"><img alt="zoomIn" src="../../../_images/mActionZoomIn.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom In</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">+</kbd></kbd></p></td>
+<td><p><span class="guilabel">Navigation</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomOut.png"><img alt="zoomOut" src="../../../_images/mActionZoomOut.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom Out</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">-</kbd></kbd></p></td>
+<td><p><span class="guilabel">Navigation</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionZoomActual.png"><img alt="zoomActual" src="../../../_images/mActionZoomActual.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom to 100%</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">1</kbd></kbd></p></td>
+<td><p><span class="guilabel">Navigation</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionZoomFullExtent.png"><img alt="zoomFullExtent" src="../../../_images/mActionZoomFullExtent.png" style="width: 1.5em;" /></a> <span class="guilabel">Zoom Full</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">0</kbd></kbd></p></td>
+<td><p><span class="guilabel">Navigation</span></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Zoom to Width</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/vector_grid.png"><img alt="vectorGrid" src="../../../_images/vector_grid.png" style="width: 1.5em;" /></a> <span class="guilabel">Show Grid</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">'</kbd></kbd></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#grid-guides"><span class="std std-ref">Guides and Grid</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Snap to Grid</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">'</kbd></kbd></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#grid-guides"><span class="std std-ref">Guides and Grid</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Guides</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">;</kbd></kbd></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#grid-guides"><span class="std std-ref">Guides and Grid</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Snap to Guides</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">;</kbd></kbd></p></td>
+<td></td>
+<td><p><a class="reference internal" href="#grid-guides"><span class="std std-ref">Guides and Grid</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Smart Guides</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Alt</kbd>+<kbd class="kbd docutils literal notranslate">;</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><span class="guilabel">Manage Guides…</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="#layout-guides-panel"><span class="std std-ref">The Guides Panel</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="guilabel">Clear Guides</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="#layout-guides-panel"><span class="std std-ref">The Guides Panel</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Rulers</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">R</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Bounding Boxes</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">B</kbd></kbd></p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Pages</span></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">Toolbars ►</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="../introduction/qgis_gui.html#sec-panels-and-toolbars"><span class="std std-ref">Panels and Toolbars</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">Panels ►</span></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="../introduction/qgis_gui.html#sec-panels-and-toolbars"><span class="std std-ref">Panels and Toolbars</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Toggle Full Screen</span></p></td>
+<td><p><kbd class="kbd docutils literal notranslate">F11</kbd></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="../introduction/qgis_gui.html#view-menu"><span class="std std-ref">View</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Toggle Panel Visibility</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Tab</kbd></kbd></p></td>
+<td><p></p></td>
+<td><p><a class="reference internal" href="../introduction/qgis_gui.html#view-menu"><span class="std std-ref">View</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="items-menu">
+<h4><a class="toc-backref" href="#id17"><span class="section-number">19.1.3.1.4. </span>Items menu</a><a class="headerlink" href="#items-menu" title="Permalink to this headline"></a></h4>
+<p>The <span class="menuselection">Items</span> helps you configure items’ position in the
+layout and the relations between them (see <a class="reference internal" href="composer_items/composer_items_options.html#interact-layout-item"><span class="std std-ref">Interacting with layout items</span></a>).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionGroupItems.png"><img alt="groupItems" src="../../../_images/mActionGroupItems.png" style="width: 1.5em;" /></a> <span class="guilabel">Group</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">G</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#group-items"><span class="std std-ref">Grouping items</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionUngroupItems.png"><img alt="ungroupItems" src="../../../_images/mActionUngroupItems.png" style="width: 1.5em;" /></a> <span class="guilabel">Ungroup</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">G</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#group-items"><span class="std std-ref">Grouping items</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionRaiseItems.png"><img alt="raiseItems" src="../../../_images/mActionRaiseItems.png" style="width: 1.5em;" /></a> <span class="guilabel">Raise</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">]</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#align-items"><span class="std std-ref">Alignment</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionLowerItems.png"><img alt="lowerItems" src="../../../_images/mActionLowerItems.png" style="width: 1.5em;" /></a> <span class="guilabel">Lower</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#align-items"><span class="std std-ref">Alignment</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionMoveItemsToTop.png"><img alt="moveItemsToTop" src="../../../_images/mActionMoveItemsToTop.png" style="width: 1.5em;" /></a> <span class="guilabel">Bring to Front</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">]</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#align-items"><span class="std std-ref">Alignment</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionMoveItemsToBottom.png"><img alt="moveItemsToBottom" src="../../../_images/mActionMoveItemsToBottom.png" style="width: 1.5em;" /></a> <span class="guilabel">Send to Back</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">[</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#align-items"><span class="std std-ref">Alignment</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> <span class="guilabel">Lock Selected Items</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#lock-items"><span class="std std-ref">Locking items</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/unlocked.png"><img alt="unlocked" src="../../../_images/unlocked.png" style="width: 1.5em;" /></a> <span class="guilabel">Unlock All</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">Shift</kbd>+<kbd class="kbd docutils literal notranslate">L</kbd></kbd></p></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#lock-items"><span class="std std-ref">Locking items</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">Align Items ►</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#align-items"><span class="std std-ref">Alignment</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="menuselection">Distribute Items ►</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#move-resize"><span class="std std-ref">Moving and resizing items</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">Resize ►</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Actions</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_items_options.html#move-resize"><span class="std std-ref">Moving and resizing items</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="add-item-menu">
+<h4><a class="toc-backref" href="#id18"><span class="section-number">19.1.3.1.5. </span>Add Item menu</a><a class="headerlink" href="#add-item-menu" title="Permalink to this headline"></a></h4>
+<p>These are tools to create layout items. Each of them is deeply described
+in <a class="reference internal" href="composer_items/index.html#layout-items"><span class="std std-ref">Layout Items</span></a> chapter.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 18%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddMap.png"><img alt="addMap" src="../../../_images/mActionAddMap.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Map</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_map.html#layout-map-item"><span class="std std-ref">The Map Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAdd3DMap.png"><img alt="add3DMap" src="../../../_images/mActionAdd3DMap.png" style="width: 1.5em;" /></a> <span class="guilabel">Add 3D Map</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_map3d.html#layout-map3d-item"><span class="std std-ref">The 3D Map Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddImage.png"><img alt="addImage" src="../../../_images/mActionAddImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Picture</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_image.html#layout-picture-item"><span class="std std-ref">The Picture Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionLabel.png"><img alt="label" src="../../../_images/mActionLabel.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Label</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_label.html#layout-label-item"><span class="std std-ref">The Label Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="menuselection">Add Dynamic Text ►</span></p></td>
+<td></td>
+<td><p><a class="reference internal" href="composer_items/composer_label.html#layout-label-main-properties"><span class="std std-ref">The Label Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddLegend.png"><img alt="addLegend" src="../../../_images/mActionAddLegend.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Legend</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_legend.html#layout-legend-item"><span class="std std-ref">The Legend Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionScaleBar.png"><img alt="scaleBar" src="../../../_images/mActionScaleBar.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Scale Bar</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_scale_bar.html#layout-scalebar-item"><span class="std std-ref">The Scale Bar Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/north_arrow.png"><img alt="northArrow" src="../../../_images/north_arrow.png" style="width: 1.5em;" /></a> <span class="guilabel">Add North Arrow</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_image.html#layout-northarrow-item"><span class="std std-ref">The North Arrow Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddBasicShape.png"><img alt="addBasicShape" src="../../../_images/mActionAddBasicShape.png" style="width: 1.5em;" /></a> <span class="menuselection">Add Shape ►</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-basic-shape-item"><span class="std std-ref">The Regular Shape Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddBasicRectangle.png"><img alt="addBasicRectangle" src="../../../_images/mActionAddBasicRectangle.png" style="width: 1.5em;" /></a> <span class="menuselection">► Add Rectangle</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-basic-shape-item"><span class="std std-ref">The Regular Shape Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddBasicCircle.png"><img alt="addBasicCircle" src="../../../_images/mActionAddBasicCircle.png" style="width: 1.5em;" /></a> <span class="menuselection">► Add Ellipse</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-basic-shape-item"><span class="std std-ref">The Regular Shape Item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddBasicTriangle.png"><img alt="addBasicTriangle" src="../../../_images/mActionAddBasicTriangle.png" style="width: 1.5em;" /></a> <span class="menuselection">► Add Triangle</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-basic-shape-item"><span class="std std-ref">The Regular Shape Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddMarker.png"><img alt="addMarker" src="../../../_images/mActionAddMarker.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Marker</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddArrow.png"><img alt="addArrow" src="../../../_images/mActionAddArrow.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Arrow</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-arrow-item"><span class="std std-ref">The Arrow Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddNodesShape.png"><img alt="addNodesShape" src="../../../_images/mActionAddNodesShape.png" style="width: 1.5em;" /></a> <span class="menuselection">Add Node Item ►</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-node-based-shape-item"><span class="std std-ref">The Node-Based Shape Items</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddPolygon.png"><img alt="addPolygon" src="../../../_images/mActionAddPolygon.png" style="width: 1.5em;" /></a> <span class="menuselection">► Add Polygon</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-node-based-shape-item"><span class="std std-ref">The Node-Based Shape Items</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddPolyline.png"><img alt="addPolyline" src="../../../_images/mActionAddPolyline.png" style="width: 1.5em;" /></a> <span class="menuselection">► Add Polyline</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_shapes.html#layout-node-based-shape-item"><span class="std std-ref">The Node-Based Shape Items</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddHtml.png"><img alt="addHtml" src="../../../_images/mActionAddHtml.png" style="width: 1.5em;" /></a> <span class="guilabel">Add HTML</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_html_frame.html#layout-html-item"><span class="std std-ref">The HTML Frame Item</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAddTable.png"><img alt="addTable" src="../../../_images/mActionAddTable.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Attribute Table</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_tables.html#layout-attribute-table-item"><span class="std std-ref">The attribute table item</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAddManualTable.png"><img alt="addManualTable" src="../../../_images/mActionAddManualTable.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Fixed Table</span></p></td>
+<td><p><span class="guilabel">Toolbox</span></p></td>
+<td><p><a class="reference internal" href="composer_items/composer_tables.html#layout-fixed-table-item"><span class="std std-ref">The fixed table item</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="atlas-menu">
+<h4><a class="toc-backref" href="#id19"><span class="section-number">19.1.3.1.6. </span>Atlas menu</a><a class="headerlink" href="#atlas-menu" title="Permalink to this headline"></a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Toolbar</p></th>
+<th class="head"><p>Reference</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mIconAtlas.png"><img alt="atlas" src="../../../_images/mIconAtlas.png" style="width: 1.5em;" /></a> <span class="guilabel">Preview Atlas</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">ALt</kbd>+<kbd class="kbd docutils literal notranslate">/</kbd></kbd></p></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAtlasFirst.png"><img alt="atlasFirst" src="../../../_images/mActionAtlasFirst.png" style="width: 1.5em;" /></a> <span class="guilabel">First Feature</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">&lt;</kbd></kbd></p></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAtlasPrev.png"><img alt="atlasPrev" src="../../../_images/mActionAtlasPrev.png" style="width: 1.5em;" /></a> <span class="guilabel">Previous Feature</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">,</kbd></kbd></p></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAtlasNext.png"><img alt="atlasNext" src="../../../_images/mActionAtlasNext.png" style="width: 1.5em;" /></a> <span class="guilabel">Next Feature</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">.</kbd></kbd></p></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionAtlasLast.png"><img alt="atlasLast" src="../../../_images/mActionAtlasLast.png" style="width: 1.5em;" /></a> <span class="guilabel">Last feature</span></p></td>
+<td><p><kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">&gt;</kbd></kbd></p></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionFilePrint.png"><img alt="filePrint" src="../../../_images/mActionFilePrint.png" style="width: 1.5em;" /></a> <span class="guilabel">Print Atlas…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveMapAsImage.png"><img alt="saveMapAsImage" src="../../../_images/mActionSaveMapAsImage.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Atlas as Images…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsSVG.png"><img alt="saveAsSVG" src="../../../_images/mActionSaveAsSVG.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Atlas as SVG…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../../../_images/mActionSaveAsPDF.png"><img alt="saveAsPDF" src="../../../_images/mActionSaveAsPDF.png" style="width: 1.5em;" /></a> <span class="guilabel">Export Atlas as PDF…</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-preview"><span class="std std-ref">Preview and generate an atlas</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../../../_images/mActionAtlasSettings.png"><img alt="atlasSettings" src="../../../_images/mActionAtlasSettings.png" style="width: 1.5em;" /></a> <span class="guilabel">Atlas Settings</span></p></td>
+<td></td>
+<td><p><span class="guilabel">Atlas</span></p></td>
+<td><p><a class="reference internal" href="create_output.html#atlas-generation"><span class="std std-ref">Generate an Atlas</span></a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="settings-menu">
+<h4><a class="toc-backref" href="#id20"><span class="section-number">19.1.3.1.7. </span>Settings Menu</a><a class="headerlink" href="#settings-menu" title="Permalink to this headline"></a></h4>
+<p>The <span class="menuselection">Settings ► Layout Options…</span> menu is a shortcut to
+<span class="menuselection">Settings ► Options ► Layouts</span> menu of QGIS main canvas.
+Here, you can set some options that will be used as default on any new print
+layout:</p>
+<ul class="simple">
+<li><p><span class="guilabel">Layout defaults</span> let you specify the default font to use;</p></li>
+<li><p>With <span class="guilabel">Grid appearance</span>, you can set the grid style and its color.
+There are three types of grid: <strong>Dots</strong>, <strong>Solid</strong> lines and <strong>Crosses</strong>;</p></li>
+<li><p><span class="guilabel">Grid and guide defaults</span> defines spacing, offset and tolerance
+of the grid (see <a class="reference internal" href="#grid-guides"><span class="std std-ref">Guides and Grid</span></a> for more details);</p></li>
+<li><p><span class="guilabel">Layout Paths</span>: to manage list of custom paths to search print
+templates.</p></li>
+</ul>
+</section>
+<section id="contextual-menus">
+<h4><a class="toc-backref" href="#id21"><span class="section-number">19.1.3.1.8. </span>Contextual menus</a><a class="headerlink" href="#contextual-menus" title="Permalink to this headline"></a></h4>
+<p>Depending on where you right-click in the print layout dialog, you open a
+contextual menu with various features:</p>
+<ul class="simple">
+<li><p>Right-click on the menu bar or any toolbar and you get the list of layout
+panels and toolbars you can enable or disable in one-click.</p></li>
+<li><p>Right-click over a ruler and you can <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Show Guides</span>,
+<a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Snap to Guides</span>, <span class="guilabel">Manage Guides…</span> opening
+the <a class="reference internal" href="#layout-guides-panel"><span class="std std-ref">Guides panel</span></a> or <span class="guilabel">Clear Guides</span>.
+It’s also possible to hide the rulers.</p></li>
+<li><p>Right-click in the print layout canvas and:</p>
+<ul>
+<li><p>You’ll be able to <span class="guilabel">Undo</span> and <span class="guilabel">Redo</span> recent changes, or
+<span class="guilabel">Paste</span> any copied item (only available if no item is selected).</p></li>
+<li><p>If you click over a page, you can additionally access the current <a class="reference internal" href="#page-properties"><span class="std std-ref">Page
+Properties</span></a> panel or <span class="guilabel">Remove Page</span>.</p></li>
+<li><p>If you click on a selected item then you can cut or copy it as well as open
+the <a class="reference internal" href="composer_items/composer_items_options.html#layout-item-options"><span class="std std-ref">Item Properties</span></a> panel.</p></li>
+<li><p>If more than one item are selected, then you can either group them and/or
+ungroup if at least one group is already in the selection.</p></li>
+</ul>
+</li>
+<li><p>Right-click inside a text box or spinbox widget of any layout panel provides
+edit options to manipulate its content.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-layout-panel">
+<span id="layout-panel"></span><h3><a class="toc-backref" href="#id22"><span class="section-number">19.1.3.2. </span>The Layout Panel</a><a class="headerlink" href="#the-layout-panel" title="Permalink to this headline"></a></h3>
+<p>In the <span class="guilabel">Layout</span> panel, you can define the global settings of your
+print layout.</p>
+<figure class="align-center" id="id4">
+<span id="figure-composition"></span><img alt="../../../_images/composition_settings.png" src="../../../_images/composition_settings.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.3 </span><span class="caption-text">Layout Settings in the Print Layout</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="general-settings">
+<span id="reference-map"></span><h4><a class="toc-backref" href="#id23"><span class="section-number">19.1.3.2.1. </span>General settings</a><a class="headerlink" href="#general-settings" title="Permalink to this headline"></a></h4>
+<p>In a print layout, you can use more than one map item.
+The <span class="guilabel">Reference map</span> represents the map item to use as the layout’s
+master map. It’s assigned as long as there’s a map item in the layout.
+The layout will use this map in any of their properties and variables
+calculating units or scale. This includes exporting the print layout to
+georeferenced formats.</p>
+<p>Moreover, new layout items such as scale bar, legend or north arrow have by
+default their settings (orientation, displayed layers, scale, …) bound to
+the map item they are drawn over, and fall back to the reference map if no
+overlapping map.</p>
+</section>
+<section id="guides-and-grid">
+<span id="grid-guides"></span><h4><a class="toc-backref" href="#id24"><span class="section-number">19.1.3.2.2. </span>Guides and Grid</a><a class="headerlink" href="#guides-and-grid" title="Permalink to this headline"></a></h4>
+<p>You can put some reference marks on your paper sheet to help you
+accurately place some items. These marks can be:</p>
+<ul class="simple">
+<li><p>simple horizontal or vertical lines (called <strong>Guides</strong>) put at the position
+you want (see <a class="reference internal" href="#layout-guides-panel"><span class="std std-ref">The Guides Panel</span></a> for guides creation).</p></li>
+<li><p>or regular <strong>Grid</strong>: a network of horizontal and vertical lines
+superimposed over the layout.</p></li>
+</ul>
+<p>Settings like <span class="guilabel">Grid spacing</span> or <span class="guilabel">Grid offset</span> can be
+adjusted in this group as well as the <span class="guilabel">Snap tolerance</span> to use for
+items. The tolerance is the maximum distance below which the mouse cursor is
+snapped to a grid or a guide, while moving, resizing or creating an item.</p>
+<p>Whether grid or guides should be shown is set in <span class="menuselection">View</span> menu.
+There, you can also decide if they might be used to snap layout items.
+When both a grid line and a guide line are within tolerance of a point, guides
+will always take precedence - since they have been manually set (hence,
+assumption that they have been explicitly placed at highly desirable snapping
+locations, and should be selected over the general grid).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the <span class="menuselection">Settings ► Layout Options</span> menu, you can also set
+the grid and guides parameters exposed above. However, these options will
+only apply as defaults to new print layouts.</p>
+</div>
+</section>
+<section id="export-settings">
+<span id="layout-export-settings"></span><h4><a class="toc-backref" href="#id25"><span class="section-number">19.1.3.2.3. </span>Export settings</a><a class="headerlink" href="#export-settings" title="Permalink to this headline"></a></h4>
+<p>You can define a resolution to use for all exported maps in <span class="guilabel">Export
+resolution</span>. This setting can then be overridden each time you export a map.</p>
+<p>Because of some advanced rendering options (<a class="reference internal" href="../introduction/general_tools.html#blend-modes"><span class="std std-ref">blending mode</span></a>,
+<a class="reference internal" href="../working_with_vector/vector_properties.html#draw-effects"><span class="std std-ref">effects</span></a>…), a layout item may need rasterization in
+order to be exported correctly. QGIS will individually rasterize it without
+forcing every other item to also be rasterized.
+This allows printing or saving as PostScript or PDF to keep items as much as
+possible as vectors, e.g. a map item with layer opacity won’t force labels,
+scale bars, etc to be rasterized too.
+You can however:</p>
+<ul class="simple">
+<li><p>force all the items to be rasterized checking the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Print
+as raster</span> box;</p></li>
+<li><p>or use the opposite option, i.e. <span class="guilabel">Always export as vectors</span>, to
+force the export to keep items as vectors when exported to a compatible
+format. Note that in some cases, this could cause the output to look
+different to layout.</p></li>
+</ul>
+<p>Where the format makes it possible (e.g., <code class="file docutils literal notranslate"><span class="pre">.TIF</span></code>, <code class="file docutils literal notranslate"><span class="pre">.PDF</span></code>) exporting
+a print layout results by default in a georeferenced file (based on the
+<span class="guilabel">Reference map</span> item in the <span class="guilabel">General settings</span> group).
+For other formats, georeferenced output requires you to generate a world file
+by checking <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Save world file</span>. The world file is created
+beside the exported map(s), has the name of the page output with the reference
+map item and contains information to georeference it easily.</p>
+</section>
+<section id="resize-layout-to-content">
+<h4><a class="toc-backref" href="#id26"><span class="section-number">19.1.3.2.4. </span>Resize layout to content</a><a class="headerlink" href="#resize-layout-to-content" title="Permalink to this headline"></a></h4>
+<p>Using the <span class="guilabel">Resize page</span> tool in this group, you create a unique page
+composition whose extent covers the current contents of the print layout (with
+some optional <span class="guilabel">margins</span> around the cropped bounds).</p>
+<p>Note that this behavior is different from the <a class="reference internal" href="create_output.html#crop-to-content"><span class="std std-ref">crop to content</span></a> option in that all the items are placed on a real and unique
+page in replacement of all the existing pages.</p>
+</section>
+<section id="variables">
+<h4><a class="toc-backref" href="#id27"><span class="section-number">19.1.3.2.5. </span>Variables</a><a class="headerlink" href="#variables" title="Permalink to this headline"></a></h4>
+<p>The <span class="guilabel">Variables</span> lists all the variables available at
+the layout’s level (which includes all global and project’s variables).</p>
+<p>It also allows the user to manage layout-level variables. Click the
+<a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> button to add a new custom layout-level variable. Likewise,
+select a custom layout-level variable from the list and click the
+<a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> button to remove it.</p>
+<p>More information on variables usage in the
+<a class="reference internal" href="../introduction/general_tools.html#general-tools-variables"><span class="std std-ref">General Tools</span></a> section.</p>
+<figure class="align-center" id="id5">
+<span id="figure-composition-variables"></span><img alt="../../../_images/composition_variables.png" src="../../../_images/composition_variables.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.4 </span><span class="caption-text">Variables Editor in the Print Layout</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="working-with-the-page-properties">
+<span id="page-properties"></span><span id="index-3"></span><h3><a class="toc-backref" href="#id28"><span class="section-number">19.1.3.3. </span>Working with the page properties</a><a class="headerlink" href="#working-with-the-page-properties" title="Permalink to this headline"></a></h3>
+<p>A layout can be composed of several pages. For instance, a first page can show
+a map canvas, and a second page can show the attribute table associated with a
+layer, while a third one shows an HTML frame linking to your organization website.
+Or you can add many types of items on each page.</p>
+<section id="adding-a-new-page">
+<h4><a class="toc-backref" href="#id29"><span class="section-number">19.1.3.3.1. </span>Adding a new page</a><a class="headerlink" href="#adding-a-new-page" title="Permalink to this headline"></a></h4>
+<p>Futhermore, a layout can be made using different size and/or orientation of pages.
+To add a page, select the <a class="reference internal" href="../../../_images/mActionNewPage.png"><img alt="newPage" src="../../../_images/mActionNewPage.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Pages…</span> tool from the
+<span class="menuselection">Layout</span> menu or <span class="guilabel">Layout Toolbar</span>. The <span class="guilabel">Insert
+Pages</span> dialog opens and you are asked to fill:</p>
+<ul>
+<li><p>the number of pages to insert;</p></li>
+<li><p>the position of the page(s): before or after a given page or at the end of the
+print layout;</p></li>
+<li><p>The <span class="guilabel">Page size</span>: it could be of a preset format page (<code class="docutils literal notranslate"><span class="pre">A4</span></code>, <code class="docutils literal notranslate"><span class="pre">B0</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Legal</span></code>, <code class="docutils literal notranslate"><span class="pre">Letter</span></code>, <code class="docutils literal notranslate"><span class="pre">ANSI</span> <span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">Arch</span> <span class="pre">A</span></code> and their derivatives as well as
+a resolution type, such as <code class="docutils literal notranslate"><span class="pre">1920x1080</span></code> or <code class="docutils literal notranslate"><span class="pre">1024x768</span></code>) with
+associated <span class="guilabel">Orientation</span> (Portrait or Landscape).</p>
+<p>The page size can also be of a <code class="docutils literal notranslate"><span class="pre">custom</span></code> format; In that case, you’d need to
+enter its <span class="guilabel">Width</span> and <span class="guilabel">Height</span> (with locked size ratio if
+needed) and select the unit to use among <code class="docutils literal notranslate"><span class="pre">mm</span></code>, <code class="docutils literal notranslate"><span class="pre">cm</span></code>, <code class="docutils literal notranslate"><span class="pre">px</span></code>, <code class="docutils literal notranslate"><span class="pre">pt</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ft</span></code>… Conversion of entered values is automatically applied when switching
+from one unit to another.</p>
+</li>
+</ul>
+<figure class="align-center" id="id6">
+<span id="figure-layout-new-page"></span><img alt="../../../_images/insert_page.png" src="../../../_images/insert_page.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.5 </span><span class="caption-text">Creating a new page in the Print Layout</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="updating-page-properties">
+<h4><a class="toc-backref" href="#id30"><span class="section-number">19.1.3.3.2. </span>Updating page properties</a><a class="headerlink" href="#updating-page-properties" title="Permalink to this headline"></a></h4>
+<p>Any page can be later customized through the Page <span class="guilabel">Item Properties</span>
+panel. To access a page’s properties, left-click on an empty section
+of the page or right-click on a page and select <span class="guilabel">Page Properties…</span>.
+The <span class="guilabel">Item Properties</span> panel opens with settings such as:</p>
+<ul class="simple">
+<li><p>the <span class="guilabel">Page size</span> frame described above. You can modify each property
+using the data defined override options (see <a class="reference internal" href="create_output.html#atlas-data-defined-override"><span class="std std-ref">Explore Data-defined override buttons with atlas</span></a>
+for a use case);</p></li>
+<li><p>the <a class="reference internal" href="../../../_images/checkbox_unchecked.png"><img alt="unchecked" src="../../../_images/checkbox_unchecked.png" style="width: 1.3em;" /></a> <span class="guilabel">Exclude page from exports</span> to control whether the
+current page with its content should be included in the <a class="reference internal" href="create_output.html#create-output"><span class="std std-ref">layout output</span></a>;</p></li>
+<li><p>the <span class="guilabel">Background</span> of the current page using the <a class="reference internal" href="../introduction/general_tools.html#color-selector"><span class="std std-ref">color</span></a> or <a class="reference internal" href="../style_library/symbol_selector.html#symbol-selector"><span class="std std-ref">symbol</span></a> you want.</p></li>
+</ul>
+<figure class="align-center" id="id7">
+<span id="figure-layout-page"></span><img alt="../../../_images/page_properties.png" src="../../../_images/page_properties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.6 </span><span class="caption-text">Page properties dialog</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="the-guides-panel">
+<span id="layout-guides-panel"></span><span id="index-4"></span><h3><a class="toc-backref" href="#id31"><span class="section-number">19.1.3.4. </span>The Guides Panel</a><a class="headerlink" href="#the-guides-panel" title="Permalink to this headline"></a></h3>
+<p>Guides are vertical or horizontal line references you can place on a layout
+page to assist you on items placement, when creating, moving or resizing them.
+To be active, guides require the <span class="menuselection">View ► Show Guides</span> and
+<span class="menuselection">View ► Snap to Guides</span> options to be checked.
+To create a guide, there are two different methods:</p>
+<ul class="simple">
+<li><p>if the <span class="menuselection">View ► Show Rulers</span> option is set, drag out a
+ruler and release the mouse button within the page area, at the desired
+position.</p></li>
+<li><p>for more precision, use the <span class="guilabel">Guides</span> panel from the <span class="menuselection">View
+► Toolbox ►</span> or by selecting <span class="guilabel">Manage guides for page…</span>
+from the page’s contextual menu.</p></li>
+</ul>
+<figure class="align-center" id="id8">
+<span id="figure-layout-guides-panel"></span><img alt="../../../_images/guides_panel.png" src="../../../_images/guides_panel.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.7 </span><span class="caption-text">The Guides panel</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The <span class="guilabel">Guides</span> panel allows creation of snap lines at specific
+locations:</p>
+<ol class="arabic">
+<li><p>Select the <span class="guilabel">Page</span> you’d like to add the guides to</p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add new guide</sup> button and enter the coordinates
+of the horizontal or vertical line. The origin is at the top left corner.
+Different units are available for this.</p>
+<p>The panel also allows adjusting the position of existing guides to exact
+coordinates: double-click and replace the value.</p>
+</li>
+<li><p>The <span class="guilabel">Guides</span> panel lists only the items for the current page.
+It allows creation or removal of guides only in the current page.
+However, you can use the <span class="guilabel">Apply to All Pages</span> button to replicate
+the guide configuration of the current page to the other pages in the layout.</p></li>
+<li><p>To delete a guide, select it and press the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Remove selected
+guide</sup> button. Use <span class="guilabel">Clear All Guides</span> to remove all the guides
+in the current page.</p></li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Snapping to existing layout items</strong></p>
+<p>Other than guides and grids, you can use existing items as snapping
+references when moving, resizing or creating new items; these are called
+<strong>smart guides</strong> and require <span class="menuselection">View ► Smart Guides</span> option to
+be checked. Anytime the mouse pointer is close to an item’s bound, a snapping
+cross appears.</p>
+</div>
+</section>
+<section id="the-items-panel">
+<span id="layout-items-panel"></span><h3><a class="toc-backref" href="#id32"><span class="section-number">19.1.3.5. </span>The Items Panel</a><a class="headerlink" href="#the-items-panel" title="Permalink to this headline"></a></h3>
+<p>The <span class="guilabel">Items</span> panel offers some options to manage selection and
+visibility of items.
+All the items added to the print layout canvas (including <a class="reference internal" href="composer_items/composer_items_options.html#group-items"><span class="std std-ref">items group</span></a>) are shown in a list and
+selecting an item makes the corresponding row selected in the list as well as
+selecting a row does select the corresponding item in the print layout canvas.
+This is thus a handy way to select an item placed behind another one.
+Note that a selected row is shown as bold.</p>
+<p>For any selected item, you can :</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionShowAllLayers.png"><img alt="showAllLayers" src="../../../_images/mActionShowAllLayers.png" style="width: 1.5em;" /></a> set it visible or not;</p></li>
+<li><p><a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> lock or unlock its position;</p></li>
+<li><p>sort its Z position. You can move up and down each item in the list with a
+click and drag. The upper item in the list will be brought to the foreground
+in the print layout canvas.
+By default, a newly created item is placed in the foreground.</p></li>
+<li><p>change the item ID by double-clicking the text;</p></li>
+<li><p>right-click an item and copy or delete it or open its <a class="reference internal" href="composer_items/composer_items_options.html#layout-item-options"><span class="std std-ref">properties panel</span></a>.</p></li>
+</ul>
+<p>Once you have found the correct position for an item, you can lock it by ticking
+the box in <a class="reference internal" href="../../../_images/locked.png"><img alt="locked" src="../../../_images/locked.png" style="width: 1.5em;" /></a> column. Locked items are <strong>not</strong> selectable on the canvas.
+Locked items can be unlocked by selecting the item in the <span class="menuselection">Items</span>
+panel and unchecking the tickbox or you can use the icons on the toolbar.</p>
+</section>
+<section id="the-undo-history-panel-revert-and-restore-actions">
+<span id="layout-undo-panel"></span><span id="index-5"></span><h3><a class="toc-backref" href="#id33"><span class="section-number">19.1.3.6. </span>The Undo History Panel: Revert and Restore actions</a><a class="headerlink" href="#the-undo-history-panel-revert-and-restore-actions" title="Permalink to this headline"></a></h3>
+<p>During the layout process, it is possible to revert and restore changes.
+This can be done with the revert and restore tools available in the
+<span class="guilabel">Edit</span> menu, the <span class="guilabel">Layout</span> toolbar or the contextual menu
+any time you right-click in the print layout area:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/mActionUndo.png"><img alt="undo" src="../../../_images/mActionUndo.png" style="width: 1.5em;" /></a> <sup>Revert last change</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/mActionRedo.png"><img alt="redo" src="../../../_images/mActionRedo.png" style="width: 1.5em;" /></a> <sup>Restore last change</sup></p></li>
+</ul>
+<p>This can also be done by mouse click within the <span class="guilabel">Undo history</span>
+panel (see <a class="reference internal" href="#figure-layout"><span class="std std-numref">Fig. 19.8</span></a>). The History panel lists the last actions done
+within the print layout.
+Just select the point you want to revert to and once you do new action all
+the actions done after the selected one will be removed.</p>
+<figure class="align-center" id="id9">
+<span id="figure-layout"></span><img alt="../../../_images/command_hist.png" src="../../../_images/command_hist.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.8 </span><span class="caption-text">Undo History in the Print Layout</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="19. Laying out the maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_items/index.html" class="btn btn-neutral float-right" title="19.2. Layout Items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/overview_composer.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/overview_composer.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/overview_composer.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/print_composer/overview_composer.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/overview_composer.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/print_composer/overview_composer.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/print_composer/overview_composer.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/print_composer/overview_composer.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/print_composer/overview_composer.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/print_composer/overview_composer.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/print_composer/overview_composer.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/print_composer/overview_composer.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/print_composer/overview_composer.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/print_composer/overview_composer.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

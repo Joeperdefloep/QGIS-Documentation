@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.3. Lesson: Classification &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="4. Module: Laying out the Maps" href="../map_composer/index.html" />
+    <link rel="prev" title="3.2. Lesson: Labels" href="label_tool.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Training Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../foreword/index.html">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../basic_map/index.html">2. Module: Creating and Exploring a Basic Map</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">3. Module: Classifying Vector Data</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="attribute_data.html">3.1. Lesson: Vector Attribute Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="label_tool.html">3.2. Lesson: Labels</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">3.3. Lesson: Classification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-fa-classifying-nominal-data">3.3.1.  Follow Along: Classifying Nominal Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-ty-more-classification">3.3.2.  Try Yourself More Classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-fa-ratio-classification">3.3.3.  Follow Along: Ratio Classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moderate-ty-refine-the-classification">3.3.4.  Try Yourself Refine the Classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hard-fa-rule-based-classification">3.3.5.  Follow Along: Rule-based Classification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ic">3.3.6. In Conclusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wn">3.3.7. What’s Next?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../map_composer/index.html">4. Module: Laying out the Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../create_vector_data/index.html">5. Module: Creating Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vector_analysis/index.html">6. Module: Vector Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../rasters/index.html">7. Module: Rasters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../complete_analysis/index.html">8. Module: Completing the Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_plugins/index.html">9. Module: Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../online_resources/index.html">10. Module: Online Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qgis_server/index.html">11. Module: QGIS Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass/index.html">12. Module: GRASS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assessment/index.html">13. Module: Assessment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forestry/index.html">14. Module: Forestry Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../database_concepts/index.html">15. Module: Database Concepts with PostgreSQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_databases/index.html">16. Module: Spatial Database Concepts with PostGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">17. The QGIS processing guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../databases/index.html">18. Module: Using Spatial Databases in QGIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/contribute.html">19. Appendix: Contributing To This Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/preparing_data.html">20. Preparing Exercise Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS Training Manual</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">3. </span>Module: Classifying Vector Data</a> &raquo;</li>
+      <li><span class="section-number">3.3. </span>Lesson: Classification</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/training_manual/vector_classification/classification.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="label_tool.html" class="btn btn-neutral float-left" title="3.2. Lesson: Labels" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../map_composer/index.html" class="btn btn-neutral float-right" title="4. Module: Laying out the Maps" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ls-classification">
+<h1><span class="section-number">3.3. </span>Lesson: Classification<a class="headerlink" href="#ls-classification" title="Permalink to this headline"></a></h1>
+<p>Labels are a good way to communicate information such as the names of
+individual places, but they can’t be used for everything.
+For example, let us say that someone wants to know what each
+<code class="docutils literal notranslate"><span class="pre">landuse</span></code> area is used for.
+Using labels, you would get this:</p>
+<figure class="align-center">
+<img alt="../../../_images/bad_landuse_labels.png" src="../../../_images/bad_landuse_labels.png" />
+</figure>
+<p>This makes the map’s labeling difficult to read and even overwhelming
+if there are numerous different landuse areas on the map.</p>
+<p><strong>The goal for this lesson:</strong> To learn how to classify vector data
+effectively.</p>
+<section id="basic-fa-classifying-nominal-data">
+<h2><span class="section-number">3.3.1. </span><img alt="basic" src="../../../_images/basic.png" /> Follow Along: Classifying Nominal Data<a class="headerlink" href="#basic-fa-classifying-nominal-data" title="Permalink to this headline"></a></h2>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog for the <code class="docutils literal notranslate"><span class="pre">landuse</span></code>
+layer</p></li>
+<li><p>Go to the <span class="guilabel">Symbology</span> tab</p></li>
+<li><p>Click on the dropdown that says <span class="guilabel">Single Symbol</span> and
+change it to <span class="guilabel">Categorized</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/categorised_styles.png" src="../../../_images/categorised_styles.png" />
+</figure>
+</li>
+<li><p>In the new panel, change the <span class="guilabel">Value</span> to <code class="docutils literal notranslate"><span class="pre">landuse</span></code> and
+the <span class="guilabel">Color ramp</span> to <span class="guilabel">Random colors</span></p></li>
+<li><p>Click the button labeled <span class="guilabel">Classify</span></p>
+<figure class="align-center">
+<img alt="../../../_images/categorised_style_settings.png" src="../../../_images/categorised_style_settings.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p>
+<p>You’ll see something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/categorisation_result.png" src="../../../_images/categorisation_result.png" />
+</figure>
+</li>
+<li><p>Click the arrow (or plus sign) next to <code class="docutils literal notranslate"><span class="pre">landuse</span></code> in the
+<span class="guilabel">Layers</span> panel, you’ll see the categories explained:</p>
+<figure class="align-center">
+<img alt="../../../_images/categories_explained.png" src="../../../_images/categories_explained.png" />
+</figure>
+<p>Now our landuse polygons are colored and are classified so that
+areas with the same land use are the same color.</p>
+</li>
+<li><p>If you wish to, you can change the symbol of each landuse
+area by double-clicking the relevant color block in the
+<span class="guilabel">Layers</span> panel or in the <span class="guilabel">Layer Properties</span>
+dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/change_layer_color.png" src="../../../_images/change_layer_color.png" />
+</figure>
+</li>
+</ol>
+<p>Notice that there is one category that’s empty:</p>
+<figure class="align-center">
+<img alt="../../../_images/empty_category.png" src="../../../_images/empty_category.png" />
+</figure>
+<p>This empty category is used to color any objects which do not have a
+landuse value defined or which have a <em>NULL</em> value.
+It can be useful to keep this empty category so that areas with a
+<em>NULL</em> value are still represented on the map.
+You may like to change the color to more obviously represent a blank
+or <em>NULL</em> value.</p>
+<p>Remember to save your map now so that you don’t lose all your
+hard-earned changes!</p>
+</section>
+<section id="basic-ty-more-classification">
+<h2><span class="section-number">3.3.2. </span><img alt="basic" src="../../../_images/basic.png" /> Try Yourself More Classification<a class="headerlink" href="#basic-ty-more-classification" title="Permalink to this headline"></a></h2>
+<p>Use the knowledge you gained above to classify the <code class="docutils literal notranslate"><span class="pre">buildings</span></code> layer.
+Set the categorisation against the <code class="docutils literal notranslate"><span class="pre">building</span></code> field and use the
+<span class="guilabel">Spectral</span> color ramp.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to zoom into an urban area to see the results.</p>
+</div>
+</section>
+<section id="moderate-fa-ratio-classification">
+<h2><span class="section-number">3.3.3. </span><img alt="moderate" src="../../../_images/moderate.png" /> Follow Along: Ratio Classification<a class="headerlink" href="#moderate-fa-ratio-classification" title="Permalink to this headline"></a></h2>
+<p>There are four types of classification: <em>nominal</em>, <em>ordinal</em>,
+<em>interval</em> and <em>ratio</em>.</p>
+<p>In <strong>nominal</strong> classification, the categories that objects are
+classified into are name-based; they have no order.
+For example: town names, district codes, etc.
+Symbols that are used for nominal data should not imply any order or
+magnitude.</p>
+<ul class="simple">
+<li><p>For points, we can use symbols of different shape.</p></li>
+<li><p>For polygons, we can use different types of hatching or different
+colours (avoid mixing light and dark colours).</p></li>
+<li><p>For lines, we can use different dash patterns, different colours
+(avoid mixing light and dark colours) and different symbols along
+the lines.</p></li>
+</ul>
+<p>In <strong>ordinal</strong> classification, the categories are arranged in a
+certain order.
+For example, world cities are given a rank depending on their
+importance for world trade, travel, culture, etc.
+Symbols that are used for ordinal data should imply order, but not
+magnitude.</p>
+<ul class="simple">
+<li><p>For points, we can use symbols with light to dark colours.</p></li>
+<li><p>For polygons, we can use graduated colours (light to dark).</p></li>
+<li><p>For lines, we can use graduated colours (light to dark).</p></li>
+</ul>
+<p>In <strong>interval</strong> classification, the numbers are on a scale with
+positive, negative and zero values.
+For example: height above/below sea level, temperature in degrees
+Celsius.
+Symbols that are used for interval data should imply order and
+magnitude.</p>
+<ul class="simple">
+<li><p>For points, we can use symbols with varying size (small to big).</p></li>
+<li><p>For polygons, we can use graduated colours (light to dark) or
+add diagrams of varying size.</p></li>
+<li><p>For lines, we can use thickness (thin to thick).</p></li>
+</ul>
+<p>In <strong>ratio</strong> classification, the numbers are on a scale with only
+positive and zero values.
+For example: temperature above absolute zero (0 degrees Kelvin),
+distance from a point, the average amount of traffic on a given
+street per month, etc.
+Symbols that are used for ratio data should imply order and
+magnitude.</p>
+<ul class="simple">
+<li><p>For points, we can use symbols with varying size (small to big).</p></li>
+<li><p>For polygons, we can use graduated colours (light to dark) or
+add diagrams of varying size.</p></li>
+<li><p>For lines, we can use thickness (thin to thick).</p></li>
+</ul>
+<p>In the example above, we used nominal classification to color each
+record in the <code class="docutils literal notranslate"><span class="pre">landuse</span></code> layer based on its <code class="docutils literal notranslate"><span class="pre">landuse</span></code> attribute.
+Now we will use ratio classification to classify the records by area.</p>
+<p>We are going to reclassify the layer, so existing classes will be lost
+if not saved. To store the current classification:</p>
+<ol class="arabic">
+<li><p>Open the layer’s properties dialog</p></li>
+<li><p>Click the <span class="guilabel">Save Style …</span> button in the <span class="guilabel">Style</span>
+drop-down menu.</p></li>
+<li><p>Select <span class="guilabel">Rename Current…</span>, enter <code class="docutils literal notranslate"><span class="pre">land</span> <span class="pre">usage</span></code> and press
+<span class="guilabel">OK</span>.</p>
+<p>The categories and their symbols are now saved in the layer’s properties.</p>
+</li>
+<li><p>Click now on the <span class="guilabel">Add…</span> entry of the <span class="guilabel">Style</span>
+drop-down menu and create a new style named <code class="docutils literal notranslate"><span class="pre">ratio</span></code>.
+This will store the new classification.</p></li>
+<li><p>Close the <span class="guilabel">Layer Properties</span> dialog</p></li>
+</ol>
+<p>We want to classify the landuse areas by size, but there is a
+problem: they don’t have a size field, so we’ll have to make one.</p>
+<ol class="arabic">
+<li><p>Open the Attributes Table for the <code class="docutils literal notranslate"><span class="pre">landuse</span></code> layer.</p></li>
+<li><p>Enter edit mode by clicking the <a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a>  <sup>Toggle editing</sup>
+button</p></li>
+<li><p>Add a new column of decimal type, called <code class="docutils literal notranslate"><span class="pre">AREA</span></code>, using the
+<a class="reference internal" href="../../../_images/mActionNewAttribute.png"><img alt="newAttribute" src="../../../_images/mActionNewAttribute.png" style="width: 1.5em;" /></a> <sup>New field</sup> button:</p>
+<figure class="align-center">
+<img alt="../../../_images/add_area_column.png" src="../../../_images/add_area_column.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p>
+<p>The new field will be added (at the far right of the table; you may
+need to scroll horizontally to see it).
+However, at the moment it is not populated, it just has a lot of
+<em>NULL</em> values.</p>
+<p>To solve this problem, we will need to calculate the areas.</p>
+<ol class="arabic">
+<li><p>Open the field calculator with the <a class="reference internal" href="../../../_images/mActionCalculateField.png"><img alt="calculateField" src="../../../_images/mActionCalculateField.png" style="width: 1.5em;" /></a> button.</p>
+<p>You will get this dialog:</p>
+<figure class="align-center">
+<img alt="../../../_images/calculate_field_dialog.png" src="../../../_images/calculate_field_dialog.png" />
+</figure>
+</li>
+<li><p>Check the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">Update existing fields</span></p></li>
+<li><p>Select <span class="guilabel">AREA</span> in the fields drop-down menu</p>
+<figure class="align-center">
+<img alt="../../../_images/field_calculator_top.png" src="../../../_images/field_calculator_top.png" />
+</figure>
+</li>
+<li><p>Under the <span class="guilabel">Expression</span> tab, expand the <span class="guilabel">Geometry</span>
+functions group in the list and find <span class="menuselection">$area</span></p></li>
+<li><p>Double-click on it so that it appears in the <span class="guilabel">Expression</span>
+field</p>
+<figure class="align-center">
+<img alt="../../../_images/geometry_area_select.png" src="../../../_images/geometry_area_select.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+<li><p>Scroll to the <code class="docutils literal notranslate"><span class="pre">AREA</span></code> field in the attribute table and you will
+notice that it is populated with values (you may need to
+click the column header to refresh the data).</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These areas respect the project’s area unit settings, so
+they may be in square meters or square degrees.</p>
+</div>
+</li>
+<li><p>Press <a class="reference internal" href="../../../_images/mActionSaveEdits.png"><img alt="saveEdits" src="../../../_images/mActionSaveEdits.png" style="width: 1.5em;" /></a> to save the edits and exit the edit mode with
+<a class="reference internal" href="../../../_images/mActionToggleEditing.png"><img alt="toggleEditing" src="../../../_images/mActionToggleEditing.png" style="width: 1.5em;" /></a> <sup>Toggle editing</sup></p></li>
+<li><p>Close the attribute table</p></li>
+</ol>
+<p>Now that we have the data, let’s use them to render the <code class="docutils literal notranslate"><span class="pre">landuse</span></code> layer.</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer properties</span> dialog’s
+<span class="guilabel">Symbology</span> tab for the <code class="docutils literal notranslate"><span class="pre">landuse</span></code> layer</p></li>
+<li><p>Change the classification style from <span class="guilabel">Categorized</span> to
+<span class="guilabel">Graduated</span></p></li>
+<li><p>Change the <span class="guilabel">Value</span> to <code class="docutils literal notranslate"><span class="pre">AREA</span></code></p></li>
+<li><p>Under <span class="guilabel">Color ramp</span>, choose the option
+<span class="guilabel">Create New Color Ramp…</span>:</p>
+<figure class="align-center">
+<img alt="../../../_images/area_gradient_select.png" src="../../../_images/area_gradient_select.png" />
+</figure>
+</li>
+<li><p>Choose <span class="guilabel">Gradient</span> (if it’s not selected already) and click
+<span class="guilabel">OK</span>. You will see this:</p>
+<figure class="align-center">
+<img alt="../../../_images/gradient_color_select.png" src="../../../_images/gradient_color_select.png" />
+</figure>
+<p>You’ll be using this to denote area, with small areas as
+<span class="guilabel">Color 1</span> and large areas as <span class="guilabel">Color 2</span>.</p>
+</li>
+<li><p>Choose appropriate colors</p>
+<p>In the example, the result looks like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/gradient_color_example.png" src="../../../_images/gradient_color_example.png" />
+</figure>
+</li>
+<li><p>Click <span class="guilabel">OK</span></p></li>
+<li><p>You can save the colour ramp by selecting
+<span class="guilabel">Save Color Ramp…</span> under the <span class="guilabel">Color ramp</span>
+tab.
+Choose an appropriate name for the colour ramp and click
+<span class="guilabel">Save</span>.
+You will now be able to select the same colour ramp easily under
+<span class="guilabel">All Color Ramps</span>.</p></li>
+<li><p>Click <span class="guilabel">Classify</span></p>
+<p>Now you will have something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/landuse_gradient_selected.png" src="../../../_images/landuse_gradient_selected.png" />
+</figure>
+<p>Leave everything else as-is.</p>
+</li>
+<li><p>Click <span class="guilabel">OK</span>:</p></li>
+</ol>
+<figure class="align-center">
+<img alt="../../../_images/gradient_result_map.png" src="../../../_images/gradient_result_map.png" />
+</figure>
+</section>
+<section id="moderate-ty-refine-the-classification">
+<h2><span class="section-number">3.3.4. </span><img alt="moderate" src="../../../_images/moderate.png" /> Try Yourself Refine the Classification<a class="headerlink" href="#moderate-ty-refine-the-classification" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Change the values of <span class="guilabel">Mode</span> and <span class="guilabel">Classes</span> until
+you get a classification that makes sense.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The settings you used might not be the same, but with the values
+<span class="guilabel">Classes</span> = <code class="docutils literal notranslate"><span class="pre">6</span></code> and <span class="guilabel">Mode</span> = <span class="guilabel">Natural Breaks
+(Jenks)</span> (and using the same colors, of course), the map will look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/gradient_map_new_mode.png" src="../../../_images/gradient_map_new_mode.png" />
+</figure>
+</div>
+</section>
+<section id="hard-fa-rule-based-classification">
+<h2><span class="section-number">3.3.5. </span><img alt="hard" src="../../../_images/hard.png" /> Follow Along: Rule-based Classification<a class="headerlink" href="#hard-fa-rule-based-classification" title="Permalink to this headline"></a></h2>
+<p>It’s often useful to combine multiple criteria for a classification,
+but unfortunately normal classification only takes one attribute into account.
+That’s where rule-based classification comes in handy.</p>
+<p>In this lesson, we will represent the <code class="docutils literal notranslate"><span class="pre">landuse</span></code> layer in a way to
+easily identify Swellendam city from the other residential area,
+and from the other types of landuse (based on their area).</p>
+<ol class="arabic">
+<li><p>Open the <span class="guilabel">Layer Properties</span> dialog for the <code class="docutils literal notranslate"><span class="pre">landuse</span></code>
+layer</p></li>
+<li><p>Switch to the <span class="guilabel">Symbology</span> tab</p></li>
+<li><p>Switch the classification style to <span class="guilabel">Rule-based</span></p>
+<p>QGIS will automatically show the rules that represent the current
+classification implemented for this layer.
+For example, after completing the exercise above, you may see
+something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/rule_based_classification.png" src="../../../_images/rule_based_classification.png" />
+</figure>
+</li>
+<li><p>Click and drag to select all the rules</p></li>
+<li><p>Use the <a class="reference internal" href="../../../_images/symbologyRemove.png"><img alt="signMinus" src="../../../_images/symbologyRemove.png" style="width: 1.5em;" /></a> <sup>Remove selected rules</sup> button to remove
+all of the existing rules</p></li>
+</ol>
+<p>Let’s now add our custom rules.</p>
+<ol class="arabic">
+<li><p>Click the <a class="reference internal" href="../../../_images/symbologyAdd.png"><img alt="signPlus" src="../../../_images/symbologyAdd.png" style="width: 1.5em;" /></a> <sup>Add rule</sup> button</p></li>
+<li><p>The <span class="guilabel">Edit rule</span> dialog then appears</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">Swellendam</span> <span class="pre">city</span></code> as <span class="guilabel">Label</span></p></li>
+<li><p>Click the <a class="reference internal" href="../../../_images/mIconExpression.png"><img alt="expression" src="../../../_images/mIconExpression.png" style="width: 1.5em;" /></a> button next to the <span class="guilabel">Filter</span> text
+area to open the <span class="guilabel">Expression String Builder</span></p></li>
+<li><p>Enter the criterion <code class="docutils literal notranslate"><span class="pre">&quot;name&quot;</span> <span class="pre">=</span> <span class="pre">'Swellendam'</span></code> and validate</p>
+<figure class="align-center">
+<img alt="../../../_images/query_builder_example.png" src="../../../_images/query_builder_example.png" />
+</figure>
+</li>
+<li><p>Back to the <span class="guilabel">Edit rule</span> dalog, assign it a darker
+grey-blue color in order to indicate the town’s
+importance in the region and remove the border</p>
+<figure class="align-center">
+<img alt="../../../_images/rule_style_result.png" src="../../../_images/rule_style_result.png" />
+</figure>
+</li>
+<li><p>Press <span class="guilabel">OK</span></p></li>
+<li><p>Repeat the steps above to add the following rules:</p>
+<ol class="arabic">
+<li><p><strong>Other residential</strong> label with the criterion
+<code class="docutils literal notranslate"><span class="pre">&quot;landuse&quot;</span> <span class="pre">=</span> <span class="pre">'residential'</span> <span class="pre">AND</span> <span class="pre">&quot;name&quot;</span> <span class="pre">&lt;&gt;</span> <span class="pre">'Swellendam'</span></code> (or
+<code class="docutils literal notranslate"><span class="pre">&quot;landuse&quot;</span> <span class="pre">=</span> <span class="pre">'residential'</span> <span class="pre">AND</span> <span class="pre">&quot;name&quot;</span> <span class="pre">!=</span> <span class="pre">'Swellendam'</span></code>).
+Choose a pale blue-grey <span class="guilabel">Fill color</span></p></li>
+<li><p><strong>Big non residential areas</strong> label with the criterion
+<code class="docutils literal notranslate"><span class="pre">&quot;landuse&quot;</span> <span class="pre">&lt;&gt;</span> <span class="pre">'residential'</span> <span class="pre">AND</span> <span class="pre">&quot;AREA&quot;</span> <span class="pre">&gt;=</span> <span class="pre">605000</span></code>.
+Choose a mid-green color.</p>
+<figure class="align-center">
+<img alt="../../../_images/criterion_refined_midway.png" src="../../../_images/criterion_refined_midway.png" />
+</figure>
+<p>These filters are exclusive, in that they exclude areas on the
+map (non-residential areas which are smaller than 605000
+(square meters) are not included in any of the rules).</p>
+</li>
+<li><p>We will catch the remaining features using a new rule labeled
+<strong>Small non residential areas</strong>. Instead of a filter expression,
+Check the <a class="reference internal" href="../../../_images/radiobuttonon.png"><img alt="radioButtonOn" src="../../../_images/radiobuttonon.png" style="width: 1.5em;" /></a> <span class="guilabel">Else</span>.
+Give this category a suitable pale green color.</p>
+<figure class="align-center">
+<img alt="../../../_images/criterion_else.png" src="../../../_images/criterion_else.png" />
+</figure>
+</li>
+</ol>
+<p>Your rules should now look like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/criterion_refined_list.png" src="../../../_images/criterion_refined_list.png" />
+</figure>
+</li>
+<li><p>Apply this symbology</p></li>
+</ol>
+<p>Your map will look something like this:</p>
+<figure class="align-center">
+<img alt="../../../_images/rule_based_map_result.png" src="../../../_images/rule_based_map_result.png" />
+</figure>
+<p>Now you have a map with Swellendam the most prominent
+residential area and other non-residential areas colored according to
+their size.</p>
+</section>
+<section id="ic">
+<h2><span class="section-number">3.3.6. </span>In Conclusion<a class="headerlink" href="#ic" title="Permalink to this headline"></a></h2>
+<p>Symbology allows us to represent the attributes of a layer in an
+easy-to-read way.
+It allows us as well as the map reader to understand the significance
+of features, using any relevant attributes that we choose.
+Depending on the problems you face, you’ll apply different
+classification techniques to solve them.</p>
+</section>
+<section id="wn">
+<h2><span class="section-number">3.3.7. </span>What’s Next?<a class="headerlink" href="#wn" title="Permalink to this headline"></a></h2>
+<p>Now we have a nice-looking map, but how are we going to get it out of
+QGIS and into a format we can print out, or make into an image or PDF? That’s the topic of the next lesson!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="label_tool.html" class="btn btn-neutral float-left" title="3.2. Lesson: Labels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../map_composer/index.html" class="btn btn-neutral float-right" title="4. Module: Laying out the Maps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/classification.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/training_manual/vector_classification/classification.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/training_manual/vector_classification/classification.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/training_manual/vector_classification/classification.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/training_manual/vector_classification/classification.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/training_manual/vector_classification/classification.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/training_manual/vector_classification/classification.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/training_manual/vector_classification/classification.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/training_manual/vector_classification/classification.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/training_manual/vector_classification/classification.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/training_manual/vector_classification/classification.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/training_manual/vector_classification/classification.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/training_manual/vector_classification/classification.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/training_manual/vector_classification/classification.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

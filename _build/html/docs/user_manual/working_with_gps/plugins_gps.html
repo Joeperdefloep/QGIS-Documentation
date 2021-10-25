@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>21.1. GPS Plugin &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_gps/plugins_gps.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="21.2. Live GPS tracking" href="live_GPS_tracking.html" />
+    <link rel="prev" title="21. Working with GPS Data" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_gps/plugins_gps.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">21. Working with GPS Data</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">21.1. GPS Plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-gps">21.1.1. What is GPS?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-gps-data-from-a-file">21.1.2. Loading GPS data from a file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gpsbabel">21.1.3. GPSBabel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importing-gps-data">21.1.4. Importing GPS data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-gps-data-from-a-device">21.1.5. Downloading GPS data from a device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-gps-data-to-a-device">21.1.6. Uploading GPS data to a device</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defining-new-device-types">21.1.7. Defining new device types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-of-points-tracks-from-gps-units">21.1.8. Download of points/tracks from GPS units</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="live_GPS_tracking.html">21.2. Live GPS tracking</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">21. </span>Working with GPS Data</a> &raquo;</li>
+      <li><span class="section-number">21.1. </span>GPS Plugin</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/working_with_gps/plugins_gps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="21. Working with GPS Data" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="live_GPS_tracking.html" class="btn btn-neutral float-right" title="21.2. Live GPS tracking" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gps-plugin">
+<span id="plugin-gps"></span><h1><span class="section-number">21.1. </span>GPS Plugin<a class="headerlink" href="#gps-plugin" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-is-gps" id="id3">What is GPS?</a></p></li>
+<li><p><a class="reference internal" href="#loading-gps-data-from-a-file" id="id4">Loading GPS data from a file</a></p></li>
+<li><p><a class="reference internal" href="#gpsbabel" id="id5">GPSBabel</a></p></li>
+<li><p><a class="reference internal" href="#importing-gps-data" id="id6">Importing GPS data</a></p></li>
+<li><p><a class="reference internal" href="#downloading-gps-data-from-a-device" id="id7">Downloading GPS data from a device</a></p></li>
+<li><p><a class="reference internal" href="#uploading-gps-data-to-a-device" id="id8">Uploading GPS data to a device</a></p></li>
+<li><p><a class="reference internal" href="#defining-new-device-types" id="id9">Defining new device types</a></p></li>
+<li><p><a class="reference internal" href="#download-of-points-tracks-from-gps-units" id="id10">Download of points/tracks from GPS units</a></p>
+<ul>
+<li><p><a class="reference internal" href="#garmin-gpsmap-60cs" id="id11">Garmin GPSMAP 60cs</a></p></li>
+<li><p><a class="reference internal" href="#btgp-38km-datalogger-only-bluetooth" id="id12">BTGP-38KM datalogger (only Bluetooth)</a></p></li>
+<li><p><a class="reference internal" href="#bluemax-gps-4044-datalogger-both-bt-and-usb" id="id13">BlueMax GPS-4044 datalogger (both BT and USB)</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="what-is-gps">
+<span id="whatsgps"></span><h2><a class="toc-backref" href="#id3"><span class="section-number">21.1.1. </span>What is GPS?</a><a class="headerlink" href="#what-is-gps" title="Permalink to this headline"></a></h2>
+<p>GPS, the Global Positioning System, is a satellite-based system that allows
+anyone with a GPS receiver to find their exact position anywhere in the world.
+GPS is used as an aid in navigation, for example in airplanes, in boats and by
+hikers. The GPS receiver uses the signals from the satellites to calculate its
+latitude, longitude and (sometimes) elevation. Most receivers also have the
+capability to store locations (known as <strong>waypoints</strong>), sequences of locations
+that make up a planned <strong>route</strong> and a tracklog or <strong>track</strong> of the receiver’s
+movement over time. Waypoints, routes and tracks are the three basic feature
+types in GPS data. QGIS displays waypoints in point layers, while routes and
+tracks are displayed in linestring layers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QGIS supports also GNSS receivers. But we keep using the term GPS in
+this documentation.</p>
+</div>
+</section>
+<section id="loading-gps-data-from-a-file">
+<span id="label-loadgps"></span><h2><a class="toc-backref" href="#id4"><span class="section-number">21.1.2. </span>Loading GPS data from a file</a><a class="headerlink" href="#loading-gps-data-from-a-file" title="Permalink to this headline"></a></h2>
+<p>There are dozens of different file formats for storing GPS data. The format
+that QGIS uses is called GPX (GPS eXchange format), which is a standard
+interchange format that can contain any number of waypoints, routes and tracks
+in the same file.</p>
+<p>To load a GPX file, you first need to load the plugin.
+<span class="menuselection">Plugins ►</span> <a class="reference internal" href="../../../_images/mActionShowPluginManager.png"><img alt="showPluginManager" src="../../../_images/mActionShowPluginManager.png" style="width: 1.5em;" /></a>
+<span class="menuselection">Plugin Manager…</span> opens the Plugin Manager Dialog.
+Activate the <a class="reference internal" href="../../../_images/checkbox.png"><img alt="checkbox" src="../../../_images/checkbox.png" style="width: 1.3em;" /></a> <span class="guilabel">GPS Tools</span> checkbox. When this plugin
+is loaded, a button with a small handheld GPS device will show up in the
+toolbar and in <span class="menuselection">Layer ► Create Layer ►</span> :</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/import_gpx.png"><img alt="importGPX" src="../../../_images/import_gpx.png" style="width: 1.5em;" /></a> <sup>GPS Tools</sup></p></li>
+<li><p><a class="reference internal" href="../../../_images/create_gpx.png"><img alt="createGPX" src="../../../_images/create_gpx.png" style="width: 1.5em;" /></a> <span class="guilabel">Create new GPX Layer</span></p></li>
+</ul>
+<p>For working with GPS data, we provide an example GPX file available in the QGIS
+sample dataset: <code class="file docutils literal notranslate"><span class="pre">qgis_sample_data/gps/national_monuments.gpx</span></code>. See section
+<a class="reference internal" href="../introduction/getting_started.html#label-sampledata"><span class="std std-ref">Downloading sample data</span></a> for more information about the sample data.</p>
+<ol class="arabic simple">
+<li><p>Select <span class="menuselection">Vector ► GPS Tools</span> or click the
+<a class="reference internal" href="../../../_images/import_gpx.png"><img alt="importGPX" src="../../../_images/import_gpx.png" style="width: 1.5em;" /></a> <sup>GPS Tools</sup> icon in the toolbar and open the
+<span class="guilabel">Load GPX file</span> tab (see <a class="reference internal" href="#figure-gps"><span class="std std-numref">Fig. 21.1</span></a>).</p></li>
+<li><p>Browse to the folder <code class="file docutils literal notranslate"><span class="pre">qgis_sample_data/gps/</span></code>, select the GPX file
+<code class="file docutils literal notranslate"><span class="pre">national_monuments.gpx</span></code> and click <span class="guilabel">Open</span>.</p></li>
+</ol>
+<figure class="align-center" id="id1">
+<span id="figure-gps"></span><img alt="../../../_images/loadgpx.png" src="../../../_images/loadgpx.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21.1 </span><span class="caption-text">The <em>GPS Tools</em> dialog window</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Use the <span class="guilabel">Browse…</span> button to select the GPX file, then use the checkboxes
+to select the feature types you want to load from that GPX file.
+Each feature type will be loaded in a separate layer when you click
+<span class="guilabel">OK</span>. The file <code class="file docutils literal notranslate"><span class="pre">national_monuments.gpx</span></code> only includes waypoints.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPS units allow you to store data in different coordinate systems. When
+downloading a GPX file (from your GPS unit or a web site) and then loading it
+in QGIS, be sure that the data stored in the GPX file uses WGS 84
+(latitude/longitude). QGIS expects this, and it is the official GPX
+specification. See <a class="reference external" href="https://www.topografix.com/GPX/1/1/">https://www.topografix.com/GPX/1/1/</a>.</p>
+</div>
+</section>
+<section id="gpsbabel">
+<h2><a class="toc-backref" href="#id5"><span class="section-number">21.1.3. </span>GPSBabel</a><a class="headerlink" href="#gpsbabel" title="Permalink to this headline"></a></h2>
+<p>Since QGIS uses GPX files, you need a way to convert other GPS file formats to
+GPX. This can be done for many formats using the free program GPSBabel, which is
+available at <a class="reference external" href="https://www.gpsbabel.org">https://www.gpsbabel.org</a>. This program can also transfer GPS
+data between your computer and a GPS device. QGIS uses GPSBabel to do these
+things, so it is recommended that you install it. However, if you just want to
+load GPS data from GPX files you will not need it. Version 1.2.3 of GPSBabel is
+known to work with QGIS, but you should be able to use later versions without
+any problems.</p>
+</section>
+<section id="importing-gps-data">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">21.1.4. </span>Importing GPS data</a><a class="headerlink" href="#importing-gps-data" title="Permalink to this headline"></a></h2>
+<p>To import GPS data from a file that is not a GPX file, you use the tool
+<span class="guilabel">Import other file</span> in the GPS Tools dialog. Here, you select the file
+that you want to import (and the file type), which feature type you want to
+import from it, where you want to store the converted GPX file and what the name
+of the new layer should be. Note that not all GPS data formats will support all
+three feature types, so for many formats you will only be able to choose between
+one or two types.</p>
+</section>
+<section id="downloading-gps-data-from-a-device">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">21.1.5. </span>Downloading GPS data from a device</a><a class="headerlink" href="#downloading-gps-data-from-a-device" title="Permalink to this headline"></a></h2>
+<p>QGIS can use GPSBabel to download data from a GPS device directly as new vector
+layers. For this we use the <span class="guilabel">Download from GPS</span> tab of the GPS
+Tools dialog (see <a class="reference internal" href="#figure-gps-download"><span class="std std-numref">Fig. 21.2</span></a>). Here, we select the type of GPS device, the
+port that it is connected to (or USB if your GPS supports this), the feature type
+that you want to download, the GPX file where the data should be stored, and the
+name of the new layer.</p>
+<figure class="align-center" id="id2">
+<span id="figure-gps-download"></span><img alt="../../../_images/download.png" src="../../../_images/download.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21.2 </span><span class="caption-text">The download tool</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>The device type you select in the GPS device menu determines how GPSBabel tries
+to communicate with your GPS device. If none of the available types work with
+your GPS device, you can create a new type (see section <a class="reference internal" href="#defining-new-device"><span class="std std-ref">Defining new device types</span></a>).</p>
+<p>The port may be a file name or some other name that your operating system uses
+as a reference to the physical port in your computer that the GPS device is
+connected to. It may also be simply USB, for USB-enabled GPS units.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../_images/nix.png"><img alt="nix" src="../../../_images/nix.png" style="width: 1em;" /></a> On Linux, this is something like <code class="docutils literal notranslate"><span class="pre">/dev/ttyS0</span></code> or <code class="docutils literal notranslate"><span class="pre">/dev/ttyS1</span></code>.</p></li>
+<li><p><a class="reference internal" href="../../../_images/win.png"><img alt="win" src="../../../_images/win.png" style="width: 1em;" /></a> On Windows, it is <code class="docutils literal notranslate"><span class="pre">COM1</span></code> or <code class="docutils literal notranslate"><span class="pre">COM2</span></code>.</p></li>
+</ul>
+<p>When you click <span class="guilabel">OK</span>, the data will be downloaded from the device and appear
+as a layer in QGIS.</p>
+</section>
+<section id="uploading-gps-data-to-a-device">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">21.1.6. </span>Uploading GPS data to a device</a><a class="headerlink" href="#uploading-gps-data-to-a-device" title="Permalink to this headline"></a></h2>
+<p>You can also upload data directly from a vector layer in QGIS to a GPS device
+using the <span class="guilabel">Upload to GPS</span> tab of the GPS Tools dialog. To do
+this, you simply select the layer that you want to upload (which must be a GPX
+layer), your GPS device type, and the port (or USB) that it is connected to.
+Just as with the download tool, you can specify new device types if your device
+isn’t in the list.</p>
+<p>This tool is very useful in combination with the vector-editing capabilities of
+QGIS. It allows you to load a map, create waypoints and routes, and then upload
+them and use them on your GPS device.</p>
+</section>
+<section id="defining-new-device-types">
+<span id="defining-new-device"></span><h2><a class="toc-backref" href="#id9"><span class="section-number">21.1.7. </span>Defining new device types</a><a class="headerlink" href="#defining-new-device-types" title="Permalink to this headline"></a></h2>
+<p>There are lots of different types of GPS devices. The QGIS developers can’t
+test all of them, so if you have one that does not work with any of the device
+types listed in the <span class="guilabel">Download from GPS</span> and <span class="guilabel">Upload to GPS</span>
+tools, you can define your own device type for it. You do this by using the GPS
+device editor, which you start by clicking the <span class="guilabel">Edit Devices</span> button in the
+download or the upload tab.</p>
+<p>To define a new device, you simply click the <span class="guilabel">New Device</span> button,
+enter a name, enter download and upload commands for your device, and
+click the <span class="guilabel">Update Device</span> button. The name will be listed in the
+device menus in the upload and download windows – it can be any string. The
+download command is the command that is used to download data from the device
+to a GPX file. This will probably be a GPSBabel command, but you can use any
+other command line program that can create a GPX file. QGIS will replace the
+keywords <code class="docutils literal notranslate"><span class="pre">%type</span></code>, <code class="docutils literal notranslate"><span class="pre">%in</span></code>, and <code class="docutils literal notranslate"><span class="pre">%out</span></code> when it runs the command.</p>
+<p><code class="docutils literal notranslate"><span class="pre">%type</span></code> will be replaced by <code class="docutils literal notranslate"><span class="pre">-w</span></code> if you are downloading waypoints,
+<code class="docutils literal notranslate"><span class="pre">-r</span></code> if you are downloading routes and <code class="docutils literal notranslate"><span class="pre">-t</span></code> if you are downloading tracks.
+These are command-line options that tell GPSBabel which feature type to download.</p>
+<p><code class="docutils literal notranslate"><span class="pre">%in</span></code> will be replaced by the port name that you choose in the download window
+and <code class="docutils literal notranslate"><span class="pre">%out</span></code> will be replaced by the name you choose for the GPX file that the
+downloaded data should be stored in. So, if you create a device type with the
+download command <code class="docutils literal notranslate"><span class="pre">gpsbabel</span> <span class="pre">%type</span> <span class="pre">-i</span> <span class="pre">garmin</span> <span class="pre">-o</span> <span class="pre">gpx</span> <span class="pre">%in</span> <span class="pre">%out</span></code> (this is actually
+the download command for the predefined device type ‘Garmin serial’) and then
+use it to download waypoints from port <code class="docutils literal notranslate"><span class="pre">/dev/ttyS0</span></code> to the file <code class="docutils literal notranslate"><span class="pre">output.gpx</span></code>,
+QGIS will replace the keywords and run the command
+<code class="docutils literal notranslate"><span class="pre">gpsbabel</span> <span class="pre">-w</span> <span class="pre">-i</span> <span class="pre">garmin</span> <span class="pre">-o</span> <span class="pre">gpx</span> <span class="pre">/dev/ttyS0</span> <span class="pre">output.gpx</span></code>.</p>
+<p>The upload command is the command that is used to upload data to the device.
+The same keywords are used, but <code class="docutils literal notranslate"><span class="pre">%in</span></code> is now replaced by the name of the GPX
+file for the layer that is being uploaded, and <code class="docutils literal notranslate"><span class="pre">%out</span></code> is replaced by the port
+name.</p>
+<p>You can learn more about GPSBabel and its available command line options at
+<a class="reference external" href="https://www.gpsbabel.org">https://www.gpsbabel.org</a>.</p>
+<p>Once you have created a new device type, it will appear in the device lists for
+the download and upload tools.</p>
+</section>
+<section id="download-of-points-tracks-from-gps-units">
+<h2><a class="toc-backref" href="#id10"><span class="section-number">21.1.8. </span>Download of points/tracks from GPS units</a><a class="headerlink" href="#download-of-points-tracks-from-gps-units" title="Permalink to this headline"></a></h2>
+<p>As described in previous sections QGIS uses GPSBabel to download points/tracks
+directly in the project. QGIS comes out of the box with a pre-defined profile
+to download from Garmin devices. Unfortunately there is a <a class="reference external" href="https://issues.qgis.org/issues/6318">bug #6318</a> that does not allow create other profiles,
+so downloading directly in QGIS using the GPS Tools is at the moment limited to
+Garmin USB units.</p>
+<section id="garmin-gpsmap-60cs">
+<h3><a class="toc-backref" href="#id11"><span class="section-number">21.1.8.1. </span>Garmin GPSMAP 60cs</a><a class="headerlink" href="#garmin-gpsmap-60cs" title="Permalink to this headline"></a></h3>
+<p><strong>MS Windows</strong></p>
+<p>Install the Garmin USB drivers from
+<a class="reference external" href="https://www8.garmin.com/support/download_details.jsp?id=591">https://www8.garmin.com/support/download_details.jsp?id=591</a></p>
+<p>Connect the unit. Open GPS Tools and use <code class="docutils literal notranslate"><span class="pre">type=garmin</span> <span class="pre">serial</span></code> and <code class="docutils literal notranslate"><span class="pre">port=usb:</span></code>
+Fill the fields <span class="guilabel">Layer name</span> and <span class="guilabel">Output file</span>. Sometimes
+it seems to have problems saving in a certain folder, using something like
+<code class="docutils literal notranslate"><span class="pre">c:\temp</span></code> usually works.</p>
+<p><strong>Ubuntu/Mint GNU/Linux</strong></p>
+<p>It is first needed an issue about the permissions of the device, as described
+at <a class="reference external" href="https://wiki.openstreetmap.org/wiki/USB_Garmin_on_GNU/Linux">https://wiki.openstreetmap.org/wiki/USB_Garmin_on_GNU/Linux</a>. You can try to
+create a file <code class="file docutils literal notranslate"><span class="pre">/etc/udev/rules.d/51-garmin.rules</span></code> containing this rule</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ATTRS</span><span class="p">{</span><span class="n">idVendor</span><span class="p">}</span><span class="o">==</span><span class="s2">&quot;091e&quot;</span><span class="p">,</span> <span class="n">ATTRS</span><span class="p">{</span><span class="n">idProduct</span><span class="p">}</span><span class="o">==</span><span class="s2">&quot;0003&quot;</span><span class="p">,</span> <span class="n">MODE</span><span class="o">=</span><span class="s2">&quot;666&quot;</span>
+</pre></div>
+</div>
+<p>After that is necessary to be sure that the <code class="docutils literal notranslate"><span class="pre">garmin_gps</span></code> kernel module is not
+loaded</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rmmod</span> <span class="n">garmin_gps</span>
+</pre></div>
+</div>
+<p>and then you can use the GPS Tools. Unfortunately there seems to be a <a class="reference external" href="https://issues.qgis.org/issues/7182">bug #7182</a> and usually QGIS freezes several times
+before the operation work fine.</p>
+</section>
+<section id="btgp-38km-datalogger-only-bluetooth">
+<h3><a class="toc-backref" href="#id12"><span class="section-number">21.1.8.2. </span>BTGP-38KM datalogger (only Bluetooth)</a><a class="headerlink" href="#btgp-38km-datalogger-only-bluetooth" title="Permalink to this headline"></a></h3>
+<p><strong>MS Windows</strong></p>
+<p>The already referred bug does not allow to download the data from within QGIS,
+so it is needed to use GPSBabel from the command line or using its interface.
+The working command is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpsbabel</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">i</span> <span class="n">skytraq</span><span class="p">,</span><span class="n">baud</span><span class="o">=</span><span class="mi">9600</span><span class="p">,</span><span class="n">initbaud</span><span class="o">=</span><span class="mi">9600</span> <span class="o">-</span><span class="n">f</span> <span class="n">COM9</span> <span class="o">-</span><span class="n">o</span> <span class="n">gpx</span> <span class="o">-</span><span class="n">F</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">GPX</span><span class="o">/</span><span class="n">aaa</span><span class="o">.</span><span class="n">gpx</span>
+</pre></div>
+</div>
+<p><strong>Ubuntu/Mint GNU/Linux</strong></p>
+<p>Use same command (or settings if you use GPSBabel GUI) as in Windows. On Linux
+it maybe somehow common to get a message like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skytraq</span><span class="p">:</span> <span class="n">Too</span> <span class="n">many</span> <span class="n">read</span> <span class="n">errors</span> <span class="n">on</span> <span class="n">serial</span> <span class="n">port</span>
+</pre></div>
+</div>
+<p>it is just a matter to turn off and on the datalogger and try again.</p>
+</section>
+<section id="bluemax-gps-4044-datalogger-both-bt-and-usb">
+<h3><a class="toc-backref" href="#id13"><span class="section-number">21.1.8.3. </span>BlueMax GPS-4044 datalogger (both BT and USB)</a><a class="headerlink" href="#bluemax-gps-4044-datalogger-both-bt-and-usb" title="Permalink to this headline"></a></h3>
+<p><strong>MS Windows</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It needs to install its drivers before using it on Windows 7. See in the
+manufacturer site for the proper download.</p>
+</div>
+<p>Downloading with GPSBabel, both with USB and BT returns always an error like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpsbabel</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">i</span> <span class="n">mtk</span> <span class="o">-</span><span class="n">f</span> <span class="n">COM12</span> <span class="o">-</span><span class="n">o</span> <span class="n">gpx</span> <span class="o">-</span><span class="n">F</span> <span class="n">C</span><span class="p">:</span><span class="o">/</span><span class="n">temp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">gpx</span>
+<span class="n">mtk_logger</span><span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t create temporary file data.bin</span>
+<span class="n">Error</span> <span class="n">running</span> <span class="n">gpsbabel</span><span class="p">:</span> <span class="n">Process</span> <span class="n">exited</span> <span class="n">unsuccessfully</span> <span class="k">with</span> <span class="n">code</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Ubuntu/Mint GNU/Linux</strong></p>
+<p><strong>With USB</strong></p>
+<p>After having connected the cable use the <code class="docutils literal notranslate"><span class="pre">dmesg</span></code> command to understand what
+port is being used, for example <code class="docutils literal notranslate"><span class="pre">/dev/ttyACM3</span></code>. Then as usual use GPSBabel
+from the CLI or GUI</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpsbabel</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">i</span> <span class="n">mtk</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyACM3</span> <span class="o">-</span><span class="n">o</span> <span class="n">gpx</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">bluemax</span><span class="o">.</span><span class="n">gpx</span>
+</pre></div>
+</div>
+<p><strong>With Bluetooth</strong></p>
+<p>Use Blueman Device Manager to pair the device and make it available through a
+system port, then run GPSBabel</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpsbabel</span> <span class="o">-</span><span class="n">t</span> <span class="o">-</span><span class="n">i</span> <span class="n">mtk</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">rfcomm0</span> <span class="o">-</span><span class="n">o</span> <span class="n">gpx</span> <span class="o">-</span><span class="n">F</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">bluemax_bt</span><span class="o">.</span><span class="n">gpx</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="21. Working with GPS Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="live_GPS_tracking.html" class="btn btn-neutral float-right" title="21.2. Live GPS tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_gps/plugins_gps.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/working_with_gps/plugins_gps.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/working_with_gps/plugins_gps.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/working_with_gps/plugins_gps.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/working_with_gps/plugins_gps.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/working_with_gps/plugins_gps.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/working_with_gps/plugins_gps.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/working_with_gps/plugins_gps.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/working_with_gps/plugins_gps.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/working_with_gps/plugins_gps.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/working_with_gps/plugins_gps.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/working_with_gps/plugins_gps.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/working_with_gps/plugins_gps.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/working_with_gps/plugins_gps.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

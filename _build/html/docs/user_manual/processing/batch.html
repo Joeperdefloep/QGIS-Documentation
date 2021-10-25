@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>24.6. The batch processing interface &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/processing/batch.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="24.7. Using processing algorithms from the console" href="console.html" />
+    <link rel="prev" title="24.5. The graphical modeler" href="modeler.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/batch.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../print_composer/index.html">19. Laying out the maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">24. QGIS processing framework</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">24.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">24.2. Configuring the Processing Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="toolbox.html">24.3. The Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="history.html">24.4. The history manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modeler.html">24.5. The graphical modeler</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">24.6. The batch processing interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">24.6.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-parameters-table">24.6.2. The parameters table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filling-the-parameters-table">24.6.3. Filling the parameters table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#executing-the-batch-process">24.6.4. Executing the batch process</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="console.html">24.7. Using processing algorithms from the console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="standalone.html">24.8. Using processing from the command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scripts.html">24.9. Writing new Processing algorithms as Python scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="3rdParty.html">24.10. Configuring external applications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">24. </span>QGIS processing framework</a> &raquo;</li>
+      <li><span class="section-number">24.6. </span>The batch processing interface</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/processing/batch.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="modeler.html" class="btn btn-neutral float-left" title="24.5. The graphical modeler" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="console.html" class="btn btn-neutral float-right" title="24.7. Using processing algorithms from the console" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-batch-processing-interface">
+<span id="processing-batch"></span><h1><span class="section-number">24.6. </span>The batch processing interface<a class="headerlink" href="#the-batch-processing-interface" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction" id="id6">Introduction</a></p></li>
+<li><p><a class="reference internal" href="#the-parameters-table" id="id7">The parameters table</a></p></li>
+<li><p><a class="reference internal" href="#filling-the-parameters-table" id="id8">Filling the parameters table</a></p></li>
+<li><p><a class="reference internal" href="#executing-the-batch-process" id="id9">Executing the batch process</a></p></li>
+</ul>
+</div>
+<section id="introduction">
+<h2><a class="toc-backref" href="#id6"><span class="section-number">24.6.1. </span>Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>All algorithms (including models) can be executed as a batch process. That
+is, they can be executed using not just a single set of inputs, but several of them,
+executing the algorithm as many times as needed. This is useful when processing
+large amounts of data, since it is not necessary to launch the algorithm many
+times from the toolbox.</p>
+<p>To execute an algorithm as a batch process, right-click on its name in the toolbox
+and select the <span class="guilabel">Execute as batch process</span> option in the pop-up menu
+that will appear.</p>
+<figure class="align-center" id="id1">
+<span id="figure-processing-batch-start"></span><img alt="../../../_images/batch_processing_right_click.png" src="../../../_images/batch_processing_right_click.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.29 </span><span class="caption-text">Batch Processing from right-click</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If you have the execution dialog of the algorithm open, you can also start the
+batch processing interface from there, clicking on the <span class="guilabel">Run as batch
+process…</span> button.</p>
+<figure class="align-center" id="id2">
+<span id="figure-processing-batch-start2"></span><img alt="../../../_images/batch_processing_params_dialog.png" src="../../../_images/batch_processing_params_dialog.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.30 </span><span class="caption-text">Batch Processing From Algorithm Dialog</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-parameters-table">
+<h2><a class="toc-backref" href="#id7"><span class="section-number">24.6.2. </span>The parameters table</a><a class="headerlink" href="#the-parameters-table" title="Permalink to this headline"></a></h2>
+<p>Executing a batch process is similar to performing a single execution of an
+algorithm. Parameter values have to be defined, but in this case we need not just
+a single value for each parameter, but a set of them instead, one for each time
+the algorithm has to be executed. Values are introduced using a table like the
+one shown next.</p>
+<figure class="align-center" id="id3">
+<span id="figure-processing-bath-parameters"></span><img alt="../../../_images/batch_processing.png" src="../../../_images/batch_processing.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.31 </span><span class="caption-text">Batch Processing</span><a class="headerlink" href="#id3" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Each line of this table represents a single execution of the algorithm, and each
+cell contains the value of one of the parameters. It is similar to the parameters
+dialog that you see when executing an algorithm from the toolbox, but with a
+different arrangement.</p>
+<p>By default, the table contains just two rows. You can add or remove rows using
+the buttons on the lower part of the window.</p>
+<p>Once the size of the table has been set, it has to be filled with the desired
+values.</p>
+</section>
+<section id="filling-the-parameters-table">
+<h2><a class="toc-backref" href="#id8"><span class="section-number">24.6.3. </span>Filling the parameters table</a><a class="headerlink" href="#filling-the-parameters-table" title="Permalink to this headline"></a></h2>
+<p>For most parameters, setting the value is trivial. Just type the value or select
+it from the list of available options, depending on the parameter type.</p>
+<p>Filenames for input data objects are introduced directly typing or, more
+conveniently, clicking on the <span class="guilabel">…</span> button on the right hand of the cell,
+which will show a context menu with two option: one for selecting from the layers
+currently opened and another to select from the filesystem. This second option,
+when selected, shows a typical file chooser dialog. Multiple files can be
+selected at once.
+If the input parameter represents a single data object and several files are
+selected, each one of them will be put in a separate row, adding new ones if
+needed. If the parameter represents a multiple input, all the selected files
+will be added to a single cell, separated by semicolons (<code class="docutils literal notranslate"><span class="pre">;</span></code>).</p>
+<p>Layer identifiers can be directly typed in the parameter text box. You can enter
+the full path to a file or the name of a layer that is currently loaded in the
+current QGIS project. The name of the layer will be automatically resolved to
+its source path. Notice that, if several layers have the same name, this might
+cause unexpected results due to ambiguity.</p>
+<p>Output data objects are always saved to a file and, unlike when executing an
+algorithm from the toolbox, saving to a temporary file or database is not permitted. You can
+type the name directly or use the file chooser dialog that appears when clicking
+on the accompanying button.</p>
+<p>Once you select the file, a new dialog is shown to allow for autocompletion of
+other cells in the same column (same parameter).</p>
+<figure class="align-center" id="id4">
+<span id="figure-processing-save"></span><img alt="../../../_images/batch_processing_save.png" src="../../../_images/batch_processing_save.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.32 </span><span class="caption-text">Batch Processing Save</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>If the default value (‘Do not autocomplete’) is selected, it will just put
+the selected filename in the selected cell from the parameters table. If any of
+the other options is selected, all the cells below the selected one will be
+automatically filled based on a defined criteria. This way, it is much easier to
+fill the table, and the batch process can be defined with less effort.</p>
+<p>Automatic filling can be done by simply adding correlative numbers to the selected
+file path, or by appending the value of another field at the same row. This is
+particularly useful for naming output data objects according to input ones.</p>
+<figure class="align-center" id="id5">
+<span id="figure-processing-file"></span><img alt="../../../_images/batch_processing_filepath.png" src="../../../_images/batch_processing_filepath.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 24.33 </span><span class="caption-text">Batch Processing File Path</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="executing-the-batch-process">
+<h2><a class="toc-backref" href="#id9"><span class="section-number">24.6.4. </span>Executing the batch process</a><a class="headerlink" href="#executing-the-batch-process" title="Permalink to this headline"></a></h2>
+<p>To execute the batch process once you have introduced all the necessary values,
+just click on <span class="guilabel">OK</span>. Progress of the global batch task will be shown in the
+progress bar in the lower part of the dialog.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modeler.html" class="btn btn-neutral float-left" title="24.5. The graphical modeler" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="console.html" class="btn btn-neutral float-right" title="24.7. Using processing algorithms from the console" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/batch.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/batch.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/processing/batch.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/processing/batch.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/processing/batch.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/processing/batch.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/processing/batch.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/processing/batch.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/processing/batch.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/processing/batch.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/processing/batch.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/processing/batch.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/processing/batch.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/processing/batch.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

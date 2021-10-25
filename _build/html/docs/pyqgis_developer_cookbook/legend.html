@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Accessing the Table Of Contents (TOC) &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/legend.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5. Using Raster Layers" href="raster.html" />
+    <link rel="prev" title="3. Loading Layers" href="loadlayer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/legend.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_manual/index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PyQGIS Cookbook (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadproject.html">2. Loading Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="loadlayer.html">3. Loading Layers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Accessing the Table Of Contents (TOC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-qgsproject-class">4.1. The QgsProject class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qgslayertreegroup-class">4.2. QgsLayerTreeGroup class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="raster.html">5. Using Raster Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">6. Using Vector Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry.html">7. Geometry Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crs.html">8. Projections Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canvas.html">9. Using the Map Canvas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="composer.html">10. Map Rendering and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">11. Expressions, Filtering and Calculating Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">12. Reading And Storing Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="communicating.html">13. Communicating with the user</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">14. Authentication infrastructure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html">15. Tasks - doing heavy work in the background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plugins/index.html">16. Developing Python Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing.html">17. Writing a Processing plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pluginlayer.html">18. Using Plugin Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network_analysis.html">19. Network analysis library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">20. QGIS Server and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheat_sheet.html">21. Cheat sheet for PyQGIS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">PyQGIS Developer Cookbook</a> &raquo;</li>
+      <li><span class="section-number">4. </span>Accessing the Table Of Contents (TOC)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/pyqgis_developer_cookbook/legend.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="loadlayer.html" class="btn btn-neutral float-left" title="3. Loading Layers" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster.html" class="btn btn-neutral float-right" title="5. Using Raster Layers" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-the-table-of-contents-toc">
+<span id="legendpy"></span><h1><span class="section-number">4. </span>Accessing the Table Of Contents (TOC)<a class="headerlink" href="#accessing-the-table-of-contents-toc" title="Permalink to this headline"></a></h1>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>The code snippets on this page need the following imports if you’re outside the pyqgis console:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QgsProject</span><span class="p">,</span>
+    <span class="n">QgsVectorLayer</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#the-qgsproject-class" id="id1">The QgsProject class</a></p></li>
+<li><p><a class="reference internal" href="#qgslayertreegroup-class" id="id2">QgsLayerTreeGroup class</a></p></li>
+</ul>
+</div>
+<p>You can use different classes to access all the loaded layers in the TOC and
+use them to retrieve information:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a></p></li>
+<li><p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeGroup</span></code></a></p></li>
+</ul>
+<section id="the-qgsproject-class">
+<h2><a class="toc-backref" href="#id1"><span class="section-number">4.1. </span>The QgsProject class</a><a class="headerlink" href="#the-qgsproject-class" title="Permalink to this headline"></a></h2>
+<p>You can use <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> to retrieve information
+about the TOC and all the layers loaded.</p>
+<p>You have to create an <code class="docutils literal notranslate"><span class="pre">instance</span></code> of <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a>
+and use its methods to get the loaded layers.</p>
+<p>The main method is <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.mapLayers" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">mapLayers()</span></code></a>. It will
+return a dictionary of the loaded layers:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;countries_89ae1b0f_f41b_4f42_bca4_caf55ddbe4b6&#39;: &lt;QgsVectorLayer: &#39;countries&#39; (ogr)&gt;}
+</pre></div>
+</div>
+<p>The dictionary <code class="docutils literal notranslate"><span class="pre">keys</span></code> are the unique layer ids while the <code class="docutils literal notranslate"><span class="pre">values</span></code> are the
+related objects.</p>
+<p>It is now straightforward to obtain any other information about the layers:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># list of layer names using list comprehension</span>
+<span class="linenos">2</span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+<span class="linenos">3</span><span class="c1"># dictionary with key = layer name and value = layer object</span>
+<span class="linenos">4</span><span class="n">layers_list</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">5</span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+<span class="linenos">6</span>  <span class="n">layers_list</span><span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">l</span>
+<span class="linenos">7</span>
+<span class="linenos">8</span><span class="nb">print</span><span class="p">(</span><span class="n">layers_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;countries&#39;: &lt;QgsVectorLayer: &#39;countries&#39; (ogr)&gt;}
+</pre></div>
+</div>
+<p>You can also query the TOC using the name of the layer:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A list with all the matching layers is returned, so we index with
+<code class="docutils literal notranslate"><span class="pre">[0]</span></code> to get the first layer with this name.</p>
+</div>
+</section>
+<section id="qgslayertreegroup-class">
+<h2><a class="toc-backref" href="#id2"><span class="section-number">4.2. </span>QgsLayerTreeGroup class</a><a class="headerlink" href="#qgslayertreegroup-class" title="Permalink to this headline"></a></h2>
+<p>The layer tree is a classical tree structure built of nodes. There are currently
+two types of nodes: group nodes (<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeGroup</span></code></a>)
+and layer nodes (<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeLayer</span></code></a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>for more information you can read these blog posts of Martin Dobias:
+<a class="reference external" href="https://www.lutraconsulting.co.uk/blog/2014/07/06/qgis-layer-tree-api-part-1/">Part 1</a>
+<a class="reference external" href="https://www.lutraconsulting.co.uk/blog/2014/07/25/qgis-layer-tree-api-part-2/">Part 2</a>
+<a class="reference external" href="https://www.lutraconsulting.co.uk/blog/2015/01/30/qgis-layer-tree-api-part-3/">Part 3</a></p>
+</div>
+<p>The project layer tree can be accessed easily with the method <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject.layerTreeRoot" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">layerTreeRoot()</span></code></a>
+of the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsProject.html#qgis.core.QgsProject" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsProject</span></code></a> class:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">root</span></code> is a group node and has <em>children</em>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>A list of direct children is returned. Sub group children should be accessed
+from their own direct parent.</p>
+<p>We can retrieve one of the children:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">child0</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">child0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;QgsLayerTreeLayer: countries&gt;
+</pre></div>
+</div>
+<p>Layers can also be retrieved using their (unique) <code class="docutils literal notranslate"><span class="pre">id</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">ids</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayerIds</span><span class="p">()</span>
+<span class="c1"># access the first layer of the ids list</span>
+<span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>And groups can also be searched using their names:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span><span class="s1">&#39;Group Name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeGroup</span></code></a> has many other useful
+methods that can be used to obtain more information about the TOC:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list of all the checked layers in the TOC</span>
+<span class="n">checked_layers</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">checkedLayers</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">checked_layers</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;QgsVectorLayer: &#39;countries&#39; (ogr)&gt;]
+</pre></div>
+</div>
+<p>Now let’s add some layers to the project’s layer tree. There are two ways of doing
+that:</p>
+<ol class="arabic">
+<li><p><strong>Explicit addition</strong> using the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup.addLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addLayer()</span></code></a>
+or <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup.insertLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">insertLayer()</span></code></a>
+functions:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># create a temporary layer</span>
+<span class="linenos">2</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;path_to_layer&quot;</span><span class="p">,</span> <span class="s2">&quot;Layer 1&quot;</span><span class="p">,</span> <span class="s2">&quot;memory&quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="c1"># add the layer to the legend, last position</span>
+<span class="linenos">4</span><span class="n">root</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer1</span><span class="p">)</span>
+<span class="linenos">5</span><span class="c1"># add the layer at given position</span>
+<span class="linenos">6</span><span class="n">root</span><span class="o">.</span><span class="n">insertLayer</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">layer1</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Implicit addition</strong>: since the project’s layer tree is connected to the
+layer registry it is enough to add a layer to the map layer registry:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer1</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>You can switch between <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsVectorLayer.html#qgis.core.QgsVectorLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsVectorLayer</span></code></a> and
+<a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeLayer.html#qgis.core.QgsLayerTreeLayer" title="(in QGIS Python API vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QgsLayerTreeLayer</span></code></a> easily:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_layer</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">country_layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer node:&quot;</span><span class="p">,</span> <span class="n">node_layer</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Map layer:&quot;</span><span class="p">,</span> <span class="n">node_layer</span><span class="o">.</span><span class="n">layer</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Layer node: &lt;QgsLayerTreeLayer: countries&gt;
+Map layer: &lt;QgsVectorLayer: &#39;countries&#39; (ogr)&gt;
+</pre></div>
+</div>
+<p>Groups can be added with the <a class="reference external" href="https://qgis.org/pyqgis/master/core/QgsLayerTreeGroup.html#qgis.core.QgsLayerTreeGroup.addGroup" title="(in QGIS Python API vmaster)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addGroup()</span></code></a>
+method. In the example below, the former will add a group to the end of the TOC
+while for the latter you can add another group within an existing one:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">node_group1</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">addGroup</span><span class="p">(</span><span class="s1">&#39;Simple Group&#39;</span><span class="p">)</span>
+<span class="c1"># add a sub-group to Simple Group</span>
+<span class="n">node_subgroup1</span> <span class="o">=</span> <span class="n">node_group1</span><span class="o">.</span><span class="n">addGroup</span><span class="p">(</span><span class="s2">&quot;I&#39;m a sub group&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To moving nodes and groups there are many useful methods.</p>
+<p>Moving an existing node is done in three steps:</p>
+<ol class="arabic simple">
+<li><p>cloning the existing node</p></li>
+<li><p>moving the cloned node to the desired position</p></li>
+<li><p>deleting the original node</p></li>
+</ol>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># clone the group</span>
+<span class="linenos">2</span><span class="n">cloned_group1</span> <span class="o">=</span> <span class="n">node_group1</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="linenos">3</span><span class="c1"># move the node (along with sub-groups and layers) to the top</span>
+<span class="linenos">4</span><span class="n">root</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cloned_group1</span><span class="p">)</span>
+<span class="linenos">5</span><span class="c1"># remove the original node</span>
+<span class="linenos">6</span><span class="n">root</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">node_group1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is a little bit more <em>complicated</em> to move a layer around in the legend:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># get a QgsVectorLayer</span>
+<span class="linenos"> 2</span><span class="n">vl</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 3</span><span class="c1"># create a QgsLayerTreeLayer object from vl by its id</span>
+<span class="linenos"> 4</span><span class="n">myvl</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">vl</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="c1"># clone the myvl QgsLayerTreeLayer object</span>
+<span class="linenos"> 6</span><span class="n">myvlclone</span> <span class="o">=</span> <span class="n">myvl</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="c1"># get the parent. If None (layer is not in group) returns &#39;&#39;</span>
+<span class="linenos"> 8</span><span class="n">parent</span> <span class="o">=</span> <span class="n">myvl</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="c1"># move the cloned layer to the top (0)</span>
+<span class="linenos">10</span><span class="n">parent</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">myvlclone</span><span class="p">)</span>
+<span class="linenos">11</span><span class="c1"># remove the original myvl</span>
+<span class="linenos">12</span><span class="n">root</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">myvl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or moving it to an existing group:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># get a QgsVectorLayer</span>
+<span class="linenos"> 2</span><span class="n">vl</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="linenos"> 3</span><span class="c1"># create a QgsLayerTreeLayer object from vl by its id</span>
+<span class="linenos"> 4</span><span class="n">myvl</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">vl</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="c1"># clone the myvl QgsLayerTreeLayer object</span>
+<span class="linenos"> 6</span><span class="n">myvlclone</span> <span class="o">=</span> <span class="n">myvl</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="c1"># create a new group</span>
+<span class="linenos"> 8</span><span class="n">group1</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">addGroup</span><span class="p">(</span><span class="s2">&quot;Group1&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="c1"># get the parent. If None (layer is not in group) returns &#39;&#39;</span>
+<span class="linenos">10</span><span class="n">parent</span> <span class="o">=</span> <span class="n">myvl</span><span class="o">.</span><span class="n">parent</span><span class="p">()</span>
+<span class="linenos">11</span><span class="c1"># move the cloned layer to the top (0)</span>
+<span class="linenos">12</span><span class="n">group1</span><span class="o">.</span><span class="n">insertChildNode</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">myvlclone</span><span class="p">)</span>
+<span class="linenos">13</span><span class="c1"># remove the QgsLayerTreeLayer from its parent</span>
+<span class="linenos">14</span><span class="n">parent</span><span class="o">.</span><span class="n">removeChildNode</span><span class="p">(</span><span class="n">myvl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Some other methods that can be used to modify the groups and layers:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">node_group1</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findGroup</span><span class="p">(</span><span class="s2">&quot;Group1&quot;</span><span class="p">)</span>
+<span class="linenos"> 2</span><span class="c1"># change the name of the group</span>
+<span class="linenos"> 3</span><span class="n">node_group1</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Group X&quot;</span><span class="p">)</span>
+<span class="linenos"> 4</span><span class="n">node_layer2</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">findLayer</span><span class="p">(</span><span class="n">country_layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+<span class="linenos"> 5</span><span class="c1"># change the name of the layer</span>
+<span class="linenos"> 6</span><span class="n">node_layer2</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Layer X&quot;</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="c1"># change the visibility of a layer</span>
+<span class="linenos"> 8</span><span class="n">node_group1</span><span class="o">.</span><span class="n">setItemVisibilityChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">node_layer2</span><span class="o">.</span><span class="n">setItemVisibilityChecked</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="linenos">10</span><span class="c1"># expand/collapse the group view</span>
+<span class="linenos">11</span><span class="n">node_group1</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">node_group1</span><span class="o">.</span><span class="n">setExpanded</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="loadlayer.html" class="btn btn-neutral float-left" title="3. Loading Layers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="raster.html" class="btn btn-neutral float-right" title="5. Using Raster Layers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/legend.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/legend.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/pyqgis_developer_cookbook/legend.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/legend.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/pyqgis_developer_cookbook/legend.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/legend.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/pyqgis_developer_cookbook/legend.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/pyqgis_developer_cookbook/legend.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/pyqgis_developer_cookbook/legend.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/pyqgis_developer_cookbook/legend.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/pyqgis_developer_cookbook/legend.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/pyqgis_developer_cookbook/legend.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/pyqgis_developer_cookbook/legend.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/pyqgis_developer_cookbook/legend.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

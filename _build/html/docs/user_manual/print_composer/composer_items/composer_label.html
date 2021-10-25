@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>19.2.4. The Label Item &mdash; QGIS Documentation  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_docs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/qgis_topbar.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../../_static/qgis_logo.ico"/>
+    <link rel="canonical" href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_label.html"/>
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="19.2.5. The Legend Item" href="composer_legend.html" />
+    <link rel="prev" title="19.2.3. The 3D Map Item" href="composer_map3d.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+  <nav class="release_status_topbar">
+    <div class="row isTesting">
+     This documentation is a work in progress. For the Long Term Release and translations, please visit the <a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_label.html">latest version</a>.
+    </div>
+  </nav>
+
+   
+
+ 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+   
+            <a href="../../../index.html" class="icon icon-home"> QGIS Documentation
+            <img src="../../../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                testing
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+   <a href= "../../../../genindex.html">Index</a>
+ 
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">For Wageningen Students</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../land_degradation_development/index.html">Land Degradation and Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Users</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">QGIS Desktop User Guide/Manual (QGIS Testing)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/preamble.html">1. Preamble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/foreword.html">2. Foreword</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/conventions.html">3. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/features.html">4. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/getting_started.html">5. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/project_files.html">6. Working with Project Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_gui.html">7. QGIS GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/browser.html">8. The Browser panel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/qgis_configuration.html">9. QGIS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_projections/working_with_projections.html">10. Working with Projections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/general_tools.html">11. General Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../expressions/index.html">12. Level up with Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../style_library/index.html">13. The Style Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../managing_data_source/index.html">14. Managing Data Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector/index.html">15. Working with Vector Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_raster/index.html">16. Working with Raster Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_mesh/mesh_properties.html">17. Working with Mesh Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_vector_tiles/vector_tiles_properties.html">18. Working with Vector Tiles</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">19. Laying out the maps</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../overview_composer.html">19.1. Overview of the Print Layout</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">19.2. Layout Items</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="composer_items_options.html">19.2.1. Layout Items Common Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map.html">19.2.2. The Map Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_map3d.html">19.2.3. The 3D Map Item</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">19.2.4. The Label Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_legend.html">19.2.5. The Legend Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_scale_bar.html">19.2.6. The Scale Bar Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_tables.html">19.2.7. The Table Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_image.html">19.2.8. The Picture and the North Arrow Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_html_frame.html">19.2.9. The HTML Frame Item</a></li>
+<li class="toctree-l4"><a class="reference internal" href="composer_shapes.html">19.2.10. The Shape Items</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../create_output.html">19.3. Creating an Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../create_reports.html">19.4. Creating a Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_ogc/ogc_client_support.html">20. Working with OGC / ISO protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_gps/index.html">21. Working with GPS Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../auth_system/index.html">22. Authentication System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../grass_integration/grass_integration.html">23. GRASS GIS Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing/index.html">24. QGIS processing framework</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../processing_algs/index.html">25. Processing providers and algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../plugins/index.html">26. Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/help_and_support.html">27. Help and Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../preamble/contributors.html">28. Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendices/index.html">29. Appendices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../literature_web/literature_and_web_references.html">30. Literature and Web References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../server_manual/index.html">QGIS Server Guide/Manual (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../training_manual/index.html">Training Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../gentle_gis_introduction/index.html">A Gentle Introduction to GIS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Writers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../documentation_guidelines/index.html">Documentation Guidelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pyqgis_developer_cookbook/index.html">PyQGIS Cookbook (QGIS Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developers_guide/index.html">Developers Guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">QGIS Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">QGIS User Guide</a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">19. </span>Laying out the maps</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">19.2. </span>Layout Items</a> &raquo;</li>
+      <li><span class="section-number">19.2.4. </span>The Label Item</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/qgis/QGIS-Documentation/blob/master/docs/user_manual/print_composer/composer_items/composer_label.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="composer_map3d.html" class="btn btn-neutral float-left" title="19.2.3. The 3D Map Item" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_legend.html" class="btn btn-neutral float-right" title="19.2.5. The Legend Item" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-label-item">
+<span id="layout-label-item"></span><span id="index-0"></span><h1><span class="section-number">19.2.4. </span>The Label Item<a class="headerlink" href="#the-label-item" title="Permalink to this headline"></a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#main-properties" id="id3">Main properties</a></p></li>
+<li><p><a class="reference internal" href="#appearance" id="id4">Appearance</a></p></li>
+<li><p><a class="reference internal" href="#exploring-expressions-in-a-label-item" id="id5">Exploring expressions in a label item</a></p></li>
+</ul>
+</div>
+<p>The <span class="guilabel">Label</span> item is a tool that helps decorate your map with
+texts that would help to understand it; it can be the title, author, data
+sources or any other information…
+You can add a label with the <a class="reference internal" href="../../../../_images/mActionLabel.png"><img alt="label" src="../../../../_images/mActionLabel.png" style="width: 1.5em;" /></a> <span class="guilabel">Add Label</span> tool following
+<a class="reference internal" href="composer_items_options.html#create-layout-item"><span class="std std-ref">items creation instructions</span></a> and manipulate it the
+same way as exposed in <a class="reference internal" href="composer_items_options.html#interact-layout-item"><span class="std std-ref">Interacting with layout items</span></a>.</p>
+<p>By default, the label item provides a default text that you can customize using
+its <span class="guilabel">Item Properties</span> panel. Other than the <a class="reference internal" href="composer_items_options.html#item-common-properties"><span class="std std-ref">items common
+properties</span></a>, this feature has the following
+functionalities (see <a class="reference internal" href="#figure-layout-label"><span class="std std-numref">Fig. 19.23</span></a>):</p>
+<figure class="align-center" id="id1">
+<span id="figure-layout-label"></span><img alt="../../../../_images/label_mainproperties.png" src="../../../../_images/label_mainproperties.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.23 </span><span class="caption-text">Label Item Properties Panel</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="main-properties">
+<span id="layout-label-main-properties"></span><h2><a class="toc-backref" href="#id3"><span class="section-number">19.2.4.1. </span>Main properties</a><a class="headerlink" href="#main-properties" title="Permalink to this headline"></a></h2>
+<p>The <span class="guilabel">Main properties</span> group is the place to provide the text of the label.
+The text can be static, dynamic with <a class="reference internal" href="../../expressions/expression.html#expression-builder"><span class="std std-ref">expression</span></a>
+functions and variables, and/or formatted with HTML.
+Dynamic parts of a label need to be surrounded by <code class="docutils literal notranslate"><span class="pre">[%</span></code> and <code class="docutils literal notranslate"><span class="pre">%]</span></code>
+in order to be interpreted and evaluated as such.</p>
+<ul>
+<li><p>To use expressions in labels, you can click on <span class="guilabel">Insert/Edit Expression…</span>
+button, write your formula as usual and when the dialog is applied,
+QGIS automatically adds the surrounding characters.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Clicking the <span class="guilabel">Insert/Edit Expression…</span> button when no
+selection is made in the textbox will append the new expression to the existing text.
+If you want to modify an existing expression, you need to first select the part of
+interest.</p>
+</div>
+<p>Because maps are usually filled with some common textual information (date,
+author, title, page number, …), QGIS provides a direct access to the
+corresponding expressions or variables: press the <span class="guilabel">Dynamic text</span>
+button to select and insert them into your label.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The top menu <span class="menuselection">Add Item ► Add Dynamic Text ►</span> can be
+used to create a new label item filled with the selected predefined expression.</p>
+</div>
+<p>It’s possible to turn a dynamic label into static: press the drop-down arrow
+next to the <span class="guilabel">Insert/Edit Expression…</span> button and select
+<span class="guilabel">Convert to Static</span>. Any dynamic parts of the label’s contents
+will be evaluated and replaced with their current values.
+You can then manually tweak the resulting text when needed.</p>
+</li>
+<li><p>Labels can be interpreted as HTML code: check <a class="reference internal" href="../../../../_images/checkbox.png"><img alt="checkbox" src="../../../../_images/checkbox.png" style="width: 1.3em;" /></a>
+<span class="guilabel">Render as HTML</span>. You can now insert HTML tags or styles, URL,
+a clickable image that links to a web page, or something more complex…</p></li>
+</ul>
+<p>The following code combines HTML rendering with expressions, for an advanced
+labeling and will output <a class="reference internal" href="#figure-layout-label-html"><span class="std std-numref">Fig. 19.24</span></a>:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nt">html</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="nt">head</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span>
+      <span class="c">/* Define some custom styles, with attribute-based size */</span>
+      <span class="nt">name</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span><span class="kc">red</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="p">[</span><span class="o">%</span> <span class="n">ID</span> <span class="o">%</span><span class="p">]</span><span class="n">px</span><span class="p">;</span> <span class="k">font-family</span><span class="p">:</span> <span class="n">Verdana</span><span class="p">;</span> <span class="k">text-shadow</span><span class="p">:</span> <span class="kc">grey</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;}</span>
+      <span class="nt">use</span> <span class="p">{</span><span class="k">color</span><span class="p">:</span><span class="kc">blue</span><span class="p">;}</span>
+   <span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="nt">head</span><span class="o">&gt;</span>
+
+ <span class="o">&lt;</span><span class="nt">body</span><span class="o">&gt;</span>
+   <span class="o">&lt;!</span><span class="nt">--</span> <span class="nt">Information</span> <span class="nt">to</span> <span class="nt">display</span> <span class="nt">--</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">u</span><span class="o">&gt;</span><span class="nt">Feature</span> <span class="nt">Information</span><span class="o">&lt;/</span><span class="nt">u</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">ul</span> <span class="nt">style</span><span class="o">=</span><span class="s2">&quot;list-style-type:disc&quot;</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">Feature</span> <span class="nt">Id</span><span class="o">:</span> <span class="o">[%</span> <span class="nt">ID</span> <span class="o">%]&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">Airport</span><span class="o">:</span> <span class="o">&lt;</span><span class="nt">name</span><span class="o">&gt;[%</span> <span class="nt">NAME</span> <span class="o">%]&lt;/</span><span class="nt">name</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="nt">li</span><span class="o">&gt;</span><span class="nt">Main</span> <span class="nt">use</span><span class="o">:</span> <span class="o">&lt;</span><span class="nt">use</span><span class="o">&gt;[%</span> <span class="nt">USE</span> <span class="o">%]&lt;/</span><span class="nt">use</span><span class="o">&gt;&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+   <span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+   <span class="nt">Last</span> <span class="nt">check</span><span class="o">:</span> <span class="o">[%</span> <span class="nt">concat</span><span class="o">(</span> <span class="nt">format_date</span><span class="o">(</span> <span class="s2">&quot;control_date&quot;</span><span class="o">,</span> <span class="s1">&#39;yyyy-MM-dd&#39;</span><span class="o">),</span> <span class="s1">&#39; by &lt;b&gt;&lt;i&gt;&#39;</span><span class="o">,</span> <span class="p">@</span><span class="k">user_full_name</span><span class="o">,</span> <span class="s1">&#39;&lt;/i&gt;&lt;/b&gt;&#39;</span> <span class="o">)</span> <span class="o">%]</span>
+
+   <span class="o">&lt;!</span><span class="nt">--</span> <span class="nt">Insert</span> <span class="nt">an</span> <span class="nt">image</span> <span class="nt">--</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="nt">p</span> <span class="nt">align</span><span class="o">=</span><span class="nt">center</span><span class="o">&gt;&lt;</span><span class="nt">img</span> <span class="nt">src</span><span class="o">=</span><span class="s2">&quot;path/to/logos/qgis-logo-made-with-color.svg&quot;</span> <span class="nt">alt</span><span class="o">=</span><span class="s2">&quot;QGIS icon&quot;</span> <span class="nt">style</span><span class="o">=</span><span class="s2">&quot;width:80px;height:50px;&quot;</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="nt">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nt">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id2">
+<span id="figure-layout-label-html"></span><img alt="../../../../_images/label_htmlexpression.png" src="../../../../_images/label_htmlexpression.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19.24 </span><span class="caption-text">Leveraging a label with HTML styling</span><a class="headerlink" href="#id2" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="appearance">
+<h2><a class="toc-backref" href="#id4"><span class="section-number">19.2.4.2. </span>Appearance</a><a class="headerlink" href="#appearance" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Define <span class="guilabel">Font</span> by clicking on the <span class="guilabel">Font…</span> button or a
+<span class="guilabel">Font color</span> by pushing the <a class="reference internal" href="../../introduction/general_tools.html#color-selector"><span class="std std-ref">color widget</span></a>.</p></li>
+<li><p>You can specify different horizontal and vertical margins in <code class="docutils literal notranslate"><span class="pre">mm</span></code>. This is
+the margin from the edge of the layout item. The label can be positioned
+outside the bounds of the label e.g. to align label items with other items.
+In this case you have to use negative values for the margin.</p></li>
+<li><p>Using the text alignment is another way to position your label. It can be:</p>
+<ul>
+<li><p><span class="guilabel">Left</span>, <span class="guilabel">Center</span>, <span class="guilabel">Right</span> or
+<span class="guilabel">Justify</span> for <span class="guilabel">Horizontal alignment</span></p></li>
+<li><p>and <span class="guilabel">Top</span>, <span class="guilabel">Middle</span>, <span class="guilabel">Bottom</span> for
+<span class="guilabel">Vertical alignment</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exploring-expressions-in-a-label-item">
+<span id="layout-label-expressions"></span><h2><a class="toc-backref" href="#id5"><span class="section-number">19.2.4.3. </span>Exploring expressions in a label item</a><a class="headerlink" href="#exploring-expressions-in-a-label-item" title="Permalink to this headline"></a></h2>
+<p>Below some examples of expressions you can use to populate the label item with
+interesting information - remember that the code, or at least the calculated part,
+should be surrounded by <code class="docutils literal notranslate"><span class="pre">[%</span></code> and <code class="docutils literal notranslate"><span class="pre">%]</span></code> in the <span class="guilabel">Main properties</span> frame:</p>
+<ul>
+<li><p>Display a title with the current atlas feature value in “field1”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;This is the map for &#39;</span> <span class="o">||</span> <span class="s2">&quot;field1&quot;</span>
+</pre></div>
+</div>
+<p>or, written in the <span class="guilabel">Main properties</span> section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="nb">map</span> <span class="k">for</span> <span class="p">[</span><span class="o">%</span> <span class="s2">&quot;field1&quot;</span> <span class="o">%</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add a pagination for processed atlas features (eg, <code class="docutils literal notranslate"><span class="pre">Page</span> <span class="pre">1/10</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">concat</span><span class="p">(</span> <span class="s1">&#39;Page &#39;</span><span class="p">,</span> <span class="nd">@atlas_featurenumber</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="nd">@atlas_totalfeatures</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Return the name of the airports of the current atlas region feature,
+based on their common attributes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aggregate</span><span class="p">(</span> <span class="n">layer</span> <span class="o">:=</span> <span class="s1">&#39;airports&#39;</span><span class="p">,</span>
+           <span class="n">aggregate</span> <span class="o">:=</span> <span class="s1">&#39;concatenate&#39;</span><span class="p">,</span>
+           <span class="n">expression</span> <span class="o">:=</span> <span class="s2">&quot;NAME&quot;</span><span class="p">,</span>
+           <span class="nb">filter</span> <span class="o">:=</span> <span class="n">fk_regionId</span> <span class="o">=</span> <span class="n">attribute</span><span class="p">(</span> <span class="nd">@atlas_feature</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span> <span class="p">),</span>
+           <span class="n">concatenator</span> <span class="o">:=</span> <span class="s1">&#39;, &#39;</span>
+         <span class="p">)</span>
+</pre></div>
+</div>
+<p>Or, if an <a class="reference internal" href="../../working_with_vector/attribute_table.html#vector-relations"><span class="std std-ref">attributes relation</span></a> is set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">relation_aggregate</span><span class="p">(</span> <span class="n">relation</span> <span class="o">:=</span> <span class="s1">&#39;airports_in_region_relation&#39;</span><span class="p">,</span>
+                    <span class="n">aggregate</span> <span class="o">:=</span> <span class="s1">&#39;concatenate&#39;</span><span class="p">,</span>
+                    <span class="n">expression</span> <span class="o">:=</span> <span class="s2">&quot;NAME&quot;</span><span class="p">,</span>
+                    <span class="n">concatenator</span> <span class="o">:=</span> <span class="s1">&#39;, &#39;</span>
+                  <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Return the name of the airports contained in the current atlas region feature,
+based on their spatial relationship:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aggregate( layer := &#39;airports&#39;,
+           aggregate := &#39;concatenate&#39;,
+           expression := &quot;NAME&quot;,
+           filter := contains( geometry( @parent ), $geometry ),
+           concatenator := &#39;, &#39;
+         )
+</pre></div>
+</div>
+<p>OR:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array_to_string</span><span class="p">(</span> <span class="n">array</span><span class="o">:=</span> <span class="n">overlay_contains</span><span class="p">(</span> <span class="n">layer</span> <span class="o">:=</span> <span class="s1">&#39;airports&#39;</span><span class="p">,</span>
+                                           <span class="n">expression</span> <span class="o">:=</span> <span class="s2">&quot;NAME&quot;</span> <span class="p">),</span>
+                 <span class="n">delimiter</span><span class="o">:=</span> <span class="s1">&#39;, &#39;</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Return the lower X coordinate of the <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">1</span></code> item’s extent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x_min</span><span class="p">(</span> <span class="n">map_get</span><span class="p">(</span> <span class="n">item_variables</span><span class="p">(</span> <span class="s1">&#39;Map 1&#39;</span> <span class="p">),</span> <span class="s1">&#39;map_extent&#39;</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Retrieve the name of the layers in the current layout <code class="docutils literal notranslate"><span class="pre">Map</span> <span class="pre">1</span></code> item,
+and formats in one name by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array_to_string</span><span class="p">(</span>
+ <span class="n">array_foreach</span><span class="p">(</span>
+  <span class="n">map_get</span><span class="p">(</span> <span class="n">item_variables</span><span class="p">(</span> <span class="s1">&#39;Map 1&#39;</span> <span class="p">),</span> <span class="s1">&#39;map_layers&#39;</span> <span class="p">),</span> <span class="o">--</span> <span class="n">retrieve</span> <span class="n">the</span> <span class="n">layers</span> <span class="nb">list</span>
+  <span class="n">layer_property</span><span class="p">(</span> <span class="nd">@element</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span> <span class="p">)</span> <span class="o">--</span> <span class="n">retrieve</span> <span class="n">each</span> <span class="n">layer</span> <span class="n">name</span>
+ <span class="p">),</span>
+ <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">--</span> <span class="n">converts</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">to</span> <span class="n">string</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">breaklines</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="composer_map3d.html" class="btn btn-neutral float-left" title="19.2.3. The 3D Map Item" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="composer_legend.html" class="btn btn-neutral float-right" title="19.2.5. The Legend Item" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2002-now, QGIS project.
+      <span class="lastupdated">Last updated on Oct 24, 2021 11:42.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- Transifex follows a particular logic to build target pages
+example of expected format: .../locale-en-lc-messages-docs-gentle-gis-introduction-data-capture-po--release-3-16 
+for the page ...3.16/docs/gentle_gis_introduction/data_capture.html in release_3.16 branch-->
+<!--Make sure that mismatching languages codes are converted-->
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-info-circle"> QGIS Documentation </span>
+      v: testing
+      <span class="fa fa-caret-down"></span>
+    </span>
+
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Languages</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_label.html">en</a></dd>
+        
+      </dl>
+
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/en/docs/user_manual/print_composer/composer_items/composer_label.html">testing</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/latest/en/docs/user_manual/print_composer/composer_items/composer_label.html">latest</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.16/en/docs/user_manual/print_composer/composer_items/composer_label.html">3.16</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.10/en/docs/user_manual/print_composer/composer_items/composer_label.html">3.10</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/3.4/en/docs/user_manual/print_composer/composer_items/composer_label.html">3.4</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.18/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.18</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.14/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.14</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.8/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.8</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.6/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.6</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.2/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.2</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/2.0/en/docs/user_manual/print_composer/composer_items/composer_label.html">2.0</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/1.8/en/docs/user_manual/print_composer/composer_items/composer_label.html">1.8</a></dd>
+        
+      </dl>
+
+       
+       <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://docs.qgis.org/testing/pdf">PDF</a></dd>
+        
+          <dd><a href="https://docs.qgis.org/testing/zip">HTML</a></dd>
+        
+      </dl>
+      
+
+      
+       
+      <dl>
+        <dt>Contribute to Docs</dt>
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/edit/master/docs/user_manual/print_composer/composer_items/composer_label.rst" target="_blank" rel="noopener noreferrer">Edit on GitHub</a>
+          </dd>
+          
+          
+          <dd>
+            <a href="https://github.com/qgis/QGIS-Documentation/issues" target="_blank" rel="noopener noreferrer">Report Issue</a>
+          </dd>
+      </dl>
+      
+
+      <dl>
+        <dt>On QGIS Project</dt>
+          <dd>
+            <a href="https://qgis.org/en" target="_blank" rel="noopener noreferrer">Home</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/api/" target="_blank" rel="noopener noreferrer">C++ API</a>
+          </dd>
+          <dd>
+            <a href="https://qgis.org/pyqgis/master" target="_blank" rel="noopener noreferrer">PyQGIS API</a>
+          </dd>
+          <dd>
+            <a href="https://github.com/qgis/QGIS/tree/master" target="_blank" rel="noopener noreferrer">Source</a>
+          </dd>
+      </dl>
+
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
