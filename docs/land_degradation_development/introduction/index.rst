@@ -10,4 +10,4 @@ An introduction to (Q)GIS
     GIS_intro
     getting_to_know
     first_operation
-    comparing_ArcGIS
+    print_layout
