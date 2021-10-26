@@ -22,6 +22,8 @@ Vector data can be easily shared between QGIS and ArcGIS: QGIS can read the data
 from a :file:`.gdb` database and ArcGIS can read and write vector data to a
 :file:`.gpkg` GeoPackage.
 
+.. _arcgis_raster:
+
 Data sharing - Raster
 .....................
 Sharing raster data is more involved and requires pre-work from either side.

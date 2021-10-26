@@ -936,6 +936,8 @@
    :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em
+.. |sampling| image:: /static/common/sampling.png
+   :width: 1.5em
 .. |saveAsPDF| image:: /static/common/mActionSaveAsPDF.png
    :width: 1.5em
 .. |saveAsPython| image:: /static/common/mActionSaveAsPython.png

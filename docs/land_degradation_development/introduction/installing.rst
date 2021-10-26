@@ -7,17 +7,18 @@ external processing toolboxes tuch as SAGA, GDAL or GRASS. We need SAGA and it
 is nice to be able to have a look at GRASS plugins, so we will use the OSGeo4W
 installation method. 
 #. Go to the `QGIS download page
-    <https://www.qgis.org/en/site/forusers/download.html>`_ and click the `OSGeo4W
-    Network installer
-    <https://download.osgeo.org/osgeo4w/v2/osgeo4w-setup.exe>`_.
+   <https://www.qgis.org/en/site/forusers/download.html>`_ and click the `OSGeo4W
+   Network installer
+   <https://download.osgeo.org/osgeo4w/v2/osgeo4w-setup.exe>`_.
     
 #. Select :guilabel:`Express install`
 #. now select
-    #. |unchecked| :guilabel:`QGIS`
-    #. |checkbox| :guilabel:`QGIS LTR`
-    #. |checkbox| :guilabel:`GDAL`
-    #. |checkbox| :guilabel|`GRASS GIS`
+   #. |unchecked| :guilabel:`QGIS`
+   #. |checkbox| :guilabel:`QGIS LTR`
+   #. |checkbox| :guilabel:`GDAL`
+   #. |checkbox| :guilabel|`GRASS GIS`
 #. finish the installation normally. This should install QGIS 3.16 Hannover.
+
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
