@@ -1018,6 +1018,7 @@
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
+   :alt: Green plus sign
 .. |simplifyFeatures| image:: /static/common/mActionSimplify.png
    :width: 1.5em
 .. |singleSymbol| image:: /static/common/rendererSingleSymbol.png
