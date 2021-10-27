@@ -7,3 +7,4 @@ Loading and interpolating precipitation data
 
     loading_table
     interpolation
+    simple_model

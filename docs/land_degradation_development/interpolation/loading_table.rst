@@ -14,7 +14,7 @@ them.
 
 First, we have to load the data. 
 
-1. In the *Browser* pane, find :menuselection:`GIS_files --> data --> rainfall.xlsx`.
+#. In the *Browser* pane, find :menuselection:`GIS_files --> data --> rainfall.xlsx`.
    This is the rainfall file we will be using. Load it into the
    project and |attributeTable|:guilabel:`Open Attribute Table`. 
 
@@ -25,7 +25,7 @@ First, we have to load the data.
    months of data. Then, the average was taken over these years. As you can see,
    not all stations have data for a sufficient number of years.
 
-2. Why is this a problem? What do you think is an acceptable number of years?
+#. Why is this a problem? What do you think is an acceptable number of years?
 
    .. admonition:: Solution and steps
       :class: dropdown
@@ -35,23 +35,22 @@ First, we have to load the data.
       more stations outweighed more years. Now, we will select the stations that
       have :math:`years \geq 5` years of data.
 
-      1. In the processing toolbox, look for |logo|:menuselection:`Vector
+      #. In the processing toolbox, look for |logo|:menuselection:`Vector
          selection --> Extract by attribute`. and fill it in like so:
 
          .. figure:: img/extract_attribute.png
             :align: center
             :alt: Input layer has Rainfall Sheet 1, Selection attribute is years, operator greater than equal and Value [optional] 5.
       
-      2. optionally, make the new layer permanent
+      #. optionally, make the new layer permanent
 
 |FA| Converting to a point layer and reprojecting
 -------------------------------------------------
 
-1. To find out where our points end up, we want to see where we are on the
+#. To find out where our points end up, we want to see where we are on the
    earth. For that, we will load the OpenStreetMap *basemap* under
    |xyz|:guilabel:`XYZ Tiles` in the Browser.
-
-2. Find the |processing|:guilabel:`Create point layer from table` algorithm.
+#. Find the |processing|:guilabel:`Create point layer from table` algorithm.
 
    1. Set the :guilabel:`Extracted (attribute)` layer as Input layer
    2. Set |selectString|:guilabel:`X field` to |fieldFloat|:file:`LONGITUDE`
@@ -67,17 +66,16 @@ First, we have to load the data.
    
    If they are on a different location on the world, check your settings!
 
-3. Find the |processing|:guilabel:`Reproject layer` tool.
+#. Find the |processing|:guilabel:`Reproject layer` tool.
 
-   1. select |pointLayer|:file:`Points from table [EPSG:4326]` as
-   :guilabel:`Input Layer`
-   
-   2. As :guilabel:`Target CRS`, set |selectString|:file:`UTM zone 37N`
+   #. select |pointLayer|:file:`Points from table [EPSG:4326]` as
+      :guilabel:`Input Layer`
+   #. As :guilabel:`Target CRS`, set |selectString|:file:`UTM zone 37N`
 
-   Your new layer :guilabel:`Reprojected` should be exactly on top of the old
-   layer.
+      Your new layer :guilabel:`Reprojected` should be exactly on top of the old
+      layer.
 
-4. Optionally, make the layer permanent.
+#. Optionally, make the layer permanent.
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.

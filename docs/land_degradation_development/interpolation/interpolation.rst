@@ -17,20 +17,20 @@ Nearest Neighbour
 #. Find and open the |gdal|:guilabel:`Grid (Nearest Neighbour)` algorithm. 
 #. Set :guilabel:`Point Layer` to |pointLayer|:file:`Reprojected [EPSG:32637]`
 #. Set :menuselection:`Advanced Parameters --> Z value from field [optional]`
-    to |fieldFloat|:file:`PRCP`.
+   to |fieldFloat|:file:`PRCP`.
 #. Run the algorithm. The output map should look like this:
 
-    .. figure:: /img/nearest_neighbour.png
-        :align: center
-        
-        Nearest neighbour interpolated precipitation
+   .. figure:: img/nearest_neighbour.png
+      :align: center
+       
+      Nearest neighbour interpolated precipitation
 
-    .. tip:: |hard| Challenge
+   .. tip:: |hard| Challenge
 
-        It seems to be possible to 
-        `Set cellsize <https://gis.stackexchange.com/questions/394134/cell-size-in-grid-nearest-neighbour-in-qgis>`_
-        and extent in a similar way, so that your grid is automatically clipped
-        to :guilabel:`Hadocha_dem`.
+      It seems to be possible to 
+      `Set cellsize <https://gis.stackexchange.com/questions/394134/cell-size-in-grid-nearest-neighbour-in-qgis>`_
+      and extent in a similar way, so that your grid is automatically clipped
+      to :guilabel:`Hadocha_dem`.
 
 Inverse Distance Weighting
 --------------------------
@@ -44,16 +44,16 @@ datapoint on the value of the interpolated raster decreases with distance.
 4. Press the |signPlus| button to add the layer to the selection.
 5. For :guilabel:`Extent`, select :menuselection:`... --> Calculate from layer --> Reprojected`.
 6. As :guilabel:`Pixel size X` and :guilabel:`Pixel size Y` enter :file:`1970`.
-    The :guilabel:`Rows` and :guilabel:`Columns` fields should adjust.
+   The :guilabel:`Rows` and :guilabel:`Columns` fields should adjust.
 7. :guilabel:`Run` the algorithm. Your map should look like this:
 
-    .. figure:: img/idw.png
-        :align: center
+   .. figure:: img/idw.png
+      :align: center
         
-        IDW interpolated precipitation.
+      IDW interpolated precipitation.
 
 8. |hard| try to get similar results with algorithms from |gdal| GDAL and
-    |grass| GRASS
+   |grass| GRASS
 
 Spline interpolation
 --------------------
@@ -63,25 +63,25 @@ generate a spline from a set of datapoints. We will be using a thin plate
 spline which creates a minimum curvature surface through all datapoints.
 
 1. find and open the |saga|:guilabel:`Thin plate spline` tool
-    You may encounter the following warning that you can safely ignore:
+   You may encounter the following warning that you can safely ignore:
 
-    .. warning::
-        SAGA version <version> is not officially supported - algorithms may encounter issues
+.. warning::
+   SAGA version <version> is not officially supported - algorithms may encounter issues
 
 2. For :guilabel:`Points` select |pointLayer|:file:`Reprojected [EPSG:32637]`.
 3. Set :guilabel:`Attribute` to |fieldFloat|:file:`PRCP`
 4. Set the :guilabel:`Output extent [optional]` to
-    :menuselection:`... --> Calculate from Layer --> Reprojected`
+   :menuselection:`... --> Calculate from Layer --> Reprojected`
 5. for :guilabel:`Cellsize` enter :file:`1970`
 6. :guilabel:`Run` the algorithm. Your output should look like this:
     
-    .. figure:: img/thin_plate_spline.png
-        :align: center
+   .. figure:: img/thin_plate_spline.png
+      :align: center
 
-        Thin plate spline interpolation
+      Thin plate spline interpolation
 
-    notice that the raster value extremes exceed the values of the datapoints. This
-    is a characteristic of (thin plate) spline interpolation.
+   notice that the raster value extremes exceed the values of the datapoints. This
+   is a characteristic of (thin plate) spline interpolation.
 
 |basic| Final interpolation
 ---------------------------
@@ -95,41 +95,41 @@ thin plate spline by means of expert opinion.
 
 1. Open the |logo|:guilabel:`Zonal statistics` tool.
 2. For :guilabel:`Input layer` select :menuselection:`... --> Browse for Layer`
-    and select :file:`Hadocha_mask`:
+   and select :file:`Hadocha_mask`:
 
-    .. figure:: img/browse_mask.png
-        :align: center
+   .. figure:: img/browse_mask.png
+      :align: center
 
-    .. note::
-        Note that the filepath becomes:
-        :file:`path/00_raw_input.gpkg|layername=Hadocha_mask` The last part
-        after :file:`|` tells the algorithm which layer to select from the
-        GeoPackage. This may be useful if you want to manually enter a path to a
-        GeoPackage layer!
+   .. note::
+      Note that the filepath becomes:
+      :file:`path/00_raw_input.gpkg|layername=Hadocha_mask` The last part
+      after :file:`|` tells the algorithm which layer to select from the
+      GeoPackage. This may be useful if you want to manually enter a path to a
+      GeoPackage layer!
 
 3. As :guilabel:`Raster layer` select |raster|:file:`Target Grid [EPSG:32637]`
 4. We only want the |checkbox| Mean to be calculated. :guilabel:`Run` the
-    algorithm. This creates a vector layer with the average precipitation value for
-    our catchment.
+   algorithm. This creates a vector layer with the average precipitation value for
+   our catchment.
 5. Open the attribute table and copy the precipitation value to your clipboard
 6. Run the |logo|:guilabel:`Create constant raster layer` tool with:
     
-    * :guilabel:`Desired extent` of :file:`Hadocha_dem`,
-    * :guilabel:`Pixel size` of :file:`20`
-    * :guilabel:`Constant value`: your precipitation value
+   * :guilabel:`Desired extent` of :file:`Hadocha_dem`,
+   * :guilabel:`Pixel size` of :file:`20`
+   * :guilabel:`Constant value`: your precipitation value
 
 7. To save the raster layer in our :file:`01_input.gpkg` database, right-click
-    :menuselection:`Export --> Save as...` with:
+   :menuselection:`Export --> Save as...` with:
 
-    * :guilabel:`Format`: |selectString|:file:`GeoPackage`
-    * :guilabel:`File name` :file:`<path_to>/01_input.gpkg`
-    * :guilabel:`Layer name` :file:`P`
-    * the rest default
+   * :guilabel:`Format`: |selectString|:file:`GeoPackage`
+   * :guilabel:`File name` :file:`<path_to>/01_input.gpkg`
+   * :guilabel:`Layer name` :file:`P`
+   * the rest default
 
-..  admonition:: Solution
-    :class: dropdown
+.. admonition:: Solution
+   :class: dropdown
 
-    The rainfall value is 1674.25
+   The rainfall value is 1674.25
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
