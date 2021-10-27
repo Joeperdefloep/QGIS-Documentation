@@ -136,7 +136,11 @@ Running the model
    Currently (Oct 2021), layers from a GeoPackage cannot be selected as raster
    inputs in the Graphical Modeler. See the related 
    `Feature request <https://github.com/qgis/QGIS/issues/38607>`_ and a 
+<<<<<<< HEAD
    `Possible workaround <https://gis.stackexchange.com/questions/329294/adding-a-geopackage-layer-as-a-hardwired-input-to-an-algorithm-in-the-qgis-graph>`_
+=======
+   `Possible workaround <https://gis.stackexchange.com/questions/329294/adding-a-geopackage-layer-as-a-hardwired-input-to-an-algorithm-in-the-qgis-graph`>_
+>>>>>>> ba4a8c9137 (simple model)
    .
    However, we will be working around this by loading our data into the project first.
 
@@ -166,8 +170,13 @@ Running the model
 
 Now, you have learned how to use the graphical modeler and to calculate the
 Topographic Position Index. Both are very useful. We will excessively use the
+<<<<<<< HEAD
 Graphical Modeler later for the MMF erosion model, and you could use the TPI for
 determining where to apply specific measures.
+=======
+Graphical Modeler later, and you could use the TPI for determining where to
+apply specific measures.
+>>>>>>> ba4a8c9137 (simple model)
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
