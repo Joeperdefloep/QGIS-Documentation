@@ -14,15 +14,14 @@ applicable, this tutorial will refer to the appropriate section in the
 documentation, rather than re-doing the work done by others.
 
 In this tutorial, there are several different levels.
- * |basic| exercises are necessary to complete for the practical.
- 
- * |moderate| exercises are very useful to complete for your understanding of GIS
-    and it will be *very likely* that you will need these skills later in life.
-    However, you do not need to complete these for proper completion of the
-    course.
-    
+
+* |basic| exercises are necessary to complete for the practical.
+* |moderate| exercises are very useful to complete for your understanding of GIS
+  and it will be *very likely* that you will need these skills later in life.
+  However, you do not need to complete these for proper completion of the
+  course.
 * |hard| exercises are only there for the very interested students with extra
-    time on their hands. I personally think these are the most fun :)
+  time on their hands. I personally think these are the most fun :)
 
 .. toctree::
     :maxdepth: 2
