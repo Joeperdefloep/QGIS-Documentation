@@ -1,6 +1,7 @@
 ================
 First operations
 ================
+
 In this section, you will perform your first operation on a vector layer: the
 Dissolve operation. Furthermore, you will make a Page layout to make a
 presentable map out of your layers.
@@ -118,6 +119,8 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
 .. |grass| image:: /static/common/grasslogo.png
    :width: 1.5em
 .. |identify| image:: /static/common/mActionIdentify.png
+   :width: 1.5em
+.. |indicatorMemory| image:: /static/common/mIndicatorMemory.png
    :width: 1.5em
 .. |inputText| image:: /static/common/inputtext.png
 .. |logo| image:: /static/common/logo.png

@@ -346,6 +346,7 @@ further and create a map layout that adapts dynamically, with more
 layout items. See :doc:`docs/training_manual/map_composer/dynamic_layout`.
 
 
+
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
    If you need to create a new substitution manually,
@@ -368,6 +369,7 @@ layout items. See :doc:`docs/training_manual/map_composer/dynamic_layout`.
    :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
+.. |hard| image:: /static/common/hard.png
 .. |label| image:: /static/common/mActionLabel.png
    :width: 1.5em
 .. |lockItems| image:: /static/common/mActionLockItems.png
