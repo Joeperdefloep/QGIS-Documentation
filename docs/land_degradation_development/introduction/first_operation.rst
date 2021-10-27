@@ -76,7 +76,7 @@ the same landuse and soiltypes. To solve this, we will perform a
 
 5. Perform the same operation on :guilabel:`Hadocha_soil`.
 
-Saving your layer to a |geopackage| Geopackage
+Saving your layer to a |geoPackage| Geopackage
 ----------------------------------------------
 
 By default, processes will create a temporary layer, which is saved in a
@@ -90,7 +90,7 @@ and raster data. Because it is a database, a GeoPackage can store multiple
 ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
 
 
-1. Right-click the layer and click |save|:guilabel:`Make Permanent...`
+1. Right-click the layer and click |fileSave|:guilabel:`Make Permanent...`
 2. Fill in the dialog as follows:
 
     ..figure:: img/save_geopackage.png
@@ -114,7 +114,11 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
    :width: 1.3em
 .. |dissolve| image:: /static/common/dissolve.png
    :width: 1.5em
+.. |fileSave| image:: /static/common/mActionFileSave.png
+   :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
+   :width: 1.5em
+.. |geoPackage| image:: /static/common/mGeoPackage.png
    :width: 1.5em
 .. |grass| image:: /static/common/grasslogo.png
    :width: 1.5em
