@@ -20,6 +20,10 @@ installation method.
 
 #. finish the installation normally. This should install QGIS 3.16 Hannover.
 
+   .. figure:: img/QGIS3_16.png
+      :align: center
+      :alt: QGIS 3.16 Hannover splash screen
+
 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
