@@ -136,7 +136,7 @@ Running the model
    Currently (Oct 2021), layers from a GeoPackage cannot be selected as raster
    inputs in the Graphical Modeler. See the related 
    `Feature request <https://github.com/qgis/QGIS/issues/38607>`_ and a 
-   `Possible workaround <https://gis.stackexchange.com/questions/329294/adding-a-geopackage-layer-as-a-hardwired-input-to-an-algorithm-in-the-qgis-graph>`_
+   `Possible workaround <https://gis.stackexchange.com/questions/329294/adding-a-geopackage-layer-as-a-hardwired-input-to-an-algorithm-in-the-qgis-graph`>_
    .
    However, we will be working around this by loading our data into the project first.
 

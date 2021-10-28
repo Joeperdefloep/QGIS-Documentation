@@ -74,7 +74,7 @@ begin by changing the color of the :guilabel:`Hadocha_landuse` layer.
 6. Click :guilabel:`OK` again in the :guilabel:`Layer Properties` window, and
    you will see the color change being applied to the layer.
 
-.. tip:
+.. tip::
    In the :menuselection:`Style --> Save as Default` you can save your symbology
    to the layer, so it will be loaded like this into another QGIS project.
 
