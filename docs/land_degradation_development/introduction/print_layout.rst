@@ -32,7 +32,10 @@ visualization.
 #. In the Processing Toolbox, search for :file:`hillshade` and open
     the tool. Run it on :guilabel:`Hadocha_dem` with default settings. 
 
-#. Next, in the symbology tab, expand **Layer Rendering* and change the opacity
+#. Drag the :guilabel:`Hadocha_landuse` layer above :guilabel:`Hadocha_dem` and
+   open the symbology.
+
+#. Next, in the symbology tab, expand **Layer Rendering** and change the opacity
     to around 70% |slider|.
 
 |basic| |FA| The Layout Manager
