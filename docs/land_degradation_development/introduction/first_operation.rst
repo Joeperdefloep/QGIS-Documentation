@@ -93,7 +93,7 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
 1. Right-click the layer and click |fileSave|:guilabel:`Make Permanent...`
 2. Fill in the dialog as follows:
 
-    ..figure:: img/save_geopackage.png
+    .. figure:: img/save_geopackage.png
         :align: center
 
     Here, we create a new GeoPackage :file:`01_input.gpkg` with the
