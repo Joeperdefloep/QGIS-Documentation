@@ -57,6 +57,7 @@ extensions = [
     'sphinx.ext.extlinks',
     'sphinxext.rediraffe',
     'sphinx_togglebutton',
+    'notfound.extension',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

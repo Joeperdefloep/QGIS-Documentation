@@ -102,6 +102,10 @@ Implementing the algorithm
       .. figure:: img/model_focal_statistics.png
          :align: center
 
+.. warning::
+   For some reason, the |logo| raster calculator does not work well with output
+   of |saga| algorithms. Please use the |gdal| :ref:`gdalrastercalculator`.
+
 #. Drag the |logo|:guilabel:`Raster calculator` into the view. Fill in the
    dialog as follows:
 
@@ -119,6 +123,10 @@ Implementing the algorithm
       calculator supports operations on rasters with multiple bands.
    
    Press :guilabel:`OK` to add it to the model. It should now look like this:
+
+   .. note::
+      The second time I ran the model, there was an error saying: "Some layers
+      were incorrectly generated." This could be because 
 
    .. figure:: img/model_full.png
       :align: center
