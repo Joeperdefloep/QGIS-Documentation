@@ -16,7 +16,7 @@ First, we have to load the data.
 
 #. In the *Browser* pane, find :menuselection:`GIS_files --> data --> rainfall.xlsx`.
    This is the rainfall file we will be using. Load it into the
-   project and |attributeTable|:guilabel:`Open Attribute Table`. 
+   project and |openTable|:guilabel:`Open Attribute Table`. 
 
    You are looking at processed data from `NCEI
    <https://www.ncei.noaa.gov/maps/monthly/>`_. They provide measured data from
@@ -88,6 +88,8 @@ First, we have to load the data.
 .. |fieldFloat| image:: /static/common/mIconFieldFloat.png
    :width: 1.5em
 .. |logo| image:: /static/common/logo.png
+   :width: 1.5em
+.. |openTable| image:: /static/common/mActionOpenTable.png
    :width: 1.5em
 .. |pointLayer| image:: /static/common/mIconPointLayer.png
    :width: 1.5em
