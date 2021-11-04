@@ -29,6 +29,7 @@ In this tutorial, there are several different levels.
 
     introduction/index
     interpolation/index
+    simple_model/simple_model
     MMF/index
     comparing_ArcGIS
 
