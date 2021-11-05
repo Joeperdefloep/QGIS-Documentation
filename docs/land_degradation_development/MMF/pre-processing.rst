@@ -39,8 +39,6 @@ Pre-processing the tabular data
    each month. Since the MMF model is annual, we need annual data. Calculate the
    annual intercepted rainfall (:math:`A`) by:
 
-   .. _eq_intercepted_rainfall: 
-
    .. math::
       :label: eq_rainfall
 
@@ -50,7 +48,7 @@ Pre-processing the tabular data
    (sowing, growing and after harvest) and :math:`M_{sow,grow,after}` the number
    of months in each period.
 
-#. Calculate the other other factors by substituting :math:`A` in :ref:`eq_rainfall`
+#. Calculate the other other factors by substituting :math:`A` in :eq:`eq_rainfall`
 #. Make sure to name the row :file:`Cropland`
 
 .. note::
@@ -59,6 +57,8 @@ Pre-processing the tabular data
    :guilabel:`Hadocha_landuse` the values of
    :guilabel:`landuse_properties_table`. This will only work if both rows have
    **exactly the same** names.
+
+.. _joining_landuse:
 
 Joining the data
 ................
@@ -113,7 +113,7 @@ a model, so we can immediately rasterize the data afterwards.
    * :guilabel:`Table field 2`: |processingModel| :file:`Properties table join field`
    * |processingOutput|:guilabel:`Joined layer [optional]`: :file:`Landuse_joined` 
    
-#. |play|Run the model and look at the attribute table. It should look like
+#. |play| Run the model and look at the attribute table. It should look like
    this:
    
    .. figure:: img/landuse_joined_table.png
@@ -131,6 +131,8 @@ a model, so we can immediately rasterize the data afterwards.
          be a bug and is hopefully solved soon. Replace your formulas with the
          resulting numbers!
 
+.. _rasterize_landuse:
+
 Rasterizing the results
 .......................
 
@@ -144,8 +146,8 @@ such as pixel size need to be hard-coded.
 #. Drag a |gdal|:ref:`gdalrasterize` into the graphical modeler and give it the
    following parameters:
 
-   * :guilabel:`Description`: :file:`Intercepted rainfall`
-   * :guilabel:`Input layer`:
+   * :guilabel:`Description`: :file:`Intercepted rainfall` 
+   * :guilabel:`Input layer` :
      |processing|`"joined layer from process "join attributes by field value"`
    * :guilabel:`Field to use for a burn-in value [optional]`:  :file:`A`
    * :guilabel:`Output raster size units`: 
@@ -274,8 +276,8 @@ Next, we import all necessary *classes* and *modules*:
 
 .. literalinclude:: scripts/batch_rasterize_raw.py
    :lineno-start: 8
-   :lines: 1,8
-   :emphasize-lines: 8,16
+   :lines: 8-16
+   :emphasize-lines: 1,8
 
 Next, the start of our class starts. This is indicated by:
 
@@ -332,6 +334,7 @@ Converting parameters to layers
    :class: dropdown
 
    If you didn't follow the above |FA|, you can use the below script. 
+
    #. In the Processig Toolkbox, click the 
       |pythonFile|:menuselection:`--> Create New Script...`
    #. copy-paste the following code:
@@ -343,10 +346,150 @@ Converting parameters to layers
 |basic| |FA| Updating :guilabel:`Hadocha_soil`
 ----------------------------------------------
 
+Now it is time to start working on our soil layer! Because there is a swamp
+(landuse) which has quite different properties than the surrounding land, we
+will first put that in our map
 
-Now it is time to start working on our soil layer!
+|basic| |FA| Adding Swamp to the Soil map
+.........................................
 
-#. Create a new 
+#. Create a new model. Name it :file:`Update Soil` 
+#. Give it the following inputs:
+
+   #. |polygonLayer| Vector Layer: :file:`Soil` 
+   #. |polygonLayer| Vector Layer: :file:`Landuse`
+
+#. Now, we want to select the :guilabel:`Swamp` feature from
+   :guilabel:`Landuse`. Drag the |processing|:guilabel:`Extract by Attribute`
+   process into the modeler.
+
+   * :guilabel:`Input layer`: |processingModel|:file:`Landuse`
+   * :guilabel:`Selection attribute`: |integer|:file:`FEATURE` 
+   * :guilabel:`Operator`: |integer|:file:`=` 
+   * :guilabel:`Value [optional]`: |integer|:file:`Swamp`
+  
+   Also give :guilabel:`Extracted (attribute)` a name and |play|:guilabel:`Run`
+   the model. Your resulting layer should only be the swamp.
+
+   .. note::
+      It is good practice to run and check your model after each step/algorithm
+      you put in. This will not really be said from now on, but we expect you to
+      do this. Also if your final output is wrong, go back in the model and
+      check every earlier output for an error.
+
+#. Next, we want to combine our :guilabel:`Swamp` into the :guilabel:`Soil`
+   layer. Drag a |logo|:ref:`qgisunion` into the modeler with:
+
+   * :guilabel:`Input layer`: |processingModel|:file:`Soil` 
+   * :guilabel:`Overlay layer`: 
+     |processing|:file:`"Extracted (attribute)" from algorithm "Extract by attribute"` 
+
+   Run the model and check the output attribute table. 
+
+   .. figure:: img/preprocessing_soil_unioned.png
+      :align: center
+
+   Notice that there is a field :guilabel:`TEXTURE` and a field
+   :guilabel:`FEATURE`. In the next step, we will combine these, such that the
+   *TEXTURE* for all features that have :math:`FEATURE='Swamp'` will be *Swamp*.
+      
+#. Drag in the |logo|:ref:`qgisfieldcalculator` tool into the model.
+
+   * :guilabel:`Input layer`: |processing|:file:`"Union" from "Union"` 
+   * :guilabel:`Field name`: |integer|:file:`TEXTURE` 
+   * :guilabel:`Result field type`: |integer|:file:`String` 
+   * :guilabel:`Result field length`: |integer|:file:`16` This is the maximum
+     length that the resulting field can have in characters
+   * :guilabel:`Formula`: :file:`IF("FEATURE"='Swamp',"FEATURE","TEXTURE")` 
+
+   Now, let's break this down a bit: Double quotes (:file:`""`) indicate a
+   *field*. For example, :file:`"FEATURE"` will take values of :file:`'Swamp'`
+   or :file:`NULL`. Single quotes (:file:`''`) indicate a *String*. This is just
+   a sequence of letters such as :file:`'Swamp'`. The :file:`IF()` works like:
+   :file:`IF(something is true, then this, otherwise this)`. The resulting
+   attribute table should look like this:
+
+   .. figure:: img/preprocessing_soil_calced.png
+      :align: center
+   
+   This still has some unnecessary fields, and multiple features that have the
+   same :guilabel:`TEXTURE`.
+
+#. Drag in the |logo|:ref:`qgisaggregate` operation. This is a sort of
+   |logo|:ref:`qgisdissolve` operation, but it offers more control over the
+   output. Fill it in like this:
+   
+   * :guilabel:`Input layer`: 
+     |processing|:file:`"Calculated from algorithm "Field calculator"`
+   * :guilabel:`Group by expression`: |integer| |selectString|:file:`TEXTURE` 
+   * :guilabel:`Aggregates`: Click the |newAttribute|:guilabel:`Add new field`
+     button to add a new field. and fill it in like this:
+   
+     +-------------------+--------------------+---------+---------------+--------+
+     | Source expression | Aggregate Function | Name    | Type          | Length |
+     +-------------------+--------------------+---------+---------------+--------+
+     | "TEXTURE"         | first_value        | TEXTURE | Text (string) | 16     |
+     +-------------------+--------------------+---------+---------------+--------+
+   
+   .. tip:: in stead of adding the above fields manually, you can also
+      :guilabel:`Load fields` from a similar layer.
+   
+   Your resulting layer should have a single column named *TEXTURE* and look
+   like this:
+   
+   .. figure:: img/preprocessing_soil_agged.png
+      :align: center
+
+|basic| |TY| Join soil properties and rasterize
+...............................................
+
+The only thing we need to do now, is to join the excel table and rasterize the
+results This is exactly the same as we did for the landuse maps, so we will give
+less instructions.
+
+#. Change the model such that soil properties are joined to the map. For
+   reference, see :ref:`joining_landuse`. 
+
+   .. admonition:: Hint
+      :class: dropdown
+
+      Your final model should look like this:
+
+      .. figure:: img/preprocessing_soil_model_joined.png
+         :align: center 
+
+#. Finally, rasterize the results. For reference, see :ref:`rasterize_landuse`:
+
+   .. list-table::
+      :header-rows: 1
+
+      * - :guilabel:`Field to use for a burn-in value [optional]`
+        - :guilabel:`Rasterized`
+        - :guilabel:`Description`
+      * - :file:`Wfc`
+        - :file:`Wfc`
+        - Soil wetness at field capacity :math:`%` 
+      * - :file:`bulk_density` 
+        - :file:`bdod` 
+        - Soil bulk density :math:`\frac{Mg}{m^3}`
+      * - :file:`K`
+        - :file:`K`
+        - Soil detachability :math:`\frac{g}{J}`
+      * - :file:`Coh` 
+        - :file:`Coh` 
+        - Soil cohesion :math:`kPa` 
+
+   .. admonition:: Final model
+      :class: dropdown
+
+      .. figure:: img/preprocessing_soil_model_rasterized.png
+         :align: center
+
+.. warning:: Check that all values of the rasters you have created are the same
+   as in the :file:`Hadocha_data.xlsx` file before moving on! Also, it is very
+   important that the rasters align **exactly** with :guilabel:`Hadocha_dem`,
+   otherwise, you will get errors in the |gdal|:ref:`gdalrastercalculator`. This
+   should be good if you followed this manual.
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
@@ -355,6 +498,7 @@ Now it is time to start working on our soil layer!
    source folder.
 
 .. |FA| replace:: Follow Along:
+.. |TY| replace:: Try Yourself
 .. |basic| image:: /static/common/basic.png
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
@@ -367,7 +511,11 @@ Now it is time to start working on our soil layer!
    :width: 1.5em
 .. |logo| image:: /static/common/logo.png
    :width: 1.5em
+.. |newAttribute| image:: /static/common/mActionNewAttribute.png
+   :width: 1.5em
 .. |play| image:: /static/common/mActionPlay.png
+   :width: 1.5em
+.. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
    :width: 1.5em
 .. |processing| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
