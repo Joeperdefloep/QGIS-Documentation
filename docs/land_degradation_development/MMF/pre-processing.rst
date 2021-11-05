@@ -106,10 +106,14 @@ a model, so we can immediately rasterize the data afterwards.
       * :guilabel:`Default value: :file:`Landuse`
 
 #. Drag the |logo| :ref:`qgisjoinattributestable` algorithm into the modeler.
-   We want The |processingModel| :file:`Landuse` to be :guilabel:`Input layer`
-   and |processingModel|:file:`Landuse` to be :guilabel:`Input layer 2`. Fill in
-   the rest and name the :guilabel:`Joined layer` :file:`Landuse_joined`.
-   |play|Run the model and look at the attribute table. It should look like
+   
+   * :guilabel:`Input layer`:  |processingModel| :file:`Landuse`
+   * :guilabel:`Table field`: |processingModel| :file:`Landuse join field` 
+   * :guilabel:`Input layer 2`: |processingModel| :file:`Landuse properties`
+   * :guilabel:`Table field 2`: |processingModel| :file:`Properties table join field`
+   * |processingOutput|:guilabel:`Joined layer [optional]`: :file:`Landuse_joined` 
+   
+#. |play|Run the model and look at the attribute table. It should look like
    this:
    
    .. figure:: img/landuse_joined_table.png
@@ -117,6 +121,15 @@ a model, so we can immediately rasterize the data afterwards.
 
    Note that there may be additional, unnecessary columns like :file:`Field9`
    with all :file:`NULL` values. These are okay.
+
+   .. note::
+      It may be that your Cropland row will have all *NULL* values. If that is
+      the case, check:
+
+      #. If you have calculated the values
+      #. It may be that the values don't load if they are a formula. This should
+         be a bug and is hopefully solved soon. Replace your formulas with the
+         resulting numbers!
 
 Rasterizing the results
 .......................
@@ -315,8 +328,6 @@ The final methods define the name and group of the tool and speak for themselves
 Converting parameters to layers
 ...............................
 
-
-
 .. admonition:: Solution
    :class: dropdown
 
@@ -332,6 +343,10 @@ Converting parameters to layers
 |basic| |FA| Updating :guilabel:`Hadocha_soil`
 ----------------------------------------------
 
+
+Now it is time to start working on our soil layer!
+
+#. Create a new 
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.

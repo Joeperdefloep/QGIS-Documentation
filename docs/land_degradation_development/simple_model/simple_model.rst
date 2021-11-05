@@ -102,9 +102,10 @@ ourselves. You can also directly copy it from the :ref:`solution
    .. tip:: Snapping
       You can enable snapping by :menuselection:`View --> Enable snapping`
 
-#. |TY| Add another input for the inner radius.
+#. **|TY|** Add another input for the inner radius.
 #. Name the model :file:`Topographic Position Index (TPI)` and |fileSave| Save
    it with a logical name such as :file:`tpi.model3` 
+#. close the modeler for now
 
 |hard| |FA| Creating a script for the mask file
 ...............................................
@@ -112,15 +113,34 @@ ourselves. You can also directly copy it from the :ref:`solution
 Now, to get the |grass|:guilabel:`r.neighbors` algorithm to work correctly, we
 need to create a mask file script.
 
-#. close the modeler.
-
 .. warning::
    This is a |hard| exercise. Only do this if you have extra time left.
    Otherwise, go directly to the :ref:`solution <mask_script_solution>`. Doing
    this exercise will also help you with :ref:`create_rasterize_script`
 
 
-First, we will create a model that we will convert to a script.
+#. We will create a model that we will convert to a script. Click
+   |processingModel|:menuselection:`--> Create New Model...`
+#. Drag in the following inputs:
+   
+   * |signPlus|:guilabel:`Number`: 
+
+     * :guilabel:`Description`: :file:`Inner radius`
+     * :guilabel:`Number type`: |integer|:file:`Integer` 
+     * :guilabel:`Minimum value`: :file:`0` 
+     * :guilabel:`Default value`: :file:`1` 
+
+   * |signPlus|:guilabel:`Number`: :file:`Outer radius`, similar to Inner radius
+
+#. Name the model :file:`Annulus mask for r.neighbors`
+#. Click the |saveAsPython| *Export as Script Algorithm* icon. 
+
+   The following script will appear. Places where we will insert some of our own
+   code are highlighted.
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 1-11,13-27,37-58
+      :linenos:
 
 .. _mask_script_solution:
 
@@ -179,7 +199,7 @@ Now we have all the processes we need, it is time to add them to our model!
    For some reason, the |logo| native raster calculator does not work well with output
    of |saga| Saga or |grass| Grass algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
    this exercise. Instructions are still added, because you may find it more
-   intuitive to use than the GDAL later on in the manual
+   intuitive to use than the GDAL version later on in the manual.
 
 #. Drag the |gdal|:ref:`gdalrastercalculator` into the view. Fill in the dialog
    as follows:
