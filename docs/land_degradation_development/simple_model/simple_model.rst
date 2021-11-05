@@ -433,6 +433,8 @@ determining where to apply specific measures.
    :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em
+.. |saveAsPython| image:: /static/common/mActionSaveAsPython.png
+   :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
 .. |unchecked| image:: /static/common/checkbox_unchecked.png
