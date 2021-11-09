@@ -276,7 +276,7 @@ Use the :file:`minimum()` to calculate this in |gdal|:ref:`gdalrastercalculator`
 Putting everything into a single model
 --------------------------------------
 
-Now, you can create a new model and dragg all the algorithms into it! Make sure
+Now, you can create a new model and drag all the algorithms into it! Make sure
 to **only** set inputs as paths to files where they are acutally inputs from
 pre-processing. Otherwise use an |processing|:guilabel:`Algorithm output` from a
 previous algorithm. It should look like this:
