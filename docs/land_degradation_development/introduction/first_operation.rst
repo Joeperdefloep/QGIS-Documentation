@@ -27,7 +27,7 @@ time to explore them a bit.
    An attribute table is a useful way for inspecting the data of your layer. It
    is always the first thing you would look at if you get unexpected output.
    Close the attribute table by pressing :kbd:`Esc`.
-2. Another way of inspecting a layer is by using |identify|identify. With
+2. Another way of inspecting a layer is by using |identify| identify. With
    :guilabel:`Hadocha_landuse` selected, press :kbd:`Ctrl+Shift+I` or
    |identify| in the top toolbar. Click the swamp and the following window should pop up:
 

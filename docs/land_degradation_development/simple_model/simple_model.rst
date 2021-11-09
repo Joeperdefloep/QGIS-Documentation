@@ -304,7 +304,7 @@ Now we have all the processes we need, it is time to add them to our model!
          :align: center
 
 .. note::
-   For some reason, the |logo|native raster calculator does not work well with output
+   For some reason, the |logo| native raster calculator does not work well with output
    of |saga| Saga algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
    this exercise. Instructions are still added, because you may find it more
    intuitive to use than the GDAL later on in the manual
