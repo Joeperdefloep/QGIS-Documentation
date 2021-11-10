@@ -110,7 +110,7 @@ available in version 7.3.0 (not in 7.8.2).
 
 The Soil moisture storage capacity :math:`S_c` is calculated by
 
-.. math:: S_c = 10000 \cdot W_{fc}\cdot \rho_{bd}\cdot EHD\sqrt{\frac{ET_{c,adj}}{ET_c}}
+.. math:: S_c = 1000 \cdot W_{fc}\cdot \rho_{bd}\cdot EHD\sqrt{\frac{ET_{c,adj}}{ET_c}}
 
 Where :math:`W_{fc}` is soil moisture, :math:`\rho_{bd}` is Bulk density,
 :math:`EHD` is effective hydrological depth and :math:`\frac{ET_{c,adj}}{ET_c}`
