@@ -174,10 +174,11 @@ of rainy days :math:`n=160`.
    We will say that for any cell with :math:`SR>1400` this is a river area and
    set :math:`SR_{final}=0` there.
 
-#. Drag in a Raster calculator. The expression you should fill in is:
-   :file:`IF("SR"<1400,"SR",0)`. Depending on which raster calculator,
-   :file:`"SR"` is either :file:`A` or :file:`"'SR' from algorithm 'SR'@1"`. The
-   resulting output should look like this:
+#. Drag in a |gdal|:ref:`gdalrastercalculator`. The expression you should fill in is:
+   |gdal| :file:`where(A<1400,A,0)`, using the 
+   `numpy.where() <https://numpy.org/doc/stable/reference/generated/numpy.where.html>`_.
+   Make sure that :guilabel:`Input layer A` points to  
+   :file:`"Flow Accumulation" from algorithm "Catchment area (flow tracing"`:
 
    .. figure:: img/model_04_SR_final_map.png
       :align: center
@@ -203,7 +204,8 @@ fraction of ground cover.
 #. To convert the slope to radians, drag in a |gdal|:ref:`gdalrastercalculator`
    and use the :file:`deg2rad(A)` on |processing|:file:`"Slope" from algorithm "Slope"`
 #. Next, drag in a |logo|:ref:`qgisrastercalculator` and fill in the equation.
-   (|gdal| does not like )
+   (|gdal| does not properly mask nodata values here and gives an "overflow encountered
+   error" here. If you don't get that)
 
 .. admonition:: Solution
    :class: dropdown
