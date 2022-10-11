@@ -18,13 +18,20 @@ installation method.
    #. |checkbox| :guilabel:`GDAL`
    #. |checkbox| :guilabel:`GRASS GIS`
 
-#. finish the installation normally. This should install QGIS 3.16 Hannover.
+#. finish the installation normally. This should install QGIS 3.22.
 
-   .. figure:: img/QGIS3_16.png
-      :align: center
-      :alt: QGIS 3.16 Hannover splash screen
+Installing QRichDem
+-------------------
 
+QRichDem is a plugin that makes `RichDEM <https://richdem.com>` available to QGIS. I
+wrote it myself and will be testing it this class. Especially |osx|OSX has not been
+tested yet. It will install the package using pip, which may not be available if you
+first installed QGIS. If you encounter any errors, see `Manually installing pip`_
 
+#. open up QGIS
+
+Manually installing pip
+-----------------------
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
