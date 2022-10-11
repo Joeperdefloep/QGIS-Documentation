@@ -18,6 +18,7 @@ installation method.
    #. |checkbox| :guilabel:`GDAL`
    #. |checkbox| :guilabel:`GRASS GIS`
 
+<<<<<<< HEAD
 #. finish the installation normally. This should install QGIS 3.22.
 
 Installing QRichDem
@@ -32,6 +33,15 @@ first installed QGIS. If you encounter any errors, see `Manually installing pip`
 
 Manually installing pip
 -----------------------
+=======
+#. finish the installation normally. This should install QGIS 3.16 Hannover.
+
+   .. figure:: img/QGIS3_16.png
+      :align: center
+      :alt: QGIS 3.16 Hannover splash screen
+
+
+>>>>>>> 54267325df52079c1eb90b388a630c2b84930914
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.

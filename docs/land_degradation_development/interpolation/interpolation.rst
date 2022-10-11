@@ -25,7 +25,7 @@ Nearest Neighbour
        
       Nearest neighbour interpolated precipitation
 
-   .. tip:: |hard| Challenge
+   .. admonition:: |hard| Challenge
 
       It seems to be possible to 
       `Set cellsize <https://gis.stackexchange.com/questions/394134/cell-size-in-grid-nearest-neighbour-in-qgis>`_

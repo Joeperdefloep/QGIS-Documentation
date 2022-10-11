@@ -857,10 +857,6 @@ the expression to execute.
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |3d| image:: /static/common/3d.png
-   :width: 1.5em
-.. |add| image:: /static/common/mActionAdd.png
-   :width: 1.5em
 .. |addMeshLayer| image:: /static/common/mActionAddMeshLayer.png
    :width: 1.5em
 .. |allEdits| image:: /static/common/mActionAllEdits.png
@@ -898,6 +894,10 @@ the expression to execute.
 .. |meshTransformByExpression| image:: /static/common/mActionMeshTransformByExpression.png
    :width: 1.5em
 .. |meshaveraging| image:: /static/common/meshaveraging.png
+   :width: 1.5em
+.. |editMetadata| image:: /static/common/editmetadata.png
+   :width: 1.2em
+.. |general| image:: /static/common/general.png
    :width: 1.5em
 .. |meshcontours| image:: /static/common/meshcontours.png
    :width: 1.5em
