@@ -2203,7 +2203,6 @@ To edit features in-place:
 .. |settings| image:: /static/common/settings.png
    :width: 1.5em
 .. |simplify| image:: /static/common/mActionSimplify.png
-   :width: 1.5em
 .. |snapping| image:: /static/common/mIconSnapping.png
    :width: 1.5em
 .. |snappingIntersection| image:: /static/common/mIconSnappingIntersection.png

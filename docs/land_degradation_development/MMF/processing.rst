@@ -29,18 +29,18 @@ effective rainfall (:math:`P_e` ), i.e. the fraction of mean annual rainfall
    :|gdal| GDAL: Fill in the following:
                  
                  * :guilabel:`Input layer A`: |processingModel|:file:`A` 
-                 * :guilabel:`Number of raster band for A`: |integer|:file:`1` 
+                 * :guilabel:`Number of raster band for A`: |fieldInteger|:file:`1` 
                  * :guilabel:`Input layer B`: |processingModel|:file:`B` 
-                 * :guilabel:`Number of raster band for B`: |integer|:file:`1` 
-                 * :guilabel:`Expression`: |integer|:file:`B*(1-A)`
-                 * |processingOutput| :guilabel:`Calculated:` : :file:`Pe` 
+                 * :guilabel:`Number of raster band for B`: |fieldInteger|:file:`1` 
+                 * :guilabel:`Expression`: |fieldInteger|:file:`B*(1-A)`
+                 * |modelOutput| :guilabel:`Calculated:` : :file:`Pe` 
 
    :|logo| Native: Fill in like so:
 
                    * :guilabel:`Expression`: :file:`"P@1"*(1-"A@1")`
                    * :guilabel:`Reference Layer(s)`: |processingModel|:file:`A`
                      or :file:`P`
-                   * |processingOutput| :guilabel:`Output`: :file:`Pe` 
+                   * |modelOutput| :guilabel:`Output`: :file:`Pe` 
 
    Notice the difference in :guilabel:`Expression` between the two. Because we
    are directly using inputs, the expression in |logo| is still relatively
@@ -154,14 +154,14 @@ of rainy days :math:`n=160`.
    this:
 
    * :guilabel:`Elevation`: 
-     |processing|:file:`"Filled DEM" from algorithm "Fill sinks"`
-   * :guilabel:`Flow Accumulation units`: |integer|:file:`[0] number of cells`
+     |processingAlgorithm|:file:`"Filled DEM" from algorithm "Fill sinks"`
+   * :guilabel:`Flow Accumulation units`: |fieldInteger|:file:`[0] number of cells`
    * :guilabel:`Weights`: |processingModel|:file:`"Calculated from algorithm "SR"`
-   * :guilabel:`Method`: |integer|:file:`[2] DEMON` This is the flow routing
+   * :guilabel:`Method`: |fieldInteger|:file:`[2] DEMON` This is the flow routing
      algorithm. It is more advanced than Dinf that ArcGIS uses, but still
      relatively convergent, as opposed to the kinematic routig algorithm.
      `Reference <http://www.saga-gis.org/saga_tool_doc/2.2.5/ta_hydrology_2.html>`_
-   * |processingOutput|:guilabel:`Flow Accumulation`: :file:`SR_acc` 
+   * |modelOutput|:guilabel:`Flow Accumulation`: :file:`SR_acc` 
 
 #. Run the model. If everything works correctly, you should get the following output:
 
@@ -202,7 +202,7 @@ fraction of ground cover.
 #. Create a new model named :file:`05_detachment`
 #. Drag in a :guilabel:`DEM` input and a |gdal| or |logo| slope algorithm.
 #. To convert the slope to radians, drag in a |gdal|:ref:`gdalrastercalculator`
-   and use the :file:`deg2rad(A)` on |processing|:file:`"Slope" from algorithm "Slope"`
+   and use the :file:`deg2rad(A)` on |processingAlgorithm|:file:`"Slope" from algorithm "Slope"`
 #. Next, drag in a |logo|:ref:`qgisrastercalculator` and fill in the equation.
    (|gdal| does not properly mask nodata values here and gives an "overflow encountered
    error" here. If you don't get that)
@@ -212,7 +212,7 @@ fraction of ground cover.
 
    If you have filled in :guilabel:`A` : |processingModel|:file:`SR`,
    :guilabel:`B` : |processingModel|:file:`COH`, :guilabel:`C` :
-   |processing|:file:`"Slope" from algorithm "Slope"`, :guilabel:`D` :
+   |processingAlgorithm|:file:`"Slope" from algorithm "Slope"`, :guilabel:`D` :
    |processingModel|:file:`GC`, then the final expression is:
 
    :file:`0.0005*A**1.5/B*sin(deg2rad(C))*(1-D)` 
@@ -280,7 +280,7 @@ Putting everything into a single model
 
 Now, you can create a new model and drag all the algorithms into it! Make sure
 to **only** set inputs as paths to files where they are acutally inputs from
-pre-processing. Otherwise use an |processing|:guilabel:`Algorithm output` from a
+pre-processing. Otherwise use an |processingAlgorithm|:guilabel:`Algorithm output` from a
 previous algorithm. It should look like this:
 
 .. figure:: img/model_all.png
@@ -291,17 +291,17 @@ previous algorithm. It should look like this:
    please add it also to the substitutions.txt file in the
    source folder.
 
-.. |gdal| image:: /static/common/gdal.png
+.. |fieldInteger| image:: /static/common/mIconFieldInteger.png
    :width: 1.5em
-.. |integer| image:: /static/common/mIconFieldInteger.png
+.. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
 .. |logo| image:: /static/common/logo.png
    :width: 1.5em
-.. |processing| image:: /static/common/processingAlgorithm.png
+.. |modelOutput| image:: /static/common/mIconModelOutput.png
+   :width: 1.5em
+.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
-   :width: 1.5em
-.. |processingOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em

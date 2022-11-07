@@ -111,7 +111,7 @@ a model, so we can immediately rasterize the data afterwards.
    * :guilabel:`Table field`: |processingModel| :file:`Landuse join field` 
    * :guilabel:`Input layer 2`: |processingModel| :file:`Landuse properties`
    * :guilabel:`Table field 2`: |processingModel| :file:`Properties table join field`
-   * |processingOutput|:guilabel:`Joined layer [optional]`: :file:`Landuse_joined` 
+   * |modelOutput|:guilabel:`Joined layer [optional]`: :file:`Landuse_joined` 
    
 #. |play| Run the model and look at the attribute table. It should look like
    this:
@@ -148,14 +148,14 @@ such as pixel size need to be hard-coded.
 
    * :guilabel:`Description`: :file:`Intercepted rainfall` 
    * :guilabel:`Input layer` :
-     |processing|`"joined layer from process "join attributes by field value"`
+     |processingAlgorithm|`"joined layer from process "join attributes by field value"`
    * :guilabel:`Field to use for a burn-in value [optional]`:  :file:`A`
    * :guilabel:`Output raster size units`: 
      |selectString|:file:`Georeferenced units`
    * :guilabel:`width/Horizontal resolution`/
      :guilabel:`Height/Verticalresolution`: :file:`20`
    * :guilabel:`Output extent`: |processingModel|:file:`reference layer`
-   * |processingOutput|:guilabel:`Rasterized`: :file:`A`
+   * |modelOutput|:guilabel:`Rasterized`: :file:`A`
    
    Your model should now look like this:
    
@@ -178,7 +178,7 @@ such as pixel size need to be hard-coded.
    .. list-table::
       :header-rows: 1
 
-      * - :guilabel:`Field to use for a burn-in value`, |processingOutput|:guilabel:`Rasterized`
+      * - :guilabel:`Field to use for a burn-in value`, |modelOutput|:guilabel:`Rasterized`
         - :guilabel:`Description`
       * - :file:`A`
         - :file:`Intercepted rainfall`
@@ -256,7 +256,7 @@ Creating a template model
    * :guilabel:`Field to use for a burn-in value`:
      |processingModel|:file:`Fields to rasterize`
    * :guilabel:`Output raster size units`: 
-     |integer|:file:`Georeferenced units`
+     |fieldInteger|:file:`Georeferenced units`
    * :guilabel:`Output extent`: |processingModel|:file:`like raster`
 
 #. Name the model :file:`Batch rasterize`
@@ -360,13 +360,13 @@ will first put that in our map
    #. |polygonLayer| Vector Layer: :file:`Landuse`
 
 #. Now, we want to select the :guilabel:`Swamp` feature from
-   :guilabel:`Landuse`. Drag the |processing|:guilabel:`Extract by Attribute`
+   :guilabel:`Landuse`. Drag the |processingAlgorithm|:guilabel:`Extract by Attribute`
    process into the modeler.
 
    * :guilabel:`Input layer`: |processingModel|:file:`Landuse`
-   * :guilabel:`Selection attribute`: |integer|:file:`FEATURE` 
-   * :guilabel:`Operator`: |integer|:file:`=` 
-   * :guilabel:`Value [optional]`: |integer|:file:`Swamp`
+   * :guilabel:`Selection attribute`: |fieldInteger|:file:`FEATURE` 
+   * :guilabel:`Operator`: |fieldInteger|:file:`=` 
+   * :guilabel:`Value [optional]`: |fieldInteger|:file:`Swamp`
   
    Also give :guilabel:`Extracted (attribute)` a name and |play|:guilabel:`Run`
    the model. Your resulting layer should only be the swamp.
@@ -382,7 +382,7 @@ will first put that in our map
 
    * :guilabel:`Input layer`: |processingModel|:file:`Soil` 
    * :guilabel:`Overlay layer`: 
-     |processing|:file:`"Extracted (attribute)" from algorithm "Extract by attribute"` 
+     |processingAlgorithm|:file:`"Extracted (attribute)" from algorithm "Extract by attribute"` 
 
    Run the model and check the output attribute table. 
 
@@ -395,10 +395,10 @@ will first put that in our map
       
 #. Drag in the |logo|:ref:`qgisfieldcalculator` tool into the model.
 
-   * :guilabel:`Input layer`: |processing|:file:`"Union" from "Union"` 
-   * :guilabel:`Field name`: |integer|:file:`TEXTURE` 
-   * :guilabel:`Result field type`: |integer|:file:`String` 
-   * :guilabel:`Result field length`: |integer|:file:`16` This is the maximum
+   * :guilabel:`Input layer`: |processingAlgorithm|:file:`"Union" from "Union"` 
+   * :guilabel:`Field name`: |fieldInteger|:file:`TEXTURE` 
+   * :guilabel:`Result field type`: |fieldInteger|:file:`String` 
+   * :guilabel:`Result field length`: |fieldInteger|:file:`16` This is the maximum
      length that the resulting field can have in characters
    * :guilabel:`Formula`: :file:`IF("FEATURE"='Swamp',"FEATURE","TEXTURE")` 
 
@@ -420,8 +420,8 @@ will first put that in our map
    output. Fill it in like this:
    
    * :guilabel:`Input layer`: 
-     |processing|:file:`"Calculated from algorithm "Field calculator"`
-   * :guilabel:`Group by expression`: |integer| |selectString|:file:`TEXTURE` 
+     |processingAlgorithm|:file:`"Calculated from algorithm "Field calculator"`
+   * :guilabel:`Group by expression`: |fieldInteger| |selectString|:file:`TEXTURE` 
    * :guilabel:`Aggregates`: Click the |newAttribute|:guilabel:`Add new field`
      button to add a new field. and fill it in like this:
    
@@ -502,14 +502,16 @@ less instructions.
 .. |basic| image:: /static/common/basic.png
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
+.. |fieldInteger| image:: /static/common/mIconFieldInteger.png
+   :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
 .. |hard| image:: /static/common/hard.png
-.. |integer| image:: /static/common/mIconFieldInteger.png
-   :width: 1.5em
 .. |logo| image:: /static/common/logo.png
+   :width: 1.5em
+.. |modelOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |newAttribute| image:: /static/common/mActionNewAttribute.png
    :width: 1.5em
@@ -517,11 +519,9 @@ less instructions.
    :width: 1.5em
 .. |polygonLayer| image:: /static/common/mIconPolygonLayer.png
    :width: 1.5em
-.. |processing| image:: /static/common/processingAlgorithm.png
+.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
-   :width: 1.5em
-.. |processingOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |pythonFile| image:: /static/common/mIconPythonFile.png
    :width: 1.5em
@@ -531,5 +531,5 @@ less instructions.
    :width: 2.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

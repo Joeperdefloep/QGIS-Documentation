@@ -53,7 +53,7 @@ datapoint on the value of the interpolated raster decreases with distance.
       IDW interpolated precipitation.
 
 8. |hard| try to get similar results with algorithms from |gdal| GDAL and
-   |grass| GRASS
+   |grassLogo| GRASS
 
 Spline interpolation
 --------------------
@@ -144,7 +144,7 @@ thin plate spline by means of expert opinion.
    :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
-.. |grass| image:: /static/common/grasslogo.png
+.. |grassLogo| image:: /static/common/grasslogo.png
    :width: 1.5em
 .. |hard| image:: /static/common/hard.png
 .. |logo| image:: /static/common/logo.png

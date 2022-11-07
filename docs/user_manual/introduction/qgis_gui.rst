@@ -3330,7 +3330,6 @@ processes (QGIS startup, plugins loading, processing tools...)
 .. |showSelectedLayers| image:: /static/common/mActionShowSelectedLayers.png
    :width: 1.5em
 .. |simplify| image:: /static/common/mActionSimplify.png
-   :width: 1.5em
 .. |splitFeatures| image:: /static/common/mActionSplitFeatures.png
    :width: 1.5em
 .. |splitParts| image:: /static/common/mActionSplitParts.png

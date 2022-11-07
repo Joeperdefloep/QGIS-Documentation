@@ -1353,7 +1353,6 @@ Icon                            Substitution                        Icon        
 .. |showUnplacedLabel| image:: /static/common/mActionShowUnplacedLabel.png
    :width: 1.5em
 .. |simplify| image:: /static/common/mActionSimplify.png
-   :width: 1.5em
 .. |singleSymbol| image:: /static/common/rendererSingleSymbol.png
    :width: 1.5em
 .. |slider| image:: /static/common/slider.png

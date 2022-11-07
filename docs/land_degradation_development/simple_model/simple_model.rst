@@ -27,10 +27,10 @@ This is useful so you can distinguish between large and small features.
 
    Topographic index depends on Neighborhood size. (https://landscapearchaeology.org/2019/tpi/)
 
-|basic| implementing the model with |grass| :guilabel:`r.neighbors` 
+|basic| implementing the model with |grassLogo| :guilabel:`r.neighbors` 
 -------------------------------------------------------------------
 
-The |grass|:guilabel:`r.neighbors` algorithm does not support an annulus as area
+The |grassLogo|:guilabel:`r.neighbors` algorithm does not support an annulus as area
 by default. However, it provides the possibility to use a *mask file*. That is a
 :file:`.txt` file that looks something like this for :math:`r_i=1,r_o=3` :
 
@@ -110,7 +110,7 @@ ourselves. You can also directly copy it from the :ref:`solution
 |hard| |FA| Creating a script for the mask file
 ...............................................
 
-Now, to get the |grass|:guilabel:`r.neighbors` algorithm to work correctly, we
+Now, to get the |grassLogo|:guilabel:`r.neighbors` algorithm to work correctly, we
 need to create a mask file script.
 
 .. warning::
@@ -126,7 +126,7 @@ need to create a mask file script.
    * |signPlus|:guilabel:`Number`: 
 
      * :guilabel:`Description`: :file:`Inner radius`
-     * :guilabel:`Number type`: |integer|:file:`Integer` 
+     * :guilabel:`Number type`: |fieldInteger|:file:`Integer` 
      * :guilabel:`Minimum value`: :file:`0` 
      * :guilabel:`Default value`: :file:`1` 
 
@@ -176,28 +176,28 @@ Now we have all the processes we need, it is time to add them to our model!
    You can change the type of variable by clicking the highlighted
    |processingModel|. You can then choose from:
 
-   * |integer| :guilabel:`Value` A value
+   * |fieldInteger| :guilabel:`Value` A value
    * |processingModel| :guilabel:`Input` An input to your model (|signPlus|)
-   * |processing| :guilabel:`Algorithm output` The output of an algorithm
+   * |processingAlgorithm| :guilabel:`Algorithm output` The output of an algorithm
    * |expression| :guilabel:`Pre-calculated value` An expression that will be
      evaluated when you run the model
 
-#. Next, drag in the |grass|:guilabel:`r.neighbors` algorithm. The mask option
+#. Next, drag in the |grassLogo|:guilabel:`r.neighbors` algorithm. The mask option
    we are using is an advanced parameter. Click the 
    :guilabel:`Show avancedparameters` button. Then fill it in like this:
    
    * :guilabel:`Using model input`: |processingModel|:file:`DEM`  
-   * :guilabel:`Neighborhood operation [optional]`: |integer|:file:`average` 
+   * :guilabel:`Neighborhood operation [optional]`: |fieldInteger|:file:`average` 
    * :guilabel:`Neighborhood size (must be odd) [optional]`:
      |processingModel|:file:`outer radius`
    * :guilabel:`File containing weights [optional]`:
-     |processing|:file:`"annular mask" from algorithm "annulus mask for r.neighbors"`  
+     |processingAlgorithm|:file:`"annular mask" from algorithm "annulus mask for r.neighbors"`  
    
    press :guilabel:`OK` 
 
 .. note::
    For some reason, the |logo| native raster calculator does not work well with output
-   of |saga| Saga or |grass| Grass algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
+   of |saga| Saga or |grassLogo| Grass algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
    this exercise. Instructions are still added, because you may find it more
    intuitive to use than the GDAL version later on in the manual.
 
@@ -208,10 +208,10 @@ Now we have all the processes we need, it is time to add them to our model!
    * :guilabel:`Number of raster band for A`: :file:`1` This is for multi-band
      rasters. Since our raster only has one band, we want that to be :math:`1`.
    * :guilabel:`Input layer B`:  
-     |processing|:file:`"neighbors" from algorithm "r.neighbors"` 
+     |processingAlgorithm|:file:`"neighbors" from algorithm "r.neighbors"` 
    * :guilabel:`Number of raster band for B`: :file:`1`
    * :guilabel:`Calculation in gdalnumeric syntax`: :file:`A-B`
-   * |processingOutput|:guilabel:`Calculated`: :file:`TPI`
+   * |modelOutput|:guilabel:`Calculated`: :file:`TPI`
 
    Your model should now look like this:
 
@@ -228,7 +228,7 @@ Now we have all the processes we need, it is time to add them to our model!
 
 .. warning:: The following section was written for |win| QGIS with |saga| SAGA 7.8. This
    version has different algorithms available than |nix| |osx| |SAGA| version
-   7.3. In that case, use the |grass| ::guilabel:`r.neighbors`  algorithm.
+   7.3. In that case, use the |grassLogo| ::guilabel:`r.neighbors`  algorithm.
 
 #. In the Processing toolbox, select 
    |processingModel|:menuselection:`--> Create new Model`
@@ -288,11 +288,11 @@ Now we have all the processes we need, it is time to add them to our model!
    #. Search for |saga|:guilabel:`Focal Statistics`, drag it into the view and
       fill in the pop-up window as follows:
 
-      * Under :guilabel:`Grid`, press the |integer| drop-down and select
+      * Under :guilabel:`Grid`, press the |fieldInteger| drop-down and select
         |processingModel|:guilabel:`Model Input`. It should be on :File:`DEM`
         already since this is the only raster type model input.
-      * :guilabel:`Include Center Cell`: |integer|:file:`No`
-      * :guilabel:`Kernel Type`: |integer|:file:`[1] Circle`
+      * :guilabel:`Include Center Cell`: |fieldInteger|:file:`No`
+      * :guilabel:`Kernel Type`: |fieldInteger|:file:`[1] Circle`
       * :guilabel:`Radius`: |processingModel|:file:`Outer radius`
       * the rest on default settings
    
@@ -316,10 +316,10 @@ Now we have all the processes we need, it is time to add them to our model!
    * :guilabel:`Number of raster band for A`: :file:`1` This is for multi-band
      rasters. Since our raster only has one band, we want that.
    * :guilabel:`Input layer B`:  
-     |processing|:file:`"Mean value" from algorithm "Focal Statistics"` 
+     |processingAlgorithm|:file:`"Mean value" from algorithm "Focal Statistics"` 
    * :guilabel:`Number of raster band for B`: :file:`1`
    * :guilabel:`Calculation in gdalnumeric syntax`: :file:`A-B`
-   * |processingOutput|:guilabel:`Calculated`: :file:`TPI`
+   * |modelOutput|:guilabel:`Calculated`: :file:`TPI`
 
 
 .. admonition:: |logo| Raster calculator
@@ -333,7 +333,7 @@ Now we have all the processes we need, it is time to add them to our model!
         names by double-clicking them in the :guilabel:`Layers` list.
       * :guilabel:`Reference Layers (...)`:
         :menuselection:`... -->`|checkbox|:guilabel:`DEM`.
-      * |processingOutput|:guilabel:`Output`: :file:`TPI`
+      * |modelOutput|:guilabel:`Output`: :file:`TPI`
 
       and press :guilabel:`OK`.
 
@@ -406,16 +406,18 @@ determining where to apply specific measures.
    :width: 1.3em
 .. |expression| image:: /static/common/mIconExpression.png
    :width: 1.5em
+.. |fieldInteger| image:: /static/common/mIconFieldInteger.png
+   :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
-.. |grass| image:: /static/common/grasslogo.png
+.. |grassLogo| image:: /static/common/grasslogo.png
    :width: 1.5em
 .. |hard| image:: /static/common/hard.png
-.. |integer| image:: /static/common/mIconFieldInteger.png
-   :width: 1.5em
 .. |logo| image:: /static/common/logo.png
+   :width: 1.5em
+.. |modelOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |nix| image:: /static/common/nix.png
    :width: 1em
@@ -423,11 +425,9 @@ determining where to apply specific measures.
    :width: 1em
 .. |play| image:: /static/common/mActionPlay.png
    :width: 1.5em
-.. |processing| image:: /static/common/processingAlgorithm.png
+.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
-   :width: 1.5em
-.. |processingOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |pythonFile| image:: /static/common/mIconPythonFile.png
    :width: 1.5em
@@ -437,7 +437,7 @@ determining where to apply specific measures.
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |win| image:: /static/common/win.png
    :width: 1em

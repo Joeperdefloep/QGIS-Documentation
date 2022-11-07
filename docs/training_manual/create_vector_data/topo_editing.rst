@@ -370,7 +370,6 @@ simpler and more effective.
 .. |selectRectangle| image:: /static/common/mActionSelectRectangle.png
    :width: 1.5em
 .. |simplify| image:: /static/common/mActionSimplify.png
-   :width: 1.5em
 .. |snapping| image:: /static/common/mIconSnapping.png
    :width: 1.5em
 .. |splitFeatures| image:: /static/common/mActionSplitFeatures.png

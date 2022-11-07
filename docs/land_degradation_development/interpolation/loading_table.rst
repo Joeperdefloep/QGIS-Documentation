@@ -50,7 +50,7 @@ First, we have to load the data.
 #. To find out where our points end up, we want to see where we are on the
    earth. For that, we will load the OpenStreetMap *basemap* under
    |xyz|:guilabel:`XYZ Tiles` in the Browser.
-#. Find the |processing|:guilabel:`Create point layer from table` algorithm.
+#. Find the |processingAlgorithm|:guilabel:`Create point layer from table` algorithm.
 
    1. Set the :guilabel:`Extracted (attribute)` layer as Input layer
    2. Set |selectString|:guilabel:`X field` to |fieldFloat|:file:`LONGITUDE`
@@ -66,7 +66,7 @@ First, we have to load the data.
    
    If they are on a different location on the world, check your settings!
 
-#. Find the |processing|:guilabel:`Reproject layer` tool.
+#. Find the |processingAlgorithm|:guilabel:`Reproject layer` tool.
 
    #. select |pointLayer|:file:`Points from table [EPSG:4326]` as
       :guilabel:`Input Layer`
@@ -93,7 +93,7 @@ First, we have to load the data.
    :width: 1.5em
 .. |pointLayer| image:: /static/common/mIconPointLayer.png
    :width: 1.5em
-.. |processing| image:: /static/common/processingAlgorithm.png
+.. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em

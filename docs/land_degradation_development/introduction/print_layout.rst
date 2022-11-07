@@ -393,7 +393,7 @@ layout items. See :doc:`/docs/training_manual/map_composer/dynamic_layout`.
 .. |slider| image:: /static/common/slider.png
 .. |symbologyEdit| image:: /static/common/symbologyEdit.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em
 .. |unlockAll| image:: /static/common/mActionUnlockAll.png
    :width: 1.5em

@@ -87,11 +87,11 @@ Implementing the algorithm
    #. Search for |saga|:guilabel:`Focal Statistics`, drag it into the view and
       fill in the pop-up window as follows:
 
-      * Under :guilabel:`Grid`, press the |integer| drop-down and select
+      * Under :guilabel:`Grid`, press the |fieldInteger| drop-down and select
         |processingModel|:guilabel:`Model Input`. It should be on :File:`DEM`
         already since this is the only raster type model input.
-      * :guilabel:`Include Center Cell`: |integer|:file:`No`
-      * :guilabel:`Kernel Type`: |integer|:file:`[1] Circle`
+      * :guilabel:`Include Center Cell`: |fieldInteger|:file:`No`
+      * :guilabel:`Kernel Type`: |fieldInteger|:file:`[1] Circle`
       * :guilabel:`Radius`: |processingModel|:file:`Outer radius`
       * the rest on default settings
    
@@ -110,7 +110,7 @@ Implementing the algorithm
      names by double-clicking them in the :guilabel:`Layers` list.
    * :guilabel:`Reference Layers (...)`:
      :menuselection:`... -->`|checkbox|:guilabel:`DEM`.
-   * |processingOutput|:guilabel:`Output`: :file:`TPI`
+   * |modelOutput|:guilabel:`Output`: :file:`TPI`
 
    and press :guilabel:`OK`.
 
@@ -175,24 +175,24 @@ determining where to apply specific measures.
    please add it also to the substitutions.txt file in the
    source folder.
 
-
+.. |IC| replace:: In Conclusion
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
+.. |fieldInteger| image:: /static/common/mIconFieldInteger.png
+   :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
-.. |integer| image:: /static/common/mIconFieldInteger.png
-   :width: 1.5em
 .. |logo| image:: /static/common/logo.png
+   :width: 1.5em
+.. |modelOutput| image:: /static/common/mIconModelOutput.png
    :width: 1.5em
 .. |play| image:: /static/common/mActionPlay.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
    :width: 1.5em
-.. |processingOutput| image:: /static/common/mIconModelOutput.png
-   :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
-.. |unchecked| image:: /static/common/checkbox_unchecked.png
+.. |unchecked| image:: /static/common/unchecked.png
    :width: 1.3em

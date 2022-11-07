@@ -46,7 +46,7 @@ the same landuse and soiltypes. To solve this, we will perform a
 :ref:`qgisdissolve` operation.
 
 .. note:: There are multiple different providers for algorithms. There is the are
-   default |logo| QGIS algorithms, |gdal| GDAL, |saga| SAGA and |grass| GRASS.
+   default |logo| QGIS algorithms, |gdal| GDAL, |saga| SAGA and |grassLogo| GRASS.
    These are different GIS applications that come bundled with QGIS. In this
    exercise we will be using the |logo| algorithm. Feel free to try out the
    other algorithms throughout the practical, but remember to not get too distracted!
@@ -112,7 +112,7 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
 .. |basic| image:: /static/common/basic.png
 .. |checkbox| image:: /static/common/checkbox.png
    :width: 1.3em
-.. |dissolve| image:: /static/common/dissolve.png
+.. |dissolve| image:: /static/common/mAlgorithmDissolve.png
    :width: 1.5em
 .. |fileSave| image:: /static/common/mActionFileSave.png
    :width: 1.5em
@@ -120,7 +120,7 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
    :width: 1.5em
 .. |geoPackage| image:: /static/common/mGeoPackage.png
    :width: 1.5em
-.. |grass| image:: /static/common/grasslogo.png
+.. |grassLogo| image:: /static/common/grasslogo.png
    :width: 1.5em
 .. |identify| image:: /static/common/mActionIdentify.png
    :width: 1.5em
