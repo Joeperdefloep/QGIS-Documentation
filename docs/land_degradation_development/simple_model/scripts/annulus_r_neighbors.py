@@ -55,3 +55,4 @@ class AnnulusMaskForRneighbours(QgsProcessingAlgorithm):
 
     def createInstance(self):
         return AnnulusMaskForRneighbours()
+

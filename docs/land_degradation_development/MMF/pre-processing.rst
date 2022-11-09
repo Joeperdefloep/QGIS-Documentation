@@ -90,7 +90,7 @@ a model, so we can immediately rasterize the data afterwards.
       * :guilabel:`Parent layer` |selectString|:file:`Landuse`
       * :guilabel:`Allowed data type` |selectString|:file:`String`
       * |unchecked|:guilabel:`Accept multiple fields`
-      * :guilabel:`Default value: :file:`FEATURE`
+      * :guilabel:`Default value`: :file:`FEATURE`
     
    #. Vector Layer
        
@@ -148,7 +148,7 @@ such as pixel size need to be hard-coded.
 
    * :guilabel:`Description`: :file:`Intercepted rainfall` 
    * :guilabel:`Input layer` :
-     |processingAlgorithm|`"joined layer from process "join attributes by field value"`
+     |processingAlgorithm| `"joined layer from process "join attributes by field value"`
    * :guilabel:`Field to use for a burn-in value [optional]`:  :file:`A`
    * :guilabel:`Output raster size units`: 
      |selectString|:file:`Georeferenced units`
@@ -207,8 +207,12 @@ such as pixel size need to be hard-coded.
 
 .. _create_rasterize_script:
 
-|hard| |FA| Making a script for batch rasterizing
--------------------------------------------------
+|hard| |FA| Making a script for batch rasterizing (Optional)
+------------------------------------------------------------
+
+.. note::
+
+   This solution has been given `on stackexchange <https://gis.stackexchange.com/a/414677/156742>`_
 
 During rasterization in the previous exercise, we had to hard-code some values
 and it was quite cumbersome. In this exercise we will be making a script where

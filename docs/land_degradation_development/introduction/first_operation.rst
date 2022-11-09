@@ -66,6 +66,7 @@ the same landuse and soiltypes. To solve this, we will perform a
     |checkbox|:file:`FEATURE`. Your resulting layer should look like this:
 
     .. figure:: img/landuse_dissolved.png
+       :alt: The same landuse map in a single green colour.
     
 
 4. Now, to apply the symbology of the undissolved layer, right-click
@@ -95,6 +96,7 @@ ArcGIS does not support rasters for GeoPackages yet, see :ref:`arcgis_raster`.
 
    .. figure:: img/save_geopackage.png
       :align: center
+      :alt: Gui with Format: GeoPackage, File name: 01_input.gpkg, Layer name: landuse
 
    Here, we create a new GeoPackage :file:`01_input.gpkg` with the
    :guilabel:`Dissolved` landuse layer. This is the GeoPackage we will later on

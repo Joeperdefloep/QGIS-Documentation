@@ -270,7 +270,7 @@ You can also rename items.
 |basic| |TY| Adding a North arrow
 ---------------------------------
 
-A good map also has a North Arrow. Can you add one yourself?
+A good map also has a North Arrow and scale bar. Can you add one yourself?
 
 .. figure:: img/final_map.png
     :align: center
@@ -280,7 +280,7 @@ A good map also has a North Arrow. Can you add one yourself?
     :class: dropdown
 
     Click the |northArrow| button in the sidebar or through :menuselection:`Add
-    Item --> Add North Arrow`.
+    Item --> Add North Arrow`. Then, click the |scaleBar| button and add a scale bar.
 
 |basic| |FA| Exporting Your Map
 ----------------------------------------------------------------------
@@ -387,6 +387,8 @@ layout items. See :doc:`/docs/training_manual/map_composer/dynamic_layout`.
 .. |saveAsSVG| image:: /static/common/mActionSaveAsSVG.png
    :width: 1.5em
 .. |saveMapAsImage| image:: /static/common/mActionSaveMapAsImage.png
+   :width: 1.5em
+.. |scaleBar| image:: /static/common/mActionScaleBar.png
    :width: 1.5em
 .. |signMinus| image:: /static/common/symbologyRemove.png
    :width: 1.5em

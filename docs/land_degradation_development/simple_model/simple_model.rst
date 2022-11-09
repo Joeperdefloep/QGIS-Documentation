@@ -28,19 +28,13 @@ This is useful so you can distinguish between large and small features.
    Topographic index depends on Neighborhood size. (https://landscapearchaeology.org/2019/tpi/)
 
 |basic| implementing the model with |grassLogo| :guilabel:`r.neighbors` 
--------------------------------------------------------------------
+------------------------------------------------------------------------
 
 The |grassLogo|:guilabel:`r.neighbors` algorithm does not support an annulus as area
 by default. However, it provides the possibility to use a *mask file*. That is a
 :file:`.txt` file that looks something like this for :math:`r_i=1,r_o=3` :
 
-.. code-block::
-
-   0 0 1 0 0
-   0 1 1 1 0
-   1 1 0 1 1
-   0 1 1 1 0
-   0 0 1 0 0
+.. literalinclude:: scripts/r_1_3
 
 Where all :math:`1`'s are taken into account. The script that we need creates
 this file for us. In the next subsection, we will be making this script
@@ -116,7 +110,7 @@ need to create a mask file script.
 .. warning::
    This is a |hard| exercise. Only do this if you have extra time left.
    Otherwise, go directly to the :ref:`solution <mask_script_solution>`. Doing
-   this exercise will also help you with :ref:`create_rasterize_script`
+   this exercise will also help you with :ref:`create_rasterize_script`.
 
 
 #. We will create a model that we will convert to a script. Click
@@ -139,8 +133,74 @@ need to create a mask file script.
    code are highlighted.
 
    .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 1-11,13-27,37-58
+      :lines: 1-11,13, 16-21,23-27,39-58
+      :emphasize-lines: 11,13, 18, 23
       :linenos:
+
+#. In the model, we have only added two inputs. However, our algorithm should also have
+   an output. At line 11, insert the following:
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 12
+   
+   and within the :code:`initAlgorithm` function (line 18) insert:
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 22
+
+#. There is one problem with these processing parameters, however: they are not actually
+   values that we can work with. However, we want to be able to use them as numbers or strings (in
+   the case of file names). For this we will use the :func:`parameterAsInt()` and
+   :func:`parameterAsFileDestination()` At line 23, insert the following: 
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 29-32
+
+#. What we want is a function that creates a file like below for an inner, resp. outer
+   radius  of: :math:`r_i=1,r_o=3`
+
+   .. literalinclude:: scripts/r_1_3
+
+   This file is a mask file with weights e.g. numbers between 0 and 1, that tell GRASS
+   how much this cell matters for the calculation of the tpi.
+   
+   .. note::
+
+      I did not come up with these calculations myself, but found them on stackexchange.
+      Sadly, I forgot where.
+   
+   Note that the 0 in between
+   all the 1s is the center is the point that corresponds to the center. It is actually at coordinates
+   :math:`(x_0,y_0)=(3,3)` (start counting at 0). This is what |grassLogo|:guilabel:`r.neighbors` expects. It follows that
+   :math:`x_0=y_0=r_o`. Let :math:`d` be the distance to this point. Then, we want all
+   points to be 1 for which:
+
+   .. math:: d\geq r_i \land d \leq r_0
+
+   holds and 0 otherwise. The (eucludian) distance can be calculated by:
+
+   .. math::
+      d := \sqrt{(x-x_0)^2+(y-y_0)^2}\\
+        = \sqrt{(x-r_o)^2+(y-r_o)^2}
+
+   where :math:`x,y` are the coordinates of the Currently processed point.
+   To put this in code, we first need to import the corresponding functions:
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 15
+
+   and then make the calculations. Here :code:`a ** b` means :math:`a^b`. Also note
+   that the size of our array is :math:`2r_o+1`
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 34, 35
+
+   Then, we save our file to :code:`outloc` in decimal (:code:`"%d"`) format:
+
+   .. literalinclude:: scripts/annulus_r_neighbors.py
+      :lines: 37
+
+Your final script should look like this:
 
 .. _mask_script_solution:
 
@@ -154,6 +214,7 @@ need to create a mask file script.
    #. copy-paste the following code into the text editor that popped up:
 
       .. literalinclude:: scripts/annulus_r_neighbors.py
+         :emphasize-lines: 12,15,22,29-37
          :linenos:
 
    #. |fileSave| Save the script. It should now show up in the toolbox:
@@ -161,6 +222,20 @@ need to create a mask file script.
       .. figure:: img/script_in_toolbox.png
          :align: center
 
+|basic| Testing the annulus mask
+.................................
+
+Now you have made the annulus mask file, either by following the instructions or
+skipping to the solution, now it is time to test whether the annulus mask we just made actually works.
+
+#. Search for :file:`annulus mask for r.neighbors` in the processing pane and run it.
+
+   Use default settings, but set |guilabel|`annular mask` to a file name with a :file:`.txt` extension
+
+   .. figure:: img/test_annulus.png
+      :align: center
+
+#. open the file and verify if it is made correctly.
 
 |basic| Adding the processes to the TPI model
 .............................................
@@ -200,6 +275,8 @@ Now we have all the processes we need, it is time to add them to our model!
    of |saga| Saga or |grassLogo| Grass algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
    this exercise. Instructions are still added, because you may find it more
    intuitive to use than the GDAL version later on in the manual.
+
+
 
 #. Drag the |gdal|:ref:`gdalrastercalculator` into the view. Fill in the dialog
    as follows:
