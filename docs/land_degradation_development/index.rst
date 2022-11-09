@@ -21,7 +21,14 @@ In this tutorial, there are several different levels.
   However, you do not need to complete these for proper completion of the
   course.
 * |hard| exercises are only there for the very interested students with extra
-  time on their hands. I personally think these are the most fun :)
+  time on their hands. Most of these are concerned with making custom processes or
+  obtaining data. I personally think these are the most fun. These are there to help you
+  in case you ever need to do something similar to what has been done in this practical.
+  Once the manual is finished, doing these exercises will allow you to create this
+  practical from scratch: from obtaining data to creating the QRichDem plugin.
+
+The data is provided on Brightspace, and convenience scripts can be downloaded 
+`here <https://github.com/feefladder/QGIS-Documentation/raw/convenience-scripts/scripts.zip>`_.
 
 .. toctree::
     :maxdepth: 2
@@ -31,6 +38,7 @@ In this tutorial, there are several different levels.
     interpolation/index
     simple_model/simple_model
     MMF/index
+    scripts/index
     comparing_ArcGIS
 
 

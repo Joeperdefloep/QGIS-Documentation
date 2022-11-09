@@ -30,16 +30,36 @@ This is useful so you can distinguish between large and small features.
 |basic| implementing the model with |grassLogo| :guilabel:`r.neighbors` 
 ------------------------------------------------------------------------
 
+Since |saga| is a bit difficult and has different versions, the preferred way to
+implement the TPI is to use |grassLogo|:guilabel:`r.neighbors`. This is a focal
+statistics algorithm: it takes all cells in a neighborhood  around a cell and uses them
+to calculate the value for a cell.
+
+.. _adding_script_to_toolbox:
+
+|basic| |FA| Adding the annulus mask script to the toolbox
+..........................................................
+
 The |grassLogo|:guilabel:`r.neighbors` algorithm does not support an annulus as area
 by default. However, it provides the possibility to use a *mask file*. That is a
-:file:`.txt` file that looks something like this for :math:`r_i=1,r_o=3` :
+:file:`.txt` file that for :math:`r_i=1,r_o=3` looks something like this:
 
 .. literalinclude:: scripts/r_1_3
 
 Where all :math:`1`'s are taken into account. The script that we need creates
-this file for us. In the next subsection, we will be making this script
-ourselves. You can also directly copy it from the :ref:`solution
-<mask_script_solution>`.
+this file for us. In :ref:`annular_mask_script` we will be making this script
+ourselves. You can also directly copy it from the `convenience scripts
+<https://github.com/feefladder/QGIS-Documentation/raw/convenience-scripts/scripts.zip>`_.
+
+#. extract the convenience scripts to a location of your choice.
+#. In the processing toolbox, click the |pythonFile|:guilabel:`Add script to toolbox...`
+   and select the :file:`annulus_r_neighbors.py` file.
+
+   The script should now be added to your toolbox.
+
+   .. figure:: img/mask_in_toolbox.png
+      :align: center
+      :alt: the toolbox with annulus mask for r.neighbors added.
 
 |basic| |FA| Getting the model inputs
 .....................................
@@ -100,142 +120,6 @@ ourselves. You can also directly copy it from the :ref:`solution
 #. Name the model :file:`Topographic Position Index (TPI)` and |fileSave| Save
    it with a logical name such as :file:`tpi.model3` 
 #. close the modeler for now
-
-|hard| |FA| Creating a script for the mask file
-...............................................
-
-Now, to get the |grassLogo|:guilabel:`r.neighbors` algorithm to work correctly, we
-need to create a mask file script.
-
-.. warning::
-   This is a |hard| exercise. Only do this if you have extra time left.
-   Otherwise, go directly to the :ref:`solution <mask_script_solution>`. Doing
-   this exercise will also help you with :ref:`create_rasterize_script`.
-
-
-#. We will create a model that we will convert to a script. Click
-   |processingModel|:menuselection:`--> Create New Model...`
-#. Drag in the following inputs:
-   
-   * |signPlus|:guilabel:`Number`: 
-
-     * :guilabel:`Description`: :file:`Inner radius`
-     * :guilabel:`Number type`: |fieldInteger|:file:`Integer` 
-     * :guilabel:`Minimum value`: :file:`0` 
-     * :guilabel:`Default value`: :file:`1` 
-
-   * |signPlus|:guilabel:`Number`: :file:`Outer radius`, similar to Inner radius
-
-#. Name the model :file:`Annulus mask for r.neighbors`
-#. Click the |saveAsPython| *Export as Script Algorithm* icon. 
-
-   The following script will appear. Places where we will insert some of our own
-   code are highlighted.
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 1-11,13, 16-21,23-27,39-58
-      :emphasize-lines: 11,13, 18, 23
-      :linenos:
-
-#. In the model, we have only added two inputs. However, our algorithm should also have
-   an output. At line 11, insert the following:
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 12
-   
-   and within the :code:`initAlgorithm` function (line 18) insert:
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 22
-
-#. There is one problem with these processing parameters, however: they are not actually
-   values that we can work with. However, we want to be able to use them as numbers or strings (in
-   the case of file names). For this we will use the :func:`parameterAsInt()` and
-   :func:`parameterAsFileDestination()` At line 23, insert the following: 
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 29-32
-
-#. What we want is a function that creates a file like below for an inner, resp. outer
-   radius  of: :math:`r_i=1,r_o=3`
-
-   .. literalinclude:: scripts/r_1_3
-
-   This file is a mask file with weights e.g. numbers between 0 and 1, that tell GRASS
-   how much this cell matters for the calculation of the tpi.
-   
-   .. note::
-
-      I did not come up with these calculations myself, but found them on stackexchange.
-      Sadly, I forgot where.
-   
-   Note that the 0 in between
-   all the 1s is the center is the point that corresponds to the center. It is actually at coordinates
-   :math:`(x_0,y_0)=(3,3)` (start counting at 0). This is what |grassLogo|:guilabel:`r.neighbors` expects. It follows that
-   :math:`x_0=y_0=r_o`. Let :math:`d` be the distance to this point. Then, we want all
-   points to be 1 for which:
-
-   .. math:: d\geq r_i \land d \leq r_0
-
-   holds and 0 otherwise. The (eucludian) distance can be calculated by:
-
-   .. math::
-      d := \sqrt{(x-x_0)^2+(y-y_0)^2}\\
-        = \sqrt{(x-r_o)^2+(y-r_o)^2}
-
-   where :math:`x,y` are the coordinates of the Currently processed point.
-   To put this in code, we first need to import the corresponding functions:
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 15
-
-   and then make the calculations. Here :code:`a ** b` means :math:`a^b`. Also note
-   that the size of our array is :math:`2r_o+1`
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 34, 35
-
-   Then, we save our file to :code:`outloc` in decimal (:code:`"%d"`) format:
-
-   .. literalinclude:: scripts/annulus_r_neighbors.py
-      :lines: 37
-
-Your final script should look like this:
-
-.. _mask_script_solution:
-
-.. admonition:: |basic| Solution
-   :class: dropdown
-
-   If you didn't follow the above |FA|, you can use the below script. 
-
-   #. In the Processig Toolkbox, click the 
-      |pythonFile|:menuselection:`--> Create New Script...`
-   #. copy-paste the following code into the text editor that popped up:
-
-      .. literalinclude:: scripts/annulus_r_neighbors.py
-         :emphasize-lines: 12,15,22,29-37
-         :linenos:
-
-   #. |fileSave| Save the script. It should now show up in the toolbox:
-
-      .. figure:: img/script_in_toolbox.png
-         :align: center
-
-|basic| Testing the annulus mask
-.................................
-
-Now you have made the annulus mask file, either by following the instructions or
-skipping to the solution, now it is time to test whether the annulus mask we just made actually works.
-
-#. Search for :file:`annulus mask for r.neighbors` in the processing pane and run it.
-
-   Use default settings, but set |guilabel|`annular mask` to a file name with a :file:`.txt` extension
-
-   .. figure:: img/test_annulus.png
-      :align: center
-
-#. open the file and verify if it is made correctly.
 
 |basic| Adding the processes to the TPI model
 .............................................
@@ -491,7 +375,6 @@ determining where to apply specific measures.
    :width: 1.5em
 .. |grassLogo| image:: /static/common/grasslogo.png
    :width: 1.5em
-.. |hard| image:: /static/common/hard.png
 .. |logo| image:: /static/common/logo.png
    :width: 1.5em
 .. |modelOutput| image:: /static/common/mIconModelOutput.png
@@ -506,11 +389,7 @@ determining where to apply specific measures.
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
    :width: 1.5em
-.. |pythonFile| image:: /static/common/mIconPythonFile.png
-   :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
-   :width: 1.5em
-.. |saveAsPython| image:: /static/common/mActionSaveAsPython.png
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em

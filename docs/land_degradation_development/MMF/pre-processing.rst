@@ -66,14 +66,7 @@ Joining the data
 Even though the join operation is only a single operation, we will put it inside
 a model, so we can immediately rasterize the data afterwards.
 
-#. Create a new model named :file:`update landuse` and |fileSave| Save it.
-
-.. note::
-   Relative paths and layer selection are still not as good in QGIS. Therefore,
-   will present some workarounds here that are a bit more advanced. However, for
-   this model we will be using inputs. Note that since these are layers in a
-   GeoPackage c.q. sheets in a spreadsheet, they have to be loaded into the
-   project first.
+#. Create a new model named :file:`01 update landuse` and |fileSave| Save it.
 
 #. We need the following inputs:
 
@@ -99,7 +92,7 @@ a model, so we can immediately rasterize the data afterwards.
     
    #. Vector field
 
-      * :guilabel:`Description` :file:`properties table join field`
+      * :guilabel:`Description` :file:`landuse properties join field`
       * :guilabel:`Parent layer` |selectString|:file:`Landuse properties`
       * :guilabel:`Allowed data type` |selectString|:file:`String`
       * |unchecked|:guilabel:`Accept multiple fields`
@@ -136,34 +129,43 @@ a model, so we can immediately rasterize the data afterwards.
 Rasterizing the results
 .......................
 
-Now, we will be going to rasterize all our outputs. This is done by the
-|gdal|:ref:`gdalrasterize` process. This is a bit repetitive and some things
-such as pixel size need to be hard-coded. 
+Now, we will be going to rasterize all our outputs. This is normally done by the
+|gdal|:ref:`gdalrasterize` process. To make this easier, two convenience scripts have
+been added: one that allows you to rasterize a single vector layer with the same extent
+and pixel size as another raster layer, and one that allows you to do the same for
+multiple rasters. We will be using the batch rasterizing script, and you can use the
+other one later if you need to.
 
-#. We will need another input |signPlus| Raster Layer called 
+
+#. Add the :file:`batch_rasterize_final.py` 
+   `convenience script <https://github.com/feefladder/QGIS-Documentation/raw/convenience-scripts/scripts.zip>`_ 
+   to the toolbox. like you did in :ref:`adding_script_to_toolbox`.
+#. We will need another input |signPlus| Raster Layer 
    :file:`reference layer`. This is the layer that will be used to calculate the
-   extent.
-#. Drag a |gdal|:ref:`gdalrasterize` into the graphical modeler and give it the
-   following parameters:
+   extent. Open up :guilabel:`01_update_landuse` again and add it.
+#. Also add another |signPlus| Vector field input with:
 
-   * :guilabel:`Description`: :file:`Intercepted rainfall` 
-   * :guilabel:`Input layer` :
-     |processingAlgorithm| `"joined layer from process "join attributes by field value"`
-   * :guilabel:`Field to use for a burn-in value [optional]`:  :file:`A`
-   * :guilabel:`Output raster size units`: 
-     |selectString|:file:`Georeferenced units`
-   * :guilabel:`width/Horizontal resolution`/
-     :guilabel:`Height/Verticalresolution`: :file:`20`
-   * :guilabel:`Output extent`: |processingModel|:file:`reference layer`
-   * |modelOutput|:guilabel:`Rasterized`: :file:`A`
-   
+   * :guilabel:`Description` :file:`Rasterize fields`
+   * :guilabel:`Parent layer` |selectString|:file:`landuse properties table`
+   * :guilabel:`Allowed data type` |fieldInteger|:file:`number`
+   * |checkbox|:guilabel:`Accept multiple fields`
+   * |checkbox|:guilabel:`Select all fields by default`
+
+#. drag in the |pythonFile|:guilabel:`Batch_rasterize_fields` script you added and set:
+
+   * :guilabel:`like raster` |processingModel|:file:`reference layer`
+   * :guilabel:`vector` 
+     |processingAlgorithm|:file:`"Joined layer" from algorithm "Join attributes by field value"`
+   * :guilabel:`fields to select` |processingModel|:file:`rasterize fields`
+   * |modelOutput|:guilabel:`Output directory` :file:`Output directory`
+
    Your model should now look like this:
    
-   .. figure:: img/landuse_model_rasterize_a.png
+   .. figure:: img/landuse_model_rasterize_batch.png
       :align: center
 
 #. We also want our output to be automatically saved to a non-temporary
-   location. Double click the :guilabel:`A` output and set it to a location:
+   location. Double click the :guilabel:`Output directory` output and set it to a location:
 
    .. figure:: img/landuse_model_default_output.png
       :align: center
@@ -171,181 +173,7 @@ such as pixel size need to be hard-coded.
       Setting a default output for intercepted rainfall. :file:`01_input` is a
       folder, not a GeoPackage.
 
-#. Select the |gdal|:guilabel:`Rasterize (vector to raster)` box in the
-   processing modeler and copy it by pressing :kbd:`Ctrl+C`. Then paste it using
-   :kbd:`Ctrl+V`. In the end we want to have a raster for all the following parameters:
-
-   .. list-table::
-      :header-rows: 1
-
-      * - :guilabel:`Field to use for a burn-in value`, |modelOutput|:guilabel:`Rasterized`
-        - :guilabel:`Description`
-      * - :file:`A`
-        - :file:`Intercepted rainfall`
-      * - :file:`CC`
-        - :file:`Canopy cover`
-      * - :file:`PH`
-        - :file:`Plant height`
-      * - :file:`EHD`
-        - :file:`Effective Hydrological depth`
-      * - :file:`Cf`
-        - :file:`Cover factor`
-      * - :file:`GC`
-        - :file:`Ground cover`
-      * - :file:`Etc`
-        - :file:`Evapotranspiration`
-   
-   Your final model should now look like this:
-
-   .. _fig_rasterize_manual:
-
-   .. figure:: img/landuse_model_rasterize_all.png
-      :align: center
-      :width: 100%
-
-      Rasterizing all variables manually. 
-
-.. _create_rasterize_script:
-
-|hard| |FA| Making a script for batch rasterizing (Optional)
-------------------------------------------------------------
-
-.. note::
-
-   This solution has been given `on stackexchange <https://gis.stackexchange.com/a/414677/156742>`_
-
-During rasterization in the previous exercise, we had to hard-code some values
-and it was quite cumbersome. In this exercise we will be making a script where
-we can select all fields that we want rasterized. Then, we will adjust the model.
-
-.. warning::
-   This is a |hard| hard exercise. Do not get lost in this, but only follow if
-   you have extra time. The entire script is provided at the end. You may want
-   to copy that if you lack time. Also, all exercises can be finished by
-   copy-pasting the |gdal| Rasterize algorithm as in
-   :numref:`fig_rasterize_manual`.
-
-Making a script is very similar to making a model. In fact, all models can be
-exported to a Python script. This is very useful so we can get the skeleton of
-the script by making a model.
-What we eventually want is a tool like this:
-
-.. figure:: img/script_prompt.png
-   :align: center
-
-   The batch rasterization prompt. All :guilabel:`Fields to select` will be
-   turned into rasters, saved as :file:`.tiff` files inside :file:`01_input`
-   folder. 
-
-Creating a template model
-.........................
-
-#. Create a model and drag in the following inputs:
-   
-   * |signPlus| Raster Layer: :file:`like raster`
-   * |signPlus| Vector Layer: :file:`Vector`
-   * |signPlus| Vector Fields: :file:`Fields to rasterize`
-     
-     * :guilabel:`Parent layer`: :file:`vector`:
-     * :guilabel:`Allowed data type`: :file:`number`
-     * |checkbox|:guilabel:`Accept multiple fields`
-     * |checkbox|:guilabel:`Select all fields by default`
-   
-   * |signPlus| File/Folder: :file:`Output folder`
-   * |checkbox| |signPlus| Boolean: :file:`Load output layers`
-
-#. Drag in the |gdal|:ref:`gdalrasterize` algorithm with:
-   
-   * :guilabel:`Input layer`: |processingModel|:file:`vector`
-   * :guilabel:`Field to use for a burn-in value`:
-     |processingModel|:file:`Fields to rasterize`
-   * :guilabel:`Output raster size units`: 
-     |fieldInteger|:file:`Georeferenced units`
-   * :guilabel:`Output extent`: |processingModel|:file:`like raster`
-
-#. Name the model :file:`Batch rasterize`
-#. Click the |saveAsPython| *Save as Python* icon. 
-
-Inspecting the resulting Python script
-......................................
-
-A new screen will appear with quite a long script. Let's break it down! It
-starts by a *docstring* (indicated by :file:`"""`):
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :linenos:
-   :lines: 1-6
-
-Next, we import all necessary *classes* and *modules*:
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 8
-   :lines: 8-16
-   :emphasize-lines: 1,8
-
-Next, the start of our class starts. This is indicated by:
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 18
-   :lines: 18
-
-.. note:: Inheritance
-   Our :class:`BatchRasterize` class *inherits from*
-   :class:`QgsProcessingAlgorithm <qgis.core.QgsProcessingAlgorithm>` (indicated by the brackets).
-   This means that all methods and attributes of
-   :class:`QgsProcessingAlgorithm <qgis.core.QgsProcessingAlgorithm>` are also available for
-   :class:`BatchRasterize`.
-
-All later lines are indented. This means that everything defines aspects of
-that class. There are two important methods:
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 20
-   :lines: 20-24
-
-Is run at the start of the algorithm. Here we define which inputs are
-available in the prompt. Note that all inputs are filled out. That's
-convenient!
-
-Next, the :class:`ProcessAlgorithm <qgis.core.ProcessAlgorithm>` function executes the actual model:
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 26
-   :lines: 26-51
-
-* :class:`feedback <qgis.core.QgsProcessingFeedback>` is how we can
-  communicate with the user.
-* :file:`results` is a dictionary for results
-* :file:`outputs` is a dictionary for outputs (results to be loaded into
-  QGIS)
-* :file:`alg_params` is a dictionary with all parameters for
-  |gdal|:ref:`gdalrasterize`. As you can see, the :file:`EXTENT`,
-  :file:`FIELD` and :file:`INPUT` are already set.
-* :meth:`processing.run` finally runs |gdal|:ref:`gdalrasterize`. and stores
-  it as :file:`RasterizeVectorToRaster` inside :file:`outputs`.
-
-The final methods define the name and group of the tool and speak for themselves
-(We also do not need to change these):
-
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 53
-   :lines: 53-66
-
-Converting parameters to layers
-...............................
-
-.. admonition:: Solution
-   :class: dropdown
-
-   If you didn't follow the above |FA|, you can use the below script. 
-
-   #. In the Processig Toolkbox, click the 
-      |pythonFile|:menuselection:`--> Create New Script...`
-   #. copy-paste the following code:
-
-   .. literalinclude:: scripts/batch_rasterize_final.py
-      :linenos:
-      
+#. |play| Run the model and verify that the output has data values for all areas.
 
 |basic| |FA| Updating :guilabel:`Hadocha_soil`
 ----------------------------------------------
@@ -357,7 +185,7 @@ will first put that in our map
 |basic| |FA| Adding Swamp to the Soil map
 .........................................
 
-#. Create a new model. Name it :file:`Update Soil` 
+#. Create a new model. Name it :file:`02 Update Soil` 
 #. Give it the following inputs:
 
    #. |polygonLayer| Vector Layer: :file:`Soil` 
@@ -395,7 +223,7 @@ will first put that in our map
 
    Notice that there is a field :guilabel:`TEXTURE` and a field
    :guilabel:`FEATURE`. In the next step, we will combine these, such that the
-   *TEXTURE* for all features that have :math:`FEATURE='Swamp'` will be *Swamp*.
+   *TEXTURE* for all features that have :code:`FEATURE=='Swamp'` will be *Swamp*.
       
 #. Drag in the |logo|:ref:`qgisfieldcalculator` tool into the model.
 
@@ -512,7 +340,6 @@ less instructions.
    :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
-.. |hard| image:: /static/common/hard.png
 .. |logo| image:: /static/common/logo.png
    :width: 1.5em
 .. |modelOutput| image:: /static/common/mIconModelOutput.png
@@ -526,10 +353,6 @@ less instructions.
 .. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
-   :width: 1.5em
-.. |pythonFile| image:: /static/common/mIconPythonFile.png
-   :width: 1.5em
-.. |saveAsPython| image:: /static/common/mActionSaveAsPython.png
    :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em

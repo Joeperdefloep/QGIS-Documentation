@@ -27,8 +27,10 @@ a basic map with all the required settings.
 
 |moderate| |FA| Creating a hillshade background
 -----------------------------------------------
+
 First, however, we should make a hillshade map as background for better
 visualization.
+
 #. In the Processing Toolbox, search for :file:`hillshade` and open
    the tool. Run it on :guilabel:`Hadocha_dem` with default settings. 
 
