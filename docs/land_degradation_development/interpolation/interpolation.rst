@@ -93,8 +93,8 @@ interpolation on them and compare the error between interpolated and data
 values. Due to the amount of datapoints, this is not possible, and we choose
 thin plate spline by means of expert opinion.
 
-1. Open the |logo|:guilabel:`Zonal statistics` tool.
-2. For :guilabel:`Input layer` select :menuselection:`... --> Browse for Layer`
+#. Open the |logo|:guilabel:`Zonal statistics` tool.
+#. For :guilabel:`Input layer` select :menuselection:`... --> Browse for Layer`
    and select :file:`Hadocha_mask`:
 
    .. figure:: img/browse_mask.png
@@ -107,18 +107,19 @@ thin plate spline by means of expert opinion.
       GeoPackage. This may be useful if you want to manually enter a path to a
       GeoPackage layer!
 
-3. As :guilabel:`Raster layer` select |raster|:file:`Target Grid [EPSG:32637]`
-4. We only want the |checkbox| Mean to be calculated. :guilabel:`Run` the
+#. As :guilabel:`Raster layer` select |raster|:file:`Target Grid [EPSG:32637]`
+#. We only want the |checkbox| Mean to be calculated. :guilabel:`Run` the
    algorithm. This creates a vector layer with the average precipitation value for
    our catchment.
-5. Open the attribute table and copy the precipitation value to your clipboard
-6. Run the |logo|:guilabel:`Create constant raster layer` tool with:
+#. Open the attribute table and copy the precipitation value to your clipboard
+#. If not loaded yet, load the DEM into the map
+#. Run the |logo|:guilabel:`Raster calculator` tool with:
     
-   * :guilabel:`Desired extent` of :file:`Hadocha_dem`,
-   * :guilabel:`Pixel size` of :file:`20`
-   * :guilabel:`Constant value`: your precipitation value
+   * :guilabel:`Expression`: <your precipitation value>,
+   * :guilabel:`Reference layer(s) used for automated extent, cellsize and CRS`
+     |checkbox|<DEM file>
 
-7. To save the raster layer in our :file:`01_input.gpkg` database, right-click
+#. To save the raster layer in our :file:`01_input.gpkg` database, right-click
    :menuselection:`Export --> Save as...` with:
 
    * :guilabel:`Format`: |selectString|:file:`GeoPackage`
@@ -129,7 +130,7 @@ thin plate spline by means of expert opinion.
 .. admonition:: Solution
    :class: dropdown
 
-   The rainfall value is 1674.25
+   The rainfall value is 1744
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.
