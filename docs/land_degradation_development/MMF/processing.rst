@@ -154,15 +154,12 @@ of rainy days :math:`n=160`.
 #. Drag in a |qrichdem|:guilabel:`rdflowaccumulation` and fill it in like
    this:
 
-   * :guilabel:`Elevation`: 
-     |processingAlgorithm|:file:`"Filled DEM" from algorithm "Fill sinks"`
-   * :guilabel:`Flow Accumulation units`: |fieldInteger|:file:`[0] number of cells`
-   * :guilabel:`Weights`: |processingModel|:file:`"Calculated from algorithm "SR"`
-   * :guilabel:`Method`: |fieldInteger|:file:`[2] DEMON` This is the flow routing
-     algorithm. It is more advanced than Dinf that ArcGIS uses, but still
-     relatively convergent, as opposed to the kinematic routig algorithm.
-     `Reference <http://www.saga-gis.org/saga_tool_doc/2.2.5/ta_hydrology_2.html>`_
-   * |modelOutput|:guilabel:`Flow Accumulation`: :file:`SR_acc` 
+   * :guilabel:`input layer`: 
+     |processingAlgorithm|:file:`"Output layer" from algorithm "rddepressionfill"`
+   * :guilabel:`flow metric`: |fieldInteger|:file:`Dinf`
+   * :guilabel:`weights [optional]`: 
+   |processingAlgorithm|:file:`"Calculated" from algorithm "SR"`
+   * |modelOutput|:guilabel:`Output layer`: :file:`SR_acc` 
 
 #. Run the model. If everything works correctly, you should get the following output:
 
@@ -201,12 +198,10 @@ volume of surface runoff, :math:`S [\rad]` is slope and :math:`GC [-]` is
 fraction of ground cover.
 
 #. Create a new model named :file:`05_detachment`
-#. Drag in a :guilabel:`DEM` input and a |gdal| or |logo| slope algorithm.
-#. To convert the slope to radians, drag in a |gdal|:ref:`gdalrastercalculator`
-   and use the :file:`deg2rad(A)` on |processingAlgorithm|:file:`"Slope" from algorithm "Slope"`
+#. Drag in a :guilabel:`DEM` input and a |qrichdem| terrain attribute algorithm.
 #. Next, drag in a |logo|:ref:`qgisrastercalculator` and fill in the equation.
    (|gdal| does not properly mask nodata values here and gives an "overflow encountered
-   error" here. If you don't get that)
+   error" here. This is safe to ignore)
 
 .. admonition:: Solution
    :class: dropdown
@@ -218,14 +213,11 @@ fraction of ground cover.
 
    :file:`0.0005*A**1.5/B*sin(deg2rad(C))*(1-D)` 
 
-   In my case, |gdal| did not like raising to a power, and the |logo| raster
-   calculator did not work, because :guilabel:`SR` was in a slightly different
-   coordinate system. As a result, I calculated it like this:
+   It could be that |gdal| does not like raising to a power. Then, you could try the
+   |logo| raster calculator.
 
    .. figure:: img/model_05_h.png
       :align: center
-
-      :guilabel:`SR15` calculates :math:`SR^{1.5}` 
 
    The final value should be :math:`H\in[0,1.2]`
 
@@ -265,8 +257,7 @@ Use the :file:`minimum()` to calculate this in |gdal|:ref:`gdalrastercalculator`
    .. figure:: img/model_05_final.png
       :align: center
 
-      All processes with custom names are raster calculators. :guilabel:`S2`
-      calculates` and :math:`S^2`.
+      The final model layour for detachment and erosion
    
    And the final erosion map looked like this:
 
