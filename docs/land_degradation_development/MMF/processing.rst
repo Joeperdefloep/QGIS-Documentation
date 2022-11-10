@@ -87,7 +87,7 @@ Kinetic energy
    
    .. admonition:: Checkpoint
 
-      Check that :math:`KE_{DT}\in[0,31254]` and :math:`KE_{LD}\in[816,17846]`.
+      Check that :math:`KE_{DT}\in[0,31254]` and :math:`KE_{LD}\in[816,17840]`.
       (For a rainfall of 1744)
    
    .. admonition:: Hint
@@ -104,9 +104,18 @@ Kinetic energy
 Surface Runoff
 --------------
 
-Now, this will be a bit more complicated. We will be using a |saga| SAGA
-algorithm called :guilabel:`Catchment Area (Flow Tracing)`. This is only
-available in version 7.3.0 (not in 7.8.2).
+Now, this will be a bit more complicated. For knowing the surface runoff on a pixel, we
+need to also know the surface runoff of all the pixels above it. This is a process
+called flow accumulation. 
+
+
+.. note::
+
+   There are some algorithms by |grassLogo| GRASS and |saga| SAGA
+   that can do this. However, since the |saga| algorithms for flow accumulation are
+   different between versions, and |grassLogo| algorithms do not allow for a weighted
+   input, I made a plugin that we will be using that wraps the 
+   `richdem <https://richdem.com>`_ utilities and makes them useable in QGIS.
 
 The Soil moisture storage capacity :math:`S_c` is calculated by
 
@@ -135,22 +144,14 @@ of rainy days :math:`n=160`.
 
    Next, we need to route the flow. That is: for each pixel we know the runoff,
    and we want to calculate how it flows over the catchment. For this we will
-   use the |saga| :guilabel:`Catchment Area (flow tracing)` algorithm. However,
+   use the |qrichdem| :guilabel:`rdflowaccumulation` algorithm. However,
    our DEM contains some flat areas and depressions from which the algorithm
    does not know where to direct the flow. For this, we will use the 
-   |saga|:guilabel:`Fill Sinks` algorithm.
+   |qrichdem|:guilabel:`rddepressionfill` algorithm.
 
-   .. warning::
-      |saga| SAGA is **very** specific when it comes to misaligned rasters. It
-      can be that your rasters misalign by :math:`10^{-6}` and it will give a
-      :file:`The Following layers were not correctly generated` error. If this
-      is the case, double-check and triple-check if your rasters are aligned
-      under :menuselection:`Layer Properties --> Information` **Extent**
-
-#. In your model, drag in a |saga|:guilabel:`Fill sinks` and set it to
-   |processingModel| :file:`DEM` (Create a new input). The minimum slope is good
-   on default settings.
-#. Drag in a |saga|:guilabel:`Catchment area (flow tracing)` and fill it in like
+#. In your model, drag in a |qrichdem|:guilabel:`rddepressionfill` and set it to
+   |processingModel| :file:`DEM` (Create a new input). Default settings are good.
+#. Drag in a |qrichdem|:guilabel:`rdflowaccumulation` and fill it in like
    this:
 
    * :guilabel:`Elevation`: 
@@ -295,6 +296,8 @@ previous algorithm. It should look like this:
    :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
+.. |grassLogo| image:: /static/common/grasslogo.png
+   :width: 1.5em
 .. |logo| image:: /static/common/logo.png
    :width: 1.5em
 .. |modelOutput| image:: /static/common/mIconModelOutput.png
@@ -302,6 +305,8 @@ previous algorithm. It should look like this:
 .. |processingAlgorithm| image:: /static/common/processingAlgorithm.png
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
+   :width: 1.5em
+.. |qrichdem| image:: /static/common/qRichDem.png
    :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em

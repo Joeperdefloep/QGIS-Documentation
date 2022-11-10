@@ -116,8 +116,8 @@ thin plate spline by means of expert opinion.
 #. Run the |logo|:guilabel:`Raster calculator` tool with:
     
    * :guilabel:`Expression`: <your precipitation value>,
-   * :guilabel:`Reference layer(s) used for automated extent, cellsize and CRS`
-     |checkbox|<DEM file>
+   * :guilabel:`Reference layer(s) used for automated extent, cellsize and CRS`: |checkbox|
+        <DEM file>
 
 #. To save the raster layer in our :file:`01_input.gpkg` database, right-click
    :menuselection:`Export --> Save as...` with:

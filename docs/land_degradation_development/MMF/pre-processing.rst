@@ -354,6 +354,8 @@ less instructions.
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
    :width: 1.5em
+.. |pythonFile| image:: /static/common/mIconPythonFile.png
+   :width: 1.5em
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png

@@ -389,6 +389,8 @@ determining where to apply specific measures.
    :width: 1.5em
 .. |processingModel| image:: /static/common/processingModel.png
    :width: 1.5em
+.. |pythonFile| image:: /static/common/mIconPythonFile.png
+   :width: 1.5em
 .. |saga| image:: /static/common/providerSaga.png
    :width: 1.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
