@@ -43,7 +43,7 @@ class Rasterize_like(QgsProcessingAlgorithm):
             'INIT': None,
             'INPUT': parameters['vector'],
             'INVERT': False,
-            'NODATA': 0,
+            'NODATA': -999,
             'OPTIONS': '',
             'UNITS': 1,  # Georeferenced units
             'USE_Z': False,

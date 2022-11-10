@@ -65,7 +65,7 @@ class Batch_raster(QgsProcessingAlgorithm):
                 'INIT': None,
                 'INPUT': parameters[self.INPUT],
                 'INVERT': False,
-                'NODATA': 0,
+                'NODATA': -999,
                 'OPTIONS': '',
                 'UNITS': 1,
                 'OUTPUT': f'{field}',
