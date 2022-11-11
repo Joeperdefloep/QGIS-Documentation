@@ -64,6 +64,9 @@ in a terminal, type:
 .. code-block:: sh
 
    python3 -m ensurepip --upgrade
+   python3 -m pip install richdem
+
+This also install richdem itself.
 
 |win|
 .....
@@ -76,10 +79,14 @@ in a terminal, type:
    .. figure:: img/install_pip.png
       :align: center
       :alt: the Select Packages screen, with "pip" highlighted in the search bar, as well as the turning arrows symbol
-      
-      
 
 #. continue the rest of the installation and continue `Installing QRichDem`_
+
+#. If it still does not work, open the OsGEO4W shell and type in there:
+
+   .. code-block:: sh
+
+      python3 -m pip install richdem
 
 .. Substitutions definitions - AVOID EDITING PAST THIS LINE
    This will be automatically updated by the find_set_subst.py script.

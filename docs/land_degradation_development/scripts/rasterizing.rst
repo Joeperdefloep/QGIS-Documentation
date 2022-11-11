@@ -1,63 +1,38 @@
-.. _create_rasterize_script:
 
-|hard| |FA| Making a script for batch rasterizing (Optional)
-------------------------------------------------------------
 
-.. note::
+|moderate| |FA| Making a script for rasterizing like
+----------------------------------------------------
 
-   This solution has been given `on stackexchange <https://gis.stackexchange.com/a/414677/156742>`_
+The easiest - and first - change we will make is to make a rasterization tool that
+automatically aligns the output raster to a reference raster. 
 
-During rasterization in the previous exercise, we had to hard-code some values
-and it was quite cumbersome. In this exercise we will be making a script where
-we can select all fields that we want rasterized. Then, we will adjust the model.
+Creating a model and save as Python
+...................................
 
-.. warning::
-   This is a |hard| hard exercise. Do not get lost in this, but only follow if
-   you have extra time. The entire script is provided at the end. You may want
-   to copy that if you lack time. Also, all exercises can be finished by
-   copy-pasting the |gdal| Rasterize algorithm as in
-   :numref:`fig_rasterize_manual`.
+Create a new model, name it :file:`Rasterize like` and add the following:
 
-Making a script is very similar to making a model. In fact, all models can be
-exported to a Python script. This is very useful so we can get the skeleton of
-the script by making a model.
-What we eventually want is a tool like this:
+#. |signPlus| Raster layer named :file:`reference`
+#. |signPlus| Vector layer named :file:`vector`
+#. |signPlus| Vector field named :file:`rasterize field`
+#. |signPlus| Number named :file:`nodata value` with:
 
-.. figure:: img/script_prompt.png
-   :align: center
+   * :guilabel:`Default value`: :math:`-999`
+   * :guilabel:`Number type`: :file:`Float`
 
-   The batch rasterization prompt. All :guilabel:`Fields to select` will be
-   turned into rasters, saved as :file:`.tiff` files inside :file:`01_input`
-   folder. 
+#. |gdal|:ref:`gdalrasterize` with:
 
-Creating a template model
-.........................
-
-#. Create a model and drag in the following inputs:
-   
-   * |signPlus| Raster Layer: :file:`like raster`
-   * |signPlus| Vector Layer: :file:`Vector`
-   * |signPlus| Vector Fields: :file:`Fields to rasterize`
-     
-     * :guilabel:`Parent layer`: :file:`vector`:
-     * :guilabel:`Allowed data type`: :file:`number`
-     * |checkbox|:guilabel:`Accept multiple fields`
-     * |checkbox|:guilabel:`Select all fields by default`
-   
-   * |signPlus| File/Folder: :file:`Output folder`
-   * |checkbox| |signPlus| Boolean: :file:`Load output layers`
-
-#. Drag in the |gdal|:ref:`gdalrasterize` algorithm with:
-   
    * :guilabel:`Input layer`: |processingModel|:file:`vector`
-   * :guilabel:`Field to use for a burn-in value`:
-     |processingModel|:file:`Fields to rasterize`
-   * :guilabel:`Output raster size units`: 
-     |fieldInteger|:file:`Georeferenced units`
-   * :guilabel:`Output extent`: |processingModel|:file:`like raster`
+   * :guilabel:`Field to use for a burn-in value`: |processingModel|:file:`Rasterize field`
+   * :guilabel:`Output raster size units`: |selectString|:file:`Georeferenced units`
+   * :guilabel:`Output extent`: |processingModel|:file:`reference`
+   * |modelOutput| :guilabel:`Rasterized`: :file:`Rasterized`
 
-#. Name the model :file:`Batch rasterize`
-#. Click the |saveAsPython| *Save as Python* icon. 
+#. Convert the  model to Python by clicking the |saveAsPython| icon.
+
+.. literalinclude:: scripts/rasterize_like_raw.py
+   :linenos:
+
+.. _inspecting_model_script:
 
 Inspecting the resulting Python script
 ......................................
@@ -65,22 +40,22 @@ Inspecting the resulting Python script
 A new screen will appear with quite a long script. Let's break it down! It
 starts by a *docstring* (indicated by :file:`"""`):
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
+.. literalinclude:: scripts/rasterize_like_raw.py
    :linenos:
    :lines: 1-6
 
 Next, we import all necessary *classes* and *modules*:
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
+.. literalinclude:: scripts/rasterize_like_raw.py
    :lineno-start: 8
-   :lines: 8-16
+   :lines: 8-17
    :emphasize-lines: 1,8
 
 Next, the start of our class starts. This is indicated by:
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 18
-   :lines: 18
+.. literalinclude:: scripts/rasterize_like_raw.py
+   :lineno-start: 20
+   :lines: 20
 
 .. note:: Inheritance
    Our :class:`BatchRasterize` class *inherits from*
@@ -92,9 +67,9 @@ Next, the start of our class starts. This is indicated by:
 All later lines are indented. This means that everything defines aspects of
 that class. There are two important methods:
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 20
-   :lines: 20-24
+.. literalinclude:: scripts/rasterize_like_raw.py
+   :lineno-start: 22
+   :lines: 22-29
 
 Is run at the start of the algorithm. Here we define which inputs are
 available in the prompt. Note that all inputs are filled out. That's
@@ -102,9 +77,9 @@ convenient!
 
 Next, the :class:`ProcessAlgorithm <qgis.core.ProcessAlgorithm>` function executes the actual model:
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 26
-   :lines: 26-51
+.. literalinclude:: scripts/rasterize_like_raw.py
+   :lineno-start: 31
+   :lines: 31-58
 
 * :class:`feedback <qgis.core.QgsProcessingFeedback>` is how we can
   communicate with the user.
@@ -120,19 +95,214 @@ Next, the :class:`ProcessAlgorithm <qgis.core.ProcessAlgorithm>` function execut
 The final methods define the name and group of the tool and speak for themselves
 (We also do not need to change these):
 
-.. literalinclude:: scripts/batch_rasterize_raw.py
-   :lineno-start: 53
-   :lines: 53-66
+.. literalinclude:: scripts/rasterize_like_raw.py
+   :lineno-start: 60
+   :lines: 60-73
+
+Convert parameters to workable format
+.....................................
+
+We want to extract the pixel size from the raster. For that, we need to have the raster
+*parameter* converted to a raster *layer*. This is done by the
+:meth:`QgsProcessingAlgorithm.parameterAsRasterLayer` function. Add this at line 38:
+
+.. literalinclude:: scripts/rasterize_like.py
+   :linenos:
+   :lineno-start: 38
+   :lines: 38
+
+Modifying the algorithm
+.......................
+
+The only thing we have to change, is that we want the cell width and height to be equal
+to the cell width and height of the raster layer. This is done by the raster layer
+:meth:`rasterUnitsPerPixelX` and :meth:`rasterUnitsPerPixelY` functions. Change the following lines:
+
+.. literalinclude:: scripts/rasterize_like.py
+   :linenos:
+   :lineno-start: 41
+   :lines: 41-57
+   :emphasize-lines: 7, 15
+
+Testing
+.......
+
+Save the script and load it into your toolbox. Now, run it on a vector and raster layer
+and see if it worked. Run a |gdal| raster calculator on both the reference layer and
+Rasterized. If it does not error, your rasters are properly aligned!
+
+.. _create_rasterize_script:
+
+|hard| |FA| Making a script for batch rasterizing
+-------------------------------------------------
+
+The previous script was nice, but it is a bit tedious if you want to rasterize a lot of
+different fields of the same vector dataset. Also, it is error-prone to use in a model,
+since then field names have to be hard-coded. With the previous script, we are only a
+few steps away from being able to rasterize a selection of fields with a reference
+raster!
+
+.. note::
+
+   This solution has been given `on stackexchange <https://gis.stackexchange.com/a/414677/156742>`_
+
+.. warning::
+   This is a |hard| hard exercise. Do not get lost in this, but only follow if
+   you have extra time.
+
+What we eventually want is a tool like this:
+
+.. figure:: img/script_prompt.png
+   :align: center
+
+   The batch rasterization prompt. All :guilabel:`Fields to select` will be
+   turned into rasters, saved as :file:`.tiff` files inside :file:`01_input`
+   folder. 
+
+However, there is a lot that has to be added for this to work exactly as we want, so we
+will incrementally improve it, according to the following steps:
+
+#. Make it work as simple as possible
+#. Allow for temporary outputs and give some feedback
+#. Load the layers into QGIS when finished
+#. Add an option to not load outputs into QGIS
+
+Just make it work
+.................
+
+In order to just make it work, we want to add a folder input, and dump all the rasters
+in there.
+
+Add additional parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In stead of having a raster output, we want a folder destination, so we can put all
+folders in there.
+
+Add the following to imports:
+
+.. literalinclude:: scripts/batch_rasterize_01.py
+   :linenos:
+   :lineno-start: 8
+   :lines: 8-19
+   :emphasize-lines: 1, 8
+
+And change
+
+.. literalinclude:: scripts/rasterize_like.py
+   :lines: 29
+
+to
+
+.. literalinclude:: scripts/batch_rasterize_01.py
+   :lines: 31
+
+Also, we want to be able to have multiple fields (:code:`allowMultiple=True`) and select
+all by default (:code:`defaultToAllFields=True`. Change
+
+.. literalinclude:: scripts/rasterize_like.py
+   :lines: 24
+
+to
+
+.. literalinclude:: scripts/batch_rasterize_01.py
+   :lines: 26
 
 Converting parameters to layers
-...............................
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We need to do two things:
+
+#. Loop over the selected fields
+#. Save rasters to the output folder with proper names
+
+Thus, we want to be able to work with the fields and output folder. Add the following
+lines:
+
+.. literalinclude:: scripts/batch_rasterize_01.py
+   :linenos:
+   :lineno-start: 40
+   :lines: 40-42
+   :emphasize-lines: 2,3
+
+Here, :code:`fields` is an array of strings, like :code:`["field1", "field2"]` and
+:code:`out_dir` is a string like |nix|,|osx|:code:`"/path/to/folder"` or |win|:code:`C:\path\to\folder`.
+
+Process the data
+^^^^^^^^^^^^^^^^
+
+In the processing step, we make several changes at the same time, as shown below:
+
+.. literalinclude:: scripts/batch_rasterize_01.py
+   :linenos:
+   :lineno-start: 44
+   :lines: 44-68
+   :emphasize-lines: 2, 10, 20, 22, 23
+
+* The entire block (up to :code:`return results`) has been indented and is now part of
+  the for loop :code:`for field in fields`. Also, :code:`'FIELD': field` tells
+  |gdal|:ref:`gdalrasterize` to rasterize the currently selected field.
+* :code:`'OUTPUT': out_path` tells the rasterization to save the generated raster to
+  :code:`out_path`, which is constructed using `Pathlib <https://docs.python.org/3/library/pathlib.html>`_.
+  and converted to a string.
+* To not overwrite :code:`outputs` and :code:`results`, the keys are appended with the
+  current field (lines 65,66)
+
+Test the tool
+^^^^^^^^^^^^^
+
+Now, you can save and |play| run the script! Be sure to select a folder destination!
+
+.. figure:: img/prompt_01.png
+   :align: center
+
+Try to run the script with a temporary directory as output folder. You should get
+the following errors:
+
+.. figure:: img/prompt_01_tempfolder.png
+   :align: center
+
+Temporary outputs and feedback
+..............................
+
+As we have seen, the script errors when we try to save to a temporary location. This is
+because QGIS tries to save the raster to a nonexistent folder. Thus, we have to create
+the folder if it doesn't exist yet:
+
+.. literalinclude:: scripts/batch_rasterize_02.py
+   :linenos:
+   :lineno-start: 42
+   :lines: 42,43
+   :emphasize-lines: 2
+
+Next, we want to be able to cancel the operation between rasters. Add the following
+lines:
+
+.. literalinclude:: scripts/batch_rasterize_02.py
+   :linenos:
+   :lineno-start: 48
+   :lines: 48-50
+
+Load layers into QGIS
+.....................
+
+.. literalinclude:: scripts/batch_rasterize_03.py
+   :linenos:
+   :emphasize-lines: 19, 20, 25, 75, 78-84
+
+Make loading layers optional
+............................
+
+.. literalinclude:: scripts/batch_rasterize_04.py
+   :linenos:
+   :emphasize-lines: 19, 33, 52, 85-87
 
 .. admonition:: Solution
    :class: dropdown
 
    If you didn't follow the above |FA|, you can use the below script. 
 
-   #. In the Processig Toolkbox, click the 
+   #. In the Processig Toolbox, click the 
       |pythonFile|:menuselection:`--> Create New Script...`
    #. copy-paste the following code:
 
@@ -147,18 +317,25 @@ Converting parameters to layers
    source folder.
 
 .. |FA| replace:: Follow Along:
-.. |checkbox| image:: /static/common/checkbox.png
-   :width: 1.3em
-.. |fieldInteger| image:: /static/common/mIconFieldInteger.png
-   :width: 1.5em
 .. |gdal| image:: /static/common/gdal.png
    :width: 1.5em
 .. |hard| image:: /static/common/hard.png
+.. |modelOutput| image:: /static/common/mIconModelOutput.png
+   :width: 1.5em
+.. |moderate| image:: /static/common/moderate.png
+.. |nix| image:: /static/common/nix.png
+   :width: 1em
+.. |osx| image:: /static/common/osx.png
+   :width: 1em
 .. |processingModel| image:: /static/common/processingModel.png
    :width: 1.5em
 .. |pythonFile| image:: /static/common/mIconPythonFile.png
    :width: 1.5em
 .. |saveAsPython| image:: /static/common/mActionSaveAsPython.png
    :width: 1.5em
+.. |selectString| image:: /static/common/selectstring.png
+   :width: 2.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
    :width: 1.5em
+.. |win| image:: /static/common/win.png
+   :width: 1em

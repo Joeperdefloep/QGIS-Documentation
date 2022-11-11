@@ -70,9 +70,11 @@ spline which creates a minimum curvature surface through all datapoints.
 
 2. For :guilabel:`Points` select |pointLayer|:file:`Reprojected [EPSG:32637]`.
 3. Set :guilabel:`Attribute` to |fieldFloat|:file:`PRCP`
-4. Set the :guilabel:`Output extent [optional]` to
-   :menuselection:`... --> Calculate from Layer --> Reprojected`
+#. Set :guilabel:`search range` to |selectString|:file:`[1] global`
+#. Set :guilabel:`Number of Points` to |selectString|:file:`[1] All points within search distance`
+#. Set :guilabel:`Search direction` to |selectString|:file:`[0] all directions`
 5. for :guilabel:`Cellsize` enter :file:`1970`
+#. And finally, set :guilabel:`Fit` to |selectString|:file:`[1] cells`
 6. :guilabel:`Run` the algorithm. Your output should look like this:
     
    .. figure:: img/thin_plate_spline.png

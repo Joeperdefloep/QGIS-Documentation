@@ -72,8 +72,11 @@ ourselves. You can also directly copy it from the `convenience scripts
 
    The following window will show:
 
-   .. figure:: /docs/user_manual/processing/img/modeler_canvas.png
+   .. figure:: img/modeler_canvas.png
       :align: center
+
+      The canvas. Enter :file:`01_update_landuse` as *name* and :file:`pre-processing`
+      as *group*.
 
    Our TPI model needs three inputs: 
    
@@ -158,7 +161,7 @@ Now we have all the processes we need, it is time to add them to our model!
    For some reason, the |logo| native raster calculator does not work well with output
    of |saga| Saga or |grassLogo| Grass algorithms. Please use the |gdal| :ref:`gdalrastercalculator` for
    this exercise. Instructions are still added, because you may find it more
-   intuitive to use than the GDAL version later on in the manual.
+   intuitive to use than the GDAL version later on in the manual. However, I used the |gdal| :ref:`gdalrastercalculator` for everything.
 
 
 
