@@ -1,114 +1,103 @@
-import os
+"""
+Model exported as python.
+Name : model
+Group : 
+With QGIS : 32212
+"""
 
-from qgis.core import (QgsProcessing,
-                        QgsProcessingAlgorithm,
-                        QgsProcessingParameterRasterLayer,
-                        QgsProcessingParameterVectorLayer,
-                        QgsProcessingParameterField,
-                        QgsProcessingParameterBoolean,
-                        QgsProcessingParameterFolderDestination,
-                        QgsProcessingLayerPostProcessorInterface,
-                        QgsProcessingUtils,
-                        QgsProject,
-                        QgsRasterLayer,
-                        )
+from pathlib import Path
 
+from qgis.core import QgsProcessing
+from qgis.core import QgsProcessingAlgorithm
+from qgis.core import QgsProcessingMultiStepFeedback
+from qgis.core import QgsProcessingParameterVectorLayer
+from qgis.core import QgsProcessingParameterField
+from qgis.core import QgsProcessingParameterRasterLayer
+from qgis.core import QgsProcessingParameterNumber
+from qgis.core import QgsProcessingParameterFolderDestination
+from qgis.core import QgsProcessingParameterDefinition
+from qgis.core import QgsProcessingParameterBoolean
+from qgis.core import QgsProject
+from qgis.core import QgsProcessingUtils
 import processing
 
-class Batch_raster(QgsProcessingAlgorithm):
-    INPUT = 'INPUT'
-    FIELDS = 'FIELDS'
-    OUT_FOLDER = 'OUT_FOLDER'
-    LOAD_OUTPUTS = 'LOAD_OUTPUTS'
-    
+
+class BatchRasterizeLike(QgsProcessingAlgorithm):
     final_layers = {}
     load_outputs = True
 
     def initAlgorithm(self, config=None):
-        self.addParameter(QgsProcessingParameterRasterLayer('likeraster', 'like raster', defaultValue=None))
-        self.addParameter(QgsProcessingParameterVectorLayer(self.INPUT, 'vector', defaultValue=None))
-        self.addParameter(QgsProcessingParameterField(self.FIELDS, 'fields to select', type=0, allowMultiple=True, defaultToAllFields=True, parentLayerParameterName=self.INPUT))
-        self.addParameter(QgsProcessingParameterBoolean('VERBOSE_LOG', 'Verbose logging', optional=True, defaultValue=False))
-        self.addParameter(QgsProcessingParameterFolderDestination(self.OUT_FOLDER, 'Output directory')),
-        self.addParameter(QgsProcessingParameterBoolean(self.LOAD_OUTPUTS, 'Load output layers?', optional=True, defaultValue=True))
+        self.addParameter(QgsProcessingParameterVectorLayer('vector', 'vector', defaultValue=None))
+        self.addParameter(QgsProcessingParameterField('rasterizefield', 'rasterize field', type=QgsProcessingParameterField.Any, parentLayerParameterName='vector', allowMultiple=True, defaultValue=None, defaultToAllFields=True))
+        self.addParameter(QgsProcessingParameterRasterLayer('raster', 'reference', defaultValue=None))
+        self.addParameter(QgsProcessingParameterBoolean("loadoutputs", 'Load output layers', defaultValue=True))
+        param = QgsProcessingParameterNumber('nodatavalue', 'nodata value', type=QgsProcessingParameterNumber.Double, defaultValue=-999)
+        param.setFlags(param.flags() | QgsProcessingParameterDefinition.FlagAdvanced)
+        self.addParameter(param)
+        self.addParameter(QgsProcessingParameterFolderDestination('outputfolder', 'Output folder'))
 
-    def processAlgorithm(self, parameters, context, feedback):
+
+    def processAlgorithm(self, parameters, context, model_feedback):
         # Use a multi-step feedback, so that individual child algorithm progress reports are adjusted for the
         # overall progress through the model
+        feedback = QgsProcessingMultiStepFeedback(1, model_feedback)
         results = {}
         outputs = {}
-        
-        likeraster = self.parameterAsRasterLayer(parameters, 'likeraster', context)
-        vector = self.parameterAsVectorLayer(parameters, self.INPUT, context)
-        fields = self.parameterAsFields(parameters, self.FIELDS, context)
-        out_dir = self.parameterAsString(parameters, self.OUT_FOLDER, context)
-        load = self.parameterAsBool(parameters, 'LOAD_OUTPUTS', context)
-        if not load:
-            self.load_outputs = False
-        
-        for index, field in enumerate(fields):
-            if feedback.isCanceled():
+
+        raster = self.parameterAsRasterLayer(parameters, 'raster', context)
+        fields = self.parameterAsFields(parameters, 'rasterizefield', context)
+        out_dir = self.parameterAsString(parameters, 'outputfolder', context)
+        Path(out_dir).mkdir(exist_ok=True)
+
+        self.load_outputs = self.parameterAsBool(parameters, 'loadoutputs', context)
+
+        for field in fields:
+            out_path = str(Path(out_dir) / f'{field}_rasterized.tif')
+
+            if model_feedback.isCanceled():
                 break
-            feedback.pushInfo(str(field))
-            if not 'OUT_FOLDER' in out_dir:
-                out_path = os.path.join(out_dir, f'{field}_rasterized.tif')
-            else:
-                out_path = 'TEMPORARY_OUTPUT'
-        
+            model_feedback.pushInfo('rasterizing for:' + str(field))
+
             # Rasterize (vector to raster)
             alg_params = {
                 'BURN': 0,
-                'DATA_TYPE': 5,
-                'EXTENT': likeraster.extent(),
+                'DATA_TYPE': 5,  # Float32
+                'EXTENT': parameters['raster'],
                 'EXTRA': '',
                 'FIELD': field,
+                'HEIGHT': raster.rasterUnitsPerPixelY(),
                 'INIT': None,
-                'INPUT': parameters[self.INPUT],
+                'INPUT': parameters['vector'],
                 'INVERT': False,
-                'NODATA': -999,
+                'NODATA': parameters['nodatavalue'],
                 'OPTIONS': '',
-                'UNITS': 1,
-                'OUTPUT': f'{field}',
-                'HEIGHT':likeraster.rasterUnitsPerPixelY(),
-                'WIDTH': likeraster.rasterUnitsPerPixelX(),
+                'UNITS': 1,  # Georeferenced units
+                'USE_Z': False,
+                'WIDTH': raster.rasterUnitsPerPixelX(),
                 'OUTPUT': out_path,
             }
-            
-            
-            
-            outputs[f'RasterizeVectorToRaster{field}'] = processing.run('gdal:rasterize',
-                                                                        alg_params,
-                                                                        is_child_algorithm=True,
-                                                                        context=context,
-                                                                        feedback=feedback)
-                
+            outputs[f'RasterizeVectorToRaster{field}'] = processing.run('gdal:rasterize', alg_params, context=context, feedback=feedback, is_child_algorithm=True)
             results[f'Raster_out{field}'] = outputs[f'RasterizeVectorToRaster{field}']['OUTPUT']
-            if out_path == 'TEMPORARY_OUTPUT':
-                self.final_layers[field] = QgsProcessingUtils.mapLayerFromString(outputs[f'RasterizeVectorToRaster{field}']['OUTPUT'], context)
-            else:
-                self.final_layers[f'file_{index}'] = QgsProcessingUtils.mapLayerFromString(outputs[f'RasterizeVectorToRaster{field}']['OUTPUT'], context)
-            pcnt = int(index/len(fields)*100)
-            feedback.setProgress(pcnt)
+            self.final_layers[field] = QgsProcessingUtils.mapLayerFromString(results[f'Raster_out{field}'], context)
         return results
-    
-    ######################################################################
+
     def postProcessAlgorithm(self, context, feedback):
-        if self.load_outputs:
-            for name, layer in self.final_layers.items():
-                if layer.name() == 'OUTPUT':
-                    layer.setName(f'{name}_rasterized')
-                QgsProject.instance().addMapLayer(layer)
-        else:
-            self.load_outputs = True
+        if not self.load_outputs:
+            self.final_layers.clear()
+            return {}
+
+        for name, layer in self.final_layers.items():
+            if layer.name() == 'OUTPUT':
+                layer.setName(f'{name}_rasterized')
+            QgsProject.instance().addMapLayer(layer)
         self.final_layers.clear()
         return {}
-    ######################################################################
-    
+
     def name(self):
-        return 'Batch_rasterize_fields'
+        return 'batchrasterizelike'
 
     def displayName(self):
-        return 'Batch_rasterize_fields'
+        return 'Batch rasterize like'
 
     def group(self):
         return ''
@@ -117,4 +106,4 @@ class Batch_raster(QgsProcessingAlgorithm):
         return ''
 
     def createInstance(self):
-        return Batch_raster()
+        return BatchRasterizeLike()
