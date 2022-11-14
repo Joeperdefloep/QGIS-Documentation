@@ -96,7 +96,7 @@ a model, so we can immediately rasterize the data afterwards.
       * :guilabel:`Parent layer` |selectString|:file:`Landuse properties`
       * :guilabel:`Allowed data type` |selectString|:file:`String`
       * |unchecked|:guilabel:`Accept multiple fields`
-      * :guilabel:`Default value: :file:`Landuse`
+      * :guilabel:`Default value`: :file:`Landuse`
 
 #. Drag the |logo| :ref:`qgisjoinattributestable` algorithm into the modeler.
    

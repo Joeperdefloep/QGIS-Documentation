@@ -62,20 +62,20 @@ A spline is a piecewise defined polynomial. There are many different ways to
 generate a spline from a set of datapoints. We will be using a thin plate
 spline which creates a minimum curvature surface through all datapoints.
 
-1. find and open the |saga|:guilabel:`Thin plate spline` tool
+#. find and open the |saga|:guilabel:`Thin plate spline` tool
    You may encounter the following warning that you can safely ignore:
 
-.. warning::
-   SAGA version <version> is not officially supported - algorithms may encounter issues
+   .. warning::
+      SAGA version <version> is not officially supported - algorithms may encounter issues
 
-2. For :guilabel:`Points` select |pointLayer|:file:`Reprojected [EPSG:32637]`.
-3. Set :guilabel:`Attribute` to |fieldFloat|:file:`PRCP`
+#. For :guilabel:`Points` select |pointLayer|:file:`Reprojected [EPSG:32637]`.
+#. Set :guilabel:`Attribute` to |fieldFloat|:file:`PRCP`
 #. Set :guilabel:`search range` to |selectString|:file:`[1] global`
 #. Set :guilabel:`Number of Points` to |selectString|:file:`[1] All points within search distance`
 #. Set :guilabel:`Search direction` to |selectString|:file:`[0] all directions`
-5. for :guilabel:`Cellsize` enter :file:`1970`
+#. for :guilabel:`Cellsize` enter :file:`1970`
 #. And finally, set :guilabel:`Fit` to |selectString|:file:`[1] cells`
-6. :guilabel:`Run` the algorithm. Your output should look like this:
+#. :guilabel:`Run` the algorithm. Your output should look like this:
     
    .. figure:: img/thin_plate_spline.png
       :align: center

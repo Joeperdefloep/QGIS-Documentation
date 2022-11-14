@@ -158,7 +158,7 @@ of rainy days :math:`n=160`.
      |processingAlgorithm|:file:`"Output layer" from algorithm "rddepressionfill"`
    * :guilabel:`flow metric`: |fieldInteger|:file:`Dinf`
    * :guilabel:`weights [optional]`: 
-   |processingAlgorithm|:file:`"Calculated" from algorithm "SR"`
+     |processingAlgorithm|:file:`"Calculated" from algorithm "SR"`
    * |modelOutput|:guilabel:`Output layer`: :file:`SR_acc` 
 
 #. Run the model. If everything works correctly, you should get the following output:

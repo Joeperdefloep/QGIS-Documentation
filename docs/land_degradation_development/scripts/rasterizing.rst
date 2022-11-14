@@ -251,7 +251,7 @@ In the processing step, we make several changes at the same time, as shown below
 Test the tool
 ^^^^^^^^^^^^^
 
-Now, you can save and |play| run the script! Be sure to select a folder destination!
+Now, you can save and |start| run the script! Be sure to select a folder destination!
 
 .. figure:: img/prompt_01.png
    :align: center
@@ -336,6 +336,8 @@ Make loading layers optional
 .. |selectString| image:: /static/common/selectstring.png
    :width: 2.5em
 .. |signPlus| image:: /static/common/symbologyAdd.png
+   :width: 1.5em
+.. |start| image:: /static/common/mActionStart.png
    :width: 1.5em
 .. |win| image:: /static/common/win.png
    :width: 1em
