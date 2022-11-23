@@ -191,7 +191,7 @@ Estimate soil detachment by raindrops :math:`F [\frac{kg}{m^2}]`  and runoff :ma
 
 Soil particle detachment by runoff :math:`H` is given by:
 
-.. math:: H=10^{-3}\frac{SR^{1.5}}{2COH}\sin(S)(1-GC)
+.. math:: H=10^{-3}\frac{2SR^{1.5}}{COH}\sin(S)(1-GC)
 
 Where :math:`COH [kPa]` is cohesion, :math:`SR [mm]` (use :guilabel:`SR_final` )
 volume of surface runoff, :math:`S [\rad]` is slope and :math:`GC [-]` is
