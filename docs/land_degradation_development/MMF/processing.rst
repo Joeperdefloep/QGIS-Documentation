@@ -30,7 +30,7 @@ effective rainfall (:math:`P_e` ), i.e. the fraction of mean annual rainfall
                  
                  * :guilabel:`Input layer A`: |processingModel|:file:`A` 
                  * :guilabel:`Number of raster band for A`: |fieldInteger|:file:`1` 
-                 * :guilabel:`Input layer B`: |processingModel|:file:`B` 
+                 * :guilabel:`Input layer B`: |processingModel|:file:`P`
                  * :guilabel:`Number of raster band for B`: |fieldInteger|:file:`1` 
                  * :guilabel:`Expression`: |fieldInteger|:file:`B*(1-A)`
                  * |modelOutput| :guilabel:`Calculated:` : :file:`Pe` 
@@ -125,25 +125,30 @@ Where :math:`W_{fc}` is soil moisture, :math:`\rho_{bd}` is Bulk density,
 :math:`EHD` is effective hydrological depth and :math:`\frac{ET_{c,adj}}{ET_c}`
 is the ratio of evapotranspiration.
 
-The resulting estimate for surface runoff is then:
+The resulting estimate for surface runoff per pixel is then:
 
 .. math:: 
-   SR = P\cdot \exp\left(-\frac{S_c}{P_0}\right)\\
+   \delta SR = P\cdot \exp\left(-\frac{S_c}{P_0}\right)\\
    P_0 = \frac{P}{n}
 
 where :math:`P_0` is the mean rain per day: Annual rainfall :math:`P` and number
 of rainy days :math:`n=160`.
 
 #. Create a model implementing the above equations
-#. Load the map for :math:`SR`. It should look like this:
+#. Load the map for :math:`\delta SR`. It should look like this:
 
    .. figure:: img/model_04_SR_map.png
       :align: center
 
-      The values should be :math:`SR\in[0,57]` 
+      The values should be :math:`\delta SR\in[0,57]`
 
    Next, we need to route the flow. That is: for each pixel we know the runoff,
-   and we want to calculate how it flows over the catchment. For this we will
+   and we want to calculate how it flows over the catchment.
+
+Flow accumulation using |qrichdem|:guilabel:`rdflowaccumulation`
+................................................................
+
+   For this we will
    use the |qrichdem| :guilabel:`rdflowaccumulation` algorithm. However,
    our DEM contains some flat areas and depressions from which the algorithm
    does not know where to direct the flow. For this, we will use the 
@@ -161,6 +166,39 @@ of rainy days :math:`n=160`.
      |processingAlgorithm|:file:`"Calculated" from algorithm "SR"`
    * |modelOutput|:guilabel:`Output layer`: :file:`SR_acc` 
 
+Flow accumulation using |saga|:guilabel:`Catchment area`
+........................................................
+
+#. In your model, drag in a |saga|:guilabel:`Fill sinks` and set it to
+   |processingModel| :file:`DEM` (Create a new input). The minimum slope is good
+   on default settings.
+
+   .. note::
+         |saga| SAGA is **very** specific when it comes to misaligned rasters. It
+         can be that your rasters misalign by :math:`10^{-6}` and it will give a
+         :file:`The Following layers were not correctly generated` error. Because of
+         this, we will use :ref:`gdalwarp` to align the dSR raster to the filled DEM,
+         as explained `on GIS stackexchange <https://gis.stackexchange.com/a/422090/156742>`, explained in `this blog <https://www.luisalucchese.com/post/saga-gis-error-catchment-area/>`.
+
+
+#. Drag in a |gdal|:ref:`gdalwarp` algorithm. Press :guilabel:`Show advanced parameters` and fill in the following:
+
+   * :guilabel:`Input layer`: |processing|:file:`"Calculated" from algorithm "dSR"`
+   * :guilabel:`Source CRS [optional]`: |processing|:file:`"Calculated" from algorithm "dSR"`
+   * :guilabel:`Target CRS [optional]`: |processing|:file:`"Filled DEM" from algorithm "Fill sinks (wang & liu)"`
+   * :guilabel:`Georeferenced extents of output file to be created [optional]`: |processing|:file:`"Filled DEM" from algorithm "Fill sinks (wang & liu)"`
+
+
+#. Drag in a |saga|:guilabel:`Catchment area (flow tracing)` and fill it in like
+   this:
+
+   * :guilabel:`Elevation`: 
+     |processing|:file:`"Filled DEM" from algorithm "Fill sinks"`
+   * :guilabel:`Flow Accumulation units`: |integer|:file:`[0] number of cells`
+   * :guilabel:`Weights`: |processingModel|:file:`"Calculated from algorithm "SR"`
+   * :guilabel:`Method`: |integer|:file:`[3] Deterministic infinity` This is the flow routing
+     algorithm.
+
 #. Run the model. If everything works correctly, you should get the following output:
 
    .. figure:: img/model_04_acc_map.png
@@ -176,7 +214,7 @@ of rainy days :math:`n=160`.
    |gdal| :file:`where(A<1400,A,0)`, using the 
    `numpy.where() <https://numpy.org/doc/stable/reference/generated/numpy.where.html>`_.
    Make sure that :guilabel:`Input layer A` points to  
-   :file:`"Flow Accumulation" from algorithm "Catchment area (flow tracing"`:
+   :file:`"Flow Accumulation" from algorithm "Catchment area"`:
 
    .. figure:: img/model_04_SR_final_map.png
       :align: center
