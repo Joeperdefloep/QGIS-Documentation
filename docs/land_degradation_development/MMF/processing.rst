@@ -177,15 +177,15 @@ Flow accumulation using |saga|:guilabel:`Catchment area`
          |saga| SAGA is **very** specific when it comes to misaligned rasters. It
          can be that your rasters misalign by :math:`10^{-6}` and it will give a
          :file:`The Following layers were not correctly generated` error. Because of
-         this, we will use :ref:`gdalwarp` to align the dSR raster to the filled DEM,
-         as explained `on GIS stackexchange <https://gis.stackexchange.com/a/422090/156742>`, explained in `this blog <https://www.luisalucchese.com/post/saga-gis-error-catchment-area/>`.
+         this, we will use :ref:`gdalwarpreproject` to align the dSR raster to the filled DEM,
+         as explained `in this blog <https://gis.stackexchange.com/a/422090/156742>`, explained in `this blog <https://www.luisalucchese.com/post/saga-gis-error-catchment-area/>`_.
 
 
-#. Drag in a |gdal|:ref:`gdalwarp` algorithm. Press :guilabel:`Show advanced parameters` and fill in the following:
+#. Drag in a |gdal|:ref:`gdalwarpreproject` algorithm. Press :guilabel:`Show advanced parameters` and fill in the following:
 
-   * :guilabel:`Input layer`: |processing|:file:`"Calculated" from algorithm "dSR"`
-   * :guilabel:`Source CRS [optional]`: |processing|:file:`"Calculated" from algorithm "dSR"`
-   * :guilabel:`Target CRS [optional]`: |processing|:file:`"Filled DEM" from algorithm "Fill sinks (wang & liu)"`
+   * :guilabel:`Input layer`: |processingAlgorithm|:file:`"Calculated" from algorithm "dSR"`
+   * :guilabel:`Source CRS [optional]`: |processingAlgorithm|:file:`"Calculated" from algorithm "dSR"`
+   * :guilabel:`Target CRS [optional]`: |processingAlgorithm|:file:`"Filled DEM" from algorithm "Fill sinks (wang & liu)"`
    * :guilabel:`Georeferenced extents of output file to be created [optional]`: |processing|:file:`"Filled DEM" from algorithm "Fill sinks (wang & liu)"`
 
 
