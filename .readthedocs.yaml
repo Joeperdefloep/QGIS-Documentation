@@ -14,7 +14,7 @@ build:
     # nodejs: "16"
     # rust: "1.55"
     # golang: "1.17"
-#   jobs:
+  jobs:
    #  pre_build:
    #    - mkdir -p ${READTHEDOCS_OUTPUT} && touch ${READTHEDOCS_OUTPUT}index.html
     post_build:
