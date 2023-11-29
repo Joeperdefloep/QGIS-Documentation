@@ -193,10 +193,10 @@ Flow accumulation using |saga|:guilabel:`Catchment area`
    this:
 
    * :guilabel:`Elevation`: 
-     |processing|:file:`"Filled DEM" from algorithm "Fill sinks"`
-   * :guilabel:`Flow Accumulation units`: |integer|:file:`[0] number of cells`
+     |processingAlgorithm|:file:`"Filled DEM" from algorithm "Fill sinks"`
+   * :guilabel:`Flow Accumulation units`: |fieldInteger|:file:`[0] number of cells`
    * :guilabel:`Weights`: |processingModel|:file:`"Calculated from algorithm "SR"`
-   * :guilabel:`Method`: |integer|:file:`[3] Deterministic infinity` This is the flow routing
+   * :guilabel:`Method`: |fieldInteger|:file:`[3] Deterministic infinity` This is the flow routing
      algorithm.
 
 #. Run the model. If everything works correctly, you should get the following output:
