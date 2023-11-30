@@ -32,7 +32,7 @@ author = 'QGIS Authors'
 # -- General configuration ---------------------------------------------------
 
 # The master toctree document.
-master_doc = 'docs/index'
+# master_doc = 'docs/index'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
