@@ -202,7 +202,7 @@ Now we have all the processes we need, it is time to add them to our model!
 
    The following window will show:
 
-   .. figure:: /docs/user_manual/processing/img/modeler_canvas.png
+   .. figure:: img/modeler_canvas.png
       :align: center
 
    Our TPI model needs three inputs: 

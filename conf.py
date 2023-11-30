@@ -158,7 +158,7 @@ if html_context["outdated"]:
 
 # supported_languages = cfg["supported_languages"].split()
 # version_list = cfg["version_list"].replace(" ", "").split(",")
-# docs_url = "https://docs.qgis.org/"
+docs_url = "https://qgis-tuts-wu.readthedocs.io/"
 
 # if version not in version_list:
 #     raise ValueError("QGIS version is not in version list", version, version_list)
@@ -199,10 +199,10 @@ extlinks = {  # api website: docs master branch points to '/' while x.y points t
 context = {
     # 'READTHEDOCS': True,
     "version_downloads": True,
-    "versions": [[v, docs_url + v] for v in version_list],
-    "supported_languages": [
-        [l, docs_url + version + "/" + l] for l in supported_languages
-    ],
+    # "versions": [[v, docs_url + v] for v in version_list],
+    # "supported_languages": [
+    #     [l, docs_url + version + "/" + l] for l in supported_languages
+    # ],
     "downloads": [
         ["PDF", docs_url + version + "/pdf"],
         ["HTML", docs_url + version + "/zip"],

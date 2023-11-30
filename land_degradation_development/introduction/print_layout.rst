@@ -50,7 +50,7 @@ For this reason, it has a tool called the *Layout Manager*.
    entry to open this tool.
    You'll see a blank :guilabel:`Layout manager` dialog appear.
 
-   .. figure:: /docs/training_manual/map_composer/img/layout_manager_dialog.png
+   .. figure:: img/layout_manager_dialog.png
       :align: center
 
 #. Under :guilabel:`New from Template`, select
@@ -59,7 +59,7 @@ For this reason, it has a tool called the *Layout Manager*.
    click :guilabel:`OK`.
 #. You will now see the *Print Layout* window:
 
-   .. figure:: /docs/training_manual/map_composer/img/print_composer_dialog.png
+   .. figure:: img/print_composer_dialog.png
       :align: center
    
 You could also create this new layout via the
@@ -68,7 +68,7 @@ You could also create this new layout via the
 Whichever route you take, the new print layout is now accessible from
 the :menuselection:`Project --> Layouts -->` menu, as in the image below.
 
-.. figure:: /docs/training_manual/map_composer/img/print_composer_menu.png
+.. figure:: img/print_composer_menu.png
    :align: center
 
 |basic| |FA| Basic Map Composition
@@ -96,7 +96,7 @@ Ensure that yours is as well.
 
 #. Click and drag a box on the blank page:
 
-   .. figure:: /docs/training_manual/map_composer/img/drag_add_map.png
+   .. figure:: img/drag_add_map.png
       :align: center
 
    The map will appear on the page.
@@ -179,7 +179,7 @@ First, let us add a title.
    positioning options and click |alignHCenter|
    :guilabel:`Align center`:
 
-   .. figure:: /docs/training_manual/map_composer/img/align_center_dropdown.png
+   .. figure:: img/align_center_dropdown.png
       :align: center
 
    Now the label frame is centered on the map, but not the contents.
@@ -320,7 +320,7 @@ For our purposes, we're going to use PDF.
 #. Choose a save location and a file name as usual.
    The following dialog will show up.
 
-   .. figure:: /docs/training_manual/map_composer/img/layout_export_pdf.png
+   .. figure:: img/layout_export_pdf.png
       :align: center
    
 #. You can safely use the default values now and click
