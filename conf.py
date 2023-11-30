@@ -25,10 +25,10 @@ import sys
 import os
 from sphinx.roles import MenuSelection
 
-project = "QGIS Documentation"
-copyright = "2002-now, QGIS project"
-author = "QGIS Authors"
-
+project = "QGIS tutorials Wageningen University"
+copyright = "2020-now, Fee Gevaert"
+author = "Fee Gevaert"
+author = "Joao Carvalho Nuñes"
 
 # -- General configuration ---------------------------------------------------
 
@@ -67,13 +67,13 @@ templates_path = ["_templates"]
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["venv", "docs/user_manual/expressions/expression_help/*"]
+exclude_patterns = ["venv"]
 
 # -- Internationalisation ----------------------------------------------------
 
-language = "en"
-locale_dirs = ["locale/"]  # path is example but recommended.
-gettext_compact = False  # optional.
+# language = "en"
+# locale_dirs = ["locale/"]  # path is example but recommended.
+# gettext_compact = False  # optional.
 
 # Enable numeric figure references
 numfig = True
@@ -132,10 +132,10 @@ MenuSelection.BULLET_CHARACTER = "\u25BA"  # '\N{BLACK RIGHT-POINTING POINTER}'
 
 # sys.path.insert(0, os.path.abspath('.'))
 
-sys.path.insert(0, os.path.abspath("../../"))
+# sys.path.insert(0, os.path.abspath("../../"))
 
-with open("docs_conf.yml", "r") as f:
-    cfg = yaml.safe_load(f)
+# with open("docs_conf.yml", "r") as f:
+#     cfg = yaml.safe_load(f)
 
 html_context = {
     # When a QGIS version reaches end of life, set this to True to show an information
@@ -156,30 +156,32 @@ if html_context["isTesting"]:
 if html_context["outdated"]:
     tags.add("outdated")
 
-supported_languages = cfg["supported_languages"].split()
-version_list = cfg["version_list"].replace(" ", "").split(",")
-docs_url = "https://docs.qgis.org/"
+# supported_languages = cfg["supported_languages"].split()
+# version_list = cfg["version_list"].replace(" ", "").split(",")
+# docs_url = "https://docs.qgis.org/"
 
-if version not in version_list:
-    raise ValueError("QGIS version is not in version list", version, version_list)
+# if version not in version_list:
+#     raise ValueError("QGIS version is not in version list", version, version_list)
 
 # This config value contains the locations and names of other projects that
 # should be linked to in this documentation.
 
 pyqgis_version = version if version != "testing" else "master"
+
 intersphinx_mapping = {
     "pyqgis_api": ("https://qgis.org/pyqgis/{}/".format(pyqgis_version), None)
+    # TODO: add numpy, qgis
 }
 
 # This config value must be a dictionary of external sites, mapping unique short
 # alias names to a base URL and a prefix.
 
-api_version = version if version != "testing" else ""
-source_version = (
-    "".join(["release-", version]).replace(".", "_")
-    if version != "testing"
-    else "master"
-)
+# api_version = version if version != "testing" else ""
+# source_version = (
+#     "".join(["release-", version]).replace(".", "_")
+#     if version != "testing"
+#     else "master"
+# )
 
 extlinks = {  # api website: docs master branch points to '/' while x.y points to x.y
     "api": (
@@ -189,9 +191,9 @@ extlinks = {  # api website: docs master branch points to '/' while x.y points t
         None,
     ),
     # pyqgis website: docs master branch points to 'master' and x.y points to x.y
-    "pyqgis": ("https://qgis.org/pyqgis/{}/%s".format(pyqgis_version), None),
+    # "pyqgis": ("https://qgis.org/pyqgis/{}/%s".format(pyqgis_version), None),
     # code on github: docs master branch points to 'master' while x.y points to release-x_y
-    "source": ("https://github.com/qgis/QGIS/blob/{}/%s".format(source_version), None),
+    # "source": ("https://github.com/qgis/QGIS/blob/{}/%s".format(source_version), None),
 }
 
 context = {
@@ -206,15 +208,15 @@ context = {
         ["HTML", docs_url + version + "/zip"],
     ],
     # Do not display for outdated releases
-    "display_github": not html_context["outdated"],
-    "github_user": "qgis",
-    "github_repo": "QGIS-Documentation",
-    "github_version": "master/",
-    "github_url": "https://github.com/qgis/QGIS-Documentation/edit/master",
-    "transifex_url": "https://www.transifex.com/qgis/qgis-documentation/translate",
-    "pyqgis_version": pyqgis_version,
-    "source_version": source_version,
-    "api_version": api_version,
+    # "display_github": not html_context["outdated"],
+    # "github_user": "qgis",
+    # "github_repo": "QGIS-Documentation",
+    # "github_version": "master/",
+    # "github_url": "https://github.com/feefladder/QGIS-Documentation/edit/master",
+    # "transifex_url": "https://www.transifex.com/qgis/qgis-documentation/translate",
+    # "pyqgis_version": pyqgis_version,
+    # "source_version": source_version,
+    # "api_version": api_version,
 }
 
 if "html_context" in globals():
@@ -231,133 +233,6 @@ StandaloneHTMLBuilder.supported_image_types = [
     "image/png",
     "image/jpeg",
 ]
-
-# -- Options for LaTeX output --------------------------------------------------
-
-latex_engine = "xelatex"
-
-# The paper size ('letter' or 'a4').
-latex_paper_size = "a4"
-
-# The font size ('10pt', '11pt' or '12pt').
-# latex_font_size = '10pt'
-
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [
-    (
-        "docs/user_manual/index",
-        "QGISDesktopUserGuide.tex",
-        f"QGIS Desktop {version} User Guide",
-        "QGIS Project",
-        "manual",
-    ),
-    (
-        "docs/server_manual/index",
-        "QGISServerUserGuide.tex",
-        f"QGIS Server {version} User Guide",
-        "QGIS Project",
-        "manual",
-    ),
-    (
-        "docs/pyqgis_developer_cookbook/index",
-        "PyQGISDeveloperCookbook.tex",
-        f"PyQGIS {version} developer cookbook",
-        "QGIS Project",
-        "manual",
-    ),
-    (
-        "docs/training_manual/index",
-        "QGISTrainingManual.tex",
-        "QGIS Training Manual",
-        "QGIS Project",
-        "manual",
-    ),
-    (
-        "docs/gentle_gis_introduction/index",
-        "GentleGISIntroduction.tex",
-        "Gentle GIS Introduction",
-        "QGIS Project",
-        "manual",
-    ),
-    (
-        "docs/documentation_guidelines/index",
-        "QGISDocumentationGuidelines.tex",
-        "QGIS Documentation Guidelines",
-        "QGIS Project",
-        "manual",
-    ),
-    # ('docs/developers_guide/index', 'QGISDevelopersGuide.tex', u'QGIS Developers Guide', u'QGIS Project', 'manual'),
-]
-
-# The name of an image file (relative to this directory) to place at the top of
-# the title page.
-latex_logo = "static/common/logo.png"
-
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-latex_use_parts = False
-
-# Additional stuff for the LaTeX preamble.
-# latex_preamble = ''
-
-# Documents to append as an appendix to all manuals.
-# latex_appendices = []
-
-# If false, no module index is generated.
-# latex_use_modindex = True
-
-
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    "papersize": "a4paper",
-    # The font size ('10pt', '11pt' or '12pt').
-    # 'pointsize': '10pt',
-    # Additional stuff for the LaTeX preamble.
-    "preamble": """
-    \\usepackage{combelow}
-    \\setcounter{tocdepth}{2}
-    \\usepackage{newunicodechar}
-    \\newunicodechar{Ș}{\\cb{S}}
-    \\newunicodechar{ș}{\\cb{s}}
-    \\newunicodechar{Ț}{\\cb{T}}
-    \\newunicodechar{ț}{\\cb{t}}
-    \\newunicodechar{≠}{$\\neq$}
-    \\newunicodechar{≥}{$\geq$}
-    \\newunicodechar{≤}{$\leq$}
-    \\newunicodechar{π}{$\pi$}
-    \\newunicodechar{㎡}{$m^2$}
-    \\newunicodechar{\u25BA}{$\u25BA$}
-    \\newunicodechar{′}{\ensuremath{^{\prime}}}
-    \\newunicodechar{″}{\ensuremath{^{\prime\prime}}}
-    \\newunicodechar{​}{ }""",
-    # Latex figure float alignment
-    # use ‘H’ to disable floating, and position the figures strictly in the order they appear in the source
-    "figure_align": "H",
-}
-
-# Special case of korean that need different latex settings to work
-if tags.has("ko"):
-    latex_elements = {
-        "inputenc": "",
-        "utf8extra": "",
-        "preamble": """
-        \\usepackage{fontspec}
-        \\usepackage[space]{xeCJK}
-        \\renewcommand\CJKglue{}
-        \\setCJKmainfont{NanumMyeongjo}""",
-    }
-
-# Special case for hindi that need different setting and typeset
-if tags.has("hi"):
-    latex_elements = {
-        "inputenc": "",
-        "utf8extra": "",
-        "preamble": """
-        \\usepackage{fontspec}
-        \\setmainfont[Script=Devanagari]{Nakula}""",
-    }
-
 
 # -- Settings for Python code samples testing --------------------------------
 
