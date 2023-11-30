@@ -18,15 +18,36 @@ import processing
 
 
 class RasterizeLike(QgsProcessingAlgorithm):
-
     def initAlgorithm(self, config=None):
-        self.addParameter(QgsProcessingParameterVectorLayer('vector', 'vector', defaultValue=None))
-        self.addParameter(QgsProcessingParameterField('rasterizefield', 'rasterize field', type=QgsProcessingParameterField.Any, parentLayerParameterName='vector', allowMultiple=False, defaultValue=None))
-        self.addParameter(QgsProcessingParameterRasterLayer('raster', 'reference', defaultValue=None))
-        param = QgsProcessingParameterNumber('nodatavalue', 'nodata value', type=QgsProcessingParameterNumber.Double, defaultValue=-999)
+        self.addParameter(
+            QgsProcessingParameterVectorLayer("vector", "vector", defaultValue=None)
+        )
+        self.addParameter(
+            QgsProcessingParameterField(
+                "rasterizefield",
+                "rasterize field",
+                type=QgsProcessingParameterField.Any,
+                parentLayerParameterName="vector",
+                allowMultiple=False,
+                defaultValue=None,
+            )
+        )
+        self.addParameter(
+            QgsProcessingParameterRasterLayer("raster", "reference", defaultValue=None)
+        )
+        param = QgsProcessingParameterNumber(
+            "nodatavalue",
+            "nodata value",
+            type=QgsProcessingParameterNumber.Double,
+            defaultValue=-999,
+        )
         param.setFlags(param.flags() | QgsProcessingParameterDefinition.FlagAdvanced)
         self.addParameter(param)
-        self.addParameter(QgsProcessingParameterRasterDestination('Output', 'output', createByDefault=True, defaultValue=None))
+        self.addParameter(
+            QgsProcessingParameterRasterDestination(
+                "Output", "output", createByDefault=True, defaultValue=None
+            )
+        )
 
     def processAlgorithm(self, parameters, context, model_feedback):
         # Use a multi-step feedback, so that individual child algorithm progress reports are adjusted for the
@@ -37,37 +58,43 @@ class RasterizeLike(QgsProcessingAlgorithm):
 
         # Rasterize (vector to raster)
         alg_params = {
-            'BURN': 0,
-            'DATA_TYPE': 5,  # Float32
-            'EXTENT': parameters['raster'],
-            'EXTRA': '',
-            'FIELD': parameters['rasterizefield'],
-            'HEIGHT': 0,
-            'INIT': None,
-            'INPUT': parameters['vector'],
-            'INVERT': False,
-            'NODATA': parameters['nodatavalue'],
-            'OPTIONS': '',
-            'UNITS': 1,  # Georeferenced units
-            'USE_Z': False,
-            'WIDTH': 0,
-            'OUTPUT': parameters['Output']
+            "BURN": 0,
+            "DATA_TYPE": 5,  # Float32
+            "EXTENT": parameters["raster"],
+            "EXTRA": "",
+            "FIELD": parameters["rasterizefield"],
+            "HEIGHT": 0,
+            "INIT": None,
+            "INPUT": parameters["vector"],
+            "INVERT": False,
+            "NODATA": parameters["nodatavalue"],
+            "OPTIONS": "",
+            "UNITS": 1,  # Georeferenced units
+            "USE_Z": False,
+            "WIDTH": 0,
+            "OUTPUT": parameters["Output"],
         }
-        outputs['RasterizeVectorToRaster'] = processing.run('gdal:rasterize', alg_params, context=context, feedback=feedback, is_child_algorithm=True)
-        results['Output'] = outputs['RasterizeVectorToRaster']['OUTPUT']
+        outputs["RasterizeVectorToRaster"] = processing.run(
+            "gdal:rasterize",
+            alg_params,
+            context=context,
+            feedback=feedback,
+            is_child_algorithm=True,
+        )
+        results["Output"] = outputs["RasterizeVectorToRaster"]["OUTPUT"]
         return results
 
     def name(self):
-        return 'Rasterize like'
+        return "Rasterize like"
 
     def displayName(self):
-        return 'Rasterize like'
+        return "Rasterize like"
 
     def group(self):
-        return ''
+        return ""
 
     def groupId(self):
-        return ''
+        return ""
 
     def createInstance(self):
         return RasterizeLike()
